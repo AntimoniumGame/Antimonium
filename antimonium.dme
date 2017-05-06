@@ -1,0 +1,32 @@
+// DM Environment file for antimonium.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+#define FILE_DIR "icons"
+#define FILE_DIR "icons/images"
+#define FILE_DIR "icons/mobs"
+#define FILE_DIR "icons/objects"
+#define FILE_DIR "icons/turfs"
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include "world.dm"
+#include "code\_defines\vision.dm"
+#include "code\atoms\movement.dm"
+#include "code\mobs\_mob.dm"
+#include "code\mobs\mob_movement.dm"
+#include "code\mobs\new_player\_new_player.dm"
+#include "code\mobs\new_player\title_image.dm"
+#include "code\objects\_object.dm"
+#include "code\turfs\_turf.dm"
+#include "maps\world.dmm"
+// END_INCLUDE
+
