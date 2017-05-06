@@ -4,5 +4,5 @@ var/obj/title_image
 	if(!title_image)
 		title_image = new()
 		title_image.icon = 'icons/images/title_image.dmi'
-		title_image.screen_loc = "CENTER"
+		title_image.screen_loc = "CENTER,CENTER"
 	return title_image
