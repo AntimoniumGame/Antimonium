@@ -1,5 +1,5 @@
 /client
-	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Return" = KEY_CHAT)
+	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT)
 
 /client/verb/keyPress(key as text)
 	set instant = 1
@@ -11,13 +11,13 @@
 				if(mob)
 					mob.onKeyPress(bind)
 			if(KEY_CHAT)
-				winset(src, "input", "focus=true")
+				if(winget(src, null, "focus") != "mainwindow.input")
+					winset(src, "input", "focus=true")
+				else
+					winset(src, "map", "focus=true")
 			if(KEY_RUN)
 				if(mob)
 					mob.Run()
-			if(KEY_MENU)
-				if(winget(src, null, "focus") != "map")
-					winset(src, "map", "focus=true")
 
 /client/verb/keyRelease(key as text)
 	set instant = 1
