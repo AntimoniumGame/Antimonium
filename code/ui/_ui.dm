@@ -21,8 +21,8 @@
 
 /obj/ui/hand
 	name = "Left Hand"
-	screen_loc = "1,2"
-
+	screen_loc = "7,2"
+w
 /obj/ui/hand/right
 	name = "Right Hand"
-	screen_loc = "2,2"
+	screen_loc = "8,2"

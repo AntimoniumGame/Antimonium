@@ -26,7 +26,7 @@
 
 	sleep(10)
 
-	var/mob/player_mob = new()
+	var/mob/human/player_mob = new()
 	player_mob.move_to(locate(5,5,1))
 	player_mob.name = key
 	client.screen -= get_title_image()

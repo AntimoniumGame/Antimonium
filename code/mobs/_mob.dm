@@ -1,8 +1,6 @@
 /mob
 	icon = 'icons/mobs/mob.dmi'
 	layer = TURF_LAYER
-	light_power = 2
-	light_range = 5
 	see_invisible = SEE_INVISIBLE_LIVING
 
 /mob/New()
@@ -17,6 +15,11 @@
 
 	set name = "Toggle Self Light"
 	set category = "Debug"
+
+	light_power = 10
+	light_range = 5
+	light_color = BRIGHT_YELLOW
+	light_type = LIGHT_SOFT_FLICKER
 
 	if(light_obj)
 		notify("Killed self light.")
