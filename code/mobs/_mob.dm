@@ -19,10 +19,10 @@
 	set category = "Debug"
 
 	if(light_obj)
-		notify("Killed light.")
+		notify("Killed self light.")
 		kill_light()
 	else
-		notify("Set light.")
+		notify("Set self light.")
 		set_light()
 
 	sleep(5)

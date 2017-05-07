@@ -1,4 +1,5 @@
 /mob/new_player/Login()
+
 	. = ..()
 
 	// Create the fadein overlay if needed.
@@ -22,7 +23,8 @@
 
 	// Fade it out.
 	spawn(0)
-		animate(blackout, alpha=0, time=20)
+		if(blackout)
+			animate(blackout, alpha=0, time=20)
 		sleep(20)
-		blackout.mouse_opacity = 0
-	. = ..()
+		if(blackout)
+			blackout.mouse_opacity = 0

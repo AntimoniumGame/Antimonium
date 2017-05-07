@@ -31,5 +31,8 @@
 	player_mob.name = key
 	client.screen -= get_title_image()
 	client.screen -= blackout
-	player_mob.client = client
+	client.eye = player_mob
+
+	player_mob.key = key
+
 	qdel(src)

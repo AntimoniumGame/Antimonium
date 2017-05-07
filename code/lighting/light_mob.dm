@@ -4,6 +4,8 @@
 
 /mob/Login()
 	. = ..()
+
+	client.screen.Cut()
 	if(!dark_plane)
 		dark_plane = new(client)
 	else
