@@ -28,6 +28,7 @@
 #include "code\_defines\loop_control.dm"
 #include "code\_defines\math.dm"
 #include "code\_defines\planes.dm"
+#include "code\_defines\transform.dm"
 #include "code\_defines\turf.dm"
 #include "code\_defines\vision.dm"
 #include "code\atoms\_atom.dm"

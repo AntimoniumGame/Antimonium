@@ -21,6 +21,12 @@
 /mob/proc/Run()
 	walking = FALSE
 
+/mob/set_dir(var/newdir)
+	. = ..()
+	var/matrix/M = matrix()
+	M.Turn(dir2turn(newdir))
+	transform = M
+
 //code for controlling walk_dir is in /code/client/control.dm
 /mob/proc/MoveLoop()
 	set waitfor = 0
