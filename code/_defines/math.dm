@@ -1,0 +1,1 @@
+#define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))

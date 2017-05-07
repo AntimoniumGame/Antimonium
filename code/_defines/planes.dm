@@ -1,6 +1,6 @@
-#define LIGHTING_PLANE -10
-#define MASTER_PLANE    0
-#define SCREEN_PLANE    10
+#define MASTER_PLANE 0
+#define SCREEN_PLANE    MASTER_PLANE + 1
+#define DARK_PLANE      MASTER_PLANE - 1
 
 #define UNDERLAY_LAYER          0
 #define TURF_LAYER              1
