@@ -13,7 +13,7 @@
 		next_move = world.time + get_move_delay()
 
 /mob/get_move_delay()
-	return loc.get_mover_delay(src) + (walking ? walk_delay : run_delay)
+	return (loc ? loc.get_mover_delay(src) : 0) + (walking ? walk_delay : run_delay)
 
 /mob/proc/Walk()
 	walking = TRUE
