@@ -33,6 +33,7 @@
 #include "code\atoms\_atom.dm"
 #include "code\atoms\movement.dm"
 #include "code\atoms\notifications.dm"
+#include "code\client\client_notify.dm"
 #include "code\client\control.dm"
 #include "code\data\_data.dm"
 #include "code\data\master_controller\_master_controller.dm"
@@ -56,6 +57,8 @@
 #include "code\mobs\new_player\np_title_image.dm"
 #include "code\objects\_object.dm"
 #include "code\turfs\_turf.dm"
+#include "code\ui\_ui.dm"
+#include "code\ui\ui_mob.dm"
 #include "maps\world.dmm"
 // END_INCLUDE
 

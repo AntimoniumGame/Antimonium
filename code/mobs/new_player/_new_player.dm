@@ -36,3 +36,6 @@
 	player_mob.key = key
 
 	qdel(src)
+
+/mob/new_player/create_ui()
+	return

@@ -4,8 +4,9 @@
 
 /mob/Login()
 	. = ..()
+	refresh_lighting()
 
-	client.screen.Cut()
+/mob/proc/refresh_lighting()
 	if(!dark_plane)
 		dark_plane = new(client)
 	else
