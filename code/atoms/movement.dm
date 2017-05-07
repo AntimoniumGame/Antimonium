@@ -15,6 +15,9 @@
 /atom/movable/Move()
 	if(!can_move())
 		return 0
+
+	//set the glide size for silky smooth movement
+	glide_size = world.icon_size / max(get_move_delay(), world.tick_lag) * world.tick_lag
 	. = ..()
 	set_dir(dir)
 	if(. && light_obj)

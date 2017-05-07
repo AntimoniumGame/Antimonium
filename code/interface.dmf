@@ -1,0 +1,72 @@
+macro "macro"
+	elem 
+		name = "Any"
+		command = "keyPress \"[[*]]\""
+	elem 
+		name = "Any+UP"
+		command = "keyRelease \"[[*]]\""
+
+
+menu "menu"
+	elem 
+		name = "&File"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Quit"
+		command = ".quit"
+		category = "&File"
+		saved-params = "is-checked"
+
+
+window "mainwindow"
+	elem "mainwindow"
+		type = MAIN
+		pos = 281,0
+		size = 960x480
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		macro = "macro"
+		menu = "menu"
+	elem "info"
+		type = INFO
+		pos = 640,0
+		size = 320x192
+		anchor1 = 67,0
+		anchor2 = 100,40
+		is-default = true
+		border = line
+		saved-params = ""
+		tab-background-color = none
+	elem "input"
+		type = INPUT
+		pos = 640,432
+		size = 320x48
+		anchor1 = 67,90
+		anchor2 = 100,100
+		is-default = true
+		border = line
+		saved-params = ""
+	elem "output"
+		type = OUTPUT
+		pos = 640,192
+		size = 320x240
+		anchor1 = 67,40
+		anchor2 = 100,90
+		is-default = true
+		border = line
+		saved-params = "max-lines"
+	elem "map"
+		type = MAP
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 67,100
+		is-default = true
+		saved-params = "zoom;letterbox;zoom-mode"
+		icon-size = 64
+		zoom = 2
+

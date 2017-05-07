@@ -16,13 +16,17 @@
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
+#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
 #include "code\world.dm"
+#include "code\interface.dmf"
 #include "code\_defines\colours.dm"
+#include "code\_defines\control.dm"
 #include "code\_defines\globals.dm"
 #include "code\_defines\lighting.dm"
+#include "code\_defines\loop_control.dm"
 #include "code\_defines\math.dm"
 #include "code\_defines\planes.dm"
 #include "code\_defines\turf.dm"
@@ -30,6 +34,7 @@
 #include "code\atoms\_atom.dm"
 #include "code\atoms\movement.dm"
 #include "code\atoms\notifications.dm"
+#include "code\client\control.dm"
 #include "code\data\_data.dm"
 #include "code\data\master_controller\_master_controller.dm"
 #include "code\data\master_controller\daemons\_daemon.dm"
