@@ -4,5 +4,19 @@
 
 /mob/human/New()
 	..()
-	for(var/limbstate in list("left_foot", "right_foot", "left_leg", "right_leg", "groin", "chest", "left_hand", "right_hand", "left_arm", "right_arm", "head"))
-		overlays += image(icon = 'icons/mobs/human_limbs.dmi', icon_state = limbstate)
+	create_limbs()
+	update_icon()
+
+/mob/clicked_on(var/thing)
+
+	if(istype(thing, /obj/ui))
+		var/obj/ui/clicked = thing
+		clicked.clicked_on(src)
+		return
+
+	if(istype(thing, /obj/item))
+		var/obj/item/clicked = thing
+		if(is_adjacent_to(clicked))
+			collect_item(clicked)
+		else
+			notify("You are too far away from \the [clicked].")

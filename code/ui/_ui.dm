@@ -9,20 +9,11 @@
 	owner = null
 	. = ..()
 
-/obj/ui/Click()
-	if(owner && owner.client)
-		owner.notify("You clicked on \the [src] button.")
-
 /obj/ui/New(var/mob/_owner)
 	..()
 	owner = _owner
 	move_to(null)
 	verbs.Cut()
 
-/obj/ui/hand
-	name = "Left Hand"
-	screen_loc = "7,2"
-w
-/obj/ui/hand/right
-	name = "Right Hand"
-	screen_loc = "8,2"
+/obj/ui/proc/clicked_on(var/mob/clicker)
+	return (clicker == owner)

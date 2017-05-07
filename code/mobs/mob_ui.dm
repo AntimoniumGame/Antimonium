@@ -19,8 +19,7 @@
 	refresh_ui()
 
 /mob/proc/create_ui()
-	ui_screen += new /obj/ui/hand(src)
-	ui_screen += new /obj/ui/hand/right(src)
+	return
 
 /mob/proc/refresh_ui()
 	if(client)

@@ -1,0 +1,15 @@
+/mob/human
+	var/list/limbs = list()
+
+/mob/human/proc/create_limbs()
+	limbs["left_foot"] = new /obj/item/limb/left_foot(src)
+	limbs["right_foot"] = new /obj/item/limb/right_foot(src)
+	limbs["left_leg"] = new /obj/item/limb/left_leg(src)
+	limbs["right_leg"] = new /obj/item/limb/right_leg(src)
+	limbs["groin"] = new /obj/item/limb/groin(src)
+	limbs["chest"] = new /obj/item/limb/chest(src)
+	limbs["left_hand"] = new /obj/item/limb/left_hand(src)
+	limbs["right_hand"] = new /obj/item/limb/right_hand(src)
+	limbs["left_arm"] = new /obj/item/limb/left_arm(src)
+	limbs["right_arm"] = new /obj/item/limb/right_arm(src)
+	limbs["head"] = new /obj/item/limb/head(src)
