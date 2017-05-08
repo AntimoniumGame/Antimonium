@@ -2,6 +2,7 @@
 	name = "Inventory"
 	var/obj/item/holding
 	var/slot_id
+	var/unmodified_name
 
 /obj/ui/inv/destroy()
 	holding = null
@@ -24,7 +25,7 @@
 	update_icon()
 
 /obj/ui/inv/proc/update_icon()
-	name = initial(name)
+	name = unmodified_name
 	overlays.Cut()
 	if(holding)
 		name = "[name] - [holding.name]"
@@ -35,10 +36,15 @@
 	screen_loc = "7,2"
 	slot_id = "left_hand"
 
-/obj/ui/inv/hand/right
-	name = "right hand"
-	screen_loc = "8,2"
-	slot_id = "right_hand"
+/obj/ui/inv/hand/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id)
+	. = ..()
+	if(nname)
+		name = nname
+	unmodified_name = name
+	if(nscreen_loc)
+		screen_loc = nscreen_loc
+	if(nslot_id)
+		slot_id = nslot_id
 
 /obj/ui/inv/hand/left_clicked_on(var/mob/clicker)
 	. = ..()
