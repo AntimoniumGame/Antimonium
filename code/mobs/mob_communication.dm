@@ -20,13 +20,13 @@
 
 	set name = "Say"
 	set category= "Communication"
-	set desc = "Speak your mind!"
+	set desc = "Speak your mind! Use '/me' to emote."
 
 	if(world.time < next_speech)
 		return
 
 	if(!message)
-		message = input("What would you like to say?") as text|null
+		message = input("What would you like to say? Use '/me' to emote. ") as text|null
 
 	if(!message)
 		return
@@ -40,27 +40,9 @@
 		do_say(message)
 
 /mob/proc/do_say(var/message)
-
 	var/list/result = format_string_for_speech(src, message)
 	next_speech = world.time + 15
 	notify_nearby(result[1])
-
-/mob/verb/emote(var/message as text)
-
-	set name = "Emote"
-	set desc = "Perform an action!"
-	set category = "Communication"
-
-	if(world.time < next_speech)
-		return
-
-	if(!message)
-		message = input("What would you like to do?") as text|null
-
-	if(world.time < next_speech)
-		return
-
-	do_emote(message)
 
 /mob/proc/do_emote(var/message)
 	next_speech = world.time + 25

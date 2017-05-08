@@ -1,5 +1,7 @@
 /mob/human/update_icon()
 
+	//TODO: limb and equipment layering.
+
 	// Reset and prepare for new overlays.
 	overlays.Cut()
 	var/list/new_overlays = list()
