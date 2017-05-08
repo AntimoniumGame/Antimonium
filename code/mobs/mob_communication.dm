@@ -34,9 +34,13 @@
 	if(world.time < next_speech)
 		return
 
-	do_say(message)
+	if(lowertext(copytext(message,1,5)) == "/me ")
+		do_emote(copytext(message,5))
+	else
+		do_say(message)
 
 /mob/proc/do_say(var/message)
+
 	var/list/result = format_string_for_speech(src, message)
 	next_speech = world.time + 15
 	notify_nearby(result[1])

@@ -35,6 +35,7 @@
 #include "code\_defines\turf.dm"
 #include "code\_defines\vision.dm"
 #include "code\atoms\_atom.dm"
+#include "code\atoms\atom_pronouns.dm"
 #include "code\atoms\movement.dm"
 #include "code\atoms\notifications.dm"
 #include "code\client\client_notify.dm"
@@ -76,7 +77,10 @@
 #include "code\objects\items\limbs\_limb.dm"
 #include "code\turfs\_turf.dm"
 #include "code\ui\_ui.dm"
+#include "code\ui\ui_hide_inv.dm"
 #include "code\ui\ui_inventory.dm"
+#include "code\ui\ui_inventory_gear.dm"
+#include "code\ui\ui_inventory_hands.dm"
 #include "maps\world.dmm"
 // END_INCLUDE
 

@@ -1,4 +1,4 @@
-/mob/human/proc/update_icon()
+/mob/human/update_icon()
 
 	// Reset and prepare for new overlays.
 	overlays.Cut()

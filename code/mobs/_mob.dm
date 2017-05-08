@@ -5,6 +5,7 @@
 
 /mob/New()
 	..()
+	gender = pick(MALE, FEMALE, NEUTER, PLURAL)
 	mob_list += src
 
 /mob/destroy()

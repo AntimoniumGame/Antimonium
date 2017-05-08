@@ -1,6 +1,3 @@
-/mob/human
-	var/list/inventory_slots = list()
-
 /mob/human/collect_item(var/obj/item/thing, var/equip_to_slot)
 	if(!equip_to_slot)
 		return FALSE

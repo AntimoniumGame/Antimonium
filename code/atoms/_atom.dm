@@ -4,6 +4,9 @@
 	layer = UNDERLAY_LAYER
 	var/simulated = TRUE
 
+/atom/proc/update_icon()
+	return
+
 /atom/proc/left_clicked_on(var/mob/clicker)
 	return
 
