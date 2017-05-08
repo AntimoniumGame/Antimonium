@@ -6,6 +6,7 @@
 #define KEY_RUN		5
 #define KEY_CHAT	6
 #define KEY_MENU	7
+#define KEY_DEV		8
 
 //mapping keybind dirs to directions
 var/list/__dirs = list(NORTH, SOUTH, EAST, WEST)

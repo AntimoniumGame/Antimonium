@@ -19,6 +19,40 @@ menu "menu"
 		saved-params = "is-checked"
 
 
+window "devwindow"
+	elem "devwindow"
+		type = MAIN
+		pos = 281,0
+		size = 300x400
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Dev Tools"
+		menu = "menu"
+	elem "output"
+		type = OUTPUT
+		pos = 0,24
+		size = 300x376
+		anchor1 = 0,6
+		anchor2 = 100,100
+		font-family = "Consolas,monospace"
+		font-size = 10
+		is-default = true
+		border = line
+		saved-params = "max-lines"
+	elem "devinput"
+		type = INPUT
+		pos = 0,0
+		size = 300x24
+		anchor1 = 0,0
+		anchor2 = 100,6
+		font-family = "Consolas,monospace"
+		font-size = 10
+		border = line
+		saved-params = ""
+
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
@@ -30,7 +64,6 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		macro = "macro"
-		menu = "menu"
 	elem "info"
 		type = INFO
 		pos = 640,0
@@ -47,16 +80,20 @@ window "mainwindow"
 		size = 320x48
 		anchor1 = 67,90
 		anchor2 = 100,100
+		font-family = "@Arial Unicode MS,sans-serif"
+		font-size = 10
 		is-default = true
 		border = line
 		saved-params = ""
-	elem "output"
+		command = "Say"
+	elem "chatoutput"
 		type = OUTPUT
 		pos = 640,192
 		size = 320x240
 		anchor1 = 67,40
 		anchor2 = 100,90
-		is-default = true
+		font-family = "@Arial Unicode MS,sans-serif"
+		font-size = 10
 		border = line
 		saved-params = "max-lines"
 	elem "map"

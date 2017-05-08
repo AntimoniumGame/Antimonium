@@ -36,7 +36,7 @@ var/data/master_controller/mc
 	for(var/data/daemon/daemon in daemons)
 		daemon.start()
 
-/mob/proc/debug_controller()
+/mob/verb/debug_controller()
 
 	set name = "Master Controller Status"
 	set category = "Debug"

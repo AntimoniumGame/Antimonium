@@ -1,5 +1,5 @@
 /client
-	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT)
+	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV)
 
 /client/verb/keyPress(key as text)
 	set instant = 1
@@ -18,6 +18,8 @@
 			if(KEY_RUN)
 				if(mob)
 					mob.Run()
+			if(KEY_DEV)
+				DevPanel()
 
 /client/verb/keyRelease(key as text)
 	set instant = 1

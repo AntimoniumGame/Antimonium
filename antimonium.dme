@@ -44,6 +44,7 @@
 #include "code\data\master_controller\_master_controller.dm"
 #include "code\data\master_controller\daemons\_daemon.dm"
 #include "code\data\master_controller\daemons\garbage.dm"
+#include "code\debug\client.dm"
 #include "code\debug\mobs.dm"
 #include "code\helpers\distance.dm"
 #include "code\helpers\text.dm"

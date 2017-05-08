@@ -22,7 +22,7 @@
 	clicker.collect_item(src, "right_hand")
 
 /obj/item/middle_clicked_on(var/mob/clicker)
-	clicker << "It's \a [name]."
+	clicker << output("It's \a [name].", "chatoutput")
 
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
 	user.notify_nearby("\The [user] bonks \the [target] over the head with \the [src].")
