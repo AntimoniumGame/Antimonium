@@ -24,6 +24,9 @@
 		light_obj.follow_holder()
 
 /atom/proc/set_dir(var/newdir)
-	dir = newdir
-	if(light_obj)
-		light_obj.follow_holder_dir()
+	if(dir != newdir)
+		dir = newdir
+		if(light_obj)
+			light_obj.follow_holder_dir()
+		return TRUE
+	return FALSE

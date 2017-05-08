@@ -70,6 +70,12 @@
 
 // Moves the light overlay to the holder's turf and updates bleeding values accordingly.
 /obj/light/proc/follow_holder()
+
+	if(!holder || deleted(src))
+		move_to(null)
+		destroy(src)
+		return
+
 	if(holder && holder.loc)
 		if(holder.loc.loc && ismob(holder.loc))
 			move_to(holder.loc.loc)
@@ -82,7 +88,7 @@
 	return (holder.light_type == LIGHT_DIRECTIONAL)
 
 /obj/light/set_dir()
-	..()
+	. = ..()
 	switch(dir)
 		if(NORTH)
 			pixel_x = -(world.icon_size * light_range) + world.icon_size / 2

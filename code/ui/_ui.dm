@@ -15,5 +15,11 @@
 	move_to(null)
 	verbs.Cut()
 
-/obj/ui/proc/clicked_on(var/mob/clicker)
+/obj/ui/left_clicked_on(var/mob/clicker)
+	return (clicker == owner)
+
+/obj/ui/right_clicked_on(var/mob/clicker)
+	return (clicker == owner)
+
+/obj/ui/middle_clicked_on(var/mob/clicker)
 	return (clicker == owner)

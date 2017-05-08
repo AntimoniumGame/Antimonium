@@ -1,25 +1,29 @@
 /mob/human
 	var/list/inventory_slots = list()
 
-/mob/human/collect_item(var/obj/item/thing)
+/mob/human/collect_item(var/obj/item/thing, var/equip_to_slot)
+	if(!equip_to_slot)
+		return FALSE
 	. = ..()
 	if(.)
-		var/obj/ui/inv/left_hand = inventory_slots["left_hand"]
-		var/obj/ui/inv/right_hand = inventory_slots["right_hand"]
-		if(left_hand.holding && right_hand.holding)
-			notify("Your hands are full.")
+		var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
+		if(equipping.holding)
 			drop_item(thing)
 			return FALSE
-		else if(!left_hand.holding)
-			left_hand.set_held(thing)
-		else
-			right_hand.set_held(thing)
+		equipping.set_held(thing)
 		update_icon()
 
 /mob/human/drop_item(var/obj/item/thing)
 	. = ..()
-	for(var/invslot in inventory_slots)
-		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
-		if(inv_slot.holding == thing)
-			inv_slot.forget_held()
-			break
+	if(.)
+		for(var/invslot in inventory_slots)
+			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
+			if(inv_slot.holding == thing)
+				inv_slot.forget_held()
+				break
+		update_icon()
+
+/mob/human/get_equipped(var/slot_id)
+	var/obj/ui/inv/inv_slot = inventory_slots[slot_id]
+	if(inv_slot)
+		return inv_slot.holding

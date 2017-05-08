@@ -24,7 +24,7 @@
 /mob/proc/refresh_ui()
 	if(client)
 		client.screen.Cut()
-		client.images.Cut()
 		client.screen |= ui_screen
+		client.images.Cut()
 		client.images |= ui_images
 	refresh_lighting()

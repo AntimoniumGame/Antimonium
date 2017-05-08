@@ -2,12 +2,8 @@ var/data/daemon/garbage/gc
 /atom/var/gc_collect_time = 0
 /data/var/gc_collect_time = 0
 
-/proc/deleted(atom/A)
-	if(!istype(A))
-		return TRUE
-	if(A.gc_collect_time == 0 || isnull(A.gc_collect_time))
-		return TRUE
-	return FALSE
+/proc/deleted(var/atom/A)
+	return !(istype(A) && (A.gc_collect_time == 0 || isnull(A.gc_collect_time)))
 
 /atom/proc/destroy()
 	if(contents)

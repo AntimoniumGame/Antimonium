@@ -4,5 +4,11 @@
 	layer = UNDERLAY_LAYER
 	var/simulated = TRUE
 
-/atom/proc/is_adjacent_to(var/atom/other)
-	return get_dist(src, other) <= 1
+/atom/proc/left_clicked_on(var/mob/clicker)
+	return
+
+/atom/proc/right_clicked_on(var/mob/clicker)
+	return
+
+/atom/proc/middle_clicked_on(var/mob/clicker)
+	return
