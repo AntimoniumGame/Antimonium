@@ -15,6 +15,7 @@
 	move_to(null)
 	verbs.Cut()
 
+// Override the root objects since this is an abstract object of sorts.
 /obj/ui/left_clicked_on(var/mob/clicker)
 	return (clicker == owner)
 

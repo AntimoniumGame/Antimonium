@@ -4,6 +4,9 @@
 	layer = UNDERLAY_LAYER
 	var/simulated = TRUE
 
+/atom/movable
+	var/anchored = FALSE
+
 /atom/proc/update_icon()
 	return
 

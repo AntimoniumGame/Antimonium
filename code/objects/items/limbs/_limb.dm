@@ -16,4 +16,6 @@
 
 //todo
 /obj/item/limb/stance
+	name = "leg"
 /obj/item/limb/grasp
+	name = "hand"

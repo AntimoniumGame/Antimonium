@@ -14,6 +14,7 @@
 #define FILE_DIR "icons/objects"
 #define FILE_DIR "icons/objects/items"
 #define FILE_DIR "icons/objects/items/limbs"
+#define FILE_DIR "icons/structure"
 #define FILE_DIR "icons/turfs"
 // END_FILE_DIR
 
@@ -78,6 +79,8 @@
 #include "code\objects\items\_item.dm"
 #include "code\objects\items\debug.dm"
 #include "code\objects\items\limbs\_limb.dm"
+#include "code\objects\structures\_structure.dm"
+#include "code\objects\structures\crate.dm"
 #include "code\turfs\_turf.dm"
 #include "code\ui\_ui.dm"
 #include "code\ui\ui_hide_inv.dm"
