@@ -62,3 +62,14 @@
 				return 0
 			key_x = 0
 			walk_dir = key_y ? key_y : 0
+
+//Click macro disable
+/mob/verb/DisClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+	set name = ".click"
+	set category = null
+	return
+
+/mob/verb/DisDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+	set name = ".dblclick"
+	set category = null
+	return
