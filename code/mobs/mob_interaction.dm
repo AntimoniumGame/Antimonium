@@ -1,17 +1,36 @@
+/mob/proc/face_atom(var/atom/A)
+	if(!A || !x || !y || !A.x || !A.y) return
+	var/dx = A.x - x
+	var/dy = A.y - y
+	if(!dx && !dy) return
+
+	var/direction
+	if(abs(dx) < abs(dy))
+		if(dy > 0)	direction = NORTH
+		else		direction = SOUTH
+	else
+		if(dx > 0)	direction = EAST
+		else		direction = WEST
+	if(direction != dir)
+		set_dir(direction)
+
 /mob/proc/left_click_on(var/atom/thing)
+	face_atom(thing)
 	thing.left_clicked_on(src)
 
 /mob/proc/middle_click_on(var/atom/thing)
+	face_atom(thing)
 	thing.middle_clicked_on(src)
 
 /mob/proc/right_click_on(var/atom/thing)
+	face_atom(thing)
 	thing.right_clicked_on(src)
 
 /mob/left_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, "left_hand")
+	handle_interaction(clicker, BP_LEFT_HAND)
 
 /mob/right_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, "right_hand")
+	handle_interaction(clicker, BP_RIGHT_HAND)
 
 /mob/middle_clicked_on(var/mob/clicker)
 	return

@@ -1,8 +1,8 @@
 /obj/ui/hide_inv
 	name = "Show/Hide Inventory"
-	icon_state = "toggle_inv_off"
+	icon_state = "toggle_inv_on"
 	screen_loc = "1,1"
-	var/hiding_inventory = FALSE
+	var/hiding_inventory = TRUE
 
 /obj/ui/hide_inv/left_clicked_on(var/mob/clicker)
 	. = ..()

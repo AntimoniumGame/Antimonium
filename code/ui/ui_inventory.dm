@@ -2,10 +2,11 @@
 	name = "Inventory"
 	var/obj/item/holding
 	var/slot_id
+	var/slot_flags = 0
 	var/unmodified_name
 	var/concealable = FALSE
 
-/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id)
+/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags)
 	. = ..()
 	if(nname)
 		name = nname
@@ -15,6 +16,9 @@
 	if(nslot_id)
 		slot_id = nslot_id
 	icon_state = "inv_[slot_id]"
+	slot_flags |= _slot_flags
+	if(concealable) // Defaults to on.
+		invisibility = INVISIBILITY_MAXIMUM
 
 /obj/ui/inv/destroy()
 	holding = null

@@ -2,6 +2,7 @@
 	name = "item"
 	icon_state = "world"
 	icon = 'icons/objects/items/_default.dmi'
+	var/slot_flags = 0
 
 /obj/item/New()
 	. = ..()
@@ -12,20 +13,24 @@
 /obj/item/proc/get_worn_icon(var/inventory_slot)
 	return image(icon = icon, icon_state = inventory_slot)
 
+/obj/item/proc/get_prone_worn_icon(var/inventory_slot)
+	return image(icon = icon, icon_state = "prone_[inventory_slot]")
+
 /obj/item/proc/get_inv_icon()
 	return get_worn_icon("held")
 
 /obj/item/left_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, "left_hand")
+	handle_clicked_on(clicker, BP_LEFT_HAND)
 
 /obj/item/right_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, "right_hand")
+	handle_clicked_on(clicker, BP_RIGHT_HAND)
 
 /obj/item/proc/handle_clicked_on(var/mob/clicker, var/slot)
-	if(!clicker.get_equipped(slot))
-		clicker.collect_item(src, slot)
-	else
-		attacked_by(clicker, clicker.get_equipped(slot))
+	if(is_adjacent_to(get_turf(src), get_turf(clicker)))
+		if(!clicker.get_equipped(slot))
+			clicker.collect_item(src, slot)
+		else
+			attacked_by(clicker, clicker.get_equipped(slot))
 
 /obj/item/middle_clicked_on(var/mob/clicker)
 	clicker << output("It's \a [name].", "chatoutput")
