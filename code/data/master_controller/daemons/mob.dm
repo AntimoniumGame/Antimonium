@@ -5,7 +5,8 @@
 /data/daemon/mob/do_work()
 	for(var/thing in living_mob_list)
 		var/mob/mob = thing
-		mob.handle_life_tick()
+		if(mob && !deleted(mob))
+			mob.handle_life_tick()
 		check_suspend()
 
 /data/daemon/mob/status()

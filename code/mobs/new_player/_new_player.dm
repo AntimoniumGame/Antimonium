@@ -10,7 +10,7 @@
 /mob/new_player/New()
 	..()
 	spawn(0)
-		loc = null
+		move_to(null)
 
 /mob/new_player/Login()
 	. = ..()

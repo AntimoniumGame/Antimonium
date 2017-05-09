@@ -13,7 +13,7 @@
 		try_equipment_interaction(BP_RIGHT_HAND)
 
 /obj/ui/inv/gear/middle_clicked_on(var/mob/clicker)
-	clicker << output("It's \a [name].", "chatoutput")
+	to_chat(clicker, "It's \a [name].")
 
 /obj/ui/inv/gear/proc/try_equipment_interaction(var/slot)
 	var/obj/item/prop = owner.get_equipped(slot)

@@ -14,3 +14,8 @@
 	prone = !prone
 	density = !prone
 	update_icon()
+
+/mob/human/die()
+	. = ..()
+	if(. && !prone)
+		toggle_prone()

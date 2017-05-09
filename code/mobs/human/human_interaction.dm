@@ -1,5 +1,5 @@
 /mob/human/face_atom()
-	if(!prone)
+	if(!prone || dragged)
 		. = ..()
 
 /mob/human/left_click_on(var/atom/thing, var/ctrl, var/alt)
@@ -48,4 +48,4 @@
 
 	var/obj/item/grab/grab = new(src, grabbing)
 	collect_item(grab, grabbing_with)
-	world << output("\The [grab.owner] grabbed \the [grab.grabbed]!", "chatoutput")
+	to_chat(world, "\The [grab.owner] grabbed \the [grab.grabbed]!")

@@ -15,7 +15,7 @@ Object interactions:
 	handle_clicked_on(clicker, BP_RIGHT_HAND)
 
 /obj/middle_clicked_on(var/mob/clicker)
-	clicker << output("It's \a [name].", "chatoutput")
+	to_chat(clicker, "It's \a [name].")
 
 /obj/proc/handle_clicked_on(var/mob/clicker, var/slot)
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)))

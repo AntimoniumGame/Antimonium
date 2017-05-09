@@ -8,12 +8,16 @@ Mob interactions:
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
+	var/dead = FALSE
 
 /mob/New()
 	..()
 	gender = pick(MALE, FEMALE, NEUTER, PLURAL)
 	mob_list += src
-	living_mob_list += src
+	if(dead)
+		dead_mob_list += src
+	else
+		living_mob_list += src
 
 /mob/destroy()
 	dead_mob_list -= src
@@ -24,9 +28,14 @@ Mob interactions:
 /mob/proc/handle_life_tick()
 	return
 
-/mob/proc/handle_death()
-	living_mob_list -= src
-	dead_mob_list |= src
+/mob/proc/die()
+	if(!dead)
+		dead = TRUE
+		living_mob_list -= src
+		dead_mob_list |= src
+		notify_nearby("<b>\The [src] has been slain!</b>")
+		return TRUE
+	return FALSE
 
 /mob/proc/update_stance()
 	return

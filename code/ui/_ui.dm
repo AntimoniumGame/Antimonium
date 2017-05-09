@@ -3,6 +3,8 @@
 	plane = SCREEN_PLANE
 	screen_loc = "CENTER,CENTER"
 	icon = 'icons/images/ui.dmi'
+	simulated = FALSE
+	anchored = TRUE
 	var/mob/owner
 
 /obj/ui/destroy()

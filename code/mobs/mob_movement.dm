@@ -5,9 +5,11 @@
 	var/run_delay = 1
 
 /mob/can_move()
-	return (world.time >= next_move)
+	return (dragged || (world.time >= next_move))
 
 /mob/Move()
+	if(dead && !dragged)
+		return FALSE
 	. = ..()
 	if(.)
 		next_move = world.time + get_move_delay()

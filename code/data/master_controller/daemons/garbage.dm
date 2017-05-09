@@ -13,8 +13,8 @@ var/data/daemon/garbage/gc
 	return 1
 
 /atom/movable/destroy()
-	loc = null
 	. = ..()
+	loc = null
 
 /data/proc/destroy()
 	return 1
@@ -36,14 +36,10 @@ var/data/daemon/garbage/gc
 	gc = src
 
 /data/daemon/garbage/proc/collect(var/thing)
-	if(!thing)
+	if(!thing || !thing:destroy())
 		return
-	var/gref = "\ref[thing]"
-	if(!garbage[gref])
-		if(!thing:destroy())
-			return
-		thing:gc_collect_time = world.time
-		garbage[gref] = world.time
+	thing:gc_collect_time = world.time
+	garbage["\ref[thing]"] = world.time
 
 /data/daemon/garbage/do_work()
 	for(var/gref in garbage)

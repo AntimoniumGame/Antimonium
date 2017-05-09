@@ -34,5 +34,5 @@
 		if(limb && !limb.broken)
 			stance_score += limb.support_value
 	if(stance_score <= 3)
-		notify_nearby("\The [src] collapses!")
+		notify_nearby("<b>\The [src] collapses!</b>")
 		toggle_prone()

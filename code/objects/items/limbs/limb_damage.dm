@@ -15,6 +15,9 @@
 	cumulative_wound_severity += wound_severity
 	owner.injured_limbs |= src
 
+	if(wound_type == WOUND_CUT && wound_severity > 5)
+		blood_splatter(owner, get_turf(owner))
+
 	if(wounds.len)
 		var/list/matching_wounds = list()
 		for(var/data/wound/old_wound in wounds)
@@ -26,7 +29,7 @@
 			wound.severity += wound_severity
 			if(attacked_with)
 				wound.left_by = attacked_with.name
-			owner.notify("The attack worsens a wound on your [name], leaving it with [wound.get_descriptor()]!")
+			owner.notify("<b>The attack worsens a wound on your [name], leaving it with [wound.get_descriptor()]!</b>")
 			set_pain(max(pain, wound.severity))
 			update_limb_state()
 			return
@@ -34,11 +37,11 @@
 	var/data/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
 	wounds += wound
 	set_pain(max(pain, wound.severity))
-	owner.notify("The attack leaves your [name] with [wound.get_descriptor()]!")
+	owner.notify("<b>The attack leaves your [name] with [wound.get_descriptor()]!</b>")
 	update_limb_state()
 
 /obj/item/limb/proc/break_bone()
-	owner.notify_nearby("\The [owner]'s [name] makes a horrible cracking sound!")
+	owner.notify_nearby("<b>\The [owner]'s [name] makes a horrible cracking sound!</b>")
 	broken = TRUE
 	handle_break_effects()
 
@@ -61,12 +64,14 @@
 		if(parent)
 			parent.children -= src
 			parent = null
-		owner.notify_nearby("\The [owner]'s [name] flies off in an arc!")
+		owner.notify_nearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
 		move_to(get_turf(owner))
 		step(src, pick(cardinal))
+		blood_splatter(owner, loc)
+
 		owner.update_icon()
 		for(var/obj/item/limb/child in src)
 			overlays += child.get_worn_icon("world")
@@ -75,7 +80,8 @@
 	owner = null
 
 /obj/item/limb/proc/handle_sever_effects()
-	return
+	if(vital)
+		owner.die()
 
 /obj/item/limb/proc/handle_break_effects()
 	return

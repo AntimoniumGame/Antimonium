@@ -42,8 +42,8 @@ var/data/master_controller/mc
 	set category = "Debug"
 
 	if(!mc)
-		src << output("MC doesn't exist.", "chatoutput")
+		to_chat(src, "MC doesn't exist.")
 		return
-	src << output("Daemons: [mc.daemons.len]", "chatoutput")
+	to_chat(src, "Daemons: [mc.daemons.len]")
 	for(var/data/daemon/daemon in mc.daemons)
-		src << output("[daemon.name]: [daemon.status()]", "chatoutput")
+		to_chat(src, "[daemon.name]: [daemon.status()]")

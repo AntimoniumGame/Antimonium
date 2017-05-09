@@ -1,4 +1,7 @@
 /data/wound/proc/bleed()
+	if(wound_type == WOUND_CUT && severity > 5)
+		blood_splatter(owner.owner, owner.loc)
+
 	bleed_amount = max(0, bleed_amount--)
 
 /data/wound/proc/bandaged()

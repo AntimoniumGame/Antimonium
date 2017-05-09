@@ -1,2 +1,2 @@
 /client/proc/notify(var/message)
-	src << output(message, "chatoutput")
+	to_chat(src, message)
