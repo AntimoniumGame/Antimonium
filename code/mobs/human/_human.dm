@@ -10,11 +10,7 @@
 	create_limbs()
 	update_icon()
 
-/mob/human/verb/lie_down()
-	set name = "Lie Down"
-	set category = "Debug"
-
+/mob/human/proc/toggle_prone()
 	prone = !prone
 	density = !prone
-	notify_nearby("\The [src] [prone ? "lies down" : "stands up"].")
 	update_icon()

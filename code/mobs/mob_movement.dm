@@ -36,5 +36,7 @@
 		WAIT_1T
 
 /mob/Login()
+	spawn()
+		do_fadein(10)
 	. = ..()
 	MoveLoop()

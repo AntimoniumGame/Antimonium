@@ -24,15 +24,16 @@
 			var/obj/item/prop = holding
 			forget_held()
 			inv_slot.set_held(prop)
-			owner.notify_nearby("\The [owner] tosses \the [prop] from [owner.their()] [unmodified_name] to [owner.their()] [inv_slot.unmodified_name].")
+			owner.notify_nearby("\The [owner] switches \the [prop] from [owner.their()] [unmodified_name] to [owner.their()] [inv_slot.unmodified_name].")
 		else if(inv_slot.holding)
 			var/obj/item/prop = inv_slot.holding
 			inv_slot.forget_held()
 			set_held(prop)
-			owner.notify_nearby("\The [owner] tosses \the [prop] from [owner.their()] [inv_slot.unmodified_name] to [owner.their()] [unmodified_name].")
+			owner.notify_nearby("\The [owner] switches \the [prop] from [owner.their()] [inv_slot.unmodified_name] to [owner.their()] [unmodified_name].")
 	owner.update_icon()
 
 /obj/ui/inv/hand/middle_clicked_on(var/mob/clicker)
 	. = ..()
 	if(. && holding)
+		owner.notify_nearby("\The [owner] drops \the [holding].")
 		owner.drop_item(holding)

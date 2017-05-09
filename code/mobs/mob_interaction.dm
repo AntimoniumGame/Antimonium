@@ -14,15 +14,15 @@
 	if(direction != dir)
 		set_dir(direction)
 
-/mob/proc/left_click_on(var/atom/thing)
+/mob/proc/left_click_on(var/atom/thing, var/ctrl, var/alt)
 	face_atom(thing)
 	thing.left_clicked_on(src)
 
-/mob/proc/middle_click_on(var/atom/thing)
+/mob/proc/middle_click_on(var/atom/thing, var/ctrl, var/alt)
 	face_atom(thing)
 	thing.middle_clicked_on(src)
 
-/mob/proc/right_click_on(var/atom/thing)
+/mob/proc/right_click_on(var/atom/thing, var/ctrl, var/alt)
 	face_atom(thing)
 	thing.right_clicked_on(src)
 
@@ -33,7 +33,7 @@
 	handle_interaction(clicker, BP_RIGHT_HAND)
 
 /mob/middle_clicked_on(var/mob/clicker)
-	return
+	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [src].")
 
 /mob/proc/handle_interaction(var/mob/person, var/slot_id)
 	if(!is_adjacent_to(get_turf(src), get_turf(person)))

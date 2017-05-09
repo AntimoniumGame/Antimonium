@@ -30,3 +30,9 @@
 			light_obj.follow_holder_dir()
 		return TRUE
 	return FALSE
+
+/atom/proc/is_grabbable()
+	return FALSE
+
+/atom/movable/is_grabbable()
+	return !anchored

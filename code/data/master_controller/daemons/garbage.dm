@@ -3,9 +3,10 @@ var/data/daemon/garbage/gc
 /data/var/gc_collect_time = 0
 
 /proc/deleted(var/atom/A)
-	return !(istype(A) && (A.gc_collect_time == 0 || isnull(A.gc_collect_time)))
+	return (!istype(A) || (A.gc_collect_time != 0 && !isnull(A.gc_collect_time)))
 
 /atom/proc/destroy()
+	name = "[name] (DESTROYED, REPORT THIS BUG)"
 	if(contents)
 		for(var/thing in contents)
 			qdel(thing)
@@ -13,7 +14,7 @@ var/data/daemon/garbage/gc
 
 /atom/movable/destroy()
 	loc = null
-	return ..()
+	. = ..()
 
 /data/proc/destroy()
 	return 1

@@ -27,3 +27,13 @@
 		if(PLURAL)
 			return "they"
 	return "it"
+
+/atom/proc/themself()
+	switch(gender)
+		if(FEMALE)
+			return "herself"
+		if(MALE)
+			return "himself"
+		if(PLURAL)
+			return "themself"
+	return "itself"
