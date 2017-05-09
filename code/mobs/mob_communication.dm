@@ -42,9 +42,21 @@
 /mob/proc/do_say(var/message)
 	var/list/result = format_string_for_speech(src, message)
 	next_speech = world.time + 15
-	notify_nearby(result[1])
+
+	if(dead)
+		notify_dead(result[1])
+	else
+		notify_nearby(result[1])
 
 /mob/proc/do_emote(var/message)
 	next_speech = world.time + 25
 	message = format_and_capitalize("<b>\The [src]</b> [sanitize_text(message)]")
-	notify_nearby(copytext(message,1,120))
+	if(dead)
+		notify_dead(copytext(message,1,120))
+	else
+		notify_nearby(copytext(message,1,120))
+
+/mob/proc/notify_dead(var/message)
+	for(var/mob/deadite in dead_mob_list)
+		if(deadite.client)
+			deadite.notify("DEAD: [message]")

@@ -1,12 +1,11 @@
 /mob/human/collect_item(var/obj/item/thing, var/equip_to_slot)
 	if(!equip_to_slot)
 		return FALSE
+	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
+	if(equipping.holding)
+		return FALSE
 	. = ..()
 	if(.)
-		var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
-		if(equipping.holding)
-			drop_item(thing)
-			return FALSE
 		equipping.set_held(thing)
 		update_icon()
 

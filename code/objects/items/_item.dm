@@ -1,8 +1,23 @@
+/*
+Item interactions:
+	attacking(var/mob/user, var/mob/target) -       The item is being used by user to attack target.
+	attacking_self(var/mob/user) -                  The item is being used by user to attack user.
+	attacked_by(var/mob/user, var/obj/item/thing) - The item is being attacked by user with thing.
+*/
+
 /obj/item
 	name = "item"
 	icon_state = "world"
 	icon = 'icons/objects/items/_default.dmi'
+
 	var/slot_flags = 0
+	var/contact_size = 1
+	var/weight = 1
+	var/sharpness = 1
+	var/list/attack_verbs = list("attacks")
+
+/obj/item/proc/process()
+	return
 
 /obj/item/proc/use(var/mob/user)
 	return
@@ -25,10 +40,30 @@
 	. = ..()
 
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
-	user.notify_nearby("\The [user] bonks \the [target] over the head with \the [src].")
+	if(!simulated)
+		return
+	user.notify_nearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
+	if(weight || sharpness)
+		target.resolve_physical_attack(user, weight, sharpness, contact_size, src)
 
 /obj/item/proc/attacking_self(var/mob/user)
+	if(!simulated)
+		return
 	user.notify_nearby("\The [user] scratches \his back with \the [src].")
 
 /obj/item/attacked_by(var/mob/user, var/obj/item/thing)
+	if(!simulated)
+		return
 	user.notify_nearby("\The [user] pokes \the [src] with \the [thing].")
+
+/obj/item/proc/before_dropped()
+	return
+
+/obj/item/proc/after_dropped()
+	return
+
+/obj/item/proc/before_picked_up()
+	return
+
+/obj/item/proc/after_picked_up()
+	return

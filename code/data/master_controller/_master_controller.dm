@@ -1,5 +1,5 @@
 /proc/check_suspend()
-	if(world.tick_usage > 100)
+	if(world.tick_usage >= 100)
 		sleep(world.tick_lag)
 
 var/data/master_controller/mc
@@ -22,7 +22,7 @@ var/data/master_controller/mc
 
 /data/master_controller/destroy()
 	daemons.Cut()
-	return ..()
+	. = ..()
 
 /data/master_controller/proc/setup()
 	for(var/dtype in (typesof(/data/daemon)-/data/daemon))
@@ -42,8 +42,8 @@ var/data/master_controller/mc
 	set category = "Debug"
 
 	if(!mc)
-		src << "MC doesn't exist."
+		to_chat(src, "MC doesn't exist.")
 		return
-	src << "Daemons: [mc.daemons.len]"
+	to_chat(src, "Daemons: [mc.daemons.len]")
 	for(var/data/daemon/daemon in mc.daemons)
-		src << "[daemon.name]: [daemon.status()]"
+		to_chat(src, "[daemon.name]: [daemon.status()]")

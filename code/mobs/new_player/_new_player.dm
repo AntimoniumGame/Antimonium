@@ -10,7 +10,7 @@
 /mob/new_player/New()
 	..()
 	spawn(0)
-		loc = null
+		move_to(null)
 
 /mob/new_player/Login()
 	. = ..()
@@ -22,15 +22,14 @@
 	set category = "Commands"
 
 	verbs -= /mob/new_player/verb/join_game
-	animate(blackout, alpha = 255, time = 10)
 
+	do_fadeout(10)
 	sleep(10)
 
 	var/mob/human/player_mob = new()
 	player_mob.move_to(locate(5,5,1))
 	player_mob.name = key
 	client.screen -= get_title_image()
-	client.screen -= blackout
 	client.eye = player_mob
 
 	player_mob.key = key

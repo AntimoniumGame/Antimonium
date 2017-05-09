@@ -6,6 +6,7 @@
 
 /atom/movable
 	var/anchored = FALSE
+	var/dragged = FALSE
 
 /atom/proc/update_icon()
 	return
@@ -17,4 +18,7 @@
 	return
 
 /atom/proc/middle_clicked_on(var/mob/clicker)
+	return
+
+/atom/movable/proc/handle_dragged()
 	return

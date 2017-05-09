@@ -1,2 +1,5 @@
 var/list/mob_list = list()
+var/list/living_mob_list = list()
+var/list/dead_mob_list = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
+var/list/processing_items = list()

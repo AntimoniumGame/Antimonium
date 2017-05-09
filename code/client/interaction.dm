@@ -4,11 +4,12 @@
 
 /client/Click(object,location,control,params)
 	if(world.time > next_click)
-		next_click = world.time + 2
+		next_click = world.time + 1
 		var/modifiers = params2list(params)
+
 		if(modifiers["middle"])
-			mob.middle_click_on(object)
+			mob.middle_click_on(object, modifiers["ctrl"], modifiers["alt"])
 		else if(modifiers["left"])
-			mob.left_click_on(object)
+			mob.left_click_on(object, modifiers["ctrl"], modifiers["alt"])
 		else if(modifiers["right"])
-			mob.right_click_on(object)
+			mob.right_click_on(object, modifiers["ctrl"], modifiers["alt"])

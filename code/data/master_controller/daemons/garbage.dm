@@ -3,17 +3,18 @@ var/data/daemon/garbage/gc
 /data/var/gc_collect_time = 0
 
 /proc/deleted(var/atom/A)
-	return !(istype(A) && (A.gc_collect_time == 0 || isnull(A.gc_collect_time)))
+	return (!istype(A) || (A.gc_collect_time != 0 && !isnull(A.gc_collect_time)))
 
 /atom/proc/destroy()
+	name = "[name] (DESTROYED, REPORT THIS BUG)"
 	if(contents)
 		for(var/thing in contents)
 			qdel(thing)
 	return 1
 
 /atom/movable/destroy()
+	. = ..()
 	loc = null
-	return ..()
 
 /data/proc/destroy()
 	return 1
@@ -35,14 +36,10 @@ var/data/daemon/garbage/gc
 	gc = src
 
 /data/daemon/garbage/proc/collect(var/thing)
-	if(!thing)
+	if(!thing || !thing:destroy())
 		return
-	var/gref = "\ref[thing]"
-	if(!garbage[gref])
-		if(!thing:destroy())
-			return
-		thing:gc_collect_time = world.time
-		garbage[gref] = world.time
+	thing:gc_collect_time = world.time
+	garbage["\ref[thing]"] = world.time
 
 /data/daemon/garbage/do_work()
 	for(var/gref in garbage)
