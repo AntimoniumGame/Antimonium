@@ -44,6 +44,7 @@
 #include "code\client\control.dm"
 #include "code\client\interaction.dm"
 #include "code\client\interface.dm"
+#include "code\client\save.dm"
 #include "code\data\_data.dm"
 #include "code\data\master_controller\_master_controller.dm"
 #include "code\data\master_controller\daemons\_daemon.dm"

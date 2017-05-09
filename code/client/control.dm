@@ -1,9 +1,12 @@
 /client
 	var/interface/interface
-	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV)
+	var/list/key_binds
 
 /client/New()
 	. = ..()
+	loadData()
+	if(!key_binds)
+		key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV)
 	interface = new(src)
 
 /client/verb/keyPress(key as text)
