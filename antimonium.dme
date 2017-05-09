@@ -1,0 +1,92 @@
+// DM Environment file for antimonium.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+#define FILE_DIR "icons"
+#define FILE_DIR "icons/images"
+#define FILE_DIR "icons/lighting"
+#define FILE_DIR "icons/mobs"
+#define FILE_DIR "icons/objects"
+#define FILE_DIR "icons/objects/items"
+#define FILE_DIR "icons/objects/items/limbs"
+#define FILE_DIR "icons/structure"
+#define FILE_DIR "icons/turfs"
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+#define DEBUG
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include "code\world.dm"
+#include "code\interface.dmf"
+#include "code\_defines\colours.dm"
+#include "code\_defines\control.dm"
+#include "code\_defines\globals.dm"
+#include "code\_defines\inventory.dm"
+#include "code\_defines\lighting.dm"
+#include "code\_defines\loop_control.dm"
+#include "code\_defines\math.dm"
+#include "code\_defines\planes.dm"
+#include "code\_defines\transform.dm"
+#include "code\_defines\turf.dm"
+#include "code\_defines\vision.dm"
+#include "code\atoms\_atom.dm"
+#include "code\atoms\atom_pronouns.dm"
+#include "code\atoms\movement.dm"
+#include "code\atoms\notifications.dm"
+#include "code\client\client_notify.dm"
+#include "code\client\control.dm"
+#include "code\client\interaction.dm"
+#include "code\data\_data.dm"
+#include "code\data\master_controller\_master_controller.dm"
+#include "code\data\master_controller\daemons\_daemon.dm"
+#include "code\data\master_controller\daemons\garbage.dm"
+#include "code\debug\client.dm"
+#include "code\debug\mobs.dm"
+#include "code\helpers\distance.dm"
+#include "code\helpers\text.dm"
+#include "code\lighting\light_atom.dm"
+#include "code\lighting\light_atom_set.dm"
+#include "code\lighting\light_effect.dm"
+#include "code\lighting\light_effect_cast.dm"
+#include "code\lighting\light_mob.dm"
+#include "code\lighting\light_planes.dm"
+#include "code\lighting\light_turf.dm"
+#include "code\mobs\_mob.dm"
+#include "code\mobs\mob_communication.dm"
+#include "code\mobs\mob_interaction.dm"
+#include "code\mobs\mob_inventory.dm"
+#include "code\mobs\mob_movement.dm"
+#include "code\mobs\mob_ui.dm"
+#include "code\mobs\human\_human.dm"
+#include "code\mobs\human\human_body.dm"
+#include "code\mobs\human\human_icon.dm"
+#include "code\mobs\human\human_interaction.dm"
+#include "code\mobs\human\human_inventory.dm"
+#include "code\mobs\human\human_movement.dm"
+#include "code\mobs\human\human_ui.dm"
+#include "code\mobs\new_player\_new_player.dm"
+#include "code\mobs\new_player\np_communication.dm"
+#include "code\mobs\new_player\np_fadein.dm"
+#include "code\mobs\new_player\np_title_image.dm"
+#include "code\objects\_object.dm"
+#include "code\objects\items\_item.dm"
+#include "code\objects\items\debug.dm"
+#include "code\objects\items\limbs\_limb.dm"
+#include "code\objects\structures\_structure.dm"
+#include "code\objects\structures\crate.dm"
+#include "code\turfs\_turf.dm"
+#include "code\ui\_ui.dm"
+#include "code\ui\ui_hide_inv.dm"
+#include "code\ui\ui_inventory.dm"
+#include "code\ui\ui_inventory_gear.dm"
+#include "code\ui\ui_inventory_hands.dm"
+#include "maps\world.dmm"
+// END_INCLUDE
+
