@@ -1,3 +1,9 @@
+/*
+Object interactions:
+	attacked_by(var/mob/user, var/obj/item/thing) - The item is being attacked by user with thing.
+	manipulated_by(var/mob/user, var/slot) -        The item is being attacked by user with empty inventory slot, slot.
+*/
+
 /obj
 	icon = 'icons/objects/object.dmi'
 	layer = ITEM_LAYER
@@ -21,5 +27,5 @@
 /obj/proc/attacked_by(var/mob/user, var/obj/item/thing)
 	return
 
-/obj/proc/manipulated_by(var/mob/user)
+/obj/proc/manipulated_by(var/mob/user, var/slot)
 	return

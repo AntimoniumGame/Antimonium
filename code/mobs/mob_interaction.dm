@@ -44,7 +44,7 @@
 		handle_interaction_other(person, slot_id)
 
 /mob/proc/handle_interaction_other(var/mob/person, var/slot_id)
-	var/obj/item/prop = get_equipped(slot_id)
+	var/obj/item/prop = person.get_equipped(slot_id)
 	if(prop)
 		prop.attacking(person, src)
 	else
@@ -61,4 +61,5 @@
 	notify_nearby("\The [src] scratches \his head.")
 
 /mob/proc/attack(var/mob/target)
-	notify_nearby("\The [src] bonks \the [target] on the head with a closed fist.")
+	notify_nearby("\The [src] punches \the [target]!")
+	target.resolve_physical_attack(src, 5, 0, 5, null)

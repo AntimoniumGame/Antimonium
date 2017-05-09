@@ -4,6 +4,7 @@
 	var/mob/human/owner
 	var/obj/item/limb/parent
 	var/list/children = list()
+	var/list/wounds = list()
 
 /obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_parent)
 	..()
