@@ -1,38 +1,50 @@
 /client
-	var/list/key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV)
+	var/interface/interface
+	var/list/key_binds
+
+/client/New()
+	. = ..()
+	loadData()
+	if(!key_binds)
+		key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV)
+	interface = new(src)
 
 /client/verb/keyPress(key as text)
 	set instant = 1
 	set hidden = 1
-	var/bind = key_binds[key]
-	if(bind)
-		switch(bind)
-			if(KEY_UP to KEY_LEFT)
-				if(mob)
-					mob.onKeyPress(bind)
-			if(KEY_CHAT)
-				if(winget(src, null, "focus") != "mainwindow.input")
-					winset(src, "input", "focus=true")
-				else
-					winset(src, "map", "focus=true")
-			if(KEY_RUN)
-				if(mob)
-					mob.Run()
-			if(KEY_DEV)
-				DevPanel()
+	interface.onKeyPress(key)
 
 /client/verb/keyRelease(key as text)
 	set instant = 1
 	set hidden = 1
-	var/bind = key_binds[key]
-	if(bind)
-		switch(bind)
-			if(KEY_UP to KEY_LEFT)
-				if(mob)
-					mob.onKeyRelease(bind)
-			if(KEY_RUN)
-				if(mob)
-					mob.Walk()
+	interface.onKeyRelease(key)
+
+/client/verb/rebindKey()
+	set name = "Rebind Key"
+
+	var/selection = input("Select a command to rebind:") in __keylist
+
+	var/interface/rebind/R = new(src)
+	R.set_rebind(key2bind(selection))
+	interface = R
+	alert("Press ok, then the button you want to rebind \"[selection]\" to.")
+
+/client/proc/rebind(key, bind)
+	set waitfor = 0
+	if(key && bind)
+		var/old_bind = FindListAssociation(key_binds, bind)
+		var/curbind = key_binds[key]
+		if(curbind)
+			var/response = alert("\"[key]\" is already bound to \"[bind2key(curbind)]\". Do you want to overwrite this?", null, "Yes", "No")
+			if(response == "Yes")
+				key_binds[key] = bind
+				if(old_bind)
+					key_binds[old_bind] = null
+		else
+			key_binds[key] = bind
+			if(old_bind)
+				key_binds[old_bind] = null
+	interface = new(src)
 
 /mob
 	var/tmp/key_x

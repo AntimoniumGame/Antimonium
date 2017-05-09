@@ -27,7 +27,6 @@ window "devwindow"
 		anchor1 = none
 		anchor2 = none
 		background-color = none
-		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
 		menu = "menu"
@@ -60,7 +59,6 @@ window "mainwindow"
 		size = 960x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		macro = "macro"
@@ -73,7 +71,6 @@ window "mainwindow"
 		is-default = true
 		border = line
 		saved-params = ""
-		tab-background-color = none
 	elem "input"
 		type = INPUT
 		pos = 640,432
