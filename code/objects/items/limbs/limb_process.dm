@@ -54,4 +54,9 @@
 	if(cumulative_wound_severity > 50 && !broken)
 		break_bone()
 
+/obj/item/limb/proc/remove_owner_blood(var/amount)
+	if(owner.blood)
+		blood_splatter(owner, loc)
+		owner.blood = min(100, max(0, owner.blood - amount))
+
 #undef HEAL_PER_TICK

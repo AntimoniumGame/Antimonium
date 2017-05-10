@@ -1,5 +1,7 @@
+#define BLOOD_HEAL_PER_TICK 3
+
 /mob/human
-	var/pain = 0    //
+	var/pain = 0
 	var/shock = 0
 	var/blood = 100
 	var/list/injured_limbs = list()
@@ -15,12 +17,27 @@
 	handle_pain()
 	handle_bleeding()
 	update_stance()
+	health.update_icon()
 
 /mob/human/proc/handle_pain()
 	return
 
 /mob/human/proc/handle_bleeding()
-	return
+	if(dead)
+		return
+
+	blood = min(100, blood+BLOOD_HEAL_PER_TICK)
+	switch(blood)
+		if(90 to 100)
+			return
+		if(80 to 90)
+			notify_nearby("\The [src] is slightly low on blood.")
+		if(70 to 80)
+			notify_nearby("\The [src] is noticeably low on blood.")
+		if(60 to 70)
+			notify_nearby("\The [src] is extremely low on blood and will soon die.")
+		else
+			die("blood loss")
 
 /mob/human/update_stance()
 	set background = 1
@@ -36,3 +53,5 @@
 	if(stance_score <= 3)
 		notify_nearby("<b>\The [src] collapses!</b>")
 		toggle_prone()
+
+#undef BLOOD_HEAL_PER_TICK

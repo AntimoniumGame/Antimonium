@@ -1,4 +1,5 @@
 /mob
+	var/obj/ui/doll/target/target_zone
 	var/list/ui_screen = list()
 	var/list/ui_images = list()
 
@@ -19,7 +20,9 @@
 	refresh_ui()
 
 /mob/proc/create_ui()
-	return
+	target_zone = new(src)
+	ui_screen += target_zone
+	ui_screen += target_zone.components
 
 /mob/proc/refresh_ui()
 	if(client)

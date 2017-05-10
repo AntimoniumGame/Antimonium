@@ -1,3 +1,6 @@
+/mob/human
+	var/obj/ui/doll/health/health
+
 /mob/human/create_ui()
 
 	// Gear slots (equipping items)
@@ -21,3 +24,8 @@
 
 	for(var/slot in inventory_slots)
 		ui_screen += inventory_slots[slot]
+
+	health = new(src)
+	ui_screen += health
+
+	..()

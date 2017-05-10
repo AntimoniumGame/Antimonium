@@ -15,7 +15,7 @@
 	density = !prone
 	update_icon()
 
-/mob/human/die()
-	. = ..()
+/mob/human/die(var/message)
+	. = ..(message)
 	if(. && !prone)
 		toggle_prone()

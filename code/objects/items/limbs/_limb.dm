@@ -16,7 +16,7 @@
 /obj/item/limb/get_inv_icon()
 	return get_worn_icon("world")
 
-/obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_limb_id, var/_parent, var/_root, var/_vital)
+/obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_limb_id, var/_parent, var/_root, var/_vital, var/_size)
 	..()
 	owner = _owner
 	name = _name
@@ -24,6 +24,9 @@
 	limb_id = _limb_id
 	vital = _vital
 	root_limb = _root
+
+	contact_size = _size      // Reusing contact_size as an 'effective limb
+	weight = (contact_size*2) // size' for the purposes of bleeding etc.
 
 	if(_parent)
 		parent = owner.limbs[_parent]

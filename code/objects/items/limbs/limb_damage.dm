@@ -81,7 +81,7 @@
 
 /obj/item/limb/proc/handle_sever_effects()
 	if(vital)
-		owner.die()
+		owner.die("loss of a vital organ")
 
 /obj/item/limb/proc/handle_break_effects()
 	return
