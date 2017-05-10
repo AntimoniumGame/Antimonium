@@ -5,12 +5,12 @@
 /obj/ui/inv/gear/left_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		try_equipment_interaction(BP_LEFT_HAND)
+		try_equipment_interaction(SLOT_LEFT_HAND)
 
 /obj/ui/inv/gear/right_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		try_equipment_interaction(BP_RIGHT_HAND)
+		try_equipment_interaction(SLOT_RIGHT_HAND)
 
 /obj/ui/inv/gear/middle_clicked_on(var/mob/clicker)
 	to_chat(clicker, "It's \a [name].")

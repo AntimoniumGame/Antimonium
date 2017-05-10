@@ -3,17 +3,17 @@
 		. = ..()
 
 /mob/human/left_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(!try_general_interaction(thing, ctrl, alt, BP_LEFT_HAND))
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
 		..()
 
 /mob/human/right_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(!try_general_interaction(thing, ctrl, alt, BP_RIGHT_HAND))
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
 		..()
 
-/mob/human/proc/try_general_interaction(var/atom/thing, var/ctrl, var/alt, var/slot)
+/mob/human/proc/try_general_interaction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
 	face_atom(thing)
 	if(ctrl && thing.is_grabbable())
-		if(check_hand(slot))
+		if(check_hand(limb))
 			grab_atom(thing, slot)
 		return TRUE
 	else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))

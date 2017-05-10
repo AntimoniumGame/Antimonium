@@ -17,10 +17,10 @@
 	thing.right_clicked_on(src)
 
 /mob/left_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, BP_LEFT_HAND)
+	handle_interaction(clicker, SLOT_LEFT_HAND)
 
 /mob/right_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, BP_RIGHT_HAND)
+	handle_interaction(clicker, SLOT_RIGHT_HAND)
 
 /mob/middle_clicked_on(var/mob/clicker)
 	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [src].")
