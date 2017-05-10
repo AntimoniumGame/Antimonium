@@ -34,14 +34,24 @@
 	if(world.time < next_speech)
 		return
 
-	if(lowertext(copytext(message,1,5)) == "/me ")
-		do_emote(copytext(message,5))
-	else
-		do_say(message)
+	var/prefix = lowertext(copytext(message,1,5))
+	switch(prefix)
+		if("/me ")
+			do_emote(copytext(message,5))
+		if("ooc ")
+			do_ooc_message(copytext(message,5))
+		else
+			do_say(message)
+
+/mob/proc/do_ooc_message(var/message)
+	var/list/result = format_string_for_speech(src, message)
+	next_speech = world.time + 5
+	for(var/client/player in clients)
+		player.notify("<b>OOC:</b> [result[1]]")
 
 /mob/proc/do_say(var/message)
 	var/list/result = format_string_for_speech(src, message)
-	next_speech = world.time + 15
+	next_speech = world.time + 5
 
 	if(dead)
 		notify_dead(result[1])
@@ -49,7 +59,7 @@
 		notify_nearby(result[1])
 
 /mob/proc/do_emote(var/message)
-	next_speech = world.time + 25
+	next_speech = world.time + 5
 	message = format_and_capitalize("<b>\The [src]</b> [sanitize_text(message)]")
 	if(dead)
 		notify_dead(copytext(message,1,120))
