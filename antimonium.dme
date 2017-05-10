@@ -113,6 +113,9 @@
 #include "code\ui\ui_inventory.dm"
 #include "code\ui\ui_inventory_gear.dm"
 #include "code\ui\ui_inventory_hands.dm"
+#include "code\ui\dolls\_doll.dm"
+#include "code\ui\dolls\health.dm"
+#include "code\ui\dolls\target.dm"
 #include "maps\world.dmm"
 // END_INCLUDE
 

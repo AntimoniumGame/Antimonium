@@ -46,6 +46,14 @@
 				key_binds[old_bind] = null
 	interface = new(src)
 
+/client/verb/onResize()
+	var/string = winget(src, "map", "size")
+	var/map_width = text2num(string)
+	var/map_height = text2num(copytext(string,findtext(string,"x")+1,0))
+	map_width = round(map_width / 64)
+	map_height = round(map_height / 64)
+	view = "[map_width]x[map_height]"
+
 /mob
 	var/tmp/key_x
 	var/tmp/key_y
