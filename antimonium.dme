@@ -82,6 +82,7 @@
 #include "code\mobs\mob_inventory.dm"
 #include "code\mobs\mob_movement.dm"
 #include "code\mobs\mob_ui.dm"
+#include "code\mobs\ghost\ghost.dm"
 #include "code\mobs\human\_human.dm"
 #include "code\mobs\human\human_body.dm"
 #include "code\mobs\human\human_combat.dm"

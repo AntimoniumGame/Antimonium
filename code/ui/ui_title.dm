@@ -34,7 +34,7 @@
 	screen_loc = "CENTER, CENTER"
 
 /obj/ui/title/center(var/view_x, var/view_y)
-	screen_loc = "[round(view_x/2)-3],[round(view_y/2)-3]"
+	screen_loc = "[round(view_x/2)-3],[round(view_y/2)-2]"
 
 /obj/ui/title/left_clicked_on(var/mob/clicker)
 	return FALSE

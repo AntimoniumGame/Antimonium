@@ -29,7 +29,7 @@
 			wound.severity += wound_severity
 			if(attacked_with)
 				wound.left_by = attacked_with.name
-			owner.notify("<b>The attack worsens a wound on your [name], leaving it with [wound.get_descriptor()]!</b>")
+			owner.notify("<b>A wound on your [name] worsens into [wound.get_descriptor()]!</b>")
 			set_pain(max(pain, wound.severity))
 			update_limb_state()
 			return

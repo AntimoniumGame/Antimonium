@@ -29,7 +29,7 @@
 	sleep(10)
 
 	var/mob/human/player_mob = new()
-	player_mob.move_to(locate(5,5,1))
+	player_mob.move_to(locate(3,3,1))
 	player_mob.name = key
 	client.screen -= title_image
 	client.eye = player_mob
