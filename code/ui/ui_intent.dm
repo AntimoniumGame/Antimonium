@@ -1,7 +1,7 @@
 /obj/ui/intent
 	icon = 'icons/images/ui_intent.dmi'
 	icon_state = "underlay"
-	screen_loc = "9,1"
+	screen_loc = "8,1"
 
 	var/selecting = INTENT_HELP
 	var/obj/ui/intent_button/help

@@ -1,6 +1,6 @@
 /obj/ui/doll/target
 	name = "Target Zone"
-	screen_loc = "10,1"
+	screen_loc = "7,1"
 	icon_state = "underlay_target"
 
 	var/selecting = BP_CHEST
