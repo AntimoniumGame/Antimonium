@@ -5,6 +5,7 @@
 	var/simulated = TRUE
 
 /atom/movable
+	animate_movement = SLIDE_STEPS
 	var/anchored = FALSE
 	var/dragged = FALSE
 

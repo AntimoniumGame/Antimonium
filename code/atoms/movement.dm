@@ -17,7 +17,8 @@
 		return 0
 
 	//set the glide size for silky smooth movement
-	glide_size = world.icon_size / max(get_move_delay(), world.tick_lag) * world.tick_lag
+	if(!dragged) // Dragged atoms get their glide size set by the dragger.
+		glide_size = world.icon_size / max(get_move_delay(), world.tick_lag) * world.tick_lag
 	. = ..()
 	set_dir(dir)
 	if(. && light_obj)
