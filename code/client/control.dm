@@ -1,4 +1,6 @@
 /client
+	var/view_x = 0
+	var/view_y = 0
 	var/interface/interface
 	var/list/key_binds
 
@@ -48,11 +50,14 @@
 
 /client/verb/onResize()
 	var/string = winget(src, "map", "size")
-	var/map_width = text2num(string)
-	var/map_height = text2num(copytext(string,findtext(string,"x")+1,0))
-	map_width = round(map_width / 64)
-	map_height = round(map_height / 64)
-	view = "[map_width]x[map_height]"
+	view_x = round(text2num(string) / 64)
+	view_y = round(text2num(copytext(string,findtext(string,"x")+1,0)) / 64)
+	view = "[view_x]x[view_y]"
+	mob.on_window_resize()
+
+/mob/proc/on_window_resize()
+	for(var/obj/ui/ui_element in ui_screen)
+		ui_element.center(client.view_x, client.view_y)
 
 /mob
 	var/tmp/key_x
@@ -65,7 +70,7 @@
 			if(key_y)	//to prevent pressing opposite directions
 				return 0
 			walk_dir = key_y = bind2dir(bind)
-		if(KEY_LEFT, KEY_RIGHT)	
+		if(KEY_LEFT, KEY_RIGHT)
 			if(key_x)	//as above
 				return 0
 			walk_dir = key_x = bind2dir(bind)

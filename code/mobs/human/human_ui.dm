@@ -19,8 +19,8 @@
 	ui_screen += new /obj/ui/hide_inv(src)
 
 	// Hand slots (holding items)
-	inventory_slots[BP_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "7,1", BP_LEFT_HAND)
-	inventory_slots[BP_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "8,1", BP_RIGHT_HAND)
+	inventory_slots[BP_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "5,1", BP_LEFT_HAND)
+	inventory_slots[BP_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "7,1", BP_RIGHT_HAND)
 
 	for(var/slot in inventory_slots)
 		ui_screen += inventory_slots[slot]

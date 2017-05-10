@@ -26,3 +26,6 @@
 
 /obj/ui/middle_clicked_on(var/mob/clicker)
 	return (clicker == owner)
+
+/obj/ui/proc/center(var/center_x, var/center_y)
+	return

@@ -3,21 +3,24 @@
 		. = ..()
 
 /mob/human/left_click_on(var/atom/thing, var/ctrl, var/alt)
-
-	if(ctrl && thing.is_grabbable())
-		face_atom(thing)
-		if(check_hand(BP_LEFT_HAND))
-			grab_atom(thing, BP_LEFT_HAND)
-	else
+	if(!try_general_interaction(thing, ctrl, alt, BP_LEFT_HAND))
 		..()
 
 /mob/human/right_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(ctrl && thing.is_grabbable())
-		face_atom(thing)
-		if(check_hand(BP_RIGHT_HAND))
-			grab_atom(thing, BP_RIGHT_HAND)
-	else
+	if(!try_general_interaction(thing, ctrl, alt, BP_RIGHT_HAND))
 		..()
+
+/mob/human/proc/try_general_interaction(var/atom/thing, var/ctrl, var/alt, var/slot)
+	face_atom(thing)
+	if(ctrl && thing.is_grabbable())
+		if(check_hand(slot))
+			grab_atom(thing, slot)
+		return TRUE
+	else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
+		var/obj/item/throwing = get_equipped(slot)
+		if(throwing && throwing.throw_at(src, thing))
+			return TRUE
+	return FALSE
 
 /mob/human/middle_clicked_on(var/mob/clicker)
 	if(src == clicker || is_adjacent_to(get_turf(src), get_turf(clicker)))
