@@ -42,8 +42,8 @@ var/data/master_controller/mc
 	set category = "Debug"
 
 	if(!mc)
-		to_chat(src, "MC doesn't exist.")
+		dnotify("MC doesn't exist.")
 		return
-	to_chat(src, "Daemons: [mc.daemons.len]")
+	dnotify("Daemons: [mc.daemons.len]")
 	for(var/data/daemon/daemon in mc.daemons)
-		to_chat(src, "[daemon.name]: [daemon.status()]")
+		dnotify("[daemon.name]: [daemon.status()]")
