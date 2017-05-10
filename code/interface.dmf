@@ -23,19 +23,28 @@ window "devwindow"
 	elem "devwindow"
 		type = MAIN
 		pos = 281,0
-		size = 300x400
+		size = 318x771
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
 		menu = "menu"
+	elem "info"
+		type = INFO
+		pos = 0,0
+		size = 318x304
+		anchor1 = 0,0
+		anchor2 = 100,39
+		is-default = true
+		saved-params = ""
+		tab-background-color = none
 	elem "output"
 		type = OUTPUT
-		pos = 0,24
-		size = 300x376
-		anchor1 = 0,6
-		anchor2 = 100,100
+		pos = 0,304
+		size = 318x424
+		anchor1 = 0,39
+		anchor2 = 100,94
 		font-family = "Consolas,monospace"
 		font-size = 10
 		is-default = true
@@ -43,10 +52,10 @@ window "devwindow"
 		saved-params = "max-lines"
 	elem "devinput"
 		type = INPUT
-		pos = 0,0
-		size = 300x24
-		anchor1 = 0,0
-		anchor2 = 100,6
+		pos = 0,728
+		size = 318x46
+		anchor1 = 0,94
+		anchor2 = 100,100
 		font-family = "Consolas,monospace"
 		font-size = 10
 		border = line
@@ -56,51 +65,49 @@ window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
 		pos = 281,0
-		size = 960x480
+		size = 1280x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
+		on-size = "onResize"
 		macro = "macro"
-	elem "info"
-		type = INFO
-		pos = 640,0
-		size = 320x192
-		anchor1 = 67,0
-		anchor2 = 100,40
+	elem "map"
+		type = MAP
+		pos = 0,0
+		size = 1280x720
+		anchor1 = 0,0
+		anchor2 = 100,100
 		is-default = true
-		border = line
-		saved-params = ""
+		saved-params = "zoom;letterbox;zoom-mode"
+		icon-size = 64
+		zoom = 2
 	elem "input"
 		type = INPUT
-		pos = 640,432
-		size = 320x48
-		anchor1 = 67,90
-		anchor2 = 100,100
+		pos = 972,688
+		size = 300x24
+		anchor1 = 100,100
+		anchor2 = none
 		font-family = "@Arial Unicode MS,sans-serif"
 		font-size = 10
+		text-color = #d4d4d4
+		background-color = #1f1f1f
 		is-default = true
 		border = line
 		saved-params = ""
 		command = "Say"
 	elem "chatoutput"
 		type = OUTPUT
-		pos = 640,192
-		size = 320x240
-		anchor1 = 67,40
-		anchor2 = 100,90
+		pos = 972,328
+		size = 300x350
+		anchor1 = 100,100
+		anchor2 = none
 		font-family = "@Arial Unicode MS,sans-serif"
 		font-size = 10
+		text-color = #d4d4d4
+		background-color = #1f1f1f
 		border = line
 		saved-params = "max-lines"
-	elem "map"
-		type = MAP
-		pos = 0,0
-		size = 640x480
-		anchor1 = 0,0
-		anchor2 = 67,100
-		is-default = true
-		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 64
-		zoom = 2
+		max-lines = 0
 
