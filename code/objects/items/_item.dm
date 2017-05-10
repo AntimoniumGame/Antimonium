@@ -55,7 +55,7 @@ Item interactions:
 	user.notify_nearby("\The [user] scratches \his back with \the [src].")
 
 /obj/item/attacked_by(var/mob/user, var/obj/item/thing)
-	if(!simulated)
+	if(!simulated || !thing.simulated)
 		return
 	user.notify_nearby("\The [user] pokes \the [src] with \the [thing].")
 
