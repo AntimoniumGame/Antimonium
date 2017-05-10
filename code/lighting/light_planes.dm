@@ -19,7 +19,7 @@
 	blend_mode = BLEND_ADD
 	plane = DARK_PLANE // Just below the master plane.
 	icon = 'icons/lighting/over_dark.dmi'
-	alpha = 50
+	alpha = 10
 	appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
 
 /obj/plane/dark/New()

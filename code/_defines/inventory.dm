@@ -6,9 +6,12 @@
 #define SLOT_UPPER_BODY "upper_body"
 #define SLOT_ARMS       "arms"
 #define SLOT_HANDS      "hands"
-#define SLOT_HEAD       "head"
+#define SLOT_HEAD       "onhead"
 #define SLOT_EYES       "eyes"
 #define SLOT_NECK       "neck"
+#define SLOT_LEFT_HAND  "left_inhand"
+#define SLOT_RIGHT_HAND "right_inhand"
+
 
 #define BP_LEFT_FOOT  "left_foot"
 #define BP_RIGHT_FOOT "right_foot"
@@ -21,8 +24,6 @@
 #define BP_LEFT_ARM   "left_arm"
 #define BP_RIGHT_ARM  "right_arm"
 #define BP_HEAD       "head"
-
-#define ALL_HUMAN_LIMBS list(BP_LEFT_FOOT, BP_RIGHT_FOOT, BP_LEFT_LEG, BP_RIGHT_LEG, BP_GROIN, BP_CHEST, BP_LEFT_HAND, BP_RIGHT_HAND, BP_LEFT_ARM, BP_RIGHT_ARM, BP_HEAD)
 
 #define SLOT_FLAG_RING        1
 #define SLOT_FLAG_NECK        2

@@ -9,10 +9,10 @@ Object interactions:
 	layer = ITEM_LAYER
 
 /obj/left_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, BP_LEFT_HAND)
+	handle_clicked_on(clicker, SLOT_LEFT_HAND)
 
 /obj/right_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, BP_RIGHT_HAND)
+	handle_clicked_on(clicker, SLOT_RIGHT_HAND)
 
 /obj/middle_clicked_on(var/mob/clicker)
 	to_chat(clicker, "It's \a [name].")

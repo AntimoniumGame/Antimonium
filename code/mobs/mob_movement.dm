@@ -8,11 +8,14 @@
 	return (dragged || (world.time >= next_move))
 
 /mob/Move()
-	if(dead && !dragged)
+	if(no_dead_move() && dead && !dragged)
 		return FALSE
 	. = ..()
 	if(.)
 		next_move = world.time + get_move_delay()
+
+/mob/proc/no_dead_move()
+	return TRUE
 
 /mob/get_move_delay()
 	return (loc ? loc.get_mover_delay(src) : 0) + (walking ? walk_delay : run_delay)
@@ -25,6 +28,9 @@
 
 /mob/set_dir(var/newdir)
 	. = ..()
+	turn_mob(newdir)
+
+/mob/proc/turn_mob(var/newdir)
 	var/matrix/M = matrix()
 	M.Turn(dir2turn(newdir))
 	transform = M

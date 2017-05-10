@@ -15,12 +15,9 @@
 	inventory_slots[SLOT_HEAD] =       new /obj/ui/inv/gear(src, "head",       "1,4", SLOT_HEAD,       SLOT_FLAG_HEAD)
 	inventory_slots[SLOT_EYES] =       new /obj/ui/inv/gear(src, "eyes",       "2,4", SLOT_EYES,       SLOT_FLAG_EYES)
 	inventory_slots[SLOT_NECK] =       new /obj/ui/inv/gear(src, "neck",       "3,4", SLOT_NECK,       SLOT_FLAG_NECK)
-
+	inventory_slots[SLOT_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "5,1", SLOT_LEFT_HAND)
+	inventory_slots[SLOT_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "7,1", SLOT_RIGHT_HAND)
 	ui_screen += new /obj/ui/hide_inv(src)
-
-	// Hand slots (holding items)
-	inventory_slots[BP_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "7,1", BP_LEFT_HAND)
-	inventory_slots[BP_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "8,1", BP_RIGHT_HAND)
 
 	for(var/slot in inventory_slots)
 		ui_screen += inventory_slots[slot]

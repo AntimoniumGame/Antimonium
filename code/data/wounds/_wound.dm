@@ -15,4 +15,3 @@
 	if(wound_type == WOUND_CUT)
 		bleed_amount = round((severity * depth) / 10)
 	left_by = attacked_with
-

@@ -1,6 +1,7 @@
 /obj/item/axe
 	name = "axe"
-	weight = 10
-	sharpness = 8
-	contact_size = 5
+	weight = 3
+	sharpness = 3
+	contact_size = 3
+	icon = 'icons/objects/items/axe.dmi'
 	attack_verbs = list("hacks", "slashes")

@@ -5,12 +5,12 @@
 /obj/ui/inv/hand/left_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		do_hand_switch(BP_LEFT_HAND, BP_RIGHT_HAND)
+		do_hand_switch(SLOT_LEFT_HAND, SLOT_RIGHT_HAND)
 
 /obj/ui/inv/hand/right_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		do_hand_switch(BP_RIGHT_HAND, BP_LEFT_HAND)
+		do_hand_switch(SLOT_RIGHT_HAND, SLOT_LEFT_HAND)
 
 /obj/ui/inv/hand/proc/do_hand_switch(var/first_slot, var/second_slot)
 	if(slot_id == first_slot)

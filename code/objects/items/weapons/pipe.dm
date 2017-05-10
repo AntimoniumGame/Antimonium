@@ -1,6 +1,7 @@
 /obj/item/pipe
 	name = "lead pipe"
-	sharpness = 2
-	weight = 10
-	contact_size = 5
+	sharpness = 1
+	weight = 5
+	contact_size = 3
+	icon = 'icons/objects/items/pipe.dmi'
 	attack_verbs = list("bludgeons", "strikes", "smashes")

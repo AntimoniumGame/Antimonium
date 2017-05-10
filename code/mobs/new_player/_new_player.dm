@@ -1,20 +1,22 @@
 /mob/new_player
 	invisibility = INVISIBILITY_MAXIMUM
-	var/obj/blackout
+	var/obj/ui/title/title_image
+	var/obj/ui/join_game/join
 
-/mob/new_player/destroy()
-	qdel(blackout)
-	blackout = null
-	. = ..()
+/mob/new_player/create_ui()
+	title_image = new(src)
+	join = new(src)
+	ui_screen += title_image
+	ui_screen += join
 
 /mob/new_player/New()
 	..()
 	spawn(0)
 		move_to(null)
 
-/mob/new_player/Login()
+/mob/new_player/destroy()
+	title_image = null
 	. = ..()
-	client.screen += get_title_image()
 
 /mob/new_player/verb/join_game()
 
@@ -27,14 +29,12 @@
 	sleep(10)
 
 	var/mob/human/player_mob = new()
-	player_mob.move_to(locate(5,5,1))
+	player_mob.move_to(locate(3,3,1))
 	player_mob.name = key
-	client.screen -= get_title_image()
+	client.screen -= title_image
 	client.eye = player_mob
 
 	player_mob.key = key
 
 	qdel(src)
 
-/mob/new_player/create_ui()
-	return

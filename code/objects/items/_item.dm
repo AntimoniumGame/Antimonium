@@ -42,9 +42,12 @@ Item interactions:
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
 	if(!simulated)
 		return
-	user.notify_nearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
-	if(weight || sharpness)
-		target.resolve_physical_attack(user, weight, sharpness, contact_size, src)
+	if(user.intent.selecting == INTENT_HELP)
+		user.notify_nearby("\The [user] prods \the [target] with \the [src].")
+	else
+		user.notify_nearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
+		if(weight || sharpness)
+			target.resolve_physical_attack(user, weight, sharpness, contact_size, src)
 
 /obj/item/proc/attacking_self(var/mob/user)
 	if(!simulated)
@@ -52,7 +55,7 @@ Item interactions:
 	user.notify_nearby("\The [user] scratches \his back with \the [src].")
 
 /obj/item/attacked_by(var/mob/user, var/obj/item/thing)
-	if(!simulated)
+	if(!simulated || !thing.simulated)
 		return
 	user.notify_nearby("\The [user] pokes \the [src] with \the [thing].")
 

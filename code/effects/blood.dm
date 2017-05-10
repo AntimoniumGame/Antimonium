@@ -20,3 +20,18 @@
 		random_state_prefix = null
 		icon_state = "[rand(1,random_states)]"
 	..()
+
+/obj/effect/blood_smear
+	name = "smear of blood"
+	icon = 'icons/objects/effects/blood.dmi'
+	icon_state = "smear_from"
+
+/obj/effect/blood_smear/New(var/newloc, var/_dir, var/_state)
+	..(newloc)
+	icon_state = _state
+	set_dir(_dir)
+	for(var/obj/effect/blood_smear/smear in newloc)
+		if(smear == src)
+			continue
+		if(smear.dir == dir && smear.icon_state == icon_state)
+			qdel(smear)
