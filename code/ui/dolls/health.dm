@@ -1,6 +1,6 @@
 /obj/ui/doll/health
 	name = "Health"
-	screen_loc = "6,1"
+	screen_loc = "4,1"
 	icon_state = "underlay_health"
 	var/mob/human/human_owner
 

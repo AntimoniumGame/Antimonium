@@ -6,6 +6,8 @@
 "f" = (/mob/human,/turf,/area)
 "g" = (/obj/item/sword,/turf,/area)
 "h" = (/obj/item/pipe,/turf,/area)
+"i" = (/obj/item/shirt,/turf,/area)
+"j" = (/obj/item/pants,/turf,/area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -35,7 +37,7 @@ abbbbbbbbbbbbbbbbbbbbbbbbabdba
 acbbbbbbbbbbbbbbbbbbbbbbcabbba
 aaaaaaaaaaaaabbaaaaaaaaaaabbba
 acbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbbbbebbbbbbbbbbbbebbbbbbba
+abbbbijbebbbbbbbbbbbbebbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbca
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
