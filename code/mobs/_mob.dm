@@ -28,12 +28,12 @@ Mob interactions:
 /mob/proc/handle_life_tick()
 	return
 
-/mob/proc/die()
+/mob/proc/die(var/cause)
 	if(!dead)
 		dead = TRUE
 		living_mob_list -= src
 		dead_mob_list |= src
-		notify_nearby("<b>\The [src] has been slain!</b>")
+		notify_nearby("<b>\The [src] has been slain by [cause]!</b>")
 		return TRUE
 	return FALSE
 

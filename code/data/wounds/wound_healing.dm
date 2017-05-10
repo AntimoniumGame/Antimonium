@@ -1,8 +1,7 @@
 /data/wound/proc/bleed()
-	if(wound_type == WOUND_CUT && severity > 5)
-		blood_splatter(owner.owner, owner.loc)
-
-	bleed_amount = max(0, bleed_amount--)
+	if(wound_type == WOUND_CUT && severity > 3 && bleed_amount)
+		owner.remove_owner_blood(max(1,round(severity * 0.05)))
+		bleed_amount = max(0, bleed_amount--)
 
 /data/wound/proc/bandaged()
 	return FALSE
