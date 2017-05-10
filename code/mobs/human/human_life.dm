@@ -31,11 +31,11 @@
 		if(90 to 100)
 			return
 		if(80 to 90)
-			notify_nearby("\The [src] is slightly low on blood.")
+			notify("You feel slightly light-headed.")
 		if(70 to 80)
-			notify_nearby("\The [src] is noticeably low on blood.")
+			notify("The world lurches sickeningly as dizziness overtakes you.")
 		if(60 to 70)
-			notify_nearby("\The [src] is extremely low on blood and will soon die.")
+			notify("Flickering darkness swims at the edges of vour vision as you struggle to remain conscious.")
 		else
 			die("blood loss")
 

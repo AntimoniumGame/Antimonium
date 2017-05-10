@@ -3,3 +3,8 @@
 		bleeding_on = get_turf(bleeding_on)
 	if(istype(bleeding_on))
 		new /obj/effect/random/blood(bleeding_on, bleeder)
+
+/proc/blood_smear(var/mob/bleeder, var/turf/from_turf, var/turf/to_turf)
+	var/smear_dir = get_dir(from_turf, to_turf)
+	new /obj/effect/blood_smear(from_turf, smear_dir, "smear_from")
+	new /obj/effect/blood_smear(to_turf, smear_dir, "smear_to")

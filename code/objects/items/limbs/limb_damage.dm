@@ -9,7 +9,7 @@
 
 	var/wound_depth = (attack_sharpness * attack_weight) / attack_contact_size
 	var/wound_severity = (attack_weight * attack_contact_size)
-	var/wound_type = (attack_sharpness > 5) ? WOUND_CUT : WOUND_BRUISE
+	var/wound_type = (attack_sharpness > 1) ? WOUND_CUT : WOUND_BRUISE
 
 	cumulative_wound_depth += wound_depth
 	cumulative_wound_severity += wound_severity
@@ -62,8 +62,14 @@
 		for(var/obj/item/limb/child in children)
 			child.sever_limb(src)
 		if(parent)
+			var/data/wound/wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
+			parent.wounds += wound
+			parent.cumulative_wound_depth += wound.depth
+			parent.cumulative_wound_severity += wound.severity
+			owner.injured_limbs |= parent
 			parent.children -= src
 			parent = null
+
 		owner.notify_nearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))

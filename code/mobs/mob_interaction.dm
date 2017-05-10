@@ -51,5 +51,8 @@
 	notify_nearby("\The [src] scratches \his head.")
 
 /mob/proc/attack(var/mob/target)
-	notify_nearby("\The [src] punches \the [target]!")
-	target.resolve_physical_attack(src, 5, 0, 5, null)
+	if(intent.selecting == INTENT_HELP)
+		notify_nearby("\The [src] pokes \the [target].")
+	else
+		notify_nearby("\The [src] punches \the [target]!")
+		target.resolve_physical_attack(src, 5, 0, 5, null)

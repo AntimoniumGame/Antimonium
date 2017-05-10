@@ -1,7 +1,6 @@
 /obj/item/sword
 	name = "shortsword"
-	weight = 5
-	sharpness = 10
-	contact_size = 1
-
+	weight = 3
+	sharpness = 5
+	contact_size = 2
 	attack_verbs = list("slices", "slashes")

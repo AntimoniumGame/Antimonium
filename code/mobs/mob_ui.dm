@@ -1,5 +1,6 @@
 /mob
 	var/obj/ui/doll/target/target_zone
+	var/obj/ui/intent/intent
 	var/list/ui_screen = list()
 	var/list/ui_images = list()
 
@@ -20,6 +21,11 @@
 	refresh_ui()
 
 /mob/proc/create_ui()
+	intent = new(src)
+	ui_screen += intent
+	ui_screen += intent.help
+	ui_screen += intent.harm
+
 	target_zone = new(src)
 	ui_screen += target_zone
 	ui_screen += target_zone.components
