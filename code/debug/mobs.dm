@@ -9,10 +9,10 @@
 	light_type = LIGHT_SOFT
 
 	if(light_obj)
-		notify("Killed self light.")
+		dnotify("Killed self light.")
 		kill_light()
 	else
-		notify("Set self light.")
+		dnotify("Set self light.")
 		set_light()
 
 	sleep(5)
