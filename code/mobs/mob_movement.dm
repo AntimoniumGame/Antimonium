@@ -13,6 +13,7 @@
 	. = ..()
 	if(.)
 		next_move = world.time + get_move_delay()
+		update_vision_cone()
 
 /mob/Bump(var/atom/obstacle)
 	if(obstacle.pushed_by(src, dir))
@@ -24,7 +25,7 @@
 /atom/movable/pushed_by(var/mob/pusher, var/mob/push_dir)
 	glide_size = pusher.glide_size
 	if(step_towards(src, get_step(src, push_dir)))
-		notify_nearby("\The [pusher] shoves at \the [src].")
+		notify_nearby("\The [pusher] pushes \the [src].")
 	return TRUE
 
 /mob/pushed_by(var/mob/pusher, var/mob/push_dir)
@@ -57,6 +58,7 @@
 /mob/set_dir(var/newdir)
 	. = ..()
 	turn_mob(newdir)
+	update_vision_cone()
 
 /mob/proc/turn_mob(var/newdir)
 	var/matrix/M = matrix()

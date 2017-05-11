@@ -35,15 +35,3 @@ var/data/master_controller/mc
 	set background = 1
 	for(var/data/daemon/daemon in daemons)
 		daemon.start()
-
-/mob/verb/debug_controller()
-
-	set name = "Master Controller Status"
-	set category = "Debug"
-
-	if(!mc)
-		dnotify("MC doesn't exist.")
-		return
-	dnotify("Daemons: [mc.daemons.len]")
-	for(var/data/daemon/daemon in mc.daemons)
-		dnotify("[daemon.name]: [daemon.status()]")

@@ -3,7 +3,8 @@
 	icon_size = 32
 	view = 15
 	mob = /mob/new_player
+	area = /area/lighting
 
 /world/New()
-	mc = new()
 	. = ..()
+	switch_game_state(/data/game_state/setup)

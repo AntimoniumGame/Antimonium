@@ -2,7 +2,6 @@
 	name = "human"
 	density = 1
 	icon = 'icons/mobs/human_full.dmi'
-	var/prone = FALSE
 
 /mob/human/New()
 	..()

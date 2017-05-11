@@ -16,6 +16,9 @@ var/data/daemon/garbage/gc
 	. = ..()
 	loc = null
 
+/image/proc/destroy()
+	del(src)
+
 /data/proc/destroy()
 	return 1
 

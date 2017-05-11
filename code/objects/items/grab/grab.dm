@@ -43,6 +43,7 @@
 
 /obj/item/grab/throw_at(var/mob/thrower, var/atom/target)
 	grabbed.move_to(get_turf(target))
+	thrower.set_combat_cooldown(4)
 	thrower.notify_nearby("\The [thrower] hurls \the [grabbed] at \the [target]!")
 	qdel(src)
 	return TRUE

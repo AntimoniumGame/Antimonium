@@ -1,9 +1,9 @@
 /var/list/slots_by_layer = list(
 	BP_LEFT_FOOT =    TRUE,
 	BP_RIGHT_FOOT =   TRUE,
-	SLOT_FEET =       FALSE,
 	BP_LEFT_LEG =     TRUE,
 	BP_RIGHT_LEG =    TRUE,
+	SLOT_FEET =       FALSE,
 	BP_GROIN =        TRUE,
 	SLOT_LOWER_BODY = FALSE,
 	SLOT_LEFT_HAND =  FALSE,
