@@ -1,0 +1,5 @@
+#define GAME_OVER "game_over"
+#define GAME_RUNNING "game_running"
+#define GAME_SETTING_UP "game_setting_up"
+#define GAME_STARTING "game_starting"
+#define GAME_LOBBY_WAITING "game_lobby_waiting"

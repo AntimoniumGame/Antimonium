@@ -5,5 +5,5 @@
 	mob = /mob/new_player
 
 /world/New()
-	mc = new()
 	. = ..()
+	switch_game_state(/data/game_state/setup)

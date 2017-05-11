@@ -23,6 +23,14 @@
 	set name = "Join Game"
 	set category = "Commands"
 
+	switch(game_state.ident)
+		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
+			to_chat(src, "The game has not started yet!")
+			return
+		if(GAME_OVER)
+			to_chat(src, "The game is over!")
+			return
+
 	verbs -= /mob/new_player/verb/join_game
 
 	do_fadeout(10)
