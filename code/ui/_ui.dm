@@ -1,6 +1,7 @@
 /obj/ui
 	name = ""
 	plane = SCREEN_PLANE
+	layer = 3
 	screen_loc = "CENTER,CENTER"
 	icon = 'icons/images/ui.dmi'
 	simulated = FALSE

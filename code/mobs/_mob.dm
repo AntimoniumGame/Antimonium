@@ -8,6 +8,7 @@ Mob interactions:
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
+	var/prone = FALSE
 	var/dead = FALSE
 
 /mob/New()

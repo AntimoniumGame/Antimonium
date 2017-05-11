@@ -137,6 +137,7 @@
 #include "code\ui\dolls\_doll.dm"
 #include "code\ui\dolls\health.dm"
 #include "code\ui\dolls\target.dm"
+#include "code\vision\_vision.dm"
 #include "maps\world.dmm"
 // END_INCLUDE
 
