@@ -24,7 +24,7 @@
 /atom/movable/pushed_by(var/mob/pusher, var/mob/push_dir)
 	glide_size = pusher.glide_size
 	if(step_towards(src, get_step(src, push_dir)))
-		notify_nearby("\The [pusher] shoves at \the [src].")
+		notify_nearby("\The [pusher] pushes \the [src].")
 	return TRUE
 
 /mob/pushed_by(var/mob/pusher, var/mob/push_dir)

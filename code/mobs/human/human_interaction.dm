@@ -51,4 +51,4 @@
 
 	var/obj/item/grab/grab = new(src, grabbing)
 	collect_item(grab, grabbing_with)
-	to_chat(world, "\The [grab.owner] grabbed \the [grab.grabbed]!")
+	to_chat(world, "\The [grab.owner] grabs \the [grab.grabbed]!")
