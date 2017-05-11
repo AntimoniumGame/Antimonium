@@ -34,7 +34,8 @@
 		. = ..()
 	else
 		if(intent.selecting == INTENT_HARM)
-			notify_nearby("\The [pusher] tries to move past \the [src], but [they()] block [pusher.them()].")
+			notify_nearby("\The [pusher] tries to move past \the [src], but [they()] block\s [pusher.them()].")
+			pusher.next_move = world.time + max(1, round(pusher.get_move_delay()/2))
 		else
 			glide_size = pusher.glide_size
 			var/pusher_loc = pusher.loc

@@ -1,6 +1,7 @@
 var/data/daemon/garbage/gc
 /atom/var/gc_collect_time = 0
 /data/var/gc_collect_time = 0
+/image/var/gc_collect_time = 0
 
 /proc/deleted(var/atom/A)
 	return (!istype(A) || (A.gc_collect_time != 0 && !isnull(A.gc_collect_time)))
