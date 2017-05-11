@@ -75,7 +75,7 @@
 		M.Turn(pick(0,90,180,270))
 		transform = M
 		move_to(get_turf(owner))
-		step(src, pick(cardinal))
+		step(src, pick(cardinal_dirs))
 		blood_splatter(owner, loc)
 
 		owner.update_icon()

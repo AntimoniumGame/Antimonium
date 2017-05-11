@@ -3,6 +3,7 @@
 	icon_size = 32
 	view = 15
 	mob = /mob/new_player
+	area = /area/lighting
 
 /world/New()
 	. = ..()

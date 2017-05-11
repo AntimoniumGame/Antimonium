@@ -5,7 +5,7 @@
 	to_chat(world, "<b>Welcome to the lobby. The game will begin shortly.</b>")
 
 /data/game_state/waiting/tick()
-	if(world.time > (time_created + roundstart_delay))
+	if(force_start || world.time > (time_created + roundstart_delay))
 		switch_game_state(/data/game_state/starting)
 
 /data/game_state/waiting/on_login(var/client/player)

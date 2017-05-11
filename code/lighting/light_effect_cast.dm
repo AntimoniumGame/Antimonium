@@ -125,7 +125,7 @@
 	var/targ_dir = get_dir(target_turf, src)
 
 	var/blocking_dirs = 0
-	for(var/d in cardinal)
+	for(var/d in cardinal_dirs)
 		var/turf/T = get_step(target_turf, d)
 		if(CheckOcclusion(T))
 			blocking_dirs |= d

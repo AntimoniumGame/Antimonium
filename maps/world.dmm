@@ -1,13 +1,14 @@
-"a" = (/turf/wall,/area)
-"b" = (/turf,/area)
-"c" = (/obj/structure/brazier,/turf,/area)
-"d" = (/obj/item/glowstick,/turf,/area)
-"e" = (/obj/item/axe,/turf,/area)
-"f" = (/mob/human,/turf,/area)
-"g" = (/obj/item/sword,/turf,/area)
-"h" = (/obj/item/pipe,/turf,/area)
-"i" = (/obj/item/shirt,/turf,/area)
-"j" = (/obj/item/pants,/turf,/area)
+"a" = (/turf/wall,/area/lighting)
+"b" = (/turf,/area/lighting)
+"c" = (/obj/structure/brazier,/turf,/area/lighting)
+"d" = (/obj/item/glowstick,/turf,/area/lighting)
+"e" = (/obj/item/axe,/turf,/area/lighting)
+"f" = (/mob/human,/turf,/area/lighting)
+"g" = (/obj/item/sword,/turf,/area/lighting)
+"h" = (/obj/item/pipe,/turf,/area/lighting)
+"i" = (/obj/item/boots,/turf,/area/lighting)
+"j" = (/obj/item/shirt,/turf,/area/lighting)
+"k" = (/obj/item/pants,/turf,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -36,8 +37,8 @@ aaaabbaaaaaaaaabbaaaaaaaaabbba
 abbbbbbbbbbbbbbbbbbbbbbbbabdba
 acbbbbbbbbbbbbbbbbbbbbbbcabbba
 aaaaaaaaaaaaabbaaaaaaaaaaabbba
-acbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbijbebbbbbbbbbbbbebbbbbbba
+acbbbibbbbbbbbbbbbbbbbbbbbbbba
+abbbbjkbebbbbbbbbbbbbebbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbca
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

@@ -18,10 +18,7 @@
 	title_image = null
 	. = ..()
 
-/mob/new_player/verb/join_game()
-
-	set name = "Join Game"
-	set category = "Commands"
+/mob/new_player/proc/join_game()
 
 	switch(game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
@@ -30,8 +27,6 @@
 		if(GAME_OVER)
 			to_chat(src, "The game is over!")
 			return
-
-	verbs -= /mob/new_player/verb/join_game
 
 	do_fadeout(10)
 	sleep(10)
