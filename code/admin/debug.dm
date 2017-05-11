@@ -72,3 +72,15 @@ var/force_start = FALSE
 		return
 	dnotify("Forcing game start.")
 	force_start = TRUE
+
+/client/verb/respawn()
+
+	set name = "Respawn"
+	set category = "Debug"
+
+	var/mob/old_mob = mob
+	var/mob/human/player_mob = new()
+	player_mob.move_to(locate(3,3,1))
+	player_mob.name = mob.key
+	player_mob.key = mob.key
+	qdel(old_mob)

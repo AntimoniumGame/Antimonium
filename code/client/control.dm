@@ -55,6 +55,10 @@
 	view = "[view_x]x[view_y]"
 	mob.on_window_resize()
 
+	// Workaround for a strange bug
+	perspective = MOB_PERSPECTIVE
+	eye = mob
+
 /mob/proc/on_window_resize()
 	for(var/obj/ui/ui_element in ui_screen)
 		ui_element.center(client.view_x, client.view_y)
