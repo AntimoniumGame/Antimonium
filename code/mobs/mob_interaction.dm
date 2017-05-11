@@ -36,7 +36,7 @@
 /mob/proc/handle_interaction_other(var/mob/person, var/slot_id)
 	if(on_combat_cooldown())
 		return
-	set_combat_cooldown(8)
+	set_combat_cooldown(4)
 	var/obj/item/prop = person.get_equipped(slot_id)
 	if(prop)
 		prop.attacking(person, src)
@@ -46,7 +46,7 @@
 /mob/proc/handle_interaction_self(var/slot_id)
 	if(on_combat_cooldown())
 		return
-	set_combat_cooldown(5)
+	set_combat_cooldown(2)
 	var/obj/item/prop = get_equipped(slot_id)
 	if(prop)
 		prop.attacking_self(src)
@@ -56,13 +56,13 @@
 /mob/proc/attack_self()
 	if(on_combat_cooldown())
 		return
-	set_combat_cooldown(5)
+	set_combat_cooldown(2)
 	notify_nearby("\The [src] scratches \his head.")
 
 /mob/proc/attack(var/mob/target)
 	if(on_combat_cooldown())
 		return
-	set_combat_cooldown(8)
+	set_combat_cooldown(4)
 	if(intent.selecting == INTENT_HELP)
 		notify_nearby("\The [src] pokes \the [target].")
 	else

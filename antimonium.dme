@@ -107,6 +107,7 @@
 #include "code\objects\items\_item.dm"
 #include "code\objects\items\debug.dm"
 #include "code\objects\items\item_throwing.dm"
+#include "code\objects\items\clothing\boots.dm"
 #include "code\objects\items\clothing\pants.dm"
 #include "code\objects\items\clothing\shirt.dm"
 #include "code\objects\items\grab\grab.dm"
