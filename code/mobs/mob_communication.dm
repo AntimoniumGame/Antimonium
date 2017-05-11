@@ -2,25 +2,20 @@
 	var/next_speech = 0
 
 /proc/format_string_for_speech(var/mob/speaker, var/message)
-
 	message = format_and_capitalize(sanitize_text(copytext(message,1,120)))
 	var/speak_verb = "says"
-	var/overhead_icon = "speech"
 	var/ending = copytext(message, length(message))
 	if(ending == "!")
 		speak_verb = "exclaims"
-		overhead_icon = "shout"
 	else if(ending == "?")
 		speak_verb = "asks"
-		overhead_icon = "ask"
-
-	return list("<b>\The [speaker]</b> [speak_verb], \"[message]\"", overhead_icon)
+	return "<b>\The [speaker]</b> [speak_verb], \"[message]\""
 
 /mob/verb/say(var/message as text)
 
 	set name = "Say"
 	set category= "Communication"
-	set desc = "Speak your mind! Use '/me' to emote."
+	set desc = "Speak your mind! Use '/me' to emote and 'ooc' to speak on the global OOC channel."
 
 	if(world.time < next_speech)
 		return
@@ -44,19 +39,19 @@
 			do_say(message)
 
 /mob/proc/do_ooc_message(var/message)
-	var/list/result = format_string_for_speech(src, message)
+	message = format_string_for_speech(src, message)
 	next_speech = world.time + 5
 	for(var/client/player in clients)
-		player.notify("<b>OOC:</b> [result[1]]")
+		player.notify("<b>OOC:</b> [message]")
 
 /mob/proc/do_say(var/message)
-	var/list/result = format_string_for_speech(src, message)
+	message = format_string_for_speech(src, message)
 	next_speech = world.time + 5
 
 	if(dead)
-		notify_dead(result[1])
+		notify_dead(message)
 	else
-		notify_nearby(result[1])
+		notify_nearby(message)
 
 /mob/proc/do_emote(var/message)
 	next_speech = world.time + 5
@@ -67,6 +62,7 @@
 		notify_nearby(copytext(message,1,120))
 
 /mob/proc/notify_dead(var/message)
-	for(var/mob/deadite in dead_mob_list)
+	for(var/thing in dead_mob_list)
+		var/mob/deadite = thing
 		if(deadite.client)
 			deadite.notify("DEAD: [message]")

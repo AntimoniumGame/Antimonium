@@ -14,6 +14,34 @@
 	if(.)
 		next_move = world.time + get_move_delay()
 
+/mob/Bump(var/atom/obstacle)
+	if(obstacle.pushed_by(src, dir))
+		next_move = world.time + max(1, round(get_move_delay()/2))
+
+/atom/proc/pushed_by(var/mob/pusher, var/mob/push_dir)
+	return FALSE
+
+/atom/movable/pushed_by(var/mob/pusher, var/mob/push_dir)
+	glide_size = pusher.glide_size
+	if(step_towards(src, get_step(src, push_dir)))
+		notify_nearby("\The [pusher] shoves at \the [src].")
+	return TRUE
+
+/mob/pushed_by(var/mob/pusher, var/mob/push_dir)
+
+	if(pusher.intent.selecting == INTENT_HARM)
+		. = ..()
+	else
+		if(intent.selecting == INTENT_HARM)
+			notify_nearby("\The [pusher] tries to move past \the [src], but [they()] block [pusher.them()].")
+		else
+			glide_size = pusher.glide_size
+			var/pusher_loc = pusher.loc
+			pusher.move_to(loc)
+			move_to(pusher_loc)
+			notify_nearby("\The [pusher] moves past \the [src].")
+		return TRUE
+
 /mob/proc/no_dead_move()
 	return TRUE
 

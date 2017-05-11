@@ -1,8 +1,10 @@
 /mob/human/get_move_delay()
 	. = ..()
 	if(prone)
-		. += 10
-
+		. += 3
+	for(var/thing in active_grabs)
+		var/obj/item/grab/grab = thing
+		. += grab.grabbed.pull_cost()
 
 /mob/human/Move()
 
@@ -28,7 +30,6 @@
 				step_towards(grab.grabbed, last_loc)
 				grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
 				grab.grabbed.dragged = FALSE
-
 				grab.check_state()
 
 /mob/human/handle_dragged(var/turf/from_turf, var/turf/to_turf)
