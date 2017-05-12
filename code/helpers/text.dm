@@ -25,3 +25,7 @@
 	if(!(copytext(message, length(message)) in list("!","?",".")))
 		message += "."
 	return message
+
+/proc/ticks2time(var/ticks)
+	var/seconds = round((ticks%600)/10)
+	return "[round(ticks/600)]:[seconds >= 10 ? seconds : "0[seconds]"]"

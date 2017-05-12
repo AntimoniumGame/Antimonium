@@ -26,7 +26,13 @@
 /obj/ui/vision_cone/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-6],[round(view_y/2)-6]"
 	var/matrix/M = matrix()
-	M.Scale(max(1,round(view_x/7)),max(1,round(view_y/7)))
+	view_x = max(1,round(view_x/7))
+	view_y = max(1,round(view_y/7))
+
+	if(view_x > view_y)
+		M.Scale(view_x,view_x)
+	else
+		M.Scale(view_y,view_y)
 	transform = M
 
 /mob
