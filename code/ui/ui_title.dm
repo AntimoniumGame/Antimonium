@@ -1,4 +1,18 @@
-// Placeholder.
+/obj/ui/options
+	name = "Options"
+	icon = 'icons/images/ui_title_buttons.dmi'
+	icon_state = "options_on"
+
+/obj/ui/options/center(var/view_x, var/view_y)
+	screen_loc = "[round(view_x/2)]-2,[round(view_y/2)-4]"
+
+/obj/ui/setup_prefs
+	name = "Set Up Preferences"
+	icon = 'icons/images/ui_title_buttons.dmi'
+	icon_state = "setup_on"
+
+/obj/ui/setup_prefs/center(var/view_x, var/view_y)
+	screen_loc = "[round(view_x/2)],[round(view_y/2)-4]"
 
 /obj/ui/join_game
 	name = "Join Game"
@@ -9,7 +23,7 @@
 	var/game_start_time = 0
 
 /obj/ui/join_game/center(var/view_x, var/view_y)
-	screen_loc = "[round(view_x/2)],[round(view_y/2)]-4"
+	screen_loc = "[round(view_x/2)]+2,[round(view_y/2)-4]"
 
 /obj/ui/join_game/update_icon()
 	if(!game_state || game_state.ident != GAME_RUNNING)

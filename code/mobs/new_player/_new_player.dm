@@ -2,13 +2,22 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/ui/title/title_image
 	var/obj/ui/join_game/join
+	var/obj/ui/setup_prefs/setup
+	var/obj/ui/options/options
+
 	var/joining = FALSE
 
 /mob/new_player/create_ui()
+
 	title_image = new(src)
+	setup = new(src)
 	join = new(src)
+	options = new(src)
+
+	ui_screen += setup
 	ui_screen += title_image
 	ui_screen += join
+	ui_screen += options
 
 /mob/new_player/refresh_ui()
 	. = ..()
