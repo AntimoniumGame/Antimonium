@@ -5,6 +5,10 @@
 	for(var/thing in active_grabs)
 		var/obj/item/grab/grab = thing
 		. += grab.grabbed.pull_cost()
+	if(stance_score <= 5)
+		. += 1
+	if(stance_score <= 3)
+		. += 2
 
 /mob/human/Move()
 

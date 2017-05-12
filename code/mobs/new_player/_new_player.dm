@@ -2,6 +2,7 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/ui/title/title_image
 	var/obj/ui/join_game/join
+	var/joining = FALSE
 
 /mob/new_player/create_ui()
 	title_image = new(src)
@@ -9,16 +10,25 @@
 	ui_screen += title_image
 	ui_screen += join
 
+/mob/new_player/refresh_ui()
+	. = ..()
+	join.update_icon()
+
 /mob/new_player/New()
 	..()
+	new_players += src
 	spawn(0)
 		move_to(null)
 
 /mob/new_player/destroy()
 	title_image = null
+	new_players -= src
 	. = ..()
 
 /mob/new_player/proc/join_game()
+
+	if(joining)
+		return
 
 	switch(game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
@@ -27,6 +37,9 @@
 		if(GAME_OVER)
 			to_chat(src, "The game is over!")
 			return
+
+	join.icon_state = "join_off"
+	joining = TRUE
 
 	do_fadeout(10)
 	sleep(10)

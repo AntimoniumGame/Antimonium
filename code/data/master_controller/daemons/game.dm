@@ -1,6 +1,6 @@
 /data/daemon/game
 	name = "game"
-	delay = 10
+	delay = 5
 
 /data/daemon/game/do_work()
 	if(game_state)
