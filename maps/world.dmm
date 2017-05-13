@@ -2,13 +2,13 @@
 "b" = (/turf,/area/lighting)
 "c" = (/obj/structure/brazier,/turf,/area/lighting)
 "d" = (/obj/item/glowstick,/turf,/area/lighting)
-"e" = (/obj/item/axe,/turf,/area/lighting)
+"e" = (/obj/item/weapon/axe,/turf,/area/lighting)
 "f" = (/mob/human,/turf,/area/lighting)
-"g" = (/obj/item/sword,/turf,/area/lighting)
-"h" = (/obj/item/pipe,/turf,/area/lighting)
-"i" = (/obj/item/boots,/turf,/area/lighting)
-"j" = (/obj/item/shirt,/turf,/area/lighting)
-"k" = (/obj/item/pants,/turf,/area/lighting)
+"g" = (/obj/item/weapon/sword,/turf,/area/lighting)
+"h" = (/obj/item/weapon/pipe,/turf,/area/lighting)
+"i" = (/obj/item/clothing/boots,/turf,/area/lighting)
+"j" = (/obj/item/clothing/shirt,/turf,/area/lighting)
+"k" = (/obj/item/clothing/pants,/turf,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

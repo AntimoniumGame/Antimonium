@@ -1,4 +1,4 @@
-/obj/item/axe
+/obj/item/weapon/axe
 	name = "axe"
 	weight = 3
 	sharpness = 3

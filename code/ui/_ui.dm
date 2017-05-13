@@ -13,7 +13,7 @@
 	. = ..()
 
 /obj/ui/New(var/mob/_owner)
-	..()
+	..(_owner)
 	owner = _owner
 	move_to(null)
 	verbs.Cut()
