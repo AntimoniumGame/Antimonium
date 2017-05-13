@@ -8,6 +8,7 @@
 	animate_movement = SLIDE_STEPS
 	var/anchored = FALSE
 	var/dragged = FALSE
+	var/self_move = FALSE
 
 /atom/proc/update_icon()
 	return

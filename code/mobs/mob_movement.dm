@@ -71,7 +71,9 @@
 	set waitfor = 0
 	while(client)
 		if(loc && walk_dir)
+			self_move = TRUE
 			Move(get_step(src, walk_dir))
+			self_move = FALSE
 		WAIT_1T
 
 /mob/Login()

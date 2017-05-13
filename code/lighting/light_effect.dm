@@ -78,9 +78,9 @@
 
 	if(holder && holder.loc)
 		if(holder.loc.loc && ismob(holder.loc))
-			move_to(holder.loc.loc)
+			ForceMove(holder.loc.loc)
 		else
-			move_to(holder.loc)
+			ForceMove(holder.loc)
 		follow_holder_dir()
 		cast_light() //lights_master.queue_light(src)
 

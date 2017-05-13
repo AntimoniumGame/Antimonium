@@ -16,6 +16,7 @@ Item interactions:
 	var/sharpness = 1
 	var/list/attack_verbs = list("attacks")
 	var/name_prefix
+	density = 1
 
 /obj/item/update_values()
 	sharpness = initial(sharpness)

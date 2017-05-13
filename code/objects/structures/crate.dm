@@ -4,7 +4,7 @@
 
 /obj/structure/crate/attacked_by(var/mob/user, var/obj/item/thing)
 	user.drop_item(thing)
-	thing.move_to(src)
+	thing.ForceMove(src)
 	holding += thing
 	user.notify_nearby("\The [user] places \the [thing] into \the [src].")
 
@@ -12,7 +12,7 @@
 	if(holding.len)
 		var/obj/item/thing = pick(holding)
 		holding -= thing
-		thing.move_to(get_turf(src))
+		thing.ForceMove(get_turf(src))
 		user.collect_item(thing, slot)
 		user.notify_nearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
 	else
