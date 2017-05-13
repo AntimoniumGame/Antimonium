@@ -19,6 +19,8 @@
 #define FILE_DIR "icons/objects/items/limbs"
 #define FILE_DIR "icons/structure"
 #define FILE_DIR "icons/turfs"
+#define FILE_DIR "sounds"
+#define FILE_DIR "sounds/effects"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -130,6 +132,7 @@
 #include "code\objects\structures\_structure.dm"
 #include "code\objects\structures\brazier.dm"
 #include "code\objects\structures\crate.dm"
+#include "code\sound\sound.dm"
 #include "code\turfs\_turf.dm"
 #include "code\ui\_ui.dm"
 #include "code\ui\ui_hide_inv.dm"
