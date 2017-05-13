@@ -15,6 +15,26 @@ Item interactions:
 	var/weight = 1
 	var/sharpness = 1
 	var/list/attack_verbs = list("attacks")
+	var/name_prefix
+
+/obj/item/update_values()
+	sharpness = initial(sharpness)
+	weight =    initial(weight)
+	if(material)
+		sharpness *= material.get_sharpness_mod()
+		weight    *= material.get_weight_mod()
+
+/obj/item/update_strings()
+	if(material)
+		if(name_prefix)
+			name = "[name_prefix] [material.get_descriptor()] [initial(name)]"
+		else
+			name = "[material.get_descriptor()] [initial(name)]"
+	else
+		if(name_prefix)
+			name = "[name_prefix] [initial(name)]"
+		else
+			name = "[initial(name)]"
 
 /obj/item/proc/process()
 	return

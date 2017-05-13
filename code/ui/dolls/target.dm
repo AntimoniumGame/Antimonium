@@ -12,7 +12,6 @@
 		component.update_icon()
 
 /obj/ui/doll/target/New(var/mob/_owner)
-	..(_owner)
 	components += new /obj/ui/target_doll_component(_owner, BP_CHEST,      "upper body", src)
 	components += new /obj/ui/target_doll_component(_owner, BP_GROIN,      "lower body", src)
 	components += new /obj/ui/target_doll_component(_owner, BP_HEAD,       "head",       src)
@@ -24,7 +23,7 @@
 	components += new /obj/ui/target_doll_component(_owner, BP_RIGHT_LEG,  "right leg",  src)
 	components += new /obj/ui/target_doll_component(_owner, BP_RIGHT_HAND, "right hand", src)
 	components += new /obj/ui/target_doll_component(_owner, BP_RIGHT_FOOT, "right foot", src)
-	update_icon()
+	..(_owner)
 
 /obj/ui/doll/target/proc/set_selecting(var/_selecting)
 	selecting = _selecting
@@ -36,13 +35,13 @@
 	alpha = 128
 
 /obj/ui/target_doll_component/New(var/mob/_owner, var/_limb_id, var/_name, var/obj/ui/doll/target/_controller)
-	..(_owner)
 	name = _name
 	limb_id = _limb_id
 	controller = _controller
 	icon = controller.icon
 	icon_state = "[limb_id]"
 	screen_loc = controller.screen_loc
+	..(_owner)
 
 /obj/ui/target_doll_component/update_icon()
 	if(controller.selecting == limb_id)

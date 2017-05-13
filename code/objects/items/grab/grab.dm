@@ -5,7 +5,7 @@
 	var/atom/movable/grabbed
 
 /obj/item/grab/New(var/mob/human/_owner, var/atom/movable/_grabbed)
-	..()
+	..(_owner)
 	owner = _owner
 	owner.active_grabs += src
 	grabbed = _grabbed

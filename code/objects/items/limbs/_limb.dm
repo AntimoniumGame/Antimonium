@@ -17,7 +17,7 @@
 	return get_worn_icon("world")
 
 /obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_limb_id, var/_parent, var/_root, var/_vital, var/_size)
-	..()
+	..(_owner)
 	owner = _owner
 	name = _name
 	icon = _icon

@@ -1,4 +1,4 @@
-/obj/item/shirt
-	name = "rough shirt"
+/obj/item/clothing/shirt
+	name = "shirt"
 	icon = 'icons/objects/clothing/shirt.dmi'
 	slot_flags = SLOT_FLAG_UPPER_BODY

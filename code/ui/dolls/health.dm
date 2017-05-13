@@ -5,9 +5,8 @@
 	var/mob/human/human_owner
 
 /obj/ui/doll/health/New(var/mob/_owner)
+	human_owner = _owner
 	..(_owner)
-	human_owner = owner
-	update_icon()
 
 /obj/ui/doll/health/update_icon()
 	var/list/limb_overlays = list()

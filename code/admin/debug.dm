@@ -53,11 +53,11 @@
 		return
 
 	if(!mob.get_equipped(SLOT_UPPER_BODY))
-		mob.collect_item_or_del(new /obj/item/shirt(), SLOT_UPPER_BODY)
+		mob.collect_item_or_del(new /obj/item/clothing/shirt(), SLOT_UPPER_BODY)
 	if(!mob.get_equipped(SLOT_LOWER_BODY))
-		mob.collect_item_or_del(new /obj/item/pants(), SLOT_LOWER_BODY)
+		mob.collect_item_or_del(new /obj/item/clothing/pants(), SLOT_LOWER_BODY)
 	if(!mob.get_equipped(SLOT_FEET))
-		mob.collect_item_or_del(new /obj/item/boots(), SLOT_FEET)
+		mob.collect_item_or_del(new /obj/item/clothing/boots(), SLOT_FEET)
 
 	dnotify("Mob dressed.")
 
