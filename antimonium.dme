@@ -79,6 +79,7 @@
 #include "code\helpers\effects.dm"
 #include "code\helpers\loops.dm"
 #include "code\helpers\text.dm"
+#include "code\helpers\vector.dm"
 #include "code\lighting\light_atom.dm"
 #include "code\lighting\light_atom_set.dm"
 #include "code\lighting\light_effect.dm"
