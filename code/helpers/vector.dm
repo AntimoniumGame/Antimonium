@@ -2,15 +2,16 @@ var/list/vector_list = list()
 
 /vector
 	var/atom/movable/owner
-	var/coord_x          //current x location (in pixel coordinates)
-	var/coord_y          //current y location (in pixel coordinates)
-	var/inc_x            //x increment per step
-	var/inc_y            //y increment per step
-	var/move_delay       //ticks between each move
-	var/pixel_speed      //speed in pixels per tick
+	var/coord_x          // current x location (in pixel coordinates)
+	var/coord_y          // current y location (in pixel coordinates)
+	var/inc_x            // x increment per step
+	var/inc_y            // y increment per step
+	var/move_delay       // ticks between each move
+	var/pixel_speed      // speed in pixels per tick
 	var/initial_pixel_x  // initial owner pixel_x offset
 	var/initial_pixel_y  // initial owner pixel_y offset
 	var/turf/target_turf // destination
+	var/spin_counter = -1 // spinning iterator
 
 /*
 Inputs:
@@ -26,11 +27,15 @@ Inputs:
 
 	yo = pixel_y offset of the target location (optional)
 */
-/vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16)
+/vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16, spin = TRUE)
 	vector_list += src
 	owner = source
 	initial_pixel_y = source.pixel_y
 	initial_pixel_y = source.pixel_y
+	if(spin)
+		spin_counter = 0
+		owner.update_strings()
+		owner.name = "flying [owner.name]"
 
 	var/turf/src_turf = get_turf(start)
 	target_turf = get_turf(end)
@@ -77,6 +82,14 @@ Inputs:
 		coord_x += inc_x
 		coord_y += inc_y
 
+		// The spinning x strikes the y in the z!
+		if(spin_counter != -1)
+			spin_counter++
+			if(spin_counter >= 8) spin_counter = 0
+			var/matrix/M = matrix()
+			M.Turn(90 * round(spin_counter/2))
+			owner.transform = M
+
 		//convert our pixel space location to world coordinates and pixel offset
 		var/world_x = coord_x / TILE_WIDTH
 		var/loc_x = floor(world_x)
@@ -93,6 +106,9 @@ Inputs:
 			if((owner.loc == target_turf) || T.check_thrown_collision(owner) || !owner.Move(T))
 				owner.pixel_x = initial_pixel_x
 				owner.pixel_y = initial_pixel_y
+				owner.transform = null
+				owner.update_icon()
+				owner.update_strings()
 				vector_list -= src
 				return
 			owner.pixel_x = pix_x

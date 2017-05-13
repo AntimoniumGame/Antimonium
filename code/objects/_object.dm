@@ -23,9 +23,6 @@ Object interactions:
 	update_strings()
 	update_icon()
 
-/obj/proc/update_strings()
-	return
-
 /obj/proc/update_values()
 	return
 

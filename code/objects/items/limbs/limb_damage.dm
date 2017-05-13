@@ -2,7 +2,7 @@
 	var/list/wounds = list()
 	var/broken = FALSE
 
-/obj/item/limb/proc/handle_attacked(var/mob/attacker, var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
+/obj/item/limb/proc/handle_attacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
 
 	if(!owner)
 		return

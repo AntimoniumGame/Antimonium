@@ -31,3 +31,6 @@
 
 /atom/proc/thrown_hit_by(var/atom/movable/projectile)
 	return FALSE
+
+/atom/proc/update_strings()
+	name = initial(name)

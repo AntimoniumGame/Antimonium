@@ -114,5 +114,11 @@ Mob interactions:
 	if(density)
 		projectile.force_move(get_turf(src))
 		notify_nearby("\The [src] has been hit by \the [projectile]!")
+		if(istype(projectile, /obj/item))
+			var/obj/item/weapon = projectile
+			resolve_physical_attack(null, weapon.weight, weapon.sharpness, weapon.contact_size, weapon)
+		else
+			resolve_physical_attack(null, 5, 0, 5, projectile)
+
 		return TRUE
 	return FALSE
