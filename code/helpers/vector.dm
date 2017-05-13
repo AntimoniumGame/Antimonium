@@ -2,12 +2,15 @@ var/list/vector_list = list()
 
 /vector
 	var/atom/movable/owner
-	var/coord_x		//current x location (in pixel coordinates)
-	var/coord_y		//current y location (in pixel coordinates)
-	var/inc_x		//x increment per step
-	var/inc_y		//y increment per step
-	var/move_delay	//ticks between each move
-	var/pixel_speed	//speed in pixels per tick
+	var/coord_x          //current x location (in pixel coordinates)
+	var/coord_y          //current y location (in pixel coordinates)
+	var/inc_x            //x increment per step
+	var/inc_y            //y increment per step
+	var/move_delay       //ticks between each move
+	var/pixel_speed      //speed in pixels per tick
+	var/initial_pixel_x  // initial owner pixel_x offset
+	var/initial_pixel_y  // initial owner pixel_y offset
+	var/turf/target_turf // destination
 
 /*
 Inputs:
@@ -26,11 +29,13 @@ Inputs:
 /vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16)
 	vector_list += src
 	owner = source
+	initial_pixel_y = source.pixel_y
+	initial_pixel_y = source.pixel_y
 
 	var/turf/src_turf = get_turf(start)
-	var/turf/target_turf = get_turf(end)
+	target_turf = get_turf(end)
 
-	owner.ForceMove(src_turf)
+	owner.force_move(src_turf)
 
 	//convert to pixel coordinates
 	var/start_loc_x = src_turf.x * TILE_WIDTH + (TILE_WIDTH / 2)
@@ -85,7 +90,9 @@ Inputs:
 		if(T)
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
-			if(!owner.Move(T))
+			if((owner.loc == target_turf) || T.check_thrown_collision(owner) || !owner.Move(T))
+				owner.pixel_x = initial_pixel_x
+				owner.pixel_y = initial_pixel_y
 				vector_list -= src
 				return
 			owner.pixel_x = pix_x
@@ -96,3 +103,14 @@ Inputs:
 
 		wait_nt(move_delay)
 	vector_list -= src
+
+/turf/proc/check_thrown_collision(var/atom/movable/thrown)
+	if(density)
+		if(!thrown.ethereal && !ethereal)
+			return TRUE
+		thrown_hit_by(thrown)
+	for(var/thing in (contents - thrown))
+		var/atom/movable/obstacle = thing
+		if(obstacle.thrown_hit_by(thrown))
+			return TRUE
+	return FALSE

@@ -47,7 +47,7 @@
 			if(light_obj)
 				light_obj.follow_holder()
 
-/atom/movable/ForceMove()
+/atom/movable/force_move()
 	. = ..()
 	if(.)
 		update_contained_lights()

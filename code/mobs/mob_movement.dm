@@ -39,8 +39,8 @@
 		else
 			glide_size = pusher.glide_size
 			var/pusher_loc = pusher.loc
-			pusher.move_to(loc)
-			move_to(pusher_loc)
+			pusher.force_move(loc)
+			force_move(pusher_loc)
 			notify_nearby("\The [pusher] moves past \the [src].")
 		return TRUE
 

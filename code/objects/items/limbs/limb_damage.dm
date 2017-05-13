@@ -55,7 +55,7 @@
 	owner.limbs -= limb_id
 
 	if(severing)
-		ForceMove(severing)
+		force_move(severing)
 		for(var/obj/item/limb/child in children)
 			child.sever_limb(severing)
 	else
@@ -74,7 +74,7 @@
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
-		ForceMove(get_turf(owner))
+		force_move(get_turf(owner))
 		step(src, pick(cardinal_dirs))
 		blood_splatter(owner, loc)
 

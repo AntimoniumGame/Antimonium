@@ -19,3 +19,10 @@
 
 /obj/structure/pull_cost()
 	return weight
+
+/obj/structure/thrown_hit_by(var/atom/movable/projectile)
+	if(density)
+		projectile.force_move(get_turf(src))
+		notify_nearby("\The [src] has been hit by \the [projectile]!")
+		return TRUE
+	return FALSE

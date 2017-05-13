@@ -27,7 +27,7 @@
 	..()
 	new_players += src
 	spawn(0)
-		move_to(null)
+		null_loc()
 
 /mob/new_player/destroy()
 	title_image = null
@@ -54,7 +54,7 @@
 	sleep(10)
 
 	var/mob/human/player_mob = new()
-	player_mob.ForceMove(locate(3,3,1))
+	player_mob.force_move(locate(3,3,1))
 	player_mob.name = key
 	client.screen -= title_image
 	player_mob.key = key
