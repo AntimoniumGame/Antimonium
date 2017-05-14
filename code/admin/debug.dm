@@ -80,7 +80,7 @@ var/force_start = FALSE
 
 	var/mob/old_mob = mob
 	var/mob/human/player_mob = new()
-	player_mob.move_to(locate(3,3,1))
+	player_mob.force_move(locate(3,3,1))
 	player_mob.name = mob.key
 	player_mob.key = mob.key
 	qdel(old_mob)

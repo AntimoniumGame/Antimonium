@@ -72,15 +72,15 @@
 /obj/light/proc/follow_holder()
 
 	if(!holder || deleted(src))
-		move_to(null)
+		null_loc()
 		destroy(src)
 		return
 
 	if(holder && holder.loc)
 		if(holder.loc.loc && ismob(holder.loc))
-			ForceMove(holder.loc.loc)
+			force_move(holder.loc.loc)
 		else
-			ForceMove(holder.loc)
+			force_move(holder.loc)
 		follow_holder_dir()
 		cast_light() //lights_master.queue_light(src)
 

@@ -2,7 +2,7 @@
 	var/list/wounds = list()
 	var/broken = FALSE
 
-/obj/item/limb/proc/handle_attacked(var/mob/attacker, var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
+/obj/item/limb/proc/handle_attacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
 
 	if(!owner)
 		return
@@ -55,7 +55,7 @@
 	owner.limbs -= limb_id
 
 	if(severing)
-		ForceMove(severing)
+		force_move(severing)
 		for(var/obj/item/limb/child in children)
 			child.sever_limb(severing)
 	else
@@ -74,7 +74,7 @@
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
-		ForceMove(get_turf(owner))
+		force_move(get_turf(owner))
 		step(src, pick(cardinal_dirs))
 		blood_splatter(owner, loc)
 

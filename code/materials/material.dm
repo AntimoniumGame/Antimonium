@@ -26,3 +26,9 @@
 	strength = 0.3
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
+
+/data/material/lead
+	name = "lead"
+	strength = 0.5
+	weight_modifier = 2
+	sharpness_modifier = 0.4

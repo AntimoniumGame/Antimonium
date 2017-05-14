@@ -3,6 +3,7 @@
 	plane = MASTER_PLANE
 	layer = UNDERLAY_LAYER
 	var/simulated = TRUE
+	var/ethereal = FALSE
 
 /atom/movable
 	animate_movement = SLIDE_STEPS
@@ -27,3 +28,9 @@
 
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
 	return
+
+/atom/proc/thrown_hit_by(var/atom/movable/projectile)
+	return FALSE
+
+/atom/proc/update_strings()
+	name = initial(name)

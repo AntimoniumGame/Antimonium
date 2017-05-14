@@ -5,4 +5,3 @@
 	contact_size = 2
 	icon = 'icons/objects/items/sword.dmi'
 	attack_verbs = list("slices", "slashes")
-	default_material_path = /data/material

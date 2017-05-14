@@ -1,11 +1,8 @@
-//setting loc is bad, this needs to be removed once I sort null moving in ForceMove
-/atom/movable/proc/move_to(var/destination)
-	loc = destination
-	if(light_obj)
-		light_obj.follow_holder()
+/atom/movable/proc/null_loc()
+	loc = null
 
-//ForceMove code courtesey of Ter13 - http://www.byond.com/forum/?post=2101373
-/atom/movable/proc/ForceMove(atom/NewLoc, Dir = 0)
+//force_move code courtesey of Ter13 - http://www.byond.com/forum/?post=2101373
+/atom/movable/proc/force_move(atom/NewLoc, Dir = 0)
 	var/OldLoc = loc
 	if(!Dir)
 		Dir = dir

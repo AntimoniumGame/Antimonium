@@ -8,4 +8,4 @@
 		if(limbs[human_attacker.target_zone.selecting])
 			target_limb = human_attacker.target_zone.selecting
 	var/obj/item/limb/limb = limbs[target_limb]
-	limb.handle_attacked(attacker, attack_weight, attack_sharpness, attack_contact_size, attacked_with)
+	limb.handle_attacked(attack_weight, attack_sharpness, attack_contact_size, attacked_with)
