@@ -2,6 +2,7 @@
 	name = "brazier"
 	icon = 'icons/structure/brazier.dmi'
 	anchored = FALSE
+	hit_sound = 'sounds/effects/ding1.wav'
 
 	light_color = BRIGHT_ORANGE
 	light_power = 10

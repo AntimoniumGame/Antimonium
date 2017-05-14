@@ -16,7 +16,10 @@ Item interactions:
 	var/sharpness = 1
 	var/list/attack_verbs = list("attacks")
 	var/name_prefix
+
 	var/hit_sound = 'sounds/effects/punch1.wav'
+	var/collect_sound = 'sounds/effects/click1.wav'
+	var/equip_sound = 'sounds/effects/rustle1.wav'
 
 /obj/item/update_values()
 	sharpness = initial(sharpness)
@@ -56,6 +59,7 @@ Item interactions:
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)))
 		if(!clicker.get_equipped(slot))
 			notify_nearby("\The [clicker] picks up \the [src].")
+			play_local_sound(src, collect_sound, 50)
 			clicker.collect_item(src, slot)
 			return
 	. = ..()

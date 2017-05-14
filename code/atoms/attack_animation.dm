@@ -1,7 +1,6 @@
 /atom/movable/proc/do_attack_animation(var/atom/A, var/obj/item/attacking_with)
 
 	set waitfor = 0
-	set background = 1
 
 	var/xdiff = 0
 	var/ydiff = 0

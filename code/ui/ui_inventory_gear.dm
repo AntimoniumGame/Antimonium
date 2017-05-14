@@ -28,6 +28,8 @@
 
 			inv_slot.forget_held()
 			set_held(prop)
+
+			play_local_sound(owner, prop.equip_sound, 50)
 			owner.notify_nearby("\The [owner] begins wearing \the [prop] on [owner.their()] [unmodified_name].")
 	else
 		if(holding)
@@ -35,5 +37,6 @@
 			prop = holding
 			forget_held()
 			inv_slot.set_held(prop)
+			play_local_sound(owner, prop.equip_sound, 50)
 			owner.notify_nearby("\The [owner] removes \the [prop] from [owner.their()] [unmodified_name].")
 	owner.update_icon()
