@@ -90,7 +90,7 @@ var/mob/human/next_footstep = 0
 	if(. && world.time > next_footstep)
 		var/turf/current_turf = get_turf(src)
 		if(istype(current_turf))
-			next_footstep = world.time + 4
+			next_footstep = world.time + get_move_delay()*2.5
 			play_local_sound(src, current_turf.get_footstep_sound(src), 5)
 
 /turf/proc/get_footstep_sound(var/mob/walker)

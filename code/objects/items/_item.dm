@@ -40,9 +40,6 @@ Item interactions:
 		else
 			name = "[initial(name)]"
 
-/obj/item/proc/process()
-	return
-
 /obj/item/proc/use(var/mob/user)
 	return
 
@@ -67,11 +64,12 @@ Item interactions:
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
 	if(!simulated)
 		return
-	play_local_sound(src, 'sounds/effects/whoosh1.wav', 100)
 	user.do_attack_animation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
+		play_local_sound(src, 'sounds/effects/punch1.wav', 10)
 		user.notify_nearby("\The [user] prods \the [target] with \the [src].")
 	else
+		play_local_sound(src, 'sounds/effects/whoosh1.wav', 100)
 		user.notify_nearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
 		play_local_sound(src, hit_sound, 50)
 		if(weight || sharpness)

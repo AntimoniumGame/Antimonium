@@ -24,7 +24,7 @@
 /atom/proc/middle_clicked_on(var/mob/clicker)
 	return
 
-/atom/movable/proc/pull_cost()
+/atom/proc/pull_cost()
 	return 1
 
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)

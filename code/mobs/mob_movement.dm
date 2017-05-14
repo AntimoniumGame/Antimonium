@@ -15,9 +15,9 @@
 		next_move = world.time + get_move_delay()
 		update_vision_cone()
 
-/mob/Bump(var/atom/obstacle)
+/mob/Bump(var/atom/movable/obstacle)
 	if(obstacle.pushed_by(src, dir))
-		next_move = world.time + max(1, round(get_move_delay()/2))
+		next_move = world.time + max(1, get_move_delay() + round(obstacle.pull_cost()/2))
 
 /atom/proc/pushed_by(var/mob/pusher, var/mob/push_dir)
 	return FALSE

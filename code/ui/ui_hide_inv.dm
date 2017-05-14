@@ -7,16 +7,22 @@
 /obj/ui/hide_inv/left_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
+		if(owner.client)
+			play_client_sound(owner.client, null, 'sounds/effects/click1.wav', 50, -1)
 		toggle_hide_inv()
 
 /obj/ui/hide_inv/right_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
+		if(owner.client)
+			play_client_sound(owner.client, null, 'sounds/effects/click1.wav', 50, -1)
 		toggle_hide_inv()
 
 /obj/ui/hide_inv/middle_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
+		if(owner.client)
+			play_client_sound(owner.client, null, 'sounds/effects/click1.wav', 50, -1)
 		toggle_hide_inv()
 
 /obj/ui/hide_inv/proc/toggle_hide_inv()
