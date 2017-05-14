@@ -70,6 +70,7 @@
 			parent.children -= src
 			parent = null
 
+		play_local_sound(src, pick(list('sounds/effects/gore1.wav','sounds/effects/gore2.wav','sounds/effects/gore3.wav')), 30)
 		owner.notify_nearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))

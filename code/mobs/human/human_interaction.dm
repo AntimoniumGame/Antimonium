@@ -54,4 +54,6 @@
 
 	var/obj/item/grab/grab = new(src, grabbing)
 	collect_item(grab, grabbing_with)
+	play_local_sound(src, 'sounds/effects/whoosh1.wav', 100)
 	notify_nearby("\The [grab.owner] grabs \the [grab.grabbed]!")
+	grab.owner.do_attack_animation(grab.grabbed)

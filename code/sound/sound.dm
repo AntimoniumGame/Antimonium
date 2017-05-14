@@ -91,7 +91,7 @@ var/mob/human/next_footstep = 0
 		var/turf/current_turf = get_turf(src)
 		if(istype(current_turf))
 			next_footstep = world.time + 4
-			play_local_sound(src, current_turf.get_footstep_sound(src), 30)
+			play_local_sound(src, current_turf.get_footstep_sound(src), 5)
 
 /turf/proc/get_footstep_sound(var/mob/walker)
 	return 'sounds/effects/footstep1.wav'

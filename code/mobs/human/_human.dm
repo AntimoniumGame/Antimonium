@@ -18,3 +18,8 @@
 	. = ..(message)
 	if(. && !prone)
 		toggle_prone()
+
+/mob/human/update_strings()
+	..()
+	if(key)
+		name = key

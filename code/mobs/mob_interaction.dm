@@ -67,4 +67,5 @@
 		notify_nearby("\The [src] pokes \the [target].")
 	else
 		notify_nearby("\The [src] punches \the [target]!")
+		play_local_sound(src, 'sounds/effects/punch1.wav', 40)
 		target.resolve_physical_attack(src, 5, 0, 5, null)

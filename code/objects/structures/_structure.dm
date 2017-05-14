@@ -7,6 +7,7 @@
 
 	var/weight = 3
 	var/list/holding = list()
+	var/hit_sound = 'sounds/effects/thump1.wav'
 
 /obj/structure/update_strings()
 	if(material)
@@ -23,6 +24,7 @@
 /obj/structure/thrown_hit_by(var/atom/movable/projectile)
 	if(density)
 		projectile.force_move(get_turf(src))
+		play_local_sound(src, hit_sound, 20)
 		notify_nearby("\The [src] has been hit by \the [projectile]!")
 		return TRUE
 	return FALSE
