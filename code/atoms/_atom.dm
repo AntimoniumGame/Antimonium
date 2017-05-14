@@ -38,7 +38,7 @@
 
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
 	if(move_sound)
-		play_local_sound(src, move_sound, 20, frequency = -1)
+		play_local_sound(src, move_sound, 35, frequency = -1)
 
 /atom/proc/update_strings()
 	name = initial(name)
