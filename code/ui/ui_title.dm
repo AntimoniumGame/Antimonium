@@ -39,7 +39,7 @@
 /obj/ui/join_game/left_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		var/mob/new_player/player = clicker
+		var/mob/abstract/new_player/player = clicker
 		if(istype(player))
 			if(player.client)
 				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)
@@ -48,7 +48,7 @@
 /obj/ui/join_game/right_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		var/mob/new_player/player = clicker
+		var/mob/abstract/new_player/player = clicker
 		if(istype(player))
 			if(player.client)
 				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)
@@ -57,7 +57,7 @@
 /obj/ui/join_game/middle_clicked_on(var/mob/clicker)
 	. = ..()
 	if(.)
-		var/mob/new_player/player = clicker
+		var/mob/abstract/new_player/player = clicker
 		if(istype(player))
 			if(player.client)
 				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)

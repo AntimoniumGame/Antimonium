@@ -25,7 +25,11 @@
 	SLOT_EYES =       FALSE
 	)
 
+/mob/human // Ease of mapping.
+	icon = 'icons/mobs/human_full.dmi'
+
 /mob/human/update_icon()
+	icon = null
 	var/list/new_overlays = list()
 	for(var/slot in slots_by_layer)
 		if(slots_by_layer[slot])
@@ -39,4 +43,3 @@
 				else
 					new_overlays += inv_slot.holding.get_worn_icon(inv_slot.slot_id)
 	overlays = new_overlays
-

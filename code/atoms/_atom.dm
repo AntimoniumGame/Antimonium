@@ -22,17 +22,23 @@
 	return
 
 /atom/proc/middle_clicked_on(var/mob/clicker)
-	return
+	examined_by(clicker)
+
+/atom/proc/examined_by(var/mob/clicker)
+	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
+	return is_adjacent_to(src, clicker)
 
 /atom/proc/pull_cost()
 	return 1
 
+/atom/New()
+	..()
+	update_strings()
+	update_icon()
+
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
 	if(move_sound)
 		play_local_sound(src, move_sound, 20, frequency = -1)
-
-/atom/proc/thrown_hit_by(var/atom/movable/projectile)
-	return FALSE
 
 /atom/proc/update_strings()
 	name = initial(name)

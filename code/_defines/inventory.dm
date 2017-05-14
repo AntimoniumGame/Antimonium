@@ -11,7 +11,8 @@
 #define SLOT_NECK       "neck"
 #define SLOT_LEFT_HAND  "left_inhand"
 #define SLOT_RIGHT_HAND "right_inhand"
-
+#define SLOT_HAT        "hat"
+#define SLOT_MOUTH      "mouth"
 
 #define BP_LEFT_FOOT  "left_foot"
 #define BP_RIGHT_FOOT "right_foot"
@@ -35,3 +36,4 @@
 #define SLOT_FLAG_HANDS       128
 #define SLOT_FLAG_HEAD        256
 #define SLOT_FLAG_EYES        512
+#define SLOT_FLAG_HAT        1024

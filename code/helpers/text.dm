@@ -29,3 +29,14 @@
 /proc/ticks2time(var/ticks)
 	var/seconds = round((ticks%600)/10)
 	return "[round(ticks/600)]:[seconds >= 10 ? seconds : "0[seconds]"]"
+
+
+/proc/format_string_for_speech(var/mob/speaker, var/message)
+	message = format_and_capitalize(sanitize_text(copytext(message,1,120)))
+	var/speak_verb = "says"
+	var/ending = copytext(message, length(message))
+	if(ending == "!")
+		speak_verb = "exclaims"
+	else if(ending == "?")
+		speak_verb = "asks"
+	return "<b>\The [speaker]</b> [speak_verb], \"[message]\""

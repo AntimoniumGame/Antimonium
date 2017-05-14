@@ -1,6 +1,3 @@
-/mob/human
-	var/obj/ui/doll/health/health
-
 /mob/human/create_ui()
 
 	inventory_slots[SLOT_FEET] =       new /obj/ui/inv/gear(src, "feet",       "1,2", SLOT_FEET,       SLOT_FLAG_FEET)
@@ -13,14 +10,9 @@
 	inventory_slots[SLOT_HEAD] =       new /obj/ui/inv/gear(src, "head",       "1,6", SLOT_HEAD,       SLOT_FLAG_HEAD)
 	inventory_slots[SLOT_EYES] =       new /obj/ui/inv/gear(src, "eyes",       "2,6", SLOT_EYES,       SLOT_FLAG_EYES)
 	inventory_slots[SLOT_NECK] =       new /obj/ui/inv/gear(src, "neck",       "3,6", SLOT_NECK,       SLOT_FLAG_NECK)
+	inventory_slots[SLOT_HAT] =        new /obj/ui/inv/gear(src, "hat",        "1,7", SLOT_HAT,        SLOT_FLAG_HAT)
 	inventory_slots[SLOT_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "3,1", SLOT_LEFT_HAND)
 	inventory_slots[SLOT_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "5,1", SLOT_RIGHT_HAND)
 	ui_screen += new /obj/ui/hide_inv(src)
-
-	for(var/slot in inventory_slots)
-		ui_screen += inventory_slots[slot]
-
-	health = new(src)
-	ui_screen += health
 
 	..()

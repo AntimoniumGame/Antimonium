@@ -16,15 +16,10 @@ var/list/vector_list = list()
 /*
 Inputs:
 	source = the atom being moved along the vector
-
 	start = the starting location
-
 	end = the target location (currently only used for calculating the vector direction)
-
 	speed = distance travelled in turfs-per-second
-
 	xo = pixel_x offset of the target location (optional)
-
 	yo = pixel_y offset of the target location (optional)
 */
 /vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16, spin = TRUE)
@@ -122,14 +117,3 @@ Inputs:
 
 		wait_nt(move_delay)
 	vector_list -= src
-
-/turf/proc/check_thrown_collision(var/atom/movable/thrown)
-	if(density)
-		if(!thrown.ethereal && !ethereal)
-			return TRUE
-		thrown_hit_by(thrown)
-	for(var/thing in (contents - thrown))
-		var/atom/movable/obstacle = thing
-		if(obstacle.thrown_hit_by(thrown))
-			return TRUE
-	return FALSE
