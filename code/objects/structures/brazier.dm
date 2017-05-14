@@ -1,6 +1,6 @@
 /obj/structure/brazier
 	name = "brazier"
-	icon = 'icons/structure/brazier.dmi'
+	icon = 'icons/objects/structures/brazier.dmi'
 	anchored = FALSE
 	hit_sound = 'sounds/effects/ding1.wav'
 

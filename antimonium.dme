@@ -18,7 +18,6 @@
 #define FILE_DIR "icons/objects/items"
 #define FILE_DIR "icons/objects/items/limbs"
 #define FILE_DIR "icons/objects/structures"
-#define FILE_DIR "icons/structure"
 #define FILE_DIR "icons/turfs"
 #define FILE_DIR "sounds"
 #define FILE_DIR "sounds/effects"
