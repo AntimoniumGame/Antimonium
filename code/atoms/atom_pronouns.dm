@@ -28,6 +28,9 @@
 			return "they"
 	return "it"
 
+/atom/proc/s()
+	return (gender == PLURAL) ? "" : "s"
+
 /atom/proc/themself()
 	switch(gender)
 		if(FEMALE)

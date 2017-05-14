@@ -14,6 +14,9 @@
 	if(.)
 		next_move = world.time + get_move_delay()
 		update_vision_cone()
+		for(var/mob/M in viewers(world.view, get_turf(src)))
+			if(M.client)
+				M.update_vision_cone()
 
 /mob/Bump(var/atom/movable/obstacle)
 	if(obstacle.pushed_by(src, dir))
@@ -36,7 +39,7 @@
 		. = ..()
 	else
 		if(intent.selecting == INTENT_HARM)
-			notify_nearby("\The [pusher] tries to move past \the [src], but [they()] block\s [pusher.them()].")
+			notify_nearby("\The [pusher] tries to move past \the [src], but [they()] block[s()] [pusher.them()].")
 			pusher.next_move = world.time + max(1, round(pusher.get_move_delay()/2))
 		else
 			glide_size = pusher.glide_size
