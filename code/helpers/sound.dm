@@ -68,7 +68,8 @@
 		playing.frequency = frequency
 
 	playing.volume = volume
-	playing.channel = 0
+	if(isnull(playing.channel))
+		playing.channel = SOUND_CHANNEL_DEFAULT
 	playing.wait = 0
 
 	var/turf/current_turf = get_turf(src)

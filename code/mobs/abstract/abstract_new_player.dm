@@ -5,6 +5,11 @@
 	var/obj/ui/options/options
 	var/joining = FALSE
 
+/mob/abstract/new_player/Login()
+	..()
+	if(lobby_music)
+		lobby_music.play(src)
+
 /mob/abstract/new_player/create_ui()
 
 	title_image = new(src)
@@ -51,10 +56,13 @@
 	do_fadeout(src, 10)
 	sleep(10)
 
+	if(client)
+		client.screen -= title_image
+		end_lobby_music(client)
+
 	var/mob/human/player_mob = new()
 	player_mob.force_move(locate(3,3,1))
 	player_mob.name = key
-	client.screen -= title_image
 	player_mob.key = key
 	qdel(src)
 
