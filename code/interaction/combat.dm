@@ -11,7 +11,7 @@
 	if(!limbs || !limbs.len)
 		return // Ghosts, new players.
 	var/target_limb
-	if(limbs[attacker.target_zone.selecting])
+	if(attacker && limbs[attacker.target_zone.selecting])
 		target_limb = attacker.target_zone.selecting
 	else
 		target_limb = pick(limbs)

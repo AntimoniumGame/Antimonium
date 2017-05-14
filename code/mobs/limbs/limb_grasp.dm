@@ -7,3 +7,6 @@
 	if(held)
 		owner.notify_nearby("\The [owner]'s broken [name] cannot hold [owner.their()] [held.name], and [held.they()] drop to the ground.")
 		owner.drop_item(held)
+
+/obj/item/limb/grasp/is_dextrous()
+	return TRUE

@@ -40,5 +40,5 @@
 /obj/ui/inv/hand/middle_clicked_on(var/mob/clicker)
 	. = ..()
 	if(. && holding)
-		owner.notify_nearby("\The [owner] drops \the [holding].")
+		owner.notify_nearby("\The [owner] drops \the [holding] from [owner.their()] [unmodified_name].")
 		owner.drop_item(holding)

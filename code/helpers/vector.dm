@@ -50,7 +50,7 @@ Inputs:
 	if(dist_y == 0) dist_y = 1
 
 	//convert turfs-per-second to pixels-per-tick
-	pixel_speed = (speed * TILE_WIDTH) / 60
+	pixel_speed = (speed * TILE_WIDTH) / world.fps
 
 	//first we work out how far we move each movement
 	if(abs(dist_x) > abs(dist_y))

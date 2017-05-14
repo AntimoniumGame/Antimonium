@@ -98,16 +98,14 @@ var/force_start = FALSE
 	set name = "Gibself"
 	set category = "Debug"
 
-	var/mob/human/victim = mob
-	if(!istype(victim))
-		dnotify("Only works on humans, sorry.")
-		return
-
 	blood_splatter(mob, mob)
+	var/mob/victim = mob
 	while(victim.limbs.len > 1)
 		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]
 		limb.sever_limb()
 		sleep(-1)
+	if(mob != victim)
+		qdel(victim)
 
 /client/verb/doggo()
 
@@ -120,4 +118,13 @@ var/force_start = FALSE
 
 	var/old_mob = mob
 	doggo.key = mob.key
+	doggo.update_strings()
+	doggo.notify("Woof woof.")
 	qdel(old_mob)
+
+/client/verb/set_client_fps()
+
+	set name = "Set Client FPS"
+	set category = "Debug"
+
+	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))

@@ -65,7 +65,7 @@
 	collect_item(grab, grabbing_slot)
 	var/obj/item/limb/limb = limbs[grabbing_with]
 	play_local_sound(src, 'sounds/effects/whoosh1.wav', 75)
-	notify_nearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.their()] [limb.name]!")
+	notify_nearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.their()] [limb.grasp_name]!")
 	grab.owner.do_attack_animation(grab.grabbed)
 
 

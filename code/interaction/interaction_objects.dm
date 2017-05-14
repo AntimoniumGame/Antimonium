@@ -20,7 +20,8 @@
 /obj/item/handle_clicked_on(var/mob/clicker, var/slot)
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)))
 		if(!clicker.get_equipped(slot))
-			notify_nearby("\The [clicker] picks up \the [src].")
+			var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
+			notify_nearby("\The [clicker] picks up \the [src] in [clicker.their()] [inv_slot.name].")
 			play_local_sound(src, collect_sound, 50)
 			clicker.collect_item(src, slot)
 			return
