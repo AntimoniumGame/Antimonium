@@ -12,6 +12,8 @@
 
 /mob/abstract/new_player/create_ui()
 
+	..()
+
 	title_image = new(src)
 	setup = new(src)
 	join = new(src)
@@ -67,15 +69,14 @@
 	qdel(src)
 
 /mob/abstract/new_player/do_say(var/message)
-	var/list/result = format_string_for_speech(src, message)
-	next_speech = world.time + 15
-	message = "<b>LOBBY:</b> [result[1]]"
+	next_speech = world.time + 5
+	message = "<b>LOBBY:</b> [format_string_for_speech(src, message)]"
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)
 			to_chat(listener, message)
 
 /mob/abstract/new_player/do_emote(var/message)
-	next_speech = world.time + 25
+	next_speech = world.time + 5
 	message = format_and_capitalize("<b>LOBBY:</b> <b>\The [src]</b> [sanitize_text(message)]")
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)

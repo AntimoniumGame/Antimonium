@@ -7,7 +7,7 @@
 	var/contact_size = 1
 	var/weight = 1
 	var/sharpness = 1
-	var/list/attack_verbs = list("attacks")
+	var/list/attack_verbs = list("bashes")
 	var/name_prefix
 
 	var/hit_sound = 'sounds/effects/punch1.wav'
