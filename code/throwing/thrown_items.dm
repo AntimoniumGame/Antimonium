@@ -2,7 +2,7 @@
 	if(!thrower.on_combat_cooldown() && thrower.drop_item(src))
 		thrower.set_combat_cooldown(4)
 		thrower.notify_nearby("\The [thrower] hurls \the [src]!")
-		if(prob(30))
+		if(prob(20))
 			var/atom/new_target = get_turf(target)
 			new_target = get_step(new_target, pick(all_dirs))
 			if(istype(new_target))
@@ -22,5 +22,20 @@
 				target = new_target
 		grabbed.thrown_at(target, thrower)
 		qdel(src)
+		return TRUE
+	return FALSE
+
+/obj/item/stack/throw_at(var/mob/thrower, var/atom/target)
+	if(!thrower.on_combat_cooldown())
+		thrower.set_combat_cooldown(4)
+		var/obj/item/stack/throwing = new type(get_turf(thrower), 1)
+		thrower.notify_nearby("\The [thrower] hurls \the [throwing]!")
+		if(prob(20))
+			var/atom/new_target = get_turf(target)
+			new_target = get_step(new_target, pick(all_dirs))
+			if(istype(new_target))
+				target = new_target
+		throwing.thrown_at(target, thrower)
+		remove(1)
 		return TRUE
 	return FALSE

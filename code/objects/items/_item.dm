@@ -44,3 +44,9 @@
 
 /obj/item/proc/get_inv_icon()
 	return get_worn_icon("held")
+
+/obj/item/destroy()
+	var/mob/owner = loc
+	if(istype(owner))
+		owner.drop_item(src)
+	. = ..()

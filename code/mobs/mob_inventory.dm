@@ -34,3 +34,9 @@
 	var/obj/ui/inv/inv_slot = inventory_slots[slot_id]
 	if(inv_slot)
 		return inv_slot.holding
+
+/mob/proc/update_inventory()
+	for(var/slot_id in inventory_slots)
+		var/obj/ui/inv/slot = inventory_slots[slot_id]
+		slot.update_icon()
+		slot.update_strings()

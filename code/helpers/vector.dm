@@ -45,6 +45,10 @@ Inputs:
 	var/dist_x = target_loc_x - start_loc_x
 	var/dist_y = target_loc_y - start_loc_y
 
+	// avoiding a division by zero runtime
+	if(dist_x == 0) dist_x = 1
+	if(dist_y == 0) dist_y = 1
+
 	//convert turfs-per-second to pixels-per-tick
 	pixel_speed = (speed * TILE_WIDTH) / world.fps
 

@@ -9,10 +9,11 @@
 "i" = (/obj/structure/stake,/turf,/area/lighting)
 "j" = (/obj/item/horseshoe,/turf,/area/lighting)
 "k" = (/obj/item/dartboard,/turf,/area/lighting)
-"l" = (/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/turf,/area/lighting)
-"m" = (/obj/item/clothing/boots,/turf,/area/lighting)
-"n" = (/obj/item/clothing/shirt,/turf,/area/lighting)
-"o" = (/obj/item/clothing/pants,/turf,/area/lighting)
+"l" = (/obj/item/stack,/turf,/area/lighting)
+"m" = (/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/obj/item/weapon/dart,/turf,/area/lighting)
+"n" = (/obj/item/clothing/boots,/turf,/area/lighting)
+"o" = (/obj/item/clothing/shirt,/turf,/area/lighting)
+"p" = (/obj/item/clothing/pants,/turf,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -32,17 +33,17 @@ abcbbbbbbbbcbabbbbbbbbbbaabbba
 abbbbbbbbbbbbabbbbbcbbbbbabbba
 aaaaaaaaabbaaabbbbbbbbbbbabeba
 acbijbbbkbbbbabbbbbbbhbbbabbba
-abdbbbbbbbbbbabbbfbbbfbbbabbba
+abdblbbbbbbbbabbbfbbbfbbbabbba
 abbbbbgbbbbbbabbbbbbbbbbbabbba
-abbjbbbbbbfbbabdbbbbbbbbbbbbba
-abjjbbbblbbbbabbbbbcbbbbbbbbba
+abbjbblbbbfbbabdbbbbbbbbbbbbba
+abjlbbbbmbbbbabbbbbcbbbbbbbbba
 abbbbbbbbbbbbabbbbbbbbbbbabbba
 aaaabbaaaaaaaaabbaaaaaaaaabbba
 abbbbbbbbbbbbbbbbbbbbbbbbabdba
 acbbbbbbbbbbbbbbbbbbbbbbcabbba
 aaaaaaaaaaaaabbaaaaaaaaaaabbba
-acbbbmbbbbbbbbbbbbbbbbbbbbbbba
-abbbbnobebbbbbbbbbbbbebbbbbbba
+acbbbnbbbbbbbbbbbbbbbbbbbbbbba
+abbbbopbebbbbbbbbbbbbebbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbca
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
