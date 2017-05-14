@@ -1,8 +1,8 @@
 /obj/item/grab
 	icon = 'icons/objects/items/grab.dmi'
-	simulated = FALSE
 	var/mob/human/owner
 	var/atom/movable/grabbed
+	interaction_flags = 0
 
 /obj/item/grab/New(var/mob/human/_owner, var/atom/movable/_grabbed)
 	..(_owner)
@@ -64,7 +64,7 @@
 	var/obj/item/grab/grab = new(src, grabbing)
 	collect_item(grab, grabbing_slot)
 	var/obj/item/limb/limb = limbs[grabbing_with]
-	play_local_sound(src, 'sounds/effects/whoosh1.wav', 100)
+	play_local_sound(src, 'sounds/effects/whoosh1.wav', 75)
 	notify_nearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.their()] [limb.name]!")
 	grab.owner.do_attack_animation(grab.grabbed)
 

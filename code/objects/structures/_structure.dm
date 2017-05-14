@@ -1,8 +1,7 @@
 /obj/structure
 	name = "structure"
-	icon = 'icons/structure/_default.dmi'
+	icon = 'icons/objects/structures/crate.dmi'
 	density = 1
-	anchored = TRUE
 	default_material_path = /data/material
 	move_sound = 'sounds/effects/scrape1.wav'
 

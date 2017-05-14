@@ -55,7 +55,7 @@
 	glide_size = pusher.glide_size
 	if(step_towards(src, get_step(src, push_dir)))
 		if(move_sound)
-			play_local_sound(src, move_sound, 20, frequency = -1)
+			play_local_sound(src, move_sound, 50, frequency = -1)
 		notify_nearby("\The [pusher] pushes \the [src].")
 	return TRUE
 

@@ -4,9 +4,8 @@
 	layer = 3
 	screen_loc = "CENTER,CENTER"
 	icon = 'icons/images/ui.dmi'
-	simulated = FALSE
-	anchored = TRUE
 	var/mob/owner
+	interaction_flags = FLAG_ANCHORED | FLAG_ETHEREAL
 
 /obj/ui/destroy()
 	owner = null

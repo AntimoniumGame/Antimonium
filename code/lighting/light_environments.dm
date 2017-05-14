@@ -59,10 +59,9 @@
 
 /obj/area_edge
 	name = ""
-	simulated = FALSE
-	anchored = TRUE
 	mouse_opacity = 0
 	var/area/associated_area
+	interaction_flags = FLAG_ANCHORED | FLAG_ETHEREAL
 
 /obj/area_edge/New(var/newloc, var/area/_area)
 	..()

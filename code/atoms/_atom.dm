@@ -2,12 +2,10 @@
 	name = ""
 	plane = MASTER_PLANE
 	layer = UNDERLAY_LAYER
-	var/simulated = TRUE
-	var/ethereal = FALSE
+	var/interaction_flags = FLAG_SIMULATED | FLAG_THROWN_SPIN
 
 /atom/movable
 	animate_movement = SLIDE_STEPS
-	var/anchored = FALSE
 	var/dragged = FALSE
 	var/self_move = FALSE
 	var/move_sound
@@ -38,7 +36,7 @@
 
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
 	if(move_sound)
-		play_local_sound(src, move_sound, 20, frequency = -1)
+		play_local_sound(src, move_sound, 35, frequency = -1)
 
 /atom/proc/update_strings()
 	name = initial(name)

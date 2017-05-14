@@ -27,10 +27,6 @@ Inputs:
 	owner = source
 	initial_pixel_y = source.pixel_y
 	initial_pixel_y = source.pixel_y
-	if(spin)
-		spin_counter = 0
-		owner.update_strings()
-		owner.name = "flying [owner.name]"
 
 	if(!start) start = get_turf(source)
 	var/turf/src_turf = get_turf(start)
@@ -68,6 +64,11 @@ Inputs:
 
 	coord_x = start_loc_x
 	coord_y = start_loc_y
+
+	if(spin && (owner.interaction_flags & FLAG_THROWN_SPIN))
+		spin_counter = 0
+		owner.update_strings()
+		owner.name = "flying [owner.name]"
 
 //call to kick off the vector movement
 // allows the calling proc to continue and runs immediately after the parent proc sleeps or ends
