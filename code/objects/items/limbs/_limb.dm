@@ -6,6 +6,7 @@
 	sharpness = 1
 	attack_verbs = list("bludgeons", "batters", "whacks")
 
+	var/limb_name
 	var/root_limb = FALSE
 	var/limb_id
 	var/mob/human/owner
@@ -19,18 +20,23 @@
 /obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_limb_id, var/_parent, var/_root, var/_vital, var/_size)
 	..(_owner)
 	owner = _owner
-	name = _name
+	limb_name = _name
+	name = limb_name
 	icon = _icon
 	limb_id = _limb_id
 	vital = _vital
 	root_limb = _root
 
-	contact_size = _size      // Reusing contact_size as an 'effective limb
-	weight = (contact_size*2) // size' for the purposes of bleeding etc.
+	contact_size = _size  // Reusing contact_size as an 'effective limb
+	weight = contact_size // size' for the purposes of bleeding etc.
 
 	if(_parent)
 		parent = owner.limbs[_parent]
 		parent.children += src
+
+/obj/item/limb/update_strings()
+	..()
+	name = limb_name
 
 /obj/item/limb/proc/is_bleeding()
 	if(wounds.len)

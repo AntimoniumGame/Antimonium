@@ -14,7 +14,7 @@
 
 /proc/play_client_sound(var/client/player, var/atom/origin, var/sound, var/volume, var/frequency)
 
-	if(!sound || !origin || !player.mob)
+	if(!sound || !player.mob)
 		return
 
 	if(isnull(frequency))
@@ -72,13 +72,13 @@
 	playing.wait = 0
 
 	var/turf/current_turf = get_turf(src)
-	playing.environment = current_turf.get_sound_environment()
-
-	// 3D sound.
-	if(istype(origin))
-		playing.x = origin.x - current_turf.x
-		playing.z = origin.y - current_turf.y
-		playing.y = 1 // No idea why y for sound == z for the map.
+	if(istype(current_turf))
+		playing.environment = current_turf.get_sound_environment()
+		// 3D sound.
+		if(istype(origin))
+			playing.x = origin.x - current_turf.x
+			playing.z = origin.y - current_turf.y
+			playing.y = 1 // No idea why y for sound == z for the map.
 	src << playing
 
 /turf/proc/get_sound_environment()
@@ -90,8 +90,8 @@ var/mob/human/next_footstep = 0
 	if(. && world.time > next_footstep)
 		var/turf/current_turf = get_turf(src)
 		if(istype(current_turf))
-			next_footstep = world.time + 4
-			play_local_sound(src, current_turf.get_footstep_sound(src), 30)
+			next_footstep = world.time + get_move_delay()*2.5
+			play_local_sound(src, current_turf.get_footstep_sound(src), 5)
 
 /turf/proc/get_footstep_sound(var/mob/walker)
 	return 'sounds/effects/footstep1.wav'

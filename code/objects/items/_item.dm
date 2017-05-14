@@ -17,6 +17,10 @@ Item interactions:
 	var/list/attack_verbs = list("attacks")
 	var/name_prefix
 
+	var/hit_sound = 'sounds/effects/punch1.wav'
+	var/collect_sound = 'sounds/effects/click1.wav'
+	var/equip_sound = 'sounds/effects/rustle1.wav'
+
 /obj/item/update_values()
 	sharpness = initial(sharpness)
 	weight =    initial(weight)
@@ -36,9 +40,6 @@ Item interactions:
 		else
 			name = "[initial(name)]"
 
-/obj/item/proc/process()
-	return
-
 /obj/item/proc/use(var/mob/user)
 	return
 
@@ -55,6 +56,7 @@ Item interactions:
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)))
 		if(!clicker.get_equipped(slot))
 			notify_nearby("\The [clicker] picks up \the [src].")
+			play_local_sound(src, collect_sound, 50)
 			clicker.collect_item(src, slot)
 			return
 	. = ..()
@@ -62,10 +64,14 @@ Item interactions:
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
 	if(!simulated)
 		return
+	user.do_attack_animation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
+		play_local_sound(src, 'sounds/effects/punch1.wav', 10)
 		user.notify_nearby("\The [user] prods \the [target] with \the [src].")
 	else
+		play_local_sound(src, 'sounds/effects/whoosh1.wav', 100)
 		user.notify_nearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
+		play_local_sound(src, hit_sound, 50)
 		if(weight || sharpness)
 			target.resolve_physical_attack(user, weight, sharpness, contact_size, src)
 
@@ -77,6 +83,7 @@ Item interactions:
 /obj/item/attacked_by(var/mob/user, var/obj/item/thing)
 	if(!simulated || !thing.simulated)
 		return
+	user.do_attack_animation(src, thing)
 	user.notify_nearby("\The [user] pokes \the [src] with \the [thing].")
 
 /obj/item/proc/before_dropped()

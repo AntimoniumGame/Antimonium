@@ -28,12 +28,12 @@
 /obj/ui/join_game/update_icon()
 	if(!game_state || game_state.ident != GAME_RUNNING)
 		icon_state = "join_off"
+		if(game_start_time - world.time >= 0)
+			maptext = "<center><b>[ticks2time(game_start_time - world.time)]<center></b>"
+		else
+			maptext = null
 	else
 		icon_state = "join_on"
-
-	if(game_start_time - world.time >= 0)
-		maptext = "<center><b>[ticks2time(game_start_time - world.time)]<center></b>"
-	else
 		maptext = null
 
 /obj/ui/join_game/left_clicked_on(var/mob/clicker)
@@ -41,6 +41,8 @@
 	if(.)
 		var/mob/new_player/player = clicker
 		if(istype(player))
+			if(player.client)
+				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)
 			player.join_game()
 
 /obj/ui/join_game/right_clicked_on(var/mob/clicker)
@@ -48,6 +50,8 @@
 	if(.)
 		var/mob/new_player/player = clicker
 		if(istype(player))
+			if(player.client)
+				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)
 			player.join_game()
 
 /obj/ui/join_game/middle_clicked_on(var/mob/clicker)
@@ -55,6 +59,8 @@
 	if(.)
 		var/mob/new_player/player = clicker
 		if(istype(player))
+			if(player.client)
+				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 50, -1)
 			player.join_game()
 
 /obj/ui/title

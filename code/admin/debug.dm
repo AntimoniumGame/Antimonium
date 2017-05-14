@@ -84,3 +84,19 @@ var/force_start = FALSE
 	player_mob.name = mob.key
 	player_mob.key = mob.key
 	qdel(old_mob)
+
+/client/verb/gibself()
+
+	set name = "Gibself"
+	set category = "Debug"
+
+	var/mob/human/victim = mob
+	if(!istype(victim))
+		dnotify("Only works on humans, sorry.")
+		return
+
+	blood_splatter(mob, mob)
+	while(victim.limbs.len > 1)
+		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]
+		limb.sever_limb()
+		sleep(-1)

@@ -47,3 +47,6 @@ Object interactions:
 
 /obj/proc/manipulated_by(var/mob/user, var/slot)
 	return
+
+/obj/proc/process()
+	return

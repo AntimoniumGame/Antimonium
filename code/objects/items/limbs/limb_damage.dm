@@ -37,7 +37,7 @@
 	var/data/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
 	wounds += wound
 	set_pain(max(pain, wound.severity))
-	owner.notify("<b>The attack leaves your [name] with [wound.get_descriptor()]!</b>")
+	owner.notify("<b>The blow leaves your [name] with [wound.get_descriptor()]!</b>")
 	update_limb_state()
 
 /obj/item/limb/proc/break_bone()
@@ -70,6 +70,7 @@
 			parent.children -= src
 			parent = null
 
+		play_local_sound(src, pick(list('sounds/effects/gore1.wav','sounds/effects/gore2.wav','sounds/effects/gore3.wav')), 100)
 		owner.notify_nearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))

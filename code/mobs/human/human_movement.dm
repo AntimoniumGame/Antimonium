@@ -37,6 +37,7 @@
 				grab.check_state()
 
 /mob/human/handle_dragged(var/turf/from_turf, var/turf/to_turf)
+	..()
 	if(prone)
 		for(var/thing in injured_limbs)
 			var/obj/item/limb/limb = thing

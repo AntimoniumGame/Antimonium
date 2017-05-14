@@ -10,6 +10,7 @@
 	var/anchored = FALSE
 	var/dragged = FALSE
 	var/self_move = FALSE
+	var/move_sound
 
 /atom/proc/update_icon()
 	return
@@ -23,11 +24,12 @@
 /atom/proc/middle_clicked_on(var/mob/clicker)
 	return
 
-/atom/movable/proc/pull_cost()
+/atom/proc/pull_cost()
 	return 1
 
 /atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
-	return
+	if(move_sound)
+		play_local_sound(src, move_sound, 20, frequency = -1)
 
 /atom/proc/thrown_hit_by(var/atom/movable/projectile)
 	return FALSE

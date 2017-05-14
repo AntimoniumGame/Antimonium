@@ -2,6 +2,8 @@
 	if(!istype(bleeding_on, /turf))
 		bleeding_on = get_turf(bleeding_on)
 	if(istype(bleeding_on))
+		if(!(locate(/obj/effect/random/blood) in bleeding_on))
+			play_local_sound(bleeding_on, 'sounds/effects/drip1.wav', 50)
 		new /obj/effect/random/blood(bleeding_on, bleeder)
 
 /proc/blood_smear(var/mob/bleeder, var/turf/from_turf, var/turf/to_turf)
