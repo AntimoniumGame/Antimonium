@@ -45,6 +45,9 @@
 
 /mob/human/proc/grab_atom(var/atom/movable/grabbing, var/grabbing_with)
 
+	if(!is_adjacent_to(src, grabbing))
+		return
+
 	if(get_equipped(grabbing_with))
 		notify("You need a free hand to grab \the [grabbing].")
 		return

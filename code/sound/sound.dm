@@ -37,7 +37,7 @@
 
 	for(var/thing in clients)
 		var/client/player = thing
-		if(!player.mob)
+		if(!istype(player) || !player.mob)
 			continue
 		var/turf/mob_turf = get_turf(player.mob)
 		if(!istype(mob_turf))

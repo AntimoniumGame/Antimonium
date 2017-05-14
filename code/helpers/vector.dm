@@ -2,15 +2,15 @@ var/list/vector_list = list()
 
 /vector
 	var/atom/movable/owner
-	var/coord_x          // current x location (in pixel coordinates)
-	var/coord_y          // current y location (in pixel coordinates)
-	var/inc_x            // x increment per step
-	var/inc_y            // y increment per step
-	var/move_delay       // ticks between each move
-	var/pixel_speed      // speed in pixels per tick
-	var/initial_pixel_x  // initial owner pixel_x offset
-	var/initial_pixel_y  // initial owner pixel_y offset
-	var/turf/target_turf // destination
+	var/coord_x           // current x location (in pixel coordinates)
+	var/coord_y           // current y location (in pixel coordinates)
+	var/inc_x             // x increment per step
+	var/inc_y             // y increment per step
+	var/move_delay        // ticks between each move
+	var/pixel_speed       // speed in pixels per tick
+	var/initial_pixel_x   // initial owner pixel_x offset
+	var/initial_pixel_y   // initial owner pixel_y offset
+	var/turf/target_turf  // destination
 	var/spin_counter = -1 // spinning iterator
 
 /*
@@ -37,9 +37,11 @@ Inputs:
 		owner.update_strings()
 		owner.name = "flying [owner.name]"
 
+	if(!start) start = get_turf(source)
 	var/turf/src_turf = get_turf(start)
 	target_turf = get_turf(end)
 
+	owner.dragged = TRUE
 	owner.force_move(src_turf)
 
 	//convert to pixel coordinates
@@ -106,6 +108,7 @@ Inputs:
 			if((owner.loc == target_turf) || T.check_thrown_collision(owner) || !owner.Move(T))
 				owner.pixel_x = initial_pixel_x
 				owner.pixel_y = initial_pixel_y
+				owner.dragged = FALSE
 				owner.transform = null
 				owner.update_icon()
 				owner.update_strings()
