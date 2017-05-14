@@ -2,21 +2,26 @@
 	name = "left hand"
 	screen_loc = "7,2"
 
-/obj/ui/inv/hand/left_clicked_on(var/mob/clicker)
+/obj/ui/inv/hand/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
-		do_hand_switch(SLOT_LEFT_HAND, SLOT_RIGHT_HAND)
+		if(slot == slot_id)
+			if(holding)
+				holding.use(owner)
+		else if(slot == SLOT_LEFT_HAND)
+			do_hand_switch(SLOT_LEFT_HAND, SLOT_RIGHT_HAND)
 
-/obj/ui/inv/hand/right_clicked_on(var/mob/clicker)
+/obj/ui/inv/hand/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
-		do_hand_switch(SLOT_RIGHT_HAND, SLOT_LEFT_HAND)
+		if(slot == slot_id)
+			if(holding)
+				holding.use(owner)
+		else if(slot == SLOT_RIGHT_HAND)
+			do_hand_switch(SLOT_RIGHT_HAND, SLOT_LEFT_HAND)
 
 /obj/ui/inv/hand/proc/do_hand_switch(var/first_slot, var/second_slot)
-	if(slot_id == first_slot)
-		if(holding)
-			holding.use(owner)
-	else if(slot_id == second_slot)
+	if(slot_id == second_slot)
 		var/obj/ui/inv/inv_slot = owner.inventory_slots[first_slot]
 		if(holding && inv_slot.holding)
 			holding.attacked_by(owner, inv_slot.holding)

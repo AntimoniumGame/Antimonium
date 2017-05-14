@@ -49,12 +49,12 @@
 	else
 		color= DARK_BLUE
 
-/obj/ui/target_doll_component/left_clicked_on(var/mob/clicker)
+/obj/ui/target_doll_component/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
 		controller.set_selecting(limb_id)
 
-/obj/ui/target_doll_component/right_clicked_on(var/mob/clicker)
+/obj/ui/target_doll_component/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
 		controller.set_selecting(limb_id)

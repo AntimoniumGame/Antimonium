@@ -7,7 +7,7 @@
 	if(!owner)
 		return
 
-	var/wound_depth = (attack_sharpness * attack_weight) / attack_contact_size
+	var/wound_depth = (attack_sharpness * attack_weight) / max(1,attack_contact_size)
 	var/wound_severity = (attack_weight * attack_contact_size)
 	var/wound_type = (attack_sharpness > 1) ? WOUND_CUT : WOUND_BRUISE
 

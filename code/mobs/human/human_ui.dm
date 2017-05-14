@@ -13,6 +13,5 @@
 	inventory_slots[SLOT_HAT] =        new /obj/ui/inv/gear(src, "hat",        "1,7", SLOT_HAT,        SLOT_FLAG_HAT)
 	inventory_slots[SLOT_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "3,1", SLOT_LEFT_HAND)
 	inventory_slots[SLOT_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "5,1", SLOT_RIGHT_HAND)
-	ui_screen += new /obj/ui/hide_inv(src)
 
 	..()

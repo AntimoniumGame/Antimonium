@@ -1,8 +1,8 @@
-/obj/left_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, SLOT_LEFT_HAND)
+/obj/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+	handle_clicked_on(clicker, slot)
 
-/obj/right_clicked_on(var/mob/clicker)
-	handle_clicked_on(clicker, SLOT_RIGHT_HAND)
+/obj/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
+	handle_clicked_on(clicker, slot)
 
 /obj/proc/handle_clicked_on(var/mob/clicker, var/slot)
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)))

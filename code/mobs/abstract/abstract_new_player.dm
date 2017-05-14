@@ -7,6 +7,7 @@
 
 /mob/abstract/new_player/Login()
 	..()
+	null_loc()
 	if(lobby_music)
 		lobby_music.play(src)
 

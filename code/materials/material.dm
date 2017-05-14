@@ -32,3 +32,9 @@
 	strength = 0.5
 	weight_modifier = 2
 	sharpness_modifier = 0.4
+
+/data/material/gold
+	name = "gold"
+	strength = 0.1
+	weight_modifier = 3
+	sharpness_modifier = 0.1

@@ -3,7 +3,7 @@
 	var/list/limbs = list()
 
 /mob/proc/can_use_limb(var/slot)
-	var/obj/item/limb/grasp/hand = limbs[slot]
+	var/obj/item/limb/hand = limbs[slot]
 	if(!istype(hand))
 		notify("You are missing that limb!")
 		return FALSE
