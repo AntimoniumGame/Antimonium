@@ -16,7 +16,8 @@
 	return 1
 
 /mob/abstract/create_ui()
-	return
+	// This is simply to avoid a null intent selector runtime.
+	intent = new(src) // It doesn't need to be tracked or accessible.
 
 /mob/abstract/left_click_on(var/atom/thing, var/ctrl, var/alt)
 	return

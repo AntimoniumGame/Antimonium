@@ -4,6 +4,8 @@
 	density = 0
 	layer = TURF_LAYER+0.2
 	interaction_flags = FLAG_SIMULATED | FLAG_ANCHORED
+	contact_size = 5
+	weight = 3
 
 /obj/item/dartboard/New()
 	..()
@@ -30,16 +32,17 @@
 	var/result = rand(10) + dart.contact_size
 	switch(result)
 		if(1)
-			notify_nearby("\The [projectile] misses \the [src] completely!")
-			return FALSE
-		if(2 to 3)
 			result = "wooden frame..."
-		if(4 to 6)
+		if(2 to 5)
 			result = "outer ring."
-		if(7 to 9)
+		if(6 to 9)
 			result = "inner ring!"
 		else
-			result = "bullseye!"
+			if(result >= 10)
+				result = "bullseye!"
+			else
+				notify_nearby("\The [projectile] misses \the [src] completely!")
+				return FALSE
 
 	projectile.force_move(get_turf(src))
 	play_local_sound(src, 'sounds/effects/thunk1.ogg', 100)

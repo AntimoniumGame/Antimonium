@@ -1,6 +1,6 @@
 /obj/item/weapon/pipe
 	name = "pipe"
-	sharpness = 1
+	sharpness = 0
 	weight = 5
 	contact_size = 3
 	icon = 'icons/objects/items/pipe.dmi'

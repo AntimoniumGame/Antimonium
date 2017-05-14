@@ -6,7 +6,7 @@
 	hit_sound = 'sounds/effects/ding1.wav'
 
 /obj/structure/stake/thrown_hit_by(var/atom/movable/projectile)
-	if(prob(50))
+	if(prob(75))
 		projectile.force_move(get_turf(src))
 		play_local_sound(src, hit_sound, 100)
 		notify_nearby("\The [projectile] clangs against the stake!")
