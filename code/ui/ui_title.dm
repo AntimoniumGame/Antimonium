@@ -28,12 +28,12 @@
 /obj/ui/join_game/update_icon()
 	if(!game_state || game_state.ident != GAME_RUNNING)
 		icon_state = "join_off"
+		if(game_start_time - world.time >= 0)
+			maptext = "<center><b>[ticks2time(game_start_time - world.time)]<center></b>"
+		else
+			maptext = null
 	else
 		icon_state = "join_on"
-
-	if(game_start_time - world.time >= 0)
-		maptext = "<center><b>[ticks2time(game_start_time - world.time)]<center></b>"
-	else
 		maptext = null
 
 /obj/ui/join_game/left_clicked_on(var/mob/clicker)

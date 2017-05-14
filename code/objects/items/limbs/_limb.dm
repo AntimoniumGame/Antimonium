@@ -27,8 +27,8 @@
 	vital = _vital
 	root_limb = _root
 
-	contact_size = _size      // Reusing contact_size as an 'effective limb
-	weight = (contact_size*2) // size' for the purposes of bleeding etc.
+	contact_size = _size  // Reusing contact_size as an 'effective limb
+	weight = contact_size // size' for the purposes of bleeding etc.
 
 	if(_parent)
 		parent = owner.limbs[_parent]
