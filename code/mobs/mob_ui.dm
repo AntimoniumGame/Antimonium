@@ -1,4 +1,5 @@
 /mob
+	var/obj/ui/doll/health/health
 	var/obj/ui/doll/target/target_zone
 	var/obj/ui/intent/intent
 	var/list/ui_screen = list()
@@ -23,6 +24,10 @@
 	refresh_ui()
 
 /mob/proc/create_ui()
+
+	vision_cone = new(src)
+	ui_screen += vision_cone
+
 	intent = new(src)
 	ui_screen += intent
 	ui_screen += intent.help
@@ -32,6 +37,12 @@
 	ui_screen += target_zone
 	ui_screen += target_zone.components
 
+	health = new(src)
+	ui_screen += health
+
+	for(var/slot in inventory_slots)
+		ui_screen += inventory_slots[slot]
+
 /mob/proc/refresh_ui()
 	if(client)
 		client.screen.Cut()
@@ -40,3 +51,4 @@
 		client.images |= ui_images
 		client.onResize()
 	refresh_lighting()
+	update_vision_cone()

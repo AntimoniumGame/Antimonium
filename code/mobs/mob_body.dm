@@ -1,8 +1,18 @@
-/mob/human
+/mob
+	var/list/injured_limbs = list()
 	var/list/limbs = list()
 
-/mob/human/proc/create_limbs()
+/mob/proc/can_use_limb(var/slot)
+	var/obj/item/limb/grasp/hand = limbs[slot]
+	if(!istype(hand))
+		notify("You are missing that limb!")
+		return FALSE
+	if(hand.broken)
+		notify("Your [hand.name] is broken and unusable.")
+		return FALSE
+	return TRUE
 
+/mob/proc/create_limbs()
 	// Order is important; make sure limbs with parents are created AFTER their parent.
 	limbs[BP_CHEST] =      new /obj/item/limb(src,       "upper body",  'icons/objects/items/limbs/chest.dmi',      BP_CHEST ,     _root = TRUE, _vital = TRUE, _size = 10)
 	limbs[BP_GROIN] =      new /obj/item/limb(src,       "lower body",  'icons/objects/items/limbs/groin.dmi',      BP_GROIN,      BP_CHEST,     _vital = TRUE, _size = 10)
@@ -15,13 +25,3 @@
 	limbs[BP_RIGHT_LEG] =  new /obj/item/limb/stance(src, "right leg",  'icons/objects/items/limbs/right_leg.dmi',  BP_RIGHT_LEG,  BP_GROIN,     _size = 6)
 	limbs[BP_LEFT_FOOT] =  new /obj/item/limb/stance(src, "left foot",  'icons/objects/items/limbs/left_foot.dmi',  BP_LEFT_FOOT,  BP_LEFT_LEG,  _size = 3)
 	limbs[BP_RIGHT_FOOT] = new /obj/item/limb/stance(src, "right foot", 'icons/objects/items/limbs/right_foot.dmi', BP_RIGHT_FOOT, BP_RIGHT_LEG, _size = 3)
-
-/mob/human/proc/check_hand(var/slot)
-	var/obj/item/limb/grasp/hand = limbs[slot]
-	if(!istype(hand))
-		notify("You are missing that limb!")
-		return FALSE
-	if(hand.broken)
-		notify("Your [hand.name] is broken and unusable.")
-		return FALSE
-	return TRUE

@@ -1,29 +1,27 @@
 /mob/proc/left_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(dead)
-		return
-	face_atom(thing)
-	thing.left_clicked_on(src)
-
-/mob/proc/middle_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(dead)
-		return
-	face_atom(thing)
-	thing.middle_clicked_on(src)
+	try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD)
 
 /mob/proc/right_click_on(var/atom/thing, var/ctrl, var/alt)
-	if(dead)
-		return
-	face_atom(thing)
-	thing.right_clicked_on(src)
+	try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD)
+
+/mob/proc/middle_click_on(var/atom/thing, var/ctrl, var/alt)
+	if(!dead)
+		face_atom(thing)
+		thing.middle_clicked_on(src)
+
+/mob/human/left_click_on(var/atom/thing, var/ctrl, var/alt)
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
+		thing.left_clicked_on(src)
+
+/mob/human/right_click_on(var/atom/thing, var/ctrl, var/alt)
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
+		thing.right_clicked_on(src)
 
 /mob/left_clicked_on(var/mob/clicker)
 	handle_interaction(clicker, SLOT_LEFT_HAND)
 
 /mob/right_clicked_on(var/mob/clicker)
 	handle_interaction(clicker, SLOT_RIGHT_HAND)
-
-/mob/middle_clicked_on(var/mob/clicker)
-	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [src].")
 
 /mob/proc/handle_interaction(var/mob/person, var/slot_id)
 	if(!is_adjacent_to(get_turf(src), get_turf(person)))
@@ -54,10 +52,7 @@
 		attack_self()
 
 /mob/proc/attack_self()
-	if(on_combat_cooldown())
-		return
-	set_combat_cooldown(2)
-	notify_nearby("\The [src] scratches \his head.")
+	return
 
 /mob/proc/attack(var/mob/target)
 	if(on_combat_cooldown())
@@ -70,3 +65,15 @@
 		notify_nearby("\The [src] punches \the [target]!")
 		play_local_sound(src, 'sounds/effects/punch1.wav', 40)
 		target.resolve_physical_attack(src, 5, 0, 5, null)
+
+/mob/proc/try_general_interaction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
+	if(!dead && can_use_limb(limb))
+		face_atom(thing)
+		if(ctrl && thing.is_grabbable())
+			grab_atom(thing, limb, slot)
+			return TRUE
+		else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
+			var/obj/item/throwing = get_equipped(slot)
+			if(throwing && throwing.throw_at(src, thing))
+				return TRUE
+	return FALSE

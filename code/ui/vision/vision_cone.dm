@@ -38,15 +38,6 @@
 /mob
 	var/obj/ui/vision_cone/vision_cone
 
-/mob/create_ui()
-	vision_cone = new(src)
-	ui_screen += vision_cone
-	. = ..()
-
-/mob/refresh_ui()
-	. = ..()
-	update_vision_cone()
-
 /client
 	var/list/hidden_atoms = list()
 	var/list/hidden_mobs = list()
