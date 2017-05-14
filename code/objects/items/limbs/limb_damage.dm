@@ -74,8 +74,7 @@
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
-		force_move(get_turf(owner))
-		step(src, pick(cardinal_dirs))
+		thrown_at(get_step(src, pick(all_dirs)))
 		blood_splatter(owner, loc)
 
 		owner.update_icon()

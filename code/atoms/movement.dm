@@ -117,3 +117,8 @@
 		else		direction = WEST
 	if(direction != dir)
 		set_dir(direction)
+
+/atom/movable/proc/thrown_at(var/atom/target, var/mob/thrower)
+	force_move(get_turf(src))
+	var/vector/V = new(src, thrower, target)
+	V.Initialize()
