@@ -18,16 +18,16 @@
 			valid_targets += target
 	return valid_targets
 
-/turf/left_clicked_on(var/mob/clicker)
+/turf/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	if(clicker.intent.selecting == INTENT_HARM)
 		var/list/valid_targets = get_simulated_atoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
-		thing.left_clicked_on(clicker)
+		thing.left_clicked_on(clicker, slot)
 
-/turf/right_clicked_on(var/mob/clicker)
+/turf/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	if(clicker.intent.selecting == INTENT_HARM)
 		var/list/valid_targets = get_simulated_atoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
-		thing.right_clicked_on(clicker)
+		thing.right_clicked_on(clicker, slot)

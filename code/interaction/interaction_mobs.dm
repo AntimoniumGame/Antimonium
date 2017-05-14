@@ -1,8 +1,10 @@
 /mob/proc/left_click_on(var/atom/thing, var/ctrl, var/alt)
-	try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD)
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD))
+		thing.left_clicked_on(src, SLOT_MOUTH)
 
 /mob/proc/right_click_on(var/atom/thing, var/ctrl, var/alt)
-	try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD)
+	if(!try_general_interaction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD))
+		thing.left_clicked_on(src, SLOT_MOUTH)
 
 /mob/proc/middle_click_on(var/atom/thing, var/ctrl, var/alt)
 	if(!dead)
@@ -11,17 +13,17 @@
 
 /mob/human/left_click_on(var/atom/thing, var/ctrl, var/alt)
 	if(!try_general_interaction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
-		thing.left_clicked_on(src)
+		thing.left_clicked_on(src, SLOT_LEFT_HAND)
 
 /mob/human/right_click_on(var/atom/thing, var/ctrl, var/alt)
 	if(!try_general_interaction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
-		thing.right_clicked_on(src)
+		thing.right_clicked_on(src, SLOT_RIGHT_HAND)
 
-/mob/left_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, SLOT_LEFT_HAND)
+/mob/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+	handle_interaction(clicker, slot)
 
-/mob/right_clicked_on(var/mob/clicker)
-	handle_interaction(clicker, SLOT_RIGHT_HAND)
+/mob/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
+	handle_interaction(clicker, slot)
 
 /mob/proc/handle_interaction(var/mob/person, var/slot_id)
 	if(!is_adjacent_to(get_turf(src), get_turf(person)))
@@ -58,18 +60,27 @@
 	if(on_combat_cooldown())
 		return
 	set_combat_cooldown(4)
+	do_unarmed_attack(target)
+
+/mob/proc/do_unarmed_attack(var/mob/target)
 	do_attack_animation(target)
 	if(intent.selecting == INTENT_HELP)
-		notify_nearby("\The [src] pokes \the [target].")
+		do_passive_unarmed_interaction(target)
 	else
-		notify_nearby("\The [src] punches \the [target]!")
-		play_local_sound(src, 'sounds/effects/punch1.wav', 50)
-		target.resolve_physical_attack(src, 5, 0, 5, null)
+		do_violent_unarmed_interaction(target)
+
+/mob/proc/do_violent_unarmed_interaction(var/mob/target)
+	notify_nearby("\The [src] punches \the [target]!")
+	play_local_sound(src, 'sounds/effects/punch1.wav', 50)
+	target.resolve_physical_attack(src, 5, 0, 5, null)
+
+/mob/proc/do_passive_unarmed_interaction(var/mob/target)
+	notify_nearby("\The [src] pokes \the [target].")
 
 /mob/proc/try_general_interaction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
 	if(!dead && can_use_limb(limb))
 		face_atom(thing)
-		if(ctrl && thing.is_grabbable())
+		if(ctrl && thing.is_grabbable() && thing != src)
 			grab_atom(thing, limb, slot)
 			return TRUE
 		else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))

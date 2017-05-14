@@ -36,7 +36,7 @@
 		icon_state = "join_on"
 		maptext = null
 
-/obj/ui/join_game/left_clicked_on(var/mob/clicker)
+/obj/ui/join_game/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
 		var/mob/abstract/new_player/player = clicker
@@ -45,7 +45,7 @@
 				play_client_sound(player.client, null, 'sounds/effects/click1.wav', 100, -1)
 			player.join_game()
 
-/obj/ui/join_game/right_clicked_on(var/mob/clicker)
+/obj/ui/join_game/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
 		var/mob/abstract/new_player/player = clicker
@@ -71,10 +71,10 @@
 /obj/ui/title/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-7]:16,[round(view_y/2)-6]"
 
-/obj/ui/title/left_clicked_on(var/mob/clicker)
+/obj/ui/title/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return FALSE
 
-/obj/ui/title/right_clicked_on(var/mob/clicker)
+/obj/ui/title/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	return FALSE
 
 /obj/ui/title/middle_clicked_on(var/mob/clicker)

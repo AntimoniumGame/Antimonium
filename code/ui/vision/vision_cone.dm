@@ -75,10 +75,8 @@
 	return olist
 
 /mob/proc/update_vision_cone()
-	return
 
-/mob/human/update_vision_cone()
-	if(!client)
+	if(!client || !vision_cone) // too early
 		return
 
 	var/delay = 10

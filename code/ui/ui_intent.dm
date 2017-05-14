@@ -36,12 +36,12 @@
 	icon_state = intent
 	name = "[capitalize(intent)]"
 
-/obj/ui/intent_button/left_clicked_on(var/mob/clicker)
+/obj/ui/intent_button/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
 		controller.set_selecting(intent)
 
-/obj/ui/intent_button/right_clicked_on(var/mob/clicker)
+/obj/ui/intent_button/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
 		controller.set_selecting(intent)

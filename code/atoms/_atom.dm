@@ -13,10 +13,10 @@
 /atom/proc/update_icon()
 	return
 
-/atom/proc/left_clicked_on(var/mob/clicker)
+/atom/proc/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
-/atom/proc/right_clicked_on(var/mob/clicker)
+/atom/proc/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	return
 
 /atom/proc/middle_clicked_on(var/mob/clicker)

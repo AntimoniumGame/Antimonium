@@ -108,3 +108,16 @@ var/force_start = FALSE
 		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]
 		limb.sever_limb()
 		sleep(-1)
+
+/client/verb/doggo()
+
+	set name = "Doggo"
+	set category = "Debug"
+
+	var/mob/animal/doggo = new(get_turf(mob))
+	if(!doggo.loc)
+		doggo.force_move(locate(3,3,1))
+
+	var/old_mob = mob
+	doggo.key = mob.key
+	qdel(old_mob)

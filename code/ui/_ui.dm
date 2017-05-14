@@ -18,10 +18,10 @@
 	verbs.Cut()
 
 // Override the root objects since this is an abstract object of sorts.
-/obj/ui/left_clicked_on(var/mob/clicker)
+/obj/ui/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return (clicker == owner)
 
-/obj/ui/right_clicked_on(var/mob/clicker)
+/obj/ui/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	return (clicker == owner)
 
 /obj/ui/middle_clicked_on(var/mob/clicker)

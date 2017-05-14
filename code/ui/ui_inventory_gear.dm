@@ -2,15 +2,15 @@
 	name = "gear slot"
 	concealable = TRUE
 
-/obj/ui/inv/gear/left_clicked_on(var/mob/clicker)
+/obj/ui/inv/gear/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
-		try_equipment_interaction(SLOT_LEFT_HAND)
+		try_equipment_interaction(slot)
 
-/obj/ui/inv/gear/right_clicked_on(var/mob/clicker)
+/obj/ui/inv/gear/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
-		try_equipment_interaction(SLOT_RIGHT_HAND)
+		try_equipment_interaction(slot)
 
 /obj/ui/inv/gear/proc/try_equipment_interaction(var/slot)
 	var/obj/item/prop = owner.get_equipped(slot)

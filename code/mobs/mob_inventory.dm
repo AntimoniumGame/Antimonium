@@ -17,7 +17,7 @@
 	if(!equip_to_slot)
 		return FALSE
 	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
-	if(equipping.holding)
+	if(!equipping || equipping.holding)
 		return FALSE
 	thing.before_picked_up()
 	thing.force_move(src)

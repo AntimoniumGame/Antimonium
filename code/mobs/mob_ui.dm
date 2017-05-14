@@ -40,8 +40,10 @@
 	health = new(src)
 	ui_screen += health
 
-	for(var/slot in inventory_slots)
-		ui_screen += inventory_slots[slot]
+	if(inventory_slots.len)
+		ui_screen += new /obj/ui/hide_inv(src)
+		for(var/slot in inventory_slots)
+			ui_screen += inventory_slots[slot]
 
 /mob/proc/refresh_ui()
 	if(client)
