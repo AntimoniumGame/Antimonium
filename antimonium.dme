@@ -55,6 +55,7 @@
 #include "code\atoms\attack_animation.dm"
 #include "code\atoms\movement.dm"
 #include "code\atoms\notifications.dm"
+#include "code\client\_client.dm"
 #include "code\client\client_notify.dm"
 #include "code\client\control.dm"
 #include "code\client\interaction.dm"
