@@ -6,3 +6,8 @@
 	contact_size = 3
 	default_material_path = /data/material
 	attack_verbs = list("punches") // Like impromptu brass knuckles?"
+
+/obj/item/horseshoe/New()
+	..()
+	pixel_x = rand(-3,3)
+	pixel_y = rand(-3,3)

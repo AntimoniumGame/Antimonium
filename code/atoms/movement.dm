@@ -100,7 +100,7 @@
 	return FALSE
 
 /atom/movable/is_grabbable()
-	return (!anchored && simulated)
+	return (!(interaction_flags & FLAG_ANCHORED) && (interaction_flags & FLAG_SIMULATED))
 
 /atom/proc/face_atom(var/atom/A)
 	if(!A || !x || !y || !A.x || !A.y) return

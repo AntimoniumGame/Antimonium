@@ -1,8 +1,8 @@
 /obj/item/grab
 	icon = 'icons/objects/items/grab.dmi'
-	simulated = FALSE
 	var/mob/human/owner
 	var/atom/movable/grabbed
+	interaction_flags = 0
 
 /obj/item/grab/New(var/mob/human/_owner, var/atom/movable/_grabbed)
 	..(_owner)

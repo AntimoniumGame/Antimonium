@@ -27,7 +27,7 @@
 	. = ..()
 
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
-	if(!simulated)
+	if(!(interaction_flags & FLAG_SIMULATED))
 		return
 	user.do_attack_animation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
@@ -57,4 +57,6 @@
 	return
 
 /obj/item/proc/after_picked_up()
-	return
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
+	transform = null

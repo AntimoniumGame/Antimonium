@@ -2,12 +2,10 @@
 	name = ""
 	plane = MASTER_PLANE
 	layer = UNDERLAY_LAYER
-	var/simulated = TRUE
-	var/ethereal = FALSE
+	var/interaction_flags = FLAG_SIMULATED | FLAG_THROWN_SPIN
 
 /atom/movable
 	animate_movement = SLIDE_STEPS
-	var/anchored = FALSE
 	var/dragged = FALSE
 	var/self_move = FALSE
 	var/move_sound
