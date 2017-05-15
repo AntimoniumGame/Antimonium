@@ -18,7 +18,7 @@
 
 	var/client/modifying
 	for(var/client/player in clients)
-		if(player.ckey = enter_ckey)
+		if(player.ckey == enter_ckey)
 			modifying = player
 			break
 
@@ -60,7 +60,7 @@
 		admins[enter_ckey] = null
 		admins -= enter_ckey
 	for(var/client/player in clients)
-		if(player.ckey = enter_ckey)
+		if(player.ckey == enter_ckey)
 			player.set_admin_permissions()
 			break
 
