@@ -5,6 +5,8 @@
 	var/list/key_binds
 
 /client/New()
+	view_x = round(world.view/2)
+	view_y = round(world.view/2)
 	. = ..()
 	loadData()
 	if(!key_binds)
@@ -50,6 +52,7 @@
 
 /client/verb/on_resize()
 	set hidden = 1
+
 	var/string = winget(src, "map", "size")
 
 	view_x = round(text2num(string) / 64)
