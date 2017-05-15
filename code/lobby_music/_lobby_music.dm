@@ -1,4 +1,4 @@
-var/data/lobby_music/lobby_music
+var/datum/lobby_music/lobby_music
 
 /client
 	var/sound/playing_lobby_music
@@ -19,10 +19,10 @@ var/data/lobby_music/lobby_music
 
 /world/New()
 	. = ..()
-	var/lmusic = pick(typesof(/data/lobby_music))
+	var/lmusic = pick(typesof(/datum/lobby_music))
 	lobby_music = new lmusic()
 
-/data/lobby_music
+/datum/lobby_music
 	var/song_file = 'sounds/music/Chris_Zabriskie_-_09_-_Cylinder_Nine.ogg'
 	var/name = "Cylinder 9"
 	var/author = "Chris Zabriskie"
@@ -30,7 +30,7 @@ var/data/lobby_music/lobby_music
 	var/license
 	var/license_url
 
-/data/lobby_music/proc/play(var/mob/listener)
+/datum/lobby_music/proc/play(var/mob/listener)
 
 	set waitfor = 0
 	set background = 1

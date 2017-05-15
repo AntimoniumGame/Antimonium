@@ -7,7 +7,7 @@
 		last_pain_message = world.time + rand(300,600)
 		switch(pain)
 			if(75 to 101)
-				owner.notify("Your [name] pulses with unreleting, crippling pain!")
+				owner.notify("Your [name] pulses with unrelenting, crippling pain!")
 			if(50 to 75)
 				owner.notify("Your [name] throbs agonizingly.")
 			if(25 to 50)

@@ -84,6 +84,9 @@
 			grab_atom(thing, limb, slot)
 			return TRUE
 		else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
+			var/obj/item/limb/use_limb = limbs[limb]
+			if(!use_limb.is_dextrous())
+				return
 			var/obj/item/throwing = get_equipped(slot)
 			if(throwing && throwing.throw_at(src, thing))
 				return TRUE

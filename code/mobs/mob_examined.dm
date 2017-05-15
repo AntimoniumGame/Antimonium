@@ -12,7 +12,7 @@
 					result_line = "You find "
 					var/i = 1
 					for(var/thing in limb.wounds)
-						var/data/wound/wound = thing
+						var/datum/wound/wound = thing
 						if(limb.wounds.len > 1)
 							if(i < limb.wounds.len && i > 1)
 								result_line += ", "

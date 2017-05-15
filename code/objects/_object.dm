@@ -2,7 +2,7 @@
 	icon = 'icons/objects/object.dmi'
 	layer = ITEM_LAYER
 
-	var/data/material/material
+	var/datum/material/material
 	var/default_material_path
 
 /obj/New(var/newloc, var/material_path)

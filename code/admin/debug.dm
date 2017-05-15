@@ -15,7 +15,7 @@
 		dnotify("MC doesn't exist.")
 		return
 	dnotify("Daemons: [mc.daemons.len]")
-	for(var/data/daemon/daemon in mc.daemons)
+	for(var/datum/daemon/daemon in mc.daemons)
 		dnotify("[daemon.name]: [daemon.status()]")
 
 /client/verb/force_switch_game_state()
@@ -23,7 +23,7 @@
 	set name = "Force Game State"
 	set category = "Debug"
 
-	var/choice = input("Select a new state.") as null|anything in typesof(/data/game_state)-/data/game_state
+	var/choice = input("Select a new state.") as null|anything in typesof(/datum/game_state)-/datum/game_state
 	if(!choice) return
 	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
 	switch_game_state(choice)
@@ -98,16 +98,14 @@ var/force_start = FALSE
 	set name = "Gibself"
 	set category = "Debug"
 
-	var/mob/human/victim = mob
-	if(!istype(victim))
-		dnotify("Only works on humans, sorry.")
-		return
-
 	blood_splatter(mob, mob)
+	var/mob/victim = mob
 	while(victim.limbs.len > 1)
 		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]
 		limb.sever_limb()
 		sleep(-1)
+	if(mob != victim)
+		qdel(victim)
 
 /client/verb/doggo()
 
@@ -120,4 +118,13 @@ var/force_start = FALSE
 
 	var/old_mob = mob
 	doggo.key = mob.key
+	doggo.update_strings()
+	doggo.notify("Woof woof.")
 	qdel(old_mob)
+
+/client/verb/set_client_fps()
+
+	set name = "Set Client FPS"
+	set category = "Debug"
+
+	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))

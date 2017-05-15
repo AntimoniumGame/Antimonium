@@ -2,7 +2,7 @@
 	name = "coins"
 	sharpness = 0
 	contact_size = 1
-	default_material_path = /data/material/gold
+	default_material_path = /datum/material/gold
 	icon = 'icons/objects/items/coin.dmi'
 
 	var/amount = 20

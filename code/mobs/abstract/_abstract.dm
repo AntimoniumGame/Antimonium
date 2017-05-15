@@ -33,3 +33,6 @@
 
 /mob/abstract/examined_by(var/mob/clicker)
 	clicker.notify("That's a spooky ghost!")
+
+/mob/abstract/update_icon()
+	return

@@ -1,5 +1,17 @@
 /mob
 	var/next_speech = 0
+	var/understand_category = "general"
+	var/list/can_understand_speech = list()
+
+/mob/New()
+	..()
+	can_understand_speech |= understand_category
+
+/mob/proc/scramble_speech(var/message)
+	return "gabbles something completely unintelligible."
+
+/mob/proc/check_can_understand(var/category)
+	return (category in can_understand_speech)
 
 /mob/verb/say(var/message as text)
 
@@ -38,10 +50,18 @@
 	message = format_string_for_speech(src, message)
 	next_speech = world.time + 5
 
+	var/scramble_message
 	if(dead)
 		notify_dead(message)
 	else
-		notify_nearby(message)
+		for(var/mob/M in viewers(world.view, get_turf(src)))
+			if(M.check_can_understand(understand_category))
+				M.notify(message)
+			else
+				if(!scramble_message)
+					scramble_message = "<b>\The [src]</b> [scramble_speech(message)]"
+				M.notify(scramble_message)
+
 
 /mob/proc/do_emote(var/message)
 	next_speech = world.time + 5

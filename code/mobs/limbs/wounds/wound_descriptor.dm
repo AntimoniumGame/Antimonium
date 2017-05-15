@@ -1,4 +1,4 @@
-/data/wound/proc/get_descriptor()
+/datum/wound/proc/get_descriptor()
 
 	var/size_string
 	var/depth_string
