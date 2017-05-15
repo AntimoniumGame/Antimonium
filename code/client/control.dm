@@ -48,19 +48,19 @@
 				key_binds[old_bind] = null
 	interface = new(src)
 
-/client/proc/onResize()
-
+/client/verb/on_resize()
+	set hidden = 1
 	var/string = winget(src, "map", "size")
 
 	view_x = round(text2num(string) / 64)
 	view_y = round(text2num(copytext(string,findtext(string,"x")+1,0)) / 64)
 	view = "[view_x]x[view_y]"
 	mob.on_window_resize()
-
+/*
 	#ifdef DEBUG
-	dnotify("onResize winget: [string], viewx: [view_x], viewy: [view_y]")
+	dnotify("on_resize winget: [string], viewx: [view_x], viewy: [view_y]")
 	#endif
-
+*/
 	// Workaround for a strange bug
 	perspective = MOB_PERSPECTIVE
 	eye = mob

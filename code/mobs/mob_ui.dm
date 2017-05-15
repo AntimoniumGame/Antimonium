@@ -16,8 +16,6 @@
 /mob/New()
 	..()
 	create_ui()
-	if(client)
-		client.onResize()
 
 /mob/Login()
 	. = ..()
@@ -51,6 +49,6 @@
 		client.screen |= ui_screen
 		client.images.Cut()
 		client.images |= ui_images
-		client.onResize()
+		client.on_resize()
 	refresh_lighting()
 	update_vision_cone()

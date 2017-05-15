@@ -26,10 +26,10 @@ window "devwindow"
 		size = 318x771
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
+		macro = "macro"
 		menu = "menu"
 	elem "info"
 		type = INFO
@@ -39,7 +39,6 @@ window "devwindow"
 		anchor2 = 100,39
 		is-default = true
 		saved-params = ""
-		tab-background-color = none
 	elem "output"
 		type = OUTPUT
 		pos = 0,304
@@ -70,9 +69,11 @@ window "mainwindow"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		on-size = "onResize"
+		on-size = "on-resize"
+		statusbar = false
 		macro = "macro"
 	elem "map"
 		type = MAP
@@ -124,12 +125,13 @@ window "varswindow"
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "View Vars"
 		statusbar = false
+		macro = "macro"
 	elem "varselected"
 		type = GRID
 		pos = 0,24
 		size = 400x40
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 0,0
+		anchor2 = 100,0
 		font-family = "@Arial Unicode MS,sans-serif"
 		font-size = 10
 		border = line
@@ -144,8 +146,8 @@ window "varswindow"
 		type = BUTTON
 		pos = 0,0
 		size = 400x24
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 0,0
+		anchor2 = 100,0
 		font-family = "@Arial Unicode MS,sans-serif"
 		font-size = 10
 		background-color = none
@@ -168,6 +170,5 @@ window "varswindow"
 		saved-params = ""
 		cells = 2x1
 		small-icons = true
-		show-names = false
 		highlight-color = #000000
 

@@ -13,9 +13,9 @@ var/force_start = FALSE
 	set category = "Admin"
 
 	if(force_start || (game_state && game_state.ident != GAME_LOBBY_WAITING))
-		dnotify("Game is already starting or started.")
+		anotify("Game is already starting or started.")
 		return
-	dnotify("Forcing game start.")
+	anotify("Forcing game start.")
 	force_start = TRUE
 
 /client/proc/list_online()
@@ -25,9 +25,9 @@ var/force_start = FALSE
 
 	for(var/client/player in clients)
 		if(player.admin_permissions)
-			notify("[player.key] (<b>[player.admin_permissions.title]</b>)")
+			anotify("[player.key] (<b>[player.admin_permissions.title]</b>)")
 		else
-			notify("[player.key]")
+			anotify("[player.key]")
 
 /client/proc/respawn()
 

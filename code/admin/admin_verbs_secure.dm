@@ -38,7 +38,7 @@
 		return
 
 	admins[enter_ckey] = new /datum/admin_rank(enter_ckey, enter_perm, enter_title)
-	dnotify("Updated rank for [enter_ckey] to [enter_perm] - [enter_title].")
+	anotify("Updated rank for [enter_ckey] to [enter_perm] - [enter_title].")
 	if(modifying)
 		modifying.set_admin_permissions(admins[enter_ckey])
 

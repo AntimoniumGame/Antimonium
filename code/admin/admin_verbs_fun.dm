@@ -43,7 +43,7 @@
 
 	var/mob/human/human = mob
 	if(!istype(human))
-		dnotify("Only works on humans, sorry.")
+		anotify("Only works on humans, sorry.")
 		return
 
 	if(!mob.get_equipped(SLOT_UPPER_BODY))
@@ -53,4 +53,4 @@
 	if(!mob.get_equipped(SLOT_FEET))
 		mob.collect_item_or_del(new /obj/item/clothing/boots(), SLOT_FEET)
 
-	dnotify("Mob dressed.")
+	anotify("Mob dressed.")
