@@ -34,4 +34,5 @@ var/datum/master_controller/mc
 	set waitfor = 0
 	set background = 1
 	for(var/datum/daemon/daemon in daemons)
-		daemon.start()
+		spawn(daemon.initial_offset)
+			daemon.start()

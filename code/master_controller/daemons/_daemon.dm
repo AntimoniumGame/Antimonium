@@ -1,5 +1,6 @@
 /datum/daemon
 	var/name = "daemon"
+	var/initial_offset = 0
 	var/delay = 20
 	var/suspend
 

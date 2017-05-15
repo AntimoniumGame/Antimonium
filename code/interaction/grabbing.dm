@@ -2,7 +2,7 @@
 	icon = 'icons/objects/items/grab.dmi'
 	var/mob/human/owner
 	var/atom/movable/grabbed
-	interaction_flags = 0
+	flags = 0
 
 /obj/item/grab/New(var/mob/human/_owner, var/atom/movable/_grabbed)
 	..(_owner)
@@ -36,7 +36,7 @@
 	check_state()
 
 /obj/item/grab/proc/check_state()
-	if(!owner || loc != owner || !grabbed || !isturf(grabbed.loc) || !is_adjacent_to(grabbed, owner))
+	if(!owner || loc != owner || !grabbed || !isturf(grabbed.loc) || !is_adjacent_to(grabbed, owner) || !grabbed.is_solid())
 		qdel(src)
 		return FALSE
 	return TRUE
@@ -60,6 +60,10 @@
 		if(grab.grabbed == grabbing)
 			notify("You already have a grip on \the [grabbing].")
 			return
+
+	if(!grabbing.is_solid())
+		notify_nearby("\The [src] attempts to grab \the [grabbing], but [grabbing.they()] slip[grabbing.s()] through [their()] grasp.")
+		return
 
 	var/obj/item/grab/grab = new(src, grabbing)
 	collect_item(grab, grabbing_slot)

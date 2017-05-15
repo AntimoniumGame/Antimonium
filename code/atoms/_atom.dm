@@ -2,7 +2,7 @@
 	name = ""
 	plane = MASTER_PLANE
 	layer = UNDERLAY_LAYER
-	var/interaction_flags = FLAG_SIMULATED | FLAG_THROWN_SPIN
+	var/flags = FLAG_SIMULATED | FLAG_THROWN_SPIN
 
 /atom/movable
 	animate_movement = SLIDE_STEPS
@@ -40,3 +40,12 @@
 
 /atom/proc/update_strings()
 	name = initial(name)
+
+/atom/proc/airtight()
+	return FALSE
+
+/atom/proc/is_solid()
+	return TRUE
+
+/atom/proc/get_weight()
+	return 1

@@ -6,7 +6,7 @@
 	icon = 'icons/objects/items/dart.dmi'
 	attack_verbs = list("sticks")
 	hit_sound = 'sounds/effects/thunk1.ogg'
-	interaction_flags = FLAG_SIMULATED
+	flags = FLAG_SIMULATED
 
 /obj/item/weapon/dart/New()
 	..()

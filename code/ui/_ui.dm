@@ -5,7 +5,7 @@
 	screen_loc = "CENTER,CENTER"
 	icon = 'icons/images/ui.dmi'
 	var/mob/owner
-	interaction_flags = FLAG_ANCHORED | FLAG_ETHEREAL
+	flags = FLAG_ANCHORED | FLAG_ETHEREAL
 
 /obj/ui/destroy()
 	if(owner)

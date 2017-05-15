@@ -8,24 +8,28 @@
 	var/amount = 20
 	var/max_amount = 20
 	var/singular_name = "coin"
-	var/plural_name = "coins"
+	var/plural_name =   "coins"
+	var/stack_name =    "stack"
 
-/obj/item/stack/New(var/newloc, var/_amount)
+/obj/item/stack/get_weight()
+	return get_amount()
+
+/obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
 		amount = min(max_amount, max(1, _amount))
 	else
 		amount = max_amount
-	..(newloc)
+	..(newloc, material_path)
 
 /obj/item/stack/use(var/mob/user)
 	if(get_amount() <= 1)
-		user.notify("There are not enough [plural_name] in the stack to split it.")
+		user.notify("There are not enough [plural_name] in the [stack_name] to split it.")
 		return
 
 	var/split_amount = max(1,round(get_amount()/2))
 	remove(split_amount)
-	new type(get_turf(user), split_amount)
-	user.notify_nearby("\The [user] splits the [plural_name] into two roughly equal stacks.")
+	new type(get_turf(user), material.type, split_amount, src)
+	user.notify_nearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
 /obj/item/stack/proc/get_stack_type()
 	return type //todo
@@ -35,17 +39,17 @@
 	if(istype(other) && other.get_stack_type() == get_stack_type())
 		var/transfer_amount = max_amount - get_amount()
 		if(transfer_amount <= 0)
-			user.notify("That stack can hold no more [plural_name].")
+			user.notify("That [stack_name] can hold no more [plural_name].")
 			return TRUE
 		else if(other.get_amount() <= transfer_amount)
 			add(other.get_amount())
 			qdel(other)
-			user.notify_nearby("\The [user] merges two stacks of [plural_name] together.")
+			user.notify_nearby("\The [user] merges two [stack_name]s of [plural_name] together.")
 		else
 			transfer_amount = max_amount - get_amount()
 			add(transfer_amount)
 			other.remove(transfer_amount)
-			user.notify_nearby("\The [user] transfers some [plural_name] between two stacks.")
+			user.notify_nearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
 		return TRUE
 	else
 		. =..()
@@ -53,9 +57,9 @@
 /obj/item/stack/update_strings()
 	if(amount > 1)
 		if(material)
-			name = "stack of [amount] [material.get_descriptor()] [plural_name]"
+			name = "[stack_name] of [amount] [material.get_descriptor()] [plural_name]"
 		else
-			name = "stack of [amount] [plural_name]"
+			name = "[stack_name] of [amount] [plural_name]"
 	else
 		if(material)
 			name = "[material.get_descriptor()] [singular_name]"

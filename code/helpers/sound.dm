@@ -82,9 +82,6 @@
 			playing.y = 1 // No idea why y for sound == z for the map.
 	src << playing
 
-/turf/proc/get_sound_environment()
-	return -1
-
 var/mob/human/next_footstep = 0
 /mob/human/Move()
 	. = ..()
@@ -93,6 +90,3 @@ var/mob/human/next_footstep = 0
 		if(istype(current_turf))
 			next_footstep = world.time + get_move_delay()*2.5
 			play_local_sound(src, current_turf.get_footstep_sound(src), 5)
-
-/turf/proc/get_footstep_sound(var/mob/walker)
-	return 'sounds/effects/footstep1.wav'

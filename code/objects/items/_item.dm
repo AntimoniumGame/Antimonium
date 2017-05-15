@@ -14,6 +14,9 @@
 	var/collect_sound = 'sounds/effects/click1.wav'
 	var/equip_sound = 'sounds/effects/rustle1.wav'
 
+/obj/item/get_weight()
+	return weight
+
 /obj/item/update_values()
 	sharpness = initial(sharpness)
 	weight =    initial(weight)

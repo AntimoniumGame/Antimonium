@@ -1,7 +1,7 @@
 /obj/light
 	mouse_opacity = 0
 	plane = DARK_PLANE
-	interaction_flags = 0
+	flags = 0
 
 	layer = 1
 	//layer 1 = base plane layer
