@@ -28,7 +28,9 @@
 			if(owner.mob)
 				owner.mob.Run()
 		if(KEY_DEV)
-			owner.DevPanel()
+			owner.dev_panel()
+		if(KEY_VARS)
+			owner.start_view_vars()
 
 /interface/proc/onKeyRelease(key)
 	if(!key)
@@ -46,6 +48,18 @@
 			if(owner.mob)
 				owner.mob.Walk()
 
+/interface/proc/on_click(object, location, control, params)
+	if(owner.mob)
+		var/modifiers = params2list(params)
+
+		if(modifiers["middle"])
+			owner.mob.middle_click_on(object, modifiers["ctrl"], modifiers["alt"])
+		else if(modifiers["left"])
+			owner.mob.left_click_on(object, modifiers["ctrl"], modifiers["alt"])
+		else if(modifiers["right"])
+			owner.mob.right_click_on(object, modifiers["ctrl"], modifiers["alt"])
+
+
 /interface/rebind
 	var/cur_rebind
 
@@ -55,3 +69,6 @@
 
 /interface/rebind/onKeyPress(key)
 	owner.rebind(key, cur_rebind)
+
+/interface/viewvars/on_click(object, location, control, params)
+	owner.view_vars(object)

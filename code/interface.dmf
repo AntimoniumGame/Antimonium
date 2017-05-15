@@ -51,6 +51,7 @@ window "devwindow"
 		is-default = true
 		border = line
 		saved-params = "max-lines"
+		max-lines = 0
 	elem "devinput"
 		type = INPUT
 		pos = 0,728
@@ -110,4 +111,63 @@ window "mainwindow"
 		border = line
 		saved-params = "max-lines"
 		max-lines = 0
+
+window "varswindow"
+	elem "varswindow"
+		type = MAIN
+		pos = 281,0
+		size = 400x600
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "View Vars"
+		statusbar = false
+	elem "varselected"
+		type = GRID
+		pos = 0,24
+		size = 400x40
+		anchor1 = none
+		anchor2 = none
+		font-family = "@Arial Unicode MS,sans-serif"
+		font-size = 10
+		border = line
+		drop-zone = false
+		right-click = true
+		saved-params = ""
+		cells = 1x1
+		current-cell = 1,1
+		show-lines = none
+		highlight-color = #000000
+	elem "varsrefresh"
+		type = BUTTON
+		pos = 0,0
+		size = 400x24
+		anchor1 = none
+		anchor2 = none
+		font-family = "@Arial Unicode MS,sans-serif"
+		font-size = 10
+		background-color = none
+		border = line
+		saved-params = "is-checked"
+		text = "Auto-refresh"
+		command = ""
+		button-type = checkbox
+	elem "varsgrid"
+		type = GRID
+		pos = 0,64
+		size = 400x536
+		anchor1 = 0,0
+		anchor2 = 100,100
+		font-family = "Consolas,monospace"
+		font-size = 10
+		border = line
+		drop-zone = false
+		right-click = true
+		saved-params = ""
+		cells = 2x1
+		small-icons = true
+		show-names = false
+		highlight-color = #000000
 

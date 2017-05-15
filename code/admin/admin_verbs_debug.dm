@@ -6,10 +6,11 @@
 		/client/proc/debug_controller,
 		/client/proc/force_switch_game_state,
 		/client/proc/testlights,
-		/client/proc/set_client_fps
+		/client/proc/set_client_fps,
+		/client/proc/start_view_vars
 		)
 
-/client/proc/DevPanel()
+/client/proc/dev_panel()
 	set waitfor = 0
 	if(check_admin_permission(PERMISSIONS_DEBUG) && winget(src, "devwindow", "is-visible") == "false")
 		winset(src, "devwindow", "is-visible=true")
@@ -71,3 +72,48 @@
 	set name = "Test onResize()"
 	set category = "Debug"
 	onResize()
+
+/client/proc/start_view_vars()
+	set waitfor = 0
+	set name = "View Variables"
+	set category = "Debug"
+
+	if(winget(src, "varswindow", "is-visible") == "false")
+		winset(src, "varswindow", "is-visible=true")
+	var/interface/viewvars/V = new(src)
+	interface = V
+
+/client/proc/view_vars(object)
+	winset(src, "varswindow", "title=\"View Vars: [object]\"")
+	src << output(object, "varselected")
+	winset(src,"varsgrid","cells=2x0")
+	src << output("Name", "varsgrid:1,1")
+	src << output("Value", "varsgrid:2,1")
+	update_view_vars(object)
+	interface = new(src)
+
+/client/proc/update_view_vars(var/object)
+	set waitfor = 0
+
+	var/atom/O = object
+	var/list/keylist = sort_list_keys(O.vars)
+
+	var/first_run = TRUE
+	while(O && (winget(src, "varsrefresh", "is-checked") == "true" || first_run))
+		var/i = 2
+		for(var/k in keylist)
+			src << output(k, "varsgrid:1,[i]")
+			var/value = O.vars[k]
+			if(isnull(value))
+				src << output("null", "varsgrid:2,[i++]")
+			else if(istype(value,/list))
+				var/list/olist = value
+				src << output("/list = [olist.len]", "varsgrid:2,[i++]")
+			else
+				if(istype(value, /datum))
+					var/datum/d = value
+					src << output("[d.type] ([d])", "varsgrid:2,[i++]")
+				else
+					src << output("[value]", "varsgrid:2,[i++]")
+		first_run = FALSE
+		WAIT_1S
