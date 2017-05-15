@@ -26,7 +26,7 @@
 
 		for(var/thing in wounds)
 
-			var/data/wound/wound = thing
+			var/datum/wound/wound = thing
 			cumulative_wound_severity += wound.severity
 			cumulative_wound_depth += wound.depth
 

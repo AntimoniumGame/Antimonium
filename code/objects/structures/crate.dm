@@ -1,6 +1,6 @@
 /obj/structure/crate
 	name = "crate"
-	default_material_path = /data/material/wood
+	default_material_path = /datum/material/wood
 
 /obj/structure/crate/attacked_by(var/mob/user, var/obj/item/thing)
 	user.drop_item(thing)

@@ -2,7 +2,7 @@
 	name = "structure"
 	icon = 'icons/objects/structures/crate.dmi'
 	density = 1
-	default_material_path = /data/material
+	default_material_path = /datum/material
 	move_sound = 'sounds/effects/scrape1.wav'
 
 	var/weight = 3

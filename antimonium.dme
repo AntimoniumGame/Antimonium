@@ -50,6 +50,7 @@
 #include "code\_defines\turf.dm"
 #include "code\_defines\vision.dm"
 #include "code\_defines\wounds.dm"
+#include "code\admin\_admin.dm"
 #include "code\admin\debug.dm"
 #include "code\atoms\_atom.dm"
 #include "code\atoms\atom_pronouns.dm"

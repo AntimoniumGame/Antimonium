@@ -15,7 +15,7 @@
 		dnotify("MC doesn't exist.")
 		return
 	dnotify("Daemons: [mc.daemons.len]")
-	for(var/data/daemon/daemon in mc.daemons)
+	for(var/datum/daemon/daemon in mc.daemons)
 		dnotify("[daemon.name]: [daemon.status()]")
 
 /client/verb/force_switch_game_state()
@@ -23,7 +23,7 @@
 	set name = "Force Game State"
 	set category = "Debug"
 
-	var/choice = input("Select a new state.") as null|anything in typesof(/data/game_state)-/data/game_state
+	var/choice = input("Select a new state.") as null|anything in typesof(/datum/game_state)-/datum/game_state
 	if(!choice) return
 	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
 	switch_game_state(choice)

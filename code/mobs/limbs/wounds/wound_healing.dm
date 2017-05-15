@@ -1,15 +1,15 @@
-/data/wound/proc/bleed()
+/datum/wound/proc/bleed()
 	if(wound_type == WOUND_CUT && severity > 3 && bleed_amount)
 		owner.remove_owner_blood(max(1,round(severity * 0.1)))
 		bleed_amount = max(0, bleed_amount--)
 
-/data/wound/proc/bandaged()
+/datum/wound/proc/bandaged()
 	return FALSE
 
-/data/wound/proc/can_regenerate()
+/datum/wound/proc/can_regenerate()
 	return (severity < 30 && (wound_type != WOUND_CUT || bandaged()))
 
-/data/wound/proc/attempt_regeneration(var/amount)
+/datum/wound/proc/attempt_regeneration(var/amount)
 
 	if(!can_regenerate())
 		return
@@ -29,7 +29,7 @@
 	if(severity < 3 && depth < 3 && bleed_amount)
 		bleed_amount = 0
 
-/data/wound/destroy()
+/datum/wound/destroy()
 	owner.wounds -= src
 	owner = null
 	. = ..()

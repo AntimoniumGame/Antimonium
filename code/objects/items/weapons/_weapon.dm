@@ -1,2 +1,2 @@
 /obj/item/weapon
-	default_material_path = /data/material
+	default_material_path = /datum/material

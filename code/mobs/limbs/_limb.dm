@@ -45,7 +45,7 @@
 /obj/item/limb/proc/is_bleeding()
 	if(wounds.len)
 		for(var/thing in wounds)
-			var/data/wound/wound = thing
+			var/datum/wound/wound = thing
 			if(wound.wound_type == WOUND_CUT && wound.bleed_amount)
 				return TRUE
 	return FALSE

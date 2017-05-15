@@ -1,18 +1,18 @@
-/data/daemon
+/datum/daemon
 	var/name = "daemon"
 	var/delay = 20
 	var/suspend
 
-/data/daemon/New()
+/datum/daemon/New()
 	setup()
 
-/data/daemon/proc/setup()
+/datum/daemon/proc/setup()
 	return
 
-/data/daemon/proc/do_work()
+/datum/daemon/proc/do_work()
 	return
 
-/data/daemon/proc/start()
+/datum/daemon/proc/start()
 	set background = 1
 	set waitfor = 0
 
@@ -21,5 +21,5 @@
 		check_suspend()
 		do_work()
 
-/data/daemon/proc/status()
+/datum/daemon/proc/status()
 	return ""

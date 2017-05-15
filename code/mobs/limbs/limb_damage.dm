@@ -20,11 +20,11 @@
 
 	if(wounds.len)
 		var/list/matching_wounds = list()
-		for(var/data/wound/old_wound in wounds)
+		for(var/datum/wound/old_wound in wounds)
 			if(old_wound.wound_type == wound_type)
 				matching_wounds += old_wound
 		if(matching_wounds.len)
-			var/data/wound/wound = pick(matching_wounds)
+			var/datum/wound/wound = pick(matching_wounds)
 			wound.depth += wound_depth
 			wound.severity += wound_severity
 			if(attacked_with)
@@ -34,7 +34,7 @@
 			update_limb_state()
 			return
 
-	var/data/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
+	var/datum/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
 	wounds += wound
 	set_pain(max(pain, wound.severity))
 	owner.notify("<b>The blow leaves your [name] with [wound.get_descriptor()]!</b>")
@@ -62,7 +62,7 @@
 		for(var/obj/item/limb/child in children)
 			child.sever_limb(src)
 		if(parent)
-			var/data/wound/wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
+			var/datum/wound/wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
 			parent.wounds += wound
 			parent.cumulative_wound_depth += wound.depth
 			parent.cumulative_wound_severity += wound.severity
