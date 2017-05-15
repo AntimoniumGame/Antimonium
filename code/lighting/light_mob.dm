@@ -9,5 +9,5 @@
 /mob/proc/refresh_lighting()
 	if(!master_plane)
 		master_plane = new(client)
-	else
+	if(client)
 		client.screen |= master_plane

@@ -6,6 +6,21 @@
 /obj/ui/options/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)]-2,[round(view_y/2)-4]"
 
+/obj/ui/options/left_clicked_on(var/mob/clicker)
+	. = ..()
+	if(.)
+		if(clicker.client)
+			play_client_sound(clicker.client, null, 'sounds/effects/click1.wav', 100, -1)
+		if(icon_state == "options_off")
+			icon_state = "options_on"
+			clicker.close_screen_window()
+		else
+			icon_state = "options_off"
+			clicker.open_screen_window(6, 8, "Options", src)
+
+/obj/ui/options/report_window_closed()
+	icon_state = "options_on"
+
 /obj/ui/setup_prefs
 	name = "Set Up Preferences"
 	icon = 'icons/images/ui_title_buttons.dmi'
@@ -13,6 +28,21 @@
 
 /obj/ui/setup_prefs/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)],[round(view_y/2)-4]"
+
+/obj/ui/setup_prefs/left_clicked_on(var/mob/clicker)
+	. = ..()
+	if(.)
+		if(clicker.client)
+			play_client_sound(clicker.client, null, 'sounds/effects/click1.wav', 100, -1)
+		if(icon_state == "setup_off")
+			icon_state = "setup_on"
+			clicker.close_screen_window()
+		else
+			icon_state = "setup_off"
+			clicker.open_screen_window(6, 8, "Preferences", src)
+
+/obj/ui/setup_prefs/report_window_closed()
+	icon_state = "setup_on"
 
 /obj/ui/join_game
 	name = "Join Game"
