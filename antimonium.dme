@@ -80,6 +80,7 @@
 #include "code\helpers\data.dm"
 #include "code\helpers\distance.dm"
 #include "code\helpers\effects.dm"
+#include "code\helpers\list.dm"
 #include "code\helpers\loops.dm"
 #include "code\helpers\sound.dm"
 #include "code\helpers\text.dm"

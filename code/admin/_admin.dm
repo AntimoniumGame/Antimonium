@@ -4,7 +4,7 @@ var/list/admins = list()
 /proc/anotify(var/message, var/permission = PERMISSIONS_MODERATOR)
 	for(var/client/player in clients)
 		if(player.check_admin_permission(permission))
-			player.notify("ADMIN: [message]")
+			player.anotify(message)
 
 /proc/initialize_admin_database()
 
