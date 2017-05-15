@@ -1,6 +1,7 @@
 /datum/admin_permissions/moderator
 	associated_permission = PERMISSIONS_MODERATOR
 	verbs = list(
+		/client/proc/list_online,
 		/client/proc/start_game,
 		/client/proc/respawn
 		)
@@ -16,6 +17,17 @@ var/force_start = FALSE
 		return
 	dnotify("Forcing game start.")
 	force_start = TRUE
+
+/client/proc/list_online()
+
+	set name = "Who"
+	set category = "Admin"
+
+	for(var/client/player in clients)
+		if(player.admin_permissions)
+			notify("[player.key] (<b>[player.admin_permissions.title]</b>)")
+		else
+			notify("[player.key]")
 
 /client/proc/respawn()
 

@@ -2,7 +2,7 @@
 	associated_permission = PERMISSIONS_DEBUG
 	verbs = list(
 		/client/proc/debug_controller,
-		/client/proc/onResize,
+		/client/proc/test_resize,
 		/client/proc/debug_controller,
 		/client/proc/force_switch_game_state,
 		/client/proc/testlights,
@@ -66,3 +66,8 @@
 	set category = "Debug"
 
 	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
+
+/client/proc/test_resize()
+	set name = "Test onResize()"
+	set category = "Debug"
+	onResize()
