@@ -27,6 +27,7 @@ window "devwindow"
 		anchor1 = none
 		anchor2 = none
 		background-color = none
+		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
 		menu = "menu"
@@ -68,7 +69,6 @@ window "mainwindow"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-size = "onResize"

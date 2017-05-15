@@ -40,3 +40,11 @@
 	else if(ending == "?")
 		speak_verb = "asks"
 	return "<b>\The [speaker]</b> [speak_verb], \"[message]\""
+
+/proc/file2list(var/filename, var/seperator="\n")
+	if(fexists(filename) == 0)
+		return list()
+	var/text = file2text(filename)
+	if(!text)
+		return list()
+	return splittext(text,seperator)

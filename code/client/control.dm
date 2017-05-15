@@ -48,7 +48,11 @@
 				key_binds[old_bind] = null
 	interface = new(src)
 
-/client/verb/onResize()
+/client/proc/onResize()
+
+	set name = "Test onResize()"
+	set category = "Debug"
+
 	var/string = winget(src, "map", "size")
 
 	view_x = round(text2num(string) / 64)
