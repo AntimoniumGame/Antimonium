@@ -4,6 +4,8 @@
 /datum/game_state/setup/init()
 	spawn()
 		mc = new()
+		initialize_admin_permissions()
+		initialize_admin_database()
 	..()
 
 /datum/game_state/setup/start()
