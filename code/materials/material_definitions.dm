@@ -1,11 +1,4 @@
 // Useless crap.
-/datum/material/slag
-	general_name = "slag"
-	strength = 0.1
-	weight_modifier = 2
-	sharpness_modifier = 0.1
-	melting_point = 600
-
 /datum/material/cloth
 	general_name = "cloth"
 	strength = 0.1
@@ -20,3 +13,11 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 600
+
+/datum/material/meat
+	general_name = "meat"
+	descriptor = "raw"
+	strength = 0.3
+	weight_modifier = 0.3
+	sharpness_modifier = 0.3
+	ignition_point = 460

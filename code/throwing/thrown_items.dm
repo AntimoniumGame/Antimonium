@@ -8,8 +8,7 @@
 			if(istype(new_target))
 				target = new_target
 		thrown_at(target, thrower)
-		return TRUE
-	return FALSE
+	return TRUE
 
 /obj/item/grab/throw_at(var/mob/thrower, var/atom/target)
 	if(!thrower.on_combat_cooldown())
@@ -22,8 +21,7 @@
 				target = new_target
 		grabbed.thrown_at(target, thrower)
 		qdel(src)
-		return TRUE
-	return FALSE
+	return TRUE
 
 /obj/item/stack/throw_at(var/mob/thrower, var/atom/target)
 	if(!thrower.on_combat_cooldown())
@@ -37,5 +35,4 @@
 				target = new_target
 		throwing.thrown_at(target, thrower)
 		remove(1)
-		return TRUE
-	return FALSE
+	return TRUE

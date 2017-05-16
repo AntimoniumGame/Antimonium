@@ -6,12 +6,13 @@
 
 /obj/effect/random/New()
 	..()
-	var/random_state = rand(1,random_states)
-	if(random_state_prefix)
-		icon_state = "[random_state_prefix]-[random_state]"
-	else
-		icon_state = "[random_state]"
-	if(!transform)
-		var/matrix/M = matrix()
-		M.Turn(pick(0,90,180,270))
-		transform = M
+	if(random_states)
+		var/random_state = rand(1,random_states)
+		if(random_state_prefix)
+			icon_state = "[random_state_prefix]-[random_state]"
+		else
+			icon_state = "[random_state]"
+		if(!transform)
+			var/matrix/M = matrix()
+			M.Turn(pick(0,90,180,270))
+			transform = M

@@ -16,7 +16,7 @@
 	owner.injured_limbs |= src
 
 	if(wound_type == WOUND_CUT && wound_severity > 5)
-		blood_splatter(owner, get_turf(owner))
+		splatter(owner, get_turf(owner), /datum/material/water/blood)
 
 	if(wounds.len)
 		var/list/matching_wounds = list()
@@ -76,7 +76,7 @@
 		M.Turn(pick(0,90,180,270))
 		transform = M
 		thrown_at(get_step(src, pick(all_dirs)))
-		blood_splatter(owner, loc)
+		splatter(owner, loc, /datum/material/water/blood)
 
 		owner.update_icon()
 		for(var/obj/item/limb/child in src)

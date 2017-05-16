@@ -1,7 +1,7 @@
 /datum/material
 
 	var/descriptor
-	var/general_name = "matter"
+	var/general_name = "stuff"
 
 	var/strength = 1
 	var/sharpness_modifier = 1
@@ -21,14 +21,15 @@
 	var/gas_portion_name_plural =    "puffs"
 
 	// Temperatures are in Kelvin.
-	var/melting_point = TEMPERATURE_NEVER_COLD
+	var/melting_point =  TEMPERATURE_NEVER_COLD
+	var/boiling_point =  TEMPERATURE_NEVER_HOT
 	var/ignition_point = TEMPERATURE_NEVER_HOT
-	var/boiling_point = TEMPERATURE_NEVER_HOT
 
+	var/colour = WHITE
 
 /datum/material/New()
 
-	if(!general_name) general_name = "???"
+	if(!general_name) general_name = "matter"
 	if(!descriptor)   descriptor =   general_name
 	if(!solid_name)   solid_name =   general_name
 	if(!liquid_name)  liquid_name =  "molten [general_name]"
@@ -69,7 +70,7 @@
 	return weight_modifier
 
 /datum/material/proc/is_temperature_sensitive()
-	return (melting_point != TEMPERATURE_NEVER_COLD || boiling_point != TEMPERATURE_NEVER_HOT)
+	return (melting_point != TEMPERATURE_NEVER_COLD || ignition_point != TEMPERATURE_NEVER_HOT || boiling_point != TEMPERATURE_NEVER_HOT)
 
 /datum/material/proc/on_melt(var/obj/reagent)
 	reagent.notify_nearby("\The [reagent] melts!")
