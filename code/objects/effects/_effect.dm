@@ -4,7 +4,7 @@
 	density = 0
 	layer = TURF_LAYER+0.1
 	icon = 'icons/objects/effects/effect.dmi'
-	interaction_flags = FLAG_ETHEREAL | FLAG_ANCHORED
+	flags = FLAG_ETHEREAL | FLAG_ANCHORED
 
 /obj/effect/New()
 	..()

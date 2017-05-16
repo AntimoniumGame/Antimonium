@@ -1,6 +1,6 @@
 /turf/proc/check_thrown_collision(var/atom/movable/thrown)
 	if(density)
-		if(!(thrown.interaction_flags & FLAG_ETHEREAL) && !(interaction_flags & FLAG_ETHEREAL))
+		if(!(thrown.flags & FLAG_ETHEREAL) && !(flags & FLAG_ETHEREAL))
 			return TRUE
 		thrown_hit_by(thrown)
 	for(var/thing in (contents - thrown))

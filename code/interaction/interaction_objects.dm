@@ -18,17 +18,21 @@
 	return
 
 /obj/item/handle_clicked_on(var/mob/clicker, var/slot)
-	if(is_adjacent_to(get_turf(src), get_turf(clicker)))
-		if(!clicker.get_equipped(slot))
-			var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
-			notify_nearby("\The [clicker] picks up \the [src] in [clicker.their()] [inv_slot.name].")
-			play_local_sound(src, collect_sound, 50)
-			clicker.collect_item(src, slot)
+	if(is_adjacent_to(get_turf(src), get_turf(clicker)) && !clicker.get_equipped(slot))
+
+		if(!is_solid())
+			notify_nearby("\The [clicker] attempts to collect \the [src], but it slips through [clicker.their()] grasp.")
 			return
+
+		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
+		notify_nearby("\The [clicker] picks up \the [src] in [clicker.their()] [inv_slot.name].")
+		play_local_sound(src, collect_sound, 50)
+		clicker.collect_item(src, slot)
+		return
 	. = ..()
 
 /obj/item/proc/attacking(var/mob/user, var/mob/target)
-	if(!(interaction_flags & FLAG_SIMULATED))
+	if(!(flags & FLAG_SIMULATED))
 		return
 	user.do_attack_animation(target, src)
 	if(user.intent.selecting == INTENT_HELP)

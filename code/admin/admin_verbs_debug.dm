@@ -24,7 +24,7 @@
 	set category = "Debug"
 
 	if(!mc)
-		dnotify("MC doesn't exist.")
+		dnotify("Master controller doesn't exist.")
 		return
 	dnotify("Daemons: [mc.daemons.len]")
 	for(var/datum/daemon/daemon in mc.daemons)

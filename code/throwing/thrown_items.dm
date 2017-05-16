@@ -28,7 +28,7 @@
 /obj/item/stack/throw_at(var/mob/thrower, var/atom/target)
 	if(!thrower.on_combat_cooldown())
 		thrower.set_combat_cooldown(4)
-		var/obj/item/stack/throwing = new type(get_turf(thrower), 1)
+		var/obj/item/stack/throwing = new type(get_turf(thrower), material.type, 1, src)
 		thrower.notify_nearby("\The [thrower] hurls \the [throwing]!")
 		if(prob(20))
 			var/atom/new_target = get_turf(target)

@@ -69,7 +69,7 @@ Inputs:
 	coord_x = start_loc_x
 	coord_y = start_loc_y
 
-	if(spin && (owner.interaction_flags & FLAG_THROWN_SPIN))
+	if(spin && (owner.flags & FLAG_THROWN_SPIN))
 		spin_counter = 0
 		owner.update_strings()
 		owner.name = "flying [owner.name]"

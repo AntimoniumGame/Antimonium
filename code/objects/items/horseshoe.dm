@@ -4,8 +4,8 @@
 	sharpness = 0
 	weight = 5
 	contact_size = 3
-	default_material_path = /datum/material
-	attack_verbs = list("punches") // Like impromptu brass knuckles?"
+	default_material_path = /datum/material/iron
+	attack_verbs = list("punches") // Like impromptu brass knuckles?
 
 /obj/item/horseshoe/New()
 	..()
