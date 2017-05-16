@@ -29,14 +29,14 @@ var/list/admins = list()
 
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		anotify("SQL error - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		anotify("SQL error - initialize_admin_database 1 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 	// Load admins.
-	query = new("SELECT * FROM ranks")
+	query = new("SELECT * FROM ranks;")
 
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		anotify("SQL error - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		anotify("SQL error - initialize_admin_database 2 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 	admins.Cut()
 	while(query.NextRow())
@@ -65,16 +65,16 @@ var/list/admins = list()
 	var/database/query/query = new("INSERT INTO ranks VALUES (?,?,?);", enter_ckey, enter_permissions, enter_title)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		anotify("SQL error - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		anotify("SQL error - add_to_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 /proc/update_admin_database(var/enter_ckey, var/enter_permissions, var/enter_title)
 	var/database/query/query = new("UPDATE ranks SET permissions = ?, title = ? WHERE ckey == ?;", enter_permissions, enter_title, enter_ckey)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		anotify("SQL error - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		anotify("SQL error - update_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 /proc/remove_from_admin_database(var/enter_ckey)
 	var/database/query/query = new("DELETE * FROM ranks WHERE ckey == ?;", enter_ckey)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		anotify("SQL error - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		anotify("SQL error - remove_from_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)

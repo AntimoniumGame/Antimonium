@@ -25,7 +25,8 @@
 	var/existing_admin = FALSE
 	if(admins[enter_ckey])
 		existing_admin = TRUE
-		modifying.set_admin_permissions()
+		if(modifying)
+			modifying.set_admin_permissions()
 		admins[enter_ckey] = null
 		admins -= enter_ckey
 
