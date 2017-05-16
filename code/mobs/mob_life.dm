@@ -23,7 +23,7 @@
 		return
 
 	blood = min(100, blood + 3)
-	if(blood <= 0)
+	if(blood <= 60)
 		die("blood loss")
 	else if(prob(10))
 		switch(blood)
