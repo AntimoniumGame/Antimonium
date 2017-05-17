@@ -8,7 +8,7 @@
 	var/list/splat_images = list()
 
 /obj/effect/random/splat/Uncrossed(var/mob/crosser)
-	if(istype(crosser) && amount)
+	if(istype(crosser) && amount && material_state == STATE_LIQUID)
 		var/smearing = min(amount, 5)
 		amount -= smearing
 		crosser.smear_with(material, smearing)
@@ -43,6 +43,16 @@
 		random_state_prefix = null
 		icon_state = "[rand(1,random_states)]"
 	..()
+
+/obj/effect/random/splat/melt()
+	material_state = STATE_LIQUID
+	update_strings()
+	update_values()
+
+/obj/effect/random/splat/solidify()
+	material_state = STATE_SOLID
+	update_strings()
+	update_values()
 
 /obj/effect/random/splat/smear
 	name = "smear"

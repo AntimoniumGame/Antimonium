@@ -13,11 +13,12 @@
 		return FALSE
 
 	// Make sure we still have active grabs before moving the grabbed.
-	for(var/thing in active_grabs)
-		var/obj/item/grab/grab = thing
-		// If the grab persists, move whatever they're dragging.
-		if(istype(grab))
-			grab.check_state()
+	if(flags & FLAG_SIMULATED)
+		for(var/thing in active_grabs)
+			var/obj/item/grab/grab = thing
+			// If the grab persists, move whatever they're dragging.
+			if(istype(grab))
+				grab.check_state()
 
 	var/last_loc = loc
 
@@ -25,26 +26,27 @@
 
 	if(.)
 
-		for(var/thing in smeared_with)
-			var/datum/material/mat = thing
-			smeared_with[mat]--
-			if(smeared_with[mat] <= 0)
-				smeared_with[mat] = null
-				smeared_with -= mat
-			smear(src, last_loc, loc, mat.type, !prone)
+		if(flags & FLAG_SIMULATED)
+			for(var/thing in smeared_with)
+				var/datum/material/mat = thing
+				smeared_with[mat]--
+				if(smeared_with[mat] <= 0)
+					smeared_with[mat] = null
+					smeared_with -= mat
+				smear(src, last_loc, loc, mat.type, !prone)
 
-		// Move anything we're dragging a step towards us.
-		for(var/thing in active_grabs)
-			var/obj/item/grab/grab = thing
-			if(istype(grab))
-				var/turf/last_grabbed_loc = get_turf(grab.grabbed)
-				grab.grabbed.dragged = TRUE
-				grab.grabbed.face_atom(last_loc)
-				grab.grabbed.glide_size = glide_size
-				step_towards(grab.grabbed, last_loc)
-				grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
-				grab.grabbed.dragged = FALSE
-				grab.check_state()
+			// Move anything we're dragging a step towards us.
+			for(var/thing in active_grabs)
+				var/obj/item/grab/grab = thing
+				if(istype(grab))
+					var/turf/last_grabbed_loc = get_turf(grab.grabbed)
+					grab.grabbed.dragged = TRUE
+					grab.grabbed.face_atom(last_loc)
+					grab.grabbed.glide_size = glide_size
+					step_towards(grab.grabbed, last_loc)
+					grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
+					grab.grabbed.dragged = FALSE
+					grab.check_state()
 
 		next_move = world.time + get_move_delay()
 		update_vision_cone()

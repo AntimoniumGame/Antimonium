@@ -86,5 +86,6 @@
 		if(listener.client)
 			to_chat(listener, message)
 
-/mob/abstract/left_click_on(var/atom/thing, var/ctrl, var/alt)
-	thing.left_clicked_on(src)
+/mob/abstract/new_player/left_click_on(var/atom/thing, var/ctrl, var/alt)
+	if(istype(thing, /obj/ui))
+		thing.left_clicked_on(src)

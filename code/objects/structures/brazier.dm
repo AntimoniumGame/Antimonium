@@ -2,7 +2,7 @@
 	name = "brazier"
 	icon = 'icons/objects/structures/brazier.dmi'
 	hit_sound = 'sounds/effects/ding1.wav'
-	weight = 35
+	weight = 5
 
 	light_color = BRIGHT_ORANGE
 	light_power = 10
