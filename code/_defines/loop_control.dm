@@ -35,3 +35,5 @@ var/tick_two_s      = tick_one_s * 2
 
 //push this to the end of the queue
 #define QUEUE_END   sleep(0)
+
+#define TICK_USAGE_TO_MS(percent_of_tick_used) (percent_of_tick_used * world.tick_lag)

@@ -1,7 +1,6 @@
 /obj/structure/stake
 	name = "horseshoes stake"
 	icon = 'icons/objects/structures/stake.dmi'
-	density = 0
 	layer = TURF_LAYER+0.2
 	hit_sound = 'sounds/effects/ding1.wav'
 

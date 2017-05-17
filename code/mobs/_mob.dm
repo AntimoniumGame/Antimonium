@@ -1,5 +1,4 @@
 /mob
-	density = 1
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING

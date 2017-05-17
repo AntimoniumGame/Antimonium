@@ -5,13 +5,9 @@
 	var/run_delay = 1
 
 /mob/can_move()
-	return (dragged || (world.time >= next_move))
+	return ((dragged || (world.time >= next_move)) && !(no_dead_move() && dead && !dragged))
 
 /mob/Move()
-
-	if(no_dead_move() && dead && !dragged)
-		return FALSE
-
 	// Make sure we still have active grabs before moving the grabbed.
 	for(var/thing in active_grabs)
 		var/obj/item/grab/grab = thing
@@ -19,19 +15,25 @@
 		if(istype(grab))
 			grab.check_state()
 
-	var/last_loc = loc
-
 	. = ..()
 
 	if(.)
+		next_move = world.time + get_move_delay()
 
+/mob/moved(atom/OldLoc, oDir)
+	..()
+
+	if(dir != oDir)
+		turn_mob_icon()
+
+	if(loc != OldLoc)
 		for(var/thing in smeared_with)
 			var/datum/material/mat = thing
 			smeared_with[mat]--
 			if(smeared_with[mat] <= 0)
 				smeared_with[mat] = null
 				smeared_with -= mat
-			smear(src, last_loc, loc, mat.type, !prone)
+			smear(src, OldLoc, loc, mat.type, !prone)
 
 		// Move anything we're dragging a step towards us.
 		for(var/thing in active_grabs)
@@ -39,15 +41,13 @@
 			if(istype(grab))
 				var/turf/last_grabbed_loc = get_turf(grab.grabbed)
 				grab.grabbed.dragged = TRUE
-				grab.grabbed.face_atom(last_loc)
+				grab.grabbed.face_atom(OldLoc)
 				grab.grabbed.glide_size = glide_size
-				step_towards(grab.grabbed, last_loc)
+				grab.grabbed.Move(OldLoc)
 				grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
 				grab.grabbed.dragged = FALSE
 				grab.check_state()
 
-		next_move = world.time + get_move_delay()
-		update_vision_cone()
 		for(var/mob/M in viewers(world.view, get_turf(src)))
 			if(M.client)
 				M.update_vision_cone()
@@ -103,12 +103,12 @@
 
 /mob/set_dir(var/newdir)
 	. = ..()
-	turn_mob(newdir)
+	turn_mob_icon()
 	update_vision_cone()
 
-/mob/proc/turn_mob(var/newdir)
+/mob/proc/turn_mob_icon()
 	var/matrix/M = matrix()
-	M.Turn(dir2turn(newdir))
+	M.Turn(dir2turn(dir))
 	transform = M
 
 //code for controlling walk_dir is in /code/client/control.dm
