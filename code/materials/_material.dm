@@ -21,7 +21,7 @@
 	var/gas_portion_name_plural =    "puffs"
 
 	// Temperatures are in Kelvin.
-	var/melting_point =  TEMPERATURE_NEVER_COLD
+	var/melting_point =  TEMPERATURE_NEVER_HOT
 	var/boiling_point =  TEMPERATURE_NEVER_HOT
 	var/ignition_point = TEMPERATURE_NEVER_HOT
 

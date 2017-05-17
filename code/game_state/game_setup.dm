@@ -6,6 +6,7 @@
 		mc = new()
 		initialize_admin_permissions()
 		initialize_admin_database()
+		initialize_jobs()
 	..()
 
 /datum/game_state/setup/start()

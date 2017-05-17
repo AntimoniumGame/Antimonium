@@ -65,8 +65,11 @@
 
 	var/mob/human/player_mob = new()
 	player_mob.force_move(locate(3,3,1))
+	player_mob.job = input("Choose a job.") as anything in job_datums
 	player_mob.name = key
 	player_mob.key = key
+	player_mob.job.welcome(player_mob)
+	player_mob.job.equip(player_mob)
 	qdel(src)
 
 /mob/abstract/new_player/do_say(var/message)
