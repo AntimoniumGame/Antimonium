@@ -6,7 +6,10 @@
 
 /mob/proc/toggle_prone()
 	prone = !prone
-	density = !prone
+	if(prone)
+		collision_mask = (COLLIDE_WORLD | COLLIDE_STRUCTURES)
+	else
+		collision_mask = initial(collision_mask)
 	update_icon()
 
 /mob/proc/update_stance()

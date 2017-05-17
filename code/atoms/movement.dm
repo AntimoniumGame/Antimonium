@@ -71,7 +71,8 @@
 /atom/movable/proc/force_move(atom/NewLoc, Dir = 0)
 	var/OldLoc = loc
 	var/oDir = dir
-	if(!Dir) Dir = dir
+	if(!Dir)
+		Dir = dir
 	if(isturf(NewLoc) && isturf(loc))
 		if(z == NewLoc.z)
 			var/dx = (x * TILE_WIDTH) - (NewLoc.x * TILE_WIDTH)

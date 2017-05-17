@@ -6,7 +6,7 @@
 /mob/abstract/create_limbs()
 	return
 
-/mob/abstract/turn_mob(var/newdir)
+/mob/abstract/turn_mob_icon()
 	return
 
 /mob/abstract/no_dead_move()

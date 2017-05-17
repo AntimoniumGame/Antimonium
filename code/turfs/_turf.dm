@@ -6,7 +6,6 @@
 
 /turf/wall
 	name = "wall"
-	density = 1
 	opacity = 1
 	icon_state = "wall"
 

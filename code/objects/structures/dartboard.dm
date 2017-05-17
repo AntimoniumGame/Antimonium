@@ -1,7 +1,6 @@
 /obj/item/dartboard
 	name = "dartboard"
 	icon = 'icons/objects/structures/dartboard.dmi'
-	density = 0
 	layer = TURF_LAYER+0.2
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	contact_size = 5
