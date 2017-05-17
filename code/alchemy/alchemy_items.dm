@@ -27,11 +27,11 @@
 		holder.drop_item(src)
 
 	if(istype(loc, /turf))
-		material = get_unique_data_by_path(/datum/material/slag)
-		update_values()
-
-	update_strings()
-	update_icon()
+		new /obj/effect/random/splat(get_turf(src), material.type, src, amount)
+		qdel(src)
+	else
+		update_strings()
+		update_icon()
 
 /obj/item/stack/ingredient/solidify()
 	update_strings()

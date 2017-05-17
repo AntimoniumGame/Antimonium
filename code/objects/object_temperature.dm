@@ -17,7 +17,7 @@
 
 /obj/proc/melt()
 	if(istype(loc, /turf))
-		new /obj/item/stack/ingredient(get_turf(src), /datum/material/slag, get_weight(), src)
+		new /obj/effect/random/splat(get_turf(src), material.type, src, get_weight())
 	else
 		new /obj/item/stack/ingredient(get_turf(src), material.type, get_weight(), src)
 	qdel(src)

@@ -5,6 +5,7 @@
 	weight = 10
 	sharpness = 1
 	attack_verbs = list("bludgeons", "batters", "whacks")
+	default_material_path = /datum/material/meat
 
 	var/limb_name
 	var/root_limb = FALSE
@@ -39,7 +40,6 @@
 		parent.children += src
 
 /obj/item/limb/update_strings()
-	..()
 	name = limb_name
 
 /obj/item/limb/proc/is_bleeding()

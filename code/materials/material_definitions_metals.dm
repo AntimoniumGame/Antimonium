@@ -5,6 +5,7 @@
 	sharpness_modifier = 0.4
 	melting_point = 600
 	boiling_point = 2000
+	colour = DARK_GREY
 
 /datum/material/gold
 	general_name = "gold"
@@ -13,6 +14,7 @@
 	sharpness_modifier = 0.1
 	melting_point = 1300
 	boiling_point = 3000
+	colour = BRIGHT_ORANGE
 
 /datum/material/antimonium
 	general_name = "antimonium"
@@ -21,6 +23,7 @@
 	weight_modifier = 4
 	melting_point = 900
 	boiling_point = 1800
+	colour = PALE_BLUE
 
 /datum/material/iron
 	general_name = "iron"
@@ -29,3 +32,4 @@
 	weight_modifier = 2
 	melting_point = 1800
 	boiling_point = 3200
+	colour = PALE_GREY

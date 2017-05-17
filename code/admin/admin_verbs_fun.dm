@@ -11,7 +11,7 @@
 	set name = "Gibself"
 	set category = "Fun"
 
-	blood_splatter(mob, mob)
+	splatter(mob, mob, /datum/material/water/blood)
 	var/mob/victim = mob
 	while(victim.limbs.len > 1)
 		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]

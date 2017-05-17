@@ -25,6 +25,14 @@
 
 	if(.)
 
+		for(var/thing in smeared_with)
+			var/datum/material/mat = thing
+			smeared_with[mat]--
+			if(smeared_with[mat] <= 0)
+				smeared_with[mat] = null
+				smeared_with -= mat
+			smear(src, last_loc, loc, mat.type, !prone)
+
 		// Move anything we're dragging a step towards us.
 		for(var/thing in active_grabs)
 			var/obj/item/grab/grab = thing
@@ -118,12 +126,3 @@
 		do_fadein(src, 10)
 	. = ..()
 	MoveLoop()
-
-/mob/handle_dragged(var/turf/from_turf, var/turf/to_turf)
-	if(prone)
-		..()
-		for(var/thing in injured_limbs)
-			var/obj/item/limb/limb = thing
-			if(limb.is_bleeding())
-				blood_smear(src, from_turf, to_turf)
-				return

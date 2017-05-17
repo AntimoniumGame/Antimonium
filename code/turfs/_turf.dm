@@ -33,7 +33,7 @@
 		thing.right_clicked_on(clicker, slot)
 
 /turf/get_weight()
-	return 50
+	return 10
 
 /turf/radiate_heat(var/amount, var/distance = 1)
 	. = ..()

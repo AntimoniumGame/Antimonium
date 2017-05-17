@@ -1,16 +1,16 @@
-/proc/blood_splatter(var/mob/bleeder, var/turf/bleeding_on)
+/proc/splatter(var/mob/bleeder, var/turf/bleeding_on, var/material_type)
 	if(!istype(bleeding_on, /turf))
 		bleeding_on = get_turf(bleeding_on)
+	bleeder.smear_with(get_unique_data_by_path(material_type))
 	if(istype(bleeding_on))
-		if(!(locate(/obj/effect/random/blood) in bleeding_on))
+		if(!(locate(/obj/effect/random/splat) in bleeding_on))
 			play_local_sound(bleeding_on, 'sounds/effects/drip1.wav', 50)
-		new /obj/effect/random/blood(bleeding_on, bleeder)
+		new /obj/effect/random/splat(bleeding_on, material_type, bleeder, 5)
 
-/proc/blood_smear(var/mob/bleeder, var/turf/from_turf, var/turf/to_turf)
+/proc/smear(var/mob/bleeder, var/turf/from_turf, var/turf/to_turf, var/material_type, var/footprint)
 	var/smear_dir = get_dir(from_turf, to_turf)
-	new /obj/effect/blood_smear(from_turf, smear_dir, "smear_from")
-	new /obj/effect/blood_smear(to_turf, smear_dir, "smear_to")
-
+	new /obj/effect/random/splat/smear(from_turf, material_type, bleeder, 0, smear_dir, footprint ? "walk_from" : "smear_from")
+	new /obj/effect/random/splat/smear(to_turf, material_type, bleeder, 0, smear_dir, footprint ? "walk_to" : "smear_to")
 
 /proc/do_fadein(var/mob/fader, var/delay = 10)
 
