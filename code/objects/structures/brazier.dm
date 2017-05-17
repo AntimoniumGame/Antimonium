@@ -17,6 +17,14 @@
 	processing_objects += src
 	next_burn_sound = rand(10,20)
 
+/obj/structure/brazier/update_icon()
+	overlays.Cut()
+	if(burning)
+		overlays += image('icons/images/fire.dmi', "mid")
+		set_light()
+	else
+		kill_light()
+
 /obj/structure/brazier/destroy()
 	processing_objects -= src
 	. = ..()

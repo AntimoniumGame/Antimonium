@@ -7,6 +7,9 @@
 	var/amount = 1
 	var/list/splat_images = list()
 
+/obj/effect/random/splat/get_weight()
+	return amount
+
 /obj/effect/random/splat/Uncrossed(var/mob/crosser)
 	if(istype(crosser) && amount && material_state == STATE_LIQUID)
 		var/smearing = min(amount, 5)
