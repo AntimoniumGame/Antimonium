@@ -111,6 +111,7 @@
 #include "code\lighting\light_planes.dm"
 #include "code\lighting\light_turf.dm"
 #include "code\lobby_music\_lobby_music.dm"
+#include "code\lobby_music\lobby_music_definitions.dm"
 #include "code\master_controller\_master_controller.dm"
 #include "code\master_controller\daemons\_daemon.dm"
 #include "code\master_controller\daemons\game.dm"

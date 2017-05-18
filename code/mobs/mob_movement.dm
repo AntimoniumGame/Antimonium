@@ -39,13 +39,14 @@
 			for(var/thing in active_grabs)
 				var/obj/item/grab/grab = thing
 				if(istype(grab))
-					var/turf/last_grabbed_loc = get_turf(grab.grabbed)
-					grab.grabbed.dragged = TRUE
-					grab.grabbed.face_atom(last_loc)
-					grab.grabbed.glide_size = glide_size
-					step_towards(grab.grabbed, last_loc)
-					grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
-					grab.grabbed.dragged = FALSE
+					if(!(grab.grabbed.flags & FLAG_ANCHORED))
+						var/turf/last_grabbed_loc = get_turf(grab.grabbed)
+						grab.grabbed.dragged = TRUE
+						grab.grabbed.face_atom(last_loc)
+						grab.grabbed.glide_size = glide_size
+						step_towards(grab.grabbed, last_loc)
+						grab.grabbed.handle_dragged(last_grabbed_loc, grab.grabbed.loc)
+						grab.grabbed.dragged = FALSE
 					grab.check_state()
 
 		next_move = world.time + get_move_delay()
@@ -69,7 +70,8 @@
 		if(move_sound)
 			play_local_sound(src, move_sound, 50, frequency = -1)
 		notify_nearby("\The [pusher] pushes \the [src].")
-	return TRUE
+		return TRUE
+	return FALSE
 
 /mob/pushed_by(var/mob/pusher, var/mob/push_dir)
 

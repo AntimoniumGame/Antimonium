@@ -19,14 +19,14 @@ var/datum/lobby_music/lobby_music
 
 /world/New()
 	. = ..()
-	var/lmusic = pick(typesof(/datum/lobby_music))
+	var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)
 	lobby_music = new lmusic()
 
 /datum/lobby_music
-	var/song_file = 'sounds/music/Chris_Zabriskie_-_09_-_Cylinder_Nine.ogg'
-	var/name = "Cylinder 9"
-	var/author = "Chris Zabriskie"
-	var/url = "http://freemusicarchive.org/music/Chris_Zabriskie/2014010103336111/Chris_Zabriskie_-_Cylinders_-_09_-_Cylinder_Nine"
+	var/song_file
+	var/name
+	var/author
+	var/url
 	var/license
 	var/license_url
 
