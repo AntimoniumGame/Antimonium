@@ -9,19 +9,19 @@
 
 /obj/item/dartboard/New()
 	..()
-	align_with_wall()
+	align_with_wall(src)
+	update_icon()
 
 /obj/item/dartboard/after_dropped()
-	align_with_wall()
+	align_with_wall(src)
+	update_icon()
 
-/obj/item/dartboard/proc/align_with_wall()
-	icon_state = "world"
-	for(var/checkdir in cardinal_dirs)
-		var/turf/neighbor = get_step(src, checkdir)
-		if(neighbor.density)
-			set_dir(get_dir(neighbor, loc))
-			return
-	icon_state = "world_flat"
+/obj/item/dartboard/update_icon()
+	..()
+	if(dir)
+		icon_state = "world"
+	else
+		icon_state = "world_flat"
 
 /obj/item/dartboard/thrown_hit_by(var/atom/movable/projectile)
 

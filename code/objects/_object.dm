@@ -19,6 +19,8 @@
 			material_state = STATE_GAS
 		else if(temperature >= material.melting_point)
 			material_state = STATE_LIQUID
+		else
+			material_state = STATE_SOLID
 
 	update_values()
 	..(newloc)

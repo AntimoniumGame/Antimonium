@@ -42,13 +42,13 @@
 			user.notify("That [stack_name] can hold no more [plural_name].")
 			return TRUE
 		else if(other.get_amount() <= transfer_amount)
-			add(other.get_amount())
-			qdel(other)
+			other.add(get_amount())
 			user.notify_nearby("\The [user] merges two [stack_name]s of [plural_name] together.")
+			qdel(src)
 		else
-			transfer_amount = max_amount - get_amount()
-			add(transfer_amount)
-			other.remove(transfer_amount)
+			transfer_amount = other.max_amount - other.get_amount()
+			other.add(transfer_amount)
+			remove(transfer_amount)
 			user.notify_nearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
 		return TRUE
 	else

@@ -21,7 +21,7 @@
 	var/gas_portion_name_plural =    "puffs"
 
 	// Temperatures are in Kelvin.
-	var/melting_point =  TEMPERATURE_NEVER_COLD
+	var/melting_point =  TEMPERATURE_NEVER_HOT
 	var/boiling_point =  TEMPERATURE_NEVER_HOT
 	var/ignition_point = TEMPERATURE_NEVER_HOT
 
@@ -37,7 +37,7 @@
 	..()
 
 /datum/material/proc/get_descriptor()
-	return get_name()
+	return descriptor ? descriptor : get_name()
 
 /datum/material/proc/get_name(var/material_state)
 	if(material_state)

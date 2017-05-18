@@ -4,11 +4,9 @@
 		temperature_sensitive_atoms += src
 
 /atom
-	var/temperature
+	var/temperature = TEMPERATURE_ROOM
 
 /atom/proc/get_temperature()
-	if(isnull(temperature))
-		temperature = TEMPERATURE_ROOM
 	return temperature
 
 /atom/proc/process_temperature()

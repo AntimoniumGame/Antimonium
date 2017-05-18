@@ -4,6 +4,7 @@
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
 	var/weight = 50
+	var/datum/job/job
 
 /mob/get_weight()
 	return weight

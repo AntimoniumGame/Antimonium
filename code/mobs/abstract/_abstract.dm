@@ -2,6 +2,7 @@
 // otherwise not fully part of the game world.
 /mob/abstract
 	invisibility = INVISIBILITY_MAXIMUM
+	flags = 0
 
 /mob/abstract/create_limbs()
 	return
