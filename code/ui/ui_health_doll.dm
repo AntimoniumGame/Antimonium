@@ -1,17 +1,13 @@
-/obj/ui/doll/health
+/obj/ui/health
 	name = "Health"
 	screen_loc = "4,1"
+	icon = 'icons/images/ui_doll.dmi'
 	icon_state = "underlay_health"
-	var/mob/human/human_owner
 
-/obj/ui/doll/health/New(var/mob/_owner)
-	human_owner = _owner
-	..(_owner)
-
-/obj/ui/doll/health/update_icon()
+/obj/ui/health/update_icon()
 	var/list/limb_overlays = list()
-	for(var/limb_tag in human_owner.limbs)
-		var/obj/item/limb/limb = human_owner.limbs[limb_tag]
+	for(var/limb_tag in owner.limbs)
+		var/obj/item/limb/limb = owner.limbs[limb_tag]
 		var/limb_icon = limb.broken ? "[limb_tag]-broken" : limb_tag
 		var/image/I = image(icon = src.icon, icon_state = limb_icon)
 		I.alpha = 90

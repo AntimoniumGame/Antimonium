@@ -20,9 +20,6 @@
 	mouse_opacity = 0
 	layer = 0
 
-/obj/ui/vision_cone/New(var/mob/_owner)
-	..(_owner)
-
 /obj/ui/vision_cone/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-6],[round(view_y/2)-6]"
 	var/matrix/M = matrix()
