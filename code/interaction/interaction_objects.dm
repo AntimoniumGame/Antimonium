@@ -62,6 +62,9 @@
 	return
 
 /obj/item/proc/after_picked_up()
+	reset_position()
+
+/obj/item/proc/reset_position()
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	transform = null

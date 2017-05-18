@@ -1,14 +1,22 @@
 /turf
 	name = "floor"
-	icon = 'icons/turfs/turf.dmi'
+	icon = 'icons/turfs/_floor.dmi'
+	icon_state = "1"
 	layer = TURF_LAYER
 	luminosity = 1
 
-/turf/wall
-	name = "wall"
-	density = 1
-	opacity = 1
-	icon_state = "wall"
+/turf/stone
+	name = "cobblestones"
+	icon = 'icons/turfs/cobbles.dmi'
+	icon_state = "1"
+
+/turf/tiles
+	name = "tiled floor"
+	icon = 'icons/turfs/tiles.dmi'
+
+/turf/stone/New()
+	..()
+	icon_state = "[rand(1,3)]"
 
 /turf/proc/get_simulated_atoms()
 	var/list/valid_targets = list()

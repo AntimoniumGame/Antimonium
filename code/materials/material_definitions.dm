@@ -6,6 +6,10 @@
 	sharpness_modifier = 0.1
 	ignition_point = 700
 
+/datum/material/cloth/felt
+	general_name = "felt"
+	descriptor = "felted"
+
 /datum/material/wood
 	general_name = "wood"
 	descriptor = "wooden"

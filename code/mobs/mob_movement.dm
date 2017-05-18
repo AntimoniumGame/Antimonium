@@ -62,6 +62,8 @@
 	return FALSE
 
 /atom/movable/pushed_by(var/mob/pusher, var/mob/push_dir)
+	if(flags & FLAG_ANCHORED)
+		return FALSE
 	glide_size = pusher.glide_size
 	if(step_towards(src, get_step(src, push_dir)))
 		if(move_sound)

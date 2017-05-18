@@ -37,7 +37,7 @@
 	..()
 
 /datum/material/proc/get_descriptor()
-	return get_name()
+	return descriptor ? descriptor : get_name()
 
 /datum/material/proc/get_name(var/material_state)
 	if(material_state)

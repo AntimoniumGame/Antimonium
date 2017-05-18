@@ -8,7 +8,7 @@
 	light_power = 10
 	light_range = 5
 
-	var/burning = TRUE
+	var/lit = TRUE
 	var/next_burn_sound = 0
 
 /obj/structure/brazier/New()
@@ -19,7 +19,7 @@
 
 /obj/structure/brazier/update_icon()
 	overlays.Cut()
-	if(burning)
+	if(lit)
 		overlays += image('icons/images/fire.dmi', "mid")
 		set_light()
 	else
@@ -29,15 +29,26 @@
 	processing_objects -= src
 	. = ..()
 
-var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav','sounds/effects/fire3.wav')
+/obj/structure/brazier/attacked_by(var/mob/user, var/obj/item/thing)
+	if(istype(thing, /obj/item/torch))
+		var/obj/item/torch/torch = thing
+		if(!torch.lit && lit)
+			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			torch.lit = TRUE
+			torch.update_light(user)
+		else if(torch.lit && !lit)
+			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			lit = TRUE
+			update_icon()
 
+var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav','sounds/effects/fire3.wav')
 /obj/structure/brazier/process_temperature()
 	if(temperature < TEMPERATURE_WOOD_FIRE)
 		temperature = TEMPERATURE_WOOD_FIRE
 	..()
 
 /obj/structure/brazier/process()
-	if(burning)
+	if(lit)
 		if(world.time > next_burn_sound)
 			next_burn_sound = world.time + rand(40,50)
 			play_local_sound(src, pick(burn_sounds), 15, frequency = -1)

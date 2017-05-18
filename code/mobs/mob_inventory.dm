@@ -29,6 +29,8 @@
 /mob/proc/collect_item_or_del(var/obj/item/thing, var/equip_to_slot)
 	if(!collect_item(thing, equip_to_slot))
 		qdel(thing)
+		return FALSE
+	return TRUE
 
 /mob/proc/get_equipped(var/slot_id)
 	var/obj/ui/inv/inv_slot = inventory_slots[slot_id]
