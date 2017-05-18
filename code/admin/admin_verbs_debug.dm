@@ -69,6 +69,7 @@
 
 	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
 
+//var viewing madness below
 /client/proc/start_view_vars()
 	set waitfor = 0
 	set name = "View Variables"
@@ -112,26 +113,50 @@
 	while(O && winexists(src, window_ref) && (winget(src, "[window_ref].varsrefresh", "is-checked") == "true" || first_run))
 		var/i = 2
 		for(var/k in keylist)
-			src << output(k, "[window_ref].varsgrid:1,[i]")
+			src << output("<a href='?function=varedit;var=[k];ref=\ref[O]'>[k]</a>" , "[window_ref].varsgrid:1,[i]")
 			var/value = O.vars[k]
 			if(isnull(value))
 				src << output("null", "[window_ref].varsgrid:2,[i++]")
-			else if(istype(value,/list))
+			else if(istype(value, /list))
 				var/list/olist = value
-				src << output("/list = [olist.len]", "[window_ref].varsgrid:2,[i++]")
+				var/list_string = "/list = [olist.len]"
+				if(k != "vars" && olist.len < 20) // grid elements wont scroll down a long cell
+					for(var/o in olist)
+						list_string = "[list_string]\n   - [o]"
+				src << output(list_string, "[window_ref].varsgrid:2,[i++]")
+			else if(istype(value, /atom))
+				src << output(value, "[window_ref].varsgrid:2,[i++]")
+			else if(istype(value, /datum))
+				var/datum/d = value
+				src << output("[d.type] ([d])", "[window_ref].varsgrid:2,[i++]")
+			else if(k == "appearance")
+				src << output("/appearance", "[window_ref].varsgrid:2,[i++]")
+			else if(k == "flags" && istype(O, /atom))
+				var/flag_list = "bitflags: [value]"
+				var/bit = 1
+				for(var/j = 1 to 16)
+					if(value & bit)
+						flag_list = "[flag_list]\n   [atomflag2name(bit)]"
+					bit = bit<<1
+				src << output(flag_list, "[window_ref].varsgrid:2,[i++]")
+			else if((k == "sight" && ismob(O)) || (istype(O, /atom) && k in list("appearance_flags", "blend_mode")))
+				src << output(flags_to_bits(value), "[window_ref].varsgrid:2,[i++]")
 			else
-				if(istype(value, /atom))
-					src << output(value, "[window_ref].varsgrid:2,[i++]")
-				else if(istype(value, /datum))
-					var/datum/d = value
-					src << output("[d.type] ([d])", "[window_ref].varsgrid:2,[i++]")
-				else
-					src << output("[value]", "[window_ref].varsgrid:2,[i++]")
+				src << output("[value]", "[window_ref].varsgrid:2,[i++]")
 		first_run = FALSE
 		WAIT_1S
 
 	if(!O)
 		winset(src, window_ref, "title=\"View Vars: (Deleted)\"")
+
+/proc/flags_to_bits(flags)
+	var/flag_list = "bitflags: [flags]"
+	var/bit = 1
+	for(var/i = 1 to 16)
+		if(flags & bit)
+			flag_list = "[flag_list]\n   [bit]"
+		bit = bit<<1
+	return flag_list
 
 /client/proc/toggle_vars_refresh(string as text)
 	set hidden = 1
@@ -141,3 +166,138 @@
 /client/proc/close_vars_window(string as text)
 	set hidden = 1
 	winset(src, string, "parent=none")
+
+//Var editing madness below
+/client/Topic(href,href_list[],hsrc)
+	if(href_list["function"] == "varedit")
+		if(check_admin_permission(PERMISSIONS_DEBUG))
+			modify_var(src, href_list)
+	else
+		return ..()
+
+/proc/modify_var(client/C, list/href_list)
+	var/datum/D = locate(href_list["ref"])
+	if(!istype(D))
+		return
+	var/V = D.vars[href_list["var"]]
+	if(V in list("type", "parent_type", "vars") || istype(D, /atom) && V in list("locs"))
+		C.dnotify("variable \"[V]\" is read-only")
+	else
+		var/var_name = null
+		//there are only a couple of cases we need to know the var name
+		if(href_list["var"] == "appearance" || (istype(D, /atom) && (href_list["var"] == "contents" || href_list["var"] == "flags")))
+			var_name = href_list["var"]
+		D.vars[href_list["var"]] = change_var(C, V, var_name)
+
+//yes, this is a badass recursive-capable var editing proc
+/proc/change_var(client/C, V = null, var_name = null)
+	set background = 1
+
+	var/type
+	//beware the conditional chain - its in a debug call chain so thats my excuse for using one
+	if(isnull(V))
+		type = "null"
+	else if(istext(V))
+		type = "text"
+	else if(var_name == "flags")
+		type = "bitfield"
+	else if(isnum(V))
+		type = "number"
+	else if(ispath(V))
+		type = "path"
+	else if(isfile(V))
+		type = "file"
+	else if(istype(V, /list))
+		type = "list"
+	else if(istype(V, /matrix))
+		type = "matrix"
+	else if(var_name == "appearance") // appearances are special snowflakes
+		type = "appearance"
+	else if(istype(V, /datum))
+		var/choice = alert(C, "View or edit var?", null, "View", "Edit", "Cancel")
+		switch(choice)
+			if("View")
+				C.view_vars(V)
+				return V
+			if("Edit")
+				type = "datum"
+			if("Cancel")
+				return V
+	else if(!V)
+		//nothing - shouldn't ever get this far
+		return null
+
+	var/new_type = input(C, "Select type", null, type) in list("null", "bitfield", "number", "text", "path", "file", "list", "matrix", "appearance", "datum")
+	switch(new_type)
+		if("null")
+			return null
+		if("bitfield")
+			var/choice = input(C, "Select bitflag to toggle:", "Var Edit") in __atom_flag_names
+			if(V & __atom_flag_names[choice])
+				V &= ~__atom_flag_names[choice]
+			else
+				V |= __atom_flag_names[choice]
+			return V
+		if("number")
+			return input(C, "Enter number:", "Var Edit", V) as num|null
+		if("text")
+			return input(C, "Enter text:", "Var Edit", V) as text|null
+		if("path")
+			var/new_path = input(C, "Enter path:", "Var Edit", V) as text|null
+			var/path = text2path(new_path)
+			if(!path)
+				var/selection = alert(C, "Path doesn't exist, do you want to set it to null?",null,"Yes","No")
+				switch(selection)
+					if("Yes")
+						return null
+					if("No")
+						return V
+			return path
+		if("file")
+			var/new_path = input(C, "Enter file path:", "Var Edit", V) as text|null
+			var/new_file = file(new_path)
+			if(!isfile(new_file))
+				var/selection = alert(C, "Could not find file, do you want to set it to null?",null,"Yes","No")
+				switch(selection)
+					if("Yes")
+						return null
+					if("No")
+						return V
+			return new_file
+		if("list")
+			var/list/return_list = list()
+			if(istype(V, /list))
+				return_list = V
+			var/list_entity = input(C, "Select list entity:", "List Edit") in return_list + list(" + new entry", "    wipe list", "    cancel")
+			if(list_entity == " + new entry")
+				var/more = "Yes"
+				while(more == "Yes")
+					var/new_entry = change_var(C)
+					if(!isnull(new_entry) && (var_name != "contents" || istype(new_entry, /mob) || istype(new_entry, /obj))) // can only put mobs and objects in contents
+						return_list.Add(new_entry)
+					else
+						C.dnotify("only mobs and objects can be added to an atoms contents list.")
+					more = alert(C, "Add another entry?", null, "Yes", "No")
+			else if(list_entity == "    cancel")
+				return return_list
+			else if(list_entity == "    wipe list")
+				return list()
+			else
+				var/selection = alert(C, "How do you want to change this var?",null,"Edit","Remove")
+				switch(selection)
+					if("Edit")
+						var/index = return_list.Find(list_entity)
+						var/new_var = change_var(C, list_entity)
+						return_list[index] = new_var
+					if("Remove")
+						return_list.Remove(list_entity)
+			return return_list
+		if("matrix")
+			C.dnotify("matrix editing not implemented yet")
+			return V
+		if("appearance")
+			C.dnotify("appearance editing not implemented yet")
+			return V
+		if("datum")
+			C.dnotify("datum editing not implemented yet")
+			return V
