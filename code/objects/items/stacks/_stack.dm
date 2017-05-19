@@ -35,8 +35,8 @@
 	return (istype(stack) && type == stack.type && material == stack.material)
 
 /obj/item/stack/attacked_by(var/mob/user, var/obj/item/thing)
-	var/obj/item/stack/other = thing
-	if(matches_stack_type(other))
+	if(matches_stack_type(thing))
+		var/obj/item/stack/other = thing
 		var/transfer_amount = max_amount - get_amount()
 		if(transfer_amount <= 0)
 			user.notify("That [stack_name] can hold no more [plural_name].")
@@ -52,7 +52,7 @@
 			user.notify_nearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
 		return TRUE
 	else
-		. =..()
+		. = ..()
 
 /obj/item/stack/update_strings()
 	if(amount > 1)

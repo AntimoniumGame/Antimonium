@@ -2,7 +2,7 @@
 	name = "sconce"
 	icon_state = "sconce"
 	icon = 'icons/objects/structures/sconce.dmi'
-	flags = FLAG_SIMULATED | FLAG_ANCHORED
+	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAMMABLE
 	light_color = BRIGHT_ORANGE
 	light_power = 8
 	light_range = 4
@@ -18,7 +18,7 @@
 
 /obj/structure/sconce/update_icon()
 	if(filled)
-		if(filled.lit)
+		if(filled.on_fire)
 			icon_state = "sconce_lit"
 			light_color = filled.light_color
 			light_power = filled.light_power
@@ -32,28 +32,17 @@
 		kill_light()
 
 /obj/structure/sconce/attacked_by(var/mob/user, var/obj/item/thing)
-	if(istype(thing, /obj/item/torch))
+	. = ..()
+	if(!. && istype(thing, /obj/item/torch))
 		if(filled)
-			var/obj/item/torch/torch = thing
-			if(filled)
-				if(filled.lit && !torch.lit)
-					user.notify_nearby("\The [user] lights \the [torch] from \the [src].")
-					torch.lit = TRUE
-					torch.update_light(user)
-				else if(!filled.lit && torch.lit)
-					user.notify_nearby("\The [user] lights \the [src] with \the [torch].")
-					filled.lit = TRUE
-					filled.update_light()
-					update_icon()
-				else
-					user.notify("There is already \a [filled] in \the [src].")
-				return
-
-		user.drop_item(thing)
-		user.notify_nearby("\The [user] places \the [thing] into \the [src].")
-		thing.force_move(src)
-		filled = thing
-		update_icon()
+			user.notify("There is already \a [filled] in \the [src].")
+		else
+			user.drop_item(thing)
+			user.notify_nearby("\The [user] places \the [thing] into \the [src].")
+			thing.force_move(src)
+			filled = thing
+			update_icon()
+		return TRUE
 
 /obj/structure/sconce/manipulated_by(var/mob/user, var/slot)
 	if(filled)

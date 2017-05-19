@@ -12,12 +12,13 @@
 	light_range = 3
 
 /obj/item/crucible/attacked_by(var/mob/user, var/obj/item/prop)
-	if((prop.flags & FLAG_SIMULATED) && user.drop_item(prop))
-		if(prop)
-			prop.force_move(src)
-			user.notify_nearby("\The [user] places \the [prop] into \the [src].")
-			return TRUE
-	return ..()
+	. = ..()
+	if(!.)
+		if((prop.flags & FLAG_SIMULATED) && user.drop_item(prop))
+			if(prop)
+				prop.force_move(src)
+				user.notify_nearby("\The [user] places \the [prop] into \the [src].")
+				return TRUE
 
 /obj/item/crucible/use(var/mob/user)
 	if(!contents.len)

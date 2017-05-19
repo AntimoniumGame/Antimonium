@@ -10,13 +10,13 @@
 	var/hit_sound = 'sounds/effects/thump1.wav'
 
 /obj/structure/attacked_by(var/mob/user, var/obj/item/thing)
-	if((flags & FLAG_TABLE) && user.intent.selecting == INTENT_HELP && user.drop_item(thing))
-		if(!thing || deleted(thing)) //grabs
-			return
-		thing.force_move(src.loc)
-		user.notify_nearby("\The [user] places \the [thing] on \the [src].")
-	else
-		..()
+	. = ..()
+	if(!.)
+		if((flags & FLAG_TABLE) && user.intent.selecting == INTENT_HELP && user.drop_item(thing))
+			if(thing && !deleted(thing)) //grabs
+				thing.force_move(src.loc)
+				user.notify_nearby("\The [user] places \the [thing] on \the [src].")
+				return TRUE
 
 /obj/structure/update_strings()
 	if(material)

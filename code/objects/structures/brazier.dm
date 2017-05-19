@@ -8,6 +8,8 @@
 	light_power = 8
 	light_range = 4
 
+	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
+
 	var/lit = TRUE
 	var/next_burn_sound = 0
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
@@ -29,18 +31,6 @@
 /obj/structure/brazier/destroy()
 	processing_objects -= src
 	. = ..()
-
-/obj/structure/brazier/attacked_by(var/mob/user, var/obj/item/thing)
-	if(istype(thing, /obj/item/torch))
-		var/obj/item/torch/torch = thing
-		if(!torch.lit && lit)
-			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
-			torch.lit = TRUE
-			torch.update_light(user)
-		else if(torch.lit && !lit)
-			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
-			lit = TRUE
-			update_icon()
 
 var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav','sounds/effects/fire3.wav')
 /obj/structure/brazier/process_temperature()

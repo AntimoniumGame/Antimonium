@@ -3,10 +3,13 @@
 	default_material_path = /datum/material/wood
 
 /obj/structure/crate/attacked_by(var/mob/user, var/obj/item/thing)
-	user.drop_item(thing)
-	thing.force_move(src)
-	holding += thing
-	user.notify_nearby("\The [user] places \the [thing] into \the [src].")
+	. = ..()
+	if(!.)
+		user.drop_item(thing)
+		thing.force_move(src)
+		holding += thing
+		user.notify_nearby("\The [user] places \the [thing] into \the [src].")
+		return TRUE
 
 /obj/structure/crate/manipulated_by(var/mob/user, var/slot)
 	if(holding.len)

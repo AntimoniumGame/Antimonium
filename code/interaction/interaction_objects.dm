@@ -12,7 +12,15 @@
 			manipulated_by(clicker, slot)
 
 /obj/proc/attacked_by(var/mob/user, var/obj/item/thing)
-	return
+	if((flags & FLAG_FLAMMABLE) && (thing.flags & FLAG_FLAMMABLE))
+		if(!thing.on_fire && on_fire)
+			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			thing.ignite()
+		else if(thing.on_fire && !on_fire)
+			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			ignite()
+		return TRUE
+	return FALSE
 
 /obj/proc/manipulated_by(var/mob/user, var/slot)
 	return
@@ -47,9 +55,6 @@
 			target.resolve_physical_attack(user, weight, sharpness, contact_size, src)
 
 /obj/item/proc/attacking_self(var/mob/user)
-	return
-
-/obj/item/attacked_by(var/mob/user, var/obj/item/thing)
 	return
 
 /obj/item/proc/before_dropped()

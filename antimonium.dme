@@ -83,6 +83,7 @@
 #include "code\crafting\crafting_materials_recipes.dm"
 #include "code\crafting\crafting_recipes_forging.dm"
 #include "code\crafting\crafting_stack.dm"
+#include "code\fire\_fire.dm"
 #include "code\game_state\_game.dm"
 #include "code\game_state\game_over.dm"
 #include "code\game_state\game_running.dm"
