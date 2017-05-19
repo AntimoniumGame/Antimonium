@@ -1,7 +1,7 @@
 /obj/item/stack/ingredient/attacked_by(var/mob/user, var/obj/item/prop)
-	. = try_craft(user, prop)
-	if(!.)
+	if(!try_craft(user, prop))
 		return ..()
+	return TRUE
 
 /obj/item/stack/ingredient/proc/try_craft(var/mob/user, var/obj/item/prop)
 	if(!material || !prop.associated_skill)

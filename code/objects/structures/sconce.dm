@@ -10,6 +10,12 @@
 
 	var/obj/item/torch/filled
 
+/obj/structure/sconce/ignite(var/mob/user)
+	if(filled)
+		. = filled.ignite(user)
+		on_fire = filled.on_fire
+		update_icon()
+
 /obj/structure/sconce/New()
 	if(prob(80))
 		filled = new(src, _lit = TRUE)
@@ -32,17 +38,20 @@
 		kill_light()
 
 /obj/structure/sconce/attacked_by(var/mob/user, var/obj/item/thing)
-	. = ..()
-	if(!. && istype(thing, /obj/item/torch))
+	if(istype(thing, /obj/item/torch))
 		if(filled)
-			user.notify("There is already \a [filled] in \the [src].")
-		else
-			user.drop_item(thing)
-			user.notify_nearby("\The [user] places \the [thing] into \the [src].")
-			thing.force_move(src)
-			filled = thing
-			update_icon()
-		return TRUE
+			. = ..()
+		if(!.)
+			if(filled)
+				user.notify("There is already \a [filled] in \the [src].")
+			else
+				user.drop_item(thing)
+				user.notify_nearby("\The [user] places \the [thing] into \the [src].")
+				thing.force_move(src)
+				filled = thing
+				update_icon()
+			return TRUE
+	return ..()
 
 /obj/structure/sconce/manipulated_by(var/mob/user, var/slot)
 	if(filled)

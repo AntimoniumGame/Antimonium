@@ -13,12 +13,13 @@
 
 /obj/proc/attacked_by(var/mob/user, var/obj/item/thing)
 	if((flags & FLAG_FLAMMABLE) && (thing.flags & FLAG_FLAMMABLE))
+		to_chat(world, "\[[on_fire]|[thing.on_fire]]/")
 		if(!thing.on_fire && on_fire)
 			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
-			thing.ignite()
+			thing.ignite(user)
 		else if(thing.on_fire && !on_fire)
 			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
-			ignite()
+			ignite(user)
 		return TRUE
 	return FALSE
 

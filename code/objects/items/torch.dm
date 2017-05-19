@@ -9,6 +9,7 @@
 	contact_size = 2
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
+	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
 
 /obj/item/torch/New(var/newloc, var/material_path, var/_lit)
 	..(newloc, material_path)

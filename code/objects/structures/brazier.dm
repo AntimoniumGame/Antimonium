@@ -10,19 +10,22 @@
 
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
 
-	var/lit = TRUE
 	var/next_burn_sound = 0
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
 
+/obj/structure/brazier/ignite(var/mob/user)
+	. = ..()
+	set_light()
+
 /obj/structure/brazier/New()
 	..()
-	set_light()
+	ignite()
 	processing_objects += src
 	next_burn_sound = rand(10,20)
 
 /obj/structure/brazier/update_icon()
 	overlays.Cut()
-	if(lit)
+	if(on_fire)
 		overlays += image('icons/images/fire.dmi', "mid")
 		set_light()
 	else
@@ -39,7 +42,7 @@ var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav
 	..()
 
 /obj/structure/brazier/process()
-	if(lit)
+	if(on_fire)
 		if(world.time > next_burn_sound)
 			next_burn_sound = world.time + rand(40,50)
 			play_local_sound(src, pick(burn_sounds), 15, frequency = -1)

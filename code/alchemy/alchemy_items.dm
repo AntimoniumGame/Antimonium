@@ -1,6 +1,6 @@
 /obj/item/stack/ingredient
 	name = "ingredient"
-	icon = 'icons/objects/items/alchemy/alchemy.dmi'
+	icon = 'icons/objects/items/alchemy/solid.dmi'
 	default_material_path = /datum/material/metal/antimonium
 
 	stack_name = "pile"
