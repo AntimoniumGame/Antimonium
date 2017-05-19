@@ -9,7 +9,7 @@
 	weight = 1
 	sharpness = 1
 	contact_size = 1
-	default_material_path = /datum/material/iron
+	default_material_path = /datum/material/metal/iron
 	amount = 5
 	max_amount = 5
 	flags = FLAG_SIMULATED

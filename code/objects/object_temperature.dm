@@ -16,23 +16,27 @@
 				material.on_condense(src)
 
 /obj/proc/melt()
-	if(istype(loc, /turf))
-		new /obj/effect/random/splat(get_turf(src), material.type, src, get_weight())
-	else
-		new /obj/item/stack/ingredient(get_turf(src), material.type, get_weight(), src)
+	if(loc)
+		if(istype(loc, /turf))
+			new /obj/effect/random/splat(get_turf(src), material.type, src, get_amount())
+		else
+			new /obj/item/stack/ingredient(loc, material.type, get_amount(), src)
 	qdel(src)
 
 /obj/proc/solidify()
-	new /obj/item/stack/ingredient(get_turf(src), material.type, get_weight(), src)
+	if(loc)
+		new /obj/item/stack/ingredient(loc, material.type, get_amount(), src)
 	qdel(src)
 
 /obj/proc/evaporate()
-	if(loc.airtight())
-		new /obj/item/stack/ingredient(get_turf(src), material.type, get_weight(), src)
-	else
-		new /obj/effect/gas(loc, src)
+	if(loc)
+		if(loc.airtight())
+			new /obj/item/stack/ingredient(loc, material.type, get_amount(), src)
+		else
+			new /obj/effect/gas(loc, src)
 	qdel(src)
 
 /obj/proc/condense()
-	new /obj/item/stack/ingredient(get_turf(src), material.type, get_weight(), src)
+	if(loc)
+		new /obj/item/stack/ingredient(loc, material.type, get_amount(), src)
 	qdel(src)

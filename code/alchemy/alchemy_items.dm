@@ -1,11 +1,21 @@
 /obj/item/stack/ingredient
 	name = "ingredient"
 	icon = 'icons/objects/items/alchemy/alchemy.dmi'
-	default_material_path = /datum/material/antimonium
+	default_material_path = /datum/material/metal/antimonium
 
 	stack_name = "pile"
 	singular_name = "portion"
 	plural_name = "portions"
+
+/obj/item/force_move(var/atom/newloc)
+	. = ..()
+	if(material)
+		if(istype(newloc, /turf) && material_state == STATE_LIQUID)
+			new /obj/effect/random/splat(newloc, material.type, src, get_amount())
+			qdel(src)
+		else if(!newloc.airtight() && material_state == STATE_GAS)
+			new /obj/effect/gas(get_turf(src), src)
+			qdel(src)
 
 /obj/item/stack/ingredient/New(var/newloc, var/material_path, var/_amount, var/obj/donor)
 	if(donor)
@@ -47,7 +57,7 @@
 		update_strings()
 		update_icon()
 	else
-		new /obj/effect/gas(loc, src)
+		new /obj/effect/gas(get_turf(src), src)
 		qdel(src)
 
 /obj/item/stack/ingredient/condense()

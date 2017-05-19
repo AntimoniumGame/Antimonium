@@ -49,3 +49,6 @@
 
 /atom/proc/get_weight()
 	return 1
+
+/atom/proc/get_amount()
+	return 1

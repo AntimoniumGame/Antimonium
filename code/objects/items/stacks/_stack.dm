@@ -2,7 +2,7 @@
 	name = "coins"
 	sharpness = 0
 	contact_size = 1
-	default_material_path = /datum/material/gold
+	default_material_path = /datum/material/metal/gold
 	icon = 'icons/objects/items/coin.dmi'
 
 	var/amount = 20
@@ -12,7 +12,7 @@
 	var/stack_name =    "stack"
 
 /obj/item/stack/get_weight()
-	return get_amount()
+	return get_amount() * (material ? material.weight_modifier : 1)
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
@@ -31,12 +31,12 @@
 	new type(get_turf(user), material.type, split_amount, src)
 	user.notify_nearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
-/obj/item/stack/proc/get_stack_type()
-	return type //todo
+/obj/item/stack/proc/matches_stack_type(var/obj/item/stack/stack)
+	return (istype(stack) && type == stack.type && material == stack.material)
 
 /obj/item/stack/attacked_by(var/mob/user, var/obj/item/thing)
 	var/obj/item/stack/other = thing
-	if(istype(other) && other.get_stack_type() == get_stack_type())
+	if(matches_stack_type(other))
 		var/transfer_amount = max_amount - get_amount()
 		if(transfer_amount <= 0)
 			user.notify("That [stack_name] can hold no more [plural_name].")
@@ -82,7 +82,7 @@
 	if(istype(owner))
 		owner.update_inventory()
 
-/obj/item/stack/proc/get_amount()
+/obj/item/stack/get_amount()
 	return amount
 
 /obj/item/stack/get_inv_icon()
