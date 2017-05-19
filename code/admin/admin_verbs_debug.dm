@@ -4,7 +4,6 @@
 		/client/proc/debug_controller,
 		/client/proc/debug_controller,
 		/client/proc/force_switch_game_state,
-		/client/proc/testlights,
 		/client/proc/set_client_fps,
 		/client/proc/start_view_vars,
 		/client/proc/toggle_vars_refresh,
@@ -40,27 +39,6 @@
 	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
 	switch_game_state(choice)
 	to_chat(src, "Forced state change complete.")
-
-/client/proc/testlights()
-
-	set name = "Toggle Self Light"
-	set category = "Debug"
-
-	mob.light_power = 10
-	mob.light_range = 5
-	mob.light_color = WHITE
-	mob.light_type = LIGHT_SOFT
-
-	if(mob.light_obj)
-		mob.dnotify("Killed self light.")
-		mob.kill_light()
-	else
-		mob.dnotify("Set self light.")
-		mob.set_light()
-
-	sleep(5)
-	if(mob.light_obj)
-		mob.light_obj.follow_holder()
 
 /client/proc/set_client_fps()
 

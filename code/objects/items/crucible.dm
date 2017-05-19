@@ -25,13 +25,13 @@
 		return
 	for(var/obj/item/thing in contents)
 		if(thing.flags & FLAG_SIMULATED)
-			thing.force_move(get_turf(src))
 			user.notify_nearby("\The [user] empties [thing] out of \the [src].")
+			thing.force_move(get_turf(src))
 			return
 	user.notify("There is nothing inside \the [src].")
 
-/obj/item/crucible/update_icon()
-	overlays.Cut()
+/obj/item/crucible/update_icon(var/list/supplied = list())
+	..(supplied)
 	if(temperature >= TEMPERATURE_FORGE)
 		overlays += "glow"
 		set_light()

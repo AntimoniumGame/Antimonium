@@ -10,7 +10,7 @@
 /obj/ui/join_game/center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)]+2,[round(view_y/2)-4]"
 
-/obj/ui/join_game/update_icon()
+/obj/ui/join_game/update_icon(var/list/supplied = list())
 	if(!game_state || game_state.ident != GAME_RUNNING)
 		icon_state = "join_on"
 		if(game_start_time - world.time >= 0)

@@ -2,19 +2,24 @@
 	name = "sconce"
 	icon_state = "sconce"
 	icon = 'icons/objects/structures/sconce.dmi'
-	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAMMABLE
-	light_color = BRIGHT_ORANGE
-	light_power = 8
-	light_range = 4
+	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	density = FALSE
 
 	var/obj/item/torch/filled
 
+/obj/structure/sconce/get_fire_icon()
+	return
+
 /obj/structure/sconce/ignite(var/mob/user)
 	if(filled)
 		. = filled.ignite(user)
-		on_fire = filled.on_fire
 		update_icon()
+
+/obj/structure/sconce/is_on_fire()
+	return filled && filled.is_on_fire()
+
+/obj/structure/sconce/is_flammable()
+	return filled && filled.is_flammable()
 
 /obj/structure/sconce/New()
 	if(prob(80))
@@ -22,9 +27,10 @@
 	..()
 	align_with_wall(src)
 
-/obj/structure/sconce/update_icon()
+/obj/structure/sconce/update_icon(var/list/supplied)
+	..(supplied)
 	if(filled)
-		if(filled.on_fire)
+		if(filled.is_on_fire())
 			icon_state = "sconce_lit"
 			light_color = filled.light_color
 			light_power = filled.light_power

@@ -66,17 +66,13 @@
 		else
 			name = "[singular_name]"
 
-/obj/item/stack/update_icon()
-	..()
-
-	overlays.Cut()
-	var/list/new_overlays = list()
+/obj/item/stack/update_icon(var/list/supplied = list())
 	for(var/stack_amount = min(10, amount);stack_amount > 1;stack_amount--)
 		var/image/I = image(icon = icon, icon_state = "world")
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
-		new_overlays += I
-	overlays = new_overlays
+		supplied += I
+	..(supplied)
 
 	var/mob/owner = loc
 	if(istype(owner))

@@ -12,11 +12,13 @@
 		return TRUE
 
 /obj/structure/crate/manipulated_by(var/mob/user, var/slot)
-	if(holding.len)
-		var/obj/item/thing = pick(holding)
-		holding -= thing
-		thing.force_move(get_turf(src))
-		user.collect_item(thing, slot)
-		user.notify_nearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
-	else
-		user.notify_nearby("\The [user] rummages around in \the [src] but comes up empty handed.")
+	. = ..()
+	if(!.)
+		if(holding.len)
+			var/obj/item/thing = pick(holding)
+			holding -= thing
+			thing.force_move(get_turf(src))
+			user.collect_item(thing, slot)
+			user.notify_nearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
+		else
+			user.notify_nearby("\The [user] rummages around in \the [src] but comes up empty handed.")

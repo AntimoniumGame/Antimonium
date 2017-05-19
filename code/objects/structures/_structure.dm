@@ -12,7 +12,7 @@
 /obj/structure/attacked_by(var/mob/user, var/obj/item/thing)
 	. = ..()
 	if(!.)
-		if((flags & FLAG_TABLE) && user.intent.selecting == INTENT_HELP && user.drop_item(thing))
+		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.drop_item(thing))
 			if(thing && !deleted(thing)) //grabs
 				thing.force_move(src.loc)
 				user.notify_nearby("\The [user] places \the [thing] on \the [src].")

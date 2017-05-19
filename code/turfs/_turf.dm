@@ -4,7 +4,7 @@
 	icon_state = "1"
 	layer = TURF_LAYER
 	luminosity = 1
-
+	flags = FLAG_TEMPERATURE_SENSITIVE | FLAG_SIMULATED
 /turf/stone
 	name = "cobblestones"
 	icon = 'icons/turfs/cobbles.dmi'
@@ -42,14 +42,6 @@
 
 /turf/get_weight()
 	return 10
-
-/turf/radiate_heat(var/amount, var/distance = 1)
-	. = ..()
-	for(var/turf/neighbor in trange(distance, src))
-		var/falloff = max(1,(get_dist(src, neighbor)*2)-1)
-		for(var/thing in neighbor.contents)
-			var/atom/heating = thing
-			heating.gain_heat(round(. / falloff), get_weight())
 
 /turf/proc/get_footstep_sound(var/mob/walker)
 	return 'sounds/effects/footstep1.wav'
