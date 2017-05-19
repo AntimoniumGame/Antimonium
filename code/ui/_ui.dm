@@ -16,10 +16,11 @@
 	. = ..()
 
 /obj/ui/New(var/mob/_owner)
-	..(_owner)
 	owner = _owner
+	..(_owner)
 	null_loc()
 	verbs.Cut()
+	owner.ui_screen += src
 	if(owner.client)
 		center(owner.client.view_x, owner.client.view_y)
 

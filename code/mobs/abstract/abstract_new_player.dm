@@ -1,8 +1,8 @@
 /mob/abstract/new_player
-	var/obj/ui/title/title_image
+	var/obj/effect/title/title_image
 	var/obj/ui/join_game/join
-	var/obj/ui/setup_prefs/setup
-	var/obj/ui/options/options
+	var/obj/ui/toggle/options/options
+	var/obj/ui/toggle/options/prefs/setup
 	var/joining = FALSE
 
 /mob/abstract/new_player/Login()
@@ -12,18 +12,11 @@
 		lobby_music.play(src)
 
 /mob/abstract/new_player/create_ui()
-
 	..()
-
 	title_image = new(src)
 	setup = new(src)
 	join = new(src)
 	options = new(src)
-
-	ui_screen += setup
-	ui_screen += title_image
-	ui_screen += join
-	ui_screen += options
 
 /mob/abstract/new_player/refresh_ui()
 	. = ..()
@@ -53,7 +46,6 @@
 			to_chat(src, "The game is over!")
 			return
 
-	join.icon_state = "join_off"
 	joining = TRUE
 
 	do_fadeout(src, 10)
@@ -89,3 +81,8 @@
 /mob/abstract/new_player/left_click_on(var/atom/thing, var/ctrl, var/alt)
 	if(istype(thing, /obj/ui))
 		thing.left_clicked_on(src)
+
+/mob/abstract/new_player/on_window_resize()
+	..()
+	if(client)
+		title_image.center(client.view_x, client.view_y)
