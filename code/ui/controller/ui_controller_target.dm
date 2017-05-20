@@ -5,7 +5,7 @@
 	icon_state = "underlay_target"
 	var/selecting = BP_CHEST
 
-/obj/ui/controller/target/update_icon()
+/obj/ui/controller/target/update_icon(var/list/supplied = list())
 	for(var/thing in components)
 		var/obj/ui/component/target/component = thing
 		component.update_icon()
@@ -24,13 +24,10 @@
 	components += new /obj/ui/component/target(_owner, src, list("name" = "right hand", "icon_state" = BP_RIGHT_HAND))
 	components += new /obj/ui/component/target(_owner, src, list("name" = "right foot", "icon_state" = BP_RIGHT_FOOT))
 
-/obj/ui/component/target
-	alpha = 128
-
 /obj/ui/controller/target/get_input_from(var/obj/ui/component/component)
 	selecting = component.icon_state
 	update_icon()
 
-/obj/ui/component/target/update_icon()
+/obj/ui/component/target/update_icon(var/list/supplied = list())
 	var/obj/ui/controller/target/target_control = controller
 	color = (target_control.selecting == icon_state ? DARK_RED : DARK_BLUE)

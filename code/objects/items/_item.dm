@@ -9,6 +9,7 @@
 	var/sharpness = 1
 	var/list/attack_verbs = list("bashes")
 	var/name_prefix
+	var/associated_skill
 
 	var/hit_sound = 'sounds/effects/punch1.wav'
 	var/collect_sound = 'sounds/effects/click1.wav'
@@ -53,3 +54,6 @@
 	if(istype(owner))
 		owner.drop_item(src)
 	. = ..()
+
+/obj/item/get_amount()
+	return initial(weight)

@@ -61,6 +61,9 @@
 			notify("You already have a grip on \the [grabbing].")
 			return
 
+	if(grabbing.burn(src))
+		return
+
 	if(!grabbing.is_solid())
 		notify_nearby("\The [src] attempts to grab \the [grabbing], but [grabbing.they()] slip[grabbing.s()] through [their()] grasp.")
 		return

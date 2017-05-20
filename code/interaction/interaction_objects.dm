@@ -12,10 +12,22 @@
 			manipulated_by(clicker, slot)
 
 /obj/proc/attacked_by(var/mob/user, var/obj/item/thing)
-	return
+	if(is_flammable() && thing.is_flammable())
+		if(!thing.is_on_fire() && is_on_fire())
+			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			thing.ignite(user)
+		else if(thing.is_on_fire() && !is_on_fire())
+			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			ignite(user)
+		return TRUE
+	return FALSE
 
 /obj/proc/manipulated_by(var/mob/user, var/slot)
-	return
+	if(is_on_fire() && user.intent.selecting == INTENT_HELP)
+		notify_nearby("\The [user] extinguishes \the [src].")
+		extinguish()
+		return TRUE
+	return FALSE
 
 /obj/item/handle_clicked_on(var/mob/clicker, var/slot)
 	if(is_adjacent_to(get_turf(src), get_turf(clicker)) && !clicker.get_equipped(slot))
@@ -49,17 +61,14 @@
 /obj/item/proc/attacking_self(var/mob/user)
 	return
 
-/obj/item/attacked_by(var/mob/user, var/obj/item/thing)
-	return
-
 /obj/item/proc/before_dropped()
 	return
 
 /obj/item/proc/after_dropped()
 	return
 
-/obj/item/proc/before_picked_up()
-	return
+/obj/item/proc/before_picked_up(var/mob/user, var/slot)
+	return !burn(user, slot)
 
 /obj/item/proc/after_picked_up()
 	reset_position()

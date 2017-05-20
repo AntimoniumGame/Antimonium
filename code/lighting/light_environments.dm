@@ -5,7 +5,7 @@
 /area/lighting
 	alpha = 255
 	plane = SCREEN_PLANE
-	var/light_level = 50
+	var/light_level = 10
 
 // For ease of mapping, the various visibility elements are applied at runtime.
 /area/lighting/New()
@@ -19,8 +19,8 @@
 
 /area/lighting/indoors
 	icon_state = "room"
-	light_level = 120
+	light_level = 50
 
 /area/lighting/outdoors
 	icon_state = "sky"
-	light_level = 200
+	light_level = 220

@@ -5,4 +5,4 @@
 	contact_size = 3
 	icon = 'icons/objects/items/pipe.dmi'
 	attack_verbs = list("bludgeons", "strikes", "smashes")
-	default_material_path = /datum/material/lead
+	default_material_path = /datum/material/metal/lead

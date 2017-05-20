@@ -23,5 +23,5 @@
 		help.alpha = 20
 		harm.alpha = 255
 
-/obj/ui/component/intent/update_icon()
+/obj/ui/component/intent/update_icon(var/list/supplied = list())
 	return

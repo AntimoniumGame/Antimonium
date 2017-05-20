@@ -19,7 +19,8 @@
 	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
 	if(!equipping || equipping.holding)
 		return FALSE
-	thing.before_picked_up()
+	if(!thing.before_picked_up(src, equip_to_slot))
+		return FALSE
 	thing.force_move(src)
 	thing.after_picked_up()
 	equipping.set_held(thing)
@@ -42,3 +43,6 @@
 		var/obj/ui/inv/slot = inventory_slots[slot_id]
 		slot.update_icon()
 		slot.update_strings()
+
+/mob/proc/get_heat_insulation(var/slot)
+	return FALSE
