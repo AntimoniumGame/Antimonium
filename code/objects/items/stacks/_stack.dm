@@ -11,8 +11,8 @@
 	var/plural_name =   "coins"
 	var/stack_name =    "stack"
 
-/obj/item/stack/get_weight()
-	return get_amount()
+/obj/item/stack/GetWeight()
+	return GetAmount()
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
@@ -21,52 +21,52 @@
 		amount = max_amount
 	..(newloc, material_path)
 
-/obj/item/stack/use(var/mob/user)
-	if(get_amount() <= 1)
-		user.notify("There are not enough [plural_name] in the [stack_name] to split it.")
+/obj/item/stack/Use(var/mob/user)
+	if(GetAmount() <= 1)
+		user.Notify("There are not enough [plural_name] in the [stack_name] to split it.")
 		return
 
-	var/split_amount = max(1,round(get_amount()/2))
-	remove(split_amount)
+	var/split_amount = max(1,round(GetAmount()/2))
+	Remove(split_amount)
 	new type(get_turf(user), material.type, split_amount, src)
-	user.notify_nearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
+	user.NotifyNearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
-/obj/item/stack/proc/get_stack_type()
+/obj/item/stack/proc/GetStackType()
 	return type //todo
 
-/obj/item/stack/attacked_by(var/mob/user, var/obj/item/thing)
+/obj/item/stack/AttackedBy(var/mob/user, var/obj/item/thing)
 	var/obj/item/stack/other = thing
-	if(istype(other) && other.get_stack_type() == get_stack_type())
-		var/transfer_amount = max_amount - get_amount()
+	if(istype(other) && other.GetStackType() == GetStackType())
+		var/transfer_amount = max_amount - GetAmount()
 		if(transfer_amount <= 0)
-			user.notify("That [stack_name] can hold no more [plural_name].")
+			user.Notify("That [stack_name] can hold no more [plural_name].")
 			return TRUE
-		else if(other.get_amount() <= transfer_amount)
-			other.add(get_amount())
-			user.notify_nearby("\The [user] merges two [stack_name]s of [plural_name] together.")
-			qdel(src)
+		else if(other.GetAmount() <= transfer_amount)
+			other.Add(GetAmount())
+			user.NotifyNearby("\The [user] merges two [stack_name]s of [plural_name] together.")
+			QDel(src)
 		else
-			transfer_amount = other.max_amount - other.get_amount()
-			other.add(transfer_amount)
-			remove(transfer_amount)
-			user.notify_nearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
+			transfer_amount = other.max_amount - other.GetAmount()
+			other.Add(transfer_amount)
+			Remove(transfer_amount)
+			user.NotifyNearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
 		return TRUE
 	else
 		. =..()
 
-/obj/item/stack/update_strings()
+/obj/item/stack/UpdateStrings()
 	if(amount > 1)
 		if(material)
-			name = "[stack_name] of [amount] [material.get_descriptor()] [plural_name]"
+			name = "[stack_name] of [amount] [material.GetDescriptor()] [plural_name]"
 		else
 			name = "[stack_name] of [amount] [plural_name]"
 	else
 		if(material)
-			name = "[material.get_descriptor()] [singular_name]"
+			name = "[material.GetDescriptor()] [singular_name]"
 		else
 			name = "[singular_name]"
 
-/obj/item/stack/update_icon()
+/obj/item/stack/UpdateIcon()
 	..()
 
 	overlays.Cut()
@@ -80,34 +80,34 @@
 
 	var/mob/owner = loc
 	if(istype(owner))
-		owner.update_inventory()
+		owner.UpdateInventory()
 
-/obj/item/stack/proc/get_amount()
+/obj/item/stack/proc/GetAmount()
 	return amount
 
-/obj/item/stack/get_inv_icon()
-	var/image/I = get_worn_icon("held")
-	I.maptext = "<center>x<b>[get_amount()]</b></center>"
+/obj/item/stack/GetInvIcon()
+	var/image/I = GetWornIcon("held")
+	I.maptext = "<center>x<b>[GetAmount()]</b></center>"
 	I.maptext_width = 32
 	I.maptext_height = 32
 	I.maptext_y = -12
 	return I
 
-/obj/item/stack/proc/add(var/amt)
+/obj/item/stack/proc/Add(var/amt)
 	amount = min(max_amount,amount+amt)
-	update_icon()
-	update_strings()
+	UpdateIcon()
+	UpdateStrings()
 
-/obj/item/stack/proc/set_amt(var/amt)
+/obj/item/stack/proc/SetAmt(var/amt)
 	amount = max(1, min(max_amount, amt))
-	update_icon()
-	update_strings()
+	UpdateIcon()
+	UpdateStrings()
 
-/obj/item/stack/proc/remove(var/amt)
+/obj/item/stack/proc/Remove(var/amt)
 	amount = max(0, amount-amt)
 	if(amount <= 0)
-		qdel(src)
+		QDel(src)
 	else
-		update_icon()
-		update_strings()
+		UpdateIcon()
+		UpdateStrings()
 

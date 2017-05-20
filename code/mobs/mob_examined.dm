@@ -1,8 +1,8 @@
-/mob/examined_by(var/mob/clicker)
+/mob/ExaminedBy(var/mob/clicker)
 	. = ..()
 
 	if(. && (src == clicker || clicker.intent.selecting == INTENT_HELP))
-		clicker.notify_nearby("\The [clicker] begins checking [src == clicker ? src.themself() : "\the [src]"] over for injuries.")
+		clicker.NotifyNearby("\The [clicker] begins checking [src == clicker ? src.Themself() : "\the [src]"] over for injuries.")
 		spawn()
 			var/list/injuries = list()
 			for(var/limb_id in limbs)
@@ -18,21 +18,21 @@
 								result_line += ", "
 							else if(i == limb.wounds.len)
 								result_line += " and "
-						result_line += wound.get_descriptor()
+						result_line += wound.GetDescriptor()
 						i++
 				if(result_line)
-					injuries += "[result_line] on [their()] [limb.name]."
+					injuries += "[result_line] on [Their()] [limb.name]."
 
 			sleep(10)
 
-			if(!clicker || !src || deleted(src) || deleted(clicker) || !is_adjacent_to(clicker, src))
+			if(!clicker || !src || Deleted(src) || Deleted(clicker) || !IsAdjacentTo(clicker, src))
 				return
 
 			if(injuries.len)
 				for(var/injury in injuries)
-					if(!clicker || !src || deleted(src) || deleted(clicker) || !is_adjacent_to(clicker, src))
+					if(!clicker || !src || Deleted(src) || Deleted(clicker) || !IsAdjacentTo(clicker, src))
 						return
-					clicker.notify(injury)
+					clicker.Notify(injury)
 					sleep(10)
 			else
-				clicker.notify("You find no obvious injuries.")
+				clicker.Notify("You find no obvious injuries.")

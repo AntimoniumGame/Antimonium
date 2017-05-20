@@ -14,42 +14,42 @@
 		temperature = donor.temperature
 	..(newloc, material_path, _amount)
 
-/obj/item/stack/ingredient/update_strings()
+/obj/item/stack/ingredient/UpdateStrings()
 	if(amount == 1)
-		name = "[material.get_term(material_state, amount)] of [material.get_name(material_state)]"
+		name = "[material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 	else
-		name = "[get_amount()] [material.get_term(material_state, amount)] of [material.get_name(material_state)]"
+		name = "[GetAmount()] [material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 
-/obj/item/stack/ingredient/melt()
+/obj/item/stack/ingredient/Melt()
 
 	var/mob/holder = loc
 	if(istype(holder))
-		holder.drop_item(src)
+		holder.DropItem(src)
 
 	if(istype(loc, /turf))
 		new /obj/effect/random/splat(get_turf(src), material.type, src, amount)
-		qdel(src)
+		QDel(src)
 	else
-		update_strings()
-		update_icon()
+		UpdateStrings()
+		UpdateIcon()
 
-/obj/item/stack/ingredient/solidify()
-	update_strings()
-	update_icon()
+/obj/item/stack/ingredient/Solidify()
+	UpdateStrings()
+	UpdateIcon()
 
-/obj/item/stack/ingredient/evaporate()
+/obj/item/stack/ingredient/Evaporate()
 
 	var/mob/holder = loc
 	if(istype(holder))
-		holder.drop_item(src)
+		holder.DropItem(src)
 
-	if(loc.airtight())
-		update_strings()
-		update_icon()
+	if(loc.Airtight())
+		UpdateStrings()
+		UpdateIcon()
 	else
 		new /obj/effect/gas(loc, src)
-		qdel(src)
+		QDel(src)
 
-/obj/item/stack/ingredient/condense()
-	update_strings()
-	update_icon()
+/obj/item/stack/ingredient/Condense()
+	UpdateStrings()
+	UpdateIcon()

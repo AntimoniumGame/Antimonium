@@ -6,11 +6,11 @@
 	var/weight = 50
 	var/datum/job/job
 
-/mob/get_weight()
+/mob/GetWeight()
 	return weight
 
 /mob/New()
-	create_limbs()
+	CreateLimbs()
 	gender = pick(MALE, FEMALE, NEUTER, PLURAL)
 	mob_list += src
 	if(dead)
@@ -19,17 +19,17 @@
 		living_mob_list += src
 	..()
 
-/mob/destroy()
+/mob/Destroy()
 	dead_mob_list -= src
 	living_mob_list -= src
 	mob_list -= src
 	. = ..()
 
-/mob/update_strings()
+/mob/UpdateStrings()
 	..()
 	if(key)
 		name = key
 
-/mob/face_atom()
+/mob/FaceAtom()
 	if(!prone || dragged)
 		. = ..()

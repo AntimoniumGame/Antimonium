@@ -1,14 +1,14 @@
-/turf/var/blocks_light = -1              // Whether or not this turf occludes light based on turf opacity and contents. See check_blocks_light().
+/turf/var/blocks_light = -1              // Whether or not this turf occludes light based on turf opacity and contents. See CheckBlocksLight().
 /turf/var/lumcount = -1
 /turf/var/list/affecting_lights = list() // Non-assoc list of all lighting overlays applied to this turf.
 
 // Flags the turf to recalc blocks_light next call since opacity has changed.
-/turf/set_opacity()
+/turf/SetOpacity()
 	var/old_opacity = opacity
 	. = ..()
 	if(opacity != old_opacity) blocks_light = -1
 
-/turf/proc/check_lumcount()
+/turf/proc/CheckLumcount()
 	if(lumcount == -1)
 		lumcount = 0
 		for(var/thing in affecting_lights)
@@ -18,7 +18,7 @@
 	return lumcount
 
 // Checks if the turf contains an occluding object or is itself an occluding object.
-/turf/proc/check_blocks_light()
+/turf/proc/CheckBlocksLight()
 	if(blocks_light == -1)
 		blocks_light = 0
 		if(opacity)
@@ -30,9 +30,9 @@
 					break
 	return blocks_light
 
-/turf/proc/door_light_update()
+/turf/proc/DoorLightUpdate()
 	for(var/obj/light/L in affecting_lights)
-		L.cast_light()
+		L.CastLight()
 
 // Returns a list of occluding corners based on the angle of the light to the turf
 // as well as the available edges of clear space around the turf. Calculated and
@@ -41,7 +41,7 @@
 // Should theoretically be possible to override this down the track to generate
 // directional shadow casting points for non-full-turf objects or structures.
 
-/turf/proc/get_corner_offsets(var/check_angle, var/check_dirs)
+/turf/proc/GetCornerOffsets(var/check_angle, var/check_dirs)
 	var/list/offsets = list(0,0,0,0)
 	if(abs(check_angle) == 180) // Source is west.
 		if(check_dirs & NORTH)

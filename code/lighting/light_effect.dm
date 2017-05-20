@@ -35,7 +35,7 @@
 		color = light_color
 	..(get_turf(holder))
 
-/obj/light/destroy()
+/obj/light/Destroy()
 
 	transform = null
 	appearance = null
@@ -54,40 +54,40 @@
 	. = ..()
 
 // Applies power value to size (via Scale()) and updates the current rotation (via Turn())
-// angle for directional lights. This is only ever called before cast_light() so affected turfs
+// angle for directional lights. This is only ever called before CastLight() so affected turfs
 // are updated elsewhere.
-/obj/light/proc/update_transform(var/newrange)
+/obj/light/proc/UpdateTransform(var/newrange)
 	if(!isnull(newrange) && current_power != newrange)
 		current_power = newrange
 
 // Orients the light to the holder's (or the holder's holder) current dir.
 // Also updates rotation for directional lights when appropriate.
-/obj/light/proc/follow_holder_dir()
+/obj/light/proc/FollowHolderDir()
 	if(holder.loc.loc && ismob(holder.loc))
-		set_dir(holder.loc.dir)
+		SetDir(holder.loc.dir)
 	else
-		set_dir(holder.dir)
+		SetDir(holder.dir)
 
 // Moves the light overlay to the holder's turf and updates bleeding values accordingly.
-/obj/light/proc/follow_holder()
+/obj/light/proc/FollowHolder()
 
-	if(!holder || deleted(src))
-		null_loc()
-		destroy(src)
+	if(!holder || Deleted(src))
+		NullLoc()
+		Destroy(src)
 		return
 
 	if(holder && holder.loc)
 		if(holder.loc.loc && ismob(holder.loc))
-			force_move(holder.loc.loc)
+			ForceMove(holder.loc.loc)
 		else
-			force_move(holder.loc)
-		follow_holder_dir()
-		cast_light() //lights_master.queue_light(src)
+			ForceMove(holder.loc)
+		FollowHolderDir()
+		CastLight() //lights_master.queue_light(src)
 
-/obj/light/proc/is_directional_light()
+/obj/light/proc/IsDirectionalLight()
 	return (holder.light_type == LIGHT_DIRECTIONAL)
 
-/obj/light/set_dir()
+/obj/light/SetDir()
 	. = ..()
 	switch(dir)
 		if(NORTH)
@@ -103,5 +103,5 @@
 			pixel_x = -(world.icon_size * light_range) - (world.icon_size * light_range) + world.icon_size
 			pixel_y = -(world.icon_size * light_range) + (world.icon_size / 2)
 
-/obj/light/proc/light_off()
+/obj/light/proc/LightOff()
 	alpha = 0

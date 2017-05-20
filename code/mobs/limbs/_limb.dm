@@ -17,8 +17,8 @@
 	var/grasp_name
 	var/grasp_plural
 
-/obj/item/limb/get_inv_icon()
-	return get_worn_icon("world")
+/obj/item/limb/GetInvIcon()
+	return GetWornIcon("world")
 
 /obj/item/limb/New(var/mob/human/_owner, var/_name, var/_icon, var/_limb_id, var/_parent, var/_root, var/_vital, var/_size, var/_grasp_name, var/_grasp_plural)
 	..(_owner)
@@ -39,10 +39,10 @@
 		parent = owner.limbs[_parent]
 		parent.children += src
 
-/obj/item/limb/update_strings()
+/obj/item/limb/UpdateStrings()
 	name = limb_name
 
-/obj/item/limb/proc/is_bleeding()
+/obj/item/limb/proc/IsBleeding()
 	if(wounds.len)
 		for(var/thing in wounds)
 			var/datum/wound/wound = thing
@@ -50,6 +50,6 @@
 				return TRUE
 	return FALSE
 
-/obj/item/limb/proc/is_dextrous()
-	owner.notify("Your [grasp_name] [grasp_plural ? "aren't" : "isn't"] dextrous enough for that.")
+/obj/item/limb/proc/IsDextrous()
+	owner.Notify("Your [grasp_name] [grasp_plural ? "aren't" : "isn't"] dextrous enough for that.")
 	return FALSE

@@ -2,4 +2,4 @@
 /client/Click(object,location,control,params)
 	if(world.time > next_click)
 		next_click = world.time + 1
-		interface.on_click(object, location, control, params)
+		interface.OnClick(object, location, control, params)

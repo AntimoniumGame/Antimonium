@@ -1,4 +1,4 @@
-/mob/animal/create_limbs()
+/mob/animal/CreateLimbs()
 	// Order is important; make sure limbs with parents are created AFTER their parent.
 	limbs[BP_CHEST] =      new /obj/item/limb(src,        "upper body",      'icons/objects/items/limbs/dog/chest.dmi',     BP_CHEST ,     _root = TRUE, _vital = TRUE, _size = 10)
 	limbs[BP_GROIN] =      new /obj/item/limb(src,        "lower body",      'icons/objects/items/limbs/dog/groin.dmi',     BP_GROIN,      BP_CHEST,     _vital = TRUE, _size = 10)

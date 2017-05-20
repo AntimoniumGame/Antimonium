@@ -5,35 +5,35 @@
 	var/list/ui_screen = list()
 	var/list/ui_images = list()
 
-/mob/destroy()
+/mob/Destroy()
 	for(var/thing in ui_screen)
 		var/obj/ui/element = thing
-		qdel(element)
+		QDel(element)
 	ui_screen.Cut()
 	ui_images.Cut()
 	. = ..()
 
 /mob/New()
 	..()
-	create_ui()
+	CreateUI()
 
 /mob/Login()
 	. = ..()
-	refresh_ui()
+	RefreshUI()
 
-/mob/proc/create_ui()
+/mob/proc/CreateUI()
 	vision_cone = new(src)
 	intent = new(src)
 	target_zone = new(src)
 	health = new(src)
 	new /obj/ui/toggle/inv(src)
 
-/mob/proc/refresh_ui()
+/mob/proc/RefreshUI()
 	if(client)
 		client.screen.Cut()
 		client.screen |= ui_screen
 		client.images.Cut()
 		client.images |= ui_images
-		client.on_resize()
-	refresh_lighting()
-	update_vision_cone()
+		client.OnResize()
+	RefreshLighting()
+	UpdateVisionCone()

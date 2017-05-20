@@ -7,7 +7,7 @@
 
 /turf/wall/New()
 	..()
-	update_icon()
+	UpdateIcon()
 
 /turf/wall/stone
 	name = "stone wall"
@@ -17,17 +17,17 @@
 	name = "wooden wall"
 	icon = 'icons/turfs/wood_wall.dmi'
 
-/turf/wall/update_icon(var/update_neighbors)
+/turf/wall/UpdateIcon(var/update_neighbors)
 	icon_state = ""
 	var/list/connected_neighbors = list()
-	for(var/thing in trange(1,src))
+	for(var/thing in Trange(1,src))
 		if(thing == src)
 			continue
 		var/turf/neighbor = thing
 		if(!neighbor.density)
 			continue
 		if(update_neighbors)
-			neighbor.update_icon()
+			neighbor.UpdateIcon()
 		connected_neighbors += get_dir(src, neighbor)
 
 	var/list/overlays_to_add = list()

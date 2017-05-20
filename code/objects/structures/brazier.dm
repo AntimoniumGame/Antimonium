@@ -13,44 +13,44 @@
 
 /obj/structure/brazier/New()
 	..()
-	set_light()
+	SetLight()
 	processing_objects += src
 	next_burn_sound = rand(10,20)
 
-/obj/structure/brazier/update_icon()
+/obj/structure/brazier/UpdateIcon()
 	overlays.Cut()
 	if(lit)
 		overlays += image('icons/images/fire.dmi', "mid")
-		set_light()
+		SetLight()
 	else
-		kill_light()
+		KillLight()
 
-/obj/structure/brazier/destroy()
+/obj/structure/brazier/Destroy()
 	processing_objects -= src
 	. = ..()
 
-/obj/structure/brazier/attacked_by(var/mob/user, var/obj/item/thing)
+/obj/structure/brazier/AttackedBy(var/mob/user, var/obj/item/thing)
 	if(istype(thing, /obj/item/torch))
 		var/obj/item/torch/torch = thing
 		if(!torch.lit && lit)
-			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			user.NotifyNearby("\The [user] lights \the [thing] in \the [src].")
 			torch.lit = TRUE
-			torch.update_light(user)
+			torch.UpdateLight(user)
 		else if(torch.lit && !lit)
-			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			user.NotifyNearby("\The [user] lights \the [src] with \the [thing].")
 			lit = TRUE
-			update_icon()
+			UpdateIcon()
 
 var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav','sounds/effects/fire3.wav')
-/obj/structure/brazier/process_temperature()
+/obj/structure/brazier/ProcessTemperature()
 	if(temperature < TEMPERATURE_WOOD_FIRE)
 		temperature = TEMPERATURE_WOOD_FIRE
 	..()
 
-/obj/structure/brazier/process()
+/obj/structure/brazier/Process()
 	if(lit)
 		if(world.time > next_burn_sound)
 			next_burn_sound = world.time + rand(40,50)
-			play_local_sound(src, pick(burn_sounds), 15, frequency = -1)
-		radiate_heat(TEMPERATURE_WOOD_FIRE, 0)
-		radiate_heat(TEMPERATURE_WARM, 3)
+			PlayLocalSound(src, pick(burn_sounds), 15, frequency = -1)
+		RadiateHeat(TEMPERATURE_WOOD_FIRE, 0)
+		RadiateHeat(TEMPERATURE_WARM, 3)

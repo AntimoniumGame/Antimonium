@@ -1,4 +1,4 @@
-/mob/human/create_ui()
+/mob/human/CreateUI()
 
 	inventory_slots[SLOT_FEET] =       new /obj/ui/inv/gear(src, "feet",       "1,2", SLOT_FEET,       SLOT_FLAG_FEET)
 	inventory_slots[SLOT_LOWER_BODY] = new /obj/ui/inv/gear(src, "lower body", "1,3", SLOT_LOWER_BODY, SLOT_FLAG_LOWER_BODY)

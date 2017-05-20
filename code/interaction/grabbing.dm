@@ -12,10 +12,10 @@
 	name = "grip on \the [grabbed]"
 	processing_objects += src
 
-/obj/item/grab/after_dropped()
-	qdel(src)
+/obj/item/grab/AfterDropped()
+	QDel(src)
 
-/obj/item/grab/destroy()
+/obj/item/grab/Destroy()
 
 	// I GIVE UP I'M HARDCODING THIS.
 	if(owner)
@@ -23,53 +23,53 @@
 		for(var/invslot in owner.inventory_slots)
 			var/obj/ui/inv/inv_slot = owner.inventory_slots[invslot]
 			if(inv_slot.holding == src)
-				inv_slot.forget_held()
+				inv_slot.ForgetHeld()
 				break
-		owner.update_icon()
+		owner.UpdateIcon()
 
 	grabbed = null
 	owner = null
 	processing_objects -= src
 	. = ..()
 
-/obj/item/grab/process()
-	check_state()
+/obj/item/grab/Process()
+	CheckState()
 
-/obj/item/grab/proc/check_state()
-	if(!owner || loc != owner || !grabbed || !isturf(grabbed.loc) || !is_adjacent_to(grabbed, owner) || !grabbed.is_solid())
-		qdel(src)
+/obj/item/grab/proc/CheckState()
+	if(!owner || loc != owner || !grabbed || !isturf(grabbed.loc) || !IsAdjacentTo(grabbed, owner) || !grabbed.IsSolid())
+		QDel(src)
 		return FALSE
 	return TRUE
 
 /mob
 	var/list/active_grabs = list()
 
-/mob/proc/grab_atom(var/atom/movable/grabbing, var/grabbing_with, var/grabbing_slot)
+/mob/proc/GrabAtom(var/atom/movable/grabbing, var/grabbing_with, var/grabbing_slot)
 
-	if(!is_adjacent_to(src, grabbing))
+	if(!IsAdjacentTo(src, grabbing))
 		return
 
-	if(!can_use_limb(grabbing_with))
+	if(!CanUseLimb(grabbing_with))
 		return
 
-	if(get_equipped(grabbing_slot))
-		notify("You are already holding something there!")
+	if(GetEquipped(grabbing_slot))
+		Notify("You are already holding something there!")
 		return
 
 	for(var/obj/item/grab/grab in active_grabs)
 		if(grab.grabbed == grabbing)
-			notify("You already have a grip on \the [grabbing].")
+			Notify("You already have a grip on \the [grabbing].")
 			return
 
-	if(!grabbing.is_solid())
-		notify_nearby("\The [src] attempts to grab \the [grabbing], but [grabbing.they()] slip[grabbing.s()] through [their()] grasp.")
+	if(!grabbing.IsSolid())
+		NotifyNearby("\The [src] attempts to grab \the [grabbing], but [grabbing.They()] slip[grabbing.s()] through [Their()] grasp.")
 		return
 
 	var/obj/item/grab/grab = new(src, grabbing)
-	collect_item(grab, grabbing_slot)
+	CollectItem(grab, grabbing_slot)
 	var/obj/item/limb/limb = limbs[grabbing_with]
-	play_local_sound(src, 'sounds/effects/whoosh1.wav', 75)
-	notify_nearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.their()] [limb.grasp_name]!")
-	grab.owner.do_attack_animation(grab.grabbed)
+	PlayLocalSound(src, 'sounds/effects/whoosh1.wav', 75)
+	NotifyNearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!")
+	grab.owner.DoAttackAnimation(grab.grabbed)
 
 

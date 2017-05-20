@@ -1,10 +1,10 @@
 macro "macro"
 	elem 
 		name = "Any"
-		command = "keyPress \"[[*]]\""
+		command = "KeyPress \"[[*]]\""
 	elem 
 		name = "Any+UP"
-		command = "keyRelease \"[[*]]\""
+		command = "KeyRelease \"[[*]]\""
 
 
 menu "menu"
@@ -72,7 +72,7 @@ window "mainwindow"
 		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		on-size = "on-resize"
+		on-size = "OnResize"
 		statusbar = false
 		macro = "macro"
 	elem "map"
@@ -120,7 +120,6 @@ window "varswindow"
 		size = 400x600
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "View Vars"
@@ -150,7 +149,6 @@ window "varswindow"
 		anchor2 = 100,0
 		font-family = "@Arial Unicode MS,sans-serif"
 		font-size = 10
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = "Auto-refresh"

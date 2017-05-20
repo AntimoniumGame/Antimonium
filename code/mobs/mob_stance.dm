@@ -4,12 +4,12 @@
 	var/stance_score = 0
 	var/prone = FALSE
 
-/mob/proc/toggle_prone()
+/mob/proc/ToggleProne()
 	prone = !prone
 	density = !prone
-	update_icon()
+	UpdateIcon()
 
-/mob/proc/update_stance()
+/mob/proc/UpdateStance()
 	set waitfor = 0
 	sleep(1)
 	if(prone)
@@ -20,10 +20,10 @@
 		if(limb && !limb.broken)
 			stance_score += limb.support_value
 	if(stance_score <= stance_fail_threshold)
-		notify_nearby("<b>\The [src] collapses!</b>")
-		toggle_prone()
+		NotifyNearby("<b>\The [src] collapses!</b>")
+		ToggleProne()
 
-/mob/proc/handle_stance_move_delay()
+/mob/proc/HandleStanceMoveDelay()
 	. = 0
 	if(stance_score <= 5)
 		. += 1

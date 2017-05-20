@@ -5,10 +5,10 @@
 	icon_state = "underlay_target"
 	var/selecting = BP_CHEST
 
-/obj/ui/controller/target/update_icon()
+/obj/ui/controller/target/UpdateIcon()
 	for(var/thing in components)
 		var/obj/ui/component/target/component = thing
-		component.update_icon()
+		component.UpdateIcon()
 
 /obj/ui/controller/target/New(var/mob/_owner)
 	..(_owner)
@@ -27,10 +27,10 @@
 /obj/ui/component/target
 	alpha = 128
 
-/obj/ui/controller/target/get_input_from(var/obj/ui/component/component)
+/obj/ui/controller/target/GetInputFrom(var/obj/ui/component/component)
 	selecting = component.icon_state
-	update_icon()
+	UpdateIcon()
 
-/obj/ui/component/target/update_icon()
+/obj/ui/component/target/UpdateIcon()
 	var/obj/ui/controller/target/target_control = controller
 	color = (target_control.selecting == icon_state ? DARK_RED : DARK_BLUE)

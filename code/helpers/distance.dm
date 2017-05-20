@@ -1,7 +1,7 @@
-/proc/is_adjacent_to(var/atom/first, var/atom/second)
+/proc/IsAdjacentTo(var/atom/first, var/atom/second)
 	return get_dist(get_turf(first), get_turf(second)) <= 1
 
-/proc/trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes turfs and thus less intensive)
+/proc/Trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes turfs and thus less intensive)
 	if(!centre)
 		return
 	var/turf/x1y1 = locate(((centre.x-rad)<1 ? 1 : centre.x-rad),((centre.y-rad)<1 ? 1 : centre.y-rad),centre.z)

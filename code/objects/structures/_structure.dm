@@ -9,17 +9,17 @@
 	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.wav'
 
-/obj/structure/update_strings()
+/obj/structure/UpdateStrings()
 	if(material)
-		name = "[material.get_descriptor()] [initial(name)]"
+		name = "[material.GetDescriptor()] [initial(name)]"
 	else
 		name = initial(name)
 
-/obj/structure/update_values()
+/obj/structure/UpdateValues()
 	weight *= material.weight_modifier
 
-/obj/structure/pull_cost()
-	return get_weight()
+/obj/structure/PullCost()
+	return GetWeight()
 
-/obj/structure/get_weight()
+/obj/structure/GetWeight()
 	return weight

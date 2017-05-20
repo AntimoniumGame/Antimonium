@@ -5,22 +5,22 @@
 	var/suspend
 
 /datum/daemon/New()
-	setup()
+	Setup()
 
-/datum/daemon/proc/setup()
+/datum/daemon/proc/Setup()
 	return
 
-/datum/daemon/proc/do_work()
+/datum/daemon/proc/DoWork()
 	return
 
-/datum/daemon/proc/start()
+/datum/daemon/proc/Start()
 	set background = 1
 	set waitfor = 0
 
 	while(1)
 		sleep(delay)
-		check_suspend()
-		do_work()
+		CheckSuspend()
+		DoWork()
 
-/datum/daemon/proc/status()
+/datum/daemon/proc/Status()
 	return ""

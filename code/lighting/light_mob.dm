@@ -4,9 +4,9 @@
 
 /mob/Login()
 	. = ..()
-	refresh_lighting()
+	RefreshLighting()
 
-/mob/proc/refresh_lighting()
+/mob/proc/RefreshLighting()
 	if(!master_plane)
 		master_plane = new(client)
 	if(client)

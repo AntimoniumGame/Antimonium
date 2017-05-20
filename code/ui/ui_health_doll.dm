@@ -4,7 +4,7 @@
 	icon = 'icons/images/ui_doll.dmi'
 	icon_state = "underlay_health"
 
-/obj/ui/health/update_icon()
+/obj/ui/health/UpdateIcon()
 	var/list/limb_overlays = list()
 	for(var/limb_tag in owner.limbs)
 		var/obj/item/limb/limb = owner.limbs[limb_tag]

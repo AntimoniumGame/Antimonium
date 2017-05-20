@@ -33,7 +33,7 @@ Inputs:
 	target_turf = get_turf(end)
 
 	owner.dragged = TRUE
-	owner.force_move(src_turf)
+	owner.ForceMove(src_turf)
 
 	//convert to pixel coordinates
 	var/start_loc_x = src_turf.x * TILE_WIDTH + (TILE_WIDTH / 2)
@@ -71,7 +71,7 @@ Inputs:
 
 	if(spin && (owner.flags & FLAG_THROWN_SPIN))
 		spin_counter = 0
-		owner.update_strings()
+		owner.UpdateStrings()
 		owner.name = "flying [owner.name]"
 
 //call to kick off the vector movement
@@ -105,13 +105,13 @@ Inputs:
 		if(T)
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
-			if((owner.loc == target_turf) || T.check_thrown_collision(owner) || !owner.Move(T))
+			if((owner.loc == target_turf) || T.CheckThrownCollision(owner) || !owner.Move(T))
 				owner.pixel_x = initial_pixel_x
 				owner.pixel_y = initial_pixel_y
 				owner.dragged = FALSE
 				owner.transform = null
-				owner.update_icon()
-				owner.update_strings()
+				owner.UpdateIcon()
+				owner.UpdateStrings()
 				vector_list -= src
 				return
 			owner.pixel_x = pix_x

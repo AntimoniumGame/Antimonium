@@ -2,18 +2,18 @@
 	name = "crate"
 	default_material_path = /datum/material/wood
 
-/obj/structure/crate/attacked_by(var/mob/user, var/obj/item/thing)
-	user.drop_item(thing)
-	thing.force_move(src)
+/obj/structure/crate/AttackedBy(var/mob/user, var/obj/item/thing)
+	user.DropItem(thing)
+	thing.ForceMove(src)
 	holding += thing
-	user.notify_nearby("\The [user] places \the [thing] into \the [src].")
+	user.NotifyNearby("\The [user] places \the [thing] into \the [src].")
 
-/obj/structure/crate/manipulated_by(var/mob/user, var/slot)
+/obj/structure/crate/ManipulatedBy(var/mob/user, var/slot)
 	if(holding.len)
 		var/obj/item/thing = pick(holding)
 		holding -= thing
-		thing.force_move(get_turf(src))
-		user.collect_item(thing, slot)
-		user.notify_nearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
+		thing.ForceMove(get_turf(src))
+		user.CollectItem(thing, slot)
+		user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
 	else
-		user.notify_nearby("\The [user] rummages around in \the [src] but comes up empty handed.")
+		user.NotifyNearby("\The [user] rummages around in \the [src] but comes up empty handed.")

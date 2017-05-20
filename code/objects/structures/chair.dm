@@ -6,10 +6,10 @@
 	weight = 10
 	default_material_path = /datum/material/wood
 
-/obj/structure/chair/manipulated_by(var/mob/user)
+/obj/structure/chair/ManipulatedBy(var/mob/user)
 	if(user.intent.selecting == INTENT_HELP && !(flags & FLAG_ANCHORED))
-		user.notify_nearby("\The [user] turns \the [src] around.")
-		set_dir(turn(dir, 90))
+		user.NotifyNearby("\The [user] turns \the [src] around.")
+		SetDir(turn(dir, 90))
 	else
 		..()
 

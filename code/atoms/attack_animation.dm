@@ -1,4 +1,4 @@
-/atom/movable/proc/do_attack_animation(var/atom/A, var/obj/item/attacking_with)
+/atom/movable/proc/DoAttackAnimation(var/atom/A, var/obj/item/attacking_with)
 
 	set waitfor = 0
 
@@ -22,10 +22,10 @@
 
 	if(istype(attacking_with))
 		var/obj/effect/effect = new(get_turf(src))
-		effect.overlays += attacking_with.get_inv_icon()
+		effect.overlays += attacking_with.GetInvIcon()
 		effect.alpha = 220
 		effect.pixel_x = xdiff*2
 		effect.pixel_y = ydiff*2
 		animate(effect, alpha = 0, pixel_x = xdiff*4, pixel_y = ydiff*4, pixel_z = 0, time = 3)
 		sleep(3)
-		qdel(effect)
+		QDel(effect)

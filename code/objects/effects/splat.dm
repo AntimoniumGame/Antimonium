@@ -7,24 +7,24 @@
 	var/amount = 1
 	var/list/splat_images = list()
 
-/obj/effect/random/splat/get_weight()
+/obj/effect/random/splat/GetWeight()
 	return amount
 
 /obj/effect/random/splat/Uncrossed(var/mob/crosser)
 	if(istype(crosser) && amount && material_state == STATE_LIQUID)
 		var/smearing = min(amount, 5)
 		amount -= smearing
-		crosser.smear_with(material, smearing)
+		crosser.SmearWith(material, smearing)
 
-/obj/effect/random/splat/melt()
+/obj/effect/random/splat/Melt()
 	return
 
-/obj/effect/random/splat/update_values()
+/obj/effect/random/splat/UpdateValues()
 	color = material.colour
 
-/obj/effect/random/splat/update_strings()
+/obj/effect/random/splat/UpdateStrings()
 	..()
-	name = "[initial(name)] of [material.get_name()]"
+	name = "[initial(name)] of [material.GetName()]"
 
 /obj/effect/random/splat/New(var/newloc, var/material_path, var/atom/_donor, var/_amount)
 	amount = _amount
@@ -39,7 +39,7 @@
 		splat_images |= splat.icon_state
 		splat_images |= splat.splat_images
 		amount += splat.amount
-		qdel(splat)
+		QDel(splat)
 
 	overlays = splat_images
 	if(random_states && splat_images.len >= random_states)
@@ -47,15 +47,15 @@
 		icon_state = "[rand(1,random_states)]"
 	..()
 
-/obj/effect/random/splat/melt()
+/obj/effect/random/splat/Melt()
 	material_state = STATE_LIQUID
-	update_strings()
-	update_values()
+	UpdateStrings()
+	UpdateValues()
 
-/obj/effect/random/splat/solidify()
+/obj/effect/random/splat/Solidify()
 	material_state = STATE_SOLID
-	update_strings()
-	update_values()
+	UpdateStrings()
+	UpdateValues()
 
 /obj/effect/random/splat/smear
 	name = "smear"

@@ -2,12 +2,12 @@
 	name = "items"
 	delay = 10
 
-/datum/daemon/items/do_work()
+/datum/daemon/items/DoWork()
 	for(var/thing in processing_objects)
 		var/obj/item = thing
-		if(item && !deleted(item))
-			item.process()
-		check_suspend()
+		if(item && !Deleted(item))
+			item.Process()
+		CheckSuspend()
 
-/datum/daemon/items/status()
+/datum/daemon/items/Status()
 	return "[processing_objects.len]"

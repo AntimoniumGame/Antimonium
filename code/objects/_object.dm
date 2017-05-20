@@ -11,8 +11,8 @@
 		if(!ispath(material_path) && ispath(default_material_path))
 			material_path = default_material_path
 		if(ispath(material_path))
-			material = get_unique_data_by_path(material_path)
-	if(material && material.is_temperature_sensitive())
+			material = GetUniqueDataByPath(material_path)
+	if(material && material.IsTemperatureSensitive())
 		flags |= FLAG_TEMPERATURE_SENSITIVE
 
 		if(temperature >= material.boiling_point)
@@ -22,14 +22,14 @@
 		else
 			material_state = STATE_SOLID
 
-	update_values()
+	UpdateValues()
 	..(newloc)
 
-/obj/proc/update_values()
+/obj/proc/UpdateValues()
 	return
 
-/obj/proc/process()
+/obj/proc/Process()
 	return
 
-/obj/is_solid()
+/obj/IsSolid()
 	return (material_state == STATE_SOLID || material_state == STATE_POWDER)

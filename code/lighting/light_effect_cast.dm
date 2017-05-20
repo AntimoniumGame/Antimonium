@@ -6,7 +6,7 @@
 
 // Casts shadows from occluding objects for a given light.
 
-/obj/light/proc/cast_light()
+/obj/light/proc/CastLight()
 	temp_appearance = list()
 
 	if(!isturf(loc))
@@ -21,7 +21,7 @@
 
 	alpha = min(255,max(0,round(light_power*25)))
 
-	if(is_directional_light())
+	if(IsDirectionalLight())
 		icon = 'icons/lighting/directional_overlays.dmi'
 		light_range = 2.5
 	else
@@ -38,7 +38,7 @@
 			if(5)
 				icon = 'icons/lighting/light_range_5.dmi'
 			else
-				qdel(src)
+				QDel(src)
 				return
 
 	icon_state = "white"
@@ -46,7 +46,7 @@
 	var/image/I = image(icon)
 	I.layer = 4
 	I.icon_state = "overlay"
-	if(is_directional_light())
+	if(IsDirectionalLight())
 		var/turf/next_turf = get_step(src, dir)
 		for(var/i = 1 to 3)
 			if(CheckOcclusion(next_turf))
@@ -56,7 +56,7 @@
 	temp_appearance += I
 
 	//no shadows
-	if(light_range < 2 || is_directional_light())
+	if(light_range < 2 || IsDirectionalLight())
 		overlays = temp_appearance
 		temp_appearance = null
 		return

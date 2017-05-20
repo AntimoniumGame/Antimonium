@@ -4,36 +4,36 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	flags = 0
 
-/mob/abstract/create_limbs()
+/mob/abstract/CreateLimbs()
 	return
 
-/mob/abstract/turn_mob(var/newdir)
+/mob/abstract/TurnMob(var/newdir)
 	return
 
-/mob/abstract/no_dead_move()
+/mob/abstract/NoDeadMove()
 	return FALSE
 
-/mob/abstract/get_move_delay()
+/mob/abstract/GetMoveDelay()
 	return 1
 
-/mob/abstract/create_ui()
+/mob/abstract/CreateUI()
 	// This is simply to avoid a null intent selector runtime.
 	intent = new(src) // It doesn't need to be tracked or accessible.
 
-/mob/abstract/left_click_on(var/atom/thing, var/ctrl, var/alt)
+/mob/abstract/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
 	return
 
-/mob/abstract/right_click_on(var/atom/thing, var/ctrl, var/alt)
+/mob/abstract/RightClickOn(var/atom/thing, var/ctrl, var/alt)
 	return
 
-/mob/abstract/middle_click_on(var/atom/thing, var/ctrl, var/alt)
+/mob/abstract/MiddleClickOn(var/atom/thing, var/ctrl, var/alt)
 	return
 
-/mob/abstract/handle_life_tick()
+/mob/abstract/HandleLifeTick()
 	return
 
-/mob/abstract/examined_by(var/mob/clicker)
-	clicker.notify("That's a spooky ghost!")
+/mob/abstract/ExaminedBy(var/mob/clicker)
+	clicker.Notify("That's a spooky ghost!")
 
-/mob/abstract/update_icon()
+/mob/abstract/UpdateIcon()
 	return

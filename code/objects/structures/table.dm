@@ -6,11 +6,11 @@
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 
-/obj/structure/table/attacked_by(var/mob/user, var/obj/item/thing)
-	if(user.intent.selecting == INTENT_HELP && user.drop_item(thing))
-		if(!thing || deleted(thing)) //grabs
+/obj/structure/table/AttackedBy(var/mob/user, var/obj/item/thing)
+	if(user.intent.selecting == INTENT_HELP && user.DropItem(thing))
+		if(!thing || Deleted(thing)) //grabs
 			return
-		thing.force_move(src.loc)
-		user.notify_nearby("\The [user] places \the [thing] on \the [src].")
+		thing.ForceMove(src.loc)
+		user.NotifyNearby("\The [user] places \the [thing] on \the [src].")
 	else
 		..()

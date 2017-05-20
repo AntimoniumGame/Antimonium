@@ -7,4 +7,4 @@
 
 /world/New()
 	. = ..()
-	switch_game_state(/datum/game_state/setup)
+	SwitchGameState(/datum/game_state/setup)

@@ -10,42 +10,42 @@
 	var/self_move = FALSE
 	var/move_sound
 
-/atom/proc/update_icon()
+/atom/proc/UpdateIcon()
 	return
 
-/atom/proc/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+/atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
-/atom/proc/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
+/atom/proc/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	return
 
-/atom/proc/middle_clicked_on(var/mob/clicker)
-	examined_by(clicker)
+/atom/proc/MiddleClickedOn(var/mob/clicker)
+	ExaminedBy(clicker)
 
-/atom/proc/examined_by(var/mob/clicker)
-	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
-	return is_adjacent_to(src, clicker)
+/atom/proc/ExaminedBy(var/mob/clicker)
+	clicker.Notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
+	return IsAdjacentTo(src, clicker)
 
-/atom/proc/pull_cost()
+/atom/proc/PullCost()
 	return 1
 
 /atom/New()
 	..()
-	update_strings()
-	update_icon()
+	UpdateStrings()
+	UpdateIcon()
 
-/atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
+/atom/movable/proc/HandleDragged(var/turf/from_turf, var/turf/to_turf)
 	if(move_sound)
-		play_local_sound(src, move_sound, 35, frequency = -1)
+		PlayLocalSound(src, move_sound, 35, frequency = -1)
 
-/atom/proc/update_strings()
+/atom/proc/UpdateStrings()
 	name = initial(name)
 
-/atom/proc/airtight()
+/atom/proc/Airtight()
 	return FALSE
 
-/atom/proc/is_solid()
+/atom/proc/IsSolid()
 	return TRUE
 
-/atom/proc/get_weight()
+/atom/proc/GetWeight()
 	return 1

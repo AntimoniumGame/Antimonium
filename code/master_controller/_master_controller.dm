@@ -1,4 +1,4 @@
-/proc/check_suspend()
+/proc/CheckSuspend()
 	if(world.tick_usage >= 100)
 		sleep(world.tick_lag)
 
@@ -13,26 +13,26 @@ var/datum/master_controller/mc
 	. = ..()
 	if(mc)
 		daemons = mc.daemons
-		qdel(mc)
+		QDel(mc)
 		mc = src
 	else
-		setup()
+		Setup()
 
-	start_processing()
+	StartProcessing()
 
-/datum/master_controller/destroy()
+/datum/master_controller/Destroy()
 	daemons.Cut()
 	. = ..()
 
-/datum/master_controller/proc/setup()
+/datum/master_controller/proc/Setup()
 	for(var/dtype in (typesof(/datum/daemon)-/datum/daemon))
-		var/datum/daemon/daemon = get_unique_data_by_path(dtype)
+		var/datum/daemon/daemon = GetUniqueDataByPath(dtype)
 		daemons += daemon
 		next_daemon_proc["\ref[daemon]"] = world.time
 
-/datum/master_controller/proc/start_processing()
+/datum/master_controller/proc/StartProcessing()
 	set waitfor = 0
 	set background = 1
 	for(var/datum/daemon/daemon in daemons)
 		spawn(daemon.initial_offset)
-			daemon.start()
+			daemon.Start()

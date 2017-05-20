@@ -1,13 +1,13 @@
 /datum/admin_permissions/secure
 	associated_permission = PERMISSIONS_SECURE
 	verbs = list(
-		/client/proc/add_admin,
-		/client/proc/remove_admin,
-		/proc/initialize_admin_database
+		/client/proc/AddAdmin,
+		/client/proc/RemoveAdmin,
+		/proc/InitializeAdminDatabase
 		)
 
 // These are placeholders for now, hence crudity.
-/client/proc/add_admin()
+/client/proc/AddAdmin()
 
 	set name = "Add Admin"
 	set category = "Secure"
@@ -26,7 +26,7 @@
 	if(admins[enter_ckey])
 		existing_admin = TRUE
 		if(modifying)
-			modifying.set_admin_permissions()
+			modifying.SetAdminPermissions()
 		admins[enter_ckey] = null
 		admins -= enter_ckey
 
@@ -39,16 +39,16 @@
 		return
 
 	admins[enter_ckey] = new /datum/admin_rank(enter_ckey, enter_perm, enter_title)
-	anotify("Updated rank for [enter_ckey] to [enter_perm] - [enter_title].")
+	Anotify("Updated rank for [enter_ckey] to [enter_perm] - [enter_title].")
 	if(modifying)
-		modifying.set_admin_permissions(admins[enter_ckey])
+		modifying.SetAdminPermissions(admins[enter_ckey])
 
 	if(existing_admin)
-		update_admin_database(enter_ckey, enter_perm, enter_title)
+		UpdateAdminDatabase(enter_ckey, enter_perm, enter_title)
 	else
-		add_to_admin_database(enter_ckey, enter_perm, enter_title)
+		AddToAdminDatabase(enter_ckey, enter_perm, enter_title)
 
-/client/proc/remove_admin()
+/client/proc/RemoveAdmin()
 
 	set name = "Remove Admin"
 	set category = "Secure"
@@ -62,7 +62,7 @@
 		admins -= enter_ckey
 	for(var/client/player in clients)
 		if(player.ckey == enter_ckey)
-			player.set_admin_permissions()
+			player.SetAdminPermissions()
 			break
 
-	remove_from_admin_database(enter_ckey)
+	RemoveFromAdminDatabase(enter_ckey)

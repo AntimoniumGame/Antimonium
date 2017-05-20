@@ -1,36 +1,35 @@
 /datum/admin_permissions/debug
 	associated_permission = PERMISSIONS_DEBUG
 	verbs = list(
-		/client/proc/debug_controller,
-		/client/proc/debug_controller,
-		/client/proc/force_switch_game_state,
-		/client/proc/testlights,
-		/client/proc/set_client_fps,
-		/client/proc/start_view_vars,
-		/client/proc/toggle_vars_refresh,
-		/client/proc/close_vars_window
+		/client/proc/DebugController,
+		/client/proc/ForceSwitchGameState,
+		/client/proc/TestLights,
+		/client/proc/SetClientFps,
+		/client/proc/StartViewVars,
+		/client/proc/ToggleVarsRefresh,
+		/client/proc/CloseVarsWindow
 		)
 
-/client/proc/dev_panel()
+/client/proc/DevPanel()
 	set waitfor = 0
-	if(check_admin_permission(PERMISSIONS_DEBUG) && winget(src, "devwindow", "is-visible") == "false")
+	if(CheckAdminPermission(PERMISSIONS_DEBUG) && winget(src, "devwindow", "is-visible") == "false")
 		winset(src, "devwindow", "is-visible=true")
 	else
 		winset(src, "devwindow", "is-visible=false")
 
-/client/proc/debug_controller()
+/client/proc/DebugController()
 
 	set name = "Master Controller Status"
 	set category = "Debug"
 
 	if(!mc)
-		dnotify("Master controller doesn't exist.")
+		Dnotify("Master controller doesn't exist.")
 		return
-	dnotify("Daemons: [mc.daemons.len]")
+	Dnotify("Daemons: [mc.daemons.len]")
 	for(var/datum/daemon/daemon in mc.daemons)
-		dnotify("[daemon.name]: [daemon.status()]")
+		Dnotify("[daemon.name]: [daemon.Status()]")
 
-/client/proc/force_switch_game_state()
+/client/proc/ForceSwitchGameState()
 
 	set name = "Force Game State"
 	set category = "Debug"
@@ -38,10 +37,10 @@
 	var/choice = input("Select a new state.") as null|anything in typesof(/datum/game_state)-/datum/game_state
 	if(!choice) return
 	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
-	switch_game_state(choice)
+	SwitchGameState(choice)
 	to_chat(src, "Forced state change complete.")
 
-/client/proc/testlights()
+/client/proc/TestLights()
 
 	set name = "Toggle Self Light"
 	set category = "Debug"
@@ -52,17 +51,17 @@
 	mob.light_type = LIGHT_SOFT
 
 	if(mob.light_obj)
-		mob.dnotify("Killed self light.")
-		mob.kill_light()
+		mob.Dnotify("Killed self light.")
+		mob.KillLight()
 	else
-		mob.dnotify("Set self light.")
-		mob.set_light()
+		mob.Dnotify("Set self light.")
+		mob.SetLight()
 
 	sleep(5)
 	if(mob.light_obj)
-		mob.light_obj.follow_holder()
+		mob.light_obj.FollowHolder()
 
-/client/proc/set_client_fps()
+/client/proc/SetClientFps()
 
 	set name = "Set Client FPS"
 	set category = "Debug"
@@ -70,16 +69,16 @@
 	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
 
 //var viewing madness below
-/client/proc/start_view_vars()
+/client/proc/StartViewVars()
 	set waitfor = 0
 	set name = "View Variables"
 	set category = "Debug"
 
-	if(check_admin_permission(PERMISSIONS_DEBUG))
+	if(CheckAdminPermission(PERMISSIONS_DEBUG))
 		var/interface/viewvars/V = new(src)
 		interface = V
 
-/client/proc/view_vars(object)
+/client/proc/ViewVars(object)
 	if(object)
 		var/window_ref = "vars-\ref[object]"
 		if(!winexists(src, window_ref))
@@ -93,10 +92,10 @@
 		winset(src,"[window_ref].varsgrid","cells=2x0")
 		src << output("Name", "[window_ref].varsgrid:1,1")
 		src << output("Value", "[window_ref].varsgrid:2,1")
-		update_view_vars(object)
+		UpdateViewVars(object)
 	interface = new(src)
 
-/client/proc/update_view_vars(object, win_ref)
+/client/proc/UpdateViewVars(object, win_ref)
 	set waitfor = 0
 	set background = 1
 
@@ -107,7 +106,7 @@
 		return
 
 	var/window_ref = "vars-\ref[O]"
-	var/list/keylist = sort_list_keys(O.vars)
+	var/list/keylist = SortListKeys(O.vars)
 
 	var/first_run = TRUE
 	while(O && winexists(src, window_ref) && (winget(src, "[window_ref].varsrefresh", "is-checked") == "true" || first_run))
@@ -140,7 +139,7 @@
 					bit = bit<<1
 				src << output(flag_list, "[window_ref].varsgrid:2,[i++]")
 			else if((k == "sight" && ismob(O)) || (istype(O, /atom) && k in list("appearance_flags", "blend_mode")))
-				src << output(flags_to_bits(value), "[window_ref].varsgrid:2,[i++]")
+				src << output(FlagsToBits(value), "[window_ref].varsgrid:2,[i++]")
 			else
 				src << output("[value]", "[window_ref].varsgrid:2,[i++]")
 		first_run = FALSE
@@ -149,7 +148,7 @@
 	if(!O)
 		winset(src, window_ref, "title=\"View Vars: (Deleted)\"")
 
-/proc/flags_to_bits(flags)
+/proc/FlagsToBits(flags)
 	var/flag_list = "bitflags: [flags]"
 	var/bit = 1
 	for(var/i = 1 to 16)
@@ -158,39 +157,39 @@
 		bit = bit<<1
 	return flag_list
 
-/client/proc/toggle_vars_refresh(string as text)
+/client/proc/ToggleVarsRefresh(string as text)
 	set hidden = 1
 	var/datum/d = locate(copytext(string, 6))
-	update_view_vars(d, string)
+	UpdateViewVars(d, string)
 
-/client/proc/close_vars_window(string as text)
+/client/proc/CloseVarsWindow(string as text)
 	set hidden = 1
 	winset(src, string, "parent=none")
 
 //Var editing madness below
 /client/Topic(href,href_list[],hsrc)
 	if(href_list["function"] == "varedit")
-		if(check_admin_permission(PERMISSIONS_DEBUG))
-			modify_var(src, href_list)
+		if(CheckAdminPermission(PERMISSIONS_DEBUG))
+			ModifyVar(src, href_list)
 	else
 		return ..()
 
-/proc/modify_var(client/C, list/href_list)
+/proc/ModifyVar(client/C, list/href_list)
 	var/datum/D = locate(href_list["ref"])
 	if(!istype(D))
 		return
 	var/V = D.vars[href_list["var"]]
 	if(V in list("type", "parent_type", "vars") || istype(D, /atom) && V in list("locs"))
-		C.dnotify("variable \"[V]\" is read-only")
+		C.Dnotify("variable \"[V]\" is read-only")
 	else
 		var/var_name = null
 		//there are only a couple of cases we need to know the var name
 		if(href_list["var"] == "appearance" || (istype(D, /atom) && (href_list["var"] == "contents" || href_list["var"] == "flags")))
 			var_name = href_list["var"]
-		D.vars[href_list["var"]] = change_var(C, V, var_name)
+		D.vars[href_list["var"]] = ChangeVar(C, V, var_name)
 
 //yes, this is a badass recursive-capable var editing proc
-/proc/change_var(client/C, V = null, var_name = null)
+/proc/ChangeVar(client/C, V = null, var_name = null)
 	set background = 1
 
 	var/type
@@ -217,7 +216,7 @@
 		var/choice = alert(C, "View or edit var?", null, "View", "Edit", "Cancel")
 		switch(choice)
 			if("View")
-				C.view_vars(V)
+				C.ViewVars(V)
 				return V
 			if("Edit")
 				type = "datum"
@@ -272,11 +271,11 @@
 			if(list_entity == " + new entry")
 				var/more = "Yes"
 				while(more == "Yes")
-					var/new_entry = change_var(C)
+					var/new_entry = ChangeVar(C)
 					if(!isnull(new_entry) && (var_name != "contents" || istype(new_entry, /mob) || istype(new_entry, /obj))) // can only put mobs and objects in contents
 						return_list.Add(new_entry)
 					else
-						C.dnotify("only mobs and objects can be added to an atoms contents list.")
+						C.Dnotify("only mobs and objects can be added to an atoms contents list.")
 					more = alert(C, "Add another entry?", null, "Yes", "No")
 			else if(list_entity == "    cancel")
 				return return_list
@@ -287,17 +286,17 @@
 				switch(selection)
 					if("Edit")
 						var/index = return_list.Find(list_entity)
-						var/new_var = change_var(C, list_entity)
+						var/new_var = ChangeVar(C, list_entity)
 						return_list[index] = new_var
 					if("Remove")
 						return_list.Remove(list_entity)
 			return return_list
 		if("matrix")
-			C.dnotify("matrix editing not implemented yet")
+			C.Dnotify("matrix editing not implemented yet")
 			return V
 		if("appearance")
-			C.dnotify("appearance editing not implemented yet")
+			C.Dnotify("appearance editing not implemented yet")
 			return V
 		if("datum")
-			C.dnotify("datum editing not implemented yet")
+			C.Dnotify("datum editing not implemented yet")
 			return V

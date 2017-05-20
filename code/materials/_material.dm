@@ -36,10 +36,10 @@
 	if(!gas_name)     gas_name =     "[general_name] vapour"
 	..()
 
-/datum/material/proc/get_descriptor()
-	return descriptor ? descriptor : get_name()
+/datum/material/proc/GetDescriptor()
+	return descriptor ? descriptor : GetName()
 
-/datum/material/proc/get_name(var/material_state)
+/datum/material/proc/GetName(var/material_state)
 	if(material_state)
 		switch(material_state)
 			if(STATE_SOLID, STATE_POWDER)
@@ -50,7 +50,7 @@
 				return gas_name
 	return general_name
 
-/datum/material/proc/get_term(var/material_state, var/amount)
+/datum/material/proc/GetTerm(var/material_state, var/amount)
 	if(material_state)
 		switch(material_state)
 			if(STATE_SOLID)
@@ -63,31 +63,31 @@
 				return amount == 1 ? gas_portion_name : gas_portion_name_plural
 	return amount == 1 ? "piece" : "pieces"
 
-/datum/material/proc/get_sharpness_mod()
+/datum/material/proc/GetSharpnessMod()
 	return sharpness_modifier
 
-/datum/material/proc/get_weight_mod()
+/datum/material/proc/GetWeightMod()
 	return weight_modifier
 
-/datum/material/proc/is_temperature_sensitive()
+/datum/material/proc/IsTemperatureSensitive()
 	return (melting_point != TEMPERATURE_NEVER_COLD || ignition_point != TEMPERATURE_NEVER_HOT || boiling_point != TEMPERATURE_NEVER_HOT)
 
-/datum/material/proc/on_melt(var/obj/reagent)
-	reagent.notify_nearby("\The [reagent] melts!")
+/datum/material/proc/OnMelt(var/obj/reagent)
+	reagent.NotifyNearby("\The [reagent] melts!")
 	reagent.material_state = STATE_LIQUID
-	reagent.melt()
+	reagent.Melt()
 
-/datum/material/proc/on_solidify(var/obj/reagent)
-	reagent.notify_nearby("\The [reagent] solidifies!")
+/datum/material/proc/OnSolidify(var/obj/reagent)
+	reagent.NotifyNearby("\The [reagent] solidifies!")
 	reagent.material_state = STATE_SOLID
-	reagent.solidify()
+	reagent.Solidify()
 
-/datum/material/proc/on_evaporate(var/obj/reagent)
-	reagent.notify_nearby("\The [reagent] evaporates!")
+/datum/material/proc/OnEvaporate(var/obj/reagent)
+	reagent.NotifyNearby("\The [reagent] evaporates!")
 	reagent.material_state = STATE_GAS
-	reagent.evaporate()
+	reagent.Evaporate()
 
-/datum/material/proc/on_condense(var/obj/reagent)
-	reagent.notify_nearby("\The [reagent] condenses!")
+/datum/material/proc/OnCondense(var/obj/reagent)
+	reagent.NotifyNearby("\The [reagent] condenses!")
 	reagent.material_state = STATE_LIQUID
-	reagent.condense()
+	reagent.Condense()

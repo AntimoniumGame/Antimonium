@@ -6,16 +6,16 @@
 	layer = 3
 	var/mob/holder
 
-/obj/effect/title/proc/center(var/view_x, var/view_y)
+/obj/effect/title/proc/Center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-7]:16,[round(view_y/2)-6]"
 
 /obj/effect/title/New(var/mob/_holder)
 	..()
 	holder = _holder
 	holder.ui_screen += src
-	null_loc(src)
+	NullLoc(src)
 
-/obj/effect/title/destroy()
+/obj/effect/title/Destroy()
 	..()
 	if(holder)
 		holder.ui_screen -= src

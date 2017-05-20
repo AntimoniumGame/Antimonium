@@ -1,29 +1,29 @@
 var/datum/daemon/garbage/gc
 /datum/var/gc_collect_time = 0
 
-/proc/deleted(var/atom/A)
+/proc/Deleted(var/atom/A)
 	return (!istype(A) || (A.gc_collect_time != 0 && !isnull(A.gc_collect_time)))
 
-/datum/proc/destroy()
+/datum/proc/Destroy()
 	return 1
 
-/atom/destroy()
+/atom/Destroy()
 	name = "[name] (DESTROYED, REPORT THIS BUG)"
 	if(contents)
 		for(var/thing in contents)
-			qdel(thing)
+			QDel(thing)
 	return 1
 
-/atom/movable/destroy()
+/atom/movable/Destroy()
 	. = ..()
 	loc = null
 
-/image/destroy()
+/image/Destroy()
 	del(src)
 
 // placeholder for later
-/proc/qdel(var/thing)
-	gc.collect(thing)
+/proc/QDel(var/thing)
+	gc.Collect(thing)
 
 /datum/daemon/garbage
 	name = "garbage collector"
@@ -34,16 +34,16 @@ var/datum/daemon/garbage/gc
 /datum/daemon/garbage/New()
 	if(gc)
 		garbage = gc.garbage
-		qdel(gc)
+		QDel(gc)
 	gc = src
 
-/datum/daemon/garbage/proc/collect(var/thing)
-	if(!thing || !thing:destroy())
+/datum/daemon/garbage/proc/Collect(var/thing)
+	if(!thing || !thing:Destroy())
 		return
 	thing:gc_collect_time = world.time
 	garbage["\ref[thing]"] = world.time
 
-/datum/daemon/garbage/do_work()
+/datum/daemon/garbage/DoWork()
 	for(var/gref in garbage)
 		var/timeout = garbage[gref]
 		if(world.time < timeout+garbage_timeout)
@@ -53,7 +53,7 @@ var/datum/daemon/garbage/gc
 			del(trash)
 		garbage[gref] = null
 		garbage -= gref
-		check_suspend()
+		CheckSuspend()
 
-/datum/daemon/garbage/status()
+/datum/daemon/garbage/Status()
 	return "[garbage.len] queued"
