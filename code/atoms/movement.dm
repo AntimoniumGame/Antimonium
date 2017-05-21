@@ -1,8 +1,8 @@
-/atom/movable/proc/null_loc()
+/atom/movable/proc/NullLoc()
 	loc = null
 
-//force_move code courtesey of Ter13 - http://www.byond.com/forum/?post=2101373
-/atom/movable/proc/force_move(atom/NewLoc, Dir = 0)
+//ForceMove code courtesey of Ter13 - http://www.byond.com/forum/?post=2101373
+/atom/movable/proc/ForceMove(atom/NewLoc, Dir = 0)
 	var/OldLoc = loc
 	if(!Dir)
 		Dir = dir
@@ -68,41 +68,41 @@
 
 	return 1
 
-/atom/proc/get_mover_delay(var/atom/movable/mover)
+/atom/proc/GetMoverDelay(var/atom/movable/mover)
 	return 0
 
-/atom/movable/proc/can_move()
+/atom/movable/proc/CanMove()
 	return TRUE
 
-/atom/movable/proc/get_move_delay()
+/atom/movable/proc/GetMoveDelay()
 	return 3
 
 /atom/movable/Move()
-	if(!can_move())
+	if(!CanMove())
 		return 0
 	//set the glide size for silky smooth movement
 	if(self_move) //Atoms moving themselves get auto set glide size - anything else moving an object has to handle it manually
-		glide_size = world.icon_size / max(get_move_delay(), world.tick_lag) * world.tick_lag
+		glide_size = world.icon_size / max(GetMoveDelay(), world.tick_lag) * world.tick_lag
 	. = ..()
-	set_dir(dir)
+	SetDir(dir)
 	if(. && light_obj)
-		light_obj.follow_holder()
+		light_obj.FollowHolder()
 
-/atom/proc/set_dir(var/newdir)
+/atom/proc/SetDir(var/newdir)
 	if(dir != newdir)
 		dir = newdir
 		if(light_obj)
-			light_obj.follow_holder_dir()
+			light_obj.FollowHolderDir()
 		return TRUE
 	return FALSE
 
-/atom/proc/is_grabbable()
+/atom/proc/IsGrabbable()
 	return FALSE
 
-/atom/movable/is_grabbable()
+/atom/movable/IsGrabbable()
 	return (!(flags & FLAG_ANCHORED) && (flags & FLAG_SIMULATED))
 
-/atom/proc/face_atom(var/atom/A)
+/atom/proc/FaceAtom(var/atom/A)
 	if(!A || !x || !y || !A.x || !A.y) return
 	var/dx = A.x - x
 	var/dy = A.y - y
@@ -116,4 +116,4 @@
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
 	if(direction != dir)
-		set_dir(direction)
+		SetDir(direction)

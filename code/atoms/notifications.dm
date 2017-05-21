@@ -1,9 +1,9 @@
-/atom/proc/notify(var/message)
+/atom/proc/Notify(var/message)
 	to_chat(src, message)
 
-/atom/proc/notify_nearby(var/message)
+/atom/proc/NotifyNearby(var/message)
 	for(var/mob/M in viewers(world.view, get_turf(src)))
-		M.notify(message)
+		M.Notify(message)
 
-/atom/proc/dnotify(var/message)
+/atom/proc/Dnotify(var/message)
 	to_debug(src, message)

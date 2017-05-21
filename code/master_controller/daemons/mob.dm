@@ -2,12 +2,12 @@
 	name = "mob"
 	delay = 10
 
-/datum/daemon/mob/do_work()
+/datum/daemon/mob/DoWork()
 	for(var/thing in living_mob_list)
 		var/mob/mob = thing
-		if(mob && !deleted(mob))
-			mob.handle_life_tick()
-		check_suspend()
+		if(mob && !Deleted(mob))
+			mob.HandleLifeTick()
+		CheckSuspend()
 
-/datum/daemon/mob/status()
+/datum/daemon/mob/Status()
 	return "[living_mob_list.len]"

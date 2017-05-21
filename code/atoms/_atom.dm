@@ -10,68 +10,68 @@
 	var/self_move = FALSE
 	var/move_sound
 
-/atom/proc/update_icon(var/list/supplied = list())
+/atom/proc/UpdateIcon(var/list/supplied = list())
 	overlays = supplied
 	var/mob/holder = loc
 	if(istype(holder))
-		holder.update_inventory()
-		holder.update_icon()
+		holder.UpdateInventory()
+		holder.UpdateIcon()
 
-/atom/proc/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+/atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
-/atom/proc/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
+/atom/proc/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	return
 
-/atom/proc/middle_clicked_on(var/mob/clicker)
-	examined_by(clicker)
+/atom/proc/MiddleClickedOn(var/mob/clicker)
+	ExaminedBy(clicker)
 
-/atom/proc/examined_by(var/mob/clicker)
-	clicker.notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
-	return is_adjacent_to(src, clicker)
+/atom/proc/ExaminedBy(var/mob/clicker)
+	clicker.Notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
+	return IsAdjacentTo(src, clicker)
 
-/atom/proc/pull_cost()
+/atom/proc/PullCost()
 	return 1
 
 /atom/New()
 	..()
-	update_strings()
-	update_icon()
+	UpdateStrings()
+	UpdateIcon()
 
-/atom/movable/proc/handle_dragged(var/turf/from_turf, var/turf/to_turf)
+/atom/movable/proc/HandleDragged(var/turf/from_turf, var/turf/to_turf)
 	if(move_sound)
-		play_local_sound(src, move_sound, 35, frequency = -1)
+		PlayLocalSound(src, move_sound, 35, frequency = -1)
 
-/atom/proc/update_strings()
+/atom/proc/UpdateStrings()
 	name = initial(name)
 
-/atom/proc/airtight()
+/atom/proc/Airtight()
 	return FALSE
 
-/atom/proc/is_solid()
+/atom/proc/IsSolid()
 	return TRUE
 
-/atom/proc/get_weight()
+/atom/proc/GetWeight()
 	return 1
 
-/atom/proc/get_amount()
+/atom/proc/GetAmount()
 	return 1
 
-/atom/proc/set_fire_light()
+/atom/proc/SetFireLight()
 	if(light_obj)
-		kill_light()
+		KillLight()
 	light_color = BRIGHT_ORANGE
 	light_power = 10
 	light_range = 5
-	set_light()
+	SetLight()
 
-/atom/proc/reset_lights()
+/atom/proc/ResetLights()
 	var/lit
 	if(light_obj)
 		lit = TRUE
-		kill_light()
+		KillLight()
 	light_color = initial(light_color)
 	light_power = initial(light_power)
 	light_range = initial(light_range)
 	if(lit && (light_power || light_color || light_range))
-		set_light()
+		SetLight()

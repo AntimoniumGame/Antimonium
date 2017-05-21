@@ -2,10 +2,10 @@
 /client/Click(object,location,control,params)
 	if(world.time > next_click)
 		next_click = world.time + 1
-		interface.on_click(object, location, control, params)
+		interface.OnClick(object, location, control, params)
 
-/atom/movable/proc/burn(var/mob/user, var/slot)
-	if(temperature >= TEMPERATURE_BURNING && user.get_heat_insulation(slot) < TEMPERATURE_BURNING)
-		user.notify("\The [src] is far too hot to handle!")
+/atom/movable/proc/Burn(var/mob/user, var/slot)
+	if(temperature >= TEMPERATURE_BURNING && user.GetHeatInsulation(slot) < TEMPERATURE_BURNING)
+		user.Notify("\The [src] is far too hot to handle!")
 		return TRUE
 	return FALSE

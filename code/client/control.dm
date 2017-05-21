@@ -8,32 +8,32 @@
 	view_x = round(world.view/2)
 	view_y = round(world.view/2)
 	. = ..()
-	loadData()
+	LoadData()
 	if(!key_binds)
 		key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV, "F7" = KEY_VARS)
 	interface = new(src)
 
-/client/verb/keyPress(key as text)
+/client/verb/KeyPress(key as text)
 	set instant = 1
 	set hidden = 1
-	interface.onKeyPress(key)
+	interface.OnKeyPress(key)
 
-/client/verb/keyRelease(key as text)
+/client/verb/KeyRelease(key as text)
 	set instant = 1
 	set hidden = 1
-	interface.onKeyRelease(key)
+	interface.OnKeyRelease(key)
 
-/client/verb/rebindKey()
+/client/verb/RebindKey()
 	set name = "Rebind Key"
 
 	var/selection = input("Select a command to rebind:") in __keylist
 
 	var/interface/rebind/R = new(src)
-	R.set_rebind(key2bind(selection))
+	R.SetRebind(key2bind(selection))
 	interface = R
 	alert("Press ok, then the button you want to rebind \"[selection]\" to.")
 
-/client/proc/rebind(key, bind)
+/client/proc/Rebind(key, bind)
 	set waitfor = 0
 	if(key && bind)
 		var/old_bind = FindListAssociation(key_binds, bind)
@@ -50,7 +50,7 @@
 				key_binds[old_bind] = null
 	interface = new(src)
 
-/client/verb/on_resize()
+/client/verb/OnResize()
 	set hidden = 1
 
 	var/string = winget(src, "map", "size")
@@ -58,26 +58,22 @@
 	view_x = round(text2num(string) / 64)
 	view_y = round(text2num(copytext(string,findtext(string,"x")+1,0)) / 64)
 	view = "[view_x]x[view_y]"
-	mob.on_window_resize()
-/*
-	#ifdef DEBUG
-	dnotify("on_resize winget: [string], viewx: [view_x], viewy: [view_y]")
-	#endif
-*/
+	mob.OnWindowResize()
+
 	// Workaround for a strange bug
 	perspective = MOB_PERSPECTIVE
 	eye = mob
 
-/mob/proc/on_window_resize()
+/mob/proc/OnWindowResize()
 	for(var/obj/ui/ui_element in ui_screen)
-		ui_element.center(client.view_x, client.view_y)
+		ui_element.Center(client.view_x, client.view_y)
 
 /mob
 	var/tmp/key_x
 	var/tmp/key_y
 	var/tmp/walk_dir
 
-/mob/proc/onKeyPress(bind)
+/mob/proc/OnKeyPress(bind)
 	switch(bind)
 		if(KEY_UP, KEY_DOWN)
 			if(key_y)	//to prevent pressing opposite directions
@@ -88,7 +84,7 @@
 				return 0
 			walk_dir = key_x = bind2dir(bind)
 
-/mob/proc/onKeyRelease(bind)
+/mob/proc/OnKeyRelease(bind)
 	switch(bind)
 		if(KEY_UP, KEY_DOWN)
 			if(key_y != bind2dir(bind))	//ignore any ignored opposite key releases

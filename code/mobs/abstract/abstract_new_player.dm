@@ -7,33 +7,33 @@
 
 /mob/abstract/new_player/Login()
 	..()
-	null_loc()
+	NullLoc()
 	if(lobby_music)
-		lobby_music.play(src)
+		lobby_music.Play(src)
 
-/mob/abstract/new_player/create_ui()
+/mob/abstract/new_player/CreateUI()
 	..()
 	title_image = new(src)
 	setup = new(src)
 	join = new(src)
 	options = new(src)
 
-/mob/abstract/new_player/refresh_ui()
+/mob/abstract/new_player/RefreshUI()
 	. = ..()
-	join.update_icon()
+	join.UpdateIcon()
 
 /mob/abstract/new_player/New()
 	..()
 	new_players += src
 	spawn(0)
-		null_loc()
+		NullLoc()
 
-/mob/abstract/new_player/destroy()
+/mob/abstract/new_player/Destroy()
 	title_image = null
 	new_players -= src
 	. = ..()
 
-/mob/abstract/new_player/proc/join_game()
+/mob/abstract/new_player/proc/JoinGame()
 
 	if(joining)
 		return
@@ -48,41 +48,41 @@
 
 	joining = TRUE
 
-	do_fadeout(src, 10)
+	DoFadeout(src, 10)
 	sleep(10)
 
 	if(client)
 		client.screen -= title_image
-		end_lobby_music(client)
+		EndLobbyMusic(client)
 
 	var/mob/human/player_mob = new()
-	player_mob.force_move(locate(3,3,1))
+	player_mob.ForceMove(locate(3,3,1))
 	player_mob.job = input("Choose a job.") as anything in job_datums
 	player_mob.name = key
 	player_mob.key = key
-	player_mob.job.welcome(player_mob)
-	player_mob.job.equip(player_mob)
-	qdel(src)
+	player_mob.job.Welcome(player_mob)
+	player_mob.job.Equip(player_mob)
+	QDel(src)
 
-/mob/abstract/new_player/do_say(var/message)
+/mob/abstract/new_player/DoSay(var/message)
 	next_speech = world.time + 5
-	message = "<b>LOBBY:</b> [format_string_for_speech(src, message)]"
+	message = "<b>LOBBY:</b> [FormatStringForSpeech(src, message)]"
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)
 			to_chat(listener, message)
 
-/mob/abstract/new_player/do_emote(var/message)
+/mob/abstract/new_player/DoEmote(var/message)
 	next_speech = world.time + 5
-	message = format_and_capitalize("<b>LOBBY:</b> <b>\The [src]</b> [sanitize_text(message)]")
+	message = FormatAndCapitalize("<b>LOBBY:</b> <b>\The [src]</b> [SanitizeText(message)]")
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)
 			to_chat(listener, message)
 
-/mob/abstract/new_player/left_click_on(var/atom/thing, var/ctrl, var/alt)
+/mob/abstract/new_player/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
 	if(istype(thing, /obj/ui))
-		thing.left_clicked_on(src)
+		thing.LeftClickedOn(src)
 
-/mob/abstract/new_player/on_window_resize()
+/mob/abstract/new_player/OnWindowResize()
 	..()
 	if(client)
-		title_image.center(client.view_x, client.view_y)
+		title_image.Center(client.view_x, client.view_y)

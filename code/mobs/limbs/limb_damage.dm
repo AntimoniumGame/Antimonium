@@ -2,7 +2,7 @@
 	var/list/wounds = list()
 	var/broken = FALSE
 
-/obj/item/limb/proc/handle_attacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
+/obj/item/limb/proc/HandleAttacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
 
 	if(!owner)
 		return
@@ -16,7 +16,7 @@
 	owner.injured_limbs |= src
 
 	if(wound_type == WOUND_CUT && wound_severity > 5)
-		splatter(owner, get_turf(owner), /datum/material/water/blood)
+		Splatter(owner, get_turf(owner), /datum/material/water/blood)
 
 	if(wounds.len)
 		var/list/matching_wounds = list()
@@ -29,23 +29,23 @@
 			wound.severity += wound_severity
 			if(attacked_with)
 				wound.left_by = attacked_with.name
-			owner.notify("<b>A wound on your [name] worsens into [wound.get_descriptor()]!</b>")
-			set_pain(max(pain, wound.severity))
-			update_limb_state()
+			owner.Notify("<b>A wound on your [name] worsens into [wound.GetDescriptor()]!</b>")
+			SetPain(max(pain, wound.severity))
+			UpdateLimbState()
 			return
 
 	var/datum/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
 	wounds += wound
-	set_pain(max(pain, wound.severity))
-	owner.notify("<b>The blow leaves your [name] with [wound.get_descriptor()]!</b>")
-	update_limb_state()
+	SetPain(max(pain, wound.severity))
+	owner.Notify("<b>The blow leaves your [name] with [wound.GetDescriptor()]!</b>")
+	UpdateLimbState()
 
-/obj/item/limb/proc/break_bone()
-	owner.notify_nearby("<b>\The [owner]'s [name] makes a horrible cracking sound!</b>")
+/obj/item/limb/proc/BreakBone()
+	owner.NotifyNearby("<b>\The [owner]'s [name] makes a horrible cracking sound!</b>")
 	broken = TRUE
-	handle_break_effects()
+	HandleBreakEffects()
 
-/obj/item/limb/proc/sever_limb(var/obj/item/limb/severing)
+/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing)
 
 	if(!owner || root_limb)
 		return
@@ -55,12 +55,12 @@
 	owner.limbs -= limb_id
 
 	if(severing)
-		force_move(severing)
+		ForceMove(severing)
 		for(var/obj/item/limb/child in children)
-			child.sever_limb(severing)
+			child.SeverLimb(severing)
 	else
 		for(var/obj/item/limb/child in children)
-			child.sever_limb(src)
+			child.SeverLimb(src)
 		if(parent)
 			var/datum/wound/wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
 			parent.wounds += wound
@@ -70,24 +70,24 @@
 			parent.children -= src
 			parent = null
 
-		play_local_sound(src, pick(list('sounds/effects/gore1.wav','sounds/effects/gore2.wav','sounds/effects/gore3.wav')), 100)
-		owner.notify_nearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
+		PlayLocalSound(src, pick(list('sounds/effects/gore1.wav','sounds/effects/gore2.wav','sounds/effects/gore3.wav')), 100)
+		owner.NotifyNearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
-		thrown_at(get_step(src, pick(all_dirs)))
-		splatter(owner, loc, /datum/material/water/blood)
+		ThrownAt(get_step(src, pick(all_dirs)))
+		Splatter(owner, loc, /datum/material/water/blood)
 
-		owner.update_icon()
+		owner.UpdateIcon()
 		for(var/obj/item/limb/child in src)
-			overlays += child.get_worn_icon("world")
+			overlays += child.GetWornIcon("world")
 
-	handle_sever_effects()
+	HandleSeverEffects()
 	owner = null
 
-/obj/item/limb/proc/handle_sever_effects()
+/obj/item/limb/proc/HandleSeverEffects()
 	if(vital)
-		owner.die("loss of a vital organ")
+		owner.Die("loss of a vital organ")
 
-/obj/item/limb/proc/handle_break_effects()
+/obj/item/limb/proc/HandleBreakEffects()
 	return

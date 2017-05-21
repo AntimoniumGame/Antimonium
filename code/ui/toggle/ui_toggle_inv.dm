@@ -5,7 +5,7 @@
 	toggle_state = TRUE
 	screen_loc = "1,1"
 
-/obj/ui/toggle/inv/toggle_state()
+/obj/ui/toggle/inv/ToggleState()
 	..()
 	for(var/slot in owner.inventory_slots)
 		var/obj/ui/inv/inv_slot = owner.inventory_slots[slot]

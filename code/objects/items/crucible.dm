@@ -11,29 +11,29 @@
 	light_power = 5
 	light_range = 3
 
-/obj/item/crucible/attacked_by(var/mob/user, var/obj/item/prop)
+/obj/item/crucible/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)
-		if((prop.flags & FLAG_SIMULATED) && user.drop_item(prop))
+		if((prop.flags & FLAG_SIMULATED) && user.DropItem(prop))
 			if(prop)
-				prop.force_move(src)
-				user.notify_nearby("\The [user] places \the [prop] into \the [src].")
+				prop.ForceMove(src)
+				user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
 				return TRUE
 
-/obj/item/crucible/use(var/mob/user)
+/obj/item/crucible/Use(var/mob/user)
 	if(!contents.len)
 		return
 	for(var/obj/item/thing in contents)
 		if(thing.flags & FLAG_SIMULATED)
-			user.notify_nearby("\The [user] empties [thing] out of \the [src].")
-			thing.force_move(get_turf(src))
+			user.NotifyNearby("\The [user] empties [thing] out of \the [src].")
+			thing.ForceMove(get_turf(src))
 			return
-	user.notify("There is nothing inside \the [src].")
+	user.Notify("There is nothing inside \the [src].")
 
-/obj/item/crucible/update_icon(var/list/supplied = list())
+/obj/item/crucible/UpdateIcon(var/list/supplied = list())
 	..(supplied)
 	if(temperature >= TEMPERATURE_FORGE)
 		overlays += "glow"
-		set_light()
+		SetLight()
 	else
-		kill_light()
+		KillLight()

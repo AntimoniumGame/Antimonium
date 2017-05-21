@@ -1,7 +1,7 @@
 //Sorts an associative list alphabetically
-/proc/sort_associated_list(var/list/L)
+/proc/SortAssociatedList(var/list/L)
 	var/list/sorted = list()
-	var/list/keys = sort_list_keys(L)
+	var/list/keys = SortListKeys(L)
 
 	for(var/i = 1 to keys.len)
 		var/key = keys[i]
@@ -11,7 +11,7 @@
 
 //Returns a list of keys from an associative list, sorted alphabetically
 // Yea this is a basic insertion sort - I'll code something more efficient later
-/proc/sort_list_keys(var/list/L)
+/proc/SortListKeys(var/list/L)
 	var/list/keys = list()
 	keys.len = L.len
 

@@ -3,39 +3,39 @@
 
 /client/New()
 	. = ..()
-	admin_setup()
+	AdminSetup()
 
-/client/proc/admin_setup()
+/client/proc/AdminSetup()
 	set waitfor = 0
 	if(admins)
-		set_admin_permissions(admins[ckey])
-	dev_panel()
+		SetAdminPermissions(admins[ckey])
+	DevPanel()
 
-/client/proc/set_admin_permissions(var/datum/admin_rank/_rank, var/silent = FALSE)
+/client/proc/SetAdminPermissions(var/datum/admin_rank/_rank, var/silent = FALSE)
 
 	// Clear out everything, be thorough.
 	if(admin_permissions)
 		for(var/datum/admin_permissions/perm in admin_permission_datums)
-			perm.remove_from_client(src, silent)
+			perm.RemoveFromClient(src, silent)
 
 	var/last_rank = admin_permissions ? admin_permissions.title : null
 	admin_permissions = _rank
 	if(!silent && last_rank != (admin_permissions ? admin_permissions.title : null))
-		anotify("You are now listed as <b>[admin_permissions ? admin_permissions.title : "a player"]</b>.")
+		Anotify("You are now listed as <b>[admin_permissions ? admin_permissions.title : "a player"]</b>.")
 
 	if(admin_permissions)
 		for(var/datum/admin_permissions/perm in admin_permission_datums)
 			if(admin_permissions.permissions & perm.associated_permission)
-				perm.add_to_client(src, silent)
+				perm.AddToClient(src, silent)
 	else
 		admins[ckey] = null
 		admins -= ckey
 
-/client/proc/check_admin_permission(var/perm)
+/client/proc/CheckAdminPermission(var/perm)
 	return (admin_permissions && (admin_permissions.permissions & perm))
 
 /client/Stat()
 	..()
-	if(check_admin_permission(PERMISSIONS_DEBUG))
+	if(CheckAdminPermission(PERMISSIONS_DEBUG))
 		QUEUE_END // push this to the back of the queue for an accurate tick usage count
 		stat("Server Load: ", "[floor(world.tick_usage)]%")

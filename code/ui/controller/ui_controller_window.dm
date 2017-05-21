@@ -1,10 +1,10 @@
 /mob
 	var/obj/ui/controller/window_holder/active_screen_window
 
-/mob/proc/open_screen_window(var/xsize, var/ysize, var/window_name, var/obj/ui/report_to)
+/mob/proc/OpenScreenWindow(var/xsize, var/ysize, var/window_name, var/obj/ui/report_to)
 
 	if(active_screen_window)
-		close_screen_window()
+		CloseScreenWindow()
 
 	active_screen_window = new(src, xsize, ysize, window_name, report_to)
 
@@ -12,9 +12,9 @@
 		client.screen += active_screen_window
 		client.screen += active_screen_window.close
 
-/mob/proc/close_screen_window()
+/mob/proc/CloseScreenWindow()
 	if(active_screen_window)
-		qdel(active_screen_window)
+		QDel(active_screen_window)
 		active_screen_window = null
 
 /obj/ui/controller/window_holder
@@ -37,25 +37,25 @@
 	name = _name
 	report_to = _report_to
 
-/obj/ui/controller/window_holder/get_input_from(var/obj/ui/component/component)
-	if(owner.client) play_client_sound(owner.client, null, 'sounds/effects/click1.wav', 100, -1)
-	qdel(src)
+/obj/ui/controller/window_holder/GetInputFrom(var/obj/ui/component/component)
+	if(owner.client) PlayClientSound(owner.client, null, 'sounds/effects/click1.wav', 100, -1)
+	QDel(src)
 
-/obj/ui/controller/window_holder/update_strings()
+/obj/ui/controller/window_holder/UpdateStrings()
 	return
 
-/obj/ui/controller/window_holder/destroy()
+/obj/ui/controller/window_holder/Destroy()
 	if(report_to)
-		report_to.report_window_closed()
+		report_to.ReportWindowClosed()
 	if(owner && owner.active_screen_window == src)
 		owner.active_screen_window = null
 	if(close)
 		close.controller = null
-		qdel(close)
+		QDel(close)
 		close = null
 	. = ..()
 
-/obj/ui/controller/window_holder/update_icon(var/list/supplied = list())
+/obj/ui/controller/window_holder/UpdateIcon(var/list/supplied = list())
 	for(var/tx = 1 to screen_width)
 		for(var/ty = 1 to screen_height)
 			var/cell_icon_state
@@ -85,19 +85,19 @@
 			supplied += cell
 	overlays = supplied
 
-/obj/ui/controller/window_holder/center(var/view_x, var/view_y)
+/obj/ui/controller/window_holder/Center(var/view_x, var/view_y)
 	view_x = (round(view_x/2)-round(screen_width/2))+1
 	view_y = (round(view_y/2)-round(screen_height/2))+2
 	screen_loc = "[view_x],[view_y]"
-	close.center(view_x, view_y)
+	close.Center(view_x, view_y)
 
 /obj/ui/component/close
 	name = "Close Window"
 	icon_state = "close"
 
-/obj/ui/component/close/update_icon(var/list/supplied = list())
+/obj/ui/component/close/UpdateIcon(var/list/supplied = list())
 	icon = 'icons/images/ui_window_buttons.dmi'
 
-/obj/ui/component/close/center(var/view_x, var/view_y)
+/obj/ui/component/close/Center(var/view_x, var/view_y)
 	var/obj/ui/controller/window_holder/holder = controller
 	screen_loc = "[view_x + round(holder.screen_width/2) - 1],[view_y]"

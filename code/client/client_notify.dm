@@ -1,8 +1,8 @@
-/client/proc/notify(var/message)
+/client/proc/Notify(var/message)
 	to_chat(src, message)
 
-/client/proc/dnotify(var/message)
+/client/proc/Dnotify(var/message)
 	to_debug(src, "DEBUG: [message]")
 
-/client/proc/anotify(var/message)
+/client/proc/Anotify(var/message)
 	to_debug(src, "ADMIN: [message]")

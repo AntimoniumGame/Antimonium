@@ -7,7 +7,7 @@
 		return 1
 	return 0
 
-/interface/proc/onKeyPress(key)
+/interface/proc/OnKeyPress(key)
 	if(!key)
 		return 0
 
@@ -18,7 +18,7 @@
 	switch(bind)
 		if(KEY_UP to KEY_LEFT)
 			if(owner.mob)
-				owner.mob.onKeyPress(bind)
+				owner.mob.OnKeyPress(bind)
 		if(KEY_CHAT)
 			if(winget(owner, null, "focus") != "mainwindow.input")
 				winset(owner, "input", "focus=true")
@@ -28,11 +28,11 @@
 			if(owner.mob)
 				owner.mob.Run()
 		if(KEY_DEV)
-			owner.dev_panel()
+			owner.DevPanel()
 		if(KEY_VARS)
-			owner.start_view_vars()
+			owner.StartViewVars()
 
-/interface/proc/onKeyRelease(key)
+/interface/proc/OnKeyRelease(key)
 	if(!key)
 		return 0
 
@@ -43,32 +43,32 @@
 	switch(bind)
 		if(KEY_UP to KEY_LEFT)
 			if(owner.mob)
-				owner.mob.onKeyRelease(bind)
+				owner.mob.OnKeyRelease(bind)
 		if(KEY_RUN)
 			if(owner.mob)
 				owner.mob.Walk()
 
-/interface/proc/on_click(object, location, control, params)
+/interface/proc/OnClick(object, location, control, params)
 	if(owner.mob)
 		var/modifiers = params2list(params)
 
 		if(modifiers["middle"])
-			owner.mob.middle_click_on(object, modifiers["ctrl"], modifiers["alt"])
+			owner.mob.MiddleClickOn(object, modifiers["ctrl"], modifiers["alt"])
 		else if(modifiers["left"])
-			owner.mob.left_click_on(object, modifiers["ctrl"], modifiers["alt"])
+			owner.mob.LeftClickOn(object, modifiers["ctrl"], modifiers["alt"])
 		else if(modifiers["right"])
-			owner.mob.right_click_on(object, modifiers["ctrl"], modifiers["alt"])
+			owner.mob.RightClickOn(object, modifiers["ctrl"], modifiers["alt"])
 
 
 /interface/rebind
 	var/cur_rebind
 
-/interface/rebind/proc/set_rebind(rebind)
+/interface/rebind/proc/SetRebind(rebind)
 	if(rebind)
 		cur_rebind = rebind
 
-/interface/rebind/onKeyPress(key)
-	owner.rebind(key, cur_rebind)
+/interface/rebind/OnKeyPress(key)
+	owner.Rebind(key, cur_rebind)
 
-/interface/viewvars/on_click(object, location, control, params)
-	owner.view_vars(object)
+/interface/viewvars/OnClick(object, location, control, params)
+	owner.ViewVars(object)

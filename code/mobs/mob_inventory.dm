@@ -1,48 +1,48 @@
 /mob
 	var/list/inventory_slots = list()
 
-/mob/proc/drop_item(var/obj/item/thing)
-	thing.before_dropped()
-	thing.force_move(get_turf(src))
-	thing.after_dropped()
+/mob/proc/DropItem(var/obj/item/thing)
+	thing.BeforeDropped()
+	thing.ForceMove(get_turf(src))
+	thing.AfterDropped()
 	for(var/invslot in inventory_slots)
 		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
 		if(inv_slot.holding == thing)
-			inv_slot.forget_held()
+			inv_slot.ForgetHeld()
 			break
-	update_icon()
+	UpdateIcon()
 	return TRUE
 
-/mob/proc/collect_item(var/obj/item/thing, var/equip_to_slot)
+/mob/proc/CollectItem(var/obj/item/thing, var/equip_to_slot)
 	if(!equip_to_slot)
 		return FALSE
 	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
 	if(!equipping || equipping.holding)
 		return FALSE
-	if(!thing.before_picked_up(src, equip_to_slot))
+	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
-	thing.force_move(src)
-	thing.after_picked_up()
-	equipping.set_held(thing)
-	update_icon()
+	thing.ForceMove(src)
+	thing.AfterPickedUp()
+	equipping.SetHeld(thing)
+	UpdateIcon()
 	return TRUE
 
-/mob/proc/collect_item_or_del(var/obj/item/thing, var/equip_to_slot)
-	if(!collect_item(thing, equip_to_slot))
-		qdel(thing)
+/mob/proc/CollectItemOrDel(var/obj/item/thing, var/equip_to_slot)
+	if(!CollectItem(thing, equip_to_slot))
+		QDel(thing)
 		return FALSE
 	return TRUE
 
-/mob/proc/get_equipped(var/slot_id)
+/mob/proc/GetEquipped(var/slot_id)
 	var/obj/ui/inv/inv_slot = inventory_slots[slot_id]
 	if(inv_slot)
 		return inv_slot.holding
 
-/mob/proc/update_inventory()
+/mob/proc/UpdateInventory()
 	for(var/slot_id in inventory_slots)
 		var/obj/ui/inv/slot = inventory_slots[slot_id]
-		slot.update_icon()
-		slot.update_strings()
+		slot.UpdateIcon()
+		slot.UpdateStrings()
 
-/mob/proc/get_heat_insulation(var/slot)
+/mob/proc/GetHeatInsulation(var/slot)
 	return FALSE

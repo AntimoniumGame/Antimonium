@@ -20,7 +20,7 @@
 	mouse_opacity = 0
 	layer = 0
 
-/obj/ui/vision_cone/center(var/view_x, var/view_y)
+/obj/ui/vision_cone/Center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-6],[round(view_y/2)-6]"
 	var/matrix/M = matrix()
 	view_x = max(1,round(view_x/7))
@@ -65,13 +65,13 @@
 		else
 			return .
 
-/proc/cone(var/atom/center = usr, var/dir = NORTH, var/list/olist = oview(center))
+/proc/Cone(var/atom/center = usr, var/dir = NORTH, var/list/olist = oview(center))
 	for(var/atom/O in olist)
 		if(!O.InCone(center, dir))
 			olist -= O
 	return olist
 
-/mob/proc/update_vision_cone()
+/mob/proc/UpdateVisionCone()
 
 	if(!client || !vision_cone) // too early
 		return
@@ -80,20 +80,20 @@
 	for(var/image/I in client.hidden_atoms)
 		I.override = 0
 		spawn(delay)
-			qdel(I)
+			QDel(I)
 		delay += 10
 
 	if(prone)
-		hide_cone()
+		HideCone()
 	else
-		show_cone()
+		ShowCone()
 
 	client.hidden_atoms = list()
 	client.hidden_mobs = list()
 
 	vision_cone.dir = dir
 	if(vision_cone.alpha != 0)
-		for(var/mob/M in cone(src, OPPOSITE_DIR(dir), view(10, src)))
+		for(var/mob/M in Cone(src, OPPOSITE_DIR(dir), view(10, src)))
 			if(M.dead && M.invisibility > invisibility)
 				continue
 			var/image/I = image("split", M)
@@ -103,8 +103,8 @@
 			client.hidden_mobs += M
 
 //Making these generic procs so you can call them anywhere.
-/mob/proc/show_cone()
+/mob/proc/ShowCone()
 	if(vision_cone) vision_cone.alpha = 255
 
-/mob/proc/hide_cone()
+/mob/proc/HideCone()
 	if(vision_cone) vision_cone.alpha = 0

@@ -18,7 +18,7 @@
 	..()
 	icon_state = "[rand(1,3)]"
 
-/turf/proc/get_simulated_atoms()
+/turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()
 	for(var/thing in contents)
 		var/atom/target = thing
@@ -26,25 +26,25 @@
 			valid_targets += target
 	return valid_targets
 
-/turf/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+/turf/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	if(clicker.intent.selecting == INTENT_HARM)
-		var/list/valid_targets = get_simulated_atoms()
+		var/list/valid_targets = GetSimulatedAtoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
-		thing.left_clicked_on(clicker, slot)
+		thing.LeftClickedOn(clicker, slot)
 
-/turf/right_clicked_on(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
+/turf/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	if(clicker.intent.selecting == INTENT_HARM)
-		var/list/valid_targets = get_simulated_atoms()
+		var/list/valid_targets = GetSimulatedAtoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
-		thing.right_clicked_on(clicker, slot)
+		thing.RightClickedOn(clicker, slot)
 
-/turf/get_weight()
+/turf/GetWeight()
 	return 10
 
-/turf/proc/get_footstep_sound(var/mob/walker)
+/turf/proc/GetFootstepSound(var/mob/walker)
 	return 'sounds/effects/footstep1.wav'
 
-/turf/proc/get_sound_environment()
+/turf/proc/GetSoundEnvironment()
 	return -1

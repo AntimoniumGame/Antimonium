@@ -16,26 +16,26 @@
 		flags |= FLAG_TEMPERATURE_SENSITIVE
 	..()
 
-/mob/check_temperature()
+/mob/CheckTemperature()
 
-	radiate_heat(TEMPERATURE_BLOOD)
+	RadiateHeat(TEMPERATURE_BLOOD)
 
 	if(body_temperature < temperature)
-		body_temperature = min(temperature, round(body_temperature + ((temperature - body_temperature)/(get_weight()*0.1))))
+		body_temperature = min(temperature, round(body_temperature + ((temperature - body_temperature)/(GetWeight()*0.1))))
 	else if(body_temperature > temperature)
-		body_temperature = max(temperature, round(body_temperature - ((body_temperature - temperature)/(get_weight()*0.1))))
+		body_temperature = max(temperature, round(body_temperature - ((body_temperature - temperature)/(GetWeight()*0.1))))
 
 	if(body_temperature < TEMPERATURE_BLOOD)
-		body_temperature = min(TEMPERATURE_BLOOD, round(body_temperature + ((TEMPERATURE_BLOOD - body_temperature)/(get_weight()*0.01))))
+		body_temperature = min(TEMPERATURE_BLOOD, round(body_temperature + ((TEMPERATURE_BLOOD - body_temperature)/(GetWeight()*0.01))))
 
 	if(world.time >= next_temp_warning)
 		next_temp_warning = world.time + rand(100,200)
 		if(body_temperature > heat_harm_point)
-			notify("Your very life is sapped by the terrible heat surrounding you.")
+			Notify("Your very life is sapped by the terrible heat surrounding you.")
 		else if(body_temperature > heat_suffer_point)
-			notify("Sweat beads your brow in the oppressive heat.")
+			Notify("Sweat beads your brow in the oppressive heat.")
 		else if(body_temperature < cold_harm_point)
-			notify("A curious lassitude settles over you as the freezing cold eats at your mind.")
+			Notify("A curious lassitude settles over you as the freezing cold eats at your mind.")
 		else if(body_temperature < cold_suffer_point)
-			notify("You shiver in the cold, teeth chattering.")
+			Notify("You shiver in the cold, teeth chattering.")
 

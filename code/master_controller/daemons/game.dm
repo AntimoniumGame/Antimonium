@@ -2,10 +2,10 @@
 	name = "game"
 	delay = 5
 
-/datum/daemon/game/do_work()
+/datum/daemon/game/DoWork()
 	if(game_state)
-		game_state.tick()
-	check_suspend()
+		game_state.Tick()
+	CheckSuspend()
 
-/datum/daemon/game/status()
+/datum/daemon/game/Status()
 	return "[game_state.ident] started [game_state.time_created]"

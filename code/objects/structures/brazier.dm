@@ -7,25 +7,25 @@
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
 
 // temp until fuel is added
-/obj/structure/brazier/is_flammable()
+/obj/structure/brazier/IsFlammable()
 	return TRUE
 // end temp
 
 /obj/structure/brazier/New()
 	..()
-	ignite()
+	Ignite()
 	processing_objects += src
 	next_burn_sound = rand(10,20)
 
-/obj/structure/brazier/destroy()
+/obj/structure/brazier/Destroy()
 	processing_objects -= src
 	. = ..()
 
-/obj/structure/brazier/process_temperature()
+/obj/structure/brazier/ProcessTemperature()
 	if(temperature < base_temperature)
 		temperature = base_temperature
 	..()
 
-/obj/structure/brazier/process_fire()
+/obj/structure/brazier/ProcessFire()
 	..()
-	radiate_heat(base_temperature, 0)
+	RadiateHeat(base_temperature, 0)

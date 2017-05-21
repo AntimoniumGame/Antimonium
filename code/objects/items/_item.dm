@@ -15,45 +15,45 @@
 	var/collect_sound = 'sounds/effects/click1.wav'
 	var/equip_sound = 'sounds/effects/rustle1.wav'
 
-/obj/item/get_weight()
+/obj/item/GetWeight()
 	return weight
 
-/obj/item/update_values()
+/obj/item/UpdateValues()
 	sharpness = initial(sharpness)
 	weight =    initial(weight)
 	if(material)
-		sharpness *= material.get_sharpness_mod()
-		weight    *= material.get_weight_mod()
+		sharpness *= material.GetSharpnessMod()
+		weight    *= material.GetWeightMod()
 
-/obj/item/update_strings()
+/obj/item/UpdateStrings()
 	if(material)
 		if(name_prefix)
-			name = "[name_prefix] [material.get_descriptor()] [initial(name)]"
+			name = "[name_prefix] [material.GetDescriptor()] [initial(name)]"
 		else
-			name = "[material.get_descriptor()] [initial(name)]"
+			name = "[material.GetDescriptor()] [initial(name)]"
 	else
 		if(name_prefix)
 			name = "[name_prefix] [initial(name)]"
 		else
 			name = "[initial(name)]"
 
-/obj/item/proc/use(var/mob/user)
+/obj/item/proc/Use(var/mob/user)
 	return
 
-/obj/item/proc/get_worn_icon(var/inventory_slot)
+/obj/item/proc/GetWornIcon(var/inventory_slot)
 	return image(icon = icon, icon_state = inventory_slot)
 
-/obj/item/proc/get_prone_worn_icon(var/inventory_slot)
+/obj/item/proc/GetProneWornIcon(var/inventory_slot)
 	return image(icon = icon, icon_state = "prone_[inventory_slot]")
 
-/obj/item/proc/get_inv_icon()
-	return get_worn_icon("held")
+/obj/item/proc/GetInvIcon()
+	return GetWornIcon("held")
 
-/obj/item/destroy()
+/obj/item/Destroy()
 	var/mob/owner = loc
 	if(istype(owner))
-		owner.drop_item(src)
+		owner.DropItem(src)
 	. = ..()
 
-/obj/item/get_amount()
+/obj/item/GetAmount()
 	return initial(weight)

@@ -8,25 +8,25 @@ var/datum/game_state/game_state
 	..()
 	time_created = world.time
 
-/datum/game_state/proc/init()
-	start()
+/datum/game_state/proc/Init()
+	Start()
 
-/datum/game_state/proc/start()
+/datum/game_state/proc/Start()
 	return
 
-/datum/game_state/proc/tick()
+/datum/game_state/proc/Tick()
 	return
 
-/datum/game_state/proc/end()
-	qdel(src)
+/datum/game_state/proc/End()
+	QDel(src)
 
-/datum/game_state/proc/on_login(var/client/player)
+/datum/game_state/proc/OnLogin(var/client/player)
 	return
 
-/proc/switch_game_state(var/new_state)
+/proc/SwitchGameState(var/new_state)
 	set background = 1
 	set waitfor = 0
 	if(game_state)
-		game_state.end()
+		game_state.End()
 	game_state = new new_state()
-	game_state.init()
+	game_state.Init()

@@ -6,23 +6,23 @@ var/list/ignite_atoms = list()
 	delay = 10
 	initial_offset = 10
 
-/datum/daemon/fire/do_work()
+/datum/daemon/fire/DoWork()
 
 	for(var/thing in burning_atoms)
 		var/atom/atom = thing
-		if(atom && !deleted(atom))
-			atom.process_fire()
-		check_suspend()
+		if(atom && !Deleted(atom))
+			atom.ProcessFire()
+		CheckSuspend()
 
 	for(var/thing in ignite_atoms)
 		var/atom/burning = thing
 		ignite_atoms -= thing
 		for(var/other_thing in burning.contents)
 			var/atom/atom = other_thing
-			if(atom.is_flammable() && !atom.is_on_fire())
-				atom.ignite()
-			check_suspend()
-		check_suspend()
+			if(atom.IsFlammable() && !atom.IsOnFire())
+				atom.Ignite()
+			CheckSuspend()
+		CheckSuspend()
 
-/datum/daemon/fire/status()
+/datum/daemon/fire/Status()
 	return "[burning_atoms.len]"

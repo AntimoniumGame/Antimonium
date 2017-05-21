@@ -9,28 +9,28 @@
 	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.wav'
 
-/obj/structure/attacked_by(var/mob/user, var/obj/item/thing)
+/obj/structure/AttackedBy(var/mob/user, var/obj/item/thing)
 	. = ..()
 	if(!.)
-		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.drop_item(thing))
-			if(thing && !deleted(thing)) //grabs
-				thing.force_move(src.loc)
-				user.notify_nearby("\The [user] places \the [thing] on \the [src].")
+		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(thing))
+			if(thing && !Deleted(thing)) //grabs
+				thing.ForceMove(src.loc)
+				user.NotifyNearby("\The [user] places \the [thing] on \the [src].")
 				return TRUE
 
-/obj/structure/update_strings()
+/obj/structure/UpdateStrings()
 	if(material)
-		name = "[material.get_descriptor()] [initial(name)]"
+		name = "[material.GetDescriptor()] [initial(name)]"
 	else
 		name = initial(name)
 
-/obj/structure/update_values()
+/obj/structure/UpdateValues()
 	weight = initial(weight)
 	if(material)
 		weight *= material.weight_modifier
 
-/obj/structure/pull_cost()
-	return get_weight()
+/obj/structure/PullCost()
+	return GetWeight()
 
-/obj/structure/get_weight()
+/obj/structure/GetWeight()
 	return weight

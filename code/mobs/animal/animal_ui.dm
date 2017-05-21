@@ -1,4 +1,4 @@
-/mob/animal/create_ui()
+/mob/animal/CreateUI()
 	inventory_slots[SLOT_MOUTH] =      new /obj/ui/inv/hand(src, "mouth",      "3,1", SLOT_MOUTH)
 	inventory_slots[SLOT_LOWER_BODY] = new /obj/ui/inv/gear(src, "lower body", "1,2", SLOT_LOWER_BODY, SLOT_FLAG_LOWER_BODY)
 	inventory_slots[SLOT_UPPER_BODY] = new /obj/ui/inv/gear(src, "upper body", "1,3", SLOT_UPPER_BODY, SLOT_FLAG_UPPER_BODY)

@@ -3,9 +3,9 @@ var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav
 /atom
 	var/next_burn_sound = 0
 
-/atom/proc/process_fire()
+/atom/proc/ProcessFire()
 
-	if(!is_on_fire())
+	if(!IsOnFire())
 		return
 
 	if(istype(loc, /turf))
@@ -15,8 +15,8 @@ var/list/burn_sounds = list('sounds/effects/fire1.wav','sounds/effects/fire2.wav
 			if(istype(neighbor))
 				ignite_atoms |= neighbor
 
-	radiate_heat(TEMPERATURE_WARM, 3)
+	RadiateHeat(TEMPERATURE_WARM, 3)
 
 	if(world.time > next_burn_sound)
 		next_burn_sound = world.time + rand(40,50)
-		play_local_sound(src, pick(burn_sounds), 15, frequency = -1)
+		PlayLocalSound(src, pick(burn_sounds), 15, frequency = -1)

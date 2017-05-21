@@ -1,4 +1,4 @@
-/atom/proc/them()
+/atom/proc/Them()
 	switch(gender)
 		if(FEMALE)
 			return "her"
@@ -8,7 +8,7 @@
 			return "them"
 	return "its"
 
-/atom/proc/their()
+/atom/proc/Their()
 	switch(gender)
 		if(FEMALE)
 			return "her"
@@ -18,7 +18,7 @@
 			return "their"
 	return "its"
 
-/atom/proc/they()
+/atom/proc/They()
 	switch(gender)
 		if(FEMALE)
 			return "she"
@@ -31,7 +31,7 @@
 /atom/proc/s()
 	return (gender == PLURAL) ? "" : "s"
 
-/atom/proc/themself()
+/atom/proc/Themself()
 	switch(gender)
 		if(FEMALE)
 			return "herself"

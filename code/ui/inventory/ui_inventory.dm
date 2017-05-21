@@ -20,21 +20,21 @@
 	if(concealable) // Defaults to on.
 		invisibility = INVISIBILITY_MAXIMUM
 
-/obj/ui/inv/destroy()
+/obj/ui/inv/Destroy()
 	holding = null
 	. = ..()
 
-/obj/ui/inv/proc/set_held(var/obj/item/thing)
+/obj/ui/inv/proc/SetHeld(var/obj/item/thing)
 	holding = thing
-	update_icon()
+	UpdateIcon()
 
-/obj/ui/inv/proc/forget_held()
+/obj/ui/inv/proc/ForgetHeld()
 	holding = null
-	update_icon()
+	UpdateIcon()
 
-/obj/ui/inv/update_icon(var/list/supplied = list())
+/obj/ui/inv/UpdateIcon(var/list/supplied = list())
 	name = unmodified_name
 	overlays.Cut()
 	if(holding)
 		name = "[name] - [holding.name]"
-		overlays += holding.get_inv_icon()
+		overlays += holding.GetInvIcon()

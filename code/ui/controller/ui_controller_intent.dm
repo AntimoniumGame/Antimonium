@@ -11,9 +11,9 @@
 	..(_owner)
 	help = new(owner, src, list("name" = "Help", "icon_state" = INTENT_HELP))
 	harm = new(owner, src, list("name" = "Harm", "icon_state" = INTENT_HARM))
-	get_input_from(help)
+	GetInputFrom(help)
 
-/obj/ui/controller/intent/get_input_from(var/obj/ui/component/component)
+/obj/ui/controller/intent/GetInputFrom(var/obj/ui/component/component)
 	if(component == help)
 		selecting = INTENT_HELP
 		help.alpha = 255
@@ -23,5 +23,5 @@
 		help.alpha = 20
 		harm.alpha = 255
 
-/obj/ui/component/intent/update_icon(var/list/supplied = list())
+/obj/ui/component/intent/UpdateIcon(var/list/supplied = list())
 	return

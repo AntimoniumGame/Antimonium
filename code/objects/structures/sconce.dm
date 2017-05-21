@@ -7,66 +7,66 @@
 
 	var/obj/item/torch/filled
 
-/obj/structure/sconce/get_fire_icon()
+/obj/structure/sconce/GetFireIcon()
 	return
 
-/obj/structure/sconce/ignite(var/mob/user)
+/obj/structure/sconce/Ignite(var/mob/user)
 	if(filled)
-		. = filled.ignite(user)
-		update_icon()
+		. = filled.Ignite(user)
+		UpdateIcon()
 
-/obj/structure/sconce/is_on_fire()
-	return filled && filled.is_on_fire()
+/obj/structure/sconce/IsOnFire()
+	return filled && filled.IsOnFire()
 
-/obj/structure/sconce/is_flammable()
-	return filled && filled.is_flammable()
+/obj/structure/sconce/IsFlammable()
+	return filled && filled.IsFlammable()
 
 /obj/structure/sconce/New()
 	if(prob(80))
 		filled = new(src, _lit = TRUE)
 	..()
-	align_with_wall(src)
+	AlignWithWall(src)
 
-/obj/structure/sconce/update_icon(var/list/supplied)
+/obj/structure/sconce/UpdateIcon(var/list/supplied)
 	..(supplied)
 	if(filled)
-		if(filled.is_on_fire())
+		if(filled.IsOnFire())
 			icon_state = "sconce_lit"
 			light_color = filled.light_color
 			light_power = filled.light_power
 			light_range = filled.light_range
-			set_light()
+			SetLight()
 		else
 			icon_state = "sconce_filled"
-			kill_light()
+			KillLight()
 	else
 		icon_state = "sconce"
-		kill_light()
+		KillLight()
 
-/obj/structure/sconce/attacked_by(var/mob/user, var/obj/item/thing)
+/obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/thing)
 	if(istype(thing, /obj/item/torch))
 		if(filled)
 			. = ..()
 		if(!.)
 			if(filled)
-				user.notify("There is already \a [filled] in \the [src].")
+				user.Notify("There is already \a [filled] in \the [src].")
 			else
-				user.drop_item(thing)
-				user.notify_nearby("\The [user] places \the [thing] into \the [src].")
-				thing.force_move(src)
+				user.DropItem(thing)
+				user.NotifyNearby("\The [user] places \the [thing] into \the [src].")
+				thing.ForceMove(src)
 				filled = thing
-				update_icon()
+				UpdateIcon()
 			return TRUE
 	return ..()
 
-/obj/structure/sconce/manipulated_by(var/mob/user, var/slot)
+/obj/structure/sconce/ManipulatedBy(var/mob/user, var/slot)
 	if(filled)
-		if(user.collect_item(filled, slot))
-			user.notify_nearby("\The [user] removes \the [filled] from \the [src].")
+		if(user.CollectItem(filled, slot))
+			user.NotifyNearby("\The [user] removes \the [filled] from \the [src].")
 			filled = null
-			update_icon()
+			UpdateIcon()
 		else
 			if(filled.loc != src)
-				filled.force_move(src)
+				filled.ForceMove(src)
 	else
-		user.notify("There is no torch in \the [src].")
+		user.Notify("There is no torch in \the [src].")

@@ -3,7 +3,7 @@ var/datum/lobby_music/lobby_music
 /client
 	var/sound/playing_lobby_music
 
-/proc/end_lobby_music(var/client/listener)
+/proc/EndLobbyMusic(var/client/listener)
 	set waitfor = 0
 	set background = 1
 
@@ -30,12 +30,12 @@ var/datum/lobby_music/lobby_music
 	var/license
 	var/license_url
 
-/datum/lobby_music/proc/play(var/mob/listener)
+/datum/lobby_music/proc/Play(var/mob/listener)
 
 	set waitfor = 0
 	set background = 1
 
 	if(!song_file || !listener.client) return
-	listener.notify("<b>Now playing:</b> <a href='[url]'>[name]</a> by <b>[author]</b> ([license ? "<a href='[license_url]'>[license]</a>": "no license supplied"])")
+	listener.Notify("<b>Now playing:</b> <a href='[url]'>[name]</a> by <b>[author]</b> ([license ? "<a href='[license_url]'>[license]</a>": "no license supplied"])")
 	listener.client.playing_lobby_music = sound(song_file, repeat = 1, channel = SOUND_CHANNEL_LOBBY, volume = 85)
-	play_client_sound(listener.client, sound = listener.client.playing_lobby_music, volume = 85, frequency = -1)
+	PlayClientSound(listener.client, sound = listener.client.playing_lobby_music, volume = 85, frequency = -1)

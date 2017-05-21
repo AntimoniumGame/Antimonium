@@ -5,11 +5,11 @@
 	layer = TURF_LAYER+0.2
 	hit_sound = 'sounds/effects/ding1.wav'
 
-/obj/structure/stake/thrown_hit_by(var/atom/movable/projectile)
+/obj/structure/stake/ThrownHitBy(var/atom/movable/projectile)
 	if(prob(75))
-		projectile.force_move(get_turf(src))
-		play_local_sound(src, hit_sound, 100)
-		notify_nearby("\The [projectile] clangs against the stake!")
+		projectile.ForceMove(get_turf(src))
+		PlayLocalSound(src, hit_sound, 100)
+		NotifyNearby("\The [projectile] clangs against the stake!")
 		return TRUE
-	notify_nearby("\The [projectile] narrowly misses \the [src]!")
+	NotifyNearby("\The [projectile] narrowly misses \the [src]!")
 	return FALSE
