@@ -3,5 +3,8 @@
 *.rsc
 *.lk
 *.log
+*.backup
+*.before
 saves/*
 data/*
+__pycache__
