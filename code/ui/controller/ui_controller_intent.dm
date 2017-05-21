@@ -23,5 +23,11 @@
 		help.alpha = 20
 		harm.alpha = 255
 
+/obj/ui/controller/intent/proc/SwapIntent()
+	if(selecting == INTENT_HELP)
+		GetInputFrom(harm)
+	else
+		GetInputFrom(help)
+
 /obj/ui/component/intent/UpdateIcon(var/list/supplied = list())
 	return

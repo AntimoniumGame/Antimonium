@@ -120,5 +120,5 @@ Inputs:
 			vector_list -= src
 			return
 
-		wait_nt(move_delay)
+		WAIT_NT(move_delay)
 	vector_list -= src

@@ -10,7 +10,7 @@
 	. = ..()
 	LoadData()
 	if(!key_binds)
-		key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV, "F7" = KEY_VARS)
+		ResetKeybinds()
 	interface = new(src)
 
 /client/verb/KeyPress(key as text)
@@ -32,6 +32,14 @@
 	R.SetRebind(key2bind(selection))
 	interface = R
 	alert("Press ok, then the button you want to rebind \"[selection]\" to.")
+
+/client/verb/KeyRebindReset()
+	set name = "Reset Keybinds"
+
+	ResetKeybinds()
+
+/client/proc/ResetKeybinds()
+	key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV, "F7" = KEY_VARS, "E" = KEY_DROP_R, "Q" = KEY_DROP_L, "R" = KEY_INTENT)
 
 /client/proc/Rebind(key, bind)
 	set waitfor = 0
