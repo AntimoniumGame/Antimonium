@@ -4,6 +4,7 @@
 	density = 1
 	default_material_path = /datum/material/metal/iron
 	move_sound = 'sounds/effects/scrape1.wav'
+	shadow_size = 3
 
 	var/weight = 3
 	var/list/holding = list()

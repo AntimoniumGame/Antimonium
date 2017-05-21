@@ -10,6 +10,7 @@
 	light_color = BRIGHT_ORANGE
 	light_power = 5
 	light_range = 3
+	shadow_size = 3
 
 /obj/item/crucible/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()

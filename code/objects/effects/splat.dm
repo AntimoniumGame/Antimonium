@@ -8,7 +8,7 @@
 	var/list/splat_images = list()
 
 /obj/effect/random/splat/GetWeight()
-	return amount
+	return max(1,amount)
 
 /obj/effect/random/splat/Uncrossed(var/mob/crosser)
 	if(istype(crosser) && amount && material_state == STATE_LIQUID)

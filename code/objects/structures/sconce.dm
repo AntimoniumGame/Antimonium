@@ -4,6 +4,7 @@
 	icon = 'icons/objects/structures/sconce.dmi'
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	density = FALSE
+	shadow_size = null
 
 	var/obj/item/torch/filled
 
@@ -26,6 +27,23 @@
 		filled = new(src, _lit = TRUE)
 	..()
 	AlignWithWall(src)
+
+/obj/structure/sconce/SetDir()
+	..()
+
+	switch(dir)
+		if(NORTH)
+			pixel_x = 0
+			pixel_y = -4
+		if(SOUTH)
+			pixel_x = 0
+			pixel_y = 4
+		if(EAST)
+			pixel_x = -4
+			pixel_y = 0
+		if(WEST)
+			pixel_x = 4
+			pixel_y = 0
 
 /obj/structure/sconce/UpdateIcon(var/list/supplied)
 	..(supplied)

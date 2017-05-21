@@ -3,6 +3,8 @@
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
+	shadow_size = 2
+
 	var/weight = 50
 	var/datum/job/job
 

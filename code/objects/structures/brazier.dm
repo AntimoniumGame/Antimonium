@@ -4,6 +4,7 @@
 	hit_sound = 'sounds/effects/ding1.wav'
 	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
+	shadow_size = 3
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
 
 // temp until fuel is added
