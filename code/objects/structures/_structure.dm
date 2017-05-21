@@ -2,12 +2,21 @@
 	name = "structure"
 	icon = 'icons/objects/structures/crate.dmi'
 	density = 1
-	default_material_path = /datum/material/iron
+	default_material_path = /datum/material/metal/iron
 	move_sound = 'sounds/effects/scrape1.wav'
 
 	var/weight = 3
 	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.wav'
+
+/obj/structure/AttackedBy(var/mob/user, var/obj/item/thing)
+	. = ..()
+	if(!.)
+		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(thing))
+			if(thing && !Deleted(thing)) //grabs
+				thing.ForceMove(src.loc)
+				user.NotifyNearby("\The [user] places \the [thing] on \the [src].")
+				return TRUE
 
 /obj/structure/UpdateStrings()
 	if(material)
@@ -16,7 +25,9 @@
 		name = initial(name)
 
 /obj/structure/UpdateValues()
-	weight *= material.weight_modifier
+	weight = initial(weight)
+	if(material)
+		weight *= material.weight_modifier
 
 /obj/structure/PullCost()
 	return GetWeight()

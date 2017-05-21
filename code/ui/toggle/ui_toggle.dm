@@ -3,7 +3,7 @@
 	var/base_icon_state
 	var/toggle_sound = 'sounds/effects/click1.wav'
 
-/obj/ui/toggle/UpdateIcon()
+/obj/ui/toggle/UpdateIcon(var/list/supplied = list())
 	icon_state = "[base_icon_state]_[toggle_state ? "on" : "off"]"
 
 /obj/ui/toggle/proc/ToggleState()

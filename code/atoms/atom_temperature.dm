@@ -9,6 +9,28 @@
 /atom/proc/GetTemperature()
 	return temperature
 
+/atom/proc/EqualizeTemperature()
+	if(!loc)
+		return
+
+	var/env_temperature = loc.GetTemperature()
+	if(env_temperature == temperature)
+		return
+
+	if(env_temperature < temperature)
+		LoseHeat(env_temperature)
+	else if(env_temperature > temperature)
+		GainHeat(env_temperature, loc.get_weight())
+
+/turf/EqualizeTemperature()
+	if(temperature > AmbientTemperature())
+		temperature = max(temperature - 5, AmbientTemperature())
+	else if(temperature < ambient_temperature())
+		temperature = min(temperature + 5, AmbientTemperature())
+
+/turf/proc/AmbientTemperature()
+	return TEMPERATURE_ROOM
+
 /atom/proc/ProcessTemperature()
 
 	set waitfor = 0
@@ -18,51 +40,25 @@
 		temperature_sensitive_atoms -= src
 		return
 
-	if(!loc)
-		return
-
-	var/env_temperature = loc.GetTemperature()
-	if(env_temperature < temperature)
-		LoseHeat(env_temperature, loc.GetWeight())
-	else if(env_temperature > temperature)
-		GainHeat(env_temperature, loc.GetWeight())
-
+	EqualizeTemperature()
 	CheckTemperature()
 
 /atom/proc/CheckTemperature()
 	return
 
 /atom/proc/GainHeat(var/source_heat = TEMPERATURE_ROOM, var/radiator_size = 1)
-	if(contents && contents.len)
-		var/rad_size = max(1,round(radiator_size/contents.len))
-		for(var/atom/thing in contents)
-			if(thing.flags & FLAG_SIMULATED)
-				thing.GainHeat(source_heat, rad_size)
 	if((flags & FLAG_TEMPERATURE_SENSITIVE) && temperature < source_heat)
-		temperature = min(source_heat, temperature + round(source_heat * (radiator_size/100)))
+		temperature = min(source_heat, temperature + round(((source_heat * radiator_size) / GetWeight()) * 0.1))
+		return TRUE
+	return FALSE
 
-/atom/proc/LoseHeat(var/source_heat = TEMPERATURE_ROOM, var/radiator_size = 1)
-	if(contents && contents.len)
-		var/rad_size = max(1,round(radiator_size/contents.len))
-		for(var/atom/thing in contents)
-			if(thing.flags & FLAG_SIMULATED)
-				thing.LoseHeat(source_heat, rad_size)
+/atom/proc/LoseHeat(var/source_heat = TEMPERATURE_ROOM)
 	if((flags & FLAG_TEMPERATURE_SENSITIVE) && temperature > source_heat)
-		temperature = max(source_heat, temperature - round(source_heat * (radiator_size/100)))
+		temperature = max(source_heat, temperature - (min(50,max(1,round(GetWeight()/3)))))
+		return TRUE
+	return FALSE
 
 /atom/proc/RadiateHeat(var/amount, var/distance = 1)
 	. = min(TEMPERATURE_MAX, max(TEMPERATURE_ZERO, amount))
-
-/atom/movable/RadiateHeat(var/amount, var/distance = 1)
-	. = ..()
-	var/turf/current_turf = get_turf(src)
-	if(!istype(current_turf))
-		return
-	for(var/turf/neighbor in Trange(distance, current_turf))
-		var/falloff = max(1,(get_dist(current_turf, neighbor)*2)-1)
-		for(var/thing in neighbor.contents)
-			if(thing == src)
-				continue
-			var/atom/heating = thing
-			if(heating.flags & FLAG_SIMULATED)
-				heating.GainHeat(round(. / falloff), GetWeight())
+	for(var/turf/neighbor in Trange(distance, src))
+		neighbor.GainHeat(round(. / max(1,(get_dist(src, neighbor)*2)-1)), GetWeight())

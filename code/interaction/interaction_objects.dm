@@ -12,10 +12,22 @@
 			ManipulatedBy(clicker, slot)
 
 /obj/proc/AttackedBy(var/mob/user, var/obj/item/thing)
-	return
+	if(IsFlammable() && thing.IsFlammable())
+		if(!thing.IsOnFire() && IsOnFire())
+			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			thing.Ignite(user)
+		else if(thing.IsOnFire() && !IsOnFire())
+			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			Ignite(user)
+		return TRUE
+	return FALSE
 
 /obj/proc/ManipulatedBy(var/mob/user, var/slot)
-	return
+	if(IsOnFire() && user.intent.selecting == INTENT_HELP)
+		NotifyNearby("\The [user] extinguishes \the [src].")
+		Extinguish()
+		return TRUE
+	return FALSE
 
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
 	if(IsAdjacentTo(get_turf(src), get_turf(clicker)) && !clicker.GetEquipped(slot))
@@ -49,17 +61,14 @@
 /obj/item/proc/AttackingSelf(var/mob/user)
 	return
 
-/obj/item/AttackedBy(var/mob/user, var/obj/item/thing)
-	return
-
 /obj/item/proc/BeforeDropped()
 	return
 
 /obj/item/proc/AfterDropped()
 	return
 
-/obj/item/proc/BeforePickedUp()
-	return
+/obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
+	return !Burn(user, slot)
 
 /obj/item/proc/AfterPickedUp()
 	ResetPosition()

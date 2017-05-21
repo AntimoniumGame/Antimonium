@@ -17,7 +17,7 @@
 	name = "wooden wall"
 	icon = 'icons/turfs/wood_wall.dmi'
 
-/turf/wall/UpdateIcon(var/update_neighbors)
+/turf/wall/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
 	icon_state = ""
 	var/list/connected_neighbors = list()
 	for(var/thing in Trange(1,src))
@@ -30,7 +30,6 @@
 			neighbor.UpdateIcon()
 		connected_neighbors += get_dir(src, neighbor)
 
-	var/list/overlays_to_add = list()
 	for(var/i = 1 to 4)
 		var/cdir = corner_dirs[i]
 		var/corner = 0
@@ -40,5 +39,5 @@
 			corner |= 1
 		if(turn(cdir,-45) in connected_neighbors)
 			corner |= 4
-		overlays_to_add += image(icon, "[corner]", dir = 1<<(i-1))
-	overlays = overlays_to_add
+		supplied += image(icon, "[corner]", dir = 1<<(i-1))
+	..(supplied)

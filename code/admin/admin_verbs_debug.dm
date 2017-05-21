@@ -3,7 +3,6 @@
 	verbs = list(
 		/client/proc/DebugController,
 		/client/proc/ForceSwitchGameState,
-		/client/proc/TestLights,
 		/client/proc/SetClientFps,
 		/client/proc/StartViewVars,
 		/client/proc/ToggleVarsRefresh,
@@ -39,27 +38,6 @@
 	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
 	SwitchGameState(choice)
 	to_chat(src, "Forced state change complete.")
-
-/client/proc/TestLights()
-
-	set name = "Toggle Self Light"
-	set category = "Debug"
-
-	mob.light_power = 10
-	mob.light_range = 5
-	mob.light_color = WHITE
-	mob.light_type = LIGHT_SOFT
-
-	if(mob.light_obj)
-		mob.Dnotify("Killed self light.")
-		mob.KillLight()
-	else
-		mob.Dnotify("Set self light.")
-		mob.SetLight()
-
-	sleep(5)
-	if(mob.light_obj)
-		mob.light_obj.FollowHolder()
 
 /client/proc/SetClientFps()
 

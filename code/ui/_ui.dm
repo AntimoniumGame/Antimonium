@@ -24,8 +24,7 @@
 	if(owner.client)
 		Center(owner.client.view_x, owner.client.view_y)
 
-/obj/ui/UpdateIcon()
-	..()
+/obj/ui/UpdateIcon(var/list/supplied = list())
 	if(owner && owner.client)
 		Center(owner.client.view_x, owner.client.view_y)
 

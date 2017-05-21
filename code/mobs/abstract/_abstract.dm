@@ -35,5 +35,5 @@
 /mob/abstract/ExaminedBy(var/mob/clicker)
 	clicker.Notify("That's a spooky ghost!")
 
-/mob/abstract/UpdateIcon()
+/mob/abstract/UpdateIcon(var/list/supplied = list())
 	return

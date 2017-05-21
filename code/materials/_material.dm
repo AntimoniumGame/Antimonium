@@ -39,6 +39,9 @@
 /datum/material/proc/GetDescriptor()
 	return descriptor ? descriptor : GetName()
 
+/datum/material/proc/IsFlammable()
+	return (ignition_point <= TEMPERATURE_MAX)
+
 /datum/material/proc/GetName(var/material_state)
 	if(material_state)
 		switch(material_state)

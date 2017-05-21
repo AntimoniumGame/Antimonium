@@ -32,7 +32,7 @@
 	holding = null
 	UpdateIcon()
 
-/obj/ui/inv/UpdateIcon()
+/obj/ui/inv/UpdateIcon(var/list/supplied = list())
 	name = unmodified_name
 	overlays.Cut()
 	if(holding)

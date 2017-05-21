@@ -61,6 +61,9 @@
 			Notify("You already have a grip on \the [grabbing].")
 			return
 
+	if(grabbing.Burn(src))
+		return
+
 	if(!grabbing.IsSolid())
 		NotifyNearby("\The [src] attempts to grab \the [grabbing], but [grabbing.They()] slip[grabbing.s()] through [Their()] grasp.")
 		return

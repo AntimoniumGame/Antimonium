@@ -2,7 +2,7 @@
 	name = "coins"
 	sharpness = 0
 	contact_size = 1
-	default_material_path = /datum/material/gold
+	default_material_path = /datum/material/metal/gold
 	icon = 'icons/objects/items/coin.dmi'
 
 	var/amount = 20
@@ -12,7 +12,7 @@
 	var/stack_name =    "stack"
 
 /obj/item/stack/GetWeight()
-	return GetAmount()
+	return GetAmount() * (material ? material.weight_modifier : 1)
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
@@ -31,12 +31,12 @@
 	new type(get_turf(user), material.type, split_amount, src)
 	user.NotifyNearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
-/obj/item/stack/proc/GetStackType()
-	return type //todo
+/obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
+	return (istype(stack) && type == stack.type && material == stack.material)
 
 /obj/item/stack/AttackedBy(var/mob/user, var/obj/item/thing)
-	var/obj/item/stack/other = thing
-	if(istype(other) && other.GetStackType() == GetStackType())
+	if(MatchesStackType(thing))
+		var/obj/item/stack/other = thing
 		var/transfer_amount = max_amount - GetAmount()
 		if(transfer_amount <= 0)
 			user.Notify("That [stack_name] can hold no more [plural_name].")
@@ -52,7 +52,7 @@
 			user.NotifyNearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
 		return TRUE
 	else
-		. =..()
+		. = ..()
 
 /obj/item/stack/UpdateStrings()
 	if(amount > 1)
@@ -66,23 +66,19 @@
 		else
 			name = "[singular_name]"
 
-/obj/item/stack/UpdateIcon()
-	..()
-
-	overlays.Cut()
-	var/list/new_overlays = list()
-	for(var/stack_amount = min(10, amount);stack_amount > 1;stack_amount--)
+/obj/item/stack/UpdateIcon(var/list/supplied = list())
+	for(var/stack_amount = min(10, amount), stack_amount > 1, stack_amount--)
 		var/image/I = image(icon = icon, icon_state = "world")
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
-		new_overlays += I
-	overlays = new_overlays
+		supplied += I
+	..(supplied)
 
 	var/mob/owner = loc
 	if(istype(owner))
 		owner.UpdateInventory()
 
-/obj/item/stack/proc/GetAmount()
+/obj/item/stack/GetAmount()
 	return amount
 
 /obj/item/stack/GetInvIcon()

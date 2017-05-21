@@ -19,7 +19,8 @@
 	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
 	if(!equipping || equipping.holding)
 		return FALSE
-	thing.BeforePickedUp()
+	if(!thing.BeforePickedUp(src, equip_to_slot))
+		return FALSE
 	thing.ForceMove(src)
 	thing.AfterPickedUp()
 	equipping.SetHeld(thing)
@@ -42,3 +43,6 @@
 		var/obj/ui/inv/slot = inventory_slots[slot_id]
 		slot.UpdateIcon()
 		slot.UpdateStrings()
+
+/mob/proc/GetHeatInsulation(var/slot)
+	return FALSE

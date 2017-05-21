@@ -16,8 +16,8 @@
 	AlignWithWall(src)
 	UpdateIcon()
 
-/obj/item/dartboard/UpdateIcon()
-	..()
+/obj/item/dartboard/UpdateIcon(var/list/supplied)
+	..(supplied)
 	if(dir)
 		icon_state = "world"
 	else

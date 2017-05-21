@@ -55,8 +55,7 @@
 		close = null
 	. = ..()
 
-/obj/ui/controller/window_holder/UpdateIcon()
-	var/list/component_overlays = list()
+/obj/ui/controller/window_holder/UpdateIcon(var/list/supplied = list())
 	for(var/tx = 1 to screen_width)
 		for(var/ty = 1 to screen_height)
 			var/cell_icon_state
@@ -83,8 +82,8 @@
 			var/image/cell = image(icon, cell_icon_state)
 			cell.pixel_x = (tx-1)*component_width
 			cell.pixel_y = (ty-1)*component_height
-			component_overlays += cell
-	overlays = component_overlays
+			supplied += cell
+	overlays = supplied
 
 /obj/ui/controller/window_holder/Center(var/view_x, var/view_y)
 	view_x = (round(view_x/2)-round(screen_width/2))+1
@@ -96,7 +95,7 @@
 	name = "Close Window"
 	icon_state = "close"
 
-/obj/ui/component/close/UpdateIcon()
+/obj/ui/component/close/UpdateIcon(var/list/supplied = list())
 	icon = 'icons/images/ui_window_buttons.dmi'
 
 /obj/ui/component/close/Center(var/view_x, var/view_y)

@@ -31,5 +31,11 @@
 /obj/proc/Process()
 	return
 
+/obj/IsFlammable()
+	if(!material)
+		return ..()
+	else
+		return (material.IsFlammable())// && temperature >= material.ignition_point)
+
 /obj/IsSolid()
 	return (material_state == STATE_SOLID || material_state == STATE_POWDER)

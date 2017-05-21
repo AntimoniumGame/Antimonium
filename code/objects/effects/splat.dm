@@ -40,12 +40,14 @@
 		splat_images |= splat.splat_images
 		amount += splat.amount
 		QDel(splat)
+	UpdateIcon()
 
-	overlays = splat_images
+/obj/effect/random/splat/update_icon(var/list/supplied = list())
+	supplied += splat_images
 	if(random_states && splat_images.len >= random_states)
 		random_state_prefix = null
 		icon_state = "[rand(1,random_states)]"
-	..()
+	..(supplied)
 
 /obj/effect/random/splat/Melt()
 	material_state = STATE_LIQUID

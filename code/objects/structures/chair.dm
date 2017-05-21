@@ -7,11 +7,12 @@
 	default_material_path = /datum/material/wood
 
 /obj/structure/chair/ManipulatedBy(var/mob/user)
-	if(user.intent.selecting == INTENT_HELP && !(flags & FLAG_ANCHORED))
-		user.NotifyNearby("\The [user] turns \the [src] around.")
-		SetDir(turn(dir, 90))
-	else
-		..()
+	. = ..()
+	if(!.)
+		if(user.intent.selecting == INTENT_HELP && !(flags & FLAG_ANCHORED))
+			user.NotifyNearby("\The [user] turns \the [src] around.")
+			SetDir(turn(dir, 90))
+			return TRUE
 
 /obj/structure/chair/comfy
 	icon_state = "felted_chair"
