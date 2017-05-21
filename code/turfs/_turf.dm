@@ -12,18 +12,21 @@
 	return valid_targets
 
 /turf/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
-	if(clicker.intent.selecting == INTENT_HARM)
-		var/list/valid_targets = GetSimulatedAtoms()
-		if(!valid_targets.len) return
-		var/atom/thing = pick(valid_targets)
-		thing.LeftClickedOn(clicker, slot)
+	HandleInteraction(clicker, slot)
 
 /turf/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
-	if(clicker.intent.selecting == INTENT_HARM)
+	HandleInteraction(clicker, slot)
+
+/turf/proc/HandleInteraction(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+	if(IsAdjacentTo(get_turf(clicker), src) && clicker.GetEquipped(slot))
+		AttackedBy(clicker, clicker.GetEquipped(slot))
+
+/turf/AttackedBy(var/mob/user, var/obj/item/prop)
+	if(user.intent.selecting == INTENT_HARM)
 		var/list/valid_targets = GetSimulatedAtoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
-		thing.RightClickedOn(clicker, slot)
+		thing.AttackedBy(user, prop)
 
 /turf/GetWeight()
 	return 10

@@ -12,6 +12,11 @@
 	if(NoDeadMove() && dead && !dragged)
 		return FALSE
 
+	if(loc && !istype(loc, /turf))
+		var/atom/atom = loc
+		next_move = world.time + atom.MovementInContents(src)
+		return FALSE
+
 	// Make sure we still have active grabs before moving the grabbed.
 	if(flags & FLAG_SIMULATED)
 		for(var/thing in active_grabs)

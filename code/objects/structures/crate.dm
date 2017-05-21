@@ -2,14 +2,14 @@
 	name = "crate"
 	default_material_path = /datum/material/wood
 
-/obj/structure/crate/AttackedBy(var/mob/user, var/obj/item/thing)
+/obj/structure/crate/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
-	if(!.)
-		user.DropItem(thing)
-		thing.ForceMove(src)
-		holding += thing
-		user.NotifyNearby("\The [user] places \the [thing] into \the [src].")
-		return TRUE
+	if(!. && user.DropItem(prop))
+		if(prop && !Deleted(prop))
+			prop.ForceMove(src)
+			holding += prop
+			user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+			return TRUE
 
 /obj/structure/crate/ManipulatedBy(var/mob/user, var/slot)
 	. = ..()

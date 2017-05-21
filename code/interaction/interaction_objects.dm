@@ -11,13 +11,13 @@
 		else
 			ManipulatedBy(clicker, slot)
 
-/obj/proc/AttackedBy(var/mob/user, var/obj/item/thing)
-	if(IsFlammable() && thing.IsFlammable())
-		if(!thing.IsOnFire() && IsOnFire())
-			user.NotifyNearby("\The [user] lights \the [thing] in \the [src].")
-			thing.Ignite(user)
-		else if(thing.IsOnFire() && !IsOnFire())
-			user.NotifyNearby("\The [user] lights \the [src] with \the [thing].")
+/obj/AttackedBy(var/mob/user, var/obj/item/prop)
+	if(IsFlammable() && prop.IsFlammable())
+		if(!prop.IsOnFire() && IsOnFire())
+			user.NotifyNearby("\The [user] lights \the [prop] in \the [src].")
+			prop.Ignite(user)
+		else if(prop.IsOnFire() && !IsOnFire())
+			user.NotifyNearby("\The [user] lights \the [src] with \the [prop].")
 			Ignite(user)
 		return TRUE
 	return FALSE
@@ -37,9 +37,9 @@
 			return
 
 		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
-		NotifyNearby("\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.name].")
-		PlayLocalSound(src, collect_sound, 50)
-		clicker.CollectItem(src, slot)
+		if(clicker.CollectItem(src, slot))
+			PlayLocalSound(src, collect_sound, 50)
+			NotifyNearby("\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.unmodified_name].")
 		return
 	. = ..()
 
