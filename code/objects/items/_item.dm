@@ -2,6 +2,7 @@
 	name = "item"
 	icon_state = "world"
 	icon = 'icons/objects/items/_default.dmi'
+	shadow_size = 2
 
 	var/slot_flags = 0
 	var/contact_size = 1

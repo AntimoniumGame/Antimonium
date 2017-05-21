@@ -72,11 +72,8 @@
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
 		supplied += I
+	shadow_size = min(3,max(1, round(amount/10)))
 	..(supplied)
-
-	var/mob/owner = loc
-	if(istype(owner))
-		owner.UpdateInventory()
 
 /obj/item/stack/GetAmount()
 	return amount

@@ -10,6 +10,10 @@
 	var/self_move = FALSE
 	var/move_sound
 
+	var/shadow_size = null
+	var/shadow_pixel_x = 0
+	var/shadow_pixel_y = 0
+
 /atom/proc/UpdateIcon(var/list/supplied = list())
 	overlays = supplied
 	var/mob/holder = loc
@@ -17,7 +21,19 @@
 		holder.UpdateInventory()
 		holder.UpdateIcon()
 
-/atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+/atom/movable/UpdateIcon(var/list/supplied = list())
+	if((flags & FLAG_SIMULATED) && !isnull(shadow_size))
+		underlays.Cut()
+		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
+		I.alpha = 30
+		I.plane = plane
+		I.layer = layer
+		I.pixel_x = shadow_pixel_x
+		I.pixel_y = shadow_pixel_y
+		underlays += I
+	..(supplied)
+
+/atom/proc/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
 /atom/proc/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
