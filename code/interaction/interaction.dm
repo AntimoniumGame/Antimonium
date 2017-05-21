@@ -9,3 +9,6 @@
 		user.Notify("\The [src] is far too hot to handle!")
 		return TRUE
 	return FALSE
+
+/atom/proc/AttackedBy(var/mob/user, var/obj/item/prop)
+	return

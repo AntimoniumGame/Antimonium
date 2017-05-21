@@ -61,18 +61,18 @@
 		icon_state = "sconce"
 		KillLight()
 
-/obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/thing)
-	if(istype(thing, /obj/item/torch))
+/obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/prop)
+	if(istype(prop, /obj/item/torch))
 		if(filled)
 			. = ..()
 		if(!.)
 			if(filled)
 				user.Notify("There is already \a [filled] in \the [src].")
 			else
-				user.DropItem(thing)
-				user.NotifyNearby("\The [user] places \the [thing] into \the [src].")
-				thing.ForceMove(src)
-				filled = thing
+				user.DropItem(prop)
+				user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+				prop.ForceMove(src)
+				filled = prop
 				UpdateIcon()
 			return TRUE
 	return ..()

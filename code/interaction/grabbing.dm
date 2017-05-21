@@ -36,7 +36,7 @@
 	CheckState()
 
 /obj/item/grab/proc/CheckState()
-	if(!owner || loc != owner || !grabbed || !isturf(grabbed.loc) || !IsAdjacentTo(grabbed, owner) || !grabbed.IsSolid())
+	if(!owner || loc != owner || !isturf(owner.loc) || !grabbed || !isturf(grabbed.loc) || !IsAdjacentTo(grabbed, owner) || !grabbed.IsSolid())
 		QDel(src)
 		return FALSE
 	return TRUE

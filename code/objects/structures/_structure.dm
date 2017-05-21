@@ -10,13 +10,13 @@
 	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.wav'
 
-/obj/structure/AttackedBy(var/mob/user, var/obj/item/thing)
+/obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)
-		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(thing))
-			if(thing && !Deleted(thing)) //grabs
-				thing.ForceMove(src.loc)
-				user.NotifyNearby("\The [user] places \the [thing] on \the [src].")
+		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(prop))
+			if(prop && !Deleted(prop)) //grabs
+				prop.ForceMove(src.loc)
+				user.NotifyNearby("\The [user] places \the [prop] on \the [src].")
 				return TRUE
 
 /obj/structure/UpdateStrings()

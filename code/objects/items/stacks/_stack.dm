@@ -34,9 +34,9 @@
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
 	return (istype(stack) && type == stack.type && material == stack.material)
 
-/obj/item/stack/AttackedBy(var/mob/user, var/obj/item/thing)
-	if(MatchesStackType(thing))
-		var/obj/item/stack/other = thing
+/obj/item/stack/AttackedBy(var/mob/user, var/obj/item/prop)
+	if(MatchesStackType(prop))
+		var/obj/item/stack/other = prop
 		var/transfer_amount = max_amount - GetAmount()
 		if(transfer_amount <= 0)
 			user.Notify("That [stack_name] can hold no more [plural_name].")

@@ -2,8 +2,8 @@
 "ab" = (/turf/floor/grass,/area/lighting/outdoors)
 "ac" = (/obj/structure/sconce,/turf/floor/grass,/area/lighting/outdoors)
 "ad" = (/obj/item/weapon/axe,/turf/floor/grass,/area/lighting/outdoors)
-"ae" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)"; icon_state = "sconce"; dir = 1},/turf/floor/grass,/area/lighting/outdoors)
-"af" = (/obj/structure/sconce{tag = "icon-sconce (EAST)"; icon_state = "sconce"; dir = 4},/turf/floor/grass,/area/lighting/outdoors)
+"ae" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/grass,/area/lighting/outdoors)
+"af" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/grass,/area/lighting/outdoors)
 "ag" = (/turf/wall,/area/lighting/indoors)
 "ah" = (/turf/floor/tiles,/area/lighting/indoors)
 "ai" = (/turf/wall/wood,/area/lighting/indoors)
@@ -19,24 +19,24 @@
 "as" = (/mob/human,/turf/floor/tiles,/area/lighting/indoors)
 "at" = (/obj/item/weapon/sword,/turf/floor/tiles,/area/lighting)
 "au" = (/turf/floor/grass,/area/lighting/indoors)
-"av" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)"; icon_state = "sconce"; dir = 1},/turf/floor/tiles,/area/lighting)
+"av" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/tiles,/area/lighting)
 "aw" = (/turf/wall/stone,/area/lighting/indoors)
 "ax" = (/turf/floor/stone,/area/lighting/indoors)
 "ay" = (/obj/item/weapon/pipe,/turf/floor/tiles,/area/lighting/indoors)
 "az" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting/indoors)
 "aA" = (/obj/structure/chair/comfy,/turf/floor/tiles,/area/lighting)
-"aB" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)"; icon_state = "sconce"; dir = 1},/turf/floor/tiles,/area/lighting/indoors)
-"aC" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/turf/floor/tiles,/area/lighting)
+"aB" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/tiles,/area/lighting/indoors)
+"aC" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)";icon_state = "felted_chair";dir = 4},/turf/floor/tiles,/area/lighting)
 "aD" = (/obj/structure/table,/turf/floor/tiles,/area/lighting)
-"aE" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)"; icon_state = "felted_chair"; dir = 8},/turf/floor/tiles,/area/lighting)
+"aE" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)";icon_state = "felted_chair";dir = 8},/turf/floor/tiles,/area/lighting)
 "aF" = (/turf/wall/stone,/area/lighting)
 "aG" = (/turf/floor/stone,/area/lighting)
 "aH" = (/obj/structure/brazier/forge,/turf/floor/stone,/area/lighting)
 "aI" = (/obj/structure/anvil,/obj/item/weapon/hammer,/turf/floor/stone,/area/lighting)
 "aJ" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting)
-"aK" = (/obj/item/horseshoe,/obj/structure/chair{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/floor/stone,/area/lighting)
+"aK" = (/obj/item/horseshoe,/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/stone,/area/lighting)
 "aL" = (/obj/structure/table,/obj/item/stack/dart,/turf/floor/stone,/area/lighting)
-"aM" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/stone,/area/lighting)
+"aM" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/turf/floor/stone,/area/lighting)
 "aN" = (/obj/item/dartboard,/turf/floor/stone,/area/lighting)
 "aO" = (/obj/item/weapon/pipe,/turf/floor/tiles,/area/lighting)
 "aP" = (/obj/item/crucible,/turf/floor/stone,/area/lighting)
@@ -47,11 +47,19 @@
 "aU" = (/obj/item/horseshoe,/turf/floor/stone,/area/lighting)
 "aV" = (/obj/item/stack,/turf/floor/stone,/area/lighting)
 "aW" = (/mob/human,/turf/floor/stone,/area/lighting)
-"aX" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)"; icon_state = "sconce"; dir = 1},/turf/floor/stone,/area/lighting)
+"aX" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/stone,/area/lighting)
 "aY" = (/turf/floor/dirt,/area/lighting/outdoors)
 "aZ" = (/obj/item/clothing/boots,/turf/floor/grass,/area/lighting/outdoors)
 "ba" = (/obj/item/clothing/shirt,/turf/floor/grass,/area/lighting/outdoors)
 "bb" = (/obj/item/clothing/pants,/turf/floor/grass,/area/lighting/outdoors)
+"bc" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting)
+"bd" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting/indoors)
+"be" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting)
+"bf" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/stone,/area/lighting)
+"bg" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
+"bh" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting/indoors)
+"bi" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
+"bj" = (/obj/item/stack/seed/cotton,/turf/floor/grass,/area/lighting/outdoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -63,25 +71,25 @@ agagagagagahahagagagagagagaiaiaiaiaiaiaiajajaiaiaiaiabababaa
 agahahakahahahahakahahahahalamamamanamamamamamamamaiabababaa
 agahaoahahahahahahahahahahalamamamamamamamamamapamaiabababaa
 agahahahahahahahahahaqaqahalamamamamamaramamamamamaiabababaa
-agahahahahahahahahaqaqaqahalamamamamamamamamamamamaiabababaa
+agahahahahahahahahaqaqaqahalbcamamamamamamamamamamaiabababaa
 agahahahahahasahahahaqaqahalamamatamamamamamamamamaiauauafaa
-agahahahahahahahahahahahahalamamamamamavamamamamawawaxauabaa
+agbdahahahahahahahahahahahalamamamamamavamamamamawawaxauabaa
 agahahahahayahahahahahahahalalamamalalalalalalalawazaxauabaa
 agahahahahahahahahahahahahalamamamamamaAamanamamawawaxauabaa
 agahahaBahahahahahahahaBahalamamamamaCaDaEamamamamaiauauabaa
 aFaFaFaFaFaFaFaFaFaGaGaFaFaFamamamamamamamamamamamaiabadabaa
 aFaHaIaJaKaLaMaGaNaGaGaGaGaFamamamamamamamaOamamamaiabababaa
-aFaPaGaQaGaGaGaGaGaGaGaGaGaFamamamaramamamaramamamaiabababaa
+aFaPaGaQaGaGaGaGaGaGaGaGaGaFbcamamaramamamaramamamaiabababaa
 aFaRaGaGaGaGaSaGaGaGaTaGaGaFamamamamamamamamamamamaiababafaa
 aFaGaGaUaGaGaVaGaGaGaWaGaGaFamamamamamamamamamamamahabababaa
-aFaGaUaVaGaGaGaGaGaGaGaGaGaFamamamamamamamamamamamahabababaa
+aFbfaUaVaGaGaGaGaGaGaGaGaGaFamamamamamamamamamamamahabababaa
 aFaGaGaGaGaGaGaGaGaGaXaGaGaFamamamamavamamamamamamaiabababaa
 aFaFaFaFaGaGaFaFaFaFaFaFaFaFalamamalalalalalalalalaiabababaa
-agahahahahahahahahahahahahahahahahahahahahahahahahaiabababaa
-agahahahahahahahahahahahahahahahahahahahahahahahaoaiababafaa
+agahahahahahahahahahahahahahahahahahahakahahahahahaiababbgaa
+agbdahahahahahahahahaBahahahahahahahahahahahahahaoaiababafaa
 agaiaiaiaiaiaiaiaiaiaiaiaiahahaiaiaiaiaiaiaiaiaiaiaiababaYaa
 aaabacababaZabacabababacababababababacabababababacababaYaYaa
-aaababababbabbabadababababababababababababadababababaYaYaYaa
-aaababababababababababababababababababababababababaYaYaYaYaa
+aaababababbabbabadababababababababababababadabbjababaYaYaYaa
+aaababababababababababababababababababababababbgabaYaYaYaYaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

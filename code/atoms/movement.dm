@@ -117,3 +117,6 @@
 		else		direction = WEST
 	if(direction != dir)
 		SetDir(direction)
+
+/atom/proc/MovementInContents(var/mob/mover)
+	return mover.GetMoveDelay()
