@@ -23,4 +23,4 @@
 
 /area/lighting/outdoors
 	icon_state = "sky"
-	light_level = 220
+	light_level = 120

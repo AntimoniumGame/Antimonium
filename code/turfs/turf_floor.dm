@@ -1,11 +1,21 @@
+/turf/floor
+	icon_state = "1"
+
+/turf/floor/New()
+	icon_state = pick(icon_states(icon))
+	..()
+
 /turf/floor/stone
 	name = "cobblestones"
 	icon = 'icons/turfs/cobbles.dmi'
-	icon_state = "1"
 
-/turf/floor/stone/New()
-	..()
-	icon_state = "[rand(1,3)]"
+/turf/floor/dirt
+	name = "dirt"
+	icon = 'icons/turfs/dirt.dmi'
+
+/turf/floor/grass
+	name = "grass"
+	icon = 'icons/turfs/grass.dmi'
 
 /turf/floor/tiles
 	name = "tiled floor"
