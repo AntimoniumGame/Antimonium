@@ -33,7 +33,7 @@
 		underlays += I
 	..(supplied)
 
-/atom/proc/left_clicked_on(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+/atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
 /atom/proc/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)

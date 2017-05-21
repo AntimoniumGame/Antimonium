@@ -22,17 +22,17 @@
 	icon = 'icons/turfs/tiles.dmi'
 	icon_state = "1"
 
-/turf/floor/update_icon(var/list/supplied = list(), var/update_neighbors)
+/turf/floor/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
 
 	var/list/connected_neighbors = list()
-	for(var/thing in trange(1,src))
+	for(var/thing in Trange(1,src))
 		if(thing == src)
 			continue
 		var/turf/neighbor = thing
 		if(neighbor.density)
 			continue
 		if(update_neighbors)
-			neighbor.update_icon()
+			neighbor.UpdateIcon()
 		connected_neighbors += get_dir(src, neighbor)
 
 	for(var/i = 1 to 4)

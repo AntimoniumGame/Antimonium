@@ -28,7 +28,7 @@
 	..()
 	AlignWithWall(src)
 
-/obj/structure/sconce/set_dir()
+/obj/structure/sconce/SetDir()
 	..()
 
 	switch(dir)
