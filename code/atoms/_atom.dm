@@ -54,24 +54,24 @@
 /atom/proc/GetWeight()
 	return 1
 
-/atom/proc/get_amount()
+/atom/proc/GetAmount()
 	return 1
 
-/atom/proc/set_fire_light()
+/atom/proc/SetFireLight()
 	if(light_obj)
-		kill_light()
+		KillLight()
 	light_color = BRIGHT_ORANGE
 	light_power = 10
 	light_range = 5
-	set_light()
+	SetLight()
 
-/atom/proc/reset_lights()
+/atom/proc/ResetLights()
 	var/lit
 	if(light_obj)
 		lit = TRUE
-		kill_light()
+		KillLight()
 	light_color = initial(light_color)
 	light_power = initial(light_power)
 	light_range = initial(light_range)
 	if(lit && (light_power || light_color || light_range))
-		set_light()
+		SetLight()

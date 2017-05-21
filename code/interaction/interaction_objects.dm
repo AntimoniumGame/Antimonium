@@ -14,10 +14,10 @@
 /obj/proc/AttackedBy(var/mob/user, var/obj/item/thing)
 	if(IsFlammable() && thing.IsFlammable())
 		if(!thing.IsOnFire() && IsOnFire())
-			user.notify_nearby("\The [user] lights \the [thing] in \the [src].")
+			user.NotifyNearby("\The [user] lights \the [thing] in \the [src].")
 			thing.Ignite(user)
 		else if(thing.IsOnFire() && !IsOnFire())
-			user.notify_nearby("\The [user] lights \the [src] with \the [thing].")
+			user.NotifyNearby("\The [user] lights \the [src] with \the [thing].")
 			Ignite(user)
 		return TRUE
 	return FALSE

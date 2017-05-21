@@ -4,14 +4,14 @@
 	required_skills = SKILL_FORGING
 	action_third_person = "forges"
 
-/datum/crafting_recipe/forging/craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
+/datum/crafting_recipe/forging/Craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	. = ..()
 	spawn()
-		play_local_sound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
 		sleep(6)
-		play_local_sound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
 		sleep(6)
-		play_local_sound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
 
 /datum/crafting_recipe/forging/axe
 	result_path = /obj/item/weapon/axe

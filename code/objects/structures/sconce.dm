@@ -7,19 +7,19 @@
 
 	var/obj/item/torch/filled
 
-/obj/structure/sconce/get_fire_icon()
+/obj/structure/sconce/GetFireIcon()
 	return
 
-/obj/structure/sconce/ignite(var/mob/user)
+/obj/structure/sconce/Ignite(var/mob/user)
 	if(filled)
-		. = filled.ignite(user)
-		update_icon()
+		. = filled.Ignite(user)
+		UpdateIcon()
 
-/obj/structure/sconce/is_on_fire()
-	return filled && filled.is_on_fire()
+/obj/structure/sconce/IsOnFire()
+	return filled && filled.IsOnFire()
 
-/obj/structure/sconce/is_flammable()
-	return filled && filled.is_flammable()
+/obj/structure/sconce/IsFlammable()
+	return filled && filled.IsFlammable()
 
 /obj/structure/sconce/New()
 	if(prob(80))

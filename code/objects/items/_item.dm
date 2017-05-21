@@ -55,5 +55,5 @@
 		owner.DropItem(src)
 	. = ..()
 
-/obj/item/get_amount()
+/obj/item/GetAmount()
 	return initial(weight)

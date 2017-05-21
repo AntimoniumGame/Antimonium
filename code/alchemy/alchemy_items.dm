@@ -7,15 +7,15 @@
 	singular_name = "portion"
 	plural_name = "portions"
 
-/obj/item/force_move(var/atom/newloc)
+/obj/item/ForceMove(var/atom/newloc)
 	. = ..()
 	if(material)
 		if(istype(newloc, /turf) && material_state == STATE_LIQUID)
-			new /obj/effect/random/splat(newloc, material.type, src, get_amount())
-			qdel(src)
-		else if(!newloc.airtight() && material_state == STATE_GAS)
+			new /obj/effect/random/splat(newloc, material.type, src, GetAmount())
+			QDel(src)
+		else if(!newloc.Airtight() && material_state == STATE_GAS)
 			new /obj/effect/gas(get_turf(src), src)
-			qdel(src)
+			QDel(src)
 
 /obj/item/stack/ingredient/New(var/newloc, var/material_path, var/_amount, var/obj/donor)
 	if(donor)

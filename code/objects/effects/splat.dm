@@ -42,7 +42,7 @@
 		QDel(splat)
 	UpdateIcon()
 
-/obj/effect/random/splat/update_icon(var/list/supplied = list())
+/obj/effect/random/splat/UpdateIcon(var/list/supplied = list())
 	supplied += splat_images
 	if(random_states && splat_images.len >= random_states)
 		random_state_prefix = null

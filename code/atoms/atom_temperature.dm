@@ -20,12 +20,12 @@
 	if(env_temperature < temperature)
 		LoseHeat(env_temperature)
 	else if(env_temperature > temperature)
-		GainHeat(env_temperature, loc.get_weight())
+		GainHeat(env_temperature, loc.GetWeight())
 
 /turf/EqualizeTemperature()
 	if(temperature > AmbientTemperature())
 		temperature = max(temperature - 5, AmbientTemperature())
-	else if(temperature < ambient_temperature())
+	else if(temperature < AmbientTemperature())
 		temperature = min(temperature + 5, AmbientTemperature())
 
 /turf/proc/AmbientTemperature()
