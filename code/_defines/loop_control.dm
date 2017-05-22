@@ -7,31 +7,28 @@
 //please do not use these global vars anywhere as they will only work in a debug build
 var/tick_one        = world.tick_lag
 var/tick_two        = world.tick_lag * 2
-var/tick_one_s      = world.tick_lag * world.fps
-var/tick_two_s      = tick_one_s * 2
 
 #define WAIT_1T     sleep(tick_one)
 #define WAIT_2T     sleep(tick_two)
-#define WAIT_1S     sleep(tick_one_s)
-#define WAIT_2S     sleep(tick_two_s)
 
-//wait for n ticks/seconds
-#define wait_nt(n)  sleep(tick_one * n)
-#define wait_ns(n)  sleep(tick_one_s * n)
+//wait for n ticks
+#define WAIT_NT(n)  sleep(tick_one * n)
 
 #else
 //manual defines for release builds - these will need to be updated if you change your world.fps
-//1 tick = 0.00625 * fps
-#define WAIT_1T     sleep(0.375)
-#define WAIT_2T     sleep(0.75)
-#define WAIT_1S     sleep(22.5)
-#define WAIT_2S     sleep(45)
+//1 tick = 10 / fps
+#define WAIT_1T     sleep(0.25)
+#define WAIT_2T     sleep(0.5)
 
-//wait for n ticks/seconds
-#define wait_nt(n)  sleep(0.375 * n)
-#define wait_ns(n)  sleep(22.5 * n)
+//wait for n ticks
+#define WAIT_NT(n)  sleep(0.25 * n)
 
 #endif
+
+//wait for seconds
+#define WAIT_1S     sleep(10)
+#define WAIT_2S     sleep(20)
+#define WAIT_NS(n)  sleep(10 * n)
 
 //push this to the end of the queue
 #define QUEUE_END   sleep(0)
