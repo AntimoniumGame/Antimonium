@@ -97,6 +97,7 @@
 #include "code\helpers\dir.dm"
 #include "code\helpers\distance.dm"
 #include "code\helpers\effects.dm"
+#include "code\helpers\flags.dm"
 #include "code\helpers\list.dm"
 #include "code\helpers\loops.dm"
 #include "code\helpers\sound.dm"
