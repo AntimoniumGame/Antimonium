@@ -30,9 +30,5 @@
 
 /mob/proc/RefreshUI()
 	if(client)
-		client.screen.Cut()
-		client.screen |= ui_screen
-		client.images.Cut()
-		client.images |= ui_images
-		client.OnResize()
+		client.RefreshUI()
 	UpdateVisionCone()

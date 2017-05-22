@@ -1,7 +1,6 @@
 /obj/ui
 	name = ""
-	plane = SCREEN_PLANE
-	layer = 3
+	plane = UI_PLANE
 	screen_loc = "CENTER,CENTER"
 	icon = 'icons/images/ui.dmi'
 	var/mob/owner

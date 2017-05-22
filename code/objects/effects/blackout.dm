@@ -1,7 +1,6 @@
 /obj/effect/blackout
 	name = "Antimonium"
-	layer = SCREEN_EFFECTS_LAYER+0.5
-	plane = SCREEN_PLANE
+	plane = FADE_PLANE
 	screen_loc = "CENTER"
 	icon = 'icons/images/barrier.dmi'
 	icon_state = ""
