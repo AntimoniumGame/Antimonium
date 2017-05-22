@@ -2,6 +2,7 @@
 	var/list/inventory_slots = list()
 
 /mob/proc/DropItem(var/obj/item/thing)
+	if(!istype(thing)) return FALSE
 	thing.BeforeDropped()
 	thing.ForceMove(get_turf(src))
 	thing.AfterDropped()
@@ -14,11 +15,9 @@
 	return TRUE
 
 /mob/proc/DropSlot(var/invslot)
-	var/obj/ui/inv/inv_slot = inventory_slots[invslot]
-	if(!istype(inv_slot)) return FALSE
-	var/obj/item/O = inv_slot.holding
-	if(!istype(O)) return FALSE
-	DropItem(O)
+	var/obj/item/O = GetEquipped(invslot)
+	if(istype(O))
+		DropItem(O)
 
 /mob/proc/CollectItem(var/obj/item/thing, var/equip_to_slot)
 	if(!equip_to_slot)
