@@ -85,14 +85,10 @@
 		glide_size = world.icon_size / max(GetMoveDelay(), world.tick_lag) * world.tick_lag
 	. = ..()
 	SetDir(dir)
-	if(. && light_obj)
-		light_obj.FollowHolder()
 
 /atom/proc/SetDir(var/newdir)
 	if(dir != newdir)
 		dir = newdir
-		if(light_obj)
-			light_obj.FollowHolderDir()
 		return TRUE
 	return FALSE
 

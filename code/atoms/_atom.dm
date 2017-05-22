@@ -26,8 +26,8 @@
 		underlays.Cut()
 		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
 		I.alpha = 30
-		I.plane = plane
-		I.layer = layer
+		I.plane = FLOAT_PLANE // stays with the parent plane regardless of if it changes
+		I.layer = FLOAT_LAYER
 		I.pixel_x = shadow_pixel_x
 		I.pixel_y = shadow_pixel_y
 		underlays += I
@@ -72,22 +72,3 @@
 
 /atom/proc/GetAmount()
 	return 1
-
-/atom/proc/SetFireLight()
-	if(light_obj)
-		KillLight()
-	light_color = BRIGHT_ORANGE
-	light_power = 10
-	light_range = 5
-	SetLight()
-
-/atom/proc/ResetLights()
-	var/lit
-	if(light_obj)
-		lit = TRUE
-		KillLight()
-	light_color = initial(light_color)
-	light_power = initial(light_power)
-	light_range = initial(light_range)
-	if(lit && (light_power || light_color || light_range))
-		SetLight()

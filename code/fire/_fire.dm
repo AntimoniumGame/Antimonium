@@ -18,7 +18,6 @@
 	if(CanIgnite() && !IsOnFire())
 		burning_atoms |= src
 		on_fire = TRUE
-		SetFireLight()
 		UpdateIcon()
 		return TRUE
 	return FALSE
@@ -27,7 +26,6 @@
 	if(IsOnFire())
 		burning_atoms -= src
 		on_fire = FALSE
-		ResetLights()
 		UpdateIcon()
 		return TRUE
 	return FALSE
