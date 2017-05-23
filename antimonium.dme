@@ -188,6 +188,7 @@
 #include "code\objects\items\plants\plant.dm"
 #include "code\objects\items\plants\plant_definitions.dm"
 #include "code\objects\items\plants\plant_products.dm"
+#include "code\objects\items\plants\plant_seed_definitions.dm"
 #include "code\objects\items\plants\plant_seeds.dm"
 #include "code\objects\items\stacks\_stack.dm"
 #include "code\objects\items\stacks\darts.dm"

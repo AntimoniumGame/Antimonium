@@ -60,6 +60,7 @@
 "bh" = (/obj/item/clothing/pants,/turf/floor/grass,/area/lighting/outdoors)
 "bi" = (/obj/item/stack/seed/cotton,/turf/floor/grass,/area/lighting/outdoors)
 "bj" = (/obj/item/stack/seed/nightshade,/turf/floor/grass,/area/lighting/outdoors)
+"bk" = (/obj/item/stack/seed/ginseng,/turf/floor/grass,/area/lighting/outdoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -87,7 +88,7 @@ aGaHaHaHaHaHaHaHaHaHaYaHaHaGalamamaXamamamamamamamaiabababaa
 aGaGaGaGaHaHaGaGaGaGaGaGaGaGalamamalalalalalalalalaiabababaa
 agajajajajajajajajajajajajajajajajajajaZajajajajajaiababbaaa
 agbbajajajajajajajajbcajajajajajajajajajajajajajbdaiababafaa
-agaiaiaiaiaiaiaiaiaiaiaiaiajajaiaiaiaiaiaiaiaiaiaiaiababbeaa
+agaiaiaiaiaiaiaiaiaiaiaiaiajajaiaiaiaiaiaiaiaiaiaiaiabbkbeaa
 aaabacababbfabacabababacababababababacabababababacababbebeaa
 aaababababbgbhabadababababababababababababadabbiabbjbebebeaa
 aaababababababababababababababababababababababbaabbebebebeaa
