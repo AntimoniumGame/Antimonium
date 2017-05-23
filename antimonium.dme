@@ -210,6 +210,7 @@
 #include "code\objects\structures\earthworks\earthworks.dm"
 #include "code\objects\structures\earthworks\earthworks_farm.dm"
 #include "code\objects\structures\earthworks\earthworks_pit.dm"
+#include "code\objects\structures\machines\gearbox.dm"
 #include "code\throwing\throwing.dm"
 #include "code\throwing\thrown_collision.dm"
 #include "code\throwing\thrown_items.dm"
