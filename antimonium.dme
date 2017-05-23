@@ -180,6 +180,7 @@
 #include "code\objects\items\_item.dm"
 #include "code\objects\items\crucible.dm"
 #include "code\objects\items\horseshoe.dm"
+#include "code\objects\items\mortar_pestle.dm"
 #include "code\objects\items\torch.dm"
 #include "code\objects\items\clothing\_clothing.dm"
 #include "code\objects\items\clothing\boots.dm"
