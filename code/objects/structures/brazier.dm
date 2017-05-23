@@ -17,6 +17,7 @@
 	next_burn_sound = rand(10,20)
 
 /obj/structure/brazier/Initialize()
+	..()
 	Ignite()
 	processing_objects += src
 

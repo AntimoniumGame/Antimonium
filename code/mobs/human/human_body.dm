@@ -4,7 +4,7 @@
 	limbs[BP_GROIN] =      new /obj/item/limb(src,       "lower body",  'icons/objects/items/limbs/groin.dmi',      BP_GROIN,      BP_CHEST,     _vital = TRUE, _size = 10)
 	limbs[BP_LEFT_ARM] =   new /obj/item/limb(src,        "left arm",   'icons/objects/items/limbs/left_arm.dmi',   BP_LEFT_ARM,   BP_CHEST,     _size = 6)
 	limbs[BP_RIGHT_ARM] =  new /obj/item/limb(src,        "right arm",  'icons/objects/items/limbs/right_arm.dmi',  BP_RIGHT_ARM,  BP_CHEST,     _size = 6)
-	limbs[BP_HEAD] =       new /obj/item/limb(src,        "head",       'icons/objects/items/limbs/head.dmi',       BP_HEAD,       BP_CHEST,     _vital = TRUE, _size = 6, _grasp_name = "jaws", _grasp_plural = TRUE)
+	limbs[BP_HEAD] =       new /obj/item/limb(src,        "head",       'icons/objects/items/limbs/head.dmi',       BP_HEAD,       BP_CHEST,     _vital = TRUE, _size = 6)
 	limbs[BP_LEFT_HAND] =  new /obj/item/limb/grasp(src,  "left hand",  'icons/objects/items/limbs/left_hand.dmi',  BP_LEFT_HAND,  BP_LEFT_ARM,  _size = 3)
 	limbs[BP_RIGHT_HAND] = new /obj/item/limb/grasp(src,  "right hand", 'icons/objects/items/limbs/right_hand.dmi', BP_RIGHT_HAND, BP_RIGHT_ARM, _size = 3)
 	limbs[BP_LEFT_LEG] =   new /obj/item/limb/stance(src, "left leg",   'icons/objects/items/limbs/left_leg.dmi',   BP_LEFT_LEG,   BP_GROIN,     _size = 6)
