@@ -5,10 +5,6 @@
 	density = 1
 	opacity = 1
 
-/turf/wall/New()
-	..()
-	UpdateIcon()
-
 /turf/wall/stone
 	name = "stone wall"
 	icon = 'icons/turfs/stone_wall.dmi'

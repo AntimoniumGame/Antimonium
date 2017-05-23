@@ -5,8 +5,9 @@
 	var/slot_flags = 0
 	var/unmodified_name
 	var/concealable = FALSE
+	var/list/update_bodyparts
 
-/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags)
+/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags, var/list/_update_bodyparts)
 	. = ..()
 	if(nname)
 		name = nname
@@ -19,6 +20,7 @@
 	slot_flags |= _slot_flags
 	if(concealable) // Defaults to on.
 		invisibility = INVISIBILITY_MAXIMUM
+	update_bodyparts = _update_bodyparts
 
 /obj/ui/inv/Destroy()
 	holding = null
@@ -38,3 +40,8 @@
 	if(holding)
 		name = "[name] - [holding.name]"
 		overlays += holding.GetInvIcon()
+	if(update_bodyparts && update_bodyparts.len)
+		for(var/thing in update_bodyparts)
+			var/obj/item/limb/limb = owner.limbs[thing]
+			if(istype(limb))
+				limb.SetHolding((holding ? TRUE : FALSE), TRUE)

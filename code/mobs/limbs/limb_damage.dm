@@ -50,6 +50,7 @@
 	if(!owner || root_limb)
 		return
 
+	holding = FALSE
 	owner.injured_limbs -= src
 	owner.limbs[limb_id] = null
 	owner.limbs -= limb_id

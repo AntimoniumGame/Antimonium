@@ -31,6 +31,8 @@
 	if(_donor)
 		temperature = _donor.temperature
 	..(newloc, material_path)
+
+/obj/effect/random/splat/Initialize()
 	for(var/obj/effect/random/splat/splat in get_turf(loc))
 		if(splat == src || splat.material != material)
 			continue
@@ -40,7 +42,7 @@
 		splat_images |= splat.splat_images
 		amount += splat.amount
 		QDel(splat)
-	UpdateIcon()
+	..()
 
 /obj/effect/random/splat/UpdateIcon(var/list/supplied = list())
 	supplied += splat_images
