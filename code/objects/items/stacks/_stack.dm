@@ -28,7 +28,7 @@
 
 	var/split_amount = max(1,round(GetAmount()/2))
 	Remove(split_amount)
-	new type(get_turf(user), material.type, split_amount, src)
+	new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
 	user.NotifyNearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
@@ -72,7 +72,8 @@
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
 		supplied += I
-	shadow_size = min(3,max(1, round(amount/10)))
+	if(!isnull(initial(shadow_size)))
+		shadow_size = min(3,max(1, round(amount/10)))
 	..(supplied)
 
 /obj/item/stack/GetAmount()

@@ -3,6 +3,7 @@
 	icon = 'icons/objects/items/dart.dmi'
 	attack_verbs = list("sticks")
 	hit_sound = 'sounds/effects/thunk1.ogg'
+	shadow_size = null
 
 	singular_name = "dart"
 	plural_name =   "darts"
