@@ -20,6 +20,10 @@
 		return TRUE
 	. = ..()
 
+/turf/floor/wood
+	name = "wooden floor"
+	icon = 'icons/turfs/wood_floor.dmi'
+
 /turf/floor/stone
 	name = "cobblestones"
 	icon = 'icons/turfs/cobbles.dmi'
