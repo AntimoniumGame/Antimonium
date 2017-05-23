@@ -2,11 +2,15 @@
 	ident = GAME_SETTING_UP
 
 /datum/game_state/setup/Init()
-	spawn()
-		mc = new()
-		InitializeAdminPermissions()
-		InitializeAdminDatabase()
-		InitializeJobs()
+	mc = new()
+	InitializeAdminPermissions()
+	InitializeAdminDatabase()
+	InitializeJobs()
+
+	for(var/thing in atoms_to_initialize)
+		var/atom/atom = thing
+		atom.Initialize()
+	atoms_to_initialize.Cut()
 	..()
 
 /datum/game_state/setup/Start()

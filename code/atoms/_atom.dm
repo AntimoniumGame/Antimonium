@@ -51,6 +51,12 @@
 
 /atom/New()
 	..()
+	if(!game_state || game_state.ident == GAME_SETTING_UP)
+		atoms_to_initialize += src
+	else
+		Initialize()
+
+/atom/proc/Initialize()
 	UpdateStrings()
 	UpdateIcon()
 
