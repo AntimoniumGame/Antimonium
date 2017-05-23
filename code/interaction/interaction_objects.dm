@@ -16,10 +16,11 @@
 		if(!prop.IsOnFire() && IsOnFire())
 			user.NotifyNearby("\The [user] lights \the [prop] in \the [src].")
 			prop.Ignite(user)
+			return TRUE
 		else if(prop.IsOnFire() && !IsOnFire())
 			user.NotifyNearby("\The [user] lights \the [src] with \the [prop].")
 			Ignite(user)
-		return TRUE
+			return TRUE
 	return FALSE
 
 /obj/proc/ManipulatedBy(var/mob/user, var/slot)

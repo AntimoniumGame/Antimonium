@@ -15,11 +15,6 @@
 	var/min_harvest_amount = 2
 	var/max_harvest_amount = 4
 
-/obj/item/plant/cotton
-	name = "cotton plant"
-	seed_type = /obj/item/stack/seed/cotton
-	product_type = /obj/item/stack/cotton
-
 /obj/item/plant/New(var/newloc, var/obj/structure/earthworks/farm/_growing_in)
 	..()
 	growing_in = _growing_in
