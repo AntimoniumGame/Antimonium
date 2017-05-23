@@ -4,6 +4,7 @@
 		/client/proc/DebugController,
 		/client/proc/ForceSwitchGameState,
 		/client/proc/SetClientFps,
+		/client/proc/ViewClientVars,
 		/client/proc/StartViewVars,
 		/client/proc/ToggleVarsRefresh,
 		/client/proc/CloseVarsWindow
@@ -45,6 +46,14 @@
 	set category = "Debug"
 
 	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
+
+/client/proc/ViewClientVars()
+
+	set name = "View Client Vars"
+	set category = "Debug"
+
+	if(CheckAdminPermission(PERMISSIONS_DEBUG))
+		ViewVars(src)
 
 //var viewing madness below
 /client/proc/StartViewVars()
@@ -108,16 +117,10 @@
 				src << output("[d.type] ([d])", "[window_ref].varsgrid:2,[i++]")
 			else if(k == "appearance")
 				src << output("/appearance", "[window_ref].varsgrid:2,[i++]")
-			else if(k == "flags" && istype(O, /atom))
-				var/flag_list = "bitflags: [value]"
-				var/bit = 1
-				for(var/j = 1 to 16)
-					if(value & bit)
-						flag_list = "[flag_list]\n   [atomflag2name(bit)]"
-					bit = bit<<1
-				src << output(flag_list, "[window_ref].varsgrid:2,[i++]")
-			else if((k == "sight" && ismob(O)) || (istype(O, /atom) && k in list("appearance_flags", "blend_mode")))
-				src << output(FlagsToBits(value), "[window_ref].varsgrid:2,[i++]")
+			else if(k == "blend_mode")
+				src << output("mode: [__blend_mode_flags["[value]"]]", "[window_ref].varsgrid:2,[i++]")
+			else if(isnum(value) && k in list("flags", "sight", "appearance_flags"))
+				src << output(FlagsToBits(value, k), "[window_ref].varsgrid:2,[i++]")
 			else
 				src << output("[value]", "[window_ref].varsgrid:2,[i++]")
 		first_run = FALSE
@@ -126,12 +129,25 @@
 	if(!O)
 		winset(src, window_ref, "title=\"View Vars: (Deleted)\"")
 
-/proc/FlagsToBits(flags)
+/proc/FlagsToBits(flags, var_name)
+	var/list/flag_lookup
+	switch(var_name)
+		if("flags")
+			flag_lookup = __atom_flags
+		if("sight")
+			flag_lookup = __sight_flags
+		if("appearance_flags")
+			flag_lookup = __appearance_flags
+		else
+			flag_lookup = __default_flags
 	var/flag_list = "bitflags: [flags]"
 	var/bit = 1
 	for(var/i = 1 to 16)
 		if(flags & bit)
-			flag_list = "[flag_list]\n   [bit]"
+			if(flag_lookup)
+				flag_list = "[flag_list]\n   [flag_lookup["[bit]"]]"
+			else
+				flag_list = "[flag_list]\n   [bit]"
 		bit = bit<<1
 	return flag_list
 
@@ -162,7 +178,7 @@
 	else
 		var/var_name = null
 		//there are only a couple of cases we need to know the var name
-		if(href_list["var"] == "appearance" || (istype(D, /atom) && (href_list["var"] == "contents" || href_list["var"] == "flags")))
+		if(href_list["var"] == "appearance" || (istype(D, /atom) && (href_list["var"] in list("contents", "flags", "appearance_flags", "sight", "blend_mode"))))
 			var_name = href_list["var"]
 		D.vars[href_list["var"]] = ChangeVar(C, V, var_name)
 
@@ -176,8 +192,10 @@
 		type = "null"
 	else if(istext(V))
 		type = "text"
-	else if(var_name == "flags")
+	else if(var_name in list("flags", "sight", "appearance_flags"))
 		type = "bitfield"
+	else if(var_name == "blend_mode")
+		type = "blend_mode"
 	else if(isnum(V))
 		type = "number"
 	else if(ispath(V))
@@ -204,16 +222,29 @@
 		//nothing - shouldn't ever get this far
 		return null
 
-	var/new_type = input(C, "Select type", null, type) in list("null", "bitfield", "number", "text", "path", "file", "list", "matrix", "appearance", "datum")
+	var/new_type = input(C, "Select type", null, type) in list("null", "bitfield", "blend_mode", "number", "text", "path", "file", "list", "matrix", "appearance", "datum")
 	switch(new_type)
 		if("null")
 			return null
+		if("blend_mode")
+			var/choice = input(C, "Select blend mode to switch to:", "Var Edit") in __blend_mode_flag_names
+			return __blend_mode_flag_names[choice]
 		if("bitfield")
-			var/choice = input(C, "Select bitflag to toggle:", "Var Edit") in __atom_flag_names
-			if(V & __atom_flag_names[choice])
-				V &= ~__atom_flag_names[choice]
+			var/list/flag_lookup
+			switch(var_name)
+				if("flags")
+					flag_lookup = __atom_flag_names
+				if("sight")
+					flag_lookup = __sight_flag_names
+				if("appearance_flags")
+					flag_lookup = __appearance_flag_names
+				else
+					flag_lookup = __default_flags
+			var/choice = input(C, "Select bitflag to toggle:", "Var Edit") in flag_lookup
+			if(V & flag_lookup[choice])
+				V &= ~flag_lookup[choice]
 			else
-				V |= __atom_flag_names[choice]
+				V |= flag_lookup[choice]
 			return V
 		if("number")
 			return input(C, "Enter number:", "Var Edit", V) as num|null
