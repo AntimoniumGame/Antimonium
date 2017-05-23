@@ -31,11 +31,11 @@
 "aE" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)";icon_state = "felted_chair";dir = 8},/turf/floor/wood,/area/lighting)
 "aF" = (/turf/wall/stone,/area/lighting)
 "aG" = (/turf/floor/stone,/area/lighting)
-"aH" = (/obj/structure/brazier/forge,/turf/floor/stone,/area/lighting)
+"aH" = (/obj/structure/brazier/forge,/obj/item/weapon/sword,/turf/floor/stone,/area/lighting)
 "aI" = (/obj/structure/anvil,/obj/item/weapon/hammer,/turf/floor/stone,/area/lighting)
 "aJ" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting)
 "aK" = (/obj/item/horseshoe,/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/stone,/area/lighting)
-"aL" = (/obj/structure/table,/obj/item/stack/dart,/turf/floor/stone,/area/lighting)
+"aL" = (/obj/structure/table,/obj/item/weapon/construction_hammer,/obj/item/stack,/obj/item/stack/ingredient,/obj/item/weapon/mallet,/turf/floor/stone,/area/lighting)
 "aM" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/turf/floor/stone,/area/lighting)
 "aN" = (/obj/item/dartboard,/turf/floor/stone,/area/lighting)
 "aO" = (/obj/item/weapon/pipe,/turf/floor/wood,/area/lighting)
@@ -112,6 +112,28 @@
 "ch" = (/obj/structure/brazier,/turf/floor/wood,/area/lighting/indoors)
 "ci" = (/turf/floor/wood,/area/lighting/indoors)
 "cj" = (/turf/floor/wood,/area/lighting/indoors)
+"ck" = (/obj/item/horseshoe,/turf/floor/wood,/area/lighting)
+"cl" = (/obj/item/horseshoe,/turf/floor/wood,/area/lighting)
+"cm" = (/obj/item/horseshoe,/turf/floor/wood,/area/lighting)
+"cn" = (/obj/item/horseshoe,/turf/floor/wood,/area/lighting)
+"co" = (/obj/structure/chair,/turf/floor/wood,/area/lighting)
+"cp" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/turf/floor/wood,/area/lighting)
+"cq" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)";icon_state = "wooden_chair";dir = 1},/turf/floor/wood,/area/lighting)
+"cr" = (/obj/structure/table,/obj/item/stack/dart,/turf/floor/wood,/area/lighting)
+"cs" = (/obj/structure/chair,/turf/floor/wood,/area/lighting)
+"ct" = (/obj/item/dartboard{tag = "icon-world (WEST)";icon_state = "world";dir = 8},/turf/floor/wood,/area/lighting)
+"cu" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/wood,/area/lighting)
+"cv" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/wood,/area/lighting)
+"cw" = (/obj/item/weapon/axe,/turf/floor/stone,/area/lighting)
+"cx" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)";icon_state = "wooden_chair";dir = 1},/turf/floor/wood,/area/lighting)
+"cy" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cz" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cA" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cB" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cC" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cD" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cE" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"cF" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -119,27 +141,27 @@ aaabababacabababababababababacababababababababacabababababaa
 aaababababababababababababababababababababababababababababaa
 aaabababababababababababababadababababababababababababababaa
 aaababaeababababaeababababababababaeabababababaeababababafaa
-awawawawawahahawawawawawawaiaiaiaiaiaiaiajajaiaiaiaiabababaa
+awawawawawahahawawawawawawaiaiaiaiaiaiaibkbkaiaiaiaiabababaa
 awahahakahahahahakahahahawalamamamanamamamamamamamaiabababaa
-awahaoahahahahahahahahahawalamamamamamamamamamapamaiabababaa
-awahahahahahahahahahaqaqawalamamamamamaramamamamamaiabababaa
+awahaoahahahahahahahahahawalamckamclamamamamamapamaiabababaa
+awahahahahahahahahahaqaqawalamcmamcnamaramamamamamaiabababaa
 awahahahahahahahahaqaqaqawalbcamamamamamamamamamamaiabababaa
 awahahahahahasahahahaqaqawalamamatamamamamamamalalaiauauafaa
 awbdahahahahahahahahahahawalamamamamamavamamamalawawaxauabaa
 awahahahahayahahahahahahawalalamamalalalalalalalawazaxauabaa
-awahahahahahahahahahahahawalamamamamamaAamanamalawawaxauabaa
-awahahaBahahahahahahahaBawalamamamamaCaDaEamamalalaiauauabaa
-aFaFaFaFaFaFaFaFaFaGaGaFaFaFamamamamamamamamamamamaiabadabaa
-aFaHaIaJaKaLaMaGaNaGaGaGaGaFamamamamamamamaOamamamaiabababaa
-aFaPaGaQaGaGaGaGaGaGaGaGaGaFbcamamaramamamaramamamaiabababaa
-aFaRaGaGaGaGaSaGaGaGaTaGaGaFamamamamamamamamamamamaiababafaa
-aFaGaGaUaGaGaVaGaGaGaWaGaGaFamamamamamamamamamamambkabababaa
-aFbfaUaVaGaGaGaGaGaGaGaGaGaFamamamamamamamamamamamblabababaa
-aFaGaGaGaGaGaGaGaGaGaXaGaGaFamamamamavamamamamamamaiabababaa
+awahahahahahahahahahahahawalalamamamamanamcoamalawawaxauabaa
+awahahaBahahahahahahahaBawalalamamamamamamaDcpalalaiauauabaa
+aFaFaFaFaFaFaFaFaFaGaGaFaFaFalamamamamamamcqamamcraiabadabaa
+aFaHaIaJaGaLaMaGaGaGaGaGaGaFalaGaGamamcsamamamamctaiabababaa
+aFaPaGaGaGaGaGaGaGaGaGaGaGaFalaJaGamcuaDamamamamcvaiabababaa
+aFaGaGaGaGaGaGaGaGcwaGaGaGaFalaGaGamamcxamamamamamaiababafaa
+aFaGaGaGaGaGaGaGaGaGaWaGaGaFalamamamamamamamamamamaiabababaa
+aFbfaGaGaGaGaGaGaGaGaGaGaGaFalamamcyczcAcBcCcDcEamaiabababaa
+aFaGaGaGaGaGaGaGaGaGaXaGaGaFalamamcFamamamamamamamaiabababaa
 aFaFaFaFaGaGaFaFaFaFaFaFaFaFalamamalalalalalalalalaiabababaa
-awbmbnbobpbqbrbsbtbubvbwbxbybzbAbBbCbDbEbFbGbHbIbJaiababbgaa
-awbKbLbMbNbObPbQbRbSbTbUbVbWbXbYbZcacbcccdcecfcgchaiababafaa
-awaiaiaiaiaiaiaiaiaiaiaiaicicjaiaiaiaiaiaiaiaiaiaiaiababaYaa
+awbkbkbkbkbkbkbkbkbkbkbkbkbkbkbkbkbkbkbEbkbkbkbkbkaiababbgaa
+awbKbkbkbkbkbkbkbkbkbTbkbkbkbkbkbkbkbkbkbkbkbkbkchaiababafaa
+awaiaiaiaiaiaiaiaiaiaiaiaibkbkaiaiaiaiaiaiaiaiaiaiaiababaYaa
 aaabacababaZabacabababacababababababacabababababacababaYaYaa
 aaababababbabbabadababababababababababababadabbjababaYaYaYaa
 aaababababababababababababababababababababababbgabaYaYaYaYaa
