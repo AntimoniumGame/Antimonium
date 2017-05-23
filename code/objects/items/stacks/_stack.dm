@@ -66,6 +66,9 @@
 		else
 			name = "[singular_name]"
 
+/obj/item/stack/proc/GetMaterialIconState()
+	return "world"
+
 /obj/item/stack/UpdateIcon(var/list/supplied = list())
 	for(var/stack_amount = min(10, amount), stack_amount > 1, stack_amount--)
 		var/image/I = image(icon = icon, icon_state = GetIndividualStackIcon())

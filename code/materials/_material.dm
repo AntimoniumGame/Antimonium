@@ -10,6 +10,7 @@
 	var/liquid_name
 	var/solid_name
 	var/gas_name
+	var/powder_name
 
 	var/solid_portion_name =         "lump"
 	var/powder_portion_name =        "pinch"
@@ -26,12 +27,14 @@
 	var/ignition_point = TEMPERATURE_NEVER_HOT
 
 	var/colour = WHITE
+	var/grindable = FALSE
 
 /datum/material/New()
 
 	if(!general_name) general_name = "matter"
 	if(!descriptor)   descriptor =   general_name
 	if(!solid_name)   solid_name =   general_name
+	if(!powder_name)  powder_name =  "[general_name] dust"
 	if(!liquid_name)  liquid_name =  "molten [general_name]"
 	if(!gas_name)     gas_name =     "[general_name] vapour"
 	..()
@@ -45,8 +48,10 @@
 /datum/material/proc/GetName(var/material_state)
 	if(material_state)
 		switch(material_state)
-			if(STATE_SOLID, STATE_POWDER)
+			if(STATE_SOLID)
 				return solid_name
+			if(STATE_POWDER)
+				return powder_name
 			if(STATE_LIQUID)
 				return liquid_name
 			if(STATE_GAS)

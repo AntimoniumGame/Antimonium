@@ -133,6 +133,7 @@
 #include "code\master_controller\daemons\temperature.dm"
 #include "code\materials\_material.dm"
 #include "code\materials\material_definitions.dm"
+#include "code\materials\material_definitions_herb.dm"
 #include "code\materials\material_definitions_liquid.dm"
 #include "code\materials\material_definitions_metals.dm"
 #include "code\materials\material_definitions_stone.dm"
