@@ -7,12 +7,15 @@
 /mob/proc/ToggleProne()
 	prone = !prone
 	density = !prone
-	UpdateIcon()
+	if(prone && sitting)
+		ToggleSitting()
+	else
+		UpdateIcon()
 
 /mob/proc/UpdateStance()
 	set waitfor = 0
 	sleep(1)
-	if(prone)
+	if(prone || sitting)
 		return
 	stance_score = 0
 	for(var/limb_id in stance_limbs)

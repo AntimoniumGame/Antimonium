@@ -10,6 +10,13 @@
 	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.wav'
 
+/obj/structure/SetDir(var/newdir)
+	..(newdir)
+	if((flags & FLAG_SEATING) && loc)
+		for(var/mob/mob in loc.contents)
+			if(mob.sitting)
+				mob.SetDir(dir)
+
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)

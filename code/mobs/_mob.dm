@@ -37,5 +37,5 @@
 		name = key
 
 /mob/FaceAtom()
-	if(!prone || dragged)
+	if((!prone && !sitting) || dragged)
 		. = ..()

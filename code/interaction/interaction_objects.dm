@@ -28,6 +28,10 @@
 		NotifyNearby("\The [user] extinguishes \the [src].")
 		Extinguish()
 		return TRUE
+	if((flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(loc))
+		user.SetDir(dir)
+		user.ToggleSitting()
+		return TRUE
 	return FALSE
 
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
