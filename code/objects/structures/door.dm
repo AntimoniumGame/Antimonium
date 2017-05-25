@@ -30,7 +30,7 @@
 	return TRUE
 
 // Inherits from containers, but overrides.
-/obj/structure/door/ToggleOpen(var/mob/user)
+/obj/structure/door/ToggleOpen(var/mob/user, var/slot)
 
 	var/opener_dir = get_dir(src, user)
 	var/slam = ((user.intent.selecting != INTENT_HELP) || !user.walking)

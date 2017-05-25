@@ -16,6 +16,9 @@
 	var/collect_sound = 'sounds/effects/click1.wav'
 	var/equip_sound = 'sounds/effects/rustle1.wav'
 
+/obj/item/proc/GetHeatInsulation()
+	return (material ? material.thermal_insulation : 0)
+
 /obj/item/GetWeight()
 	return weight
 
@@ -42,7 +45,33 @@
 	return
 
 /obj/item/proc/GetWornIcon(var/inventory_slot)
+	// Hardcoding this for now. I am sure a better system will come along in the future.
+	var/list/limb_check_list = list()
+	if(inventory_slot == SLOT_UPPER_BODY)
+		limb_check_list = list(BP_LEFT_ARM, BP_RIGHT_ARM)
+	else if(inventory_slot == SLOT_LOWER_BODY)
+		limb_check_list = list(BP_LEFT_LEG, BP_RIGHT_LEG)
+	else if(inventory_slot == SLOT_HANDS)
+		limb_check_list = list(BP_LEFT_HAND, BP_RIGHT_HAND)
+	else if(inventory_slot == SLOT_FEET)
+		limb_check_list = list(BP_LEFT_FOOT, BP_RIGHT_FOOT)
+
+	if(limb_check_list.len)
+		var/mob/owner = loc
+		if(istype(owner))
+			var/image/I = image(null)
+			for(var/limb in limb_check_list)
+				var/obj/item/limb/bp = owner.limbs[limb]
+				if(istype(bp))
+					if(bp.not_moving)
+						I.overlays += image(icon, "[limb]_static")
+					else
+						I.overlays += image(icon, "[limb]")
+				else
+					I.overlays += image(icon, "[limb]_missing")
+			return I
 	return image(icon = icon, icon_state = inventory_slot)
+
 
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
 	return image(icon = icon, icon_state = "prone_[inventory_slot]")

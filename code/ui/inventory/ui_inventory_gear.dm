@@ -32,8 +32,11 @@
 		if(holding)
 			var/obj/ui/inv/inv_slot = owner.inventory_slots[slot]
 			prop = holding
+			if(!prop.BeforeRemoved(owner, slot))
+				return
 			ForgetHeld()
 			inv_slot.SetHeld(prop)
 			PlayLocalSound(owner, prop.equip_sound, 100)
 			owner.NotifyNearby("\The [owner] removes \the [prop] from [owner.Their()] [unmodified_name].")
+			prop.AfterRemoved(owner, slot)
 	owner.UpdateIcon()

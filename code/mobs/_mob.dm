@@ -7,6 +7,7 @@
 
 	var/weight = 50
 	var/datum/job/job
+	var/burn_point = TEMPERATURE_BURNING
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null

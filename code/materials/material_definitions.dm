@@ -27,3 +27,10 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 460
+
+/datum/material/leather
+	general_name = "leather"
+	strength = 0.1
+	weight_modifier = 0.2
+	sharpness_modifier = 0.1
+	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder

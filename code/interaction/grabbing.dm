@@ -61,7 +61,8 @@
 			Notify("You already have a grip on \the [grabbing].")
 			return
 
-	if(grabbing.Burn(src))
+	if(grabbing.Burn(src, SLOT_HANDS))
+		Notify("\The [src] is far too hot to grab!")
 		return
 
 	if(!grabbing.IsSolid())

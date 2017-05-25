@@ -16,17 +16,17 @@
 	var/vital = FALSE
 	var/grasp_name
 	var/grasp_plural
-	var/holding = FALSE
+	var/not_moving = FALSE
 
-/obj/item/limb/proc/SetHolding(var/_holding, var/update_icon = FALSE)
-	holding = _holding
-	if(holding)
+/obj/item/limb/proc/SetNotMoving(var/_not_moving, var/update_icon = FALSE)
+	not_moving = _not_moving
+	if(not_moving)
 		owner.UpdateIcon()
 
 /obj/item/limb/GetWornIcon(var/inventory_slot)
 	if(inventory_slot != "mob")
 		return ..()
-	return image(icon = icon, icon_state = (holding ? "mob-filled" : "mob"))
+	return image(icon = icon, icon_state = (not_moving ? "mob_static" : "mob"))
 
 /obj/item/limb/GetInvIcon()
 	return GetWornIcon("world")

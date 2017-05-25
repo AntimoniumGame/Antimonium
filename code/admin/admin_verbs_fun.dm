@@ -52,5 +52,7 @@
 		mob.CollectItemOrDel(new /obj/item/clothing/pants(), SLOT_LOWER_BODY)
 	if(!mob.GetEquipped(SLOT_FEET))
 		mob.CollectItemOrDel(new /obj/item/clothing/boots(), SLOT_FEET)
+	if(!mob.GetEquipped(SLOT_HANDS))
+		mob.CollectItemOrDel(new /obj/item/clothing/gloves(), SLOT_HANDS)
 
 	Anotify("Mob dressed.")

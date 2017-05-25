@@ -12,11 +12,23 @@
 	// Update some
 	HandlePain()
 	HandleBleeding()
+	UpdateGrasp()
 	UpdateStance()
 	health.UpdateIcon()
 
 /mob/proc/HandlePain()
 	return
+
+/mob/proc/UpdateGrasp()
+	//TODO: move this to limbs
+	var/obj/item/holding = GetEquipped(SLOT_LEFT_HAND)
+	if(istype(holding) && holding.Burn(src, SLOT_HANDS))
+		Notify("\The [holding] sears your left hand and falls from your grasp!")
+		DropItem(holding)
+	holding = GetEquipped(SLOT_RIGHT_HAND)
+	if(istype(holding) && holding.Burn(src, SLOT_HANDS))
+		Notify("\The [holding] sears your right hand and falls from your grasp!")
+		DropItem(holding)
 
 /mob/proc/HandleBleeding()
 	if(dead)

@@ -184,6 +184,7 @@
 #include "code\objects\items\torch.dm"
 #include "code\objects\items\clothing\_clothing.dm"
 #include "code\objects\items\clothing\boots.dm"
+#include "code\objects\items\clothing\gloves.dm"
 #include "code\objects\items\clothing\pants.dm"
 #include "code\objects\items\clothing\shirt.dm"
 #include "code\objects\items\plants\plant.dm"
