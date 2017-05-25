@@ -5,7 +5,6 @@
 /obj/structure/cask
 	name = "cask"
 	icon = 'icons/objects/structures/cask.dmi'
-	density = 0
 	icon_state = "flat"
 	weight = 30
 	default_material_path = /datum/material/wood

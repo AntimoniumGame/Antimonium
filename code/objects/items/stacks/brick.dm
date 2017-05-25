@@ -10,7 +10,7 @@
 
 /obj/item/stack/bricks/New()
 	..()
-	icon_state = "[rand(1,3)]"
+	icon_state = GetIndividualStackIcon()
 
 /obj/item/stack/bricks/GetIndividualStackIcon()
 	return "[rand(1,3)]"
