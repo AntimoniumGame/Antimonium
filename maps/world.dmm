@@ -93,6 +93,44 @@
 "bO" = (/obj/item/stack/bricks,/turf/floor/grass,/area/lighting/outdoors)
 "bP" = (/obj/item/stack/bricks,/turf/floor/grass,/area/lighting/outdoors)
 "bQ" = (/obj/item/stack/bricks,/turf/floor/grass,/area/lighting/outdoors)
+"bR" = (/turf/wall/tiled,/area/lighting/indoors)
+"bS" = (/turf/wall/tiled,/area/lighting/indoors)
+"bT" = (/turf/wall/tiled,/area/lighting/indoors)
+"bU" = (/turf/wall/tiled,/area/lighting/indoors)
+"bV" = (/turf/wall/tiled,/area/lighting/indoors)
+"bW" = (/turf/wall/tiled,/area/lighting/indoors)
+"bX" = (/turf/wall/tiled,/area/lighting/indoors)
+"bY" = (/turf/wall/tiled,/area/lighting/indoors)
+"bZ" = (/turf/wall/tiled,/area/lighting/indoors)
+"ca" = (/turf/wall/tiled,/area/lighting/indoors)
+"cb" = (/turf/wall/tiled,/area/lighting/indoors)
+"cc" = (/turf/wall/tiled,/area/lighting/indoors)
+"cd" = (/turf/wall/tiled,/area/lighting/indoors)
+"ce" = (/turf/wall/tiled,/area/lighting/indoors)
+"cf" = (/turf/wall/tiled,/area/lighting/indoors)
+"cg" = (/turf/wall/tiled,/area/lighting/indoors)
+"ch" = (/turf/wall/tiled,/area/lighting/indoors)
+"ci" = (/turf/wall/tiled,/area/lighting/indoors)
+"cj" = (/turf/wall/tiled,/area/lighting/indoors)
+"ck" = (/turf/wall/tiled,/area/lighting/indoors)
+"cl" = (/turf/wall/tiled,/area/lighting/indoors)
+"cm" = (/turf/wall/tiled,/area/lighting/indoors)
+"cn" = (/turf/wall/tiled,/area/lighting/indoors)
+"co" = (/turf/wall/tiled,/area/lighting/indoors)
+"cp" = (/turf/wall/tiled,/area/lighting/indoors)
+"cq" = (/turf/wall/tiled,/area/lighting/indoors)
+"cr" = (/turf/wall/tiled,/area/lighting/indoors)
+"cs" = (/turf/wall/tiled,/area/lighting/indoors)
+"ct" = (/turf/wall/tiled,/area/lighting/indoors)
+"cu" = (/turf/wall/tiled,/area/lighting/indoors)
+"cv" = (/turf/wall/tiled,/area/lighting/indoors)
+"cw" = (/turf/wall/tiled,/area/lighting/indoors)
+"cx" = (/turf/wall/tiled,/area/lighting/indoors)
+"cy" = (/turf/wall/tiled,/area/lighting/indoors)
+"cz" = (/turf/wall/tiled,/area/lighting/indoors)
+"cA" = (/turf/wall/tiled,/area/lighting/indoors)
+"cB" = (/turf/wall/tiled,/area/lighting/indoors)
+"cC" = (/turf/wall/tiled,/area/lighting/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -100,29 +138,29 @@ aaabababacabababababababababacababababababababacabababababaa
 aaababababababababababababababababababababababababababababaa
 aaabababababababababababababadababababababababababababababaa
 aaababaeababababaeababababababababaeabababababaeababababafaa
-agagagagagahahagagagagagagaiaiaiaiaiaiaiajajaiaiaiaiabababaa
-agahahakahahahahakahahahagalamamamanamamamamamamamaiabababaa
-agahaoahahahahahahahahahagalamapamapamamamamamaqamaibiababaa
-agahahahahahahahahahararagalamapamapamasamamamamamaibjababaa
-agahahahahahahahaharararagalatamamamamamamamamamamaibkababaa
-agahahahahahauahahahararagalamamavamamamamamblalalaiawawafaa
-agaxahahahahahahahahahahagalamamamamamaybmbnboalagagazawabaa
-agahahahahaAahahahahahahagalalamamalalalalalalalagaBazawabaa
-agahahahahahahahahahahahagalalamamamamanamaCamalagagazawabaa
-agahahaDahahahahahahahaDagalalaHaHbpamamamaEaFalalaiawawabaa
-aGaGaGaGaGaGaGaGaGaHaHaGaGaGalaMaHbqamaCamaIamamaJaibradabaa
-aGaKaLaMaHaNaOaHaHaHaHaHaHaGalaHaHbsaRaEamamamamaPaibtababaa
-aGaQaHaHaHaHaHaHaHaHaHaHaHaGalamamamamaIamamamamaSaibuababaa
+bRbSbTbUbVahahbWbXbYbZcacbaiaiaiaiaiaiaiajajaiaiaiaiabababaa
+ccahahakahahahahakahahahcdalamamamanamamamamamamamaiabababaa
+ceahaoahahahahahahahahahcfalamapamapamamamamamaqamaibiababaa
+cgahahahahahahahahahararchalamapamapamasamamamamamaibiababaa
+ciahahahahahahahaharararcjalatamamamamamamamamamamaibiababaa
+ckahahahahahauahahahararclalamamavamamamamamblalalaiawawafaa
+cmaxahahahahahahahahahahcnalamamamamamaybmbmbmalagagazawabaa
+coahahahahaAahahahahahahcpalalamamalalalalalalalagaBazawabaa
+cqahahaDahahahahahahahaDcralalamamamamanamaCamalagagazawabaa
+csctcucvcwcxcyczcAahahcBcCalalaHaHblamamamaEaFalalaiawawabaa
+aGaGaGaGaGaGaGaGaGaHaHaGaGaGalaMaHblamaCamaIamamaJaibiadabaa
+aGaKaLaMaHaNaOaHaHaHaHaHaHaGalaHaHblaRaEamamamamaPaibiababaa
+aGaQaHaHaHaHaHaHaHaHaHaHaHaGalamamamamaIamamamamaSaibiababaa
 aGaHaHaHaHaHaHaHaHaTaHaHaHaGalamamamamamamamamamamaiababafaa
 aGaHaHaHaHaHbvaHaHaHaUaHaHaGalamamaWaWaWaWaWaWaWamaiabababaa
-aGaVaHaHaHaHbwaHaHaHaHaHaHaGalamamaWamamamamamamamaibxababaa
-aGaHaHaHaHaHaHaHaHaHaXaHaHaGalamamaWbybzbAaEaEbBbCaibDababaa
-aGaGaGaGaHaHaGaGaGaGaGaGaGaGalamamalalalalalalalalaibEababaa
+aGaVaHaHaHaHbvaHaHaHaHaHaHaGalamamaWamamamamamamamaibiababaa
+aGaHaHaHaHaHaHaHaHaHaXaHaHaGalamamaWbybybyaEaEbBbBaibiababaa
+aGaGaGaGaHaHaGaGaGaGaGaGaGaGalamamalalalalalalalalaibiababaa
 agajajajajajajajajajajajajajajajajajajaYajajajajajaiababaZaa
 agbaajajajajajajajajbbajajajajajajajajbFajajajajbcaiababafaa
 agaiaiaiaiaiaiaiaiaiaiaiaiajajaiaiaiaiaiaiaiaiaiaiaiababbdaa
-aaabacababbeabacbGbHbIacababababababacbJbKbLbMbNacababbdbdaa
-aaababababbfbgabadabababababbObPabababababadababababbdbdbdaa
-aaababababababababababababababbQabababababababaZabbdbdbdbhaa
+aaabacababbeabacbGbGbGacababababababacbGbGbGbGbGacababbdbdaa
+aaababababbfbgabadabababababbObOabababababadababababbdbdbdaa
+aaababababababababababababababbOabababababababaZabbdbdbdbhaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
