@@ -9,6 +9,7 @@
 #define DARK_RED      "#AC3232"
 #define DARK_BLUE     "#306082"
 #define DARK_GREEN    "#4B692F"
+#define DARK_PURPLE   "#3F3F74"
 
 #define BRIGHT_YELLOW "#FBF236"
 #define BRIGHT_ORANGE "#DF7126"

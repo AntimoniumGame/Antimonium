@@ -19,7 +19,7 @@
 			material_state = STATE_GAS
 		else if(temperature >= material.melting_point)
 			material_state = STATE_LIQUID
-		else
+		else if(material_state != STATE_POWDER)
 			material_state = STATE_SOLID
 
 	UpdateValues()

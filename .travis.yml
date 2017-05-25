@@ -26,6 +26,7 @@ script:
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
   - sed -i '1s/^/#define TRAVIS_TEST\n\n/' code/world.dm
   - DreamMaker antimonium.dme > log.txt
+  - cat log.txt
   - (grep "0 errors, 0 warnings" log.txt)
   - DreamDaemon antimonium.dmb -invisible -trusted -core 2>&1 | tee log.txt
   - (! grep "runtime error:" log.txt)

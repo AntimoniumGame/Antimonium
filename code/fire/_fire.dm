@@ -37,3 +37,6 @@
 
 /atom/proc/IsOnFire()
 	return on_fire
+
+/atom/proc/StokeFire()
+	return //todo

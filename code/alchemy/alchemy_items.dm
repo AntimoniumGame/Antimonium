@@ -1,6 +1,6 @@
 /obj/item/stack/ingredient
 	name = "ingredient"
-	icon = 'icons/objects/items/alchemy/solid.dmi'
+	icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 	default_material_path = /datum/material/metal/antimonium
 
 	stack_name = "pile"
@@ -22,6 +22,7 @@
 		if(!material_path)
 			material = donor.material
 		temperature = donor.temperature
+		material_state = donor.material_state
 	..(newloc, material_path, _amount)
 
 /obj/item/stack/ingredient/UpdateStrings()
@@ -29,6 +30,20 @@
 		name = "[material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 	else
 		name = "[GetAmount()] [material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
+
+/obj/item/stack/ingredient/UpdateIcon()
+	// Gas and liquid states are invisible when held in a container.
+	if(material)
+		if(material_state == STATE_SOLID)
+			icon = material.solid_icon
+		else if(material_state == STATE_POWDER)
+			icon = material.powder_icon
+	else
+		if(material_state == STATE_SOLID)
+			icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
+		else if(material_state == STATE_POWDER)
+			icon = 'icons/objects/items/alchemy/powder_grey.dmi'
+	. = ..()
 
 /obj/item/stack/ingredient/Melt()
 
@@ -63,3 +78,13 @@
 /obj/item/stack/ingredient/Condense()
 	UpdateStrings()
 	UpdateIcon()
+
+/obj/item/stack/Grind(var/mob/user)
+	if(material_state == STATE_SOLID && material && material.grindable)
+		if(user)
+			user.NotifyNearby("\The [user] grinds \the [src] into a fine powder.")
+		material_state = STATE_POWDER
+		new /obj/item/stack/ingredient(get_turf(src), material.type, GetAmount(), src)
+		QDel(src)
+		return TRUE
+	return FALSE

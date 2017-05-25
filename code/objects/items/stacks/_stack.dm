@@ -66,6 +66,9 @@
 		else
 			name = "[singular_name]"
 
+/obj/item/stack/proc/GetIndividualStackIcon()
+	return "world"
+
 /obj/item/stack/UpdateIcon(var/list/supplied = list())
 	for(var/stack_amount = min(10, amount), stack_amount > 1, stack_amount--)
 		var/image/I = image(icon = icon, icon_state = GetIndividualStackIcon())
@@ -75,9 +78,6 @@
 	if(!isnull(initial(shadow_size)))
 		shadow_size = min(3,max(1, round(amount/10)))
 	..(supplied)
-
-/obj/item/stack/proc/GetIndividualStackIcon()
-	return "world"
 
 /obj/item/stack/GetAmount()
 	return amount
