@@ -6,7 +6,7 @@
 	weight = 10
 	default_material_path = /datum/material/wood
 
-/obj/structure/chair/ManipulatedBy(var/mob/user)
+/obj/structure/chair/ManipulatedBy(var/mob/user, var/slot)
 	. = ..()
 	if(!.)
 		if(user.intent.selecting == INTENT_HELP && !(flags & FLAG_ANCHORED))

@@ -8,6 +8,9 @@
 	var/weight = 50
 	var/datum/job/job
 
+/mob/proc/GetSlotByHandedness(var/handedness)
+	return null
+
 /mob/GetWeight()
 	return weight
 

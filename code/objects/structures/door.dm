@@ -26,15 +26,14 @@
 			pixel_y = -32
 
 /obj/structure/door/PushedBy(var/mob/user)
-	TryOpen(get_dir(src, user), ((user.intent.selecting != INTENT_HELP) || !user.walking))
+	ToggleOpen(user)
 	return TRUE
 
-/obj/structure/door/ManipulatedBy(var/mob/user)
-	. = ..()
-	if(!.)
-		TryOpen(get_dir(src, user), ((user.intent.selecting != INTENT_HELP) || !user.walking))
+// Inherits from containers, but overrides.
+/obj/structure/door/ToggleOpen(var/mob/user)
 
-/obj/structure/door/proc/TryOpen(var/opener_dir = dir, var/slam = FALSE)
+	var/opener_dir = get_dir(src, user)
+	var/slam = ((user.intent.selecting != INTENT_HELP) || !user.walking)
 
 	for(var/thing in get_turf(src))
 		if(thing == src) continue
@@ -42,23 +41,23 @@
 		if(atom.density || (atom.flags & FLAG_SIMULATED))
 			NotifyNearby("\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].")
 			return
-
 	var/anim_time = (slam ? 2 : 5)
-	if(!density)
+	if(!open)
+		open = TRUE
 		density = 1
 		opacity = 1
 		animate(src, time = anim_time, transform = null)
 		return
-
 	if(locked)
 		return FALSE
-
+	open = FALSE
 	density = 0
 	opacity = 0
 	if(opener_dir & dir)
 		animate(src, time = anim_time, transform = turn(matrix(), 90))
 	else
 		animate(src, time = anim_time, transform = turn(matrix(), -90))
+	return TRUE
 
 /obj/structure/door/north
 	dir = NORTH
