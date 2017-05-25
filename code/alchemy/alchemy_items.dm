@@ -1,6 +1,6 @@
 /obj/item/stack/ingredient
 	name = "ingredient"
-	icon = 'icons/objects/items/alchemy/solid_grey.dmi'
+	icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 	default_material_path = /datum/material/metal/antimonium
 
 	stack_name = "pile"
@@ -40,7 +40,7 @@
 			icon = material.powder_icon
 	else
 		if(material_state == STATE_SOLID)
-			icon = 'icons/objects/items/alchemy/solid_grey.dmi'
+			icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 		else if(material_state == STATE_POWDER)
 			icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 	. = ..()

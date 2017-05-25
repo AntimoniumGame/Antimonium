@@ -1,8 +1,8 @@
 /obj/structure
 	var/list/contains
-	var/list/max_contains_count =       0
-	var/list/max_contains_size_single = 0
-	var/list/max_contains_size_total =  0
+	var/max_contains_count =       0
+	var/max_contains_size_single = 0
+	var/max_contains_size_total =  0
 	var/open = FALSE
 	var/can_open = FALSE
 
