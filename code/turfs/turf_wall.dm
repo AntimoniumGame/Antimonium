@@ -13,6 +13,10 @@
 	name = "wooden wall"
 	icon = 'icons/turfs/wood_wall.dmi'
 
+/turf/wall/tiled
+	name = "tiled wall"
+	icon = 'icons/turfs/tile_wall.dmi'
+
 /turf/wall/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
 	icon_state = ""
 	var/list/connected_neighbors = list()
