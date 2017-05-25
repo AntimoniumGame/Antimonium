@@ -5,6 +5,7 @@
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	density = FALSE
 	shadow_size = null
+	layer = MOB_LAYER + 0.2
 
 	var/obj/item/torch/filled
 

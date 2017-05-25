@@ -1,6 +1,6 @@
 /obj/item/stack/ingredient
 	name = "ingredient"
-	icon = 'icons/objects/items/alchemy/solid.dmi'
+	icon = 'icons/objects/items/alchemy/solid_grey.dmi'
 	default_material_path = /datum/material/metal/antimonium
 
 	stack_name = "pile"
@@ -31,33 +31,18 @@
 	else
 		name = "[GetAmount()] [material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 
-/obj/item/stack/ingredient/GetMaterialIconState()
-	if(material && material.colour == DARK_PURPLE)
-		return "world-purple"
-	. = ..()
-
 /obj/item/stack/ingredient/UpdateIcon()
-	. = ..()
 	// Gas and liquid states are invisible when held in a container.
-	switch(material_state)
-		if(STATE_SOLID)
-			icon = 'icons/objects/items/alchemy/solid.dmi'
-		if(STATE_POWDER)
-			icon = 'icons/objects/items/alchemy/powder.dmi'
-	icon_state = GetMaterialIconState()
-
-/obj/item/stack/ingredient/GetInvIcon()
-	var/image/I
 	if(material)
-		switch(material.colour)
-			if(DARK_PURPLE)
-				I = GetWornIcon("held-purple")
-	if(I)
-		I.maptext = "<center>x<b>[GetAmount()]</b></center>"
-		I.maptext_width = 32
-		I.maptext_height = 32
-		I.maptext_y = -12
-		return I
+		if(material_state == STATE_SOLID)
+			icon = material.solid_icon
+		else if(material_state == STATE_POWDER)
+			icon = material.powder_icon
+	else
+		if(material_state == STATE_SOLID)
+			icon = 'icons/objects/items/alchemy/solid_grey.dmi'
+		else if(material_state == STATE_POWDER)
+			icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 	. = ..()
 
 /obj/item/stack/ingredient/Melt()

@@ -10,3 +10,8 @@ Code
 Icons
 * Nienhaus.
 * RedStryker.
+* WJohnson.
+
+Special Thanks
+* Techhead.
+* SparklySheep.

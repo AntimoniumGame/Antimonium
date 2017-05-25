@@ -66,7 +66,7 @@
 		else
 			name = "[singular_name]"
 
-/obj/item/stack/proc/GetMaterialIconState()
+/obj/item/stack/proc/GetIndividualStackIcon()
 	return "world"
 
 /obj/item/stack/UpdateIcon(var/list/supplied = list())
@@ -78,9 +78,6 @@
 	if(!isnull(initial(shadow_size)))
 		shadow_size = min(3,max(1, round(amount/10)))
 	..(supplied)
-
-/obj/item/stack/proc/GetIndividualStackIcon()
-	return "world"
 
 /obj/item/stack/GetAmount()
 	return amount

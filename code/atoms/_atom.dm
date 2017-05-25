@@ -57,6 +57,7 @@
 		Initialize()
 
 /atom/proc/Initialize()
+	SetDir(dir)
 	UpdateStrings()
 	UpdateIcon()
 

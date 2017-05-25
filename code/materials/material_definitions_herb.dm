@@ -8,12 +8,13 @@
 
 // placeholders for now
 /datum/material/herb/ginseng
-	general_name = "ginseng root"
-	descriptor = "ginseng"
+	general_name = "ginseng"
 	colour = PALE_BROWN
 	grindable = TRUE
+	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
 
 /datum/material/herb/nightshade
-	general_name = "belladonna flower"
+	general_name = "belladonna"
 	colour = DARK_PURPLE
 	grindable = TRUE
+	powder_icon = 'icons/objects/items/alchemy/powder_purple.dmi'
