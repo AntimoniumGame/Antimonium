@@ -211,6 +211,7 @@
 #include "code\objects\structures\forge_fire.dm"
 #include "code\objects\structures\foundation.dm"
 #include "code\objects\structures\horseshoe.dm"
+#include "code\objects\structures\millstone.dm"
 #include "code\objects\structures\sconce.dm"
 #include "code\objects\structures\table.dm"
 #include "code\objects\structures\earthworks\earthworks.dm"
