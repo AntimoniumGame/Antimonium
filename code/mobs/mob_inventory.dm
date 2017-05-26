@@ -53,7 +53,8 @@
 			for(var/thing in slot.update_bodyparts)
 				var/obj/item/limb/limb = limbs[thing]
 				if(istype(limb))
-					limb.SetHolding(slot.holding ? TRUE : FALSE)
+					limb.SetNotMoving(slot.holding ? TRUE : FALSE)
 
 /mob/proc/GetHeatInsulation(var/slot)
-	return FALSE
+	var/obj/item/covering = GetEquipped(slot)
+	return (istype(covering) ? covering.GetHeatInsulation() : 0)

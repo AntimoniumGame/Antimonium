@@ -38,12 +38,15 @@
 
 /obj/structure/ManipulatedBy(var/mob/user, var/slot)
 	. = ..()
-	if(!. && ToggleOpen(user))
+	if(!. && ToggleOpen(user, slot))
 		return TRUE
 	return FALSE
 
-/obj/structure/proc/ToggleOpen(var/mob/user)
-	if(!can_open || Burn(user))
+/obj/structure/proc/ToggleOpen(var/mob/user, var/slot)
+	if(!can_open)
+		return FALSE
+	if(Burn(user, SLOT_HANDS))
+		user.Notify("\The [src] is far too hot to touch!")
 		return FALSE
 	open = !open
 	if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")

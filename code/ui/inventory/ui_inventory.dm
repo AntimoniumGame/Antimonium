@@ -44,4 +44,4 @@
 		for(var/thing in update_bodyparts)
 			var/obj/item/limb/limb = owner.limbs[thing]
 			if(istype(limb))
-				limb.SetHolding((holding ? TRUE : FALSE), TRUE)
+				limb.SetNotMoving((holding ? TRUE : FALSE), TRUE)

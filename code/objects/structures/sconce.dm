@@ -89,3 +89,4 @@
 				filled.ForceMove(src)
 	else
 		user.Notify("There is no torch in \the [src].")
+	return TRUE

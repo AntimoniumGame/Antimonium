@@ -5,8 +5,7 @@
 		interface.OnClick(object, location, control, params)
 
 /atom/movable/proc/Burn(var/mob/user, var/slot)
-	if(temperature >= TEMPERATURE_BURNING && user.GetHeatInsulation(slot) < TEMPERATURE_BURNING)
-		user.Notify("\The [src] is far too hot to handle!")
+	if(temperature >= user.burn_point && user.GetHeatInsulation(slot) < temperature)
 		return TRUE
 	return FALSE
 

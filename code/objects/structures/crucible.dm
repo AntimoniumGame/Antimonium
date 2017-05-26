@@ -10,5 +10,5 @@
 	max_contains_size_total =  50
 	open = TRUE
 
-/obj/structure/crucible/ToggleOpen(var/mob/user)
+/obj/structure/crucible/ToggleOpen(var/mob/user, var/slot)
 	return

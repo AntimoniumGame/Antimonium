@@ -25,6 +25,9 @@
 			if(istype(grab))
 				grab.CheckState()
 
+	if(sitting)
+		ToggleSitting()
+
 	var/last_loc = loc
 
 	. = ..()

@@ -28,6 +28,10 @@
 		NotifyNearby("\The [user] extinguishes \the [src].")
 		Extinguish()
 		return TRUE
+	if((flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(loc))
+		user.SetDir(dir)
+		user.ToggleSitting()
+		return TRUE
 	return FALSE
 
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
@@ -69,7 +73,10 @@
 	return
 
 /obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
-	return !Burn(user, slot)
+	if(Burn(user, SLOT_HANDS))
+		user.Notify("\The [src] is far too hot to handle!")
+		return FALSE
+	return TRUE
 
 /obj/item/proc/AfterPickedUp()
 	ResetPosition()
@@ -78,3 +85,10 @@
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	transform = null
+
+/obj/item/proc/AfterRemoved(var/mob/user, var/slot)
+	if(slot == SLOT_HANDS)
+		user.UpdateGrasp()
+
+/obj/item/proc/BeforeRemoved(var/mob/user, var/slot)
+	return TRUE

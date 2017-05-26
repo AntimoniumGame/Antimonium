@@ -7,6 +7,7 @@
 
 	var/weight = 50
 	var/datum/job/job
+	var/burn_point = TEMPERATURE_BURNING
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
@@ -36,5 +37,5 @@
 		name = key
 
 /mob/FaceAtom()
-	if(!prone || dragged)
+	if((!prone && !sitting) || dragged)
 		. = ..()
