@@ -1,6 +1,9 @@
 /mob/ExaminedBy(var/mob/clicker)
 	. = ..()
 
+	if(role)
+		clicker.Dnotify("Role#\ref[role] - job: [role.job ? "[role.job.GetTitle(src)] (\ref[role.job])" : "null"], antag: [jointext(role.antagonist_roles, ", ")]")
+
 	if(. && (src == clicker || clicker.intent.selecting == INTENT_HELP))
 		clicker.NotifyNearby("\The [clicker] begins checking [src == clicker ? src.Themself() : "\the [src]"] over for injuries.")
 		spawn()

@@ -10,6 +10,21 @@
 		if(command.CanInvoke(invoker))
 			invoker.Notify("<b>[command.command]</b> - [command.usage] - [command.description]")
 
+/datum/chat_command/objectives
+	command = "objectives"
+	usage = "/OBJECTIVES"
+	description = "Lists your current objectives, if any."
+
+/datum/chat_command/objectives/Invoke(var/mob/invoker, var/text)
+	if(invoker.role && invoker.role.objectives.len)
+		var/i = 0
+		for(var/thing in invoker.role.objectives)
+			var/datum/objective/o = thing
+			i++
+			invoker.Notify("#[i]. [o.text]")
+	else
+		invoker.Notify("You do not currently have any objectives.")
+
 /datum/chat_command/emote
 	command = "me"
 	usage = "/ME \<emote\>"

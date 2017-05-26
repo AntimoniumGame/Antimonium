@@ -9,6 +9,7 @@
 	InitializeAdminDatabase()
 	InitializeChatCommands()
 	InitializeJobs()
+	InitializeAntagonists()
 
 	for(var/thing in atoms_to_initialize)
 		var/atom/atom = thing

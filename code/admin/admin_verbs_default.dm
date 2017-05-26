@@ -39,5 +39,5 @@ var/force_start = FALSE
 	var/mob/human/player_mob = new()
 	player_mob.ForceMove(locate(3,3,1))
 	player_mob.name = mob.key
-	player_mob.key = mob.key
+	old_mob.TransferControlTo(player_mob)
 	QDel(old_mob)
