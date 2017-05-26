@@ -2,7 +2,6 @@
 	associated_permission = PERMISSIONS_MODERATOR
 	verbs = list(
 		/client/proc/Reboot,
-		/client/proc/ListOnline,
 		/client/proc/StartGame,
 		/client/proc/Respawn
 		)
@@ -30,17 +29,6 @@ var/force_start = FALSE
 		to_chat(world, "<b>Server rebooting - initiated by [key]!</b>")
 		sleep(5)
 		world.Reboot()
-
-/client/proc/ListOnline()
-
-	set name = "Who"
-	set category = "Admin"
-
-	for(var/client/player in clients)
-		if(player.admin_permissions)
-			Anotify("[player.key] (<b>[player.admin_permissions.title]</b>)")
-		else
-			Anotify("[player.key]")
 
 /client/proc/Respawn()
 
