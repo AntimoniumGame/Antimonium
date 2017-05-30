@@ -1,0 +1,1 @@
+# Enter ckeys in this file, one per line, to be loaded at roundstart as default administrators and entered in the SQL database.

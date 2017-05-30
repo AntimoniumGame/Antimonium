@@ -86,6 +86,7 @@
 #include "code\client\interface.dm"
 #include "code\client\login.dm"
 #include "code\client\save.dm"
+#include "code\config\_config.dm"
 #include "code\crafting\_crafting.dm"
 #include "code\crafting\crafting_materials.dm"
 #include "code\crafting\crafting_materials_recipes.dm"
