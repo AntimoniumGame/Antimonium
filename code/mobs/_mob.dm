@@ -6,7 +6,6 @@
 	shadow_size = 2
 
 	var/weight = 50
-	var/datum/job/job
 	var/burn_point = TEMPERATURE_BURNING
 
 /mob/proc/GetSlotByHandedness(var/handedness)
@@ -39,3 +38,9 @@
 /mob/FaceAtom()
 	if((!prone && !sitting) || dragged)
 		. = ..()
+
+/mob/proc/TransferControlTo(var/mob/other)
+	if(role)
+		role.mob = other
+		other.role = role
+	other.key = key

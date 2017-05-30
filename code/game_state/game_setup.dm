@@ -2,10 +2,14 @@
 	ident = GAME_SETTING_UP
 
 /datum/game_state/setup/Init()
+
 	mc = new()
+
 	InitializeAdminPermissions()
 	InitializeAdminDatabase()
+	InitializeChatCommands()
 	InitializeJobs()
+	InitializeAntagonists()
 
 	for(var/thing in atoms_to_initialize)
 		var/atom/atom = thing

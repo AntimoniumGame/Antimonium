@@ -2,7 +2,6 @@
 	associated_permission = PERMISSIONS_MODERATOR
 	verbs = list(
 		/client/proc/Reboot,
-		/client/proc/ListOnline,
 		/client/proc/StartGame,
 		/client/proc/Respawn
 		)
@@ -31,17 +30,6 @@ var/force_start = FALSE
 		sleep(5)
 		world.Reboot()
 
-/client/proc/ListOnline()
-
-	set name = "Who"
-	set category = "Admin"
-
-	for(var/client/player in clients)
-		if(player.admin_permissions)
-			Anotify("[player.key] (<b>[player.admin_permissions.title]</b>)")
-		else
-			Anotify("[player.key]")
-
 /client/proc/Respawn()
 
 	set name = "Respawn"
@@ -51,5 +39,5 @@ var/force_start = FALSE
 	var/mob/human/player_mob = new()
 	player_mob.ForceMove(locate(3,3,1))
 	player_mob.name = mob.key
-	player_mob.key = mob.key
+	old_mob.TransferControlTo(player_mob)
 	QDel(old_mob)

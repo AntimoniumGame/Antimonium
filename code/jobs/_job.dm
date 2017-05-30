@@ -1,11 +1,8 @@
 var/list/job_datums = list()
-var/list/job_datums_by_path = list()
 
 /proc/InitializeJobs()
 	for(var/jtype in typesof(/datum/job)-/datum/job)
-		var/datum/job/job = new jtype()
-		job_datums += job
-		job_datums_by_path[jtype] = job
+		job_datums += new jtype()
 
 /datum/job
 	var/name = "Jobber"
@@ -15,13 +12,14 @@ var/list/job_datums_by_path = list()
 	var/welcome_text = "You do the thing. You do it well."
 	var/maximum_slots = -1
 
+/datum/job/proc/GetTitle(var/mob/checking)
+	return ((name_female && checking.gender == FEMALE) ? "[the] [name_female]" : "[the] [name]")
+
 /datum/job/proc/Welcome(var/mob/welcoming)
-	if(name_female && welcoming.gender == FEMALE)
-		welcoming.Notify("You are <b>[the] [name_female]</b>!")
-	else
-		welcoming.Notify("<br><br>You are <b>[the] [name]</b>!</br>")
+	welcoming.Notify("You are <b>[GetTitle(welcoming)]</b>!")
 	welcoming.Notify("You answer to <b>[commander]</b>.")
 	welcoming.Notify("[welcome_text]")
+	welcoming.role.job = src
 
 /datum/job/proc/Equip(var/mob/equipping)
 	return
