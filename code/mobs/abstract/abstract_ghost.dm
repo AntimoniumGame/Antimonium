@@ -1,5 +1,6 @@
 /mob/abstract/ghost
 	name = "ghost"
+	icon_state = "ghost"
 	dead = TRUE
 	density = 0
 	see_invisible = INVISIBILITY_GHOST

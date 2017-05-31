@@ -7,6 +7,11 @@
 /datum/job/ironmonger
 	name = "Ironmonger"
 
+/datum/job/bondsman
+	name = "Bondsman"
+	the = "a"
+
+/*
 /datum/job/machinist
 	name = "Machinist"
 
@@ -25,13 +30,11 @@
 /datum/job/tailor
 	name = "Tailor"
 
-/datum/job/bondsman
-	name = "Bondsman"
-	the = "a"
-
 /datum/job/occultist
 	name = "Occultist"
 
 /datum/job/rifleman
 	name = "Rifleman"
 	the = "a"
+
+*/
