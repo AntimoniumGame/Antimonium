@@ -63,7 +63,8 @@
 	var/total_size = 0
 	for(var/thing in contains)
 		var/atom/atom = thing
-		total_size += atom.GetAmount()
+		if(istype(atom))
+			total_size += atom.GetAmount()
 	if(total_size + prop.GetAmount() > max_contains_size_total)
 		return FALSE
 	return TRUE

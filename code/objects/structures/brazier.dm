@@ -32,4 +32,4 @@
 
 /obj/structure/brazier/ProcessFire()
 	..()
-	RadiateHeat(base_temperature, 0)
+	RadiateHeat(temperature, 0)

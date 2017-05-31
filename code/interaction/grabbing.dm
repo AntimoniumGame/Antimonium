@@ -62,7 +62,7 @@
 			return
 
 	if(grabbing.Burn(src, SLOT_HANDS))
-		Notify("\The [src] is far too hot to grab!")
+		Notify("\The [grabbing] is far too hot to grab!")
 		return
 
 	if(!grabbing.IsSolid())

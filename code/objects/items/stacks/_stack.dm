@@ -1,14 +1,11 @@
 /obj/item/stack
-	name = "coins"
 	sharpness = 0
 	contact_size = 1
-	default_material_path = /datum/material/metal/gold
-	icon = 'icons/objects/items/coin.dmi'
 
 	var/amount = 20
 	var/max_amount = 20
-	var/singular_name = "coin"
-	var/plural_name =   "coins"
+	var/singular_name = "thing"
+	var/plural_name =   "things"
 	var/stack_name =    "stack"
 
 /obj/item/stack/GetWeight()

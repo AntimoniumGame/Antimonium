@@ -22,8 +22,8 @@
 		return CanUseLimb(inv_slot.associated_limb)
 	return TRUE
 
-/mob/proc/CreateLimbs() //placeholder
-	limbs[BP_CHEST] =      new /obj/item/limb(src,       "upper body",  'icons/objects/items/limbs/chest.dmi',      BP_CHEST ,     _root = TRUE, _vital = TRUE, _size = 10)
+/mob/proc/CreateLimbs()
+	limbs[BP_CHEST] = new /obj/item/limb(src, "body", 'icons/objects/items/limbs/chest.dmi', BP_CHEST, _root = TRUE, _vital = TRUE, _size = 10)
 
 /mob/proc/ToggleSitting()
 	sitting = !sitting
