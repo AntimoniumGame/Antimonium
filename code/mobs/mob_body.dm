@@ -6,7 +6,7 @@
 /mob/proc/CanUseLimb(var/slot)
 	var/obj/item/limb/hand = limbs[slot]
 	if(!istype(hand))
-		Notify("You are missing that limb ([slot])!")
+		Notify("You are missing that limb!")
 		return FALSE
 	if(hand.broken)
 		Notify("Your [hand.name] is broken and unusable.")
