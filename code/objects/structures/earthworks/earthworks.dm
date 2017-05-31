@@ -10,6 +10,12 @@
 		return TRUE
 	. = ..()
 
+/obj/structure/earthworks/ManipulatedBy(var/mob/user, var/slot)
+	if(user.IsDigger() && user.CanUseInvSlot(slot))
+		FillIn(user)
+		return TRUE
+	. = ..()
+
 /obj/structure/earthworks/proc/FillIn(var/mob/user)
 	user.NotifyNearby("\The [user] fills in \the [src].")
 	QDel(src)

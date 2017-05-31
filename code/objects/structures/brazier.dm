@@ -1,7 +1,7 @@
 /obj/structure/brazier
 	name = "brazier"
 	icon = 'icons/objects/structures/brazier.dmi'
-	hit_sound = 'sounds/effects/ding1.wav'
+	hit_sound = 'sounds/effects/ding1.ogg'
 	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
 	shadow_size = 3
@@ -14,9 +14,12 @@
 
 /obj/structure/brazier/New()
 	..()
+	next_burn_sound = rand(10,20)
+
+/obj/structure/brazier/Initialize()
+	..()
 	Ignite()
 	processing_objects += src
-	next_burn_sound = rand(10,20)
 
 /obj/structure/brazier/Destroy()
 	processing_objects -= src
@@ -29,4 +32,4 @@
 
 /obj/structure/brazier/ProcessFire()
 	..()
-	RadiateHeat(base_temperature, 0)
+	RadiateHeat(temperature, 0)

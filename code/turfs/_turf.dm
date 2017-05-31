@@ -18,8 +18,14 @@
 	HandleInteraction(clicker, slot)
 
 /turf/proc/HandleInteraction(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
-	if(IsAdjacentTo(get_turf(clicker), src) && clicker.GetEquipped(slot))
-		AttackedBy(clicker, clicker.GetEquipped(slot))
+	if(IsAdjacentTo(get_turf(clicker), src))
+		if(clicker.GetEquipped(slot))
+			AttackedBy(clicker, clicker.GetEquipped(slot))
+		else
+			ManipulatedBy(clicker, slot)
+
+/turf/proc/ManipulatedBy(var/mob/user, var/slot)
+	return
 
 /turf/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(user.intent.selecting == INTENT_HARM)
@@ -32,7 +38,7 @@
 	return 10
 
 /turf/proc/GetFootstepSound(var/mob/walker)
-	return 'sounds/effects/footstep1.wav'
+	return 'sounds/effects/footstep1.ogg'
 
 /turf/proc/GetSoundEnvironment()
 	return -1

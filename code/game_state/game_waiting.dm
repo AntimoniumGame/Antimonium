@@ -1,9 +1,10 @@
 /datum/game_state/waiting
 	ident = GAME_LOBBY_WAITING
-	var/roundstart_delay = 100 //1800
+	var/roundstart_delay = 1800
+	var/force_start
 
 /datum/game_state/waiting/Start()
-	to_chat(world, "<b>Welcome to the lobby. The game will begin shortly.</b>")
+	to_chat(world, "<h3><b>Welcome to the lobby. The game will begin shortly.</b></h3>")
 	Tick()
 
 /datum/game_state/waiting/Tick()
@@ -22,4 +23,4 @@
 			player.join.UpdateIcon()
 
 /datum/game_state/waiting/OnLogin(var/client/player)
-	to_chat(world, "<b>The game will begin in a few minutes!</b>")
+	to_chat(world, "<h3><b>The game will begin in a few minutes!</b></h3>")

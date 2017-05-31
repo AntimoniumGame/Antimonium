@@ -1,14 +1,11 @@
 /obj/item/stack
-	name = "coins"
 	sharpness = 0
 	contact_size = 1
-	default_material_path = /datum/material/metal/gold
-	icon = 'icons/objects/items/coin.dmi'
 
 	var/amount = 20
 	var/max_amount = 20
-	var/singular_name = "coin"
-	var/plural_name =   "coins"
+	var/singular_name = "thing"
+	var/plural_name =   "things"
 	var/stack_name =    "stack"
 
 /obj/item/stack/GetWeight()
@@ -28,7 +25,7 @@
 
 	var/split_amount = max(1,round(GetAmount()/2))
 	Remove(split_amount)
-	new type(get_turf(user), material.type, split_amount, src)
+	new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
 	user.NotifyNearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
@@ -66,13 +63,17 @@
 		else
 			name = "[singular_name]"
 
+/obj/item/stack/proc/GetIndividualStackIcon()
+	return "world"
+
 /obj/item/stack/UpdateIcon(var/list/supplied = list())
 	for(var/stack_amount = min(10, amount), stack_amount > 1, stack_amount--)
-		var/image/I = image(icon = icon, icon_state = "world")
+		var/image/I = image(icon = icon, icon_state = GetIndividualStackIcon())
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
 		supplied += I
-	shadow_size = min(3,max(1, round(amount/10)))
+	if(!isnull(initial(shadow_size)))
+		shadow_size = min(3,max(1, round(amount/10)))
 	..(supplied)
 
 /obj/item/stack/GetAmount()

@@ -25,6 +25,9 @@
 			if(istype(grab))
 				grab.CheckState()
 
+	if(sitting)
+		ToggleSitting()
+
 	var/last_loc = loc
 
 	. = ..()
@@ -38,7 +41,7 @@
 				if(smeared_with[mat] <= 0)
 					smeared_with[mat] = null
 					smeared_with -= mat
-				Smear(src, last_loc, loc, mat.type, !prone)
+				Smear(last_loc, loc, mat.type, !prone)
 
 			// Move anything we're dragging a step towards us.
 			for(var/thing in active_grabs)

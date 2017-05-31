@@ -6,6 +6,11 @@
 	weight_modifier = 1
 	sharpness_modifier = 1.5
 
+/datum/material/stone/glass
+	general_name = "glass"
+	melting_point = 1400
+	sharpness_modifier = 5
+
 /datum/material/stone/clay
 	general_name = "fired clay"
 	descriptor = "ceramic"

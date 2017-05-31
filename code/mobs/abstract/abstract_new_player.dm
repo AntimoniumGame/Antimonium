@@ -57,11 +57,16 @@
 
 	var/mob/human/player_mob = new()
 	player_mob.ForceMove(locate(3,3,1))
-	player_mob.job = input("Choose a job.") as anything in job_datums
 	player_mob.name = key
-	player_mob.key = key
-	player_mob.job.Welcome(player_mob)
-	player_mob.job.Equip(player_mob)
+	TransferControlTo(player_mob)
+
+	var/datum/job/job = pick(job_datums)
+	job.Welcome(player_mob)
+	job.Equip(player_mob)
+
+	var/datum/antagonist/antag = pick(antagonist_datums)
+	antag.AddAntagonist(player_mob.role)
+
 	QDel(src)
 
 /mob/abstract/new_player/DoSay(var/message)

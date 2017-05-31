@@ -1,0 +1,11 @@
+##
+# Config options are specified in the format of:
+# config_name config_value
+# ie. wiki_url https://github.com/AntimoniumGame/Antimonium/wiki
+#
+# Lines beginning with a # are not processed.
+##
+
+discord_url https://discord.gg/54Q6TfP
+rules_url https://github.com/AntimoniumGame/Antimonium/wiki/Rules
+wiki_url https://github.com/AntimoniumGame/Antimonium/wiki

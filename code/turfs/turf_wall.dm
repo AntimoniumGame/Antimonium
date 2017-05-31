@@ -5,10 +5,6 @@
 	density = 1
 	opacity = 1
 
-/turf/wall/New()
-	..()
-	UpdateIcon()
-
 /turf/wall/stone
 	name = "stone wall"
 	icon = 'icons/turfs/stone_wall.dmi'
@@ -16,6 +12,10 @@
 /turf/wall/wood
 	name = "wooden wall"
 	icon = 'icons/turfs/wood_wall.dmi'
+
+/turf/wall/tiled
+	name = "tiled wall"
+	icon = 'icons/turfs/tile_wall.dmi'
 
 /turf/wall/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
 	icon_state = ""

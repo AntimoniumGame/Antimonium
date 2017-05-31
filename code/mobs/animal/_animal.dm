@@ -14,6 +14,18 @@
 /mob/animal/ScrambleSpeech(var/message)
 	return "barks!"
 
+/mob/animal/GetSlotByHandedness(var/handedness)
+	return SLOT_MOUTH
+
 /mob/animal/New()
 	icon = null
 	..()
+
+/mob/animal/UpdateGrasp()
+	var/obj/item/holding = GetEquipped(SLOT_MOUTH)
+	if(istype(holding) && holding.Burn(src, SLOT_HEAD))
+		Notify("\The [holding] sears your mouth and falls from your grasp!")
+		DropItem(holding)
+
+/mob/animal/IsDigger(var/complex_digging = FALSE)
+	return !complex_digging

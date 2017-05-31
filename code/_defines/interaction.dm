@@ -5,7 +5,8 @@
 #define FLAG_TEMPERATURE_SENSITIVE 16
 #define FLAG_FLAT_SURFACE          32
 #define FLAG_FLAMMABLE             64
-#define FLAG_BLOCK_LIGHT          128
+#define FLAG_SEATING              128
+#define FLAG_BLOCK_LIGHT          256
 
 var/list/__atom_flags = list(
 	"[FLAG_SIMULATED]" = "FLAG_SIMULATED",
@@ -15,6 +16,7 @@ var/list/__atom_flags = list(
 	"[FLAG_TEMPERATURE_SENSITIVE]" = "FLAG_TEMPERATURE_SENSITIVE",
 	"[FLAG_FLAT_SURFACE]" = "FLAG_FLAT_SURFACE",
 	"[FLAG_FLAMMABLE]" = "FLAG_FLAMMABLE",
+	"[FLAG_SEATING]" = "FLAG_SEATING",
 	"[FLAG_BLOCK_LIGHT]" = "FLAG_BLOCK_LIGHT"
 	)
 #define atomflag2name(f)    __atom_flags["[f]"]
@@ -27,6 +29,7 @@ var/list/__atom_flag_names = list(
 	"FLAG_TEMPERATURE_SENSITIVE" = FLAG_TEMPERATURE_SENSITIVE,
 	"FLAG_FLAT_SURFACE" = FLAG_FLAT_SURFACE,
 	"FLAG_FLAMMABLE" = FLAG_FLAMMABLE,
+	"FLAG_SEATING" = FLAG_SEATING,
 	"FLAG_BLOCK_LIGHT" = FLAG_BLOCK_LIGHT
 	)
 #define atomname2flag(f)    __atom_flag_names["[f]"]

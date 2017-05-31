@@ -7,10 +7,9 @@
 	contact_size = 5
 	weight = 3
 
-/obj/item/dartboard/New()
-	..()
+/obj/item/dartboard/Initialize()
 	AlignWithWall(src)
-	UpdateIcon()
+	..()
 
 /obj/item/dartboard/AfterDropped()
 	AlignWithWall(src)

@@ -3,7 +3,7 @@
 	icon = 'icons/objects/items/plants/cotton.dmi'
 	default_material_path = null
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
-	shadow_size = 1
+	shadow_size = null
 
 	var/growth_stage = 1
 	var/max_growth_stage = 4
@@ -14,11 +14,6 @@
 	var/growth = 0
 	var/min_harvest_amount = 2
 	var/max_harvest_amount = 4
-
-/obj/item/plant/cotton
-	name = "cotton plant"
-	seed_type = /obj/item/stack/seed/cotton
-	product_type = /obj/item/stack/cotton
 
 /obj/item/plant/New(var/newloc, var/obj/structure/earthworks/farm/_growing_in)
 	..()

@@ -6,3 +6,6 @@
 	heat_harm_point =   350
 	weight = 60
 	sight = SEE_BLACKNESS
+
+/mob/human/GetSlotByHandedness(var/handedness)
+	return (handedness == "left" ? SLOT_LEFT_HAND : SLOT_RIGHT_HAND)

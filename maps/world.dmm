@@ -4,114 +4,101 @@
 "ad" = (/obj/item/weapon/axe,/turf/floor/grass,/area/lighting/outdoors)
 "ae" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/grass,/area/lighting/outdoors)
 "af" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/grass,/area/lighting/outdoors)
-"ag" = (/turf/wall,/area/lighting/indoors)
-"ah" = (/turf/floor/tiles,/area/lighting/indoors)
-"ai" = (/turf/wall/wood,/area/lighting/indoors)
-"aj" = (/turf,/area/lighting/indoors)
-"ak" = (/obj/structure/sconce,/turf/floor/tiles,/area/lighting/indoors)
-"al" = (/turf/wall/wood,/area/lighting)
-"am" = (/turf/floor/wood,/area/lighting)
-"an" = (/obj/structure/sconce,/turf/floor/wood,/area/lighting)
-"ao" = (/obj/structure/brazier,/turf/floor/tiles,/area/lighting/indoors)
-"ap" = (/obj/structure/brazier,/turf/floor/wood,/area/lighting)
-"aq" = (/obj/item/torch,/turf/floor/tiles,/area/lighting/indoors)
-"ar" = (/mob/human,/turf/floor/wood,/area/lighting)
-"as" = (/mob/human,/turf/floor/tiles,/area/lighting/indoors)
-"at" = (/obj/item/weapon/sword,/turf/floor/wood,/area/lighting)
-"au" = (/turf/floor/grass,/area/lighting/indoors)
-"av" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting)
-"aw" = (/turf/wall/stone,/area/lighting/indoors)
-"ax" = (/turf/floor/stone,/area/lighting/indoors)
-"ay" = (/obj/item/weapon/pipe,/turf/floor/tiles,/area/lighting/indoors)
-"az" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting/indoors)
-"aA" = (/obj/structure/chair/comfy,/turf/floor/wood,/area/lighting)
-"aB" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/tiles,/area/lighting/indoors)
-"aC" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)";icon_state = "felted_chair";dir = 4},/turf/floor/wood,/area/lighting)
-"aD" = (/obj/structure/table,/turf/floor/wood,/area/lighting)
-"aE" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)";icon_state = "felted_chair";dir = 8},/turf/floor/wood,/area/lighting)
-"aF" = (/turf/wall/stone,/area/lighting)
-"aG" = (/turf/floor/stone,/area/lighting)
-"aH" = (/obj/structure/brazier/forge,/turf/floor/stone,/area/lighting)
-"aI" = (/obj/structure/anvil,/obj/item/weapon/hammer,/turf/floor/stone,/area/lighting)
-"aJ" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting)
-"aK" = (/obj/item/horseshoe,/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/stone,/area/lighting)
-"aL" = (/obj/structure/table,/obj/item/stack/dart,/turf/floor/stone,/area/lighting)
-"aM" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/turf/floor/stone,/area/lighting)
-"aN" = (/obj/item/dartboard,/turf/floor/stone,/area/lighting)
-"aO" = (/obj/item/weapon/pipe,/turf/floor/wood,/area/lighting)
-"aP" = (/obj/item/crucible,/turf/floor/stone,/area/lighting)
-"aQ" = (/obj/item/stack/ingredient,/turf/floor/stone,/area/lighting)
-"aR" = (/obj/item/weapon/construction_hammer,/turf/floor/stone,/area/lighting)
-"aS" = (/obj/item/weapon/sword,/turf/floor/stone,/area/lighting)
-"aT" = (/obj/item/weapon/mallet,/turf/floor/stone,/area/lighting)
-"aU" = (/obj/item/horseshoe,/turf/floor/stone,/area/lighting)
-"aV" = (/obj/item/stack,/turf/floor/stone,/area/lighting)
-"aW" = (/mob/human,/turf/floor/stone,/area/lighting)
-"aX" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/stone,/area/lighting)
-"aY" = (/turf/floor/dirt,/area/lighting/outdoors)
-"aZ" = (/obj/item/clothing/boots,/turf/floor/grass,/area/lighting/outdoors)
-"ba" = (/obj/item/clothing/shirt,/turf/floor/grass,/area/lighting/outdoors)
-"bb" = (/obj/item/clothing/pants,/turf/floor/grass,/area/lighting/outdoors)
-"bc" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/wood,/area/lighting)
-"bd" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting/indoors)
-"be" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting)
-"bf" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/stone,/area/lighting)
-"bg" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
-"bh" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/tiles,/area/lighting/indoors)
-"bi" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
-"bj" = (/obj/item/stack/seed/cotton,/turf/floor/grass,/area/lighting/outdoors)
-"bk" = (/turf/floor/wood,/area/lighting/indoors)
-"bl" = (/turf/floor/wood,/area/lighting/indoors)
-"bm" = (/turf/floor/wood,/area/lighting/indoors)
-"bn" = (/turf/floor/wood,/area/lighting/indoors)
-"bo" = (/turf/floor/wood,/area/lighting/indoors)
-"bp" = (/turf/floor/wood,/area/lighting/indoors)
-"bq" = (/turf/floor/wood,/area/lighting/indoors)
-"br" = (/turf/floor/wood,/area/lighting/indoors)
-"bs" = (/turf/floor/wood,/area/lighting/indoors)
-"bt" = (/turf/floor/wood,/area/lighting/indoors)
-"bu" = (/turf/floor/wood,/area/lighting/indoors)
-"bv" = (/turf/floor/wood,/area/lighting/indoors)
-"bw" = (/turf/floor/wood,/area/lighting/indoors)
-"bx" = (/turf/floor/wood,/area/lighting/indoors)
-"by" = (/turf/floor/wood,/area/lighting/indoors)
-"bz" = (/turf/floor/wood,/area/lighting/indoors)
-"bA" = (/turf/floor/wood,/area/lighting/indoors)
-"bB" = (/turf/floor/wood,/area/lighting/indoors)
-"bC" = (/turf/floor/wood,/area/lighting/indoors)
-"bD" = (/turf/floor/wood,/area/lighting/indoors)
-"bE" = (/obj/structure/sconce,/turf/floor/wood,/area/lighting/indoors)
-"bF" = (/turf/floor/wood,/area/lighting/indoors)
-"bG" = (/turf/floor/wood,/area/lighting/indoors)
+"ag" = (/turf/wall/tiled,/area/lighting/indoors)
+"ah" = (/obj/structure/door/north,/turf/floor/tiles,/area/lighting/indoors)
+"ai" = (/obj/structure/door/south,/turf/floor/tiles,/area/lighting/indoors)
+"aj" = (/turf/wall/wood,/area/lighting/indoors)
+"ak" = (/obj/structure/door/north,/turf/floor/wood,/area/lighting/indoors)
+"al" = (/obj/structure/door/south,/turf/floor/wood,/area/lighting/indoors)
+"am" = (/turf/floor/stone,/area/lighting/indoors)
+"an" = (/obj/structure/sconce,/turf/floor/stone,/area/lighting/indoors)
+"ao" = (/turf/floor/tiles,/area/lighting/indoors)
+"ap" = (/obj/structure/sconce,/turf/floor/tiles,/area/lighting/indoors)
+"aq" = (/obj/structure/cask/barrel,/turf/floor/tiles,/area/lighting/indoors)
+"ar" = (/obj/structure/crate,/turf/floor/tiles,/area/lighting/indoors)
+"as" = (/turf/wall/wood,/area/lighting)
+"at" = (/turf/floor/stone,/area/lighting)
+"au" = (/obj/structure/sconce,/turf/floor/stone,/area/lighting)
+"av" = (/turf/floor/wood,/area/lighting)
+"aw" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting/indoors)
+"ax" = (/obj/structure/brazier,/turf/floor/wood,/area/lighting)
+"ay" = (/obj/structure/bench{tag = "icon-map (EAST)";icon_state = "map";dir = 4},/turf/floor/grass,/area/lighting/outdoors)
+"az" = (/obj/item/torch,/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/tiles,/area/lighting/indoors)
+"aA" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/stone,/area/lighting)
+"aB" = (/obj/structure/millstone,/obj/structure/gearbox,/turf/floor/stone,/area/lighting)
+"aC" = (/mob/human,/turf/floor/wood,/area/lighting)
+"aD" = (/obj/structure/table/bench,/obj/item/mortar_pestle,/turf/floor/tiles,/area/lighting/indoors)
+"aE" = (/obj/structure/table/bench,/obj/item/stack/ginseng/five,/obj/item/stack/nightshade/five,/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/stone,/area/lighting/indoors)
+"aF" = (/mob/human,/turf/floor/tiles,/area/lighting/indoors)
+"aG" = (/obj/structure/bench{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting)
+"aH" = (/turf/floor/grass,/area/lighting/indoors)
+"aI" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/obj/structure/table/bench,/obj/structure/alembic{tag = "icon-map (EAST)";icon_state = "map";dir = 4},/turf/floor/stone,/area/lighting/indoors)
+"aJ" = (/obj/structure/bench{tag = "icon-map (NORTH)";icon_state = "map";dir = 1},/turf/floor/wood,/area/lighting)
+"aK" = (/turf/wall/stone,/area/lighting/indoors)
+"aL" = (/obj/structure/table/bench,/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/stone,/area/lighting/indoors)
+"aM" = (/obj/item/weapon/pipe,/turf/floor/tiles,/area/lighting/indoors)
+"aN" = (/obj/structure/door/north,/turf/floor/wood,/area/lighting)
+"aO" = (/obj/structure/door/south,/turf/floor/wood,/area/lighting)
+"aP" = (/obj/structure/table/bench,/turf/floor/tiles,/area/lighting/indoors)
+"aQ" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/stone,/area/lighting/indoors)
+"aR" = (/obj/structure/still/horizontal{tag = "icon-default (NORTH)";icon_state = "";dir = 1},/turf/floor/tiles,/area/lighting/indoors)
+"aS" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/tiles,/area/lighting/indoors)
+"aT" = (/obj/structure/sconce,/turf/floor/wood,/area/lighting)
+"aU" = (/obj/structure/chair,/turf/floor/wood,/area/lighting)
+"aV" = (/obj/structure/table,/turf/floor/wood,/area/lighting)
+"aW" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/wood,/area/lighting)
+"aX" = (/turf/wall/stone,/area/lighting)
+"aY" = (/obj/structure/door/north,/turf/floor/stone,/area/lighting)
+"aZ" = (/obj/structure/door/south,/turf/floor/stone,/area/lighting)
+"ba" = (/obj/structure/brazier,/turf/floor/stone,/area/lighting)
+"bb" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/wood,/area/lighting)
+"bc" = (/obj/structure/table,/obj/item/stack/dart,/turf/floor/wood,/area/lighting)
+"bd" = (/obj/structure/crucible,/turf/floor/stone,/area/lighting)
+"be" = (/obj/structure/bellows{tag = "icon-world (EAST)";icon_state = "world";dir = 4},/turf/floor/stone,/area/lighting)
+"bf" = (/obj/structure/brazier/forge,/obj/item/weapon/sword,/turf/floor/stone,/area/lighting)
+"bg" = (/obj/structure/bellows{tag = "icon-world (WEST)";icon_state = "world";dir = 8},/turf/floor/stone,/area/lighting)
+"bh" = (/obj/structure/anvil,/turf/floor/stone,/area/lighting)
+"bi" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)";icon_state = "wooden_chair";dir = 4},/turf/floor/stone,/area/lighting)
+"bj" = (/obj/structure/table,/turf/floor/stone,/area/lighting)
+"bk" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)";icon_state = "wooden_chair";dir = 1},/turf/floor/wood,/area/lighting)
+"bl" = (/obj/item/dartboard{tag = "icon-world (WEST)";icon_state = "world";dir = 8},/turf/floor/wood,/area/lighting)
+"bm" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/obj/structure/cask/barrel,/obj/item/stack/ingredient/iron,/turf/floor/stone,/area/lighting)
+"bn" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)";icon_state = "wooden_chair";dir = 8},/turf/floor/wood,/area/lighting)
+"bo" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/wood,/area/lighting)
+"bp" = (/obj/structure/cask/barrel,/obj/item/stack/ingredient/gold,/turf/floor/stone,/area/lighting)
+"bq" = (/mob/human,/turf/floor/stone,/area/lighting)
+"br" = (/obj/structure/table/bench,/turf/floor/wood,/area/lighting)
+"bs" = (/obj/structure/crate,/turf/floor/stone,/area/lighting)
+"bt" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/stone,/area/lighting)
+"bu" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/wood,/area/lighting)
+"bv" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/stone,/area/lighting)
+"bw" = (/obj/structure/table/bench,/obj/item/weapon/hammer,/turf/floor/stone,/area/lighting)
+"bx" = (/obj/structure/table/bench,/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/obj/item/weapon/chisel,/turf/floor/stone,/area/lighting)
+"by" = (/obj/structure/table/bench,/obj/item/weapon/construction_hammer,/turf/floor/stone,/area/lighting)
+"bz" = (/obj/structure/table/bench,/obj/item/weapon/mallet,/turf/floor/stone,/area/lighting)
+"bA" = (/obj/structure/table/bench,/obj/item/mold,/obj/item/mold,/obj/item/mold,/obj/item/mold,/turf/floor/stone,/area/lighting)
+"bB" = (/obj/structure/table/bench,/obj/item/weapon/axe,/turf/floor/stone,/area/lighting)
+"bC" = (/obj/structure/table/bench,/obj/item/stack/bricks,/turf/floor/stone,/area/lighting)
+"bD" = (/obj/structure/cask/barrel,/turf/floor/wood,/area/lighting)
+"bE" = (/obj/structure/cask/barrel,/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting)
+"bF" = (/obj/structure/cask{tag = "icon-flat (NORTH)";icon_state = "flat";dir = 1},/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting)
+"bG" = (/obj/structure/cask{tag = "icon-flat (NORTH)";icon_state = "flat";dir = 1},/turf/floor/wood,/area/lighting)
 "bH" = (/turf/floor/wood,/area/lighting/indoors)
-"bI" = (/turf/floor/wood,/area/lighting/indoors)
-"bJ" = (/turf/floor/wood,/area/lighting/indoors)
+"bI" = (/obj/structure/sconce,/turf/floor/wood,/area/lighting/indoors)
+"bJ" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
 "bK" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/wood,/area/lighting/indoors)
-"bL" = (/turf/floor/wood,/area/lighting/indoors)
-"bM" = (/turf/floor/wood,/area/lighting/indoors)
-"bN" = (/turf/floor/wood,/area/lighting/indoors)
-"bO" = (/turf/floor/wood,/area/lighting/indoors)
-"bP" = (/turf/floor/wood,/area/lighting/indoors)
-"bQ" = (/turf/floor/wood,/area/lighting/indoors)
-"bR" = (/turf/floor/wood,/area/lighting/indoors)
-"bS" = (/turf/floor/wood,/area/lighting/indoors)
-"bT" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting/indoors)
-"bU" = (/turf/floor/wood,/area/lighting/indoors)
-"bV" = (/turf/floor/wood,/area/lighting/indoors)
-"bW" = (/turf/floor/wood,/area/lighting/indoors)
-"bX" = (/turf/floor/wood,/area/lighting/indoors)
-"bY" = (/turf/floor/wood,/area/lighting/indoors)
-"bZ" = (/turf/floor/wood,/area/lighting/indoors)
-"ca" = (/turf/floor/wood,/area/lighting/indoors)
-"cb" = (/turf/floor/wood,/area/lighting/indoors)
-"cc" = (/turf/floor/wood,/area/lighting/indoors)
-"cd" = (/turf/floor/wood,/area/lighting/indoors)
-"ce" = (/turf/floor/wood,/area/lighting/indoors)
-"cf" = (/turf/floor/wood,/area/lighting/indoors)
-"cg" = (/turf/floor/wood,/area/lighting/indoors)
-"ch" = (/obj/structure/brazier,/turf/floor/wood,/area/lighting/indoors)
-"ci" = (/turf/floor/wood,/area/lighting/indoors)
-"cj" = (/turf/floor/wood,/area/lighting/indoors)
+"bL" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting/indoors)
+"bM" = (/obj/item/stack/bricks,/turf/floor/wood,/area/lighting/indoors)
+"bN" = (/obj/structure/brazier,/turf/floor/wood,/area/lighting/indoors)
+"bO" = (/turf/floor/dirt,/area/lighting/outdoors)
+"bP" = (/obj/item/clothing/boots,/turf/floor/grass,/area/lighting/outdoors)
+"bQ" = (/obj/structure/bench,/turf/floor/grass,/area/lighting/outdoors)
+"bR" = (/obj/item/clothing/shirt,/turf/floor/grass,/area/lighting/outdoors)
+"bS" = (/obj/item/clothing/pants,/turf/floor/grass,/area/lighting/outdoors)
+"bT" = (/obj/item/stack/bricks,/turf/floor/grass,/area/lighting/outdoors)
+"bU" = (/obj/structure/table,/obj/item/stack/seed/cotton,/obj/item/stack/seed/ginseng,/obj/item/stack/seed/nightshade,/turf/floor/dirt,/area/lighting/outdoors)
+"bV" = (/obj/structure/cask/barrel,/obj/item/stack/ingredient/copper,/turf/floor/stone,/area/lighting)
+"bW" = (/obj/structure/crate,/obj/item/stack/ingredient/lead,/turf/floor/stone,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -119,29 +106,29 @@ aaabababacabababababababababacababababababababacabababababaa
 aaababababababababababababababababababababababababababababaa
 aaabababababababababababababadababababababababababababababaa
 aaababaeababababaeababababababababaeabababababaeababababafaa
-awawawawawahahawawawawawawaiaiaiaiaiaiaiajajaiaiaiaiabababaa
-awahahakahahahahakahahahawalamamamanamamamamamamamaiabababaa
-awahaoahahahahahahahahahawalamamamamamamamamamapamaiabababaa
-awahahahahahahahahahaqaqawalamamamamamaramamamamamaiabababaa
-awahahahahahahahahaqaqaqawalbcamamamamamamamamamamaiabababaa
-awahahahahahasahahahaqaqawalamamatamamamamamamalalaiauauafaa
-awbdahahahahahahahahahahawalamamamamamavamamamalawawaxauabaa
-awahahahahayahahahahahahawalalamamalalalalalalalawazaxauabaa
-awahahahahahahahahahahahawalamamamamamaAamanamalawawaxauabaa
-awahahaBahahahahahahahaBawalamamamamaCaDaEamamalalaiauauabaa
-aFaFaFaFaFaFaFaFaFaGaGaFaFaFamamamamamamamamamamamaiabadabaa
-aFaHaIaJaKaLaMaGaNaGaGaGaGaFamamamamamamamaOamamamaiabababaa
-aFaPaGaQaGaGaGaGaGaGaGaGaGaFbcamamaramamamaramamamaiabababaa
-aFaRaGaGaGaGaSaGaGaGaTaGaGaFamamamamamamamamamamamaiababafaa
-aFaGaGaUaGaGaVaGaGaGaWaGaGaFamamamamamamamamamamambkabababaa
-aFbfaUaVaGaGaGaGaGaGaGaGaGaFamamamamamamamamamamamblabababaa
-aFaGaGaGaGaGaGaGaGaGaXaGaGaFamamamamavamamamamamamaiabababaa
-aFaFaFaFaGaGaFaFaFaFaFaFaFaFalamamalalalalalalalalaiabababaa
-awbmbnbobpbqbrbsbtbubvbwbxbybzbAbBbCbDbEbFbGbHbIbJaiababbgaa
-awbKbLbMbNbObPbQbRbSbTbUbVbWbXbYbZcacbcccdcecfcgchaiababafaa
-awaiaiaiaiaiaiaiaiaiaiaiaicicjaiaiaiaiaiaiaiaiaiaiaiababaYaa
-aaabacababaZabacabababacababababababacabababababacababaYaYaa
-aaababababbabbabadababababababababababababadabbjababaYaYaYaa
-aaababababababababababababababababababababababbgabaYaYaYaYaa
+agagagagagahaiagagagagagagajajajajajajajakalajajajajabababaa
+agamamanaoaoaoaoapaqararagasatatauatatavavavavavavajabababaa
+agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayababaa
+agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayababaa
+agaDamamaoaoaoaoaoaoaoaoagasatatatatatavavavavavavajayababaa
+agaEamamaoaoaFaoaoaoaoaoagasatatatatatavavavaGasasajaHaHafaa
+agaIamamaoaoaoaoaoaoaoaoagasavavavavavavaJaJaJasaKaKamaHabaa
+agaLamamaoaMaoaoaoaoaoaoagasasaNaOasasasasasasasaKawamaHabaa
+agaPamaQaRaoaSaoaoaoaoaSagasasavavavavaTavaUavasaKaKamaHabaa
+agagagagagagagagagaoaoagagasasatataGavaUavaVaWasasajaHaHabaa
+aXaXaXaXaXaXaXaXaXaYaZaXaXaXasbaataGbbaVavavavavbcajayadabaa
+aXbdbebfbgatbhauatatatbibjaXasatataGavbkavavavavblajayababaa
+aXaAatatatatatatatatatatbmaXasavavavavavbbaVbnavboajayababaa
+aXatatatbaatatatatbaatatbpaXasavavavavavavavavavavajababafaa
+aXatatatatatatatatatbqatbVaXasavavbrbrbrbrbrbrbravajabababaa
+aXbsatatatatatatatatatatbtaXasbuavbravavavavavavavajayababaa
+aXbWbvatatatbwbxbybzbAbBbCaXasavavbrbDbEbDaVaVbFbGajayababaa
+aXaXaXaXaYaZaXaXaXaXaXaXaXaXasaNaOasasasasasasasasajayababaa
+aKbHbHbHbHbHbHbHbHbHbHbHbHbHbHbHbHbHbHbIbHbHbHbHbHajababbJaa
+aKbKbHbHbHbHbHbHbHbHbLbHbHbHbHbHbHbHbHbMbHbHbHbHbNajababafaa
+aKajajajajajajajajajajajajakalajajajajajajajajajajajababbOaa
+aaabacababbPabacbQbQbQacababababababacbQbQbQbQbQacababbObOaa
+aaababababbRbSabadabababababbTbTabababababadababababbObObOaa
+aaababababababababababababababbTabababababababbJabbObObObUaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

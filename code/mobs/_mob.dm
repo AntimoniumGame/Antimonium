@@ -6,7 +6,11 @@
 	shadow_size = 2
 
 	var/weight = 50
-	var/datum/job/job
+	var/burn_point = TEMPERATURE_BURNING
+	var/blood_material = /datum/material/water/blood
+
+/mob/proc/GetSlotByHandedness(var/handedness)
+	return null
 
 /mob/GetWeight()
 	return weight
@@ -33,5 +37,14 @@
 		name = key
 
 /mob/FaceAtom()
-	if(!prone || dragged)
+	if((!prone && !sitting) || dragged)
 		. = ..()
+
+/mob/proc/TransferControlTo(var/mob/other)
+	if(role)
+		role.mob = other
+		other.role = role
+	other.key = key
+
+/mob/proc/IsDigger(var/complex_digging = FALSE)
+	return FALSE

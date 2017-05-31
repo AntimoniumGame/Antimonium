@@ -3,12 +3,19 @@
 	icon = 'icons/objects/structures/crate.dmi'
 	density = 1
 	default_material_path = /datum/material/metal/iron
-	move_sound = 'sounds/effects/scrape1.wav'
+	move_sound = 'sounds/effects/scrape1.ogg'
 	shadow_size = 3
 
 	var/weight = 3
 	var/list/holding = list()
-	var/hit_sound = 'sounds/effects/thump1.wav'
+	var/hit_sound = 'sounds/effects/thump1.ogg'
+
+/obj/structure/SetDir(var/newdir)
+	..(newdir)
+	if((flags & FLAG_SEATING) && loc)
+		for(var/mob/mob in loc.contents)
+			if(mob.sitting)
+				mob.SetDir(dir)
 
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()

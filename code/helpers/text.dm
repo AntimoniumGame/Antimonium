@@ -47,4 +47,8 @@
 	var/text = file2text(filename)
 	if(!text)
 		return list()
-	return splittext(text,seperator)
+	var/list/output = list()
+	for(var/line in splittext(text,seperator))
+		if(line && line != "" && copytext(line,1,2) != "#")
+			output += line
+	return output

@@ -31,14 +31,16 @@
 	if(world.time < next_speech)
 		return
 
-	var/prefix = lowertext(copytext(message,1,5))
-	switch(prefix)
-		if("/me ")
-			DoEmote(copytext(message,5))
-		if("ooc ")
-			DoOocMessage(copytext(message,5))
-		else
-			DoSay(message)
+	if(copytext(message,1,2) == "/")
+		var/list/words = splittext(message," ")
+		var/prefix = lowertext(copytext(words[1],2))
+		words.Cut(1,2)
+		if(prefix && all_chat_commands[prefix])
+			var/datum/chat_command/command = all_chat_commands[prefix]
+			if(command.CanInvoke(src))
+				command.Invoke(src, jointext(words, " "))
+				return
+	DoSay(message)
 
 /mob/proc/DoOocMessage(var/message)
 	message = FormatStringForSpeech(src, message)
@@ -72,7 +74,13 @@
 		NotifyNearby(copytext(message,1,120))
 
 /mob/proc/NotifyDead(var/message)
+	var/list/notified = list()
 	for(var/thing in dead_mob_list)
 		var/mob/deadite = thing
 		if(deadite.client)
+			notified += deadite.client
 			deadite.Notify("DEAD: [message]")
+	for(var/thing in (clients-notified))
+		var/client/player = thing
+		if(player.CheckAdminPermission(PERMISSIONS_MODERATOR))
+			player.Notify("DEAD: [message]")

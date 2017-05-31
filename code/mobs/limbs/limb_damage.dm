@@ -16,7 +16,7 @@
 	owner.injured_limbs |= src
 
 	if(wound_type == WOUND_CUT && wound_severity > 5)
-		Splatter(owner, get_turf(owner), /datum/material/water/blood)
+		Splatter(get_turf(owner), owner.blood_material)
 
 	if(wounds.len)
 		var/list/matching_wounds = list()
@@ -50,6 +50,7 @@
 	if(!owner || root_limb)
 		return
 
+	not_moving = FALSE
 	owner.injured_limbs -= src
 	owner.limbs[limb_id] = null
 	owner.limbs -= limb_id
@@ -70,13 +71,13 @@
 			parent.children -= src
 			parent = null
 
-		PlayLocalSound(src, pick(list('sounds/effects/gore1.wav','sounds/effects/gore2.wav','sounds/effects/gore3.wav')), 100)
+		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
 		owner.NotifyNearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
 		ThrownAt(get_step(src, pick(all_dirs)))
-		Splatter(owner, loc, /datum/material/water/blood)
+		Splatter(loc, owner.blood_material)
 
 		owner.UpdateIcon()
 		for(var/obj/item/limb/child in src)

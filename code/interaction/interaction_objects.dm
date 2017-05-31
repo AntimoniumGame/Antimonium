@@ -16,16 +16,21 @@
 		if(!prop.IsOnFire() && IsOnFire())
 			user.NotifyNearby("\The [user] lights \the [prop] in \the [src].")
 			prop.Ignite(user)
+			return TRUE
 		else if(prop.IsOnFire() && !IsOnFire())
 			user.NotifyNearby("\The [user] lights \the [src] with \the [prop].")
 			Ignite(user)
-		return TRUE
+			return TRUE
 	return FALSE
 
 /obj/proc/ManipulatedBy(var/mob/user, var/slot)
 	if(IsOnFire() && user.intent.selecting == INTENT_HELP)
 		NotifyNearby("\The [user] extinguishes \the [src].")
 		Extinguish()
+		return TRUE
+	if((flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(loc))
+		user.SetDir(dir)
+		user.ToggleSitting()
 		return TRUE
 	return FALSE
 
@@ -48,11 +53,11 @@
 		return
 	user.DoAttackAnimation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
-		PlayLocalSound(src, 'sounds/effects/punch1.wav', 20)
+		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
 		user.NotifyNearby("\The [user] prods \the [target] with \the [src].")
 	else
 		user.NotifyNearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
-		PlayLocalSound(src, 'sounds/effects/whoosh1.wav', 50)
+		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 50)
 		spawn(3)
 			PlayLocalSound(src, hit_sound, 50)
 		if(weight || sharpness)
@@ -68,7 +73,10 @@
 	return
 
 /obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
-	return !Burn(user, slot)
+	if(Burn(user, SLOT_HANDS))
+		user.Notify("\The [src] is far too hot to handle!")
+		return FALSE
+	return TRUE
 
 /obj/item/proc/AfterPickedUp()
 	ResetPosition()
@@ -77,3 +85,10 @@
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	transform = null
+
+/obj/item/proc/AfterRemoved(var/mob/user, var/slot)
+	if(slot == SLOT_HANDS)
+		user.UpdateGrasp()
+
+/obj/item/proc/BeforeRemoved(var/mob/user, var/slot)
+	return TRUE

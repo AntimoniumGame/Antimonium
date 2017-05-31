@@ -49,6 +49,12 @@
 		var/obj/ui/inv/slot = inventory_slots[slot_id]
 		slot.UpdateIcon()
 		slot.UpdateStrings()
+		if(slot.update_bodyparts && slot.update_bodyparts.len)
+			for(var/thing in slot.update_bodyparts)
+				var/obj/item/limb/limb = limbs[thing]
+				if(istype(limb))
+					limb.SetNotMoving(slot.holding ? TRUE : FALSE)
 
 /mob/proc/GetHeatInsulation(var/slot)
-	return FALSE
+	var/obj/item/covering = GetEquipped(slot)
+	return (istype(covering) ? covering.GetHeatInsulation() : 0)

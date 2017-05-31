@@ -7,12 +7,15 @@
 /mob/proc/ToggleProne()
 	prone = !prone
 	density = !prone
-	UpdateIcon()
+	if(prone && sitting)
+		ToggleSitting()
+	else
+		UpdateIcon()
 
 /mob/proc/UpdateStance()
 	set waitfor = 0
 	sleep(1)
-	if(prone)
+	if(prone || sitting)
 		return
 	stance_score = 0
 	for(var/limb_id in stance_limbs)
@@ -25,7 +28,7 @@
 
 /mob/proc/HandleStanceMoveDelay()
 	. = 0
-	if(stance_score <= 5)
+	if(stance_score <= (stance_fail_threshold+2))
 		. += 1
-	if(stance_score <= 3)
+	if(stance_score <= stance_fail_threshold)
 		. += 2

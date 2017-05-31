@@ -51,6 +51,13 @@
 
 /atom/New()
 	..()
+	if(!game_state || game_state.ident == GAME_SETTING_UP)
+		atoms_to_initialize += src
+	else
+		Initialize()
+
+/atom/proc/Initialize()
+	SetDir(dir)
 	UpdateStrings()
 	UpdateIcon()
 
@@ -72,3 +79,6 @@
 
 /atom/proc/GetAmount()
 	return 1
+
+/atom/proc/SmearWith(var/datum/material/smearing, var/amount)
+	return
