@@ -38,7 +38,7 @@
 	report_to = _report_to
 
 /obj/ui/controller/window_holder/GetInputFrom(var/obj/ui/component/component)
-	if(owner.client) PlayClientSound(owner.client, null, 'sounds/effects/click1.wav', 100, -1)
+	if(owner.client) PlayClientSound(owner.client, null, 'sounds/effects/click1.ogg', 100, -1)
 	QDel(src)
 
 /obj/ui/controller/window_holder/UpdateStrings()

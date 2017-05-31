@@ -33,6 +33,6 @@
 	var/mob/abstract/new_player/player = clicker
 	if(istype(player))
 		if(player.client)
-			PlayClientSound(player.client, null, 'sounds/effects/click1.wav', 100, -1)
+			PlayClientSound(player.client, null, 'sounds/effects/click1.ogg', 100, -1)
 		icon_state = "join_on"
 		player.JoinGame()

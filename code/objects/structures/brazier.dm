@@ -1,7 +1,7 @@
 /obj/structure/brazier
 	name = "brazier"
 	icon = 'icons/objects/structures/brazier.dmi'
-	hit_sound = 'sounds/effects/ding1.wav'
+	hit_sound = 'sounds/effects/ding1.ogg'
 	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
 	shadow_size = 3

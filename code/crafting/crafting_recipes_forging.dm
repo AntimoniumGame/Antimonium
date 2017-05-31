@@ -7,11 +7,11 @@
 /datum/crafting_recipe/forging/Craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	. = ..()
 	spawn()
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
 		sleep(6)
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
 		sleep(6)
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.wav', 100, -1)
+		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
 
 /datum/crafting_recipe/forging/axe
 	result_path = /obj/item/weapon/axe

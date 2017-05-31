@@ -40,19 +40,22 @@
 		var/atom/atom = thing
 		if(atom.density || (atom.flags & FLAG_SIMULATED))
 			NotifyNearby("\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].")
+			PlayLocalSound(loc, 'sounds/effects/thump1.ogg', 100)
 			return
 	var/anim_time = (slam ? 2 : 5)
-	if(!open)
-		open = TRUE
+	if(open)
+		open = FALSE
 		density = 1
 		opacity = 1
 		animate(src, time = anim_time, transform = null)
+		PlayLocalSound(loc, (slam ? 'sounds/effects/door_slam_close.ogg' : 'sounds/effects/door_close.ogg'), 100)
 		return
 	if(locked)
 		return FALSE
-	open = FALSE
+	open = TRUE
 	density = 0
 	opacity = 0
+	PlayLocalSound(loc, 'sounds/effects/door_open.ogg', 100)
 	if(opener_dir & dir)
 		animate(src, time = anim_time, transform = turn(matrix(), 90))
 	else
