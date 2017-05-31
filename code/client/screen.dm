@@ -10,7 +10,6 @@
 	screen |= screen_objs
 	images.len = 0
 	images |= image_objs
-	images |= light_list
 
 	if(mob)
 		screen |= mob.ui_screen

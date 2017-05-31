@@ -1,10 +1,13 @@
 /area
+	plane = UI_PLANE
 	var/light_data/light
 	var/image/light_overlay
 	var/list/lighting_blend_turfs
 
 /area/New()
 	..()
+	icon = null
+	plane = LIGHTING_PLANE
 	lighting_blend_turfs = list()
 	if(!light)
 		light = new()
@@ -34,9 +37,17 @@
 /area/GetLight()
 	return light
 
+/area/outdoors
+	icon = 'icons/areas/areas.dmi'
+	icon_state = "sky"
+
 /area/outdoors/New()
 	light = new(6500, 90) // sunlight yellow - 90% brightness
 	..()
+
+/area/indoors
+	icon = 'icons/areas/areas.dmi'
+	icon_state = "room"
 
 /area/indoors/New()
 	light = new(12000, 15) // pale blue - 15% brightness
