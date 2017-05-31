@@ -3,6 +3,7 @@
 	icon_state = "nymph"
 	stance_limbs = list(BP_CHEST, BP_GROIN)
 	stance_fail_threshold = 0
+	blood_material = /datum/material/water/ichor
 
 /mob/animal/nymph/CreateLimbs()
 	// Order is important; make sure limbs with parents are created AFTER their parent.

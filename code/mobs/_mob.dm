@@ -7,6 +7,7 @@
 
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
+	var/blood_material = /datum/material/water/blood
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
