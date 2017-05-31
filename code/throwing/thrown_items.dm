@@ -46,7 +46,7 @@
 
 // Stacks.
 /obj/item/stack/GetThrownAtom()
-	return new type(get_turf(src), material ? material.type : default_material_path, 1, src)
+	return new type(get_turf(src), material ? material.type : default_material_path, 1)
 
 /obj/item/stack/HandlePreThrow(var/mob/thrower)
 	return TRUE

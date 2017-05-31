@@ -22,9 +22,13 @@
 	if(!.)
 		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(prop))
 			if(prop && !Deleted(prop)) //grabs
-				prop.ForceMove(src.loc)
-				user.NotifyNearby("\The [user] places \the [prop] on \the [src].")
+				ThingPlacedOn(user, prop)
 				return TRUE
+
+/obj/structure/proc/ThingPlacedOn(var/mob/user, var/obj/item/prop)
+	prop.ForceMove(src.loc)
+	if(user)
+		user.NotifyNearby("\The [user] places \the [prop] on \the [src].")
 
 /obj/structure/UpdateStrings()
 	if(material)

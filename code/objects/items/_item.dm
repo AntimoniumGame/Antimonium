@@ -88,9 +88,6 @@
 /obj/item/GetAmount()
 	return initial(weight)
 
-/obj/item/proc/Grind(var/mob/user)
-	return FALSE
-
 /obj/item/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(istype(prop, /obj/item/mortar_pestle) && Grind(user))
 		return TRUE

@@ -14,7 +14,7 @@
 
 /obj/structure/ThrownHitBy(var/atom/movable/projectile)
 	if(density)
-		projectile.ForceMove(get_turf(src))
+		ThingPlacedOn(null, projectile)
 		PlayLocalSound(src, hit_sound, 100)
 		NotifyNearby("\The [src] has been hit by \the [projectile]!")
 		return TRUE

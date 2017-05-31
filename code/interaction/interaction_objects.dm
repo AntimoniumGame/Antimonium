@@ -5,7 +5,7 @@
 	HandleClickedOn(clicker, slot)
 
 /obj/proc/HandleClickedOn(var/mob/clicker, var/slot)
-	if(IsAdjacentTo(get_turf(src), get_turf(clicker)))
+	if(IsAdjacentTo(src, clicker))
 		if(clicker.GetEquipped(slot))
 			AttackedBy(clicker, clicker.GetEquipped(slot))
 		else
@@ -35,7 +35,7 @@
 	return FALSE
 
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
-	if(IsAdjacentTo(get_turf(src), get_turf(clicker)) && !clicker.GetEquipped(slot))
+	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
 
 		if(!IsSolid())
 			NotifyNearby("\The [clicker] attempts to collect \the [src], but it slips through [clicker.Their()] grasp.")
