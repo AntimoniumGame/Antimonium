@@ -5,6 +5,7 @@
 
 	mc = new()
 
+	InitializeConfig()
 	InitializeAdminPermissions()
 	InitializeAdminDatabase()
 	InitializeChatCommands()
@@ -21,7 +22,7 @@
 	SwitchGameState(/datum/game_state/waiting)
 
 /datum/game_state/setup/End()
-	to_chat(world, "<b>Game setup complete!</b>")
+	to_chat(world, "<h3><b>Game setup complete!</b></h3>")
 
 /datum/game_state/setup/OnLogin(var/client/player)
-	to_chat(world, "<b>The game is setting up.</b>")
+	to_chat(world, "<h3><b>The game is setting up.</b></h3>")
