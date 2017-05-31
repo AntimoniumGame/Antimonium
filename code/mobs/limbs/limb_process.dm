@@ -57,7 +57,7 @@
 /obj/item/limb/proc/RemoveOwnerBlood(var/amount)
 	if(owner.blood)
 		if(prob(amount*5))
-			Splatter(owner, loc)
+			Splatter(loc, owner.blood_material)
 		owner.blood = min(100, max(0, owner.blood - amount))
 
 #undef HEAL_PER_TICK
