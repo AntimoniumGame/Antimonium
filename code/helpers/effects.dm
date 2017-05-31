@@ -4,7 +4,7 @@
 	bleeder.SmearWith(GetUniqueDataByPath(material_type))
 	if(istype(bleeding_on))
 		if(!(locate(/obj/effect/random/splat) in bleeding_on))
-			PlayLocalSound(bleeding_on, 'sounds/effects/drip1.wav', 50)
+			PlayLocalSound(bleeding_on, 'sounds/effects/drip1.ogg', 50)
 		new /obj/effect/random/splat(bleeding_on, material_type, bleeder, 5)
 
 /proc/Smear(var/mob/bleeder, var/turf/from_turf, var/turf/to_turf, var/material_type, var/footprint)

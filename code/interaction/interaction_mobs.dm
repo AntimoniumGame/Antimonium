@@ -71,7 +71,7 @@
 
 /mob/proc/DoViolentUnarmedInteraction(var/mob/target)
 	NotifyNearby("\The [src] punches \the [target]!")
-	PlayLocalSound(src, 'sounds/effects/punch1.wav', 50)
+	PlayLocalSound(src, 'sounds/effects/punch1.ogg', 50)
 	target.ResolvePhysicalAttack(src, 5, 0, 5, null)
 
 /mob/proc/DoPassiveUnarmedInteraction(var/mob/target)

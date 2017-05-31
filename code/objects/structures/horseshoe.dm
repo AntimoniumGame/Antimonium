@@ -3,7 +3,7 @@
 	icon = 'icons/objects/structures/stake.dmi'
 	density = 0
 	layer = TURF_LAYER+0.2
-	hit_sound = 'sounds/effects/ding1.wav'
+	hit_sound = 'sounds/effects/ding1.ogg'
 
 /obj/structure/stake/ThrownHitBy(var/atom/movable/projectile)
 	if(prob(75))

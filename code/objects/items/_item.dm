@@ -12,9 +12,9 @@
 	var/name_prefix
 	var/associated_skill
 
-	var/hit_sound = 'sounds/effects/punch1.wav'
-	var/collect_sound = 'sounds/effects/click1.wav'
-	var/equip_sound = 'sounds/effects/rustle1.wav'
+	var/hit_sound = 'sounds/effects/punch1.ogg'
+	var/collect_sound = 'sounds/effects/click1.ogg'
+	var/equip_sound = 'sounds/effects/rustle1.ogg'
 
 /obj/item/proc/GetHeatInsulation()
 	return (material ? material.thermal_insulation : 0)

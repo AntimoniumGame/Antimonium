@@ -32,7 +32,7 @@
 	return 10
 
 /turf/proc/GetFootstepSound(var/mob/walker)
-	return 'sounds/effects/footstep1.wav'
+	return 'sounds/effects/footstep1.ogg'
 
 /turf/proc/GetSoundEnvironment()
 	return -1

@@ -53,11 +53,11 @@
 		return
 	user.DoAttackAnimation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
-		PlayLocalSound(src, 'sounds/effects/punch1.wav', 20)
+		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
 		user.NotifyNearby("\The [user] prods \the [target] with \the [src].")
 	else
 		user.NotifyNearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
-		PlayLocalSound(src, 'sounds/effects/whoosh1.wav', 50)
+		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 50)
 		spawn(3)
 			PlayLocalSound(src, hit_sound, 50)
 		if(weight || sharpness)
