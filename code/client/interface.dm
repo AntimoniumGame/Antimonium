@@ -81,3 +81,18 @@
 
 /interface/viewvars/OnClick(object, location, control, params)
 	owner.ViewVars(object)
+
+/interface/lighttool/OnClick(object, location, control, params)
+	set waitfor = 0
+	var/turf/T = get_turf(object)
+	var/list/pick_list = list()
+	if(isarea(T.loc))
+		pick_list["area lighting"] = T.loc
+	for(var/obj/O in T)
+		if(O.light_on)
+			pick_list["[O] \ref[O]"] = O
+
+	var/selection = input(owner, "Select light source:") in pick_list
+	var/atom/A = pick_list[selection]
+	if(A)
+		owner.PickLighttoolSource(A)

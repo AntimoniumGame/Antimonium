@@ -7,7 +7,10 @@
 		/client/proc/ViewClientVars,
 		/client/proc/StartViewVars,
 		/client/proc/ToggleVarsRefresh,
-		/client/proc/CloseVarsWindow
+		/client/proc/CloseVarsWindow,
+		/client/proc/RunLightTool,
+		/client/proc/LightToolChange,
+		/client/proc/LightToolPick
 		)
 
 /client/proc/DevPanel()

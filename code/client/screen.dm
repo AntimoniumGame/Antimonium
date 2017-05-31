@@ -3,12 +3,14 @@
 	var/list/image_objs  // image objects that should always be rendered to the client
 	var/render_plane/master_plane
 	var/render_plane/lighting_plane
+	var/obj/backdrop
 
 /client/proc/RefreshUI()
 	screen.len = 0
 	screen |= screen_objs
 	images.len = 0
 	images |= image_objs
+	images |= light_list
 
 	if(mob)
 		screen |= mob.ui_screen
@@ -19,6 +21,17 @@
 /client/New()
 	screen_objs = list()
 	image_objs = list()
+
+	backdrop = new(null)
+	backdrop.blend_mode = BLEND_OVERLAY
+	backdrop.icon = 'icons/lighting/blackness.dmi'
+	backdrop.plane = BACKDROP_PLANE
+	backdrop.screen_loc = "CENTER"
+	backdrop.transform = matrix(10, 0, 0, 0, 10, 0)
+	backdrop.mouse_opacity = 0
+	backdrop.color = "#000"
+
+	screen_objs += backdrop
 
 	master_plane = new(null, MASTER_PLANE, BLEND_MULTIPLY)
 	screen_objs += master_plane

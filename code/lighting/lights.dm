@@ -1,10 +1,11 @@
-/render_plane
-	parent_type = /atom/movable
-	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
-	screen_loc = "CENTER"
+/atom/proc/SetLight(var/light_data/new_light)
+	return
 
-/render_plane/New(loc, new_plane, blending, clickable = 1)
-	..()
-	plane = new_plane
-	blend_mode = blending
-	mouse_opacity = clickable
+/atom/proc/GetLight()
+	return
+
+/atom/proc/UpdateLight()
+	return
+
+/atom/proc/CreateLight()
+	return

@@ -16,6 +16,8 @@
 	..(newloc, material_path)
 	if(_lit)
 		Ignite()
+		light_on = TRUE
+		CreateLight()
 
 /obj/item/torch/UpdateIcon(var/list/supplied = list())
 	if(IsOnFire())
