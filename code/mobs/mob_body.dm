@@ -13,6 +13,15 @@
 		return FALSE
 	return TRUE
 
+/mob/proc/CanUseInvSlot(var/slot)
+	var/obj/ui/inv/inv_slot = inventory_slots[slot]
+	if(!istype(inv_slot))
+		Notify("You cannot use that limb.")
+		return FALSE
+	if(inv_slot.associated_limb)
+		return CanUseLimb(inv_slot.associated_limb)
+	return TRUE
+
 /mob/proc/CreateLimbs() //placeholder
 	limbs[BP_CHEST] =      new /obj/item/limb(src,       "upper body",  'icons/objects/items/limbs/chest.dmi',      BP_CHEST ,     _root = TRUE, _vital = TRUE, _size = 10)
 

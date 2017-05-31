@@ -1,6 +1,5 @@
 /mob/abstract/ghost
 	name = "ghost"
-	icon = 'icons/mobs/ghost.dmi'
 	dead = TRUE
 	density = 0
 	see_invisible = INVISIBILITY_GHOST

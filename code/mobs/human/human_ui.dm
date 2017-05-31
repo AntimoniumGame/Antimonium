@@ -11,7 +11,7 @@
 	inventory_slots[SLOT_EYES] =       new /obj/ui/inv/gear(src, "eyes",       "2,6", SLOT_EYES,       SLOT_FLAG_EYES)
 	inventory_slots[SLOT_NECK] =       new /obj/ui/inv/gear(src, "neck",       "3,6", SLOT_NECK,       SLOT_FLAG_NECK)
 	inventory_slots[SLOT_HAT] =        new /obj/ui/inv/gear(src, "hat",        "1,7", SLOT_HAT,        SLOT_FLAG_HAT)
-	inventory_slots[SLOT_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "3,1", SLOT_LEFT_HAND,  _update_bodyparts = list(BP_LEFT_HAND, BP_LEFT_ARM))
-	inventory_slots[SLOT_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "5,1", SLOT_RIGHT_HAND, _update_bodyparts = list(BP_RIGHT_HAND, BP_RIGHT_ARM))
+	inventory_slots[SLOT_LEFT_HAND] =  new /obj/ui/inv/hand(src, "left hand",  "3,1", SLOT_LEFT_HAND,  _update_bodyparts = list(BP_LEFT_HAND, BP_LEFT_ARM), _associated_limb = BP_LEFT_HAND)
+	inventory_slots[SLOT_RIGHT_HAND] = new /obj/ui/inv/hand(src, "right hand", "5,1", SLOT_RIGHT_HAND, _update_bodyparts = list(BP_RIGHT_HAND, BP_RIGHT_ARM), _associated_limb = BP_RIGHT_HAND)
 
 	..()

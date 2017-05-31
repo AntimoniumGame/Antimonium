@@ -7,6 +7,7 @@
 
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
+	var/blood_material = /datum/material/water/blood
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
@@ -44,3 +45,6 @@
 		role.mob = other
 		other.role = role
 	other.key = key
+
+/mob/proc/IsDigger(var/complex_digging = FALSE)
+	return FALSE

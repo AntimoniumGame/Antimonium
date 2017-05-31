@@ -9,7 +9,7 @@
 		if(icon_state == "open")
 			mover.ForceMove(get_turf(src))
 		else
-			if(prob(5))
+			if(mover.IsDigger() || prob(5))
 				DigUp()
 				mover.NotifyNearby("\The [mover] claws [mover.Their()] way out of \the [src].")
 			else
@@ -30,6 +30,12 @@
 
 /obj/structure/earthworks/pit/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(icon_state != "open")
+		DigUp(user)
+		return
+	. = ..()
+
+/obj/structure/earthworks/pit/ManipulatedBy(var/mob/user, var/slot)
+	if(icon_state != "open" && user.IsDigger() && user.CanUseInvSlot(slot))
 		DigUp(user)
 		return
 	. = ..()

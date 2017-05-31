@@ -98,3 +98,6 @@
 	light_range = initial(light_range)
 	if(lit && (light_power || light_color || light_range))
 		SetLight()
+
+/atom/proc/SmearWith(var/datum/material/smearing, var/amount)
+	return
