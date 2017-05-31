@@ -88,3 +88,19 @@
 		QDel(src)
 		return TRUE
 	return FALSE
+
+/obj/item/stack/ingredient/gold
+	name = "gold"
+	default_material_path = /datum/material/metal/gold
+
+/obj/item/stack/ingredient/lead
+	name = "lead"
+	default_material_path = /datum/material/metal/lead
+
+/obj/item/stack/ingredient/iron
+	name = "iron"
+	default_material_path = /datum/material/metal/iron
+
+/obj/item/stack/ingredient/copper
+	name = "copper"
+	default_material_path = /datum/material/metal/copper

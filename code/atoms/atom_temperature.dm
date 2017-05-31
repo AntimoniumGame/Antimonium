@@ -20,7 +20,7 @@
 	if(env_temperature < temperature)
 		LoseHeat(env_temperature)
 	else if(env_temperature > temperature)
-		GainHeat(env_temperature, loc.GetWeight())
+		GainHeat(env_temperature, loc.GetWeight() * 10)
 
 /turf/EqualizeTemperature()
 	if(temperature > AmbientTemperature())
