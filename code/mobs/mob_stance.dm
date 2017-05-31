@@ -28,7 +28,7 @@
 
 /mob/proc/HandleStanceMoveDelay()
 	. = 0
-	if(stance_score <= 5)
+	if(stance_score <= (stance_fail_threshold+2))
 		. += 1
-	if(stance_score <= 3)
+	if(stance_score <= stance_fail_threshold)
 		. += 2
