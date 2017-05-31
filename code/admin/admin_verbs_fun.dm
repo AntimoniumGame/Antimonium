@@ -11,14 +11,7 @@
 	set name = "Gibself"
 	set category = "Fun"
 
-	Splatter(mob, mob.blood_material)
-	var/mob/victim = mob
-	while(victim.limbs.len > 1)
-		var/obj/item/limb/limb = victim.limbs[pick(victim.limbs - BP_CHEST)]
-		limb.SeverLimb()
-		sleep(-1)
-	if(mob != victim)
-		QDel(victim)
+	mob.Gib()
 
 /client/proc/ChangeMob()
 

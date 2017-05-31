@@ -18,7 +18,7 @@
 	HandleInteraction(clicker, slot)
 
 /turf/proc/HandleInteraction(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
-	if(IsAdjacentTo(get_turf(clicker), src))
+	if(IsAdjacentTo(clicker, src))
 		if(clicker.GetEquipped(slot))
 			AttackedBy(clicker, clicker.GetEquipped(slot))
 		else

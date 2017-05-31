@@ -32,6 +32,14 @@
 	return (istype(stack) && type == stack.type && material == stack.material)
 
 /obj/item/stack/AttackedBy(var/mob/user, var/obj/item/prop)
+
+	if(istype(prop, /obj/item/mortar_pestle))
+		if(GetAmount() > 5)
+			user.Notify("There are too many [plural_name] in this [stack_name] to grind in \the [prop].")
+		else
+			Grind(user)
+		return TRUE
+
 	if(MatchesStackType(prop))
 		var/obj/item/stack/other = prop
 		var/transfer_amount = max_amount - GetAmount()

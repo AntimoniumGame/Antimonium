@@ -14,8 +14,8 @@
 	stack_name = "handful"
 	default_material_path = /datum/material/herb/nightshade
 
-/obj/item/stack/nightshade/five/New(var/newloc, var/material_path, var/_amount)
-	..(newloc, material_path, 5)
+/obj/item/stack/nightshade/five
+	amount = 5
 
 /obj/item/stack/ginseng
 	name = "ginseng"
@@ -25,5 +25,5 @@
 	stack_name = "bundle"
 	default_material_path = /datum/material/herb/ginseng
 
-/obj/item/stack/ginseng/five/New(var/newloc, var/material_path, var/_amount)
-	..(newloc, material_path, 5)
+/obj/item/stack/ginseng/five
+	amount = 5

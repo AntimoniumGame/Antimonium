@@ -9,6 +9,17 @@
 	var/burn_point = TEMPERATURE_BURNING
 	var/blood_material = /datum/material/water/blood
 
+/mob/Grind()
+	Gib()
+
+/mob/proc/Gib()
+	Splatter(loc, blood_material)
+	while(limbs.len > 1)
+		var/obj/item/limb/limb = limbs[pick(limbs - BP_CHEST)]
+		limb.SeverLimb()
+		sleep(-1)
+	QDel(src)
+
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
 

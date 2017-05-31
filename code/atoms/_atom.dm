@@ -101,3 +101,6 @@
 
 /atom/proc/SmearWith(var/datum/material/smearing, var/amount)
 	return
+
+/atom/proc/Grind(var/mob/user)
+	return FALSE

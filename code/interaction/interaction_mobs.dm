@@ -26,7 +26,7 @@
 	HandleInteraction(clicker, slot)
 
 /mob/proc/HandleInteraction(var/mob/person, var/slot_id)
-	if(!IsAdjacentTo(get_turf(src), get_turf(person)))
+	if(!IsAdjacentTo(src, person))
 		return
 	if(person == src)
 		HandleInteractionSelf(slot_id)
