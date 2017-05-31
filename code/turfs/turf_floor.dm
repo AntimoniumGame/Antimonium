@@ -34,6 +34,10 @@
 		user.NotifyNearby("\The [user] digs a long, deep pit.")
 		new /obj/structure/earthworks/pit(src)
 
+/turf/floor/water
+	name = "water"
+	icon = 'icons/turfs/water.dmi'
+
 /turf/floor/wood
 	name = "wooden floor"
 	icon = 'icons/turfs/wood_floor.dmi'
