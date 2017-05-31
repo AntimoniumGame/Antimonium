@@ -44,3 +44,6 @@
 		role.mob = other
 		other.role = role
 	other.key = key
+
+/mob/proc/IsDigger(var/complex_digging = FALSE)
+	return FALSE

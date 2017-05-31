@@ -26,3 +26,6 @@
 	if(istype(holding) && holding.Burn(src, SLOT_HEAD))
 		Notify("\The [holding] sears your mouth and falls from your grasp!")
 		DropItem(holding)
+
+/mob/animal/IsDigger(var/complex_digging = FALSE)
+	return !complex_digging

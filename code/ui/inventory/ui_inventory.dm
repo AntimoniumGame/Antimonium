@@ -6,8 +6,9 @@
 	var/unmodified_name
 	var/concealable = FALSE
 	var/list/update_bodyparts
+	var/associated_limb
 
-/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags, var/list/_update_bodyparts)
+/obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags, var/list/_update_bodyparts, var/_associated_limb)
 	. = ..()
 	if(nname)
 		name = nname
@@ -21,6 +22,7 @@
 	if(concealable) // Defaults to on.
 		invisibility = INVISIBILITY_MAXIMUM
 	update_bodyparts = _update_bodyparts
+	associated_limb = _associated_limb
 
 /obj/ui/inv/Destroy()
 	holding = null

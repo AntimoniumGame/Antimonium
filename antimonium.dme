@@ -7,6 +7,25 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "icons"
+#define FILE_DIR "icons/areas"
+#define FILE_DIR "icons/images"
+#define FILE_DIR "icons/lighting"
+#define FILE_DIR "icons/mobs"
+#define FILE_DIR "icons/objects"
+#define FILE_DIR "icons/objects/clothing"
+#define FILE_DIR "icons/objects/effects"
+#define FILE_DIR "icons/objects/items"
+#define FILE_DIR "icons/objects/items/alchemy"
+#define FILE_DIR "icons/objects/items/limbs"
+#define FILE_DIR "icons/objects/items/limbs/diona"
+#define FILE_DIR "icons/objects/items/limbs/dog"
+#define FILE_DIR "icons/objects/items/plants"
+#define FILE_DIR "icons/objects/structures"
+#define FILE_DIR "icons/turfs"
+#define FILE_DIR "sounds"
+#define FILE_DIR "sounds/effects"
+#define FILE_DIR "sounds/music"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES

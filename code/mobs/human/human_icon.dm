@@ -1,2 +1,2 @@
 /mob/human // Ease of mapping.
-	icon = 'icons/mobs/human_full.dmi'
+	icon_state = "human"

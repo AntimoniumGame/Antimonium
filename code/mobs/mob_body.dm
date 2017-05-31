@@ -6,11 +6,20 @@
 /mob/proc/CanUseLimb(var/slot)
 	var/obj/item/limb/hand = limbs[slot]
 	if(!istype(hand))
-		Notify("You are missing that limb!")
+		Notify("You are missing that limb ([slot])!")
 		return FALSE
 	if(hand.broken)
 		Notify("Your [hand.name] is broken and unusable.")
 		return FALSE
+	return TRUE
+
+/mob/proc/CanUseInvSlot(var/slot)
+	var/obj/ui/inv/inv_slot = inventory_slots[slot]
+	if(!istype(inv_slot))
+		Notify("You cannot use that limb.")
+		return FALSE
+	if(inv_slot.associated_limb)
+		return CanUseLimb(inv_slot.associated_limb)
 	return TRUE
 
 /mob/proc/CreateLimbs() //placeholder
