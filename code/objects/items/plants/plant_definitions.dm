@@ -1,5 +1,5 @@
 /obj/item/plant/cotton
-	name = "cotton plant"
+	name = "plant"
 	seed_type = /obj/item/stack/seed/cotton
 	product_type = /obj/item/stack/cotton
 	default_material_path = /datum/material/cloth/cotton
@@ -17,3 +17,10 @@
 	seed_type = /obj/item/stack/seed/ginseng
 	product_type = /obj/item/stack/ginseng
 	default_material_path = /datum/material/herb/ginseng
+
+/obj/item/plant/wheat
+	name = "stalk"
+	icon = 'icons/objects/items/plants/wheat.dmi'
+	seed_type = /obj/item/stack/seed/wheat
+	product_type = /obj/item/stack/wheat
+	default_material_path = /datum/material/herb/wheat
