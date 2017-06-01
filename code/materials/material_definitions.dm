@@ -7,6 +7,7 @@
 
 /datum/material/cloth/cotton
 	general_name = "cotton"
+	colour = WHITE
 
 /datum/material/cloth/felt
 	general_name = "felt"
