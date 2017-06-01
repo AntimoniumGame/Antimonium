@@ -37,6 +37,10 @@
 /area/GetLight()
 	return light
 
+/area/SetLight(var/light_data/new_light)
+	light = new_light
+	UpdateLight()
+
 /area/outdoors
 	icon = 'icons/areas/areas.dmi'
 	icon_state = "sky"

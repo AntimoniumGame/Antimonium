@@ -26,7 +26,6 @@ window "devwindow"
 		size = 350x700
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
@@ -40,7 +39,6 @@ window "devwindow"
 		anchor2 = 100,0
 		is-default = true
 		saved-params = ""
-		tab-background-color = none
 	elem "output"
 		type = OUTPUT
 		pos = 0,248
@@ -64,7 +62,7 @@ window "lighttoolwindow"
 	elem "lighttoolwindow"
 		type = MAIN
 		pos = 281,0
-		size = 534x160
+		size = 500x200
 		anchor1 = none
 		anchor2 = none
 		background-color = none
@@ -73,74 +71,48 @@ window "lighttoolwindow"
 		title = "Lighting Tool"
 		statusbar = false
 		macro = "macro"
-	elem "lt_clr_in"
-		type = INPUT
-		pos = 80,52
-		size = 64x20
+	elem "lt_rgb_btn"
+		type = BUTTON
+		pos = 96,40
+		size = 96x40
 		anchor1 = 0,0
-		anchor2 = none
-		border = sunken
-		saved-params = ""
-	elem "lt_rng_in"
-		type = INPUT
-		pos = 80,132
-		size = 64x20
-		anchor1 = 0,0
-		anchor2 = none
-		border = sunken
-		saved-params = ""
-	elem "lt_brt_out"
-		type = LABEL
-		pos = 454,80
-		size = 80x40
-		anchor1 = 100,0
 		anchor2 = none
 		background-color = none
-		saved-params = ""
-		text = "0"
-	elem "lt_brt_in"
-		type = INPUT
-		pos = 80,92
-		size = 64x20
+		saved-params = "is-checked"
+		text = ""
+		command = ""
+		is-flat = true
+	elem "lt_color_sample"
+		type = LABEL
+		pos = 192,40
+		size = 200x40
 		anchor1 = 0,0
-		anchor2 = none
-		border = sunken
-		saved-params = ""
-	elem "lt_rng_out"
-		type = LABEL
-		pos = 454,120
-		size = 80x40
-		anchor1 = 100,0
-		anchor2 = none
-		background-color = none
-		saved-params = ""
-		text = "0"
-	elem "lt_clr_out"
-		type = LABEL
-		pos = 454,40
-		size = 80x40
-		anchor1 = 100,0
-		anchor2 = none
+		anchor2 = 100,0
 		background-color = #ffffff
 		border = line
 		saved-params = ""
 		text = ""
+	elem "lt_rng_out"
+		type = LABEL
+		pos = 420,160
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_rng_in"
+		type = INPUT
+		pos = 80,172
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
 	elem "lt_rng_sld"
 		type = BAR
-		pos = 144,120
-		size = 310x40
-		anchor1 = 0,0
-		anchor2 = 100,0
-		background-color = #dfdfdf
-		saved-params = ""
-		bar-color = #b2b2b2
-		is-slider = true
-		width = 20
-		dir = east
-	elem "lt_brt_sld"
-		type = BAR
-		pos = 144,80
-		size = 310x40
+		pos = 144,160
+		size = 276x40
 		anchor1 = 0,0
 		anchor2 = 100,0
 		background-color = #dfdfdf
@@ -151,7 +123,7 @@ window "lighttoolwindow"
 		dir = east
 	elem "lt_rng_lbl"
 		type = LABEL
-		pos = 0,120
+		pos = 0,160
 		size = 80x40
 		anchor1 = 0,0
 		anchor2 = none
@@ -159,9 +131,65 @@ window "lighttoolwindow"
 		saved-params = ""
 		text = "   Range:"
 		align = left
+	elem "lt_mode_btn"
+		type = BUTTON
+		pos = 0,40
+		size = 96x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Mode"
+		command = ""
+	elem "lt_clr_in"
+		type = INPUT
+		pos = 80,92
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
+	elem "lt_brt_out"
+		type = LABEL
+		pos = 420,120
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_brt_in"
+		type = INPUT
+		pos = 80,132
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
+	elem "lt_clr_out"
+		type = LABEL
+		pos = 420,80
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_brt_sld"
+		type = BAR
+		pos = 144,120
+		size = 276x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #dfdfdf
+		saved-params = ""
+		bar-color = #b2b2b2
+		is-slider = true
+		width = 20
+		dir = east
 	elem "lt_brt_lbl"
 		type = LABEL
-		pos = 0,80
+		pos = 0,120
 		size = 80x40
 		anchor1 = 0,0
 		anchor2 = none
@@ -171,7 +199,7 @@ window "lighttoolwindow"
 		align = left
 	elem "lt_col_lbl"
 		type = LABEL
-		pos = 0,40
+		pos = 0,80
 		size = 80x40
 		anchor1 = 0,0
 		anchor2 = none
@@ -181,8 +209,8 @@ window "lighttoolwindow"
 		align = left
 	elem "lt_clr_sld"
 		type = BAR
-		pos = 144,40
-		size = 310x40
+		pos = 144,80
+		size = 276x40
 		anchor1 = 0,0
 		anchor2 = 100,0
 		background-color = #dfdfdf
@@ -193,7 +221,7 @@ window "lighttoolwindow"
 		dir = east
 	elem "lt_pick_btn"
 		type = BUTTON
-		pos = 424,0
+		pos = 393,40
 		size = 110x40
 		anchor1 = 100,0
 		anchor2 = none
@@ -204,7 +232,7 @@ window "lighttoolwindow"
 	elem "lt_selected_light"
 		type = LABEL
 		pos = 88,0
-		size = 336x40
+		size = 412x40
 		anchor1 = 0,0
 		anchor2 = 100,0
 		background-color = none
@@ -229,7 +257,6 @@ window "mainwindow"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-size = "OnResize"
@@ -276,7 +303,6 @@ window "varswindow"
 		size = 400x600
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "View Vars"
@@ -302,7 +328,6 @@ window "varswindow"
 		size = 400x24
 		anchor1 = 0,0
 		anchor2 = 100,0
-		background-color = none
 		border = line
 		saved-params = "is-checked"
 		text = "Auto-refresh"

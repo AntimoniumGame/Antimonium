@@ -24,6 +24,24 @@
 /light_data/proc/UpdateColor()
 	color = ConvertTemperatureToRGB(temperature, brightness)
 
+/light_data/effect/New(nrgb = "#FFF", nrange = 3, ntemp = 6500, nbright = 100)
+	color = nrgb
+	range = nrange
+	temperature = ntemp
+	brightness = nbright
+
+//effect lights take rgb values directly
+/light_data/effect/UpdateColor()
+	return
+
+/light_data/proc/ConvertToEffect()
+	var/light_data/effect/E = new(color, range, temperature, brightness)
+	return E
+
+/light_data/effect/proc/ConvertToLight()
+	var/light_data/L = new(temperature, brightness, range)
+	return L
+
 //works best between 1000K and 40000K (6600K is white)
 // returns an RGB html string i.e. #ffef0b
 /proc/ConvertTemperatureToRGB(temperature, brightness = 100)
@@ -60,3 +78,38 @@
 			blue = Clamp(blue, 0, 255)
 
 	return rgb(red * brightness, green * brightness, blue * brightness)
+/*
+/proc/ConvertHueToRGB(hue, brightness = 100)
+	hue = floor(hue)
+	brightness /= 100
+
+	var/red, green, blue = 0
+
+	switch(hue)
+		if(0 to 60)
+			red = 255
+			green = hue / 60 * 255
+			blue = 0
+		if(61 to 120)
+			red = abs((hue - 60) / 60 - 1) * 255
+			green = 255
+			blue = 0
+		if(121 to 180)
+			red = 0
+			green = 255
+			blue = (hue - 120) / 60 * 255
+		if(181 to 240)
+			red = 0
+			green = abs((hue - 180) / 60 - 1) * 255
+			blue = 255
+		if(241 to 300)
+			red = (hue - 240) / 60 * 255
+			green = 0
+			blue = 255
+		if(301 to 360)
+			red = 255
+			green = 0
+			blue = abs((hue - 300) / 60 - 1) * 255
+
+	return rgb(red * brightness, green * brightness, blue * brightness)
+*/

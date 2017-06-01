@@ -10,7 +10,9 @@
 		/client/proc/CloseVarsWindow,
 		/client/proc/RunLightTool,
 		/client/proc/LightToolChange,
-		/client/proc/LightToolPick
+		/client/proc/LightToolPick,
+		/client/proc/LightToolMode,
+		/client/proc/LightToolSetRGB
 		)
 
 /client/proc/DevPanel()

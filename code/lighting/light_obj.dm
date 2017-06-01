@@ -13,6 +13,10 @@
 		light = new()
 	return light
 
+/obj/SetLight(var/light_data/new_light)
+	light = new_light
+	UpdateLight()
+
 /obj/CreateLight()
 	world << "Creating light for [src]"
 	if(!light_overlay)
@@ -36,18 +40,25 @@
 */
 	CreateLightOverlay(light_overlay, light)
 
-	overlays += light_overlay
+//	overlays += light_overlay
 
 	UpdateLight()
 
 /obj/UpdateLight()
+	if(!light_overlay)
+		CreateLight()
+		return
 	var/list/overlay_list = overlays
 	overlay_list -= light_overlay // remove the light overlay before we modify it
 	light_overlay.color = light.color
-	if(!light_on)
+/*	if(!light_on)
 		light_overlay.alpha = 0
+	else*/
+//	light_overlay.alpha = light.brightness / 100 * 255
+	if(light.brightness > 0)
+		light_on = TRUE
 	else
-		light_overlay.alpha = light.brightness / 100 * 255
+		light_on = FALSE
 
 	overlay_list += light_overlay // add the light overlay back in
 	overlays = overlay_list
