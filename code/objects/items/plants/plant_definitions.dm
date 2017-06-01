@@ -1,7 +1,7 @@
 /obj/item/plant/cotton
 	name = "plant"
 	seed_type = /obj/item/stack/seed/cotton
-	product_type = /obj/item/stack/cotton
+	product_type = /obj/item/stack/fibers/cotton
 	default_material_path = /datum/material/cloth/cotton
 
 /obj/item/plant/nightshade

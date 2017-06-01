@@ -24,6 +24,7 @@
 			thing.ForceMove(get_turf(src))
 			if(user.CollectItem(thing, slot))
 				user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
+				ThingTakenOut(thing)
 			else
 				contains += thing
 				thing.ForceMove(src)
@@ -83,6 +84,13 @@
 				if(prop && !Deleted(prop))
 					prop.ForceMove(src)
 					contains += prop
+					ThingPutInside(prop)
 					user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
 					return TRUE
 	return FALSE
+
+/obj/structure/proc/ThingPutInside(var/obj/item/prop)
+	return
+
+/obj/structure/proc/ThingTakenOut(var/obj/item/prop)
+	return

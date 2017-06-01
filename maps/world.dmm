@@ -99,6 +99,7 @@
 "bU" = (/obj/structure/table,/obj/item/stack/seed/cotton,/obj/item/stack/seed/ginseng,/obj/item/stack/seed/nightshade,/turf/floor/dirt,/area/lighting/outdoors)
 "bV" = (/obj/structure/cask/barrel,/obj/item/stack/ingredient/copper,/turf/floor/stone,/area/lighting)
 "bW" = (/obj/structure/crate,/obj/item/stack/ingredient/lead,/turf/floor/stone,/area/lighting)
+"bX" = (/obj/structure/spinning_wheel{tag = "icon-wheel (EAST)";icon_state = "wheel";dir = 4},/turf/floor/wood,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -110,7 +111,7 @@ agagagagagahaiagagagagagagajajajajajajajakalajajajajabababaa
 agamamanaoaoaoaoapaqararagasatatauatatavavavavavavajabababaa
 agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayababaa
 agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayababaa
-agaDamamaoaoaoaoaoaoaoaoagasatatatatatavavavavavavajayababaa
+agaDamamaoaoaoaoaoaoaoaoagasatatatatatavavavbbbXaVajayababaa
 agaEamamaoaoaFaoaoaoaoaoagasatatatatatavavavaGasasajaHaHafaa
 agaIamamaoaoaoaoaoaoaoaoagasavavavavavavaJaJaJasaKaKamaHabaa
 agaLamamaoaMaoaoaoaoaoaoagasasaNaOasasasasasasasaKawamaHabaa

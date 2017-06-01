@@ -8,6 +8,13 @@
 /datum/material/cloth/cotton
 	general_name = "cotton"
 	colour = WHITE
+	spinnable = TRUE
+
+/datum/material/cloth/wool
+	general_name = "wool"
+	descriptor = "woolen"
+	colour = WHITE
+	spinnable = TRUE
 
 /datum/material/cloth/felt
 	general_name = "felt"

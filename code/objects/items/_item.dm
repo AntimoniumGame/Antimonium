@@ -80,9 +80,12 @@
 	return GetWornIcon("held")
 
 /obj/item/Destroy()
-	var/mob/owner = loc
-	if(istype(owner))
+	if(istype(loc, /mob))
+		var/mob/owner = loc
 		owner.DropItem(src)
+	else if(istype(loc, /obj/structure))
+		var/obj/structure/struct = loc
+		struct.contains -= src
 	. = ..()
 
 /obj/item/GetAmount()

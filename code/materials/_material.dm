@@ -28,6 +28,7 @@
 
 	var/colour = WHITE
 	var/grindable = FALSE
+	var/spinnable = FALSE
 
 	var/solid_icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 	var/powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'

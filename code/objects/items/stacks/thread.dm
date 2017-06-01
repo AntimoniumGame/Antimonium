@@ -3,7 +3,7 @@
 	contact_size = 5
 	icon = 'icons/objects/items/thread/thread_grey.dmi'
 	singular_name = "thread"
-	plural_name =   "thread"
+	plural_name =   "threads"
 	stack_name =    "spool"
 	default_material_path = /datum/material/cloth
 	var/dyed = WHITE

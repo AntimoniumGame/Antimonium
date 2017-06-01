@@ -1,10 +1,16 @@
-/obj/item/stack/cotton
+// Placeholder.
+/obj/item/stack/fibers
+	name = "wool"
+	singular_name = "fiber"
+	plural_name = "fibers"
+	stack_name = "tangle"
+	default_material_path = /datum/material/cloth/wool
+// End placeholder.
+
+/obj/item/stack/fibers/cotton
 	name = "cotton"
 	icon = 'icons/objects/items/plants/cotton.dmi'
-	singular_name = "cotton fiber"
-	plural_name = "cotton fibers"
-	stack_name = "tangle"
-	default_material_path = null
+	default_material_path = /datum/material/cloth/cotton
 
 /obj/item/stack/nightshade
 	name = "nightshade"
