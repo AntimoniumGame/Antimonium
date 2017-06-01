@@ -14,20 +14,20 @@
 
 /turf/floor/ManipulatedBy(var/mob/user, var/slot)
 	if(diggable && user.IsDigger())
-		DigEarthworks(user, slot)
+		DigEarthworks(user, slot, check_digger = TRUE)
 		return TRUE
 	. = ..()
 
-/turf/floor/proc/DigEarthworks(var/mob/user, var/slot)
+/turf/floor/proc/DigEarthworks(var/mob/user, var/slot, var/check_digger = FALSE)
 
-	if(!user.CanUseInvSlot(slot))
+	if(slot && !user.CanUseInvSlot(slot))
 		return FALSE
 
 	if(locate(/obj/structure/earthworks) in src)
 		user.Notify("There are already earthworks here. You will need to fill them in before digging.")
 		return TRUE
 
-	if(user.intent.selecting == INTENT_HELP && user.IsDigger(TRUE))
+	if(user.intent.selecting == INTENT_HELP && (!check_digger || user.IsDigger(TRUE)))
 		user.NotifyNearby("\The [user] carefully tills the soil into a farm.")
 		new /obj/structure/earthworks/farm(src)
 	else

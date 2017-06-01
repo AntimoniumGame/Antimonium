@@ -27,3 +27,11 @@
 
 /obj/item/stack/ginseng/five
 	amount = 5
+
+/obj/item/stack/wheat
+	name = "wheat"
+	icon = 'icons/objects/items/plants/wheat.dmi'
+	singular_name = "stalk"
+	plural_name = "stalks"
+	stack_name = "sheaf"
+	default_material_path = /datum/material/herb/wheat
