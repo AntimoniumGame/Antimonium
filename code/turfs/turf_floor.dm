@@ -107,24 +107,30 @@
 	icon = 'icons/turfs/wood_floor.dmi'
 	base_states = 3
 
-/turf/floor/stone
+/turf/floor/cobble
 	name = "cobblestones"
 	icon = 'icons/turfs/cobble_floor.dmi'
 	base_states = 3
+	edge_blend_layer = 0.2
+
+/turf/floor/stone
+	name = "stone floor"
+	icon = 'icons/turfs/stone_floor.dmi'
+	base_states = 1
 	edge_blend_layer = 0.1
 
 /turf/floor/dirt
 	name = "dirt"
 	icon = 'icons/turfs/dirt_floor.dmi'
 	diggable = TRUE
-	edge_blend_layer = 0.3
+	edge_blend_layer = 0.4
 	base_states = 4
 
 /turf/floor/grass
 	name = "grass"
 	icon = 'icons/turfs/grass_floor.dmi'
 	diggable = TRUE
-	edge_blend_layer = 0.2
+	edge_blend_layer = 0.3
 
 /turf/floor/tiles
 	name = "tiled floor"
