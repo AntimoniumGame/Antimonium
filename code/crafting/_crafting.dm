@@ -15,7 +15,7 @@
 		material_cost = round((initial(thing.weight) * result_number) * 1.5)
 
 /datum/crafting_recipe/proc/CanCraft(var/atom/craft_at, var/obj/item/stack/crafting_with)
-	return ((istype(craft_at, required_structure) || \
+	return (!required_structure || (istype(craft_at, required_structure) || \
 	 (locate(required_structure) in craft_at)) && \
 	 crafting_with.GetAmount() >= material_cost)
 

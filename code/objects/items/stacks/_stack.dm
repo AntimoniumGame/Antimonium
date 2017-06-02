@@ -7,6 +7,7 @@
 	var/singular_name = "thing"
 	var/plural_name =   "things"
 	var/stack_name =    "stack"
+	var/crafted = TRUE
 
 /obj/item/stack/GetWeight()
 	return GetAmount() * (material ? material.weight_modifier : 1)
@@ -33,12 +34,28 @@
 
 /obj/item/stack/AttackedBy(var/mob/user, var/obj/item/prop)
 
-	if(istype(prop, /obj/item/mortar_pestle))
+	if(prop.associated_skill & SKILL_ALCHEMY)
 		if(GetAmount() > 5)
-			user.Notify("There are too many [plural_name] in this [stack_name] to grind in \the [prop].")
+			user.Notify("There are too many [plural_name] in this [stack_name] to grind with \the [prop].")
 		else
 			Grind(user)
 		return TRUE
+
+	if(material && !crafted)
+		if(TryCraft(user, prop))
+			return TRUE
+		if(prop.associated_skill & SKILL_ARCHITECTURE)
+			var/list/buildings = material.GetBuildableTurfs(src)
+			if(buildings.len)
+				if(GetAmount() < 5)
+					user.Notify("There is not enough in \the [src] to build that.")
+				else
+					var/select_type = input("Select a building type.") as null|anything in buildings
+					if(select_type)
+						user.NotifyNearby("\The [user] lays out a foundation.")
+						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, 5))
+						Remove(5)
+				return TRUE
 
 	if(MatchesStackType(prop))
 		var/obj/item/stack/other = prop

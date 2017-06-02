@@ -85,13 +85,14 @@
 		owner.DropItem(src)
 	else if(istype(loc, /obj/structure))
 		var/obj/structure/struct = loc
-		struct.contains -= src
+		if(istype(struct.contains, /list))
+			struct.contains -= src
 	. = ..()
 
 /obj/item/GetAmount()
 	return initial(weight)
 
 /obj/item/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(istype(prop, /obj/item/mortar_pestle) && Grind(user))
+	if((prop.associated_skill & SKILL_ALCHEMY) && Grind(user))
 		return TRUE
 	. = ..()

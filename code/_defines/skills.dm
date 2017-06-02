@@ -1,4 +1,7 @@
-#define SKILL_FORGING   1
-#define SKILL_CARPENTRY 2
-#define SKILL_TAILORING 4
-#define SKILL_MASONRY   8
+#define SKILL_FORGING       1
+#define SKILL_CARPENTRY     2
+#define SKILL_TAILORING     4
+#define SKILL_MASONRY       8
+#define SKILL_ARCHITECTURE 16
+#define SKILL_CONSTRUCTION 32
+#define SKILL_ALCHEMY      64

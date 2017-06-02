@@ -12,6 +12,9 @@
 	sharpness_modifier = 2
 	weight_modifier = 2
 
+/datum/material/metal/iron/GetBuildableTurfs(var/obj/item/stack/building_with)
+	return list()
+
 /datum/material/metal/copper
 	general_name = "copper"
 	strength = 0.8
@@ -22,6 +25,9 @@
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
 	melting_point = 1360
 	boiling_point = 2800
+
+/datum/material/metal/copper/GetBuildableTurfs(var/obj/item/stack/building_with)
+	return list()
 
 /datum/material/metal/lead
 	general_name = "lead"

@@ -1,9 +1,4 @@
-/obj/item/stack/ingredient/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(!TryCraft(user, prop))
-		return ..()
-	return TRUE
-
-/obj/item/stack/ingredient/proc/TryCraft(var/mob/user, var/obj/item/prop)
+/obj/item/stack/proc/TryCraft(var/mob/user, var/obj/item/prop)
 	if(!material || !prop.associated_skill)
 		return FALSE
 
