@@ -94,13 +94,13 @@
 
 /turf/floor/carpet
 	name = "carpet"
-	icon = 'icons/turfs/carpet.dmi'
+	icon = 'icons/turfs/carpet_floor.dmi'
 	icon_state = "base"
 	has_edges = TRUE
 
 /turf/floor/water
 	name = "water"
-	icon = 'icons/turfs/water.dmi'
+	icon = 'icons/turfs/water_floor.dmi'
 
 /turf/floor/wood
 	name = "wooden floor"
@@ -109,26 +109,26 @@
 
 /turf/floor/stone
 	name = "cobblestones"
-	icon = 'icons/turfs/cobbles.dmi'
+	icon = 'icons/turfs/cobble_floor.dmi'
 	base_states = 3
 	edge_blend_layer = 0.1
 
 /turf/floor/dirt
 	name = "dirt"
-	icon = 'icons/turfs/dirt.dmi'
+	icon = 'icons/turfs/dirt_floor.dmi'
 	diggable = TRUE
 	edge_blend_layer = 0.3
 	base_states = 4
 
 /turf/floor/grass
 	name = "grass"
-	icon = 'icons/turfs/grass.dmi'
+	icon = 'icons/turfs/grass_floor.dmi'
 	diggable = TRUE
 	edge_blend_layer = 0.2
 
 /turf/floor/tiles
 	name = "tiled floor"
-	icon = 'icons/turfs/tiles.dmi'
+	icon = 'icons/turfs/tile_floor.dmi'
 	icon_state = "1"
 
 /client/verb/force_turf_refresh()

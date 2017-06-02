@@ -7,7 +7,7 @@
 
 /turf/wall/stone
 	name = "stone wall"
-	icon = 'icons/turfs/stone_wall.dmi'
+	icon = 'icons/turfs/cobble_wall.dmi'
 
 /turf/wall/wood
 	name = "wooden wall"
