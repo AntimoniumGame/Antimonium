@@ -2,6 +2,7 @@
 	layer = TURF_LAYER
 	luminosity = 1
 	flags = FLAG_TEMPERATURE_SENSITIVE | FLAG_SIMULATED
+	var/edge_blend_layer
 
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()
