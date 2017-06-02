@@ -48,11 +48,9 @@
 
 	switch(param_list["mode"])
 		if("color")
-			L.temperature = floor((input_value * 140) + 1000) // 1000K minimum, 15000K maximum
-			L.UpdateColor()
+			L.SetTemperature(floor((input_value * 140) + 1000)) // 1000K minimum, 15000K maximum
 		if("brightness")
-			L.brightness = floor(input_value)
-			L.UpdateColor()
+			L.SetBrightness(floor(input_value))
 		if("range")
 			L.range = floor((input_value / 100) * MAX_LIGHT_RANGE)
 
@@ -100,10 +98,10 @@
 	if(istype(A))
 		var/light_data/L = A.GetLight()
 		if(istype(L))
-			var/new_color = input("Select color:", "RGB Light Colour Picker", L.color) as color
-			L.color = new_color
-			UpdateLightingTool(L, "\ref[A]")
+			var/new_color = input("Select color:", "RGB Light Colour Picker", L.GetColor()) as color
+			L.SetColor(new_color)
 			A.UpdateLight()
+			UpdateLightingTool(L, "\ref[A]")
 
 /client/proc/UpdateLightingTool(var/light_data/light, ref)
 	if(!light)

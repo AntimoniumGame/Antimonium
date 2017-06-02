@@ -18,7 +18,7 @@
 	UpdateLight()
 
 /obj/CreateLight()
-	world << "Creating light for [src]"
+//	world << "Creating light for [src]"
 	if(!light_overlay)
 		light_overlay = image('icons/lighting/light_range_3.dmi', null, "white")
 	if(!light)
@@ -38,7 +38,7 @@
 	I.layer = LIGHT_LAYER_OVERLAY
 	light_overlay.overlays += I
 */
-	CreateLightOverlay(light_overlay, light)
+	CreateObjLightOverlay(light_overlay, light)
 
 //	overlays += light_overlay
 
@@ -63,7 +63,7 @@
 	overlay_list += light_overlay // add the light overlay back in
 	overlays = overlay_list
 
-/proc/CreateLightOverlay(var/image/overlay, var/light_data/light)
+/proc/CreateObjLightOverlay(var/image/overlay, var/light_data/light)
 	if(!overlay || !light)
 		return
 

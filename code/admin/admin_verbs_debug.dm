@@ -124,7 +124,7 @@
 				src << output("/appearance", "[window_ref].varsgrid:2,[i++]")
 			else if(k == "blend_mode")
 				src << output("mode: [__blend_mode_flags["[value]"]]", "[window_ref].varsgrid:2,[i++]")
-			else if(isnum(value) && k in list("flags", "sight", "appearance_flags"))
+			else if(isnum(value) && (k in list("flags", "sight", "appearance_flags")))
 				src << output(FlagsToBits(value, k), "[window_ref].varsgrid:2,[i++]")
 			else
 				src << output("[value]", "[window_ref].varsgrid:2,[i++]")
@@ -178,7 +178,7 @@
 	if(!istype(D))
 		return
 	var/V = D.vars[href_list["var"]]
-	if(V in list("type", "parent_type", "vars") || istype(D, /atom) && V in list("locs"))
+	if((V in list("type", "parent_type", "vars")) || istype(D, /atom) && (V in list("locs")))
 		C.Dnotify("variable \"[V]\" is read-only")
 	else
 		var/var_name = null

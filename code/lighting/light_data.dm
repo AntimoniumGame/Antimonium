@@ -21,6 +21,20 @@
 	range = nrange
 	UpdateColor()
 
+/light_data/proc/GetColor()
+	return color
+
+/light_data/proc/SetColor(var/new_color)
+	return
+
+/light_data/proc/SetTemperature(var/new_temp)
+	temperature = new_temp
+	UpdateColor()
+
+/light_data/proc/SetBrightness(var/new_bright)
+	brightness = new_bright
+	UpdateColor()
+
 /light_data/proc/UpdateColor()
 	color = ConvertTemperatureToRGB(temperature, brightness)
 
@@ -29,6 +43,10 @@
 	range = nrange
 	temperature = ntemp
 	brightness = nbright
+
+/light_data/effect/SetColor(var/new_color)
+	color = new_color
+	UpdateColor()
 
 //effect lights take rgb values directly
 /light_data/effect/UpdateColor()
@@ -78,38 +96,10 @@
 			blue = Clamp(blue, 0, 255)
 
 	return rgb(red * brightness, green * brightness, blue * brightness)
-/*
-/proc/ConvertHueToRGB(hue, brightness = 100)
-	hue = floor(hue)
-	brightness /= 100
 
-	var/red, green, blue = 0
-
-	switch(hue)
-		if(0 to 60)
-			red = 255
-			green = hue / 60 * 255
-			blue = 0
-		if(61 to 120)
-			red = abs((hue - 60) / 60 - 1) * 255
-			green = 255
-			blue = 0
-		if(121 to 180)
-			red = 0
-			green = 255
-			blue = (hue - 120) / 60 * 255
-		if(181 to 240)
-			red = 0
-			green = abs((hue - 180) / 60 - 1) * 255
-			blue = 255
-		if(241 to 300)
-			red = (hue - 240) / 60 * 255
-			green = 0
-			blue = 255
-		if(301 to 360)
-			red = 255
-			green = 0
-			blue = abs((hue - 300) / 60 - 1) * 255
-
-	return rgb(red * brightness, green * brightness, blue * brightness)
-*/
+/proc/CreateLightOverlay(nicon, nicon_state, ndir, nplane, nlayer, nblend_mode, npixel)
+	var/image/light_overlay = image(nicon, null, nicon_state, nlayer, ndir)
+	light_overlay.plane = nplane
+	light_overlay.blend_mode = nblend_mode
+	light_overlay.pixel_x = light_overlay.pixel_y = npixel
+	return light_overlay
