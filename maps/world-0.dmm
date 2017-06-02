@@ -2,6 +2,7 @@
 "b" = (/turf/wall/dirt,/area/lighting)
 "c" = (/turf/floor/stone,/area/lighting)
 "d" = (/turf/floor/dirt,/area/lighting)
+"e" = (/obj/structure/stairs,/turf/floor/dirt,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -31,7 +32,7 @@ addbbbbbbbdddcaaaccddddddddbba
 addbbbbbbbdbbcaaaaddddbbdddbba
 addbbbbbbbdbbcaaaadddbbbbdddba
 adddbbbbbbdddcaaaaddddbbbbddda
-acdddddbbdddcaaaaaaaddddbbbbda
-accddddddddcaaaaaaaaaddddddbda
+acdddddbbdddcaaaaaaaddddbbbeda
+accddddddddcaaaaaaaaadddddbbda
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

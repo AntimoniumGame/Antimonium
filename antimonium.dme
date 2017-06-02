@@ -234,6 +234,7 @@
 #include "code\objects\structures\millstone.dm"
 #include "code\objects\structures\sconce.dm"
 #include "code\objects\structures\spinning_wheel.dm"
+#include "code\objects\structures\stairs.dm"
 #include "code\objects\structures\still.dm"
 #include "code\objects\structures\table.dm"
 #include "code\objects\structures\earthworks\earthworks.dm"
