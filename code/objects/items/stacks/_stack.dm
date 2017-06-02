@@ -47,9 +47,15 @@
 		if(prop.associated_skill & SKILL_ARCHITECTURE)
 			var/list/buildings = material.GetBuildableTurfs(src)
 			if(buildings.len)
-				if(GetAmount() < 5)
+				if(GetAmount() < material.GetTurfCost())
 					user.Notify("There is not enough in \the [src] to build that.")
 				else
+					if(locate(/obj/structure/foundation) in get_turf(src))
+						user.Notify("There is already a foundation in that location.")
+						return TRUE
+					if(locate(/obj/structure) in get_turf(src))
+						user.Notify("There is a structure occupying that location.")
+						return TRUE
 					var/select_type = input("Select a building type.") as null|anything in buildings
 					if(select_type)
 						user.NotifyNearby("\The [user] lays out a foundation.")

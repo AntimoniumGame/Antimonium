@@ -50,6 +50,9 @@
 /datum/material/proc/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
 
+/datum/material/proc/GetTurfCost()
+	return 20
+
 /datum/material/proc/IsFlammable()
 	return (ignition_point <= TEMPERATURE_MAX)
 

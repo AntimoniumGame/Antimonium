@@ -42,7 +42,7 @@
 "aP" = (/obj/item/weapon/pipe,/turf/floor/tiled,/area/lighting/indoors)
 "aQ" = (/obj/structure/door/north,/turf/floor/wood,/area/lighting)
 "aR" = (/obj/structure/door/south,/turf/floor/wood,/area/lighting)
-"aS" = (/obj/structure/table/bench,/turf/floor/cobble,/area/lighting/indoors)
+"aS" = (/obj/structure/table/bench,/obj/item/stack/logs,/turf/floor/cobble,/area/lighting/indoors)
 "aT" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/cobble,/area/lighting/indoors)
 "aU" = (/obj/structure/still/horizontal{tag = "icon-default (NORTH)";icon_state = "";dir = 1},/turf/floor/tiled,/area/lighting/indoors)
 "aV" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/tiled,/area/lighting/indoors)
@@ -110,6 +110,9 @@
 "cf" = (/obj/item/stack/ingredient/stone,/turf/floor/tiled,/area/lighting/indoors)
 "cg" = (/obj/item/stack/ingredient/stone,/turf/floor/tiled,/area/lighting/indoors)
 "ch" = (/obj/item/stack/ingredient/stone,/turf/floor/tiled,/area/lighting/indoors)
+"ci" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
+"cj" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
+"ck" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -121,10 +124,10 @@ agagagagagahaiagagagagagagajajajajajajajakalajajajajabababaa
 agamamanaoaoaoaoapaqararagasatatauatatavavavavavavajabababaa
 agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayababaa
 agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayababaa
-agaDamamaoaoaoaoaoaoaoaoagasatatatatatavavavaEaFaGajayababaa
-agaHamamaoaoaIaoaobZcacbagasatatatatatavavavaJasasajaKaKafaa
-agaLamamaoaoaoaoaocccdceagasavavavavavavaMaMaMasaNaNamaKabaa
-agaOamamaoaPaoaoaocfcgchagasasaQaRasasasasasasasaNawamaKabaa
+agaDamamaoaoaoaoaocicjckagasatatatatatavavavaEaFaGajayababaa
+agaHamamaoaoaIaoaobZbZbZagasatatatatatavavavaJasasajaKaKafaa
+agaLamamaoaoaoaoaoccccccagasavavavavavavaMaMaMasaNaNamaKabaa
+agaOamamaoaPaoaoaocfcfcfagasasaQaRasasasasasasasaNawamaKabaa
 agaSamaTaUaoaVaoaoaoaoaVagasasavavavavaWavaXavasaNaNamaKabaa
 agagagagagagagagagaoaoagagasasatataJavaXavaGaYasasajaKaKabaa
 aZaZaZaZaZaZaZaZaZbabbaZaZaZasbcataJaEaGavavavavbdajayadabaa
