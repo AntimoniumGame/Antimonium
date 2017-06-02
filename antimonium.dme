@@ -234,6 +234,7 @@
 #include "code\objects\structures\millstone.dm"
 #include "code\objects\structures\sconce.dm"
 #include "code\objects\structures\spinning_wheel.dm"
+#include "code\objects\structures\stairs.dm"
 #include "code\objects\structures\still.dm"
 #include "code\objects\structures\table.dm"
 #include "code\objects\structures\earthworks\earthworks.dm"
@@ -262,6 +263,7 @@
 #include "code\ui\toggle\ui_toggle_inv.dm"
 #include "code\ui\toggle\ui_toggle_prefs.dm"
 #include "code\ui\vision\ui_vision_cone.dm"
-#include "maps\world.dmm"
+#include "maps\world-0.dmm"
+#include "maps\world-1.dmm"
 // END_INCLUDE
 

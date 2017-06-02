@@ -5,9 +5,17 @@
 	density = 1
 	opacity = 1
 
+/turf/wall/cobble
+	name = "constructed stone wall"
+	icon = 'icons/turfs/cobble_wall.dmi'
+
 /turf/wall/stone
 	name = "stone wall"
 	icon = 'icons/turfs/stone_wall.dmi'
+
+/turf/wall/dirt
+	name = "dirt wall"
+	icon = 'icons/turfs/dirt_wall.dmi'
 
 /turf/wall/wood
 	name = "wooden wall"
