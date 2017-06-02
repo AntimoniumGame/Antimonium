@@ -56,7 +56,7 @@
 		EndLobbyMusic(client)
 
 	var/mob/human/player_mob = new()
-	player_mob.ForceMove(locate(3,3,1))
+	player_mob.ForceMove(locate(3,3,2))
 	player_mob.name = key
 	TransferControlTo(player_mob)
 

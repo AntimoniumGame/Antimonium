@@ -262,6 +262,7 @@
 #include "code\ui\toggle\ui_toggle_inv.dm"
 #include "code\ui\toggle\ui_toggle_prefs.dm"
 #include "code\ui\vision\ui_vision_cone.dm"
-#include "maps\world.dmm"
+#include "maps\world-0.dmm"
+#include "maps\world-1.dmm"
 // END_INCLUDE
 
