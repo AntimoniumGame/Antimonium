@@ -28,6 +28,9 @@
 	sharpness_modifier = 0.3
 	ignition_point = 600
 
+/datum/material/wood/GetBuildableTurfs(var/obj/item/stack/building_with)
+	return list(/turf/wall/wood, /turf/floor/wood)
+
 /datum/material/meat
 	general_name = "meat"
 	descriptor = "raw"

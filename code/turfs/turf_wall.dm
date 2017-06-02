@@ -6,7 +6,7 @@
 	opacity = 1
 
 /turf/wall/cobble
-	name = "constructed stone wall"
+	name = "dressed stone wall"
 	icon = 'icons/turfs/cobble_wall.dmi'
 
 /turf/wall/stone
@@ -25,18 +25,17 @@
 	name = "tiled wall"
 	icon = 'icons/turfs/tile_wall.dmi'
 
-/turf/wall/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
+/turf/wall/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)
 	icon_state = ""
 	var/list/connected_neighbors = list()
 	for(var/thing in Trange(1,src))
 		if(thing == src)
 			continue
 		var/turf/neighbor = thing
-		if(!neighbor.density)
-			continue
-		if(update_neighbors)
-			neighbor.UpdateIcon()
-		connected_neighbors += get_dir(src, neighbor)
+		if(!ignore_neighbors)
+			neighbor.UpdateIcon(ignore_neighbors = TRUE)
+		if(neighbor.density)
+			connected_neighbors += get_dir(src, neighbor)
 
 	for(var/i = 1 to 4)
 		var/cdir = corner_dirs[i]

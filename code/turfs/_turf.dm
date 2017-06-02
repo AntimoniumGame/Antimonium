@@ -4,6 +4,11 @@
 	flags = FLAG_TEMPERATURE_SENSITIVE | FLAG_SIMULATED
 	var/edge_blend_layer
 
+/turf/Initialize()
+	SetDir(dir)
+	UpdateStrings()
+	UpdateIcon(ignore_neighbors = (!game_state || game_state.ident != GAME_RUNNING))
+
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()
 	for(var/thing in contents)

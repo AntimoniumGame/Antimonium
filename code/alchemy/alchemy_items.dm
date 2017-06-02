@@ -6,6 +6,7 @@
 	stack_name = "pile"
 	singular_name = "portion"
 	plural_name = "portions"
+	crafted = FALSE
 
 /obj/item/ForceMove(var/atom/newloc)
 	. = ..()
@@ -104,3 +105,7 @@
 /obj/item/stack/ingredient/copper
 	name = "copper"
 	default_material_path = /datum/material/metal/copper
+
+/obj/item/stack/ingredient/stone
+	name = "stone"
+	default_material_path = /datum/material/stone

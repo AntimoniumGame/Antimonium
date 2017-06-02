@@ -9,7 +9,7 @@
 		icon_state = "[rand(1,base_states)]"
 	..()
 
-/turf/floor/UpdateIcon(var/list/supplied = list(), var/update_neighbors)
+/turf/floor/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)
 
 	var/list/blend_edges = list()
 	var/list/shadow_edges = list()
@@ -27,8 +27,8 @@
 			blend_edges += use_dir
 		if(!neighbor.density)
 			shadow_edges += use_dir
-		if(update_neighbors)
-			neighbor.UpdateIcon()
+		if(!ignore_neighbors)
+			neighbor.UpdateIcon(ignore_neighbors = TRUE)
 
 	if(blend_dirs.len)
 		for(var/blend_dir in blend_dirs)
@@ -132,12 +132,7 @@
 	diggable = TRUE
 	edge_blend_layer = 0.3
 
-/turf/floor/tiles
+/turf/floor/tiled
 	name = "tiled floor"
 	icon = 'icons/turfs/tile_floor.dmi'
 	icon_state = "1"
-
-/client/verb/force_turf_refresh()
-	for(var/turf/turf in world)
-		turf.UpdateIcon(list(), TRUE)
-

@@ -7,7 +7,7 @@
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE
 
 /obj/structure/table/bench
-	name = "bench"
+	name = "workbench"
 	icon = 'icons/objects/structures/table_multi.dmi'
 	icon_state = "map"
 

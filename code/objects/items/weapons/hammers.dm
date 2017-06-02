@@ -19,4 +19,4 @@
 	sharpness = 0
 	weight = 6
 	contact_size = 4
-
+	associated_skill = SKILL_CONSTRUCTION
