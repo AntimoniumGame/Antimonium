@@ -1,6 +1,6 @@
 /datum/chat_command/dsay
 	command = "dsay"
-	usage = "/dsay \<message\>"
+	usage = "/DSAY \<message\>"
 	description = "Speaks to ghosts/observers."
 	required_permissions = PERMISSIONS_MODERATOR
 

@@ -2,13 +2,10 @@ var/datum/game_state/game_state
 
 /datum/game_state
 	var/ident
-	var/time_created
-
-/datum/game_state/New()
-	..()
-	time_created = world.time
+	var/time_initialized
 
 /datum/game_state/proc/Init()
+	time_initialized = world.time
 	Start()
 
 /datum/game_state/proc/Start()

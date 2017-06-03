@@ -4,7 +4,7 @@
 /atom/proc/GetFireIcon()
 	return image('icons/images/fire.dmi', "mid")
 
-/atom/UpdateIcon(var/list/supplied = list())
+/atom/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
 	if(IsOnFire())
 		var/image/I = GetFireIcon()
 		if(I)

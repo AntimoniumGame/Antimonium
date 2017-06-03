@@ -9,3 +9,9 @@
 discord_url https://discord.gg/54Q6TfP
 rules_url https://github.com/AntimoniumGame/Antimonium/wiki/Rules
 wiki_url https://github.com/AntimoniumGame/Antimonium/wiki
+
+## Uncomment this to prevent roundstart without a minimum of critical roles being filled.
+# enforce_minimum_job_slots TRUE
+
+## Uncomment this to prevent roundstart with fewer than supplied players readied up.
+# enforce_minimum_player_count 1

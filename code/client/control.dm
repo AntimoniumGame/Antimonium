@@ -26,12 +26,14 @@
 /client/verb/RebindKey()
 	set name = "Rebind Key"
 
-	var/selection = input("Select a command to rebind:") in __keylist
+	var/selection = input("Select a command to rebind:") as null|anything in __keylist
+	if(!selection)
+		return
 
 	var/interface/rebind/R = new(src)
 	R.SetRebind(key2bind(selection))
 	interface = R
-	alert("Press ok, then the button you want to rebind \"[selection]\" to.")
+	alert("Press OK, then the button you want to rebind \"[selection]\" to.")
 
 /client/verb/KeyRebindReset()
 	set name = "Reset Keybinds"
