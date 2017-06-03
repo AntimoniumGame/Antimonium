@@ -77,3 +77,14 @@
 /datum/chat_command/keybind/Invoke(var/mob/invoker, var/text)
 	if(invoker.client)
 		invoker.client.RebindKey()
+		invoker.client.SaveData()
+
+/datum/chat_command/keybind_reset
+	command = "rkeybind"
+	usage = "/RKEYBIND"
+	description = "Resets key bindings to default."
+
+/datum/chat_command/keybind/Invoke(var/mob/invoker, var/text)
+	if(invoker.client)
+		invoker.client.ResetKeybinds()
+		invoker.client.SaveData()
