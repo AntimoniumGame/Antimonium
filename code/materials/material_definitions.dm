@@ -28,8 +28,13 @@
 	sharpness_modifier = 0.3
 	ignition_point = 600
 
+/datum/material/wood/GetDebris(var/amount)
+	return new /obj/item/stack/logs(material_path = type, _amount = amount)
+
 /datum/material/wood/GetBuildableTurfs(var/obj/item/stack/building_with)
-	return list(/turf/wall/wood, /turf/floor/wood)
+	if(building_with.singular_name == "plank")
+		return list(/turf/floor/wood)
+	return list(/turf/wall/wood)
 
 /datum/material/meat
 	general_name = "meat"
@@ -45,3 +50,9 @@
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
 	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder
+
+/datum/material/dirt
+	general_name = "dirt"
+	strength = 0.1
+	weight_modifier = 0.2
+	sharpness_modifier = 0.1

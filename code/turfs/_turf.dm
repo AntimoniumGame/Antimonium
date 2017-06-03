@@ -8,6 +8,7 @@
 	SetDir(dir)
 	UpdateStrings()
 	UpdateIcon(ignore_neighbors = (!game_state || game_state.ident != GAME_RUNNING))
+	SetOpacity(opacity)
 
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()

@@ -10,6 +10,9 @@
 		/datum/crafting_recipe/masonry/tiles
 		)
 
+/datum/material/stone/ConvertToRuin(var/loc)
+	new /turf/floor/stone(loc)
+
 /datum/material/stone/GetBuildableTurfs(var/obj/item/stack/building_with)
 	if(building_with.singular_name == "brick")
 		return list() // todo

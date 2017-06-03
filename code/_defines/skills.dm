@@ -5,3 +5,4 @@
 #define SKILL_ARCHITECTURE 16
 #define SKILL_CONSTRUCTION 32
 #define SKILL_ALCHEMY      64
+#define SKILL_MINING      128

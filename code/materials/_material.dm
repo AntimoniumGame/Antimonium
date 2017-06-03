@@ -110,3 +110,9 @@
 	reagent.NotifyNearby("\The [reagent] condenses!")
 	reagent.material_state = STATE_LIQUID
 	reagent.Condense()
+
+/datum/material/proc/GetDebris(var/amount)
+	return new /obj/item/stack/ingredient(material_path = type, _amount = amount)
+
+/datum/material/proc/ConvertToRuin(var/loc)
+	new /turf/floor/dirt(loc)
