@@ -49,8 +49,31 @@
 
 /datum/chat_command/ooc
 	command = "ooc"
-	usage = "OOC \<message\>"
+	usage = "/OOC \<message\>"
 	description = "Send a global out of character message."
 
 /datum/chat_command/ooc/Invoke(var/mob/invoker, var/text)
 	invoker.DoOocMessage(text)
+
+/datum/chat_command/respawn
+	command = "respawn"
+	usage = "/RESPAWN"
+	description = "Return to the lobby."
+
+/datum/chat_command/respawn/Invoke(var/mob/invoker, var/text)
+
+	if(!istype(invoker, /mob/abstract/ghost))
+		invoker.Notify("You must be dead to use this command.")
+		return
+
+	invoker.TransferControlTo(new /mob/abstract/new_player())
+	QDel(invoker)
+
+/datum/chat_command/keybind
+	command = "keybind"
+	usage = "/KEYBIND"
+	description = "Opens the key rebinding dialogue."
+
+/datum/chat_command/keybind/Invoke(var/mob/invoker, var/text)
+	if(invoker.client)
+		invoker.client.RebindKey()

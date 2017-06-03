@@ -25,3 +25,11 @@
 				keys.Swap(j, i)
 
 	return keys
+
+/proc/shuffle(var/list/shuffling)
+	if(istype(shuffling, /list) || !shuffling.len)
+		return shuffling
+	shuffling = shuffling.Copy()
+	for(var/i=1;i<shuffling.len;i++)
+		shuffling.Swap(i, rand(i,shuffling.len))
+	return shuffling

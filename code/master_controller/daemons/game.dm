@@ -8,4 +8,4 @@
 	CheckSuspend()
 
 /datum/daemon/game/Status()
-	return "[game_state.ident] started [game_state.time_created]"
+	return "[game_state.ident] started [game_state.time_initialized]"

@@ -37,10 +37,7 @@ var/force_start = FALSE
 	set category = "Admin"
 
 	var/mob/old_mob = mob
-	var/mob/human/player_mob = new()
-	player_mob.ForceMove(locate(3,3,1))
-	player_mob.name = mob.key
-	old_mob.TransferControlTo(player_mob)
+	mob.TransferControlTo(new /mob/abstract/new_player())
 	QDel(old_mob)
 
 /client/proc/Spawn(var/msg as text)

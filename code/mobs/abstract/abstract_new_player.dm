@@ -4,12 +4,14 @@
 	var/obj/ui/toggle/options/options
 	var/obj/ui/toggle/options/prefs/setup
 	var/joining = FALSE
+	var/ready = FALSE
 
 /mob/abstract/new_player/Login()
 	..()
 	NullLoc()
 	if(lobby_music)
 		lobby_music.Play(src)
+	name = key
 
 /mob/abstract/new_player/CreateUI()
 	..()
@@ -33,7 +35,7 @@
 	new_players -= src
 	. = ..()
 
-/mob/abstract/new_player/proc/JoinGame()
+/mob/abstract/new_player/proc/LatejoinGame()
 
 	if(joining)
 		return
@@ -55,18 +57,9 @@
 		client.screen -= title_image
 		EndLobbyMusic(client)
 
-	var/mob/human/player_mob = new()
-	player_mob.ForceMove(locate(3,3,2))
-	player_mob.name = key
-	TransferControlTo(player_mob)
-
-	var/datum/job/job = pick(job_datums)
-	job.Welcome(player_mob)
-	job.Equip(player_mob)
-
-	var/datum/antagonist/antag = pick(antagonist_datums)
-	antag.AddAntagonist(player_mob.role)
-
+	var/mob/new_mob = default_latejoin_role.Equip(src)
+	default_latejoin_role.Welcome(new_mob)
+	default_latejoin_role.Place(new_mob)
 	QDel(src)
 
 /mob/abstract/new_player/DoSay(var/message)
