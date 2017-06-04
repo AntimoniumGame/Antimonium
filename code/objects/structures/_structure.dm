@@ -28,7 +28,7 @@
 /obj/structure/proc/ThingPlacedOn(var/mob/user, var/obj/item/prop)
 	prop.ForceMove(src.loc)
 	if(user)
-		user.NotifyNearby("\The [user] places \the [prop] on \the [src].")
+		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] on \the [src].</span>")
 
 /obj/structure/UpdateStrings()
 	if(material)

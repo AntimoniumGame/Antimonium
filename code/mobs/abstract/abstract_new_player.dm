@@ -42,10 +42,10 @@
 
 	switch(game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
-			to_chat(src, "The game has not started yet!")
+			to_chat(src, "<span class='warning'>The game has not started yet!</span>")
 			return
 		if(GAME_OVER)
-			to_chat(src, "The game is over!")
+			to_chat(src, "<span class='warning'>The game is over!</span>")
 			return
 
 	joining = TRUE

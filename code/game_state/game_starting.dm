@@ -3,7 +3,7 @@
 
 /datum/game_state/starting/Start()
 
-	to_chat(world, "<h3><b>The game is starting!</b></h3>")
+	to_chat(world, "<h3><span class='notice'><b>The game is starting!</b></span></h3>")
 
 	// Get a list of everyone who is readied up.
 	var/list/players_to_allocate_roles = list()
@@ -77,4 +77,4 @@
 	SwitchGameState(/datum/game_state/running)
 
 /datum/game_state/starting/OnLogin(var/client/player)
-	to_chat(world, "<h3><b>The game is starting!</b></h3>")
+	to_chat(world, "<h3><span class='notice'><b>The game is starting!</b></span></h3>")

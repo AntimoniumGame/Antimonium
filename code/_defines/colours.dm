@@ -3,6 +3,7 @@
 #define PALE_GREEN    "#99E550"
 #define PALE_BLUE     "#CBDBFC"
 #define PALE_GREY     "#696A6A"
+#define PALE_RED      "#D95763"
 
 #define DARK_BROWN    "#663931"
 #define DARK_GREY     "#595652"

@@ -10,10 +10,12 @@
 /turf/wall/New(var/newloc, var/_material_path = /datum/material/stone)
 	..(newloc)
 	material = GetUniqueDataByPath(_material_path)
+	if(material)
+		integrity = material.structural_integrity
 
 /turf/wall/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(prop.associated_skill & SKILL_MINING)
-		NotifyNearby("\The [user] strikes \the [src] with \the [prop]!")
+		NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
 		integrity--
 		if(material)
 			var/atom/movable/debris = material.GetDebris(1)

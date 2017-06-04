@@ -37,11 +37,11 @@
 	var/datum/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
 	wounds += wound
 	SetPain(max(pain, wound.severity))
-	owner.Notify("<b>The blow leaves your [name] with [wound.GetDescriptor()]!</b>")
+	owner.Notify("<span class='alert'><b>The blow leaves your [name] with [wound.GetDescriptor()]!</b></span>")
 	UpdateLimbState()
 
 /obj/item/limb/proc/BreakBone()
-	owner.NotifyNearby("<b>\The [owner]'s [name] makes a horrible cracking sound!</b>")
+	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>")
 	broken = TRUE
 	HandleBreakEffects()
 
@@ -72,7 +72,7 @@
 			parent = null
 
 		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
-		owner.NotifyNearby("<b>\The [owner]'s [name] flies off in an arc!</b>")
+		owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M

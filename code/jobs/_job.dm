@@ -33,9 +33,9 @@ var/datum/job/default_latejoin_role
 	return ((name_female && checking.gender == FEMALE) ? "[the] [name_female]" : "[the] [name]")
 
 /datum/job/proc/Welcome(var/mob/welcoming)
-	welcoming.Notify("You are <b>[GetTitle(welcoming)]</b>!")
-	welcoming.Notify("You answer to <b>[commander]</b>.")
-	welcoming.Notify("[welcome_text]")
+	welcoming.Notify("<span class='notice'>You are <span class='alert'><b>[GetTitle(welcoming)]</span></b>!</span>")
+	welcoming.Notify("<span class='notice'>You answer to <span class='alert'><b>[commander]</b></span>.</span>")
+	welcoming.Notify("<span class='notice'>[welcome_text]</span>")
 	welcoming.role.job = src
 
 /datum/job/proc/Equip(var/mob/equipping)

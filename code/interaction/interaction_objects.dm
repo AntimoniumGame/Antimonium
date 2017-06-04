@@ -14,11 +14,11 @@
 /obj/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(IsFlammable() && prop.IsFlammable())
 		if(!prop.IsOnFire() && IsOnFire())
-			user.NotifyNearby("\The [user] lights \the [prop] in \the [src].")
+			user.NotifyNearby("<span class='warning'>\The [user] lights \the [prop] in \the [src].</span>")
 			prop.Ignite(user)
 			return TRUE
 		else if(prop.IsOnFire() && !IsOnFire())
-			user.NotifyNearby("\The [user] lights \the [src] with \the [prop].")
+			user.NotifyNearby("<span class='warning'>\The [user] lights \the [src] with \the [prop].</span>")
 			Ignite(user)
 			return TRUE
 	return FALSE
@@ -38,13 +38,13 @@
 	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
 
 		if(!IsSolid())
-			NotifyNearby("\The [clicker] attempts to collect \the [src], but it slips through [clicker.Their()] grasp.")
+			clicker.Notify("<span class='warning'>You attempt to collect \the [src], but it slips through your grasp.</span>")
 			return
 
 		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
 		if(clicker.CollectItem(src, slot))
 			PlayLocalSound(src, collect_sound, 50)
-			NotifyNearby("\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.unmodified_name].")
+			NotifyNearby("<span class='notice'>\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.unmodified_name].</span>")
 		return
 	. = ..()
 
@@ -54,9 +54,9 @@
 	user.DoAttackAnimation(target, src)
 	if(user.intent.selecting == INTENT_HELP)
 		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
-		user.NotifyNearby("\The [user] prods \the [target] with \the [src].")
+		user.NotifyNearby("<span class='warning'>\The [user] prods \the [target] with \the [src].</span>")
 	else
-		user.NotifyNearby("\The [user] [pick(attack_verbs)] \the [target] with \the [src]!")
+		user.NotifyNearby("<span class='danger'>\The [user] [pick(attack_verbs)] \the [target] with \the [src]!</span>")
 		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 50)
 		spawn(3)
 			PlayLocalSound(src, hit_sound, 50)
@@ -74,7 +74,7 @@
 
 /obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
 	if(Burn(user, SLOT_HANDS))
-		user.Notify("\The [src] is far too hot to handle!")
+		user.Notify("<span class='warning'>\The [src] is far too hot to handle!</span>")
 		return FALSE
 	return TRUE
 

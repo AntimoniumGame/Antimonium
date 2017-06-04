@@ -39,7 +39,7 @@
 		speak_verb = "exclaims"
 	else if(ending == "?")
 		speak_verb = "asks"
-	return "<b>\The [speaker]</b> [speak_verb], \"[message]\""
+	return "<span class='notice'><b>\The [speaker]</b> [speak_verb], \"<span class='speech'>[message]</span>\"</span>"
 
 /proc/File2List(var/filename, var/seperator="\n")
 	if(fexists(filename) == 0)

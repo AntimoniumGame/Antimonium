@@ -31,14 +31,14 @@ var/list/antagonist_datums = list()
 	return
 
 /datum/antagonist/proc/Welcome(var/mob/welcoming)
-	welcoming.Notify("You are <b>\a [role_name]<b>!")
-	welcoming.Notify("<i>[welcome_text]</i>")
+	welcoming.Notify("<span class='notice'>You are <span class='alert'><b>\a [role_name]<b></span>!</span>")
+	welcoming.Notify("<span class='notice'><i>[welcome_text]</i></span>")
 
 /datum/antagonist/proc/Equip(var/mob/equipping)
 	return
 
 /datum/antagonist/proc/Farewell(var/mob/farewelling)
-	farewelling.Notify("You are no longer \a [role_name]!")
+	farewelling.Notify("<span class='alert'>You are <b>no longer</b> \a [role_name]!</span>")
 
 /datum/antagonist/proc/CheckSuccess(var/datum/role/checking)
 	var/list/results = list()
@@ -49,13 +49,13 @@ var/list/antagonist_datums = list()
 		if(o.antagonist == src)
 			i++
 			if(o.Completed())
-				results += "#[i]. [o.text] Success!"
+				results += "<span class='notice'>#[i]. [o.text]</span> <span class='notice'>Success</span>!"
 			else
-				results += "#[i]. [o.text] Failure."
+				results += "<span class='notice'>#[i]. [o.text]</span> <span class='warning'>Failure.</span>"
 				overall_success = FALSE
 
 	if(overall_success)
-		results += "<b>\The [role_name] was successful!</b>"
+		results += "<span class='notice'><b>\The [role_name] was successful!</b></span>"
 	else
-		results += "<b>\The [role_name] failed!</b>"
+		results += "<span class='warning'><b>\The [role_name] failed!</b></span>"
 	return results

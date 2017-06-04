@@ -48,17 +48,17 @@
 			var/list/buildings = material.GetBuildableTurfs(src)
 			if(buildings.len)
 				if(GetAmount() < material.GetTurfCost())
-					user.Notify("There is not enough in \the [src] to build that.")
+					user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
 				else
 					if(locate(/obj/structure/foundation) in get_turf(src))
-						user.Notify("There is already a foundation in that location.")
+						user.Notify("<span class='warning'>There is already a foundation in that location.</span>")
 						return TRUE
 					if(locate(/obj/structure) in get_turf(src))
-						user.Notify("There is a structure occupying that location.")
+						user.Notify("<span class='warning'>There is a structure occupying that location.</span>")
 						return TRUE
 					var/select_type = input("Select a building type.") as null|anything in buildings
 					if(select_type)
-						user.NotifyNearby("\The [user] lays out a foundation.")
+						user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
 						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, 5))
 						Remove(5)
 				return TRUE
@@ -71,13 +71,13 @@
 			return TRUE
 		else if(other.GetAmount() <= transfer_amount)
 			other.Add(GetAmount())
-			user.NotifyNearby("\The [user] merges two [stack_name]s of [plural_name] together.")
+			user.NotifyNearby("<span class='notice'>\The [user] merges two [stack_name]s of [plural_name] together.</span>")
 			QDel(src)
 		else
 			transfer_amount = other.max_amount - other.GetAmount()
 			other.Add(transfer_amount)
 			Remove(transfer_amount)
-			user.NotifyNearby("\The [user] transfers some [plural_name] between two [stack_name]s.")
+			user.NotifyNearby("<span class='notice'>\The [user] transfers some [plural_name] between two [stack_name]s.</span>")
 		return TRUE
 	else
 		. = ..()

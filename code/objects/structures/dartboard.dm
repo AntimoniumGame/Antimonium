@@ -47,5 +47,5 @@
 
 	projectile.ForceMove(get_turf(src))
 	PlayLocalSound(src, 'sounds/effects/thunk1.ogg', 100)
-	NotifyNearby("\The [projectile] strikes \the [src] in the [result]")
+	NotifyNearby("<span class='warning'>\The [projectile] strikes \the [src] in the [result]</span>")
 	return TRUE

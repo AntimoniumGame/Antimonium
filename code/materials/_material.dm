@@ -6,6 +6,7 @@
 	var/strength = 1
 	var/sharpness_modifier = 1
 	var/weight_modifier = 1
+	var/structural_integrity = 5
 
 	var/liquid_name
 	var/solid_name
