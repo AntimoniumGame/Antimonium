@@ -53,7 +53,13 @@
 /datum/material/proc/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
 
+/datum/material/proc/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list()
+
 /datum/material/proc/GetTurfCost()
+	return 10
+
+/datum/material/proc/GetStructureCost()
 	return 10
 
 /datum/material/proc/IsFlammable()

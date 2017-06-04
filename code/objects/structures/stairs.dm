@@ -6,6 +6,10 @@
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 
 /obj/structure/stairs/Initialize()
+	var/turf/base = loc
+	if(base.density)
+		material.ConvertToRuin(base)
+		sleep(-1)
 	var/turf/checking
 	if(z == 1)
 		checking = locate(x, y, 2)

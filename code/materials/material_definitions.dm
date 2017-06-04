@@ -29,7 +29,24 @@
 	ignition_point = 600
 	structural_integrity = 3
 	hit_sound = 'sounds/effects/thump1.ogg'
-	crafting_recipe_paths = list(/datum/crafting_recipe/carpentry)
+	crafting_recipe_paths = list(
+		/datum/crafting_recipe/carpentry,
+		/datum/crafting_recipe/carpentry/dartboard,
+		)
+
+/datum/material/wood/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list(
+		/obj/structure/cask,
+		/obj/structure/cask/barrel,
+		/obj/structure/chair,
+		/obj/structure/bench,
+		/obj/structure/crate,
+		/obj/structure/crate/chest,
+		/obj/structure/spinning_wheel,
+		/obj/structure/door,
+		/obj/structure/table,
+		/obj/structure/table/bench
+		)
 
 /datum/material/wood/GetDebris(var/amount)
 	return new /obj/item/stack/logs(material_path = type, _amount = amount)

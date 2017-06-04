@@ -11,6 +11,9 @@
 		/datum/crafting_recipe/masonry/tiles
 		)
 
+/datum/material/stone/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list(/obj/structure/stairs)
+
 /datum/material/stone/ConvertToRuin(var/loc)
 	new /turf/floor/stone(loc)
 
@@ -27,6 +30,9 @@
 	melting_point = 1400
 	sharpness_modifier = 5
 	crafting_recipe_paths = list()
+
+/datum/material/stone/glass/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list(/obj/structure/alembic)
 
 /datum/material/stone/glass/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()

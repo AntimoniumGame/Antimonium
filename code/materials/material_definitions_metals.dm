@@ -6,6 +6,16 @@
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_iron.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 
+/datum/material/metal/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list(
+		/obj/structure/brazier,
+		/obj/structure/sconce,
+		/obj/structure/still,
+		/obj/structure/stake,
+		/obj/structure/anvil,
+		/obj/structure/gearbox
+		)
+
 /datum/material/metal/iron
 	general_name = "iron"
 	strength = 1
