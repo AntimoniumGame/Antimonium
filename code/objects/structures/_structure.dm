@@ -32,6 +32,8 @@
 		if(user.client && precise_placement)
 			prop.pixel_x = text2num(user.client.last_click["icon-x"])-16
 			prop.pixel_y = text2num(user.client.last_click["icon-y"])-16
+			return
+	prop.RandomizePixelOffset()
 
 /obj/structure/UpdateStrings()
 	if(material)

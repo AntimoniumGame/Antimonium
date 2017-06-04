@@ -8,7 +8,6 @@ var/datum/daemon/garbage/gc
 	return 1
 
 /atom/Destroy()
-	name = "[name] (DESTROYED, REPORT THIS BUG)"
 	if(contents)
 		for(var/thing in contents)
 			QDel(thing)

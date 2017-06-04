@@ -106,8 +106,6 @@ Inputs:
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
 			if((owner.loc == target_turf) || T.CheckThrownCollision(owner) || !owner.Move(T))
-				owner.pixel_x = initial_pixel_x
-				owner.pixel_y = initial_pixel_y
 				owner.dragged = FALSE
 				owner.transform = null
 				owner.UpdateIcon()

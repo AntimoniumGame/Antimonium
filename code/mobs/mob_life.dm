@@ -9,9 +9,12 @@
 		var/obj/item/limb/limb = thing
 		limb.Process()
 
-	// Update some
+	// Various life processes.
 	HandlePain()
 	HandleBleeding()
+	HandleConsumableEffects()
+	HandleHunger()
+
 	UpdateGrasp()
 	UpdateStance()
 	health.UpdateIcon()
@@ -34,7 +37,10 @@
 	if(dead)
 		return
 
-	blood = min(100, blood + 3)
+	if(hunger > 0)
+		hunger--
+		blood = min(100, blood + rand(1,3))
+
 	if(blood <= 60)
 		Die("blood loss")
 	else if(prob(10))
