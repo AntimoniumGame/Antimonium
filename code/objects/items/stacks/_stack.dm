@@ -99,7 +99,7 @@
 					var/select_type = input("Select a building type.") as null|anything in buildings
 					if(select_type)
 						user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
-						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, 5))
+						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, material.GetTurfCost()))
 						Remove(5)
 				return TRUE
 

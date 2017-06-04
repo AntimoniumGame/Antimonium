@@ -43,4 +43,4 @@
 	if(IsOnFire() && temperature < TEMPERATURE_FURNACE)
 		temperature = min(TEMPERATURE_FURNACE, temperature + rand(300,500))
 		if(prob(10))
-			NotifyNearby("The flames of \the [src] flare up higher!")
+			NotifyNearby("<span class='alert'>The flames of \the [src] flare up higher!</span>")

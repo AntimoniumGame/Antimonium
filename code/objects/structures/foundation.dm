@@ -32,19 +32,19 @@
 			if(buildings.len)
 				var/select_type = input("Select a building type.") as null|anything in buildings
 				if(select_type)
-					NotifyNearby("\The [user] adjusts \the [src] with \the [prop].")
+					NotifyNearby("<span class='notice'>\The [user] adjusts \the [src] with \the [prop].</span>")
 					build_type = select_type
 				return TRUE
 		else
 			resources.ForceMove(get_turf(src))
 			resources = null
-			NotifyNearby("\The [user] knocks down \the [src].")
+			NotifyNearby("<span class='warning'>\The [user] knocks down \the [src].</span>")
 			QDel(src)
 			return TRUE
 
 	if(prop.associated_skill & SKILL_CONSTRUCTION)
 		var/atom/built = new build_type(get_turf(src), material.type)
-		NotifyNearby("\The [user] finishes building \the [built] with \the [prop].")
+		NotifyNearby("<span class='notice'>\The [user] finishes building \the [built] with \the [prop].</span>")
 		QDel(src)
 		return TRUE
 	. = ..()

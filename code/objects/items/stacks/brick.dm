@@ -7,7 +7,7 @@
 	plural_name =   "bricks"
 	stack_name =    "stack"
 	icon_state = "1"
-	crafted = FALSE
+	crafted = TRUE
 
 /obj/item/stack/bricks/New()
 	..()
