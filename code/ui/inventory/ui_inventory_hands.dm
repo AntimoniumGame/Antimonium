@@ -29,16 +29,14 @@
 			var/obj/item/prop = holding
 			ForgetHeld()
 			inv_slot.SetHeld(prop)
-			owner.NotifyNearby("\The [owner] switches \the [prop] from [owner.Their()] [unmodified_name] to [owner.Their()] [inv_slot.unmodified_name].")
 		else if(inv_slot.holding)
 			var/obj/item/prop = inv_slot.holding
 			inv_slot.ForgetHeld()
 			SetHeld(prop)
-			owner.NotifyNearby("\The [owner] switches \the [prop] from [owner.Their()] [inv_slot.unmodified_name] to [owner.Their()] [unmodified_name].")
 	owner.UpdateIcon()
 
 /obj/ui/inv/hand/MiddleClickedOn(var/mob/clicker)
 	. = ..()
 	if(. && holding)
-		owner.NotifyNearby("\The [owner] drops \the [holding] from [owner.Their()] [unmodified_name].")
+		owner.NotifyNearby("<span class = 'notice'>\The [owner] drops \the [holding] from [owner.Their()] [unmodified_name].</span>")
 		owner.DropItem(holding)

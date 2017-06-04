@@ -25,12 +25,8 @@
 
 /obj/proc/ManipulatedBy(var/mob/user, var/slot)
 	if(IsOnFire() && user.intent.selecting == INTENT_HELP)
-		NotifyNearby("\The [user] extinguishes \the [src].")
+		NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
 		Extinguish()
-		return TRUE
-	if((flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(loc))
-		user.SetDir(dir)
-		user.ToggleSitting()
 		return TRUE
 	return FALSE
 

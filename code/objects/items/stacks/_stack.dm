@@ -9,6 +9,41 @@
 	var/stack_name =    "stack"
 	var/crafted = TRUE
 
+/obj/item/stack/ForceMove()
+	. = ..()
+	MergeWithLocalStacks()
+
+/obj/item/stack/proc/MergeWithLocalStacks()
+
+	if(!istype(loc, /turf))
+		return
+
+	for(var/obj/item/stack/stack in loc)
+		if(src && stack != src && !Deleted(src) && GetAmount() >= 1)
+			if(!MatchesStackType(stack))
+				continue
+			var/transfer_amount = max_amount - GetAmount()
+			if(transfer_amount <= 0)
+				continue
+			else if(stack.GetAmount() <= transfer_amount)
+				stack.Add(GetAmount())
+				QDel(src)
+			else
+				transfer_amount = stack.max_amount - stack.GetAmount()
+				stack.Add(transfer_amount)
+				Remove(transfer_amount)
+
+/obj/item/stack/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+
+	if(GetAmount() <= 1)
+		user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
+		return
+
+	var/split_amount = max(1,round(GetAmount()/2))
+	Remove(split_amount)
+	new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
+	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+
 /obj/item/stack/GetWeight()
 	return GetAmount() * (material ? material.weight_modifier : 1)
 
@@ -18,16 +53,21 @@
 	else
 		amount = max_amount
 	..(newloc, material_path)
+	MergeWithLocalStacks()
 
 /obj/item/stack/Use(var/mob/user)
+
 	if(GetAmount() <= 1)
-		user.Notify("There are not enough [plural_name] in the [stack_name] to split it.")
+		user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
 		return
 
-	var/split_amount = max(1,round(GetAmount()/2))
+	var/split_amount = input("How many would you like to remove?") as null|num
+	if(!split_amount || split_amount < 1 || split_amount >= max_amount)
+		return
+
 	Remove(split_amount)
 	new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
-	user.NotifyNearby("\The [user] splits the [plural_name] into two roughly equal [stack_name]s.")
+	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
 	return (istype(stack) && type == stack.type && material == stack.material)
@@ -36,7 +76,7 @@
 
 	if(prop.associated_skill & SKILL_ALCHEMY)
 		if(GetAmount() > 5)
-			user.Notify("There are too many [plural_name] in this [stack_name] to grind with \the [prop].")
+			user.Notify("<span class='warning'>There are too many [plural_name] in this [stack_name] to grind with \the [prop].</span>")
 		else
 			Grind(user)
 		return TRUE
@@ -67,7 +107,7 @@
 		var/obj/item/stack/other = prop
 		var/transfer_amount = max_amount - GetAmount()
 		if(transfer_amount <= 0)
-			user.Notify("That [stack_name] can hold no more [plural_name].")
+			user.Notify("<span class='warning'>That [stack_name] can hold no more [plural_name].</span>")
 			return TRUE
 		else if(other.GetAmount() <= transfer_amount)
 			other.Add(GetAmount())

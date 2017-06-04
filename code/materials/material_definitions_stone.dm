@@ -5,6 +5,7 @@
 	colour = PALE_GREY
 	weight_modifier = 1
 	sharpness_modifier = 1.5
+	structural_integrity = 6
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/masonry,
 		/datum/crafting_recipe/masonry/tiles

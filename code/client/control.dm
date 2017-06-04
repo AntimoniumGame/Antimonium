@@ -57,11 +57,10 @@
 
 /client/verb/KeyRebindReset()
 	set name = "Reset Keybinds"
-
 	ResetKeybinds()
 
 /client/proc/ResetKeybinds()
-	key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV, "F7" = KEY_VARS, "E" = KEY_DROP_R, "Q" = KEY_DROP_L, "R" = KEY_INTENT)
+	key_binds = list("W" = KEY_UP,"S" = KEY_DOWN,"D" = KEY_RIGHT,"A" = KEY_LEFT, "Shift" = KEY_RUN, "Escape" = KEY_MENU, "Tab" = KEY_CHAT, "F8" = KEY_DEV, "F7" = KEY_VARS, "E" = KEY_DROP_R, "Q" = KEY_DROP_L, "R" = KEY_INTENT, "X" = KEY_STAIRS)
 
 /client/proc/Rebind(key, bind)
 	set waitfor = 0

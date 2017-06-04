@@ -27,6 +27,7 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 600
+	structural_integrity = 3
 
 /datum/material/wood/GetDebris(var/amount)
 	return new /obj/item/stack/logs(material_path = type, _amount = amount)

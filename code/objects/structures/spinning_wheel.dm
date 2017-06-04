@@ -40,7 +40,7 @@
 		icon_state = "spinning"
 		UpdateIcon()
 
-		NotifyNearby("\The [user] works at \the [src] for a few moments.")
+		NotifyNearby("<span class='notice'>\The [user] works at \the [src] for a few moments.</span>")
 		sleep(12)
 
 		for(var/obj/item/stack/fibers/fibers in contains)

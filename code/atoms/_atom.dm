@@ -43,7 +43,7 @@
 	ExaminedBy(clicker)
 
 /atom/proc/ExaminedBy(var/mob/clicker)
-	clicker.Notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
+	clicker.Notify("<span class='notice'>[(src != clicker) ? "That's" : "You're"] <span class='alert'>\a [name]</span>.</span>")
 	return IsAdjacentTo(src, clicker)
 
 /atom/proc/PullCost()
@@ -104,3 +104,16 @@
 
 /atom/proc/Grind(var/mob/user)
 	return FALSE
+
+/atom/MouseDrop(var/atom/over_object,src_location,over_location,src_control,over_control,params)
+	. = ..()
+	if(!isnull(over_object) && IsAdjacentTo(src, over_object) && IsAdjacentTo(usr, over_object) && IsAdjacentTo(usr, src))
+		var/list/arguments = params2list(params)
+		DraggedOntoThing(usr, over_object, arguments["left"], arguments["right"], arguments["middle"])
+		over_object.ThingDraggedOnto(usr, src, arguments["left"], arguments["right"], arguments["middle"])
+
+/atom/proc/ThingDraggedOnto(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	return
+
+/atom/proc/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	return
