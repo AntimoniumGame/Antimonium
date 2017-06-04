@@ -25,8 +25,10 @@
 	if(user.loc != loc)
 		return FALSE
 	if(z == 1)
+		PlayLocalSound(src, 'sounds/effects/stairs_up.ogg', 100, -1)
 		user.ForceMove(locate(x,y,2))
 	else
+		PlayLocalSound(src, 'sounds/effects/stairs_down.ogg', 100, -1)
 		user.ForceMove(locate(x,y,1))
 
 /obj/structure/stairs/down

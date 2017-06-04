@@ -27,6 +27,8 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 600
+	structural_integrity = 3
+	hit_sound = 'sounds/effects/thump1.ogg'
 
 /datum/material/wood/GetDebris(var/amount)
 	return new /obj/item/stack/logs(material_path = type, _amount = amount)
@@ -43,6 +45,7 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 460
+	hit_sound = 'sounds/effects/gore1.ogg'
 
 /datum/material/leather
 	general_name = "leather"
@@ -56,3 +59,4 @@
 	strength = 0.1
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
+	hit_sound = 'sounds/effects/dig1.ogg'

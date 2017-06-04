@@ -40,7 +40,8 @@
 		icon_state = "spinning"
 		UpdateIcon()
 
-		NotifyNearby("\The [user] works at \the [src] for a few moments.")
+		PlayLocalSound(src, 'sounds/effects/creak1.ogg', 100)
+		NotifyNearby("<span class='notice'>\The [user] works at \the [src] for a few moments.</span>")
 		sleep(12)
 
 		for(var/obj/item/stack/fibers/fibers in contains)

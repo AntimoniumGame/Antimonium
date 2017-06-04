@@ -31,4 +31,4 @@
 /obj/item/torch/Use(var/mob/user)
 	if(IsOnFire())
 		Extinguish(user)
-		user.NotifyNearby("\The [user] extinguishes \the [src].")
+		user.NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")

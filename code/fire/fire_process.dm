@@ -18,5 +18,5 @@ var/list/burn_sounds = list('sounds/effects/fire1.ogg','sounds/effects/fire2.ogg
 	RadiateHeat(TEMPERATURE_WARM, 3)
 
 	if(world.time > next_burn_sound)
-		next_burn_sound = world.time + rand(40,50)
-		PlayLocalSound(src, pick(burn_sounds), 15, frequency = -1)
+		next_burn_sound = world.time + rand(120,150)
+		PlayLocalSound(src, pick(burn_sounds), 5, frequency = -1)

@@ -13,5 +13,5 @@
 
 	var/obj/item/result = crecipe.Craft(get_turf(src), src)
 	user.DoAttackAnimation(get_turf(src), prop)
-	user.NotifyNearby("\The [user] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].")
+	user.NotifyNearby("<span class='notice'>\The [user] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].</span>")
 	return TRUE

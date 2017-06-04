@@ -40,6 +40,10 @@
 		if(KEY_INTENT)
 			if(owner.mob && owner.mob.intent)
 				owner.mob.intent.SwapIntent()
+		if(KEY_STAIRS)
+			var/obj/structure/stairs/stairs = locate() in owner.mob.loc
+			if(istype(stairs))
+				stairs.ManipulatedBy(owner.mob)
 
 /interface/proc/OnKeyRelease(key)
 	if(!key)

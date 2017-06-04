@@ -68,10 +68,10 @@
 			. = ..()
 		if(!.)
 			if(filled)
-				user.Notify("There is already \a [filled] in \the [src].")
+				user.Notify("<span class='warning'>There is already \a [filled] in \the [src].</span>")
 			else
 				user.DropItem(prop)
-				user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+				user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>")
 				prop.ForceMove(src)
 				filled = prop
 				UpdateIcon()
@@ -81,12 +81,12 @@
 /obj/structure/sconce/ManipulatedBy(var/mob/user, var/slot)
 	if(filled)
 		if(user.CollectItem(filled, slot))
-			user.NotifyNearby("\The [user] removes \the [filled] from \the [src].")
+			user.NotifyNearby("<span class='notice'>\The [user] removes \the [filled] from \the [src].</span>")
 			filled = null
 			UpdateIcon()
 		else
 			if(filled.loc != src)
 				filled.ForceMove(src)
 	else
-		user.Notify("There is no torch in \the [src].")
+		user.Notify("<span class='warning'>There is no torch in \the [src].</span>")
 	return TRUE

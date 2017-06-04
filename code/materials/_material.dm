@@ -6,6 +6,7 @@
 	var/strength = 1
 	var/sharpness_modifier = 1
 	var/weight_modifier = 1
+	var/structural_integrity = 5
 
 	var/liquid_name
 	var/solid_name
@@ -34,6 +35,8 @@
 	var/powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 	var/thermal_insulation = 0
 
+	var/hit_sound = 'sounds/effects/chisel1.ogg'
+
 /datum/material/New()
 
 	if(!general_name) general_name = "matter"
@@ -51,7 +54,7 @@
 	return list()
 
 /datum/material/proc/GetTurfCost()
-	return 20
+	return 10
 
 /datum/material/proc/IsFlammable()
 	return (ignition_point <= TEMPERATURE_MAX)

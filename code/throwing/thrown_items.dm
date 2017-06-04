@@ -14,7 +14,7 @@
 	if(!thrower.OnCombatCooldown() && HandlePreThrow(thrower))
 		thrower.SetCombatCooldown(4)
 		var/atom/movable/throwing = GetThrownAtom()
-		thrower.NotifyNearby("\The [thrower] hurls \the [throwing]!")
+		thrower.NotifyNearby("<span class='alert'>\The [thrower] hurls \the [throwing]!</span>")
 		thrower.DoAttackAnimation(target, throwing)
 		if(!CheckThrowSuccess(thrower))
 			var/atom/new_target = get_turf(target)

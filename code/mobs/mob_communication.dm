@@ -67,7 +67,7 @@
 
 /mob/proc/DoEmote(var/message)
 	next_speech = world.time + 5
-	message = FormatAndCapitalize("<b>\The [src]</b> [SanitizeText(message)]")
+	message = FormatAndCapitalize("<span class='notice'><b>\The [src]</b> [SanitizeText(message)]</span>")
 	if(dead)
 		NotifyDead(copytext(message,1,120))
 	else

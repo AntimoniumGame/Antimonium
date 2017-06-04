@@ -11,7 +11,6 @@
 	. = ..()
 	if(!.)
 		if(user.loc != src.loc && user.intent.selecting == INTENT_HELP && !(flags & FLAG_ANCHORED))
-			user.NotifyNearby("\The [user] turns \the [src] around.")
 			SetDir(turn(dir, 90))
 			return TRUE
 	return FALSE
