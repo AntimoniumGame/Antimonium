@@ -5,6 +5,7 @@
 	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
 	shadow_size = 3
+	light = new(2000, 100, 3)
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
 
 // temp until fuel is added
@@ -19,9 +20,11 @@
 /obj/structure/brazier/Initialize()
 	..()
 	Ignite()
+	LightOn()
 	processing_objects += src
 
 /obj/structure/brazier/Destroy()
+	RemoveLight()
 	processing_objects -= src
 	. = ..()
 

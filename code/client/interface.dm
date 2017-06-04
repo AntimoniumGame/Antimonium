@@ -86,17 +86,12 @@
 	set waitfor = 0
 	var/turf/T = get_turf(object)
 	var/list/pick_list = list()
-	var/list/off_list = list()
 	if(isarea(T.loc))
 		pick_list["area lighting"] = T.loc
 	for(var/obj/O in T)
-		if(O.light_on)
-			pick_list["[O] \ref[O]"] = O
-		else
-			off_list["[O] \ref[O] - Light Disabled"] = O
+		pick_list["[O] \ref[O]"] = O
 
-	var/list/full_list = pick_list + off_list
-	var/selection = input(owner, "Select light source:") in full_list
-	var/atom/A = full_list[selection]
+	var/selection = input(owner, "Select light source:") in pick_list
+	var/atom/A = pick_list[selection]
 	if(A)
 		owner.PickLighttoolSource(A)

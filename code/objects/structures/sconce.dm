@@ -51,10 +51,14 @@
 	if(filled)
 		if(filled.IsOnFire())
 			icon_state = "sconce_lit"
+			SetLight(filled.GetLight())
+			LightOn()
 		else
 			icon_state = "sconce_filled"
+			LightOff()
 	else
 		icon_state = "sconce"
+		RemoveLight()
 
 /obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(istype(prop, /obj/item/torch))
@@ -84,3 +88,12 @@
 	else
 		user.Notify("There is no torch in \the [src].")
 	return TRUE
+
+/obj/structure/sconce/UpdateLight()
+	..()
+	if(filled)
+		filled.UpdateLight()
+
+/obj/structure/sconce/Destroy()
+	RemoveLight()
+	..()

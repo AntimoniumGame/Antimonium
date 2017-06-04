@@ -27,13 +27,19 @@
 /light_data/proc/SetColor(var/new_color)
 	return
 
+/light_data/proc/GetRange()
+	return range
+
 /light_data/proc/SetTemperature(var/new_temp)
-	temperature = new_temp
+	temperature = Clamp(new_temp, 1000, 15000)
 	UpdateColor()
 
 /light_data/proc/SetBrightness(var/new_bright)
 	brightness = new_bright
 	UpdateColor()
+
+/light_data/proc/SetRange(var/new_range)
+	range = new_range
 
 /light_data/proc/UpdateColor()
 	color = ConvertTemperatureToRGB(temperature, brightness)
@@ -97,9 +103,42 @@
 
 	return rgb(red * brightness, green * brightness, blue * brightness)
 
+//syntax = CreateLightOverlay(icon, icon_state, dir, plane, layer, blend_mode, pixel_offset)
 /proc/CreateLightOverlay(nicon, nicon_state, ndir, nplane, nlayer, nblend_mode, npixel)
 	var/image/light_overlay = image(nicon, null, nicon_state, nlayer, ndir)
 	light_overlay.plane = nplane
 	light_overlay.blend_mode = nblend_mode
 	light_overlay.pixel_x = light_overlay.pixel_y = npixel
+	return light_overlay
+
+/proc/CreateLightOverlayFromData(var/light_data/light)
+	if(!light)
+		light = new()
+
+	var/icon
+	var/pixel_offset
+	switch(light.GetRange())
+		if(0)
+			icon = null
+			pixel_offset = 0
+		if(1)
+			icon = 'icons/lighting/light_range_1.dmi'
+			pixel_offset = -32
+		if(2)
+			icon = 'icons/lighting/light_range_2.dmi'
+			pixel_offset = -64
+		if(3)
+			icon = 'icons/lighting/light_range_3.dmi'
+			pixel_offset = -96
+		if(4)
+			icon = 'icons/lighting/light_range_4.dmi'
+			pixel_offset = -128
+		if(5)
+			icon = 'icons/lighting/light_range_5.dmi'
+			pixel_offset = -160
+
+	var/image/light_overlay = CreateLightOverlay(icon, "white", 1, LIGHTING_PLANE, LIGHT_LAYER_BASE, BLEND_ADD, pixel_offset)
+	light_overlay.appearance_flags = KEEP_TOGETHER
+	light_overlay.overlays += CreateLightOverlay(icon, "overlay", 1, LIGHTING_PLANE, LIGHT_LAYER_OVERLAY, BLEND_OVERLAY, 0)
+
 	return light_overlay

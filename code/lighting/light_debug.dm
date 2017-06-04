@@ -52,7 +52,8 @@
 		if("brightness")
 			L.SetBrightness(floor(input_value))
 		if("range")
-			L.range = floor((input_value / 100) * MAX_LIGHT_RANGE)
+			L.SetRange(floor((input_value / 100) * MAX_LIGHT_RANGE))
+			A.UpdateRange()
 
 	UpdateLightingTool(L, "\ref[A]")
 	A.UpdateLight()

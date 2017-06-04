@@ -9,3 +9,6 @@
 
 /atom/proc/CreateLight()
 	return
+
+/atom/proc/UpdateRange()
+	return

@@ -8,6 +8,7 @@
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
 	shadow_size = 1
+	light = new(1500, 100, 3)
 
 /obj/item/torch/GetFireIcon()
 	return
@@ -16,14 +17,14 @@
 	..(newloc, material_path)
 	if(_lit)
 		Ignite()
-		light_on = TRUE
-		CreateLight()
 
 /obj/item/torch/UpdateIcon(var/list/supplied = list())
 	if(IsOnFire())
 		icon = 'icons/objects/items/torch_lit.dmi'
+		LightOn()
 	else
 		icon = 'icons/objects/items/torch.dmi'
+		LightOff()
 
 	var/mob/holder = loc
 	if(istype(holder))
@@ -34,3 +35,17 @@
 	if(IsOnFire())
 		Extinguish(user)
 		user.NotifyNearby("\The [user] extinguishes \the [src].")
+
+/obj/item/torch/Destroy()
+	RemoveLight()
+	..()
+/*
+/obj/item/torch/UpdateLight()
+	..()
+	if(istype(loc, /obj))
+		var/obj/O = loc
+		O.UpdateLight()
+	else if(istype(loc, /mob))
+		var/mob/M = loc
+		M.UpdateLight(light)
+*/
