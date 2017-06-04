@@ -29,6 +29,7 @@
 	ignition_point = 600
 	structural_integrity = 3
 	hit_sound = 'sounds/effects/thump1.ogg'
+	crafting_recipe_paths = list(/datum/crafting_recipe/carpentry)
 
 /datum/material/wood/GetDebris(var/amount)
 	return new /obj/item/stack/logs(material_path = type, _amount = amount)

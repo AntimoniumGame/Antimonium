@@ -7,4 +7,4 @@
 	singular_name = "plank"
 	plural_name =   "planks"
 	stack_name =    "stack"
-	crafted = FALSE
+	can_craft_with = TRUE

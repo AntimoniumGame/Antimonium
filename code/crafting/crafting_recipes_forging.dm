@@ -31,3 +31,15 @@
 
 /datum/crafting_recipe/forging/horseshoe
 	result_path = /obj/item/horseshoe
+
+/datum/crafting_recipe/forging/handsaw
+	result_path = /obj/item/weapon/handsaw
+
+/datum/crafting_recipe/forging/level
+	result_path = /obj/item/level
+
+/datum/crafting_recipe/forging/chisel
+	result_path = /obj/item/weapon/chisel
+
+/datum/crafting_recipe/forging/pipe
+	result_path = /obj/item/weapon/pipe

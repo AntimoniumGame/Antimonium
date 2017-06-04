@@ -6,5 +6,9 @@
 		/datum/crafting_recipe/forging/hammer,
 		/datum/crafting_recipe/forging/mallet,
 		/datum/crafting_recipe/forging/construction_hammer,
-		/datum/crafting_recipe/forging/horseshoe
+		/datum/crafting_recipe/forging/horseshoe,
+		/datum/crafting_recipe/forging/handsaw,
+		/datum/crafting_recipe/forging/level,
+		/datum/crafting_recipe/forging/chisel,
+		/datum/crafting_recipe/forging/pipe
 		)

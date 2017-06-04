@@ -7,7 +7,7 @@
 	var/singular_name = "thing"
 	var/plural_name =   "things"
 	var/stack_name =    "stack"
-	var/crafted = TRUE
+	var/can_craft_with = FALSE
 
 /obj/item/stack/ForceMove()
 	. = ..()
@@ -81,7 +81,7 @@
 			Grind(user)
 		return TRUE
 
-	if(material && !crafted)
+	if(material && can_craft_with)
 		if(TryCraft(user, prop))
 			return TRUE
 		if(prop.associated_skill & SKILL_ARCHITECTURE)

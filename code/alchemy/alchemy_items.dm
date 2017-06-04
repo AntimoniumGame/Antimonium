@@ -6,7 +6,7 @@
 	stack_name = "pile"
 	singular_name = "portion"
 	plural_name = "portions"
-	crafted = FALSE
+	can_craft_with = TRUE
 
 /obj/item/ForceMove(var/atom/newloc)
 	. = ..()
