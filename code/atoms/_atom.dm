@@ -22,6 +22,7 @@
 		holder.UpdateIcon()
 
 /atom/movable/UpdateIcon(var/list/supplied = list())
+	/*
 	if((flags & FLAG_SIMULATED) && !isnull(shadow_size))
 		underlays.Cut()
 		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
@@ -31,6 +32,7 @@
 		I.pixel_x = shadow_pixel_x
 		I.pixel_y = shadow_pixel_y
 		underlays += I
+	*/
 	..(supplied)
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)

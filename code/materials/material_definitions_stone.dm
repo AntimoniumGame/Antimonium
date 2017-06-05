@@ -10,6 +10,7 @@
 		/datum/crafting_recipe/masonry,
 		/datum/crafting_recipe/masonry/tiles
 		)
+	construction_sound = 'sounds/effects/chisel1.ogg'
 
 /datum/material/stone/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(/obj/structure/stairs)

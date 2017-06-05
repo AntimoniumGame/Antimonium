@@ -25,4 +25,5 @@
 		var/obj/item/stack/thing_stack = thing
 		thing_stack.SetAmt(result_number)
 	crafting_with.Remove(material_cost)
+	PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 75, -1)
 	return thing

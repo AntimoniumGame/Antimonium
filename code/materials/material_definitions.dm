@@ -29,6 +29,7 @@
 	ignition_point = 600
 	structural_integrity = 3
 	hit_sound = 'sounds/effects/thump1.ogg'
+	construction_sound = 'sounds/effects/saw1.ogg'
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/carpentry,
 		/datum/crafting_recipe/carpentry/dartboard,
