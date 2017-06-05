@@ -17,6 +17,7 @@
 	if(prop.associated_skill & SKILL_MINING)
 		NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
 		PlayLocalSound(src, material.hit_sound, 100)
+		user.SetActionCooldown(6)
 		integrity--
 		if(material)
 			var/atom/movable/debris = material.GetDebris(1)

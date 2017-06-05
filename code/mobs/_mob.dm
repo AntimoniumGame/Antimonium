@@ -60,3 +60,6 @@
 
 /mob/proc/IsDigger(var/complex_digging = FALSE)
 	return FALSE
+
+/mob/RandomizePixelOffset()
+	return

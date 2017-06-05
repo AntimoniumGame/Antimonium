@@ -42,17 +42,18 @@
 
 		PlayLocalSound(src, 'sounds/effects/creak1.ogg', 100)
 		NotifyNearby("<span class='notice'>\The [user] works at \the [src] for a few moments.</span>")
-		sleep(12)
 
-		for(var/obj/item/stack/fibers/fibers in contains)
-			var/using = min(5,fibers.GetAmount())
-			new /obj/item/stack/thread(get_turf(src), (fibers.material ? fibers.material.type : null), using)
-			fibers.Remove(using)
-			break
+		spawn(12)
+			for(var/obj/item/stack/fibers/fibers in contains)
+				var/using = min(5,fibers.GetAmount())
+				new /obj/item/stack/thread(get_turf(src), (fibers.material ? fibers.material.type : null), using)
+				fibers.Remove(using)
+				break
+			icon_state = "wheel"
+			in_use = FALSE
+			UpdateIcon()
 
-		icon_state = "wheel"
-		in_use = FALSE
-		UpdateIcon()
+		return TRUE
 
 /obj/structure/spinning_wheel/CanAcceptItem(var/obj/item/prop)
 	return ..() && istype(prop, /obj/item/stack/fibers) && prop.material && prop.material.spinnable

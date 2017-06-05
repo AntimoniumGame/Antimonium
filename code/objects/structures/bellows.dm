@@ -17,6 +17,7 @@
 			var/atom/atom = thing
 			if((atom.flags & FLAG_SIMULATED) && atom.IsOnFire())
 				atom.StokeFire()
-		sleep(12)
-		icon_state = "world"
-		in_use = FALSE
+		spawn(12)
+			icon_state = "world"
+			in_use = FALSE
+		return TRUE

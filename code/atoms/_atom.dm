@@ -119,3 +119,10 @@
 
 /atom/proc/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
 	return
+
+/atom/proc/RandomizePixelOffset()
+	return
+
+/atom/movable/RandomizePixelOffset()
+	pixel_x = rand(8,24)-16
+	pixel_y = rand(8,24)-16

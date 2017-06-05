@@ -19,18 +19,13 @@
 /obj/item/New(var/newloc, var/material_path)
 	..(newloc, material_path)
 	if(!pixel_x && !pixel_y)
-		pixel_x = rand(8,24)-16
-		pixel_y = rand(8,24)-16
+		RandomizePixelOffset()
 
 /obj/item/proc/GetHeatInsulation()
 	return (material ? material.thermal_insulation : 0)
 
 /obj/item/GetWeight()
 	return weight
-
-/obj/item/proc/RandomizePixelOffset()
-	pixel_x = rand(8,24)-16
-	pixel_y = rand(8,24)-16
 
 /obj/item/UpdateValues()
 	sharpness = initial(sharpness)

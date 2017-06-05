@@ -31,13 +31,13 @@
 /obj/structure/earthworks/pit/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(icon_state != "open")
 		DigUp(user)
-		return
+		return TRUE
 	. = ..()
 
 /obj/structure/earthworks/pit/ManipulatedBy(var/mob/user, var/slot)
 	if(icon_state != "open" && user.IsDigger() && user.CanUseInvSlot(slot))
 		DigUp(user)
-		return
+		return TRUE
 	. = ..()
 
 /obj/structure/earthworks/pit/FillIn(var/mob/user)

@@ -23,7 +23,7 @@
 		if(limb && !limb.broken)
 			stance_score += limb.support_value
 	if(stance_score <= stance_fail_threshold)
-		NotifyNearby("<b>\The [src] collapses!</b>")
+		NotifyNearby("<span class='danger'><b>\The [src] collapses!</b></span>")
 		ToggleProne()
 
 /mob/proc/HandleStanceMoveDelay()

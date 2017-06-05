@@ -57,10 +57,10 @@
 		return FALSE
 	if(Burn(user, SLOT_HANDS))
 		user.Notify("\The [src] is far too hot to touch!")
-		return FALSE
-	open = !open
-	if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")
-	UpdateIcon()
+	else
+		open = !open
+		if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")
+		UpdateIcon()
 	return TRUE
 
 /obj/structure/proc/CanAcceptItem(var/obj/item/prop)
@@ -96,7 +96,6 @@
 					ThingPutInside(prop)
 					user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
 					return TRUE
-	return FALSE
 
 /obj/structure/proc/ThingPutInside(var/obj/item/prop)
 	return

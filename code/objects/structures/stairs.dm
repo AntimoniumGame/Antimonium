@@ -34,6 +34,7 @@
 	else
 		PlayLocalSound(src, 'sounds/effects/stairs_down.ogg', 100, -1)
 		user.ForceMove(locate(x,y,1))
+	return TRUE
 
 /obj/structure/stairs/down
 	icon_state = "stairs_down"

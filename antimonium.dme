@@ -116,7 +116,7 @@
 #include "code\helpers\sound.dm"
 #include "code\helpers\text.dm"
 #include "code\helpers\vector.dm"
-#include "code\interaction\combat.dm"
+#include "code\interaction\actions.dm"
 #include "code\interaction\grabbing.dm"
 #include "code\interaction\interaction.dm"
 #include "code\interaction\interaction_mobs.dm"

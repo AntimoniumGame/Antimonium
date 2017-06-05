@@ -21,10 +21,13 @@
 			DoHandSwitch(SLOT_RIGHT_HAND, SLOT_LEFT_HAND)
 
 /obj/ui/inv/hand/proc/DoHandSwitch(var/first_slot, var/second_slot)
+	if(owner.OnActionCooldown())
+		return
 	if(slot_id == second_slot)
 		var/obj/ui/inv/inv_slot = owner.inventory_slots[first_slot]
 		if(holding && inv_slot.holding)
-			holding.AttackedBy(owner, inv_slot.holding)
+			if(holding.AttackedBy(owner, inv_slot.holding))
+				owner.SetActionCooldown(3)
 		else if(holding)
 			var/obj/item/prop = holding
 			ForgetHeld()

@@ -13,10 +13,15 @@
 		TryEquipmentInteraction(slot)
 
 /obj/ui/inv/gear/proc/TryEquipmentInteraction(var/slot)
+
+	if(owner.OnActionCooldown())
+		return
+
 	var/obj/item/prop = owner.GetEquipped(slot)
 	if(prop)
 		if(holding)
-			holding.AttackedBy(owner, prop)
+			if(holding.AttackedBy(owner, prop))
+				owner.SetActionCooldown(3)
 		else
 			var/obj/ui/inv/inv_slot = owner.inventory_slots[slot]
 			if(!(slot_flags & prop.slot_flags))
