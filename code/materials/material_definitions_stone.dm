@@ -32,6 +32,9 @@
 	sharpness_modifier = 5
 	crafting_recipe_paths = list()
 
+/datum/material/stone/glass/sand
+	general_name = "sand"
+
 /datum/material/stone/glass/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(/obj/structure/alembic)
 

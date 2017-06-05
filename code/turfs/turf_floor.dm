@@ -102,6 +102,11 @@
 	name = "water"
 	icon = 'icons/turfs/water_floor.dmi'
 
+/turf/floor/sand
+	name = "sand"
+	icon = 'icons/turfs/sand_floor.dmi'
+	edge_blend_layer = 0.3
+
 /turf/floor/wood
 	name = "wooden floor"
 	icon = 'icons/turfs/wood_floor.dmi'
@@ -130,7 +135,7 @@
 	name = "grass"
 	icon = 'icons/turfs/grass_floor.dmi'
 	diggable = TRUE
-	edge_blend_layer = 0.3
+	edge_blend_layer = 0.5
 
 /turf/floor/tiled
 	name = "tiled floor"
