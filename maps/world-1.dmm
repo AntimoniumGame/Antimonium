@@ -1,9 +1,9 @@
 "aa" = (/turf/wall/cobble,/area/lighting/outdoors)
 "ab" = (/turf/floor/grass,/area/lighting/outdoors)
 "ac" = (/obj/structure/sconce,/turf/floor/grass,/area/lighting/outdoors)
-"ad" = (/obj/item/weapon/axe,/turf/floor/grass,/area/lighting/outdoors)
-"ae" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/grass,/area/lighting/outdoors)
-"af" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/grass,/area/lighting/outdoors)
+"ad" = (/obj/item/weapon/axe,/turf/floor/water,/area/lighting/outdoors)
+"ae" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting/outdoors)
+"af" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/water,/area/lighting/outdoors)
 "ag" = (/turf/wall/tiled,/area/lighting/indoors)
 "ah" = (/obj/structure/door/north,/turf/floor/tiled,/area/lighting/indoors)
 "ai" = (/obj/structure/door/south,/turf/floor/tiled,/area/lighting/indoors)
@@ -34,7 +34,7 @@
 "aH" = (/obj/structure/table/bench,/obj/item/stack/ginseng/five,/obj/item/stack/nightshade/five,/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/cobble,/area/lighting/indoors)
 "aI" = (/mob/human,/turf/floor/tiled,/area/lighting/indoors)
 "aJ" = (/obj/structure/bench{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting)
-"aK" = (/turf/floor/grass,/area/lighting/indoors)
+"aK" = (/obj/structure/sconce{tag = "icon-sconce (WEST)";icon_state = "sconce";dir = 8},/turf/floor/sand,/area/lighting/outdoors)
 "aL" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/obj/structure/table/bench,/obj/structure/alembic{tag = "icon-map (EAST)";icon_state = "map";dir = 4},/turf/floor/cobble,/area/lighting/indoors)
 "aM" = (/obj/structure/bench{tag = "icon-map (NORTH)";icon_state = "map";dir = 1},/turf/floor/wood,/area/lighting)
 "aN" = (/turf/wall/cobble,/area/lighting/indoors)
@@ -88,7 +88,7 @@
 "bJ" = (/obj/structure/cask{tag = "icon-flat (NORTH)";icon_state = "flat";dir = 1},/turf/floor/wood,/area/lighting)
 "bK" = (/turf/floor/wood,/area/lighting/indoors)
 "bL" = (/obj/structure/sconce,/turf/floor/wood,/area/lighting/indoors)
-"bM" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/lighting/outdoors)
+"bM" = (/obj/item/weapon/shovel,/turf/floor/sand,/area/lighting/outdoors)
 "bN" = (/obj/structure/sconce{tag = "icon-sconce (EAST)";icon_state = "sconce";dir = 4},/turf/floor/wood,/area/lighting/indoors)
 "bO" = (/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/turf/floor/wood,/area/lighting/indoors)
 "bP" = (/obj/item/stack/bricks,/turf/floor/wood,/area/lighting/indoors)
@@ -117,36 +117,252 @@
 "cm" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
 "cn" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
 "co" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
+"cp" = (/turf/floor/water,/area/lighting/outdoors)
+"cq" = (/turf/floor/water,/area/lighting/outdoors)
+"cr" = (/turf/floor/water,/area/lighting/outdoors)
+"cs" = (/obj/structure/sconce,/turf/floor/water,/area/lighting/outdoors)
+"ct" = (/turf/floor/water,/area/lighting/outdoors)
+"cu" = (/turf/floor/water,/area/lighting/outdoors)
+"cv" = (/turf/floor/water,/area/lighting/outdoors)
+"cw" = (/turf/floor/water,/area/lighting/outdoors)
+"cx" = (/turf/floor/water,/area/lighting/outdoors)
+"cy" = (/turf/floor/water,/area/lighting/outdoors)
+"cz" = (/turf/floor/water,/area/lighting/outdoors)
+"cA" = (/turf/floor/water,/area/lighting/outdoors)
+"cB" = (/turf/floor/water,/area/lighting/outdoors)
+"cC" = (/obj/structure/sconce,/turf/floor/water,/area/lighting/outdoors)
+"cD" = (/turf/floor/water,/area/lighting/outdoors)
+"cE" = (/turf/floor/water,/area/lighting/outdoors)
+"cF" = (/turf/floor/water,/area/lighting/outdoors)
+"cG" = (/turf/floor/water,/area/lighting/outdoors)
+"cH" = (/turf/floor/water,/area/lighting/outdoors)
+"cI" = (/turf/floor/water,/area/lighting/outdoors)
+"cJ" = (/turf/floor/water,/area/lighting/outdoors)
+"cK" = (/turf/floor/water,/area/lighting/outdoors)
+"cL" = (/obj/structure/sconce,/turf/floor/water,/area/lighting/outdoors)
+"cM" = (/turf/floor/water,/area/lighting/outdoors)
+"cN" = (/turf/floor/water,/area/lighting/outdoors)
+"cO" = (/turf/floor/water,/area/lighting/outdoors)
+"cP" = (/turf/floor/water,/area/lighting/outdoors)
+"cQ" = (/turf/floor/water,/area/lighting/outdoors)
+"cR" = (/turf/floor/water,/area/lighting/outdoors)
+"cS" = (/turf/floor/water,/area/lighting/outdoors)
+"cT" = (/turf/floor/water,/area/lighting/outdoors)
+"cU" = (/turf/floor/water,/area/lighting/outdoors)
+"cV" = (/turf/floor/water,/area/lighting/outdoors)
+"cW" = (/turf/floor/water,/area/lighting/outdoors)
+"cX" = (/turf/floor/water,/area/lighting/outdoors)
+"cY" = (/turf/floor/water,/area/lighting/outdoors)
+"cZ" = (/turf/floor/water,/area/lighting/outdoors)
+"da" = (/turf/floor/water,/area/lighting/outdoors)
+"db" = (/turf/floor/water,/area/lighting/outdoors)
+"dc" = (/turf/floor/water,/area/lighting/outdoors)
+"dd" = (/turf/floor/water,/area/lighting/outdoors)
+"de" = (/turf/floor/water,/area/lighting/outdoors)
+"df" = (/turf/floor/water,/area/lighting/outdoors)
+"dg" = (/turf/floor/water,/area/lighting/outdoors)
+"dh" = (/turf/floor/water,/area/lighting/outdoors)
+"di" = (/turf/floor/water,/area/lighting/outdoors)
+"dj" = (/turf/floor/water,/area/lighting/outdoors)
+"dk" = (/turf/floor/water,/area/lighting/outdoors)
+"dl" = (/turf/floor/water,/area/lighting/outdoors)
+"dm" = (/turf/floor/water,/area/lighting/outdoors)
+"dn" = (/turf/floor/water,/area/lighting/outdoors)
+"do" = (/turf/floor/water,/area/lighting/outdoors)
+"dp" = (/turf/floor/water,/area/lighting/outdoors)
+"dq" = (/turf/floor/water,/area/lighting/outdoors)
+"dr" = (/turf/floor/water,/area/lighting/outdoors)
+"ds" = (/turf/floor/water,/area/lighting/outdoors)
+"dt" = (/turf/floor/water,/area/lighting/outdoors)
+"du" = (/turf/floor/water,/area/lighting/outdoors)
+"dv" = (/turf/floor/water,/area/lighting/outdoors)
+"dw" = (/turf/floor/water,/area/lighting/outdoors)
+"dx" = (/turf/floor/water,/area/lighting/outdoors)
+"dy" = (/turf/floor/water,/area/lighting/outdoors)
+"dz" = (/turf/floor/water,/area/lighting/outdoors)
+"dA" = (/turf/floor/water,/area/lighting/outdoors)
+"dB" = (/turf/floor/water,/area/lighting/outdoors)
+"dC" = (/turf/floor/water,/area/lighting/outdoors)
+"dD" = (/turf/floor/water,/area/lighting/outdoors)
+"dE" = (/turf/floor/water,/area/lighting/outdoors)
+"dF" = (/turf/floor/water,/area/lighting/outdoors)
+"dG" = (/turf/floor/water,/area/lighting/outdoors)
+"dH" = (/turf/floor/water,/area/lighting/outdoors)
+"dI" = (/turf/floor/water,/area/lighting/outdoors)
+"dJ" = (/turf/floor/water,/area/lighting/outdoors)
+"dK" = (/turf/floor/water,/area/lighting/outdoors)
+"dL" = (/turf/floor/water,/area/lighting/outdoors)
+"dM" = (/turf/floor/water,/area/lighting/outdoors)
+"dN" = (/turf/floor/water,/area/lighting/outdoors)
+"dO" = (/turf/floor/water,/area/lighting/outdoors)
+"dP" = (/turf/floor/water,/area/lighting/outdoors)
+"dQ" = (/turf/floor/water,/area/lighting/outdoors)
+"dR" = (/turf/floor/water,/area/lighting/outdoors)
+"dS" = (/turf/floor/water,/area/lighting/outdoors)
+"dT" = (/turf/floor/water,/area/lighting/outdoors)
+"dU" = (/turf/floor/wood,/area/lighting/outdoors)
+"dV" = (/turf/floor/wood,/area/lighting/outdoors)
+"dW" = (/turf/floor/wood,/area/lighting/outdoors)
+"dX" = (/turf/floor/wood,/area/lighting/outdoors)
+"dY" = (/turf/floor/wood,/area/lighting/outdoors)
+"dZ" = (/turf/floor/wood,/area/lighting/outdoors)
+"ea" = (/turf/floor/wood,/area/lighting/outdoors)
+"eb" = (/turf/floor/wood,/area/lighting/outdoors)
+"ec" = (/turf/floor/wood,/area/lighting/outdoors)
+"ed" = (/turf/floor/wood,/area/lighting/outdoors)
+"ee" = (/turf/floor/wood,/area/lighting/outdoors)
+"ef" = (/turf/floor/wood,/area/lighting/outdoors)
+"eg" = (/turf/floor/wood,/area/lighting/outdoors)
+"eh" = (/turf/floor/wood,/area/lighting/outdoors)
+"ei" = (/turf/floor/wood,/area/lighting/outdoors)
+"ej" = (/turf/floor/wood,/area/lighting/outdoors)
+"ek" = (/turf/floor/wood,/area/lighting/outdoors)
+"el" = (/turf/floor/wood,/area/lighting/outdoors)
+"em" = (/turf/floor/wood,/area/lighting/outdoors)
+"en" = (/turf/floor/wood,/area/lighting/outdoors)
+"eo" = (/turf/floor/wood,/area/lighting/outdoors)
+"ep" = (/turf/floor/wood,/area/lighting/outdoors)
+"eq" = (/turf/floor/wood,/area/lighting/outdoors)
+"er" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/tiled,/area/lighting/indoors)
+"es" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/tiled,/area/lighting/indoors)
+"et" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/tiled,/area/lighting/indoors)
+"eu" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"ev" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"ew" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"ex" = (/turf/floor/wood,/area/lighting/outdoors)
+"ey" = (/turf/floor/wood,/area/lighting/outdoors)
+"ez" = (/turf/floor/water,/area/lighting/outdoors)
+"eA" = (/obj/structure/window{tag = "icon-map (NORTH)";icon_state = "map";dir = 1},/turf/floor/wood,/area/lighting/indoors)
+"eB" = (/turf/floor/sand,/area/lighting/outdoors)
+"eC" = (/turf/floor/sand,/area/lighting/outdoors)
+"eD" = (/turf/floor/water,/area/lighting/outdoors)
+"eE" = (/turf/floor/sand,/area/lighting/outdoors)
+"eF" = (/turf/floor/water,/area/lighting/outdoors)
+"eG" = (/turf/floor/sand,/area/lighting/outdoors)
+"eH" = (/turf/floor/water,/area/lighting/outdoors)
+"eI" = (/turf/floor/sand,/area/lighting/outdoors)
+"eJ" = (/turf/floor/water,/area/lighting/outdoors)
+"eK" = (/turf/floor/sand,/area/lighting/outdoors)
+"eL" = (/turf/floor/water,/area/lighting/outdoors)
+"eM" = (/turf/floor/water,/area/lighting/outdoors)
+"eN" = (/turf/floor/sand,/area/lighting/outdoors)
+"eO" = (/turf/floor/water,/area/lighting/outdoors)
+"eP" = (/turf/floor/water,/area/lighting/outdoors)
+"eQ" = (/turf/floor/sand,/area/lighting/outdoors)
+"eR" = (/turf/floor/water,/area/lighting/outdoors)
+"eS" = (/turf/floor/water,/area/lighting/outdoors)
+"eT" = (/turf/floor/sand,/area/lighting/outdoors)
+"eU" = (/turf/floor/sand,/area/lighting/outdoors)
+"eV" = (/turf/floor/water,/area/lighting/outdoors)
+"eW" = (/obj/item/weapon/axe,/turf/floor/sand,/area/lighting/outdoors)
+"eX" = (/turf/floor/sand,/area/lighting/outdoors)
+"eY" = (/turf/floor/sand,/area/lighting/outdoors)
+"eZ" = (/turf/floor/sand,/area/lighting/outdoors)
+"fa" = (/turf/floor/sand,/area/lighting/outdoors)
+"fb" = (/turf/floor/sand,/area/lighting/outdoors)
+"fc" = (/obj/structure/door/east,/turf/floor/wood,/area/lighting/indoors)
+"fd" = (/turf/floor/sand,/area/lighting/outdoors)
+"fe" = (/turf/floor/sand,/area/lighting/outdoors)
+"ff" = (/obj/structure/door/west,/turf/floor/wood,/area/lighting/indoors)
+"fg" = (/turf/floor/sand,/area/lighting/outdoors)
+"fh" = (/turf/floor/sand,/area/lighting/outdoors)
+"fi" = (/turf/floor/water,/area/lighting/outdoors)
+"fj" = (/turf/floor/sand,/area/lighting/outdoors)
+"fk" = (/turf/floor/water,/area/lighting/outdoors)
+"fl" = (/turf/floor/sand,/area/lighting/outdoors)
+"fm" = (/turf/floor/water,/area/lighting/outdoors)
+"fn" = (/turf/floor/sand,/area/lighting/outdoors)
+"fo" = (/turf/floor/water,/area/lighting/outdoors)
+"fp" = (/turf/floor/sand,/area/lighting/outdoors)
+"fq" = (/turf/floor/sand,/area/lighting/outdoors)
+"fr" = (/turf/floor/sand,/area/lighting/outdoors)
+"fs" = (/turf/floor/sand,/area/lighting/outdoors)
+"ft" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fu" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fv" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fw" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fx" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fy" = (/obj/structure/window{tag = "icon-map (WEST)";icon_state = "map";dir = 8},/turf/floor/wood,/area/lighting/indoors)
+"fz" = (/turf/floor/sand,/area/lighting/outdoors)
+"fA" = (/turf/floor/sand,/area/lighting/outdoors)
+"fB" = (/turf/floor/sand,/area/lighting/outdoors)
+"fC" = (/turf/floor/sand,/area/lighting/outdoors)
+"fD" = (/turf/floor/sand,/area/lighting/outdoors)
+"fE" = (/turf/floor/sand,/area/lighting/outdoors)
+"fF" = (/turf/floor/sand,/area/lighting/outdoors)
+"fG" = (/turf/floor/sand,/area/lighting/outdoors)
+"fH" = (/turf/floor/sand,/area/lighting/outdoors)
+"fI" = (/turf/floor/sand,/area/lighting/outdoors)
+"fJ" = (/turf/floor/sand,/area/lighting/outdoors)
+"fK" = (/turf/floor/sand,/area/lighting/outdoors)
+"fL" = (/turf/floor/sand,/area/lighting/outdoors)
+"fM" = (/turf/floor/sand,/area/lighting/outdoors)
+"fN" = (/turf/floor/sand,/area/lighting/outdoors)
+"fO" = (/turf/floor/sand,/area/lighting/outdoors)
+"fP" = (/turf/floor/sand,/area/lighting/outdoors)
+"fQ" = (/turf/floor/water,/area/lighting/outdoors)
+"fR" = (/turf/floor/sand,/area/lighting/outdoors)
+"fS" = (/turf/floor/sand,/area/lighting/outdoors)
+"fT" = (/turf/floor/sand,/area/lighting/outdoors)
+"fU" = (/turf/floor/sand,/area/lighting/outdoors)
+"fV" = (/turf/floor/sand,/area/lighting/outdoors)
+"fW" = (/turf/floor/sand,/area/lighting/outdoors)
+"fX" = (/turf/floor/sand,/area/lighting/outdoors)
+"fY" = (/turf/floor/sand,/area/lighting/outdoors)
+"fZ" = (/turf/floor/sand,/area/lighting/outdoors)
+"ga" = (/turf/floor/sand,/area/lighting/outdoors)
+"gb" = (/turf/floor/sand,/area/lighting/outdoors)
+"gc" = (/turf/floor/sand,/area/lighting/outdoors)
+"gd" = (/turf/floor/sand,/area/lighting/outdoors)
+"ge" = (/turf/floor/sand,/area/lighting/outdoors)
+"gf" = (/turf/floor/sand,/area/lighting/outdoors)
+"gg" = (/turf/floor/sand,/area/lighting/outdoors)
+"gh" = (/turf/floor/water,/area/lighting/outdoors)
+"gi" = (/turf/floor/water,/area/lighting/outdoors)
+"gj" = (/turf/floor/water,/area/lighting/outdoors)
+"gk" = (/turf/floor/water,/area/lighting/outdoors)
+"gl" = (/turf/floor/water,/area/lighting/outdoors)
+"gm" = (/turf/floor/water,/area/lighting/outdoors)
+"gn" = (/turf/floor/water,/area/lighting/outdoors)
+"go" = (/turf/floor/water,/area/lighting/outdoors)
+"gp" = (/turf/floor/water,/area/lighting/outdoors)
+"gq" = (/turf/floor/water,/area/lighting/outdoors)
+"gr" = (/turf/floor/water,/area/lighting/outdoors)
+"gs" = (/turf/floor/water,/area/lighting/outdoors)
+"gt" = (/turf/floor/water,/area/lighting/outdoors)
+"gu" = (/turf/floor/sand,/area/lighting/outdoors)
+"gv" = (/turf/floor/sand,/area/lighting/outdoors)
+"gw" = (/turf/floor/sand,/area/lighting/outdoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaabababacabababababababababacababababababababacabababababaa
-aaababababababababababababababababababababababababababababaa
-aaabababababababababababababadababababababababababababababaa
-aaababaeababababaeababababababababaeabababababaeababababafaa
-agagagagagahaiagagagagagagajajajajajajajakalajajajajabababaa
-agamamanaoaoaoaoapaqararagasatatauatatavavavavavavajabababaa
-agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayababaa
-agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayababaa
-agaDamamaoaoaoaoaociciciagasatatatatatavavavaEaFaGajayababaa
+aacpcqcrcsctcucvcwcxcyczcAcBcCcDcEcFcGcHcIcJcKcLcMcNcOcPcQaa
+aacRcScTcUcVcWcXcYcZdadbdcdddedfdgdhdidjdkdldmdndodpdqdrdsaa
+aadtdudvdwdxdydzdAdBdCdDdEdFaddGdHdIdJdKdLdMdNdOdPdQdRdSdTaa
+aadUdVaedWdXdYdZaeeaebecedeeefegehaeeiejekelemaeeneoepeqafaa
+agageragagahaiagagesetagagajajeuevajajajakalajajewajexeyezaa
+agamamanaoaoaoaoapaqararagasatatauatatavavavavavaveAeBeCeDaa
+agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayeEeFaa
+agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayeGeHaa
+agaDamamaoaoaoaoaociciciagasatatatatatavavavaEaFaGajayeIeJaa
 agaHamamaoaoaIaoaobZbZbZagasatatatatatavavavaJasasajaKaKafaa
-agaLamamaoaoaoaoaoccccccagasavavavavavavaMaMaMasaNaNamaKabaa
-agaOamamaoaPaoaoaocfcfcfagasasaQaRasasasasasasasaNawamaKabaa
-agaSamaTaUaoaVaoaoaoaoaVagasasavavavavaWavaXavasaNaNamaKabaa
-agagagagagagagagagaoaoagagasasatataJavaXavaGaYasasajaKaKabaa
-aZaZaZaZaZaZaZaZaZbabbaZaZaZasbcataJaEaGavavavavbdajayadabaa
-aZbebfbgbhatbiauatatatbjbkaZasatataJavblavavavavbmajayababaa
-aZaAatatatatatatatatatatbnaZasavavavavavaEaGboavbpajayababaa
-aZatatatbcatatatatbcatatbqaZasavavavavavavavavavavajababafaa
-aZatatatatatatatatatbratbsaZasavavbtclcmcncobtbtavajabababaa
-aZbuatatatatatatatatatatbvaZasbwavbtavavavavavavavajayababaa
-aZbxbyatatatbzbAbBbCbDbEbFaZasavavbtbGbHbGaGaGbIbJajayababaa
-aZaZaZaZbabbaZaZaZaZaZaZaZaZasaQaRasasasasasasasasajayababaa
-aNbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbLbKbKbKbKbKajababbMaa
-aNbNbKbKbKbKbKbKbKbKbObKbKbKbKbKbKbKbKbPbKbKbKbKbQajababafaa
-aNajajajajajajajajajajajajakalajajajajajajajajajajajababbRaa
-aaabacababababacbTbTbTacababababababacbTbTbTbTbTacababbRbRaa
-aaabababababababababababababababababababababababababbRbYbRaa
-aaababababababababababababababababababababababababbRbRbRbXaa
+agaLamamaoaoaoaoaoccccccagasavavavavavavaMaMaMasaNaNeKeLeMaa
+agaOamamaoaPaoaoaocfcfcfagasasaQaRasasasasasasasaNaweNeOePaa
+agaSamaTaUaoaVaoaoaoaoaVagasasavavavavaWavaXavasaNaNeQeReSaa
+agagagagagagagagagaoaoagagasasatataJavaXavaGaYasasajeTeUeVaa
+aZaZaZaZaZaZaZaZaZbabbaZaZaZasbcataJaEaGavavavavbdajayeWeXaa
+aZbebfbgbhatbiauatatatbjbkaZasatataJavblavavavavbmajayeYeZaa
+aZaAatatatatatatatatatatbnaZasavavavavavaEaGboavbpajayfafbaa
+aZatatatbcatatatatbcatatbqaZasavavavavavavavavavavfcfdfeaKaa
+aZatatatatatatatatatbratbsaZasavavbtclclclclbtbtavfffgfhfiaa
+aZbuatatatatatatatatatatbvaZasbwavbtavavavavavavavajayfjfkaa
+aZbxbyatatatbzbAbBbCbDbEbFaZasavavbtbGbHbGaGaGbIbJajayflfmaa
+aZaZaZaZbabbaZaZaZaZaZaZaZaZasaQaRasasasasasasasasajayfnfoaa
+aNbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbLbKbKbKbKbKajfpfqbMaa
+aNbNbKbKbKbKbKbKbKbKbObKbKbKbKbKbKbKbKbPbKbKbKbKbQajfrfsaKaa
+aNajajajftfuajajajajajajajakalajajajajfvfwajfxfyajajfzfAbRaa
+aaabacababababacbTbTbTacababfBfCfDabacbTbTbTbTbTacfEfFbRbRaa
+aaababababfGfHfIfJfKfLfMfNfOfPfQfRfSfTfUfVfWfXfYfZgabRbYbRaa
+aaababgbgcgdgegfggghgigjgkglgmgngogpgqgrgsgtgugvgwbRbRbRbXaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
