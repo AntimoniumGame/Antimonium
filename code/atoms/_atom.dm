@@ -120,9 +120,17 @@
 /atom/proc/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
 	return
 
+/atom/proc/ResetPosition()
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
+	transform = null
+
 /atom/proc/RandomizePixelOffset()
 	return
 
 /atom/movable/RandomizePixelOffset()
 	pixel_x = rand(8,24)-16
 	pixel_y = rand(8,24)-16
+
+/atom/movable/proc/EndThrow()
+	return

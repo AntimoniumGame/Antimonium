@@ -63,3 +63,6 @@
 
 /mob/RandomizePixelOffset()
 	return
+
+/mob/EndThrow()
+	ResetPosition()

@@ -90,11 +90,6 @@
 /obj/item/proc/AfterPickedUp()
 	ResetPosition()
 
-/obj/item/proc/ResetPosition()
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
-	transform = null
-
 /obj/item/proc/AfterRemoved(var/mob/user, var/slot)
 	if(slot == SLOT_HANDS)
 		user.UpdateGrasp()

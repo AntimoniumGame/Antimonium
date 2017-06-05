@@ -110,6 +110,7 @@ Inputs:
 				owner.transform = null
 				owner.UpdateIcon()
 				owner.UpdateStrings()
+				owner.EndThrow()
 				vector_list -= src
 				return
 			owner.pixel_x = pix_x

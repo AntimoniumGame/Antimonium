@@ -51,3 +51,6 @@
 
 /obj/structure/GetWeight()
 	return weight
+
+/obj/structure/EndThrow()
+	ResetPosition()
