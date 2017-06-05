@@ -4,6 +4,10 @@
 	gender = PLURAL
 	var/list/occupied_spots = list()
 
+/obj/structure/earthworks/farm/Initialize()
+	..()
+	dir = pick(cardinal_dirs)
+
 /obj/structure/earthworks/farm/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(istype(prop, /obj/item/stack/seed))
 		var/obj/item/stack/seed/seed = prop
