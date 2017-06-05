@@ -25,21 +25,31 @@
 	HandleInteraction(clicker, slot)
 
 /turf/proc/HandleInteraction(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
+
+	if(clicker.OnActionCooldown())
+		return
+
 	if(IsAdjacentTo(clicker, src))
 		if(clicker.GetEquipped(slot))
-			AttackedBy(clicker, clicker.GetEquipped(slot))
+			if(AttackedBy(clicker, clicker.GetEquipped(slot)))
+				clicker.SetActionCooldown(3)
 		else
-			ManipulatedBy(clicker, slot)
+			if(ManipulatedBy(clicker, slot))
+				clicker.SetActionCooldown(3)
 
 /turf/proc/ManipulatedBy(var/mob/user, var/slot)
 	return
 
 /turf/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(user.intent.selecting == INTENT_HARM)
-		var/list/valid_targets = GetSimulatedAtoms()
-		if(!valid_targets.len) return
-		var/atom/thing = pick(valid_targets)
-		thing.AttackedBy(user, prop)
+	if(user.OnActionCooldown())
+		return FALSE
+	var/list/valid_targets = GetSimulatedAtoms()
+	if(!valid_targets.len) return
+	var/atom/thing = pick(valid_targets)
+	if(thing.AttackedBy(user, prop))
+		user.SetActionCooldown(3)
+		return TRUE
+	return FALSE
 
 /turf/GetWeight()
 	return 10

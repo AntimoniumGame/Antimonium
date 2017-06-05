@@ -27,6 +27,7 @@
 
 /obj/structure/door/PushedBy(var/mob/user)
 	ToggleOpen(user)
+	user.SetActionCooldown(2)
 	return TRUE
 
 // Inherits from containers, but overrides.
@@ -41,7 +42,7 @@
 		if(atom.density || (atom.flags & FLAG_SIMULATED))
 			NotifyNearby("<span class='warning'>\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].</span>")
 			PlayLocalSound(loc, 'sounds/effects/thump1.ogg', 100)
-			return
+			return TRUE
 	var/anim_time = (slam ? 2 : 5)
 	if(open)
 		open = FALSE
@@ -49,9 +50,11 @@
 		opacity = 1
 		animate(src, time = anim_time, transform = null)
 		PlayLocalSound(loc, (slam ? 'sounds/effects/door_slam_close.ogg' : 'sounds/effects/door_close.ogg'), 100)
-		return
+		return TRUE
+
 	if(locked)
 		return FALSE
+
 	open = TRUE
 	density = 0
 	opacity = 0

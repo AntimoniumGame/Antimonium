@@ -5,11 +5,18 @@
 	HandleClickedOn(clicker, slot)
 
 /obj/proc/HandleClickedOn(var/mob/clicker, var/slot)
+
+	if(clicker.OnActionCooldown())
+		return
+
 	if(IsAdjacentTo(src, clicker))
 		if(clicker.GetEquipped(slot))
-			AttackedBy(clicker, clicker.GetEquipped(slot))
+			if(AttackedBy(clicker, clicker.GetEquipped(slot)))
+				clicker.SetActionCooldown(3)
 		else
-			ManipulatedBy(clicker, slot)
+			if(ManipulatedBy(clicker, slot))
+				clicker.SetActionCooldown(3)
+
 
 /obj/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(IsFlammable() && prop.IsFlammable())
@@ -31,23 +38,28 @@
 	return FALSE
 
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
-	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
 
+	if(clicker.OnActionCooldown())
+		return
+
+	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
 		if(!IsSolid())
 			clicker.Notify("<span class='warning'>You attempt to collect \the [src], but it slips through your grasp.</span>")
-			return
-
+			clicker.SetActionCooldown(3)
+			return TRUE
 		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
 		if(clicker.CollectItem(src, slot))
 			PlayLocalSound(src, collect_sound, 50)
 			NotifyNearby("<span class='notice'>\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.unmodified_name].</span>")
-		return
+			clicker.SetActionCooldown(3)
+			return TRUE
 	. = ..()
 
 /obj/item/proc/Attacking(var/mob/user, var/mob/target)
 	if(!(flags & FLAG_SIMULATED))
 		return
 	user.DoAttackAnimation(target, src)
+	user.SetActionCooldown(5)
 	if(user.intent.selecting == INTENT_HELP)
 		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
 		user.NotifyNearby("<span class='warning'>\The [user] prods \the [target] with \the [src].</span>")
@@ -58,6 +70,7 @@
 			PlayLocalSound(src, hit_sound, 50)
 		if(weight || sharpness)
 			target.ResolvePhysicalAttack(user, weight, sharpness, contact_size, src)
+	return TRUE
 
 /obj/item/proc/AttackingSelf(var/mob/user)
 	return
@@ -76,11 +89,6 @@
 
 /obj/item/proc/AfterPickedUp()
 	ResetPosition()
-
-/obj/item/proc/ResetPosition()
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
-	transform = null
 
 /obj/item/proc/AfterRemoved(var/mob/user, var/slot)
 	if(slot == SLOT_HANDS)

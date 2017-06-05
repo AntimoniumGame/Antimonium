@@ -5,6 +5,30 @@
 	colour = PALE_GREY
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_iron.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'
+	construction_sound = 'sounds/effects/ding1.ogg'
+	crafting_recipe_paths = list(
+		/datum/crafting_recipe/forging,
+		/datum/crafting_recipe/forging/axe,
+		/datum/crafting_recipe/forging/dart,
+		/datum/crafting_recipe/forging/hammer,
+		/datum/crafting_recipe/forging/mallet,
+		/datum/crafting_recipe/forging/construction_hammer,
+		/datum/crafting_recipe/forging/horseshoe,
+		/datum/crafting_recipe/forging/handsaw,
+		/datum/crafting_recipe/forging/level,
+		/datum/crafting_recipe/forging/chisel,
+		/datum/crafting_recipe/forging/pipe
+		)
+
+/datum/material/metal/GetBuildableStructures(var/obj/item/stack/building_with)
+	return list(
+		/obj/structure/brazier,
+		/obj/structure/sconce,
+		/obj/structure/still,
+		/obj/structure/stake,
+		/obj/structure/anvil,
+		/obj/structure/gearbox
+		)
 
 /datum/material/metal/iron
 	general_name = "iron"

@@ -78,8 +78,8 @@
 "bz" = (/obj/structure/table/bench,/obj/item/weapon/hammer,/turf/floor/cobble,/area/lighting)
 "bA" = (/obj/structure/table/bench,/obj/structure/sconce{tag = "icon-sconce (NORTH)";icon_state = "sconce";dir = 1},/obj/item/weapon/chisel,/obj/item/level,/turf/floor/cobble,/area/lighting)
 "bB" = (/obj/structure/table/bench,/obj/item/weapon/construction_hammer,/turf/floor/cobble,/area/lighting)
-"bC" = (/obj/structure/table/bench,/obj/item/weapon/mallet,/turf/floor/cobble,/area/lighting)
-"bD" = (/obj/structure/table/bench,/obj/item/mold,/obj/item/mold,/obj/item/mold,/obj/item/mold,/turf/floor/cobble,/area/lighting)
+"bC" = (/obj/structure/table/bench,/obj/item/weapon/mallet,/obj/item/weapon/handsaw,/turf/floor/cobble,/area/lighting)
+"bD" = (/obj/structure/table/bench,/obj/item/mold,/turf/floor/cobble,/area/lighting)
 "bE" = (/obj/structure/table/bench,/obj/item/weapon/axe,/turf/floor/cobble,/area/lighting)
 "bF" = (/obj/structure/table/bench,/obj/item/stack/bricks,/turf/floor/cobble,/area/lighting)
 "bG" = (/obj/structure/cask/barrel,/turf/floor/wood,/area/lighting)
@@ -113,6 +113,10 @@
 "ci" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
 "cj" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
 "ck" = (/obj/item/stack/logs,/turf/floor/tiled,/area/lighting/indoors)
+"cl" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
+"cm" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
+"cn" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
+"co" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/lighting)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -124,7 +128,7 @@ agagagagagahaiagagagagagagajajajajajajajakalajajajajabababaa
 agamamanaoaoaoaoapaqararagasatatauatatavavavavavavajabababaa
 agamawamaoaoaoaoaoaoaqaragasatatatatatavavavavaxavajayababaa
 agamamamaoaoaoaoaoaoaoazagasaAataBatatavaCavavavavajayababaa
-agaDamamaoaoaoaoaocicjckagasatatatatatavavavaEaFaGajayababaa
+agaDamamaoaoaoaoaociciciagasatatatatatavavavaEaFaGajayababaa
 agaHamamaoaoaIaoaobZbZbZagasatatatatatavavavaJasasajaKaKafaa
 agaLamamaoaoaoaoaoccccccagasavavavavavavaMaMaMasaNaNamaKabaa
 agaOamamaoaPaoaoaocfcfcfagasasaQaRasasasasasasasaNawamaKabaa
@@ -134,7 +138,7 @@ aZaZaZaZaZaZaZaZaZbabbaZaZaZasbcataJaEaGavavavavbdajayadabaa
 aZbebfbgbhatbiauatatatbjbkaZasatataJavblavavavavbmajayababaa
 aZaAatatatatatatatatatatbnaZasavavavavavaEaGboavbpajayababaa
 aZatatatbcatatatatbcatatbqaZasavavavavavavavavavavajababafaa
-aZatatatatatatatatatbratbsaZasavavbtbtbtbtbtbtbtavajabababaa
+aZatatatatatatatatatbratbsaZasavavbtclcmcncobtbtavajabababaa
 aZbuatatatatatatatatatatbvaZasbwavbtavavavavavavavajayababaa
 aZbxbyatatatbzbAbBbCbDbEbFaZasavavbtbGbHbGaGaGbIbJajayababaa
 aZaZaZaZbabbaZaZaZaZaZaZaZaZasaQaRasasasasasasasasajayababaa

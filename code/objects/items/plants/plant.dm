@@ -56,8 +56,7 @@
 		new product_type(get_turf(src), _amount = rand(min_harvest_amount,max_harvest_amount))
 	QDel(src)
 
-/obj/item/plant/New()
-	..()
+/obj/item/plant/RandomizePixelOffset()
 	pixel_x = rand(-1,1)
 	pixel_y = rand(-1,1)
 

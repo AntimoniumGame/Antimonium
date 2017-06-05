@@ -1,5 +1,9 @@
 // Entry point for the click resolution chain.
+/client/
+	var/list/last_click = list()
+
 /client/Click(object,location,control,params)
+	last_click = params2list(params)
 	if(world.time > next_click)
 		next_click = world.time + 1
 		interface.OnClick(object, location, control, params)

@@ -16,6 +16,11 @@
 	var/collect_sound = 'sounds/effects/click1.ogg'
 	var/equip_sound = 'sounds/effects/rustle1.ogg'
 
+/obj/item/New(var/newloc, var/material_path)
+	..(newloc, material_path)
+	if(!pixel_x && !pixel_y)
+		RandomizePixelOffset()
+
 /obj/item/proc/GetHeatInsulation()
 	return (material ? material.thermal_insulation : 0)
 

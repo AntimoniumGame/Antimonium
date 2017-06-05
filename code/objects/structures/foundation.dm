@@ -45,6 +45,7 @@
 	if(prop.associated_skill & SKILL_CONSTRUCTION)
 		var/atom/built = new build_type(get_turf(src), material.type)
 		NotifyNearby("<span class='notice'>\The [user] finishes building \the [built] with \the [prop].</span>")
+		PlayLocalSound(src, material.GetConstructionSound(), 100)
 		QDel(src)
 		return TRUE
 	. = ..()

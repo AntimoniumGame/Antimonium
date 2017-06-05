@@ -7,4 +7,4 @@
 	singular_name = "tile"
 	plural_name =   "tiles"
 	stack_name =    "stack"
-	crafted = FALSE
+	can_craft_with = FALSE

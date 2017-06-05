@@ -14,8 +14,3 @@
 	amount = 5
 	max_amount = 5
 	flags = FLAG_SIMULATED
-
-/obj/item/stack/dart/New()
-	..()
-	pixel_x = rand(-3,3)
-	pixel_y = rand(-3,3)

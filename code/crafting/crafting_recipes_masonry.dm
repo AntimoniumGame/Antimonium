@@ -8,11 +8,10 @@
 /datum/crafting_recipe/masonry/Craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	. = ..()
 	spawn()
-		PlayLocalSound(craft_at, 'sounds/effects/chisel1.ogg', 100, -1)
 		sleep(3)
-		PlayLocalSound(craft_at, 'sounds/effects/chisel1.ogg', 100, -1)
+		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 75, -1)
 		sleep(3)
-		PlayLocalSound(craft_at, 'sounds/effects/chisel1.ogg', 100, -1)
+		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 75, -1)
 
 /datum/crafting_recipe/masonry/tiles
 	result_path = /obj/item/stack/tiles

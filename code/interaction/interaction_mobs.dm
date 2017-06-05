@@ -34,19 +34,20 @@
 		HandleInteractionOther(person, slot_id)
 
 /mob/proc/HandleInteractionOther(var/mob/person, var/slot_id)
-	if(OnCombatCooldown())
+	if(OnActionCooldown())
 		return
-	SetCombatCooldown(4)
 	var/obj/item/prop = person.GetEquipped(slot_id)
 	if(prop)
-		prop.Attacking(person, src)
+		if(prop.Attacking(person, src))
+			SetActionCooldown(6)
 	else
-		person.Attack(src)
+		if(person.Attack(src))
+			SetActionCooldown(4)
 
 /mob/proc/HandleInteractionSelf(var/slot_id)
-	if(OnCombatCooldown())
+	if(OnActionCooldown())
 		return
-	SetCombatCooldown(2)
+	SetActionCooldown(2)
 	var/obj/item/prop = GetEquipped(slot_id)
 	if(prop)
 		prop.AttackingSelf(src)
@@ -57,12 +58,15 @@
 	return
 
 /mob/proc/Attack(var/mob/target)
-	if(OnCombatCooldown())
+	if(OnActionCooldown())
 		return
-	SetCombatCooldown(4)
+	SetActionCooldown(3)
 	DoUnarmedAttack(target)
 
 /mob/proc/DoUnarmedAttack(var/mob/target)
+	if(OnActionCooldown())
+		return
+	SetActionCooldown(3)
 	DoAttackAnimation(target)
 	if(intent.selecting == INTENT_HELP)
 		DoPassiveUnarmedInteraction(target)

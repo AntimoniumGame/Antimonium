@@ -22,6 +22,7 @@
 		holder.UpdateIcon()
 
 /atom/movable/UpdateIcon(var/list/supplied = list())
+	/*
 	if((flags & FLAG_SIMULATED) && !isnull(shadow_size))
 		underlays.Cut()
 		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
@@ -31,6 +32,7 @@
 		I.pixel_x = shadow_pixel_x
 		I.pixel_y = shadow_pixel_y
 		underlays += I
+	*/
 	..(supplied)
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
@@ -116,4 +118,19 @@
 	return
 
 /atom/proc/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	return
+
+/atom/proc/ResetPosition()
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
+	transform = null
+
+/atom/proc/RandomizePixelOffset()
+	return
+
+/atom/movable/RandomizePixelOffset()
+	pixel_x = rand(8,24)-16
+	pixel_y = rand(8,24)-16
+
+/atom/movable/proc/EndThrow()
 	return

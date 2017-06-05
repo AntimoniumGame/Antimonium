@@ -7,7 +7,7 @@
 	var/singular_name = "thing"
 	var/plural_name =   "things"
 	var/stack_name =    "stack"
-	var/crafted = TRUE
+	var/can_craft_with = FALSE
 
 /obj/item/stack/ForceMove()
 	. = ..()
@@ -74,6 +74,22 @@
 
 /obj/item/stack/AttackedBy(var/mob/user, var/obj/item/prop)
 
+	if(can_craft_with && (prop.associated_skill & SKILL_CONSTRUCTION))
+		var/list/structs = material.GetBuildableStructures(src)
+		if(structs.len)
+			if(locate(/obj/structure) in loc)
+				user.Notify("<span class='warning'>There is already a structure in this location.</span>")
+			else
+				if(GetAmount() < material.GetStructureCost())
+					user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
+				else
+					var/select_type = input("Select a structure type.") as null|anything in structs
+					if(select_type)
+						var/atom/thing = new select_type(get_turf(src), material_path = material.type)
+						user.NotifyNearby("<span class='notice'>\The [user] builds \a [thing].</span>")
+						Remove(material.GetStructureCost())
+		return TRUE
+
 	if(prop.associated_skill & SKILL_ALCHEMY)
 		if(GetAmount() > 5)
 			user.Notify("<span class='warning'>There are too many [plural_name] in this [stack_name] to grind with \the [prop].</span>")
@@ -81,7 +97,7 @@
 			Grind(user)
 		return TRUE
 
-	if(material && !crafted)
+	if(material && can_craft_with)
 		if(TryCraft(user, prop))
 			return TRUE
 		if(prop.associated_skill & SKILL_ARCHITECTURE)
@@ -100,7 +116,7 @@
 					if(select_type)
 						user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
 						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, material.GetTurfCost()))
-						Remove(5)
+						Remove(material.GetTurfCost())
 				return TRUE
 
 	if(MatchesStackType(prop))
@@ -176,3 +192,20 @@
 		UpdateIcon()
 		UpdateStrings()
 
+/obj/item/stack/proc/TryCraft(var/mob/user, var/obj/item/prop)
+	if(!material || !prop.associated_skill)
+		return FALSE
+
+	var/list/valid_recipes = material.GetRecipesFor(prop.associated_skill, get_turf(src), src)
+
+	if(!valid_recipes || !valid_recipes.len)
+		return FALSE
+
+	var/datum/crafting_recipe/crecipe = input("What do you wish to craft?") as null|anything in valid_recipes
+	if(!crecipe || !src || Deleted(src) || !crecipe.CanCraft(get_turf(src), src) || !user || !IsAdjacentTo(user, src))
+		return FALSE
+
+	var/obj/item/result = crecipe.Craft(get_turf(src), src)
+	user.DoAttackAnimation(get_turf(src), prop)
+	user.NotifyNearby("<span class='notice'>\The [user] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].</span>")
+	return TRUE

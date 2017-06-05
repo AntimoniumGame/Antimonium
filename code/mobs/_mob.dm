@@ -4,6 +4,7 @@
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
 	shadow_size = 2
+	//sight = SEE_SELF|SEE_PIXELS
 
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
@@ -59,3 +60,9 @@
 
 /mob/proc/IsDigger(var/complex_digging = FALSE)
 	return FALSE
+
+/mob/RandomizePixelOffset()
+	return
+
+/mob/EndThrow()
+	ResetPosition()

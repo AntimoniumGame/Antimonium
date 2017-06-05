@@ -46,7 +46,7 @@
 
 /mob/proc/GrabAtom(var/atom/movable/grabbing, var/grabbing_with, var/grabbing_slot)
 
-	if(!IsAdjacentTo(src, grabbing))
+	if(!IsAdjacentTo(src, grabbing) || OnActionCooldown())
 		return
 
 	if(!CanUseLimb(grabbing_with))
@@ -74,6 +74,7 @@
 	var/obj/item/limb/limb = limbs[grabbing_with]
 	PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 75)
 	NotifyNearby("<span class='danger'>\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!</span>")
+	SetActionCooldown(10)
 	grab.owner.DoAttackAnimation(grab.grabbed)
 
 

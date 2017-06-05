@@ -18,7 +18,7 @@
 	var/axle_spin_period = 10
 	var/current_axle_dir = 0
 
-/obj/structure/millstone/ThingPlacedOn(var/mob/user, var/obj/item/prop)
+/obj/structure/millstone/ThingPlacedOn(var/mob/user, var/obj/item/prop, var/precise_placement = TRUE)
 	var/turf/current = get_turf(src)
 	current = get_step(current, get_dir(src, get_turf(prop)))
 	prop.ForceMove(current)
