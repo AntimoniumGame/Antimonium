@@ -102,6 +102,10 @@
 	name = "water"
 	icon = 'icons/turfs/water_floor.dmi'
 
+/turf/floor/water/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
+	supplied += "gleam"
+	..(supplied, ignore_neighbors)
+
 /turf/floor/sand
 	name = "sand"
 	icon = 'icons/turfs/sand_floor.dmi'
