@@ -22,6 +22,7 @@
 		holder.UpdateIcon()
 
 /atom/movable/UpdateIcon(var/list/supplied = list())
+	..(supplied)
 	if((flags & FLAG_SIMULATED) && draw_shadow_underlay)
 		underlays.Cut()
 		var/image/I = image(null)
@@ -36,7 +37,6 @@
 		M.Scale(1.1)
 		I.transform = M
 		underlays += I
-	..(supplied)
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
