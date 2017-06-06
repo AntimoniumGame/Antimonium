@@ -4,6 +4,8 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	flags = 0
 	blood_material = null
+	layer = FLY_LAYER
+	plane = SCREEN_PLANE
 
 /mob/abstract/CreateLimbs()
 	return
@@ -20,6 +22,9 @@
 /mob/abstract/CreateUI()
 	// This is simply to avoid a null intent selector runtime.
 	intent = new(src) // It doesn't need to be tracked or accessible.
+	ui_screen -= intent
+	ui_screen -= intent.help
+	ui_screen -= intent.harm
 
 /mob/abstract/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
 	return
