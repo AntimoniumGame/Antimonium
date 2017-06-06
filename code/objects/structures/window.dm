@@ -6,6 +6,7 @@
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	icon = 'icons/objects/structures/window.dmi'
 	icon_state = "map"
+	draw_shadow_underlay = null
 
 /obj/structure/window/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(prop.GetWeight() < 3)
@@ -24,8 +25,13 @@
 	NotifyNearby("<span class='alert'>\The [src] shatters!</span>")
 	PlayLocalSound(src, 'sounds/effects/shatter1.ogg', 100)
 	new /obj/item/stack/shards(get_turf(src), _amount = rand(5,10))
+	var/oldloc = loc
+
+	// Ugly, it's so it updates the correct set of icons.
 	QDel(src)
+	loc = oldloc
 	UpdateIcon()
+	NullLoc(src)
 
 /obj/structure/window/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
 	icon_state = ""
