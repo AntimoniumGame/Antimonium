@@ -6,4 +6,4 @@
 	see_invisible = INVISIBILITY_GHOST
 	invisibility = INVISIBILITY_GHOST
 	sight = SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-	alpha = 130
+	alpha = 80
