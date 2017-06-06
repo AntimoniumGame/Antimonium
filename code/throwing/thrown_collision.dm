@@ -13,7 +13,7 @@
 	return FALSE
 
 /obj/structure/ThrownHitBy(var/atom/movable/projectile)
-	if(density)
+	if(density && !(flags & FLAG_FLAT_SURFACE))
 		ThingPlacedOn(null, projectile, precise_placement = FALSE)
 		PlayLocalSound(src, hit_sound, 100)
 		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>")

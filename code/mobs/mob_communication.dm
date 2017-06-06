@@ -43,13 +43,13 @@
 	DoSay(message)
 
 /mob/proc/DoOocMessage(var/message)
-	message = FormatStringForSpeech(src, message)
+	message = FormatStringForSpeech(key, message)
 	next_speech = world.time + 5
 	for(var/client/player in clients)
 		player.Notify("<b>OOC:</b> [message]")
 
 /mob/proc/DoSay(var/message)
-	message = FormatStringForSpeech(src, message)
+	message = FormatStringForSpeech("\The [name]", message)
 	next_speech = world.time + 5
 
 	var/scramble_message

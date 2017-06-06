@@ -10,6 +10,7 @@
 	name = "workbench"
 	icon = 'icons/objects/structures/table_multi.dmi'
 	icon_state = "map"
+	draw_shadow_underlay = null
 
 /obj/structure/table/bench/UpdateIcon(var/list/supplied = list())
 	icon_state = ""

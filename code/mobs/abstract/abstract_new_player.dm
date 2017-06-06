@@ -64,7 +64,7 @@
 
 /mob/abstract/new_player/DoSay(var/message)
 	next_speech = world.time + 5
-	message = "<b>LOBBY:</b> [FormatStringForSpeech(src, message)]"
+	message = "<b>LOBBY:</b> [FormatStringForSpeech(key, message)]"
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)
 			to_chat(listener, message)
