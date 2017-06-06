@@ -4,7 +4,7 @@
 	icon = 'icons/objects/structures/sconce.dmi'
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	density = FALSE
-	shadow_size = null
+	draw_shadow_underlay = null
 	layer = MOB_LAYER + 0.2
 
 	var/obj/item/torch/filled

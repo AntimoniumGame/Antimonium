@@ -6,7 +6,6 @@
 	weight = 5
 	default_material_path = /datum/material/wood
 
-	shadow_size = 3
 	max_contains_count = 1
 	max_contains_size_single = 20
 	max_contains_size_total =  20

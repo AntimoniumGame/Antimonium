@@ -10,7 +10,7 @@
 	var/self_move = FALSE
 	var/move_sound
 
-	var/shadow_size = null
+	var/draw_shadow_underlay = null
 	var/shadow_pixel_x = 0
 	var/shadow_pixel_y = 0
 
@@ -22,17 +22,20 @@
 		holder.UpdateIcon()
 
 /atom/movable/UpdateIcon(var/list/supplied = list())
-	/*
-	if((flags & FLAG_SIMULATED) && !isnull(shadow_size))
+	if((flags & FLAG_SIMULATED) && draw_shadow_underlay)
 		underlays.Cut()
-		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
-		I.alpha = 30
+		var/image/I = image(null)
+		I.appearance = src
+		I.color = "#000000"
+		I.alpha = 60
 		I.plane = plane
 		I.layer = layer
 		I.pixel_x = shadow_pixel_x
 		I.pixel_y = shadow_pixel_y
+		var/matrix/M = matrix()
+		M.Scale(1.1)
+		I.transform = M
 		underlays += I
-	*/
 	..(supplied)
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
