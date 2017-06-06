@@ -58,6 +58,16 @@
 /turf/wall/wood/New(var/newloc)
 	..(newloc, /datum/material/wood)
 
+/turf/wall/wood/IsFlammable()
+	return TRUE
+
+/turf/wall/wood/IsFlammable()
+	return TRUE
+
+/turf/wall/wood/HandleFireDamage()
+	if(fire_intensity >= 100)
+		new /turf/floor/dirt(src)
+
 /turf/wall/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)
 	icon_state = ""
 	var/list/connected_neighbors = list()

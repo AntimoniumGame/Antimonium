@@ -9,7 +9,7 @@
 // to the objects light_obj overlay atom.
 /atom/proc/SetLight(var/l_range, var/l_power, var/l_color, var/fadeout)
 
-	if(!loc)
+	if(!istype(src, /turf) && !loc)
 		if(light_obj)
 			QDel(light_obj)
 			light_obj = null

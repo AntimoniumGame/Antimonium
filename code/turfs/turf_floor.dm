@@ -107,6 +107,19 @@
 	supplied += "gleam"
 	..(supplied, ignore_neighbors)
 
+/turf/floor/water/Entered(var/atom/movable/crosser, var/oldloc)
+	. = ..(crosser, oldloc)
+	if(crosser.IsOnFire())
+		NotifyNearby("A cloud of hissing steam rises up as \the [crosser] enters the water!")
+		crosser.Extinguish()
+
+/turf/floor/water/AttackedBy(var/mob/user, var/obj/item/prop)
+	if(prop.IsOnFire())
+		NotifyNearby("A cloud of hissing steam rises up as \the [user] dips \the [prop] into the water!")
+		prop.Extinguish()
+		return TRUE
+	. = ..()
+
 /turf/floor/sand
 	name = "sand"
 	icon = 'icons/turfs/sand_floor.dmi'
@@ -116,6 +129,13 @@
 	name = "wooden floor"
 	icon = 'icons/turfs/wood_floor.dmi'
 	base_states = 3
+
+/turf/floor/wood/IsFlammable()
+	return TRUE
+
+/turf/floor/wood/HandleFireDamage()
+	if(fire_intensity >= 100)
+		new /turf/floor/dirt(src)
 
 /turf/floor/cobble
 	name = "cobblestones"
@@ -141,6 +161,13 @@
 	icon = 'icons/turfs/grass_floor.dmi'
 	diggable = TRUE
 	edge_blend_layer = 0.5
+
+/turf/floor/grass/IsFlammable()
+	return TRUE
+
+/turf/floor/grass/HandleFireDamage()
+	if(fire_intensity >= 100)
+		new /turf/floor/dirt(src)
 
 /turf/floor/tiled
 	name = "tiled floor"

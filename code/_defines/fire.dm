@@ -1,1 +1,1 @@
-#define FIRE_SPREAD_PROB 10
+#define FIRE_SPREAD_PROB 15

@@ -17,26 +17,6 @@
 			if(ManipulatedBy(clicker, slot))
 				clicker.SetActionCooldown(3)
 
-
-/obj/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(IsFlammable() && prop.IsFlammable())
-		if(!prop.IsOnFire() && IsOnFire())
-			user.NotifyNearby("<span class='warning'>\The [user] lights \the [prop] in \the [src].</span>")
-			prop.Ignite(user)
-			return TRUE
-		else if(prop.IsOnFire() && !IsOnFire())
-			user.NotifyNearby("<span class='warning'>\The [user] lights \the [src] with \the [prop].</span>")
-			Ignite(user)
-			return TRUE
-	return FALSE
-
-/obj/proc/ManipulatedBy(var/mob/user, var/slot)
-	if(IsOnFire() && user.intent.selecting == INTENT_HELP)
-		NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
-		Extinguish()
-		return TRUE
-	return FALSE
-
 /obj/item/HandleClickedOn(var/mob/clicker, var/slot)
 
 	if(clicker.OnActionCooldown())

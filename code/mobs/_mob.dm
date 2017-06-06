@@ -66,3 +66,9 @@
 
 /mob/EndThrow()
 	ResetPosition()
+
+/mob/HandleFireDamage()
+	if(fire_intensity >= 100)
+		Die("the hungry flames")
+		// create ashes
+		QDel(src)
