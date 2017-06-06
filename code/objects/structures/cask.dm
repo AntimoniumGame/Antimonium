@@ -4,7 +4,6 @@
 	icon_state = "flat"
 	weight = 30
 	default_material_path = /datum/material/wood
-	shadow_size = 3
 	density = 1
 
 /obj/structure/cask/ManipulatedBy(var/mob/user, var/slot)

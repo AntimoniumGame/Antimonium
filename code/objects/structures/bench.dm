@@ -6,6 +6,7 @@
 	weight = 10
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE | FLAG_SEATING
+	draw_shadow_underlay = null
 
 /obj/structure/bench/UpdateIcon(var/list/supplying = list())
 	. = ..(supplying)

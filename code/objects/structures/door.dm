@@ -7,6 +7,7 @@
 	opacity = 1
 	density = 1
 	pixel_y = -16
+	draw_shadow_underlay = null
 	var/locked = FALSE
 
 /obj/structure/door/SetDir(var/newdir)

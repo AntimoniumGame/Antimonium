@@ -18,10 +18,8 @@
 /obj/item/dartboard/UpdateIcon(var/list/supplied)
 	if(dir)
 		icon_state = "world"
-		shadow_size = 2
 	else
 		icon_state = "world_flat"
-		shadow_size = null
 	..(supplied)
 
 /obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile)

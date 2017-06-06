@@ -3,8 +3,8 @@
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
-	shadow_size = 2
-	//sight = SEE_SELF|SEE_PIXELS
+	draw_shadow_underlay = TRUE
+	sight = SEE_SELF|SEE_BLACKNESS
 
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING

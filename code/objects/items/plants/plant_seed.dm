@@ -5,5 +5,5 @@
 	plural_name = "seeds"
 	stack_name = "cluster"
 	default_material_path = null
-	shadow_size = null
+	draw_shadow_underlay = null
 	var/plant_type

@@ -7,7 +7,6 @@
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
-	shadow_size = 1
 
 /obj/item/torch/GetFireIcon()
 	return
