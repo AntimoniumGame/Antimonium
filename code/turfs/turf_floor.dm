@@ -59,6 +59,7 @@
 		if(turn(cdir,-45) in shadow_edges)
 			corner |= 4
 		var/image/I = image('icons/images/turf_shadows.dmi', "[corner]", dir = 1<<(i-1))
+		I.layer = TURF_LAYER + 0.95
 		I.alpha = 80
 		supplied += I
 
