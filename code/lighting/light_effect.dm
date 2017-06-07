@@ -85,7 +85,7 @@
 		CastLight() //lights_master.queue_light(src)
 
 /obj/light/proc/IsDirectionalLight()
-	return (holder.light_type == LIGHT_DIRECTIONAL)
+	return (holder && holder.light_type == LIGHT_DIRECTIONAL)
 
 /obj/light/SetDir()
 	. = ..()

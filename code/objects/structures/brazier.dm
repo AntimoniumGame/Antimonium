@@ -32,3 +32,11 @@
 /obj/structure/brazier/ProcessFire()
 	..()
 	RadiateHeat(temperature, 0)
+
+/obj/structure/brazier/GetFireIcon()
+	var/image/I = image('icons/images/fire.dmi', "mid")
+	I.layer = MOB_LAYER + 0.9
+	return I
+
+/obj/structure/brazier/HandleFireDamage()
+	return

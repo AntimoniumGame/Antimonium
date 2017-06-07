@@ -2,6 +2,7 @@
 	name = "dog"
 	understand_category = "dog"
 	mob_overlay_ident = "dog"
+	flags = FLAG_FLAMMABLE | FLAG_SIMULATED | FLAG_THROWN_SPIN
 
 /mob/animal/DoViolentUnarmedInteraction(var/mob/target)
 	NotifyNearby("\The [src] mauls \the [target]!")

@@ -6,9 +6,10 @@
 	var/hunger = 100
 
 /mob/proc/HandleHunger()
-	if(hunger>0 && prob(5))
+	if(hunger>0 && prob(1))
 		hunger--
-	if(prob(1))
+/*
+	if(prob(5))
 		switch(hunger)
 			if(20 to 30)
 				Notify("<span class='warning'>Your stomach growls.</span>")
@@ -16,6 +17,7 @@
 				Notify("<span class='danger'>You feel a sharp pang of hunger.</span>")
 			if(0 to 9)
 				Notify("<span class='alert'>You are starving!</span>")
+*/
 
 /mob/proc/HandleConsumableEffects()
 	consumable_effects = list()

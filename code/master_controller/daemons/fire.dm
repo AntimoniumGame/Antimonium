@@ -17,6 +17,10 @@ var/list/ignite_atoms = list()
 	for(var/thing in ignite_atoms)
 		var/atom/burning = thing
 		ignite_atoms -= thing
+
+		if(burning.IsFlammable() && !burning.IsOnFire())
+			burning.Ignite()
+
 		for(var/other_thing in burning.contents)
 			var/atom/atom = other_thing
 			if(atom.IsFlammable() && !atom.IsOnFire())

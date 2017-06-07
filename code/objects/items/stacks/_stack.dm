@@ -45,7 +45,7 @@
 	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
 
 /obj/item/stack/GetWeight()
-	return GetAmount() * (material ? material.weight_modifier : 1)
+	return GetAmount() * weight
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)

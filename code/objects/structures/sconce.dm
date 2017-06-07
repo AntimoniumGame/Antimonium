@@ -90,3 +90,6 @@
 	else
 		user.Notify("<span class='warning'>There is no torch in \the [src].</span>")
 	return TRUE
+
+/obj/structure/sconce/HandleFireDamage()
+	return

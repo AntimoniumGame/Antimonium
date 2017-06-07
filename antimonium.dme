@@ -214,6 +214,7 @@
 #include "code\objects\items\stacks\darts.dm"
 #include "code\objects\items\stacks\logs.dm"
 #include "code\objects\items\stacks\planks.dm"
+#include "code\objects\items\stacks\shards.dm"
 #include "code\objects\items\stacks\sticks.dm"
 #include "code\objects\items\stacks\thread.dm"
 #include "code\objects\items\stacks\tiles.dm"
