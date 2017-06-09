@@ -13,9 +13,10 @@
 
 /mob/proc/SetActionCooldown(var/value)
 	combat_cooldown = max(combat_cooldown, world.time+value)
-	cooldown_indicator.alpha = 128
-	animate(cooldown_indicator) // Kill previous anim.
-	animate(cooldown_indicator, alpha = 0, time = value)
+	if(cooldown_indicator)
+		cooldown_indicator.alpha = 128
+		animate(cooldown_indicator) // Kill previous anim.
+		animate(cooldown_indicator, alpha = 0, time = value)
 
 /mob/proc/OnActionCooldown()
 	return (world.time < combat_cooldown)

@@ -27,6 +27,9 @@
 	if(prob(80))
 		filled = new(src, _lit = TRUE)
 	..()
+
+/obj/structure/sconce/Initialize()
+	..()
 	AlignWithWall(src)
 
 /obj/structure/sconce/SetDir()

@@ -17,11 +17,6 @@ var/datum/lobby_music/lobby_music
 		listener << sound(channel = SOUND_CHANNEL_LOBBY)
 		listener.playing_lobby_music = null
 
-/world/New()
-	. = ..()
-	var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)
-	lobby_music = new lmusic()
-
 /datum/lobby_music
 	var/song_file
 	var/name

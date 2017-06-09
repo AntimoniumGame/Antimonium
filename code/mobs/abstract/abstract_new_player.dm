@@ -24,7 +24,7 @@
 	. = ..()
 	join.UpdateIcon()
 
-/mob/abstract/new_player/New()
+/mob/abstract/new_player/Initialize()
 	..()
 	new_players += src
 	spawn(0)

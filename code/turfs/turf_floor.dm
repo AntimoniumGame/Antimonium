@@ -135,6 +135,7 @@
 
 /turf/floor/wood/HandleFireDamage()
 	if(fire_intensity >= 100)
+		KillLight()
 		new /turf/floor/dirt(src)
 
 /turf/floor/cobble
@@ -167,6 +168,7 @@
 
 /turf/floor/grass/HandleFireDamage()
 	if(fire_intensity >= 100)
+		KillLight()
 		new /turf/floor/dirt(src)
 
 /turf/floor/tiled

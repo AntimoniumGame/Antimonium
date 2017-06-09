@@ -1,12 +1,3 @@
-/client/New()
-	. = ..()
-	clients += src
-	DoClientWelcome(src)
-
-/client/Del()
-	. = ..()
-	clients -= src
-
 /proc/DoClientWelcome(var/client/player)
 
 	for(var/line in File2List("data/motd.txt"))

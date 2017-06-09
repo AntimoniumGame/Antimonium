@@ -7,11 +7,13 @@
 	var/default_material_path
 
 /obj/New(var/newloc, var/material_path)
+
 	if(!material)
 		if(!ispath(material_path) && ispath(default_material_path))
 			material_path = default_material_path
 		if(ispath(material_path))
 			material = GetUniqueDataByPath(material_path)
+
 	if(material && material.IsTemperatureSensitive())
 		flags |= FLAG_TEMPERATURE_SENSITIVE
 
