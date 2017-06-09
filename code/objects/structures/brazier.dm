@@ -11,7 +11,7 @@
 	return TRUE
 // end temp
 
-/obj/structure/brazier/New()
+/obj/structure/brazier/Initialize()
 	..()
 	next_burn_sound = rand(10,20)
 

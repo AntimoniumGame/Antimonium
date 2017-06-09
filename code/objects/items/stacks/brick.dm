@@ -10,7 +10,7 @@
 	icon_state = "1"
 	can_craft_with = FALSE
 
-/obj/item/stack/bricks/New()
+/obj/item/stack/bricks/Initialize()
 	..()
 	icon_state = GetIndividualStackIcon()
 

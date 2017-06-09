@@ -18,7 +18,7 @@
 /mob/animal/GetSlotByHandedness(var/handedness)
 	return SLOT_MOUTH
 
-/mob/animal/New()
+/mob/animal/Initialize()
 	icon = null
 	..()
 

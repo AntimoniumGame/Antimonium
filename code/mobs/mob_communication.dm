@@ -3,10 +3,6 @@
 	var/understand_category = "general"
 	var/list/can_understand_speech = list()
 
-/mob/New()
-	..()
-	can_understand_speech |= understand_category
-
 /mob/proc/ScrambleSpeech(var/message)
 	return "gabbles something completely unintelligible."
 

@@ -28,6 +28,7 @@
 /atom/proc/HandleFireDamage()
 	if(fire_intensity > 90)
 		// create ashes
+		KillLight()
 		QDel(src)
 
 /atom/proc/Ignite(var/mob/user)

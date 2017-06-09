@@ -1,17 +1,5 @@
 var/list/all_roles = list()
 
-/client/New()
-	. = ..()
-	for(var/thing in all_roles)
-		var/datum/role/crole = thing
-		if(crole.ckey == ckey)
-			role = crole
-			role.mob = mob
-			mob.role = role
-			break
-	if(!role)
-		role = new(src)
-
 /mob/Login()
 	. = ..()
 	if(!client)

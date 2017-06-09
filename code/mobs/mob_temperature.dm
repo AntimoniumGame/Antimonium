@@ -8,14 +8,6 @@
 	var/cold_harm_point =   TEMPERATURE_NEVER_COLD
 	var/next_temp_warning = 0
 
-/mob/New()
-	if(heat_suffer_point != TEMPERATURE_NEVER_HOT || \
-	 heat_harm_point != TEMPERATURE_NEVER_HOT || \
-	 cold_suffer_point != TEMPERATURE_NEVER_COLD || \
-	 cold_harm_point != TEMPERATURE_NEVER_COLD)
-		flags |= FLAG_TEMPERATURE_SENSITIVE
-	..()
-
 /mob/CheckTemperature()
 
 	RadiateHeat(TEMPERATURE_BLOOD)
