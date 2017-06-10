@@ -175,3 +175,10 @@
 	name = "tiled floor"
 	icon = 'icons/turfs/tile_floor.dmi'
 	icon_state = "1"
+
+/turf/floor/roots
+	name = "root floor"
+	icon = 'icons/turfs/root_floor.dmi'
+	icon_state = "1"
+	edge_blend_layer = 0.6
+	base_states = 4
