@@ -4,7 +4,7 @@
 
 /area/lighting
 	alpha = 255
-	plane = SCREEN_PLANE
+	plane = EFFECTS_PLANE
 	var/light_level = 10
 
 // For ease of mapping, the various visibility elements are applied at runtime.
@@ -13,7 +13,7 @@
 	alpha = light_level
 	icon_state = null
 	icon = 'icons/lighting/over_dark.dmi'
-	plane = DARK_PLANE // Just below the master plane.
+	plane = LIGHTING_PLANE // Just below the master plane.
 	appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
 	blend_mode = BLEND_ADD
 

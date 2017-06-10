@@ -2,7 +2,7 @@
 	name = ""
 	screen_loc = "CENTER"
 	blend_mode = BLEND_MULTIPLY
-	plane = SCREEN_PLANE // Needs to render over the top of darkness.
+	plane = EFFECTS_PLANE // Needs to render over the top of darkness.
 	layer = 2
 
 /obj/plane/New(var/client/C)
