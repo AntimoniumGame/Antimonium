@@ -5,7 +5,7 @@
 	if(!istype(thing)) return FALSE
 	thing.BeforeDropped()
 	thing.ForceMove(get_turf(src))
-	thing.AfterDropped()
+	thing.AfterDropped(src)
 	for(var/invslot in inventory_slots)
 		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
 		if(inv_slot.holding == thing)
@@ -28,7 +28,7 @@
 	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
 	thing.ForceMove(src)
-	thing.AfterPickedUp()
+	thing.AfterPickedUp(src)
 	equipping.SetHeld(thing)
 	UpdateIcon()
 	return TRUE

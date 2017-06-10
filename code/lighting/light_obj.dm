@@ -15,6 +15,10 @@
 	overlay_list += light_overlay
 	overlays = overlay_list
 
+	if(istype(loc, /mob))
+		var/mob/holder = loc
+		holder.LightOn(light)
+
 /obj/proc/LightOff()
 	if(!light_overlay)
 		return
@@ -26,6 +30,10 @@
 
 	overlay_list += light_overlay
 	overlays = overlay_list
+
+	if(istype(loc, /mob))
+		var/mob/holder = loc
+		holder.LightOff(light)
 
 /obj/GetLight()
 	if(!light)

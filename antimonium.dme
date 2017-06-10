@@ -39,6 +39,7 @@
 #include "code\_defines\channels.dm"
 #include "code\_defines\colours.dm"
 #include "code\_defines\control.dm"
+#include "code\_defines\debug.dm"
 #include "code\_defines\directions.dm"
 #include "code\_defines\fire.dm"
 #include "code\_defines\game_states.dm"

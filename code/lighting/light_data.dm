@@ -139,6 +139,7 @@
 
 	var/image/light_overlay = CreateLightOverlay(icon, "white", 1, LIGHTING_PLANE, LIGHT_LAYER_BASE, BLEND_ADD, pixel_offset)
 	light_overlay.appearance_flags = KEEP_TOGETHER
+	light_overlay.color = light.GetColor()
 	light_overlay.overlays += CreateLightOverlay(icon, "overlay", 1, LIGHTING_PLANE, LIGHT_LAYER_OVERLAY, BLEND_OVERLAY, 0)
 
 	return light_overlay
