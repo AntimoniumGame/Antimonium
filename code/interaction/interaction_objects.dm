@@ -58,7 +58,7 @@
 /obj/item/proc/BeforeDropped()
 	return
 
-/obj/item/proc/AfterDropped()
+/obj/item/proc/AfterDropped(var/mob/dropper)
 	return
 
 /obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
@@ -67,7 +67,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/proc/AfterPickedUp()
+/obj/item/proc/AfterPickedUp(var/mob/grabber)
 	ResetPosition()
 
 /obj/item/proc/AfterRemoved(var/mob/user, var/slot)
