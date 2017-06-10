@@ -5,7 +5,6 @@ var/list/burn_sounds = list('sounds/effects/fire1.ogg','sounds/effects/fire2.ogg
 	var/fire_intensity
 
 /atom/proc/ProcessFire()
-
 	if(IsOnFire())
 		if(istype(src, /turf) || istype(loc, /turf))
 			ignite_atoms |= get_turf(src)
@@ -22,4 +21,4 @@ var/list/burn_sounds = list('sounds/effects/fire1.ogg','sounds/effects/fire2.ogg
 			HandleFireDamage()
 	else
 		fire_intensity = 0
-	UpdateIcon()
+	UpdateFireOverlay()

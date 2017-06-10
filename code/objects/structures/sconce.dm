@@ -9,7 +9,7 @@
 
 	var/obj/item/torch/filled
 
-/obj/structure/sconce/GetFireIcon()
+/obj/structure/sconce/GetFireIconState()
 	return
 
 /obj/structure/sconce/Ignite(var/mob/user)
@@ -48,6 +48,9 @@
 		if(WEST)
 			pixel_x = 4
 			pixel_y = 0
+
+/obj/structure/sconce/UpdateFireOverlay()
+	return
 
 /obj/structure/sconce/UpdateIcon(var/list/supplied)
 	..(supplied)

@@ -20,7 +20,7 @@
 			if(prob(5))
 				user.Ignite()
 			NotifyNearby("<span class='notice'>\The [user] beats at the flaming [src.name]!</span>")
-			UpdateIcon()
+			UpdateFireOverlay()
 		else
 			NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
 			Extinguish()
