@@ -15,7 +15,10 @@
 	var/shadow_pixel_y = 0
 
 /atom/proc/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
+
 	overlays = supplied
+	UpdateFireOverlay()
+
 	var/mob/holder = loc
 	if(istype(holder))
 		holder.UpdateInventory()

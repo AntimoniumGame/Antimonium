@@ -1,26 +1,33 @@
 /atom
 	var/on_fire = FALSE
+	var/last_fire_state
+	var/image/fire_overlay
 
-/atom/proc/GetFireIcon()
-	var/image/I
+/atom/proc/GetFireIconState()
+	if(!IsOnFire())
+		return
 	switch(fire_intensity)
 		if(80 to 100)
-			I = image('icons/images/fire.dmi', "max")
+			return "max"
 		if(60 to 80)
-			I = image('icons/images/fire.dmi', "large")
+			return "large"
 		if(30 to 60)
-			I = image('icons/images/fire.dmi', "mid")
-	if(!I)
-		I = image('icons/images/fire.dmi', "small")
-	I.layer = MOB_LAYER + 0.9
-	return I
+			return "mid"
+		else
+			return "small"
 
-/atom/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
-	if(IsOnFire())
-		var/image/I = GetFireIcon()
-		if(I)
-			supplied += I
-	..(supplied)
+/atom/proc/UpdateFireOverlay()
+	var/fstate = GetFireIconState()
+	if(last_fire_state != fstate)
+		last_fire_state = fstate
+		if(fire_overlay)
+			overlays -= fire_overlay
+		if(!isnull(fstate))
+			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate)
+			fire_overlay.layer = MOB_LAYER + 0.9
+			overlays += fire_overlay
+		else
+			fire_overlay = null
 
 /atom/proc/CanIgnite()
 	return IsFlammable()
@@ -36,7 +43,7 @@
 		burning_atoms |= src
 		on_fire = TRUE
 		SetFireLight()
-		UpdateIcon()
+		UpdateFireOverlay()
 		return TRUE
 	return FALSE
 
@@ -46,7 +53,7 @@
 		burning_atoms -= src
 		on_fire = FALSE
 		ResetLights()
-		UpdateIcon()
+		UpdateFireOverlay()
 		return TRUE
 	return FALSE
 
