@@ -23,7 +23,7 @@ window "devwindow"
 	elem "devwindow"
 		type = MAIN
 		pos = 281,0
-		size = 318x771
+		size = 350x700
 		anchor1 = none
 		anchor2 = none
 		is-visible = false
@@ -34,33 +34,221 @@ window "devwindow"
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 318x304
+		size = 350x248
 		anchor1 = 0,0
-		anchor2 = 100,39
+		anchor2 = 100,0
 		is-default = true
 		saved-params = ""
 	elem "output"
 		type = OUTPUT
-		pos = 0,304
-		size = 318x424
-		anchor1 = 0,39
-		anchor2 = 100,94
-		font-family = "Consolas,monospace"
-		font-size = 10
+		pos = 0,248
+		size = 350x409
+		anchor1 = 0,0
+		anchor2 = 100,100
 		is-default = true
 		border = line
 		saved-params = "max-lines"
 		max-lines = 0
 	elem "devinput"
 		type = INPUT
-		pos = 0,728
-		size = 318x46
-		anchor1 = 0,94
+		pos = 0,657
+		size = 350x46
+		anchor1 = 0,100
 		anchor2 = 100,100
-		font-family = "Consolas,monospace"
-		font-size = 10
 		border = line
 		saved-params = ""
+
+window "lighttoolwindow"
+	elem "lighttoolwindow"
+		type = MAIN
+		pos = 281,0
+		size = 500x200
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Lighting Tool"
+		statusbar = false
+		macro = "macro"
+	elem "lt_rgb_btn"
+		type = BUTTON
+		pos = 96,40
+		size = 96x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = ""
+		command = ""
+		is-flat = true
+	elem "lt_color_sample"
+		type = LABEL
+		pos = 192,40
+		size = 200x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #ffffff
+		border = line
+		saved-params = ""
+		text = ""
+	elem "lt_rng_out"
+		type = LABEL
+		pos = 420,160
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_rng_in"
+		type = INPUT
+		pos = 80,172
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
+	elem "lt_rng_sld"
+		type = BAR
+		pos = 144,160
+		size = 276x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #dfdfdf
+		saved-params = ""
+		bar-color = #b2b2b2
+		is-slider = true
+		width = 20
+		dir = east
+	elem "lt_rng_lbl"
+		type = LABEL
+		pos = 0,160
+		size = 80x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "   Range:"
+		align = left
+	elem "lt_mode_btn"
+		type = BUTTON
+		pos = 0,40
+		size = 96x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Mode"
+		command = ""
+	elem "lt_clr_in"
+		type = INPUT
+		pos = 80,92
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
+	elem "lt_brt_out"
+		type = LABEL
+		pos = 420,120
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_brt_in"
+		type = INPUT
+		pos = 80,132
+		size = 64x20
+		anchor1 = 0,0
+		anchor2 = none
+		border = sunken
+		saved-params = ""
+	elem "lt_clr_out"
+		type = LABEL
+		pos = 420,80
+		size = 80x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "0"
+	elem "lt_brt_sld"
+		type = BAR
+		pos = 144,120
+		size = 276x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #dfdfdf
+		saved-params = ""
+		bar-color = #b2b2b2
+		is-slider = true
+		width = 20
+		dir = east
+	elem "lt_brt_lbl"
+		type = LABEL
+		pos = 0,120
+		size = 80x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "   Brightness:"
+		align = left
+	elem "lt_col_lbl"
+		type = LABEL
+		pos = 0,80
+		size = 80x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "   Colour:"
+		align = left
+	elem "lt_clr_sld"
+		type = BAR
+		pos = 144,80
+		size = 276x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #dfdfdf
+		saved-params = ""
+		bar-color = #b2b2b2
+		is-slider = true
+		width = 20
+		dir = east
+	elem "lt_pick_btn"
+		type = BUTTON
+		pos = 393,40
+		size = 110x40
+		anchor1 = 100,0
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Pick Light"
+		command = "LightToolPick"
+	elem "lt_selected_light"
+		type = LABEL
+		pos = 88,0
+		size = 412x40
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = none
+		saved-params = ""
+		text = ""
+		align = left
+	elem "lt_label_selected"
+		type = LABEL
+		pos = 0,0
+		size = 88x40
+		anchor1 = 0,0
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "  Selected light:"
+		align = left
 
 window "mainwindow"
 	elem "mainwindow"
@@ -69,7 +257,6 @@ window "mainwindow"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-size = "OnResize"
@@ -91,8 +278,6 @@ window "mainwindow"
 		size = 300x24
 		anchor1 = 100,100
 		anchor2 = none
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		text-color = #d4d4d4
 		background-color = #1f1f1f
 		is-default = true
@@ -105,8 +290,6 @@ window "mainwindow"
 		size = 300x350
 		anchor1 = 100,100
 		anchor2 = none
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		text-color = #d4d4d4
 		background-color = #1f1f1f
 		border = line
@@ -131,8 +314,6 @@ window "varswindow"
 		size = 400x40
 		anchor1 = 0,0
 		anchor2 = 100,0
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		border = line
 		drop-zone = false
 		right-click = true
@@ -147,8 +328,6 @@ window "varswindow"
 		size = 400x24
 		anchor1 = 0,0
 		anchor2 = 100,0
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		border = line
 		saved-params = "is-checked"
 		text = "Auto-refresh"
@@ -160,8 +339,6 @@ window "varswindow"
 		size = 400x536
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Consolas,monospace"
-		font-size = 10
 		border = line
 		drop-zone = false
 		right-click = true

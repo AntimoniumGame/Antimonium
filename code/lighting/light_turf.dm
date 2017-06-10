@@ -1,104 +1,214 @@
-/turf/var/blocks_light = -1              // Whether or not this turf occludes light based on turf opacity and contents. See CheckBlocksLight().
-/turf/var/lumcount = -1
-/turf/var/list/affecting_lights = list() // Non-assoc list of all lighting overlays applied to this turf.
+/turf
+	var/area/blend_area
 
-// Flags the turf to recalc blocks_light next call since opacity has changed.
-/turf/SetOpacity()
-	var/old_opacity = opacity
-	. = ..()
-	if(opacity != old_opacity) blocks_light = -1
+/turf/proc/RefreshLighting()
+	return
 
-/turf/proc/CheckLumcount()
-	if(lumcount == -1)
-		lumcount = 0
-		for(var/thing in affecting_lights)
-			var/obj/light/L = thing
-			lumcount += max(1,L.current_power - max(0,(get_dist(get_turf(L), src)-2)))
-		lumcount = Clamp(lumcount,0,10)
-	return lumcount
+/turf/floor/
+	var/list/light_ao_overlays = list()
+	var/list/light_spill_overlays = list()
 
-// Checks if the turf contains an occluding object or is itself an occluding object.
-/turf/proc/CheckBlocksLight()
-	if(blocks_light == -1)
-		blocks_light = 0
-		if(opacity)
-			blocks_light = 1
+/turf/floor/UpdateIcon()
+	..()
+	UpdateAO()
+	UpdateSpillLight()
+
+/turf/floor/proc/UpdateAO()
+	var/list/overlay_list = overlays
+	overlay_list -= light_ao_overlays
+	light_ao_overlays.Cut()
+
+	var/list/connected_neighbors = list()
+	for(var/thing in Trange(1,src))
+		if(thing == src)
+			continue
+		var/turf/neighbor = thing
+		if(neighbor.opacity)
+			continue
+		connected_neighbors += get_dir(src, neighbor)
+
+	for(var/i = 1 to 4)
+		var/cdir = corner_dirs[i]
+		var/corner = 0
+		if(cdir in connected_neighbors)
+			corner |= 2
+		if(turn(cdir,45) in connected_neighbors)
+			corner |= 1
+		if(turn(cdir,-45) in connected_neighbors)
+			corner |= 4
+		var/image/I = CreateLightOverlay('icons/images/turf_shadows.dmi', "[corner]", 1<<(i-1), LIGHTING_PLANE, LIGHT_LAYER_AO, BLEND_OVERLAY, 0)
+		I.alpha = 128
+		light_ao_overlays += I
+
+	overlay_list += light_ao_overlays
+	overlays = overlay_list
+
+/turf/floor/proc/UpdateSpillLight()
+	if(!loc || loc.type == MASTER_LIGHT_AREA)
+		return
+
+	var/list/overlay_list = overlays
+	overlay_list -= light_spill_overlays
+	light_spill_overlays.Cut()
+
+	for(var/d in cardinal_dirs)
+		var/turf/T = get_step(src, d)
+		if(T && T.loc != loc)
+			if(isarea(T.loc))
+				blend_area = T.loc
+
+			var/light_data/L = blend_area.GetLight()
+			if(!L) continue
+
+			var/turf/C = get_step(src, turn(d, 90)) // turf to left of the direction the light is going
+
+			var/overlay_state
+			if(C && C.opacity)
+				overlay_state = "left_spill"
+			else
+				overlay_state = "left_blocked"
+
+			var/image/left_overlay = CreateLightOverlay('icons/images/door_spill.dmi', overlay_state, d, LIGHTING_PLANE, LIGHT_LAYER_TURF, BLEND_OVERLAY, -32)
+			light_spill_overlays += left_overlay
+
+			C = get_step(src, turn(d, -90)) // turf to right of the direction the light is going
+
+			if(C && C.opacity)
+				overlay_state = "right_spill"
+			else
+				overlay_state = "right_blocked"
+
+			var/image/right_overlay = CreateLightOverlay('icons/images/door_spill.dmi', overlay_state, d, LIGHTING_PLANE, LIGHT_LAYER_TURF, BLEND_OVERLAY, -32)
+			light_spill_overlays += right_overlay
+
+			break
+
+	if(istype(blend_area))
+		blend_area.lighting_blend_turfs -= src
+		if(light_spill_overlays.len)
+			blend_area.lighting_blend_turfs += src
+
+	RefreshLighting()
+
+/turf/floor/RefreshLighting()
+	var/list/overlay_list = overlays
+	overlay_list -= light_spill_overlays
+
+	for(var/image/I in light_spill_overlays)
+		if(blend_area)
+			I.color = blend_area.GetLightColor()
 		else
-			for(var/atom/movable/AM in contents)
-				if(AM.opacity)
-					blocks_light = 1
-					break
-	return blocks_light
+			I.color = null
 
-/turf/proc/DoorLightUpdate()
-	for(var/obj/light/L in affecting_lights)
-		L.CastLight()
+	overlay_list += light_spill_overlays
+	overlays = overlay_list
 
-// Returns a list of occluding corners based on the angle of the light to the turf
-// as well as the available edges of clear space around the turf. Calculated and
-// called in light_effect_cast.dm.
+/turf/wall
+	var/list/light_area_overlays = list()
+	var/list/map_edge_overlays = list()
 
-// Should theoretically be possible to override this down the track to generate
-// directional shadow casting points for non-full-turf objects or structures.
+/turf/wall/UpdateIcon()
+	..()
+	UpdateAreaBlending()
+	UpdateMapEdgeBlending()
 
-/turf/proc/GetCornerOffsets(var/check_angle, var/check_dirs)
-	var/list/offsets = list(0,0,0,0)
-	if(abs(check_angle) == 180) // Source is west.
-		if(check_dirs & NORTH)
-			offsets[1] = -1
-			offsets[2] =  1
-		if(check_dirs & SOUTH)
-			offsets[3] = -1
-			offsets[4] = -1
-	else if(check_angle == 90)  // Source is south.
-		if(check_dirs & WEST)
-			offsets[1] = -1
-			offsets[2] = -1
-		if(check_dirs & EAST)
-			offsets[3] =  1
-			offsets[4] = -1
-	else if(check_angle == 0)   // Source is east.
-		if(check_dirs & SOUTH)
-			offsets[1] =  1
-			offsets[2] = -1
-		if(check_dirs & NORTH)
-			offsets[3] =  1
-			offsets[4] =  1
-	else if(check_angle == -90) // Source is north.
-		if(check_dirs & EAST)
-			offsets[1] =  1
-			offsets[2] =  1
-		if(check_dirs & WEST)
-			offsets[3] = -1
-			offsets[4] =  1
-	else
-		switch(check_angle)
-			if(-179 to -89)      // Source is northwest.
-				if(check_dirs & EAST)
-					offsets[1] =   1
-					offsets[2] =   1
-				if(check_dirs & SOUTH)
-					offsets[3] =  -1
-					offsets[4] =  -1
-			if(-90 to -1)         // Source is northeast.
-				if(check_dirs & SOUTH)
-					offsets[1] =   1
-					offsets[2] =  -1
-				if(check_dirs & WEST)
-					offsets[3] =  -1
-					offsets[4] =   1
-			if(0 to 89)          // Source is southeast.
-				if(check_dirs & WEST)
-					offsets[1] =  -1
-					offsets[2] =  -1
-				if(check_dirs & NORTH)
-					offsets[3] =   1
-					offsets[4] =   1
-			if(90 to 179)        // Source is southwest.
-				if(check_dirs & NORTH)
-					offsets[1] =  -1
-					offsets[2] =   1
-				if(check_dirs & EAST)
-					offsets[3] =   1
-					offsets[4] =  -1
-	return offsets
+/turf/wall/proc/UpdateAreaBlending()
+	if(!loc || loc.type == MASTER_LIGHT_AREA)
+		return
+
+	var/list/overlay_list = overlays
+	overlay_list -= light_area_overlays
+	light_area_overlays.Cut()
+
+	var/list/check_corner_dirs = list()
+	check_corner_dirs += corner_dirs
+	var/list/check_dirs = list()
+	check_dirs += cardinal_dirs
+
+	var/d = check_dirs[1]
+	while(d)
+		check_dirs -= d
+		var/turf/T = get_step(src, d)
+		if(T && T.loc != loc)
+			blend_area = T.loc
+			var/overlay_state = d
+			for(var/c in check_corner_dirs)
+				if(c & d)
+					check_corner_dirs -= c
+			for(var/c in check_dirs)
+				check_dirs -= c
+				var/turf/C = get_step(src, c)
+				if(C && C.loc != loc)
+					overlay_state |= c
+					for(var/cd in check_corner_dirs)
+						if(cd & c)
+							check_corner_dirs -= cd
+
+			var/image/I = CreateLightOverlay('icons/images/turf_blending.dmi', "[overlay_state]", 0, LIGHTING_PLANE, LIGHT_LAYER_TURF, BLEND_OVERLAY, 0)
+			light_area_overlays += I
+		if(check_dirs.len)
+			d = check_dirs[1]
+		else
+			d = null
+
+	for(var/c in check_corner_dirs)
+		check_corner_dirs -= c
+		var/turf/T = get_step(src, c)
+		if(T && T.loc != loc)
+			blend_area = T.loc
+			var/image/I = CreateLightOverlay('icons/images/turf_blending.dmi', "c_[c]", 0, LIGHTING_PLANE, LIGHT_LAYER_TURF, BLEND_OVERLAY, 0)
+			light_area_overlays += I
+
+	if(istype(blend_area))
+		blend_area.lighting_blend_turfs -= src
+		if(light_area_overlays.len)
+			blend_area.lighting_blend_turfs += src
+
+	//we add light_area_overlays to overlays in the next proc
+	RefreshLighting()
+
+/turf/wall/proc/UpdateMapEdgeBlending()
+	if(!loc)
+		return
+
+	var/list/overlay_list = overlays
+	overlay_list -= map_edge_overlays
+	map_edge_overlays.Cut()
+
+	var/d = 0
+	if(x == 1)
+		d |= WEST
+	else if(x == world.maxx)
+		d |= EAST
+
+	if(y == 1)
+		d |= SOUTH
+	else if(y == world.maxy)
+		d |= NORTH
+
+	if(d > 0)
+		var/image/I = CreateLightOverlay('icons/images/turf_blending.dmi', "[d]", 0, LIGHTING_PLANE, LIGHT_LAYER_OVERRIDE, BLEND_OVERLAY, 0)
+		I.color = "#000"
+		map_edge_overlays += I
+
+	overlay_list += map_edge_overlays
+	overlays = overlay_list
+
+/turf/wall/RefreshLighting()
+	var/list/overlay_list = overlays
+	overlay_list -= light_area_overlays
+
+	for(var/image/I in light_area_overlays)
+		if(blend_area)
+			I.color = blend_area.GetLightColor()
+		else
+			I.color = null
+
+	overlay_list += light_area_overlays
+	overlays = overlay_list
+
+/client/verb/updateturflight()
+	set name = "Update turf lighting"
+	set category = "Debug"
+	var/turf/T = get_step(mob, mob.dir)
+	T.UpdateLight()

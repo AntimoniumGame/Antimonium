@@ -1,0 +1,1 @@
+#define dout(s) world << "DEBUG: [s]"

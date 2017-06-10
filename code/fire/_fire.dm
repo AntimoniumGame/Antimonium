@@ -28,14 +28,13 @@
 /atom/proc/HandleFireDamage()
 	if(fire_intensity > 90)
 		// create ashes
-		KillLight()
+//		RemoveLight()
 		QDel(src)
 
 /atom/proc/Ignite(var/mob/user)
 	if(CanIgnite() && !IsOnFire())
 		burning_atoms |= src
 		on_fire = TRUE
-		SetFireLight()
 		UpdateIcon()
 		return TRUE
 	return FALSE
@@ -45,7 +44,6 @@
 		fire_intensity = 0
 		burning_atoms -= src
 		on_fire = FALSE
-		ResetLights()
 		UpdateIcon()
 		return TRUE
 	return FALSE

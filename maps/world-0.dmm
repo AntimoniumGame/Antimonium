@@ -1,8 +1,8 @@
-"a" = (/turf/wall/stone,/area/lighting)
-"b" = (/turf/wall/dirt,/area/lighting)
-"c" = (/turf/floor/stone,/area/lighting)
-"d" = (/turf/floor/dirt,/area/lighting)
-"e" = (/obj/structure/stairs,/turf/floor/dirt,/area/lighting)
+"a" = (/turf/wall/stone,/area/indoors)
+"b" = (/turf/wall/dirt,/area/indoors)
+"c" = (/turf/floor/stone,/area/indoors)
+"d" = (/turf/floor/dirt,/area/indoors)
+"e" = (/obj/structure/stairs,/turf/floor/dirt,/area/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

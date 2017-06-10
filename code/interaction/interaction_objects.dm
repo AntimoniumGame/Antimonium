@@ -58,8 +58,9 @@
 /obj/item/proc/BeforeDropped()
 	return
 
-/obj/item/proc/AfterDropped()
-	return
+/obj/item/proc/AfterDropped(var/mob/dropper)
+	if(dropper)
+		dropper.RemoveLight(light)
 
 /obj/item/proc/BeforePickedUp(var/mob/user, var/slot)
 	if(Burn(user, SLOT_HANDS))
@@ -67,8 +68,10 @@
 		return FALSE
 	return TRUE
 
-/obj/item/proc/AfterPickedUp()
+/obj/item/proc/AfterPickedUp(var/mob/grabber)
 	ResetPosition()
+	if(grabber)
+		grabber.InheritLight(light)
 
 /obj/item/proc/AfterRemoved(var/mob/user, var/slot)
 	if(slot == SLOT_HANDS)

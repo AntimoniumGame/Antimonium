@@ -54,16 +54,14 @@
 	if(filled)
 		if(filled.IsOnFire())
 			icon_state = "sconce_lit"
-			light_color = filled.light_color
-			light_power = filled.light_power
-			light_range = filled.light_range
-			SetLight()
+			SetLight(filled.GetLight())
+			LightOn()
 		else
 			icon_state = "sconce_filled"
-			KillLight()
+			LightOff()
 	else
 		icon_state = "sconce"
-		KillLight()
+		RemoveLight()
 
 /obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(istype(prop, /obj/item/torch))
@@ -93,6 +91,15 @@
 	else
 		user.Notify("<span class='warning'>There is no torch in \the [src].</span>")
 	return TRUE
+
+/obj/structure/sconce/UpdateLight()
+	..()
+	if(filled)
+		filled.UpdateLight()
+
+/obj/structure/sconce/Destroy()
+	RemoveLight()
+	..()
 
 /obj/structure/sconce/HandleFireDamage()
 	return

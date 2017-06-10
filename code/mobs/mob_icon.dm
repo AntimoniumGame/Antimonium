@@ -8,6 +8,9 @@
 			supplied += UpdateIconByLimb(slot)
 		else
 			supplied += UpdateIconBySlot(slot)
+	for(var/I in light_overlays)
+		if(istype(light_overlays[I], /image))
+			supplied += light_overlays[I]
 	..(supplied)
 
 /mob/proc/UpdateIconBySlot(var/slot)

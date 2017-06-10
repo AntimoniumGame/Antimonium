@@ -87,5 +87,5 @@
 	if(fire_intensity >= 100)
 		Die("the hungry flames")
 		// create ashes
-		KillLight()
+//		KillLight()
 		QDel(src)

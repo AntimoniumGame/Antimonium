@@ -2,8 +2,7 @@
 	name = "Antimonium"
 	icon = 'icons/images/title_image.dmi'
 	screen_loc = "CENTER, CENTER"
-	plane = SCREEN_PLANE
-	layer = 3
+	plane = TITLE_PLANE
 	var/mob/holder
 
 /obj/effect/title/proc/Center(var/view_x, var/view_y)

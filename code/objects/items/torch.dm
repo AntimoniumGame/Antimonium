@@ -7,6 +7,7 @@
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
+	light = new(1500, 100, 3)
 	var/fuel = 100
 
 /obj/item/torch/GetFireIcon()
@@ -20,8 +21,10 @@
 /obj/item/torch/UpdateIcon(var/list/supplied = list())
 	if(IsOnFire())
 		icon = 'icons/objects/items/torch_lit.dmi'
+		LightOn()
 	else
 		icon = 'icons/objects/items/torch.dmi'
+		LightOff()
 
 	var/mob/holder = loc
 	if(istype(holder))
@@ -38,6 +41,8 @@
 	if(istype(sconce) && sconce.filled == src)
 		sconce.filled = null
 		sconce.UpdateIcon()
+	RemoveLight()
+	..()
 
 /obj/item/torch/HandleFireDamage()
 	/*

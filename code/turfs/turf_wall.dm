@@ -66,7 +66,7 @@
 
 /turf/wall/wood/HandleFireDamage()
 	if(fire_intensity >= 100)
-		KillLight()
+//		RemoveLight()
 		new /turf/floor/dirt(src)
 
 /turf/wall/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)

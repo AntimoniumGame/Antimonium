@@ -18,7 +18,7 @@
 	name = ""
 	screen_loc = "1,1"
 	mouse_opacity = 0
-	layer = 0
+	plane = VISION_PLANE
 
 /obj/ui/vision_cone/Center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)-6],[round(view_y/2)-6]"

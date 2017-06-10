@@ -5,7 +5,7 @@
 	flags = 0
 	blood_material = null
 	layer = FLY_LAYER
-	plane = SCREEN_PLANE
+	plane = ABSTRACT_PLANE
 
 /mob/abstract/CreateLimbs()
 	return
