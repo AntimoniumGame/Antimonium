@@ -4,7 +4,7 @@
 	icon = 'icons/objects/structures/sconce.dmi'
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	density = FALSE
-	shadow_size = null
+	draw_shadow_underlay = null
 	layer = MOB_LAYER + 0.2
 
 	var/obj/item/torch/filled
@@ -26,6 +26,9 @@
 /obj/structure/sconce/New()
 	if(prob(80))
 		filled = new(src, _lit = TRUE)
+	..()
+
+/obj/structure/sconce/Initialize()
 	..()
 	AlignWithWall(src)
 
@@ -66,10 +69,10 @@
 			. = ..()
 		if(!.)
 			if(filled)
-				user.Notify("There is already \a [filled] in \the [src].")
+				user.Notify("<span class='warning'>There is already \a [filled] in \the [src].</span>")
 			else
 				user.DropItem(prop)
-				user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+				user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>")
 				prop.ForceMove(src)
 				filled = prop
 				UpdateIcon()
@@ -79,14 +82,14 @@
 /obj/structure/sconce/ManipulatedBy(var/mob/user, var/slot)
 	if(filled)
 		if(user.CollectItem(filled, slot))
-			user.NotifyNearby("\The [user] removes \the [filled] from \the [src].")
+			user.NotifyNearby("<span class='notice'>\The [user] removes \the [filled] from \the [src].</span>")
 			filled = null
 			UpdateIcon()
 		else
 			if(filled.loc != src)
 				filled.ForceMove(src)
 	else
-		user.Notify("There is no torch in \the [src].")
+		user.Notify("<span class='warning'>There is no torch in \the [src].</span>")
 	return TRUE
 
 /obj/structure/sconce/UpdateLight()
@@ -97,3 +100,6 @@
 /obj/structure/sconce/Destroy()
 	RemoveLight()
 	..()
+
+/obj/structure/sconce/HandleFireDamage()
+	return

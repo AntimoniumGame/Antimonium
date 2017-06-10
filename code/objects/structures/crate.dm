@@ -9,3 +9,9 @@
 /obj/structure/crate/UpdateIcon(var/list/supplied = list())
 	. = ..(supplied)
 	icon_state = "[open ? "open" : "closed"]"
+
+/obj/structure/crate/chest
+	name = "chest"
+	icon = 'icons/objects/structures/chest.dmi'
+	max_contains_size_single = 60
+	max_contains_size_total =  60

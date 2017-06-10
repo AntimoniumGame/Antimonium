@@ -3,7 +3,7 @@
 	icon = 'icons/objects/items/dart.dmi'
 	attack_verbs = list("sticks")
 	hit_sound = 'sounds/effects/thunk1.ogg'
-	shadow_size = null
+	draw_shadow_underlay = null
 
 	singular_name = "dart"
 	plural_name =   "darts"
@@ -14,8 +14,3 @@
 	amount = 5
 	max_amount = 5
 	flags = FLAG_SIMULATED
-
-/obj/item/stack/dart/New()
-	..()
-	pixel_x = rand(-3,3)
-	pixel_y = rand(-3,3)

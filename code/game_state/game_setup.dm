@@ -22,7 +22,7 @@
 	SwitchGameState(/datum/game_state/waiting)
 
 /datum/game_state/setup/End()
-	to_chat(world, "<h3><b>Game setup complete!</b></h3>")
+	to_chat(world, "<h3><span class='notice'><b>Game setup complete!</b></span></h3>")
 
 /datum/game_state/setup/OnLogin(var/client/player)
-	to_chat(world, "<h3><b>The game is setting up.</b></h3>")
+	to_chat(world, "<h3><span class='notice'><b>The game is setting up.</b></span></h3>")

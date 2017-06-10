@@ -8,6 +8,10 @@
 	var/list/update_bodyparts
 	var/associated_limb
 
+/obj/ui/inv/MouseDrop(var/atom/over_object,src_location,over_location,src_control,over_control,params)
+	if(holding)
+		holding.MouseDrop(over_object,src_location,over_location,src_control,over_control,params)
+
 /obj/ui/inv/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags, var/list/_update_bodyparts, var/_associated_limb)
 	. = ..()
 	if(nname)

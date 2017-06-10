@@ -4,12 +4,14 @@
 	var/obj/ui/toggle/options/options
 	var/obj/ui/toggle/options/prefs/setup
 	var/joining = FALSE
+	var/ready = FALSE
 
 /mob/abstract/new_player/Login()
 	..()
 	NullLoc()
 	if(lobby_music)
 		lobby_music.Play(src)
+	name = key
 
 /mob/abstract/new_player/CreateUI()
 	..()
@@ -22,7 +24,7 @@
 	. = ..()
 	join.UpdateIcon()
 
-/mob/abstract/new_player/New()
+/mob/abstract/new_player/Initialize()
 	..()
 	new_players += src
 	spawn(0)
@@ -33,17 +35,17 @@
 	new_players -= src
 	. = ..()
 
-/mob/abstract/new_player/proc/JoinGame()
+/mob/abstract/new_player/proc/LatejoinGame()
 
 	if(joining)
 		return
 
 	switch(game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
-			to_chat(src, "The game has not started yet!")
+			to_chat(src, "<span class='warning'>The game has not started yet!</span>")
 			return
 		if(GAME_OVER)
-			to_chat(src, "The game is over!")
+			to_chat(src, "<span class='warning'>The game is over!</span>")
 			return
 
 	joining = TRUE
@@ -55,23 +57,14 @@
 		client.screen -= title_image
 		EndLobbyMusic(client)
 
-	var/mob/human/player_mob = new()
-	player_mob.ForceMove(locate(3,3,1))
-	player_mob.name = key
-	TransferControlTo(player_mob)
-
-	var/datum/job/job = pick(job_datums)
-	job.Welcome(player_mob)
-	job.Equip(player_mob)
-
-	var/datum/antagonist/antag = pick(antagonist_datums)
-	antag.AddAntagonist(player_mob.role)
-
+	var/mob/new_mob = default_latejoin_role.Equip(src)
+	default_latejoin_role.Welcome(new_mob)
+	default_latejoin_role.Place(new_mob)
 	QDel(src)
 
 /mob/abstract/new_player/DoSay(var/message)
 	next_speech = world.time + 5
-	message = "<b>LOBBY:</b> [FormatStringForSpeech(src, message)]"
+	message = "<b>LOBBY:</b> [FormatStringForSpeech(key, message)]"
 	for(var/mob/abstract/new_player/listener in mob_list)
 		if(listener.client)
 			to_chat(listener, message)

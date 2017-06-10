@@ -7,8 +7,8 @@
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
-	shadow_size = 1
 	light = new(1500, 100, 3)
+	var/fuel = 100
 
 /obj/item/torch/GetFireIcon()
 	return
@@ -34,18 +34,19 @@
 /obj/item/torch/Use(var/mob/user)
 	if(IsOnFire())
 		Extinguish(user)
-		user.NotifyNearby("\The [user] extinguishes \the [src].")
+		user.NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
 
 /obj/item/torch/Destroy()
+	var/obj/structure/sconce/sconce = loc
+	if(istype(sconce) && sconce.filled == src)
+		sconce.filled = null
+		sconce.UpdateIcon()
 	RemoveLight()
 	..()
-/*
-/obj/item/torch/UpdateLight()
-	..()
-	if(istype(loc, /obj))
-		var/obj/O = loc
-		O.UpdateLight()
-	else if(istype(loc, /mob))
-		var/mob/M = loc
-		M.UpdateLight(light)
-*/
+
+/obj/item/torch/HandleFireDamage()
+	/*
+	fuel--
+	if(!fuel)
+		QDel(src)
+	*/

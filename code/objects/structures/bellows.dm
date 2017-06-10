@@ -10,12 +10,14 @@
 	if(!. && !in_use)
 		in_use = TRUE
 		flick("blow",src)
-		NotifyNearby("\The [user] works \the [src]!")
+		PlayLocalSound(src, 'sounds/effects/bellows1.ogg', 70, -1)
+		NotifyNearby("<span class='notice'>\The [user] works \the [src]!</span>")
 		var/turf/neighbor = get_step(get_turf(src), dir)
 		for(var/thing in neighbor.contents)
 			var/atom/atom = thing
 			if((atom.flags & FLAG_SIMULATED) && atom.IsOnFire())
 				atom.StokeFire()
-		sleep(15)
-		icon_state = "world"
-		in_use = FALSE
+		spawn(12)
+			icon_state = "world"
+			in_use = FALSE
+		return TRUE

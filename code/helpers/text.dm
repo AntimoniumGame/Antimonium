@@ -31,7 +31,7 @@
 	return "[round(ticks/600)]:[seconds >= 10 ? seconds : "0[seconds]"]"
 
 
-/proc/FormatStringForSpeech(var/mob/speaker, var/message)
+/proc/FormatStringForSpeech(var/speaker, var/message)
 	message = FormatAndCapitalize(SanitizeText(copytext(message,1,120)))
 	var/speak_verb = "says"
 	var/ending = copytext(message, length(message))
@@ -39,7 +39,7 @@
 		speak_verb = "exclaims"
 	else if(ending == "?")
 		speak_verb = "asks"
-	return "<b>\The [speaker]</b> [speak_verb], \"[message]\""
+	return "<span class='notice'><b>[speaker]</b> [speak_verb], \"<span class='speech'>[message]</span>\"</span>"
 
 /proc/File2List(var/filename, var/seperator="\n")
 	if(fexists(filename) == 0)

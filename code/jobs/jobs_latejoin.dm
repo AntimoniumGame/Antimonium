@@ -1,20 +1,15 @@
-/datum/job/drifter
-	name = "Drifter"
-	the = "a"
-	welcome_text = "You have drifted from place to place, forgetting even your home town, until you came to this forsaken spit of rock."
-
 /datum/job/sailor
 	name = "Sailor"
-	the = "a"
+	maximum_slots = 5
 
 /datum/job/preacher
 	name = "Preacher"
-	the = "a"
+	maximum_slots = 1
 
 /datum/job/tourist
 	name = "Tourist"
-	the = "a"
+	maximum_slots = 1
 
 /datum/job/trader
 	name = "Trader"
-	the = "a"
+	maximum_slots = 3

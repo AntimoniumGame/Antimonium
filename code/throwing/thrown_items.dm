@@ -11,10 +11,11 @@
 	return prob(80)
 
 /obj/item/proc/ThrowAt(var/mob/thrower, var/atom/target)
-	if(!thrower.OnCombatCooldown() && HandlePreThrow(thrower))
-		thrower.SetCombatCooldown(4)
+	if(!thrower.OnActionCooldown() && HandlePreThrow(thrower))
+		thrower.SetActionCooldown(4)
 		var/atom/movable/throwing = GetThrownAtom()
-		thrower.NotifyNearby("\The [thrower] hurls \the [throwing]!")
+		thrower.NotifyNearby("<span class='alert'>\The [thrower] hurls \the [throwing]!</span>")
+		thrower.SetActionCooldown(5)
 		thrower.DoAttackAnimation(target, throwing)
 		if(!CheckThrowSuccess(thrower))
 			var/atom/new_target = get_turf(target)
@@ -46,7 +47,7 @@
 
 // Stacks.
 /obj/item/stack/GetThrownAtom()
-	return new type(get_turf(src), material ? material.type : default_material_path, 1, src)
+	return new type(get_turf(src), material ? material.type : default_material_path, 1)
 
 /obj/item/stack/HandlePreThrow(var/mob/thrower)
 	return TRUE

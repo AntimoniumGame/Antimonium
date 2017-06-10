@@ -10,11 +10,11 @@
 	var/self_move = FALSE
 	var/move_sound
 
-	var/shadow_size = null
+	var/draw_shadow_underlay = null
 	var/shadow_pixel_x = 0
 	var/shadow_pixel_y = 0
 
-/atom/proc/UpdateIcon(var/list/supplied = list())
+/atom/proc/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
 	overlays = supplied
 	var/mob/holder = loc
 	if(istype(holder))
@@ -22,16 +22,21 @@
 		holder.UpdateIcon()
 
 /atom/movable/UpdateIcon(var/list/supplied = list())
-	if((flags & FLAG_SIMULATED) && !isnull(shadow_size))
+	..(supplied)
+	if((flags & FLAG_SIMULATED) && draw_shadow_underlay)
 		underlays.Cut()
-		var/image/I = image(icon = 'icons/images/atom_shadows.dmi', icon_state = "[shadow_size]")
-		I.alpha = 30
+		var/image/I = image(null)
+		I.appearance = src
+		I.color = "#000000"
+		I.alpha = 60
 		I.plane = FLOAT_PLANE // stays with the parent plane regardless of if it changes
 		I.layer = FLOAT_LAYER
 		I.pixel_x = shadow_pixel_x
 		I.pixel_y = shadow_pixel_y
+		var/matrix/M = matrix()
+		M.Scale(1.1)
+		I.transform = M
 		underlays += I
-	..(supplied)
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
@@ -43,7 +48,7 @@
 	ExaminedBy(clicker)
 
 /atom/proc/ExaminedBy(var/mob/clicker)
-	clicker.Notify("[(src != clicker) ? "That's" : "You're"] \a [name].")
+	clicker.Notify("<span class='notice'>[(src != clicker) ? "That's" : "You're"] <span class='alert'>\a [name]</span>.</span>")
 	return IsAdjacentTo(src, clicker)
 
 /atom/proc/PullCost()
@@ -81,4 +86,35 @@
 	return 1
 
 /atom/proc/SmearWith(var/datum/material/smearing, var/amount)
+	return
+
+/atom/proc/Grind(var/mob/user)
+	return FALSE
+
+/atom/MouseDrop(var/atom/over_object,src_location,over_location,src_control,over_control,params)
+	. = ..()
+	if(!isnull(over_object) && IsAdjacentTo(src, over_object) && IsAdjacentTo(usr, over_object) && IsAdjacentTo(usr, src))
+		var/list/arguments = params2list(params)
+		DraggedOntoThing(usr, over_object, arguments["left"], arguments["right"], arguments["middle"])
+		over_object.ThingDraggedOnto(usr, src, arguments["left"], arguments["right"], arguments["middle"])
+
+/atom/proc/ThingDraggedOnto(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	return
+
+/atom/proc/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	return
+
+/atom/proc/ResetPosition()
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
+	transform = null
+
+/atom/proc/RandomizePixelOffset()
+	return
+
+/atom/movable/RandomizePixelOffset()
+	pixel_x = rand(8,24)-16
+	pixel_y = rand(8,24)-16
+
+/atom/movable/proc/EndThrow()
 	return

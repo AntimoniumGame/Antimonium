@@ -12,3 +12,8 @@
 	singular_name = "ginseng seed"
 	plural_name = "ginseng seeds"
 	plant_type = /obj/item/plant/ginseng
+
+/obj/item/stack/seed/wheat
+	singular_name = "wheat seed"
+	plural_name = "wheat seeds"
+	plant_type = /obj/item/plant/wheat

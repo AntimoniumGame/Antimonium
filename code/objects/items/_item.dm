@@ -2,7 +2,7 @@
 	name = "item"
 	icon_state = "world"
 	icon = 'icons/objects/items/_default.dmi'
-	shadow_size = 2
+	draw_shadow_underlay = TRUE
 
 	var/slot_flags = 0
 	var/contact_size = 1
@@ -15,6 +15,11 @@
 	var/hit_sound = 'sounds/effects/punch1.ogg'
 	var/collect_sound = 'sounds/effects/click1.ogg'
 	var/equip_sound = 'sounds/effects/rustle1.ogg'
+
+/obj/item/Initialize()
+	..()
+	if(!pixel_x && !pixel_y)
+		RandomizePixelOffset()
 
 /obj/item/proc/GetHeatInsulation()
 	return (material ? material.thermal_insulation : 0)
@@ -80,18 +85,19 @@
 	return GetWornIcon("held")
 
 /obj/item/Destroy()
-	var/mob/owner = loc
-	if(istype(owner))
+	if(istype(loc, /mob))
+		var/mob/owner = loc
 		owner.DropItem(src)
+	else if(istype(loc, /obj/structure))
+		var/obj/structure/struct = loc
+		if(istype(struct.contains, /list))
+			struct.contains -= src
 	. = ..()
 
 /obj/item/GetAmount()
 	return initial(weight)
 
-/obj/item/proc/Grind(var/mob/user)
-	return FALSE
-
 /obj/item/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(istype(prop, /obj/item/mortar_pestle) && Grind(user))
+	if((prop.associated_skill & SKILL_ALCHEMY) && Grind(user))
 		return TRUE
 	. = ..()

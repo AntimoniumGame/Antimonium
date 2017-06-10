@@ -4,7 +4,7 @@
 	density = 1
 	default_material_path = /datum/material/metal/iron
 	move_sound = 'sounds/effects/scrape1.ogg'
-	shadow_size = 3
+	draw_shadow_underlay = TRUE
 
 	var/weight = 3
 	var/list/holding = list()
@@ -22,9 +22,18 @@
 	if(!.)
 		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(prop))
 			if(prop && !Deleted(prop)) //grabs
-				prop.ForceMove(src.loc)
-				user.NotifyNearby("\The [user] places \the [prop] on \the [src].")
+				ThingPlacedOn(user, prop)
 				return TRUE
+
+/obj/structure/proc/ThingPlacedOn(var/mob/user, var/obj/item/prop, var/precise_placement = TRUE)
+	prop.ForceMove(src.loc)
+	if(user)
+		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] on \the [src].</span>")
+		if(user.client && precise_placement && istype(prop))
+			prop.pixel_x = text2num(user.client.last_click["icon-x"])-16
+			prop.pixel_y = text2num(user.client.last_click["icon-y"])-16
+			return
+	prop.RandomizePixelOffset()
 
 /obj/structure/UpdateStrings()
 	if(material)
@@ -42,3 +51,6 @@
 
 /obj/structure/GetWeight()
 	return weight
+
+/obj/structure/EndThrow()
+	ResetPosition()

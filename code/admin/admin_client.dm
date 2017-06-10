@@ -1,10 +1,6 @@
 /client
 	var/datum/admin_rank/admin_permissions
 
-/client/New()
-	. = ..()
-	AdminSetup()
-
 /client/proc/AdminSetup()
 	set waitfor = 0
 	if(admins)

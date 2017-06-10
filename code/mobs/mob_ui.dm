@@ -13,10 +13,6 @@
 	ui_images.Cut()
 	. = ..()
 
-/mob/New()
-	..()
-	CreateUI()
-
 /mob/Login()
 	. = ..()
 	RefreshUI()

@@ -1,0 +1,38 @@
+"a" = (/turf/wall/stone,/area/indoors)
+"b" = (/turf/wall/dirt,/area/indoors)
+"c" = (/turf/floor/stone,/area/indoors)
+"d" = (/turf/floor/dirt,/area/indoors)
+"e" = (/obj/structure/stairs,/turf/floor/dirt,/area/indoors)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+abbbbbbbbbbbbccaaaaaaaaaaaaaaa
+abbbbbbbbbbbccccaaaaaaaaaaaaaa
+abbbcdddbbbccccccaaaaaaaaaaaaa
+abccccdddbbddccccaaaaadccccaaa
+acdccccdddbbddcccaaadddcccccaa
+acdcaccccddbddccbaaaddccccccaa
+acddaaaccccccccbbaadddcccccaaa
+acdddaaaaccccccbaaddcccccccaaa
+acdddddaaaccccdbabbdccdccccaaa
+abbdddddaadcccdbbbbbddccdcaaaa
+abbbddbdaaaaccddbbbbbddccaaaaa
+aabbbcddcaaacccddbbbbddcaaaaaa
+aaaabbcdccaaaccddbbbbdcaaaaaca
+aaaaabcddccaaaacdbbbbdcaaaccca
+aaaaaaccbbcccaaacdbbdcaaacdcca
+acccaaaccbbbcaaaacddccaacdddca
+abdcccccccdddccaacddcaacddddca
+abbdddcccaaadcccacdcaaccdbbdca
+abbbdddcccaaaadddddcaccddbbdca
+abbbbdddddccaaacccccccdddbbbca
+abbbbbbbdddccaaacccccddbddbbca
+adbbbbbbbdddccaaaccdddddddbbda
+addbbbbbbbdddcaaaccddddddddbba
+addbbbbbbbdbbcaaaaddddbbdddbba
+addbbbbbbbdbbcaaaadddbbbbdddba
+adddbbbbbbdddcaaaaddddbbbbddda
+acdddddbbdddcaaaaaaaddddbbbeda
+accddddddddcaaaaaaaaadddddbbda
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

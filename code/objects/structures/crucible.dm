@@ -5,7 +5,6 @@
 	weight = 1
 	default_material_path = /datum/material/stone/clay
 
-	shadow_size = 3
 	max_contains_count = 10
 	max_contains_size_single = 50
 	max_contains_size_total =  50

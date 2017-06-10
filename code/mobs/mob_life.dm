@@ -9,9 +9,12 @@
 		var/obj/item/limb/limb = thing
 		limb.Process()
 
-	// Update some
+	// Various life processes.
 	HandlePain()
 	HandleBleeding()
+	HandleConsumableEffects()
+	HandleHunger()
+
 	UpdateGrasp()
 	UpdateStance()
 	health.UpdateIcon()
@@ -23,18 +26,21 @@
 	//TODO: move this to limbs
 	var/obj/item/holding = GetEquipped(SLOT_LEFT_HAND)
 	if(istype(holding) && holding.Burn(src, SLOT_HANDS))
-		Notify("\The [holding] sears your left hand and falls from your grasp!")
+		Notify("<span class='alert'>\The [holding] sears your left hand and falls from your grasp!</span>")
 		DropItem(holding)
 	holding = GetEquipped(SLOT_RIGHT_HAND)
 	if(istype(holding) && holding.Burn(src, SLOT_HANDS))
-		Notify("\The [holding] sears your right hand and falls from your grasp!")
+		Notify("<span class='alert'>\The [holding] sears your right hand and falls from your grasp!</span>")
 		DropItem(holding)
 
 /mob/proc/HandleBleeding()
 	if(dead)
 		return
 
-	blood = min(100, blood + 3)
+	if(hunger > 0)
+		hunger--
+		blood = min(100, blood + rand(1,3))
+
 	if(blood <= 60)
 		Die("blood loss")
 	else if(prob(10))
@@ -42,8 +48,8 @@
 			if(90 to 100)
 				return
 			if(80 to 90)
-				Notify("You feel slightly light-headed.")
+				Notify("<span class='warning'>You feel slightly light-headed.</span>")
 			if(70 to 80)
-				Notify("The world lurches sickeningly as dizziness overtakes you.")
+				Notify("<span class='danger'>The world lurches sickeningly as dizziness overtakes you.</span>")
 			if(60 to 70)
-				Notify("Flickering darkness swims at the edges of vour vision as you struggle to remain conscious.")
+				Notify("<span class='alert'>Flickering darkness swims at the edges of vour vision as you struggle to remain conscious.</span>")

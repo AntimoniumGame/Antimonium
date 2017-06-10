@@ -4,7 +4,7 @@
 	var/random_states = 1
 	var/random_state_prefix
 
-/obj/effect/random/New()
+/obj/effect/random/Initialize()
 	..()
 	if(random_states)
 		var/random_state = rand(1,random_states)

@@ -8,14 +8,6 @@
 	var/cold_harm_point =   TEMPERATURE_NEVER_COLD
 	var/next_temp_warning = 0
 
-/mob/New()
-	if(heat_suffer_point != TEMPERATURE_NEVER_HOT || \
-	 heat_harm_point != TEMPERATURE_NEVER_HOT || \
-	 cold_suffer_point != TEMPERATURE_NEVER_COLD || \
-	 cold_harm_point != TEMPERATURE_NEVER_COLD)
-		flags |= FLAG_TEMPERATURE_SENSITIVE
-	..()
-
 /mob/CheckTemperature()
 
 	RadiateHeat(TEMPERATURE_BLOOD)
@@ -31,11 +23,11 @@
 	if(world.time >= next_temp_warning)
 		next_temp_warning = world.time + rand(100,200)
 		if(body_temperature > heat_harm_point)
-			Notify("Your very life is sapped by the terrible heat surrounding you.")
+			Notify("<span class='danger'>Your very life is sapped by the terrible heat surrounding you.</span>")
 		else if(body_temperature > heat_suffer_point)
-			Notify("Sweat beads your brow in the oppressive heat.")
+			Notify("<span class='warning'>Sweat beads your brow in the oppressive heat.</span>")
 		else if(body_temperature < cold_harm_point)
-			Notify("A curious lassitude settles over you as the freezing cold eats at your mind.")
+			Notify("<span class='danger'>A curious lassitude settles over you as the freezing cold eats at your mind.</span>")
 		else if(body_temperature < cold_suffer_point)
-			Notify("You shiver in the cold, teeth chattering.")
+			Notify("<span class='warning'>You shiver in the cold, teeth chattering.</span>")
 

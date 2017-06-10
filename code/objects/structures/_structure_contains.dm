@@ -6,27 +6,38 @@
 	var/open = FALSE
 	var/can_open = FALSE
 
-/obj/structure/MouseDrop(over_object,src_location,over_location,src_control,over_control,params)
-	var/mob/user = over_object
-	if(usr != user || !IsAdjacentTo(src, user))
-		return
-	var/list/arguments = params2list(params)
-	DraggedOnto(user, arguments["left"], arguments["right"], arguments["middle"])
+/mob/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+	if(user != src)
+		return ..()
+	var/obj/structure/seat = thing
+	if(!istype(seat))
+		return ..()
+	if((seat.flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(seat.loc))
+		user.SetDir(seat.dir)
+		user.ToggleSitting()
+	else
+		return ..()
 
-/obj/structure/proc/DraggedOnto(var/mob/user, var/left_drag, var/right_drag, var/middle_drag)
+/obj/structure/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
+
+	if(!istype(user) || user != thing)
+		return ..()
+
 	var/slot = user.GetSlotByHandedness(left_drag ? "left" : "right")
 	if(!slot)
-		return
+		return ..()
+
 	if(contains)
 		if(contains.len)
-			var/obj/item/thing = pick(contains)
-			contains -= thing
-			thing.ForceMove(get_turf(src))
-			if(user.CollectItem(thing, slot))
-				user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [thing].")
+			var/obj/item/removing = pick(contains)
+			contains -= removing
+			removing.ForceMove(get_turf(src))
+			if(user.CollectItem(removing, slot))
+				user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [removing].")
+				ThingTakenOut(removing)
 			else
-				contains += thing
-				thing.ForceMove(src)
+				contains += removing
+				removing.ForceMove(src)
 		else
 			user.NotifyNearby("\The [user] rummages around in \the [src] but comes up empty handed.")
 
@@ -40,17 +51,16 @@
 	. = ..()
 	if(!. && ToggleOpen(user, slot))
 		return TRUE
-	return FALSE
 
 /obj/structure/proc/ToggleOpen(var/mob/user, var/slot)
 	if(!can_open)
 		return FALSE
 	if(Burn(user, SLOT_HANDS))
 		user.Notify("\The [src] is far too hot to touch!")
-		return FALSE
-	open = !open
-	if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")
-	UpdateIcon()
+	else
+		open = !open
+		if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")
+		UpdateIcon()
 	return TRUE
 
 /obj/structure/proc/CanAcceptItem(var/obj/item/prop)
@@ -83,6 +93,12 @@
 				if(prop && !Deleted(prop))
 					prop.ForceMove(src)
 					contains += prop
+					ThingPutInside(prop)
 					user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
 					return TRUE
-	return FALSE
+
+/obj/structure/proc/ThingPutInside(var/obj/item/prop)
+	return
+
+/obj/structure/proc/ThingTakenOut(var/obj/item/prop)
+	return

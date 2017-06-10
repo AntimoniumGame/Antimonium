@@ -18,10 +18,8 @@
 /obj/item/dartboard/UpdateIcon(var/list/supplied)
 	if(dir)
 		icon_state = "world"
-		shadow_size = 2
 	else
 		icon_state = "world_flat"
-		shadow_size = null
 	..(supplied)
 
 /obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile)
@@ -47,5 +45,5 @@
 
 	projectile.ForceMove(get_turf(src))
 	PlayLocalSound(src, 'sounds/effects/thunk1.ogg', 100)
-	NotifyNearby("\The [projectile] strikes \the [src] in the [result]")
+	NotifyNearby("<span class='warning'>\The [projectile] strikes \the [src] in the [result]</span>")
 	return TRUE

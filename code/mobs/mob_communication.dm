@@ -3,10 +3,6 @@
 	var/understand_category = "general"
 	var/list/can_understand_speech = list()
 
-/mob/New()
-	..()
-	can_understand_speech |= understand_category
-
 /mob/proc/ScrambleSpeech(var/message)
 	return "gabbles something completely unintelligible."
 
@@ -43,13 +39,13 @@
 	DoSay(message)
 
 /mob/proc/DoOocMessage(var/message)
-	message = FormatStringForSpeech(src, message)
+	message = FormatStringForSpeech(key, message)
 	next_speech = world.time + 5
 	for(var/client/player in clients)
 		player.Notify("<b>OOC:</b> [message]")
 
 /mob/proc/DoSay(var/message)
-	message = FormatStringForSpeech(src, message)
+	message = FormatStringForSpeech("\The [name]", message)
 	next_speech = world.time + 5
 
 	var/scramble_message
@@ -67,7 +63,7 @@
 
 /mob/proc/DoEmote(var/message)
 	next_speech = world.time + 5
-	message = FormatAndCapitalize("<b>\The [src]</b> [SanitizeText(message)]")
+	message = FormatAndCapitalize("<span class='notice'><b>\The [src]</b> [SanitizeText(message)]</span>")
 	if(dead)
 		NotifyDead(copytext(message,1,120))
 	else

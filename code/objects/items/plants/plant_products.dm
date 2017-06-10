@@ -1,10 +1,16 @@
-/obj/item/stack/cotton
+// Placeholder.
+/obj/item/stack/fibers
+	name = "wool"
+	singular_name = "fiber"
+	plural_name = "fibers"
+	stack_name = "tangle"
+	default_material_path = /datum/material/cloth/wool
+// End placeholder.
+
+/obj/item/stack/fibers/cotton
 	name = "cotton"
 	icon = 'icons/objects/items/plants/cotton.dmi'
-	singular_name = "cotton fiber"
-	plural_name = "cotton fibers"
-	stack_name = "tangle"
-	default_material_path = null
+	default_material_path = /datum/material/cloth/cotton
 
 /obj/item/stack/nightshade
 	name = "nightshade"
@@ -14,8 +20,8 @@
 	stack_name = "handful"
 	default_material_path = /datum/material/herb/nightshade
 
-/obj/item/stack/nightshade/five/New(var/newloc, var/material_path, var/_amount)
-	..(newloc, material_path, 5)
+/obj/item/stack/nightshade/five
+	amount = 5
 
 /obj/item/stack/ginseng
 	name = "ginseng"
@@ -25,5 +31,13 @@
 	stack_name = "bundle"
 	default_material_path = /datum/material/herb/ginseng
 
-/obj/item/stack/ginseng/five/New(var/newloc, var/material_path, var/_amount)
-	..(newloc, material_path, 5)
+/obj/item/stack/ginseng/five
+	amount = 5
+
+/obj/item/stack/wheat
+	name = "wheat"
+	icon = 'icons/objects/items/plants/wheat.dmi'
+	singular_name = "stalk"
+	plural_name = "stalks"
+	stack_name = "sheaf"
+	default_material_path = /datum/material/herb/wheat

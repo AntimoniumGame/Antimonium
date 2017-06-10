@@ -3,7 +3,7 @@
 	icon = 'icons/objects/items/plants/cotton.dmi'
 	default_material_path = null
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
-	shadow_size = null
+	draw_shadow_underlay = null
 
 	var/growth_stage = 1
 	var/max_growth_stage = 4
@@ -56,8 +56,7 @@
 		new product_type(get_turf(src), _amount = rand(min_harvest_amount,max_harvest_amount))
 	QDel(src)
 
-/obj/item/plant/New()
-	..()
+/obj/item/plant/RandomizePixelOffset()
 	pixel_x = rand(-1,1)
 	pixel_y = rand(-1,1)
 

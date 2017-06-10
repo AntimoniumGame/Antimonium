@@ -6,15 +6,15 @@
 		var/datum/antagonist/a = thing
 		for(var/other_thing in a.members)
 			var/datum/role/r = other_thing
-			to_chat(world, "<b>\A [a.role_name] was played by [r.ckey] with these objectives:</b>")
+			to_chat(world, "<span class='notice'><b>\A <span class='alert'>[a.role_name]</span> was played by <span class='alert'>[r.ckey]</span> with these objectives:</b></span>")
 			for(var/line in a.CheckSuccess(r))
-				to_chat(world, line)
+				to_chat(world, "<span class='notice'>[line]</span>")
 			to_chat(world, "<br>")
 		to_chat(world, "<br>")
 	sleep(100)
-	to_chat(world, "<b>The game will restart in sixty seconds.</b>")
+	to_chat(world, "<span class='alert'><b>The game will restart in sixty seconds.</b>")
 	sleep(600)
-	to_chat(world, "<b>Server rebooting!</b>")
+	to_chat(world, "<span class='alert'><b>Server rebooting!</b>")
 	sleep(5)
 	End()
 

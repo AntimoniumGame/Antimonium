@@ -4,7 +4,6 @@
 	hit_sound = 'sounds/effects/ding1.ogg'
 	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
-	shadow_size = 3
 	light = new(2000, 100, 3)
 	var/base_temperature = TEMPERATURE_WOOD_FIRE
 
@@ -13,7 +12,7 @@
 	return TRUE
 // end temp
 
-/obj/structure/brazier/New()
+/obj/structure/brazier/Initialize()
 	..()
 	next_burn_sound = rand(10,20)
 
@@ -36,3 +35,11 @@
 /obj/structure/brazier/ProcessFire()
 	..()
 	RadiateHeat(temperature, 0)
+
+/obj/structure/brazier/GetFireIcon()
+	var/image/I = image('icons/images/fire.dmi', "mid")
+	I.layer = MOB_LAYER + 0.9
+	return I
+
+/obj/structure/brazier/HandleFireDamage()
+	return

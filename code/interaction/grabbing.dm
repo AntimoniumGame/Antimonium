@@ -46,34 +46,35 @@
 
 /mob/proc/GrabAtom(var/atom/movable/grabbing, var/grabbing_with, var/grabbing_slot)
 
-	if(!IsAdjacentTo(src, grabbing))
+	if(!IsAdjacentTo(src, grabbing) || OnActionCooldown())
 		return
 
 	if(!CanUseLimb(grabbing_with))
 		return
 
 	if(GetEquipped(grabbing_slot))
-		Notify("You are already holding something there!")
+		Notify("<span class='warning'>You are already holding something there!</span>")
 		return
 
 	for(var/obj/item/grab/grab in active_grabs)
 		if(grab.grabbed == grabbing)
-			Notify("You already have a grip on \the [grabbing].")
+			Notify("<span class='warning'>You already have a grip on \the [grabbing].</span>")
 			return
 
 	if(grabbing.Burn(src, SLOT_HANDS))
-		Notify("\The [grabbing] is far too hot to grab!")
+		Notify("<span class='warning'>\The [grabbing] is far too hot to grab!</span>")
 		return
 
 	if(!grabbing.IsSolid())
-		NotifyNearby("\The [src] attempts to grab \the [grabbing], but [grabbing.They()] slip[grabbing.s()] through [Their()] grasp.")
+		NotifyNearby("<span class='warning'>\The [src] attempts to grab \the [grabbing], but [grabbing.They()] slip[grabbing.s()] through [Their()] grasp.</span>")
 		return
 
 	var/obj/item/grab/grab = new(src, grabbing)
 	CollectItem(grab, grabbing_slot)
 	var/obj/item/limb/limb = limbs[grabbing_with]
 	PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 75)
-	NotifyNearby("\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!")
+	NotifyNearby("<span class='danger'>\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!</span>")
+	SetActionCooldown(10)
 	grab.owner.DoAttackAnimation(grab.grabbed)
 
 

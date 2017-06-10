@@ -17,11 +17,6 @@ var/datum/lobby_music/lobby_music
 		listener << sound(channel = SOUND_CHANNEL_LOBBY)
 		listener.playing_lobby_music = null
 
-/world/New()
-	. = ..()
-	var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)
-	lobby_music = new lmusic()
-
 /datum/lobby_music
 	var/song_file
 	var/name
@@ -36,6 +31,6 @@ var/datum/lobby_music/lobby_music
 	set background = 1
 
 	if(!song_file || !listener.client) return
-	listener.Notify("<b>Now playing:</b> <a href='[url]'>[name]</a> by <b>[author]</b> ([license ? "<a href='[license_url]'>[license]</a>": "no license supplied"])")
+	listener.Notify("<span class='notice'><b>Now playing:</b> <span class='alert'><a href='[url]'>[name]</a></span> by <span class='alert'><b>[author]</b></span> ([license ? "<a href='[license_url]'>[license]</a>": "no license supplied"])</span>")
 	listener.client.playing_lobby_music = sound(song_file, repeat = 1, channel = SOUND_CHANNEL_LOBBY, volume = 85)
 	PlayClientSound(listener.client, sound = listener.client.playing_lobby_music, volume = 85, frequency = -1)

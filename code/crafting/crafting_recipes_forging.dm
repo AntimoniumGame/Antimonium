@@ -7,11 +7,10 @@
 /datum/crafting_recipe/forging/Craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	. = ..()
 	spawn()
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
 		sleep(6)
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
+		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
 		sleep(6)
-		PlayLocalSound(craft_at, 'sounds/effects/ding1.ogg', 100, -1)
+		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
 
 /datum/crafting_recipe/forging/axe
 	result_path = /obj/item/weapon/axe
@@ -31,3 +30,15 @@
 
 /datum/crafting_recipe/forging/horseshoe
 	result_path = /obj/item/horseshoe
+
+/datum/crafting_recipe/forging/handsaw
+	result_path = /obj/item/weapon/handsaw
+
+/datum/crafting_recipe/forging/level
+	result_path = /obj/item/level
+
+/datum/crafting_recipe/forging/chisel
+	result_path = /obj/item/weapon/chisel
+
+/datum/crafting_recipe/forging/pipe
+	result_path = /obj/item/weapon/pipe

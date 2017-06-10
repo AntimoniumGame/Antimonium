@@ -15,7 +15,7 @@
 		material_cost = round((initial(thing.weight) * result_number) * 1.5)
 
 /datum/crafting_recipe/proc/CanCraft(var/atom/craft_at, var/obj/item/stack/crafting_with)
-	return ((istype(craft_at, required_structure) || \
+	return (!required_structure || (istype(craft_at, required_structure) || \
 	 (locate(required_structure) in craft_at)) && \
 	 crafting_with.GetAmount() >= material_cost)
 
@@ -25,4 +25,5 @@
 		var/obj/item/stack/thing_stack = thing
 		thing_stack.SetAmt(result_number)
 	crafting_with.Remove(material_cost)
+	PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 75, -1)
 	return thing
