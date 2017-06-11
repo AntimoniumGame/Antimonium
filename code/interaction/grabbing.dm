@@ -4,8 +4,8 @@
 	var/atom/movable/grabbed
 	flags = 0
 
-/obj/item/grab/New(var/mob/human/_owner, var/atom/movable/_grabbed)
-	..(_owner)
+/obj/item/grab/New(var/newloc, var/atom/movable/_grabbed, var/mob/human/_owner)
+	..(newloc)
 	owner = _owner
 	owner.active_grabs += src
 	grabbed = _grabbed
@@ -69,12 +69,11 @@
 		NotifyNearby("<span class='warning'>\The [src] attempts to grab \the [grabbing], but [grabbing.They()] slip[grabbing.s()] through [Their()] grasp.</span>")
 		return
 
-	var/obj/item/grab/grab = new(src, grabbing)
-	CollectItem(grab, grabbing_slot)
-	var/obj/item/limb/limb = limbs[grabbing_with]
-	PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 75)
-	NotifyNearby("<span class='danger'>\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!</span>")
-	SetActionCooldown(10)
-	grab.owner.DoAttackAnimation(grab.grabbed)
-
-
+	var/obj/item/grab/grab = new(null, grabbing, src)
+	grab.ForceMove(get_turf(src))
+	if(CollectItem(grab, grabbing_slot))
+		var/obj/item/limb/limb = limbs[grabbing_with]
+		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 75)
+		NotifyNearby("<span class='danger'>\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!</span>")
+		SetActionCooldown(10)
+		grab.owner.DoAttackAnimation(grab.grabbed)

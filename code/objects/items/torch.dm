@@ -17,8 +17,13 @@
 	if(_lit)
 		Ignite()
 
-/obj/item/torch/UpdateFireOverlay()
-	return
+/obj/item/torch/Extinguish()
+	. = ..()
+	UpdateIcon()
+
+/obj/item/torch/Ignite()
+	. = ..()
+	UpdateIcon()
 
 /obj/item/torch/UpdateIcon()
 	if(IsOnFire())

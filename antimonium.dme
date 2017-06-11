@@ -244,6 +244,7 @@
 #include "code\objects\structures\forge_fire.dm"
 #include "code\objects\structures\foundation.dm"
 #include "code\objects\structures\horseshoe.dm"
+#include "code\objects\structures\lectern.dm"
 #include "code\objects\structures\millstone.dm"
 #include "code\objects\structures\sconce.dm"
 #include "code\objects\structures\spinning_wheel.dm"

@@ -47,7 +47,8 @@
 		/obj/structure/spinning_wheel,
 		/obj/structure/door,
 		/obj/structure/table,
-		/obj/structure/table/bench
+		/obj/structure/table/bench,
+		/obj/structure/lectern
 		)
 
 /datum/material/wood/GetDebris(var/amount)
