@@ -1,6 +1,6 @@
 /obj/light
 	mouse_opacity = 0
-	plane = DARK_PLANE
+	plane = LIGHTING_PLANE
 	flags = 0
 
 	layer = 1

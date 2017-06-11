@@ -24,7 +24,7 @@
 			overlays -= fire_overlay
 		if(!isnull(fstate))
 			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate)
-			fire_overlay.layer = MOB_LAYER + 0.9
+			fire_overlay.plane = EFFECTS_PLANE
 			overlays += fire_overlay
 		else
 			fire_overlay = null

@@ -22,10 +22,11 @@ menu "menu"
 window "devwindow"
 	elem "devwindow"
 		type = MAIN
-		pos = 281,0
-		size = 318x771
+		pos = 7,46
+		size = 350x700
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Dev Tools"
@@ -34,38 +35,35 @@ window "devwindow"
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 318x304
+		size = 350x248
 		anchor1 = 0,0
-		anchor2 = 100,39
+		anchor2 = 100,0
 		is-default = true
 		saved-params = ""
+		tab-background-color = none
 	elem "output"
 		type = OUTPUT
-		pos = 0,304
-		size = 318x424
-		anchor1 = 0,39
-		anchor2 = 100,94
-		font-family = "Consolas,monospace"
-		font-size = 10
+		pos = 0,248
+		size = 350x409
+		anchor1 = 0,0
+		anchor2 = 100,100
 		is-default = true
 		border = line
 		saved-params = "max-lines"
 		max-lines = 0
 	elem "devinput"
 		type = INPUT
-		pos = 0,728
-		size = 318x46
-		anchor1 = 0,94
+		pos = 0,657
+		size = 350x46
+		anchor1 = 0,100
 		anchor2 = 100,100
-		font-family = "Consolas,monospace"
-		font-size = 10
 		border = line
 		saved-params = ""
 
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 374,40
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
@@ -91,8 +89,6 @@ window "mainwindow"
 		size = 300x24
 		anchor1 = 100,100
 		anchor2 = none
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		text-color = #d4d4d4
 		background-color = #1f1f1f
 		is-default = true
@@ -105,8 +101,6 @@ window "mainwindow"
 		size = 300x350
 		anchor1 = 100,100
 		anchor2 = none
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		text-color = #d4d4d4
 		background-color = #1f1f1f
 		border = line
@@ -131,8 +125,6 @@ window "varswindow"
 		size = 400x40
 		anchor1 = 0,0
 		anchor2 = 100,0
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		border = line
 		drop-zone = false
 		right-click = true
@@ -147,8 +139,6 @@ window "varswindow"
 		size = 400x24
 		anchor1 = 0,0
 		anchor2 = 100,0
-		font-family = "@Arial Unicode MS,sans-serif"
-		font-size = 10
 		border = line
 		saved-params = "is-checked"
 		text = "Auto-refresh"
@@ -160,8 +150,6 @@ window "varswindow"
 		size = 400x536
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Consolas,monospace"
-		font-size = 10
 		border = line
 		drop-zone = false
 		right-click = true
