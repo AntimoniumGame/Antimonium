@@ -8,6 +8,8 @@
 /mob/proc/HandleHunger()
 	if(hunger>0 && prob(1))
 		hunger--
+	hunger_meter.UpdateMeter(hunger)
+
 /*
 	if(prob(5))
 		switch(hunger)
