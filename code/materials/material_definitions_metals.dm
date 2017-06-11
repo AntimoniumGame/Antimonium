@@ -32,7 +32,6 @@
 
 /datum/material/metal/iron
 	general_name = "iron"
-	strength = 1
 	sharpness_modifier = 2
 	weight_modifier = 2
 
@@ -41,7 +40,6 @@
 
 /datum/material/metal/copper
 	general_name = "copper"
-	strength = 0.8
 	sharpness_modifier = 1.5
 	weight_modifier = 1.2
 	colour = BRIGHT_ORANGE
@@ -55,7 +53,6 @@
 
 /datum/material/metal/lead
 	general_name = "lead"
-	strength = 0.5
 	weight_modifier = 8
 	sharpness_modifier = 0.4
 	melting_point = 600
@@ -65,7 +62,6 @@
 
 /datum/material/metal/gold
 	general_name = "gold"
-	strength = 0.1
 	weight_modifier = 7
 	sharpness_modifier = 0.1
 	melting_point = 1300
@@ -76,7 +72,6 @@
 
 /datum/material/metal/antimonium
 	general_name = "antimonium"
-	strength = 0.5
 	sharpness_modifier = 1
 	weight_modifier = 4
 	melting_point = 900
