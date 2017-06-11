@@ -233,6 +233,7 @@
 #include "code\objects\structures\bellows.dm"
 #include "code\objects\structures\bench.dm"
 #include "code\objects\structures\brazier.dm"
+#include "code\objects\structures\carpet.dm"
 #include "code\objects\structures\cask.dm"
 #include "code\objects\structures\chair.dm"
 #include "code\objects\structures\crate.dm"
