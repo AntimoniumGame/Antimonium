@@ -160,8 +160,8 @@
 	..()
 
 /obj/item/stack/proc/UpdateStackOverlays()
-	var/list/ovelays_list = overlays
-	ovelays_list -= stack_overlays
+	var/list/overlays_list = overlays
+	overlays_list -= stack_overlays
 
 	stack_overlays = list()
 
@@ -171,8 +171,8 @@
 		I.pixel_y = rand(-5,5)
 		stack_overlays += I
 
-	ovelays_list += stack_overlays
-	overlays = ovelays_list
+	overlays_list += stack_overlays
+	overlays = overlays_list
 
 /obj/item/stack/GetAmount()
 	return amount
