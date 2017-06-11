@@ -6,6 +6,7 @@
 	var/required_structure
 	var/required_skills = 0
 	var/action_third_person = "crafts"
+	var/obj/item/example_atom
 
 /datum/crafting_recipe/New()
 	..()
@@ -13,6 +14,8 @@
 	result_name = initial(thing.name)
 	if(isnull(material_cost))
 		material_cost = round((initial(thing.weight) * result_number) * 1.5)
+	example_atom = new()
+	example_atom.icon = initial(thing.icon)
 
 /datum/crafting_recipe/proc/CanCraft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	return (!required_structure || (istype(craft_at, required_structure) || \

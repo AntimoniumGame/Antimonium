@@ -19,7 +19,7 @@
 /atom/proc/UpdateIcon()
 	return
 
-/atom/proc/GetRadialMenuContents(var/mob/user)
+/atom/proc/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
 	return list()
 
 /atom/movable/proc/UpdateShadowUnderlay()

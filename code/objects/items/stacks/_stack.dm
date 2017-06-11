@@ -100,26 +100,8 @@
 		return TRUE
 
 	if(material && can_craft_with)
-		if(TryCraft(user, prop))
+		if(TryCraft(user, prop) || TryBuild(user, prop))
 			return TRUE
-		if(prop.associated_skill & SKILL_ARCHITECTURE)
-			var/list/buildings = material.GetBuildableTurfs(src)
-			if(buildings.len)
-				if(GetAmount() < material.GetTurfCost())
-					user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
-				else
-					if(locate(/obj/structure/foundation) in get_turf(src))
-						user.Notify("<span class='warning'>There is already a foundation in that location.</span>")
-						return TRUE
-					if(locate(/obj/structure) in get_turf(src))
-						user.Notify("<span class='warning'>There is a structure occupying that location.</span>")
-						return TRUE
-					var/select_type = input("Select a building type.") as null|anything in buildings
-					if(select_type)
-						user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
-						new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, material.GetTurfCost()))
-						Remove(material.GetTurfCost())
-				return TRUE
 
 	if(MatchesStackType(prop))
 		var/obj/item/stack/other = prop
@@ -203,20 +185,37 @@
 		UpdateIcon()
 		UpdateStrings()
 
+/obj/item/stack/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
+	if(menu_type == RADIAL_MENU_CRAFTING && istype(args, /obj/item) && material)
+		var/obj/item/prop = args
+		return material.GetRecipesFor(prop.associated_skill, get_turf(src), src)
+	return ..()
+
 /obj/item/stack/proc/TryCraft(var/mob/user, var/obj/item/prop)
-	if(!material || !prop.associated_skill)
-		return FALSE
+	var/list/options = GetRadialMenuContents(user, RADIAL_MENU_CRAFTING, prop)
+	if(options && options.len)
+		new /obj/ui/radial_menu/crafting(user, src, prop)
+		return TRUE
+	return FALSE
 
-	var/list/valid_recipes = material.GetRecipesFor(prop.associated_skill, get_turf(src), src)
-
-	if(!valid_recipes || !valid_recipes.len)
-		return FALSE
-
-	var/datum/crafting_recipe/crecipe = input("What do you wish to craft?") as null|anything in valid_recipes
-	if(!crecipe || !src || Deleted(src) || !crecipe.CanCraft(get_turf(src), src) || !user || !IsAdjacentTo(user, src))
-		return FALSE
-
-	var/obj/item/result = crecipe.Craft(get_turf(src), src)
-	user.DoAttackAnimation(get_turf(src), prop)
-	user.NotifyNearby("<span class='notice'>\The [user] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].</span>")
-	return TRUE
+/obj/item/stack/proc/TryBuild(var/mob/user, var/obj/item/prop)
+/*
+	if(prop.associated_skill & SKILL_ARCHITECTURE)
+		var/list/buildings = material.GetBuildableTurfs(src)
+		if(buildings.len)
+			if(GetAmount() < material.GetTurfCost())
+				user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
+			else
+				if(locate(/obj/structure/foundation) in get_turf(src))
+					user.Notify("<span class='warning'>There is already a foundation in that location.</span>")
+					return TRUE
+				if(locate(/obj/structure) in get_turf(src))
+					user.Notify("<span class='warning'>There is a structure occupying that location.</span>")
+					return TRUE
+				var/select_type = input("Select a building type.") as null|anything in buildings
+				if(select_type)
+					user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
+					new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, material.GetTurfCost()))
+					Remove(material.GetTurfCost())
+			return TRUE
+*/

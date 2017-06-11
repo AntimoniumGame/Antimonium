@@ -64,3 +64,6 @@
 	SLOT_HEAD =       FALSE,
 	SLOT_EYES =       FALSE
 	)
+
+#define RADIAL_MENU_DEFAULT  "default"
+#define RADIAL_MENU_CRAFTING "crafting"

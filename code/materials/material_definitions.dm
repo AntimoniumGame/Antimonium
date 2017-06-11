@@ -4,6 +4,12 @@
 	sharpness_modifier = 0.1
 	ignition_point = 700
 
+/datum/material/paper
+	general_name = "paper"
+	weight_modifier = 0.1
+	sharpness_modifier = 0.1
+	ignition_point = 400
+
 /datum/material/cloth/cotton
 	general_name = "cotton"
 	colour = WHITE

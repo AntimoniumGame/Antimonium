@@ -10,18 +10,61 @@
 	dir = NORTH
 	pixel_x = 0
 	pixel_y = 16
-	var/filled
+	max_contains_count =       1
+	max_contains_size_single = 30
+	max_contains_size_total =  30
 
-// Placeholder.
-/obj/structure/lectern/New()
-	if(prob(60))
-		filled = pick(list("scroll","book","paper"))
+	var/obj/item/written/holding
+	var/image/book_overlay
+
+/obj/structure/lectern/CanAcceptItem(var/obj/item/prop)
+	return ..() && istype(prop, /obj/item/written)
+
+/obj/structure/lectern/ThingPutInside(var/obj/item/prop)
 	..()
-// End placeholder.
+	if(!holding)
+		holding = prop
+		UpdateBookOverlay()
+
+/obj/structure/lectern/ThingTakenOut(var/obj/item/prop)
+	..()
+	if(holding == prop)
+		holding = null
+		UpdateBookOverlay()
+
+/obj/structure/lectern/proc/UpdateBookOverlay()
+	if(book_overlay)
+		overlays -= book_overlay
+	if(holding)
+		book_overlay = holding.GetWornIcon("lectern")
+		overlays += book_overlay
+
+/obj/structure/lectern/ManipulatedBy(var/mob/user, var/slot)
+	. = ..()
+	if(!. && holding)
+		contains -= holding
+		holding.ForceMove(get_turf(src))
+		if(user.CollectItem(holding, slot))
+			user.NotifyNearby("\The [user] removes \the [holding] from \the [src].")
+			ThingTakenOut(holding)
+			holding = null
+			UpdateBookOverlay()
+			return TRUE
+		else
+			contains += holding
+			holding.ForceMove(src)
 
 /obj/structure/lectern/UpdateIcon()
 	..()
-	if(filled) overlays += filled
+	UpdateBookOverlay()
+
+/obj/structure/lectern/New()
+	..()
+	if(prob(60))
+		var/filled = pick(typesof(/obj/item/written))
+		holding = new filled(src)
+		contains += holding
+		UpdateBookOverlay()
 
 /obj/structure/lectern/ToggleOpen()
 	return
