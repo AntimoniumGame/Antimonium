@@ -44,7 +44,7 @@
 			icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 		else if(material_state == STATE_POWDER)
 			icon = 'icons/objects/items/alchemy/powder_grey.dmi'
-	. = ..()
+	..()
 
 /obj/item/stack/ingredient/Melt()
 

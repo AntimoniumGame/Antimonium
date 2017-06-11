@@ -1,14 +1,27 @@
 /mob
 	var/mob_overlay_ident
+	var/list/mob_overlays	// a list of all the overlays of objects and limbs for this mob
 
-/mob/UpdateIcon(var/list/supplied = list())
+//only call this for a full icon update
+/mob/UpdateIcon()
 	icon = null
+
+	UpdateMobIcons()
+	UpdateShadowUnderlay()
+	UpdateFireOverlay()
+
+/mob/proc/UpdateMobIcons()
+	overlays -= mob_overlays
+
+	mob_overlays = list()
+
 	for(var/slot in inventory_slots_by_layer)
 		if(inventory_slots_by_layer[slot])
-			supplied += UpdateIconByLimb(slot)
+			mob_overlays += UpdateIconByLimb(slot)
 		else
-			supplied += UpdateIconBySlot(slot)
-	..(supplied)
+			mob_overlays += UpdateIconBySlot(slot)
+
+	overlays += mob_overlays
 
 /mob/proc/UpdateIconBySlot(var/slot)
 	var/obj/ui/inv/inv_slot = inventory_slots[slot]

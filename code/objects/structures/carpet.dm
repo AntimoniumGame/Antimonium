@@ -8,6 +8,7 @@
 
 	var/x_size = 2
 	var/y_size = 2
+	var/list/carpet_overlays
 
 /obj/structure/carpet/ManipulatedBy(var/mob/user)
 	NotifyNearby("\The [user] rotates \the [src].")
@@ -31,10 +32,13 @@
 	x_size = 3
 	y_size = 3
 
-/obj/structure/carpet/UpdateIcon(var/list/supplied = list())
+/obj/structure/carpet/UpdateIcon()
 
 	bound_width = 32 * x_size
 	bound_height = 32 * y_size
+
+	overlays -= carpet_overlays
+	carpet_overlays = list()
 
 	for(var/tx = 1 to x_size)
 		for(var/ty = 1 to y_size)
@@ -62,5 +66,5 @@
 			var/image/cell = image(icon, cell_icon_state)
 			cell.pixel_x = (tx-1)*32
 			cell.pixel_y = (ty-1)*32
-			supplied += cell
-	overlays = supplied
+			carpet_overlays += cell
+	overlays += carpet_overlays

@@ -5,7 +5,12 @@
 	flags = FLAG_SIMULATED
 	default_material_path = /datum/material/stone/glass
 
-obj/structure/alembic/UpdateIcon(var/list/supplied = list())
+	var/image/alembic_overlay	// the glass bit
+
+obj/structure/alembic/UpdateIcon()
 	icon_state = "world"
-	supplied += image(icon = icon, icon_state = "alembic")
-	. = ..(supplied)
+
+	overlays -= alembic_overlay
+	alembic_overlay += image(icon = icon, icon_state = "alembic")
+	overlays += alembic_overlay
+	..()

@@ -31,7 +31,7 @@
 	else
 		screen_loc = "1:16,[view_y+1]"
 
-/obj/ui/meter/UpdateIcon(var/list/supplying = list())
+/obj/ui/meter/UpdateIcon()
 	UpdateMeter()
 	..()
 
@@ -58,7 +58,6 @@
 
 	overlays += meter
 	overlays += mask
-
 
 /obj/ui/meter/proc/GetMeterColor()
 	switch((current_value / max_value)*100)

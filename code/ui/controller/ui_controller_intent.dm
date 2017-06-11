@@ -29,5 +29,5 @@
 	else
 		GetInputFrom(help)
 
-/obj/ui/component/intent/UpdateIcon(var/list/supplied = list())
+/obj/ui/component/intent/UpdateIcon()
 	return

@@ -13,12 +13,9 @@
 
 /obj/structure/brazier/Initialize()
 	..()
-	next_burn_sound = rand(10,20)
-
-/obj/structure/brazier/Initialize()
-	..()
 	Ignite()
 	processing_objects += src
+	next_burn_sound = rand(10,20)
 
 /obj/structure/brazier/Destroy()
 	processing_objects -= src

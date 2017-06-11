@@ -8,6 +8,10 @@
 	var/datum/material/wall_material
 	var/datum/material/floor_material
 
+	var/list/wall_overlays		// overlays that makeup a wall turf
+	var/list/floor_overlays		// overlays that makeup a floor turf
+	var/list/ao_overlays		// ambient occlusion overlays (cast on a floor when next to a wall)
+
 /turf/UpdateStrings()
 	if(wall_material)
 		name = "[wall_material.GetDescriptor()] wall"
@@ -148,10 +152,16 @@
 		user.NotifyNearby("\The [user] digs a long, deep pit.")
 		new /obj/structure/earthworks/pit(src)
 
-/turf/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)
+/turf/UpdateIcon(var/ignore_neighbors)
 
 	if(!floor_material && !wall_material)
 		return
+
+	overlays -= wall_overlays | floor_overlays | ao_overlays
+
+	wall_overlays = list()
+	floor_overlays = list()
+	ao_overlays = list()
 
 	var/list/connected_neighbors = list()
 	var/list/shadow_edges = list()
@@ -183,10 +193,10 @@
 				var/list/blend_data = blend_dirs[blend_dir]
 				var/image/I = image(blend_data[1], "edges", dir = text2num(blend_dir))
 				I.layer = layer + blend_data[2]
-				supplied += I
+				floor_overlays += I
 
 		if(floor_material.turf_effect_overlay)
-			supplied += image(icon, floor_material.turf_effect_overlay)
+			floor_overlays += image(icon, floor_material.turf_effect_overlay)
 
 	if(wall_material)
 		for(var/i = 1 to 4)
@@ -200,7 +210,7 @@
 				corner |= 4
 			var/image/I = image(wall_material.turf_wall_icon, "[corner]", dir = 1<<(i-1))
 			I.layer = MOB_LAYER
-			supplied += I
+			wall_overlays += I
 	else
 		for(var/i = 1 to 4)
 			var/cdir = corner_dirs[i]
@@ -214,9 +224,10 @@
 			var/image/I = image('icons/images/turf_shadows.dmi', "[corner]", dir = 1<<(i-1))
 			I.layer = TURF_LAYER + 0.95
 			I.alpha = 80
-			supplied += I
+			ao_overlays += I
 
-	..(supplied)
+	overlays += wall_overlays | floor_overlays | ao_overlays
+	UpdateFireOverlay()
 
 /turf/Entered(var/atom/movable/crosser, var/oldloc)
 	. = ..(crosser, oldloc)

@@ -8,6 +8,8 @@
 	var/list/update_bodyparts
 	var/associated_limb
 
+	var/image/inv_overlay
+
 /obj/ui/inv/MouseDrop(var/atom/over_object,src_location,over_location,src_control,over_control,params)
 	if(holding)
 		holding.MouseDrop(over_object,src_location,over_location,src_control,over_control,params)
@@ -40,14 +42,20 @@
 	holding = null
 	UpdateIcon()
 
-/obj/ui/inv/UpdateIcon(var/list/supplied = list())
+/obj/ui/inv/UpdateIcon()
 	name = unmodified_name
-	overlays.Cut()
+
+	overlays -= inv_overlay
+
+	inv_overlay = null
+
 	if(holding)
 		name = "[name] - [holding.name]"
-		overlays += holding.GetInvIcon()
+		inv_overlay = holding.GetInvIcon()
 	if(update_bodyparts && update_bodyparts.len)
 		for(var/thing in update_bodyparts)
 			var/obj/item/limb/limb = owner.limbs[thing]
 			if(istype(limb))
 				limb.SetNotMoving((holding ? TRUE : FALSE), TRUE)
+
+	overlays += inv_overlay
