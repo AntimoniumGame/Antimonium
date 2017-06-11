@@ -1,6 +1,5 @@
 /datum/material/cloth
 	general_name = "cloth"
-	strength = 0.1
 	weight_modifier = 0.1
 	sharpness_modifier = 0.1
 	ignition_point = 700
@@ -23,7 +22,6 @@
 /datum/material/wood
 	general_name = "wood"
 	descriptor = "wooden"
-	strength = 0.3
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 600
@@ -34,6 +32,9 @@
 		/datum/crafting_recipe/carpentry,
 		/datum/crafting_recipe/carpentry/dartboard,
 		)
+
+	turf_floor_icon = 'icons/turfs/wood_floor.dmi'
+	turf_wall_icon = 'icons/turfs/wood_wall.dmi'
 
 /datum/material/wood/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(
@@ -60,7 +61,6 @@
 /datum/material/meat
 	general_name = "meat"
 	descriptor = "raw"
-	strength = 0.3
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 460
@@ -68,14 +68,29 @@
 
 /datum/material/leather
 	general_name = "leather"
-	strength = 0.1
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
 	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder
 
 /datum/material/dirt
 	general_name = "dirt"
-	strength = 0.1
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
 	hit_sound = 'sounds/effects/dig1.ogg'
+	structural_integrity = 3
+
+	turf_is_diggable = TRUE
+	turf_edge_layer = 0.4
+	turf_base_states = 4
+	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
+	turf_wall_icon = 'icons/turfs/dirt_wall.dmi'
+
+/datum/material/dirt/grass
+	general_name = "grass"
+	turf_edge_layer = 0.5
+	turf_floor_icon = 'icons/turfs/grass_floor.dmi'
+
+/datum/material/dirt/roots
+	general_name = "roots"
+	turf_edge_layer = 0.6
+	turf_floor_icon = 'icons/turfs/root_floor.dmi'

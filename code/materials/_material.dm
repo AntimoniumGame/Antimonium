@@ -1,18 +1,17 @@
 /datum/material
 
-	var/descriptor
-	var/general_name = "stuff"
+	var/general_name = "stuff"      // General purpose string for referring to the material.
+	var/descriptor                  // Used by materials with a different adjective to their name (wood/wooden wall vs iron/iron wall)
 
-	var/strength = 1
-	var/sharpness_modifier = 1
-	var/weight_modifier = 1
-	var/structural_integrity = 5
+	var/sharpness_modifier = 1      // Props of this material will multiply their default sharpness by this.
+	var/weight_modifier = 1         // Props of this material will multiply their default weight by this.
+	var/structural_integrity = 5    // Walls made of this material will use this value for max HP.
 
+	// Descriptive strings for various item states.
 	var/liquid_name
 	var/solid_name
 	var/gas_name
 	var/powder_name
-
 	var/solid_portion_name =         "lump"
 	var/powder_portion_name =        "pinch"
 	var/liquid_portion_name =        "measure"
@@ -22,23 +21,33 @@
 	var/liquid_portion_name_plural = "measures"
 	var/gas_portion_name_plural =    "puffs"
 
-	// Temperatures are in Kelvin.
+	// Phase state transition points. Temperatures are in Kelvin.
 	var/melting_point =  TEMPERATURE_NEVER_HOT
 	var/boiling_point =  TEMPERATURE_NEVER_HOT
 	var/ignition_point = TEMPERATURE_NEVER_HOT
 
-	var/colour = WHITE
-	var/grindable = FALSE
-	var/spinnable = FALSE
+	var/colour = WHITE    // General purpose colour value.
+	var/grindable = FALSE // Can be ground by the millstone or SKILL_ALCHEMY tools (mortar and pestle).
+	var/spinnable = FALSE // Can be spun into thread at the loom.
 
-	var/solid_icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
-	var/powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'
-	var/thermal_insulation = 0
+	var/solid_icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi' // Stack icon used for solid lumps.
+	var/powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'     // Stack icon used for ground/powdered pinches.
+	var/thermal_insulation = 0 // Temperature against which clothing of this materiaal protects the wearer.
 
-	var/construction_sound = 'sounds/effects/click1.ogg'
-	var/hit_sound = 'sounds/effects/chisel1.ogg'
-	var/list/crafting_recipe_paths = list()
-	var/list/recipes = list()
+	var/construction_sound = 'sounds/effects/click1.ogg' // General purpose building sound for structures of this material.
+	var/hit_sound = 'sounds/effects/chisel1.ogg'         // General purpose impact sound for atoms made from this materiala.
+	var/list/crafting_recipe_paths = list()              // A list of crafting recipe path types valid for this material.
+	var/list/recipes = list()                            // A list of instanced crafting recipes for this material.
+
+	// Turf vars.
+	var/turf_effect_overlay                              // If specified, will apply this state from the turf_floor_icon as an overlay.
+	var/turf_floor_icon                                  // Icon file to use for a floor made of this material.
+	var/turf_wall_icon                                   // Icon file to use for a wall made of this material.
+	var/turf_is_diggable                                 // Floors of this material can be dug into pits or farms with a shovel.
+	var/turf_edge_layer                                  // Floors will use this value for the layer of edge images drawn over neighboring turfs.
+	var/turf_base_states = 1                             // How many base floor states are in the turf_floor_icon file. Updated at runtime.
+	var/turf_wall_is_dense = 1                           // Are walls of this material dense?
+	var/turf_wall_is_transparent = 0                     // Are walls of this material transparent?
 
 /datum/material/New()
 
@@ -52,6 +61,14 @@
 	for(var/recipe in crafting_recipe_paths)
 		recipes += GetUniqueDataByPath(recipe)
 
+	if(turf_floor_icon)
+		var/list/istates = icon_states(turf_floor_icon)
+		var/has_edges = locate("edges" in istates)
+		turf_base_states = istates.len-1
+		if(has_edges)
+			turf_base_states--
+		if(turf_effect_overlay && (locate(turf_effect_overlay) in istates))
+			turf_base_states--
 	..()
 
 /datum/material/proc/GetRecipesFor(var/skills, var/atom/craft_at, var/obj/item/stack/crafting_with)
@@ -144,3 +161,11 @@
 
 /datum/material/proc/ConvertToRuin(var/loc)
 	new /turf/floor/dirt(loc)
+
+/datum/material/proc/OnTurfEntry(var/turf/crossing, var/atom/movable/crosser)
+	return
+
+/datum/material/proc/OnTurfAttack(var/turf/target, var/mob/user, var/obj/item/prop)
+	return
+
+
