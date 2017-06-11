@@ -35,6 +35,9 @@
 		/datum/crafting_recipe/carpentry/dartboard,
 		)
 
+	turf_floor_icon = 'icons/turfs/wood_floor.dmi'
+	turf_wall_icon = 'icons/turfs/wood_wall.dmi'
+
 /datum/material/wood/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(
 		/obj/structure/cask,
@@ -79,3 +82,20 @@
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
 	hit_sound = 'sounds/effects/dig1.ogg'
+	structural_integrity = 3
+
+	turf_is_diggable = TRUE
+	turf_edge_layer = 0.4
+	turf_base_states = 4
+	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
+	turf_wall_icon = 'icons/turfs/dirt_wall.dmi'
+
+/datum/material/dirt/grass
+	general_name = "grass"
+	turf_edge_layer = 0.5
+	turf_floor_icon = 'icons/turfs/grass_floor.dmi'
+
+/datum/material/dirt/roots
+	general_name = "roots"
+	turf_edge_layer = 0.6
+	turf_floor_icon = 'icons/turfs/root_floor.dmi'

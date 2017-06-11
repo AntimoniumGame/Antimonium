@@ -40,6 +40,16 @@
 	var/list/crafting_recipe_paths = list()
 	var/list/recipes = list()
 
+	// Turf vars.
+	var/turf_effect_overlay
+	var/turf_floor_icon
+	var/turf_wall_icon
+	var/turf_is_diggable
+	var/turf_edge_layer
+	var/turf_base_states = 1
+	var/turf_wall_is_dense = 1
+	var/turf_wall_is_transparent = 0
+
 /datum/material/New()
 
 	if(!general_name) general_name = "matter"
@@ -52,6 +62,14 @@
 	for(var/recipe in crafting_recipe_paths)
 		recipes += GetUniqueDataByPath(recipe)
 
+	if(turf_floor_icon)
+		var/list/istates = icon_states(turf_floor_icon)
+		var/has_edges = locate("edges" in istates)
+		turf_base_states = istates.len-1
+		if(has_edges)
+			turf_base_states--
+		if(turf_effect_overlay && (locate(turf_effect_overlay) in istates))
+			turf_base_states--
 	..()
 
 /datum/material/proc/GetRecipesFor(var/skills, var/atom/craft_at, var/obj/item/stack/crafting_with)
@@ -144,3 +162,11 @@
 
 /datum/material/proc/ConvertToRuin(var/loc)
 	new /turf/floor/dirt(loc)
+
+/datum/material/proc/OnTurfEntry(var/turf/crossing, var/atom/movable/crosser)
+	return
+
+/datum/material/proc/OnTurfAttack(var/turf/target, var/mob/user, var/obj/item/prop)
+	return
+
+

@@ -2,7 +2,45 @@
 	layer = TURF_LAYER
 	luminosity = 1
 	flags = FLAG_TEMPERATURE_SENSITIVE | FLAG_SIMULATED
-	var/edge_blend_layer
+	icon_state = "1"
+
+	var/integrity = 0
+	var/datum/material/wall_material
+	var/datum/material/floor_material
+
+/turf/UpdateStrings()
+	if(wall_material)
+		name = "[wall_material.GetDescriptor()] wall"
+	else if(floor_material)
+		name = "[floor_material.GetDescriptor()] floor"
+	else
+		name = "floor"
+
+/turf/New(var/newloc, var/_floor_material, var/_wall_material)
+	if(_floor_material) floor_material = GetUniqueDataByPath(_floor_material)
+	if(_wall_material) wall_material = GetUniqueDataByPath(_wall_material)
+	if(!floor_material)
+		if(wall_material)
+			floor_material = wall_material
+		else
+			floor_material = GetUniqueDataByPath(/datum/material/dirt)
+
+	if(floor_material)
+		icon = floor_material.turf_floor_icon
+		if(floor_material.turf_base_states > 1)
+			icon_state = "[rand(1,floor_material.turf_base_states)]"
+		else
+			icon_state = "1"
+
+	if(wall_material)
+		integrity = wall_material.structural_integrity
+		density = wall_material.turf_wall_is_dense
+		opacity = !wall_material.turf_wall_is_transparent
+	else
+		density = 0
+		opacity = 0
+
+	..(newloc)
 
 /turf/Initialize()
 	SetDir(dir)
@@ -40,11 +78,42 @@
 /turf/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!. && !user.OnActionCooldown())
+
+		if(prop.associated_skill & SKILL_MINING)
+			if(wall_material)
+				NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
+				PlayLocalSound(src, wall_material.hit_sound, 100)
+				user.SetActionCooldown(6)
+				integrity--
+				var/atom/movable/debris = wall_material.GetDebris(1)
+				if(debris)
+					debris.ForceMove(get_turf(user))
+				if(integrity <= 0)
+					DestroyWall()
+				return TRUE
+			else if(floor_material && floor_material.turf_is_diggable && istype(prop, /obj/item/weapon/shovel))
+				DigEarthworks(user)
+				return TRUE
+
 		var/list/valid_targets = GetSimulatedAtoms()
 		if(!valid_targets.len) return
 		var/atom/thing = pick(valid_targets)
 		if(thing.AttackedBy(user, prop))
 			user.SetActionCooldown(3)
+			return TRUE
+
+/turf/proc/DestroyWall()
+	wall_material = null
+	density = 0
+	opacity = 0
+	UpdateIcon()
+	UpdateStrings()
+
+/turf/ManipulatedBy(var/mob/user, var/obj/item/prop, var/slot)
+	. = ..()
+	if(!. && !user.OnActionCooldown())
+		if(floor_material && floor_material.turf_is_diggable && user.IsDigger())
+			DigEarthworks(user, slot, check_digger = TRUE)
 			return TRUE
 
 /turf/GetWeight()
@@ -55,3 +124,110 @@
 
 /turf/proc/GetSoundEnvironment()
 	return -1
+
+/turf/IsFlammable()
+	return ((wall_material && wall_material.IsFlammable()) || (floor_material && floor_material.IsFlammable()))
+
+/turf/HandleFireDamage()
+	if(fire_intensity >= 100)
+		KillLight()
+		new /turf/floor/dirt(src)
+
+/turf/proc/DigEarthworks(var/mob/user, var/slot, var/check_digger = FALSE)
+
+	if(slot && !user.CanUseInvSlot(slot))
+		return FALSE
+
+	if(locate(/obj/structure/earthworks) in src)
+		user.Notify("There are already earthworks here. You will need to fill them in before digging.")
+		return TRUE
+
+	if(user.intent.selecting == INTENT_HELP && (!check_digger || user.IsDigger(TRUE)))
+		user.NotifyNearby("\The [user] carefully tills the soil into a farm.")
+		new /obj/structure/earthworks/farm(src)
+	else
+		user.NotifyNearby("\The [user] digs a long, deep pit.")
+		new /obj/structure/earthworks/pit(src)
+
+/turf/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors)
+
+	if(!floor_material && !wall_material)
+		return
+
+	var/list/connected_neighbors = list()
+	var/list/shadow_edges = list()
+	var/list/blend_dirs = list()
+
+	for(var/thing in Trange(1,src))
+
+		if(thing == src)
+			continue
+		var/turf/neighbor = thing
+		var/use_dir = get_dir(src, neighbor)
+
+		if(neighbor.floor_material)
+			if(!isnull(neighbor.floor_material.turf_edge_layer) && (isnull(floor_material.turf_edge_layer) || floor_material.turf_edge_layer < neighbor.floor_material.turf_edge_layer))
+				blend_dirs["[use_dir]"] = list(neighbor.floor_material.turf_floor_icon, neighbor.floor_material.turf_edge_layer)
+
+		if(neighbor.density)
+			connected_neighbors += get_dir(src, neighbor)
+		else
+			shadow_edges += use_dir
+
+		if(!ignore_neighbors)
+			neighbor.UpdateIcon(ignore_neighbors = TRUE)
+
+	if(floor_material)
+
+		if(blend_dirs.len)
+			for(var/blend_dir in blend_dirs)
+				var/list/blend_data = blend_dirs[blend_dir]
+				var/image/I = image(blend_data[1], "edges", dir = text2num(blend_dir))
+				I.layer = layer + blend_data[2]
+				supplied += I
+
+		if(floor_material.turf_effect_overlay)
+			supplied += image(icon, floor_material.turf_effect_overlay)
+
+	if(wall_material)
+		for(var/i = 1 to 4)
+			var/cdir = corner_dirs[i]
+			var/corner = 0
+			if(cdir in connected_neighbors)
+				corner |= 2
+			if(turn(cdir,45) in connected_neighbors)
+				corner |= 1
+			if(turn(cdir,-45) in connected_neighbors)
+				corner |= 4
+			var/image/I = image(wall_material.turf_wall_icon, "[corner]", dir = 1<<(i-1))
+			I.layer = MOB_LAYER
+			supplied += I
+	else
+		for(var/i = 1 to 4)
+			var/cdir = corner_dirs[i]
+			var/corner = 0
+			if(cdir in shadow_edges)
+				corner |= 2
+			if(turn(cdir,45) in shadow_edges)
+				corner |= 1
+			if(turn(cdir,-45) in shadow_edges)
+				corner |= 4
+			var/image/I = image('icons/images/turf_shadows.dmi', "[corner]", dir = 1<<(i-1))
+			I.layer = TURF_LAYER + 0.95
+			I.alpha = 80
+			supplied += I
+
+	..(supplied)
+
+/turf/Entered(var/atom/movable/crosser, var/oldloc)
+	. = ..(crosser, oldloc)
+	if(floor_material) floor_material.OnTurfEntry(src, crosser)
+	if(wall_material)  wall_material.OnTurfEntry(src, crosser)
+
+/turf/AttackedBy(var/mob/user, var/obj/item/prop)
+	. = ..()
+	if(!.)
+		if(floor_material && floor_material.OnTurfAttack(src, user, prop))
+			return TRUE
+		if(wall_material && wall_material.OnTurfAttack(src, user, prop))
+			return TRUE

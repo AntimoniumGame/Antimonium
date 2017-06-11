@@ -5,6 +5,20 @@
 	melting_point =  TEMPERATURE_FREEZING
 	boiling_point =  TEMPERATURE_BOILING
 	colour = PALE_BLUE
+	turf_effect_overlay = "gleam"
+	turf_floor_icon = 'icons/turfs/water_floor.dmi'
+
+/datum/material/water/OnTurfEntry(var/turf/crossing, var/atom/movable/crosser)
+	if(crosser.IsOnFire())
+		crossing.NotifyNearby("A cloud of hissing steam rises up as \the [crosser] enters \the [crossing]!")
+		crosser.Extinguish()
+
+/datum/material/water/OnTurfAttack(var/turf/target, var/mob/user, var/obj/item/prop)
+	if(prop.IsOnFire())
+		target.NotifyNearby("A cloud of hissing steam rises up as \the [user] dips \the [prop] into the water!")
+		prop.Extinguish()
+		return TRUE
+	. = ..()
 
 /datum/material/water/blood
 	general_name = "blood"
