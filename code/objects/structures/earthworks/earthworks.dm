@@ -5,7 +5,7 @@
 	default_material_path = null
 
 /obj/structure/earthworks/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(istype(prop, /obj/item/weapon/shovel))
+	if(prop.associated_skill & SKILL_DIGGING)
 		FillIn(user)
 		return TRUE
 	. = ..()

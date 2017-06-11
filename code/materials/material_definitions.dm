@@ -78,12 +78,12 @@
 	sharpness_modifier = 0.1
 	hit_sound = 'sounds/effects/dig1.ogg'
 	structural_integrity = 3
-
 	turf_is_diggable = TRUE
 	turf_edge_layer = 0.4
 	turf_base_states = 4
 	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
 	turf_wall_icon = 'icons/turfs/dirt_wall.dmi'
+	demolition_skill = SKILL_DIGGING
 
 /datum/material/dirt/grass
 	general_name = "grass"

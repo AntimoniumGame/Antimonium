@@ -5,5 +5,4 @@
 	contact_size = 3
 	icon = 'icons/objects/items/shovel.dmi'
 	attack_verbs = list("bludgeons", "strikes", "smashes")
-	default_material_path = /datum/material/metal/iron
-	associated_skill = SKILL_MINING
+	associated_skill = SKILL_DIGGING

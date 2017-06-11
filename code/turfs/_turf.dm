@@ -79,21 +79,20 @@
 	. = ..()
 	if(!. && !user.OnActionCooldown())
 
-		if(prop.associated_skill & SKILL_MINING)
-			if(wall_material)
-				NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
-				PlayLocalSound(src, wall_material.hit_sound, 100)
-				user.SetActionCooldown(6)
-				integrity--
-				var/atom/movable/debris = wall_material.GetDebris(1)
-				if(debris)
-					debris.ForceMove(get_turf(user))
-				if(integrity <= 0)
-					DestroyWall()
-				return TRUE
-			else if(floor_material && floor_material.turf_is_diggable && istype(prop, /obj/item/weapon/shovel))
-				DigEarthworks(user)
-				return TRUE
+		if(wall_material && (prop.associated_skill & (wall_material.demolition_skill|SKILL_DEMOLITION)))
+			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
+			PlayLocalSound(src, wall_material.hit_sound, 100)
+			user.SetActionCooldown(6)
+			integrity--
+			var/atom/movable/debris = wall_material.GetDebris(1)
+			if(debris)
+				debris.ForceMove(get_turf(user))
+			if(integrity <= 0)
+				DestroyWall()
+			return TRUE
+		else if(floor_material && floor_material.turf_is_diggable && (prop.associated_skill & (floor_material.demolition_skill|SKILL_DEMOLITION)))
+			DigEarthworks(user)
+			return TRUE
 
 		var/list/valid_targets = GetSimulatedAtoms()
 		if(!valid_targets.len) return
