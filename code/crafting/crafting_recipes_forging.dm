@@ -42,3 +42,9 @@
 
 /datum/crafting_recipe/forging/pipe
 	result_path = /obj/item/weapon/pipe
+
+/datum/crafting_recipe/forging/shovel
+	result_path = /obj/item/weapon/shovel
+
+/datum/crafting_recipe/forging/pickaxe
+	result_path = /obj/item/weapon/pickaxe

@@ -34,6 +34,7 @@
 	var/powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'     // Stack icon used for ground/powdered pinches.
 	var/thermal_insulation = 0 // Temperature against which clothing of this materiaal protects the wearer.
 
+	var/demolition_skill = SKILL_MINING                  // If set, props must be associated with this skill to damage walls of this material.
 	var/construction_sound = 'sounds/effects/click1.ogg' // General purpose building sound for structures of this material.
 	var/hit_sound = 'sounds/effects/chisel1.ogg'         // General purpose impact sound for atoms made from this materiala.
 	var/list/crafting_recipe_paths = list()              // A list of crafting recipe path types valid for this material.

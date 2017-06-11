@@ -17,7 +17,9 @@
 		/datum/crafting_recipe/forging/handsaw,
 		/datum/crafting_recipe/forging/level,
 		/datum/crafting_recipe/forging/chisel,
-		/datum/crafting_recipe/forging/pipe
+		/datum/crafting_recipe/forging/pipe,
+		/datum/crafting_recipe/forging/shovel,
+		/datum/crafting_recipe/forging/pickaxe
 		)
 
 /datum/material/metal/GetBuildableStructures(var/obj/item/stack/building_with)

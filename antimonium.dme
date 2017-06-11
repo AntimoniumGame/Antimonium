@@ -223,6 +223,7 @@
 #include "code\objects\items\weapons\chisel.dm"
 #include "code\objects\items\weapons\hammers.dm"
 #include "code\objects\items\weapons\handsaw.dm"
+#include "code\objects\items\weapons\pickaxe.dm"
 #include "code\objects\items\weapons\pipe.dm"
 #include "code\objects\items\weapons\shovel.dm"
 #include "code\objects\items\weapons\sword.dm"

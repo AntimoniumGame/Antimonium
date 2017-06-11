@@ -6,3 +6,5 @@
 #define SKILL_CONSTRUCTION 32
 #define SKILL_ALCHEMY      64
 #define SKILL_MINING      128
+#define SKILL_DIGGING     256
+#define SKILL_DEMOLITION  512
