@@ -20,16 +20,12 @@
 /obj/item/torch/UpdateFireOverlay()
 	return
 
-/obj/item/torch/UpdateIcon(var/list/supplied = list())
+/obj/item/torch/UpdateIcon()
 	if(IsOnFire())
 		icon = 'icons/objects/items/torch_lit.dmi'
 	else
 		icon = 'icons/objects/items/torch.dmi'
-	var/mob/holder = loc
-	if(istype(holder))
-		holder.UpdateInventory()
-		holder.UpdateIcon()
-	..(supplied)
+	..()
 
 /obj/item/torch/Use(var/mob/user)
 	if(IsOnFire())

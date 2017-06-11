@@ -4,7 +4,13 @@
 	icon = 'icons/images/ui_doll.dmi'
 	icon_state = "underlay_health"
 
-/obj/ui/health/UpdateIcon(var/list/supplied = list())
+	var/list/limb_overlays
+
+/obj/ui/health/UpdateIcon()
+	overlays -= limb_overlays
+
+	limb_overlays = list()
+
 	for(var/limb_tag in owner.limbs)
 		var/obj/item/limb/limb = owner.limbs[limb_tag]
 		var/limb_icon = limb.broken ? "[limb_tag]-broken" : limb_tag
@@ -20,5 +26,6 @@
 				I.color = BROWN_GREEN
 			else
 				I.color = DARK_GREEN
-		supplied += I
-	overlays =  supplied
+		limb_overlays += I
+
+	overlays += limb_overlays

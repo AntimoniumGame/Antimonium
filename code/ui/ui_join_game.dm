@@ -10,7 +10,7 @@
 /obj/ui/join_game/Center(var/view_x, var/view_y)
 	screen_loc = "[round(view_x/2)]+2,[round(view_y/2)-4]"
 
-/obj/ui/join_game/UpdateIcon(var/list/supplied = list())
+/obj/ui/join_game/UpdateIcon()
 	if(!game_state || game_state.ident != GAME_RUNNING)
 		var/mob/abstract/new_player/player = owner
 		if(player.ready)

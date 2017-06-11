@@ -6,9 +6,9 @@
 	max_contains_size_total =  100
 	icon_state = "closed"
 
-/obj/structure/crate/UpdateIcon(var/list/supplied = list())
-	. = ..(supplied)
+/obj/structure/crate/UpdateIcon()
 	icon_state = "[open ? "open" : "closed"]"
+	..()
 
 /obj/structure/crate/chest
 	name = "chest"

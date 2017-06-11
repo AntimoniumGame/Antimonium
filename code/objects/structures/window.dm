@@ -8,6 +8,8 @@
 	icon_state = "map"
 	draw_shadow_underlay = null
 
+	var/list/window_overlays		// overlays to join the window to other windows
+
 /obj/structure/window/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(prop.GetWeight() < 3)
 		user.NotifyNearby("<span class='warning'>\The [user] bangs \the [prop] against \the [src].</span>")
@@ -33,8 +35,12 @@
 	UpdateIcon()
 	NullLoc(src)
 
-/obj/structure/window/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
+/obj/structure/window/UpdateIcon(var/ignore_neighbors = FALSE)
 	icon_state = ""
+
+	overlays -= window_overlays
+
+	window_overlays = list()
 	var/list/connected_neighbors = list()
 	for(var/thing in Trange(1,src))
 		var/turf/neighbor = thing
@@ -57,5 +63,7 @@
 			corner |= 1
 		if(turn(cdir,-45) in connected_neighbors)
 			corner |= 4
-		supplied += image(icon, "[corner]", dir = 1<<(i-1))
-	..(supplied)
+		window_overlays += image(icon, "[corner]", dir = 1<<(i-1))
+
+	overlays += window_overlays
+	..()

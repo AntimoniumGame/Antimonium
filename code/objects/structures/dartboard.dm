@@ -15,12 +15,12 @@
 	AlignWithWall(src)
 	UpdateIcon()
 
-/obj/item/dartboard/UpdateIcon(var/list/supplied)
+/obj/item/dartboard/UpdateIcon()
 	if(dir)
 		icon_state = "world"
 	else
 		icon_state = "world_flat"
-	..(supplied)
+	..()
 
 /obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile)
 

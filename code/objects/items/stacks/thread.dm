@@ -14,7 +14,7 @@
 		dyed = material.colour
 	UpdateIcon()
 
-/obj/item/stack/thread/UpdateIcon(var/list/supplying)
+/obj/item/stack/thread/UpdateIcon()
 	switch(dyed)
 		if(WHITE)
 			icon = 'icons/objects/items/thread/thread_white.dmi'
@@ -30,4 +30,4 @@
 			icon = 'icons/objects/items/thread/thread_red.dmi'
 		if(DARK_PURPLE)
 			icon = 'icons/objects/items/thread/thread_purple.dmi'
-	..(supplying)
+	..()

@@ -22,7 +22,6 @@
 	max_contains_size_total =  80
 	icon_state = "closed"
 
-/obj/structure/cask/barrel/UpdateIcon(var/list/supplied = list())
-	. = ..(supplied)
+/obj/structure/cask/barrel/UpdateIcon()
 	icon_state = "[open ? "open" : "closed"]"
-
+	..()

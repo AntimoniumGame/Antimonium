@@ -20,14 +20,15 @@
 	var/fstate = GetFireIconState()
 	if(last_fire_state != fstate)
 		last_fire_state = fstate
-		if(fire_overlay)
-			overlays -= fire_overlay
+
+		overlays -= fire_overlay
+
 		if(!isnull(fstate))
 			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate)
-			fire_overlay.plane = EFFECTS_PLANE
-			overlays += fire_overlay
 		else
 			fire_overlay = null
+
+		overlays += fire_overlay
 
 /atom/proc/CanIgnite()
 	return IsFlammable()

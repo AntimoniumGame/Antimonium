@@ -6,6 +6,7 @@
 	density = FALSE
 	draw_shadow_underlay = null
 	layer = MOB_LAYER + 0.2
+	appearance_flags = TILE_BOUND
 
 	var/obj/item/torch/filled
 
@@ -52,8 +53,7 @@
 /obj/structure/sconce/UpdateFireOverlay()
 	return
 
-/obj/structure/sconce/UpdateIcon(var/list/supplied)
-	..(supplied)
+/obj/structure/sconce/UpdateIcon()
 	if(filled)
 		if(filled.IsOnFire())
 			icon_state = "sconce_lit"
@@ -67,6 +67,7 @@
 	else
 		icon_state = "sconce"
 		KillLight()
+	..()
 
 /obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(istype(prop, /obj/item/torch))

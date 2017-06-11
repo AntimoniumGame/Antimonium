@@ -69,5 +69,5 @@
 		UpdateIcon()
 
 /obj/item/plant/UpdateIcon(var/list/supplying = list())
-	. = ..(supplying)
 	icon_state = "[growth_stage]"
+	..()

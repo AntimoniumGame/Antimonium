@@ -12,32 +12,40 @@
 	open = TRUE
 
 	var/in_use = FALSE
+	var/image/thread_overlay	// overlay of the thread on the spinning wheel
 
-/obj/structure/spinning_wheel/UpdateIcon(var/list/supplied = list())
+/obj/structure/spinning_wheel/UpdateIcon()
+	UpdateThreadOverlay()
+	..()
+
+/obj/structure/spinning_wheel/proc/UpdateThreadOverlay()
+	overlays -= thread_overlay
+
 	if(locate(/obj/item/stack/fibers) in contains)
+		thread_overlay = image(icon)
 		if(in_use)
-			supplied += "thread_spinning"
+			thread_overlay.icon_state = "thread_spinning"
 		else
-			supplied += "thread"
-	..(supplied)
+			thread_overlay.icon_state = "thread"
+		overlays += thread_overlay
 
 /obj/structure/spinning_wheel/ToggleOpen(var/mob/user, var/slot)
 	return
 
 /obj/structure/spinning_wheel/ThingPutInside(var/obj/item/prop)
 	..()
-	UpdateIcon()
+	UpdateThreadOverlay()
 
 /obj/structure/spinning_wheel/ThingTakenOut(var/obj/item/prop)
 	..()
-	UpdateIcon()
+	UpdateThreadOverlay()
 
 /obj/structure/spinning_wheel/ManipulatedBy(var/mob/user, var/slot)
 	. = ..()
 	if(!. && !in_use)
 		in_use = TRUE
 		icon_state = "spinning"
-		UpdateIcon()
+		UpdateThreadOverlay()
 
 		PlayLocalSound(src, 'sounds/effects/creak1.ogg', 100)
 		NotifyNearby("<span class='notice'>\The [user] works at \the [src] for a few moments.</span>")
@@ -50,7 +58,7 @@
 				break
 			icon_state = "wheel"
 			in_use = FALSE
-			UpdateIcon()
+			UpdateThreadOverlay()
 
 		return TRUE
 

@@ -5,7 +5,7 @@
 	icon_state = "underlay_target"
 	var/selecting = BP_CHEST
 
-/obj/ui/controller/target/UpdateIcon(var/list/supplied = list())
+/obj/ui/controller/target/UpdateIcon()
 	for(var/thing in components)
 		var/obj/ui/component/target/component = thing
 		component.UpdateIcon()
@@ -28,6 +28,6 @@
 	selecting = component.icon_state
 	UpdateIcon()
 
-/obj/ui/component/target/UpdateIcon(var/list/supplied = list())
+/obj/ui/component/target/UpdateIcon()
 	var/obj/ui/controller/target/target_control = controller
 	color = (target_control.selecting == icon_state ? DARK_RED : DARK_BLUE)

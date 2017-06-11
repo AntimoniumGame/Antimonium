@@ -11,9 +11,14 @@
 	icon = 'icons/objects/structures/table_multi.dmi'
 	icon_state = "map"
 	draw_shadow_underlay = null
+	var/list/bench_overlays		// the overlays that make it look like a multi-tile bench
 
-/obj/structure/table/bench/UpdateIcon(var/list/supplied = list())
+/obj/structure/table/bench/UpdateIcon()
 	icon_state = ""
+
+	overlays -= bench_overlays
+
+	bench_overlays = list()
 	var/list/connected_neighbors = list()
 
 	for(var/thing in Trange(1,src))
@@ -31,5 +36,7 @@
 			corner |= 1
 		if(turn(cdir,-45) in connected_neighbors)
 			corner |= 4
-		supplied += image(icon, "[corner]", dir = 1<<(i-1))
-	..(supplied)
+		bench_overlays += image(icon, "[corner]", dir = 1<<(i-1))
+
+	overlays += bench_overlays
+	..()

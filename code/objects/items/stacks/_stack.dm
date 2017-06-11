@@ -9,6 +9,8 @@
 	var/stack_name =    "stack"
 	var/can_craft_with = FALSE
 
+	var/list/stack_overlays		// a list of all the image overlays for this stack
+
 /obj/item/stack/ForceMove()
 	. = ..()
 	MergeWithLocalStacks()
@@ -153,13 +155,24 @@
 /obj/item/stack/proc/GetIndividualStackIcon()
 	return "world"
 
-/obj/item/stack/UpdateIcon(var/list/supplied = list())
+/obj/item/stack/UpdateIcon()
+	UpdateStackOverlays()
+	..()
+
+/obj/item/stack/proc/UpdateStackOverlays()
+	var/list/ovelays_list = overlays
+	ovelays_list -= stack_overlays
+
+	stack_overlays = list()
+
 	for(var/stack_amount = min(10, amount), stack_amount > 1, stack_amount--)
 		var/image/I = image(icon = icon, icon_state = GetIndividualStackIcon())
 		I.pixel_x = rand(-5,5)
 		I.pixel_y = rand(-5,5)
-		supplied += I
-	..(supplied)
+		stack_overlays += I
+
+	ovelays_list += stack_overlays
+	overlays = ovelays_list
 
 /obj/item/stack/GetAmount()
 	return amount

@@ -5,7 +5,7 @@
 	random_state_prefix = "small"
 
 	var/amount = 1
-	var/list/splat_images = list()
+	var/splat_count 		// a list of splat objects that have been merged into this one
 
 /obj/effect/random/splat/GetWeight()
 	return max(1,amount)
@@ -38,18 +38,19 @@
 			continue
 		if(!transform && splat.transform)
 			transform = splat.transform
-		splat_images |= splat.icon_state
-		splat_images |= splat.splat_images
+		splat_count += splat.splat_count + 1
 		amount += splat.amount
 		QDel(splat)
 	..()
 
-/obj/effect/random/splat/UpdateIcon(var/list/supplied = list())
-	supplied += splat_images
-	if(random_states && splat_images.len >= random_states)
-		random_state_prefix = null
-		icon_state = "[rand(1,random_states)]"
-	..(supplied)
+/obj/effect/random/splat/UpdateIcon()
+	if(random_states)
+		if(splat_count >= random_states)
+			random_state_prefix = null
+		else
+			random_state_prefix = "[random_state_prefix]-"
+		icon_state = "[random_state_prefix][rand(1,random_states)]"
+	// we dont do any other UpdateIcon calls since this is a visual effect that doesn't cast shadows, or catch on fire... yet
 
 /obj/effect/random/splat/Melt()
 	material_state = STATE_LIQUID

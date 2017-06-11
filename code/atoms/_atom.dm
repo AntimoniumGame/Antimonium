@@ -14,32 +14,28 @@
 	var/shadow_pixel_x = 0
 	var/shadow_pixel_y = 0
 
-/atom/proc/UpdateIcon(var/list/supplied = list(), var/ignore_neighbors = FALSE)
+	var/image/shadow_underlay	// the shadow underlay for this object
 
-	overlays = supplied
-	UpdateFireOverlay()
+/atom/proc/UpdateIcon()
+	return
 
-	var/mob/holder = loc
-	if(istype(holder))
-		holder.UpdateInventory()
-		holder.UpdateIcon()
+/atom/movable/proc/UpdateShadowUnderlay()
+	underlays -= shadow_underlay
 
-/atom/movable/UpdateIcon(var/list/supplied = list())
-	..(supplied)
 	if((flags & FLAG_SIMULATED) && draw_shadow_underlay)
-		underlays.Cut()
-		var/image/I = image(null)
-		I.appearance = src
-		I.color = "#000000"
-		I.alpha = 60
-		I.plane = plane
-		I.layer = layer
-		I.pixel_x = shadow_pixel_x
-		I.pixel_y = shadow_pixel_y
+		shadow_underlay = image(null)
+		shadow_underlay.appearance = src
+		shadow_underlay.color = "#000000"
+		shadow_underlay.alpha = 60
+		shadow_underlay.plane = FLOAT_PLANE
+		shadow_underlay.layer = FLOAT_LAYER
+		shadow_underlay.pixel_x = shadow_pixel_x
+		shadow_underlay.pixel_y = shadow_pixel_y
 		var/matrix/M = matrix()
 		M.Scale(1.1)
-		I.transform = M
-		underlays += I
+		shadow_underlay.transform = M
+
+		underlays += shadow_underlay
 
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return

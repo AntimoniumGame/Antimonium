@@ -8,13 +8,13 @@
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE | FLAG_SEATING
 	draw_shadow_underlay = null
 
-/obj/structure/bench/UpdateIcon(var/list/supplying = list())
-	. = ..(supplying)
+/obj/structure/bench/UpdateIcon()
 	OrientToNeighbors()
+	..()
 
 /obj/structure/bench/Initialize()
-	. = ..()
-	OrientToNeighbors()
+	..()
+	UpdateIcon()
 
 /obj/structure/bench/proc/OrientToNeighbors()
 	var/connect_left
