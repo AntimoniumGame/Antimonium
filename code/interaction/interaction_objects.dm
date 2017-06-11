@@ -23,10 +23,12 @@
 		return
 
 	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
+
 		if(!IsSolid())
 			clicker.Notify("<span class='warning'>You attempt to collect \the [src], but it slips through your grasp.</span>")
 			clicker.SetActionCooldown(3)
 			return TRUE
+
 		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
 		if(clicker.CollectItem(src, slot))
 			PlayLocalSound(src, collect_sound, 50)

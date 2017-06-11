@@ -19,10 +19,12 @@
 /atom/proc/UpdateIcon()
 	return
 
+/atom/proc/GetRadialMenuContents(var/mob/user)
+	return list()
+
 /atom/movable/proc/UpdateShadowUnderlay()
 	underlays -= shadow_underlay
-
-	if((flags & FLAG_SIMULATED) && draw_shadow_underlay)
+	if(draw_shadow_underlay)
 		shadow_underlay = image(null)
 		shadow_underlay.appearance = src
 		shadow_underlay.color = "#000000"

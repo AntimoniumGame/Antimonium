@@ -273,6 +273,7 @@
 #include "code\ui\inventory\ui_inventory_gear.dm"
 #include "code\ui\inventory\ui_inventory_hands.dm"
 #include "code\ui\meter\ui_meter.dm"
+#include "code\ui\radial\_ui_radial.dm"
 #include "code\ui\toggle\ui_toggle.dm"
 #include "code\ui\toggle\ui_toggle_inv.dm"
 #include "code\ui\toggle\ui_toggle_prefs.dm"
