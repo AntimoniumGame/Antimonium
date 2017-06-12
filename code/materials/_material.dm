@@ -64,11 +64,11 @@
 
 	if(turf_floor_icon)
 		var/list/istates = icon_states(turf_floor_icon)
-		var/has_edges = locate("edges" in istates)
+		var/has_edges = ("edges" in istates)
 		turf_base_states = istates.len-1
 		if(has_edges)
 			turf_base_states--
-		if(turf_effect_overlay && (locate(turf_effect_overlay) in istates))
+		if(turf_effect_overlay && (turf_effect_overlay in istates))
 			turf_base_states--
 	..()
 
