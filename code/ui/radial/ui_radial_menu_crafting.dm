@@ -20,6 +20,11 @@
 			draw_shadow_underlay = TRUE
 	..()
 
+/obj/ui/radial_button/crafting/MiddleClickedOn(var/mob/clicker)
+	. = ..()
+	if(.)
+		clicker.Notify("<span class='notice'>That's <span class='alert'>\a [recipe.result_name]</span>.</span>")
+
 /obj/ui/radial_button/crafting/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)

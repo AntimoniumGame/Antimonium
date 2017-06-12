@@ -25,6 +25,12 @@
 		if(prop == parent_menu.GetAdditionalMenuData())
 			parent_menu.ReceiveInput(build_turf)
 
+/obj/ui/radial_button/building/MiddleClickedOn(var/mob/clicker)
+	. = ..()
+	if(.)
+		var/atom/turf = build_turf
+		clicker.Notify("<span class='notice'>That's <span class='alert'>\a [initial(turf.name)]</span>.</span>")
+
 /obj/ui/radial_menu/prop/building
 	menu_type = RADIAL_MENU_BUILDING
 	button_type = /obj/ui/radial_button/building

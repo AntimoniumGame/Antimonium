@@ -25,6 +25,12 @@
 		if(prop == parent_menu.GetAdditionalMenuData())
 			parent_menu.ReceiveInput(build_struct)
 
+/obj/ui/radial_button/structure/MiddleClickedOn(var/mob/clicker)
+	. = ..()
+	if(.)
+		var/atom/struct = build_struct
+		clicker.Notify("<span class='notice'>That's <span class='alert'>\a [initial(struct.name)]</span>.</span>")
+
 /obj/ui/radial_menu/prop/structures
 	menu_type = RADIAL_MENU_STRUCTURES
 	button_type = /obj/ui/radial_button/structure
