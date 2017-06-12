@@ -1,4 +1,4 @@
-/obj/item/weapon/pipe
+/obj/item/pipe
 	name = "pipe"
 	sharpness = 0
 	weight = 5

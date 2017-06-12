@@ -9,7 +9,6 @@
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/forging,
 		/datum/crafting_recipe/forging/axe,
-		/datum/crafting_recipe/forging/dart,
 		/datum/crafting_recipe/forging/hammer,
 		/datum/crafting_recipe/forging/mallet,
 		/datum/crafting_recipe/forging/construction_hammer,
@@ -19,7 +18,8 @@
 		/datum/crafting_recipe/forging/chisel,
 		/datum/crafting_recipe/forging/pipe,
 		/datum/crafting_recipe/forging/shovel,
-		/datum/crafting_recipe/forging/pickaxe
+		/datum/crafting_recipe/forging/pickaxe,
+		/datum/crafting_recipe/forging/needle
 		)
 
 /datum/material/metal/GetBuildableStructures(var/obj/item/stack/building_with)

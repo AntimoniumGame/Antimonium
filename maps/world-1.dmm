@@ -38,7 +38,7 @@
 "aL" = (/obj/structure/bench{icon_state = "map";dir = 1},/turf/floor/wood,/area/lighting)
 "aM" = (/turf/wall/cobble,/area/lighting/indoors)
 "aN" = (/obj/structure/table/bench,/obj/structure/sconce{dir = 4;icon_state = "sconce"},/turf/floor/cobble,/area/lighting/indoors)
-"aO" = (/obj/item/weapon/pipe,/turf/floor/tiled,/area/lighting/indoors)
+"aO" = (/obj/item/pipe,/turf/floor/tiled,/area/lighting/indoors)
 "aP" = (/obj/structure/door/north,/turf/floor/wood,/area/lighting)
 "aQ" = (/obj/structure/door/south,/turf/floor/wood,/area/lighting)
 "aR" = (/obj/structure/table/bench,/obj/item/stack/logs,/turf/floor/cobble,/area/lighting/indoors)
