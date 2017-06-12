@@ -1,5 +1,5 @@
 /datum/crafting_recipe/forging
-	result_path = /obj/item/weapon/sword
+	result_path = /obj/item/component/sword
 	required_structure = /obj/structure/anvil
 	required_skills = SKILL_FORGING
 	action_third_person = "forges"
@@ -13,38 +13,39 @@
 		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
 
 /datum/crafting_recipe/forging/axe
-	result_path = /obj/item/weapon/axe
-
-/datum/crafting_recipe/forging/dart
-	result_path = /obj/item/stack/dart
-	result_number = 5
+	result_path = /obj/item/component
 
 /datum/crafting_recipe/forging/hammer
-	result_path = /obj/item/weapon/hammer
+	result_path = /obj/item/component/forge_hammer
 
 /datum/crafting_recipe/forging/mallet
-	result_path = /obj/item/weapon/mallet
+	result_path = /obj/item/component/mallet
 
 /datum/crafting_recipe/forging/construction_hammer
-	result_path = /obj/item/weapon/construction_hammer
+	result_path = /obj/item/component/construction_hammer
 
 /datum/crafting_recipe/forging/horseshoe
 	result_path = /obj/item/horseshoe
 
 /datum/crafting_recipe/forging/handsaw
-	result_path = /obj/item/weapon/handsaw
+	result_path = /obj/item/component/handsaw
 
 /datum/crafting_recipe/forging/level
 	result_path = /obj/item/level
 
 /datum/crafting_recipe/forging/chisel
-	result_path = /obj/item/weapon/chisel
+	result_path = /obj/item/component/chisel
 
 /datum/crafting_recipe/forging/pipe
-	result_path = /obj/item/weapon/pipe
+	result_path = /obj/item/pipe
 
 /datum/crafting_recipe/forging/shovel
-	result_path = /obj/item/weapon/shovel
+	result_path = /obj/item/component/shovel
 
 /datum/crafting_recipe/forging/pickaxe
-	result_path = /obj/item/weapon/pickaxe
+	result_path = /obj/item/component/pickaxe
+
+/datum/crafting_recipe/forging/needle
+	result_path = /obj/item/needle
+
+
