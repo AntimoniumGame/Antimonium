@@ -102,3 +102,19 @@
 
 /obj/structure/proc/ThingTakenOut(var/obj/item/prop)
 	return
+
+/obj/structure/MiddleClickedOn(var/mob/clicker)
+	if(IsAdjacentTo(src, clicker))
+		if((flags & FLAG_FLAT_SURFACE) || (contains && open))
+			new /obj/ui/radial_menu(clicker, src)
+			return TRUE
+	. = ..()
+
+/obj/structure/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
+	if(menu_type == RADIAL_MENU_DEFAULT)
+		if(contains && open)
+			return contains
+		var/turf/turf = get_turf(src)
+		if(istype(turf))
+			return turf.GetRadialMenuContents(user, menu_type)-src
+	return list()

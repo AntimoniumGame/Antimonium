@@ -4,6 +4,12 @@
 	sharpness_modifier = 0.1
 	ignition_point = 700
 
+/datum/material/paper
+	general_name = "paper"
+	weight_modifier = 0.1
+	sharpness_modifier = 0.1
+	ignition_point = 400
+
 /datum/material/cloth/cotton
 	general_name = "cotton"
 	colour = WHITE
@@ -47,7 +53,8 @@
 		/obj/structure/spinning_wheel,
 		/obj/structure/door,
 		/obj/structure/table,
-		/obj/structure/table/bench
+		/obj/structure/table/bench,
+		/obj/structure/lectern
 		)
 
 /datum/material/wood/GetDebris(var/amount)

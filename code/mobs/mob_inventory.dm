@@ -27,6 +27,16 @@
 		return FALSE
 	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
+
+	if(istype(thing.loc, /obj/structure))
+		var/obj/structure/struct = thing.loc
+		if(struct.contains)
+			struct.contains -= thing
+		struct.ThingTakenOut(thing)
+	else if(istype(thing.loc, /mob))
+		var/mob/mob = thing.loc
+		mob.DropItem(thing)
+
 	thing.ForceMove(src)
 	thing.AfterPickedUp(src)
 	equipping.SetHeld(thing)

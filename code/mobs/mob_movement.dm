@@ -34,6 +34,9 @@
 
 	if(.)
 
+		if(radial_menu)
+			QDel(radial_menu)
+
 		if(flags & FLAG_SIMULATED)
 			for(var/thing in smeared_with)
 				var/datum/material/mat = thing
@@ -134,6 +137,11 @@
 			Move(get_step(src, walk_dir))
 			self_move = FALSE
 		WAIT_1T
+
+/mob/Logout()
+	if(radial_menu)
+		QDel(radial_menu)
+	. = ..()
 
 /mob/Login()
 	spawn()

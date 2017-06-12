@@ -2,9 +2,10 @@
 	name = "carpet"
 	icon = 'icons/objects/structures/carpet.dmi'
 	icon_state = "single_tile"
-	flags = FLAG_SIMULATED
+	flags = FLAG_SIMULATED | FLAG_ANCHORED
 	layer = TURF_LAYER+0.99
 	density = 0
+	default_material_path = /datum/material/cloth
 
 	var/x_size = 2
 	var/y_size = 2

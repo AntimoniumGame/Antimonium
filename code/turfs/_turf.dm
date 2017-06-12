@@ -12,6 +12,22 @@
 	var/list/floor_overlays		// overlays that makeup a floor turf
 	var/list/ao_overlays		// ambient occlusion overlays (cast on a floor when next to a wall)
 
+/turf/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
+	if(menu_type == RADIAL_MENU_DEFAULT)
+		var/list/simulated_atoms = list()
+		for(var/thing in contents)
+			var/atom/atom = thing
+			if(istype(atom) && (atom.flags & FLAG_SIMULATED) && atom.invisibility <= user.see_invisible && !Deleted(atom))
+				simulated_atoms += atom
+		return simulated_atoms
+	return list()
+
+/turf/MiddleClickedOn(var/mob/clicker)
+	if(IsAdjacentTo(src, clicker))
+		new /obj/ui/radial_menu(clicker, src)
+		return TRUE
+	. = ..()
+
 /turf/UpdateStrings()
 	if(wall_material)
 		name = "[wall_material.GetDescriptor()] wall"

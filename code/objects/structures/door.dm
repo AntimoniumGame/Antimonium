@@ -40,7 +40,7 @@
 	for(var/thing in get_turf(src))
 		if(thing == src) continue
 		var/atom/atom = thing
-		if(atom.density || (atom.flags & FLAG_SIMULATED))
+		if(atom.density && (atom.flags & FLAG_SIMULATED))
 			NotifyNearby("<span class='warning'>\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].</span>")
 			PlayLocalSound(loc, 'sounds/effects/thump1.ogg', 100)
 			return TRUE

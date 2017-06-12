@@ -1,3 +1,6 @@
+// constants
+#define PI 3.14159265359
+
 //rounding
 #define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
 #define floor(x)		round(x)

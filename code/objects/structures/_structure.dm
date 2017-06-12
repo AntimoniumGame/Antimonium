@@ -7,7 +7,6 @@
 	draw_shadow_underlay = TRUE
 
 	var/weight = 3
-	var/list/holding = list()
 	var/hit_sound = 'sounds/effects/thump1.ogg'
 
 /obj/structure/SetDir(var/newdir)
