@@ -76,22 +76,6 @@
 
 /obj/item/stack/AttackedBy(var/mob/user, var/obj/item/prop)
 
-	if(can_craft_with && (prop.associated_skill & SKILL_CONSTRUCTION))
-		var/list/structs = material.GetBuildableStructures(src)
-		if(structs.len)
-			if(locate(/obj/structure) in loc)
-				user.Notify("<span class='warning'>There is already a structure in this location.</span>")
-			else
-				if(GetAmount() < material.GetStructureCost())
-					user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
-				else
-					var/select_type = input("Select a structure type.") as null|anything in structs
-					if(select_type)
-						var/atom/thing = new select_type(get_turf(src), material_path = material.type)
-						user.NotifyNearby("<span class='notice'>\The [user] builds \a [thing].</span>")
-						Remove(material.GetStructureCost())
-		return TRUE
-
 	if(prop.associated_skill & SKILL_ALCHEMY)
 		if(GetAmount() > 5)
 			user.Notify("<span class='warning'>There are too many [plural_name] in this [stack_name] to grind with \the [prop].</span>")
@@ -99,8 +83,13 @@
 			Grind(user)
 		return TRUE
 
-	if(material && can_craft_with)
-		if(TryCraft(user, prop) || TryBuild(user, prop))
+	if(material)
+		if(can_craft_with)
+			if(TryCraft(user, prop))
+				return TRUE
+			if(TryBuildStruct(user, prop))
+				return TRUE
+		if(TryBuild(user, prop))
 			return TRUE
 
 	if(MatchesStackType(prop))
@@ -186,36 +175,33 @@
 		UpdateStrings()
 
 /obj/item/stack/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
-	if(menu_type == RADIAL_MENU_CRAFTING && istype(args, /obj/item) && material)
+	if(material && istype(args, /obj/item))
 		var/obj/item/prop = args
-		return material.GetRecipesFor(prop.associated_skill, get_turf(src), src)
+		if(menu_type == RADIAL_MENU_CRAFTING)
+			return material.GetRecipesFor(prop.associated_skill, get_turf(src), src)
+		if(menu_type == RADIAL_MENU_BUILDING && (prop.associated_skill & SKILL_ARCHITECTURE))
+			return material.GetBuildableTurfs(src)
+		if(menu_type == RADIAL_MENU_STRUCTURES && (prop.associated_skill & SKILL_CONSTRUCTION))
+			return material.GetBuildableStructures(src)
 	return ..()
 
 /obj/item/stack/proc/TryCraft(var/mob/user, var/obj/item/prop)
 	var/list/options = GetRadialMenuContents(user, RADIAL_MENU_CRAFTING, prop)
 	if(options && options.len)
-		new /obj/ui/radial_menu/crafting(user, src, prop)
+		new /obj/ui/radial_menu/prop/crafting(user, src, prop)
 		return TRUE
 	return FALSE
 
 /obj/item/stack/proc/TryBuild(var/mob/user, var/obj/item/prop)
-/*
-	if(prop.associated_skill & SKILL_ARCHITECTURE)
-		var/list/buildings = material.GetBuildableTurfs(src)
-		if(buildings.len)
-			if(GetAmount() < material.GetTurfCost())
-				user.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
-			else
-				if(locate(/obj/structure/foundation) in get_turf(src))
-					user.Notify("<span class='warning'>There is already a foundation in that location.</span>")
-					return TRUE
-				if(locate(/obj/structure) in get_turf(src))
-					user.Notify("<span class='warning'>There is a structure occupying that location.</span>")
-					return TRUE
-				var/select_type = input("Select a building type.") as null|anything in buildings
-				if(select_type)
-					user.NotifyNearby("<span class='notice'>\The [user] lays out a foundation.</span>")
-					new /obj/structure/foundation(get_turf(src), material.type, select_type, new type(null, material.type, material.GetTurfCost()))
-					Remove(material.GetTurfCost())
-			return TRUE
-*/
+	var/list/options = GetRadialMenuContents(user, RADIAL_MENU_BUILDING, prop)
+	if(options && options.len)
+		new /obj/ui/radial_menu/prop/building(user, src, prop)
+		return TRUE
+	return FALSE
+
+/obj/item/stack/proc/TryBuildStruct(var/mob/user, var/obj/item/prop)
+	var/list/options = GetRadialMenuContents(user, RADIAL_MENU_STRUCTURES, prop)
+	if(options && options.len)
+		new /obj/ui/radial_menu/prop/structures(user, src, prop)
+		return TRUE
+	return FALSE

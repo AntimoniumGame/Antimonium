@@ -70,7 +70,7 @@
 
 /obj/ui/radial_menu/New(var/mob/_owner, var/list/_source_atom)
 
-	if(!_owner.client || !_source_atom)
+	if(!_owner || !_owner.client || !_source_atom)
 		QDel(src)
 		return
 

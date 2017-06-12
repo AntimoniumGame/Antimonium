@@ -34,19 +34,7 @@
 		if(prop == parent_menu.GetAdditionalMenuData())
 			parent_menu.ReceiveInput(recipe)
 
-/obj/ui/radial_menu/crafting
-	menu_type = RADIAL_MENU_CRAFTING
-	button_type = /obj/ui/radial_button/crafting
-	var/obj/item/crafting_prop
-
-/obj/ui/radial_menu/crafting/New(var/mob/_owner, var/list/_source_atom, var/obj/item/_crafting_prop)
-	crafting_prop = _crafting_prop
-	..(_owner, _source_atom)
-
-/obj/ui/radial_menu/crafting/GetAdditionalMenuData()
-	return crafting_prop
-
-/obj/ui/radial_menu/crafting/ReceiveInput(var/thing_input)
+/obj/ui/radial_menu/prop/crafting/ReceiveInput(var/thing_input)
 	var/datum/crafting_recipe/crecipe = thing_input
 	if(!crecipe || !source_atom || !crecipe.CanCraft(get_turf(source_atom), source_atom) || !IsAdjacentTo(owner, source_atom))
 		return FALSE
