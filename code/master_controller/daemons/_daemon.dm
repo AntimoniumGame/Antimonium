@@ -18,6 +18,8 @@
 	set waitfor = 0
 
 	while(1)
+		if(suspend)
+			break
 		sleep(delay)
 		CheckSuspend()
 		DoWork()
