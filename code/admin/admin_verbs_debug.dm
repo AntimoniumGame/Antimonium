@@ -7,8 +7,25 @@
 		/client/proc/ViewClientVars,
 		/client/proc/StartViewVars,
 		/client/proc/ToggleVarsRefresh,
-		/client/proc/CloseVarsWindow
+		/client/proc/CloseVarsWindow,
+		/client/proc/ToggleDaemon
 		)
+
+/client/proc/ToggleDaemon()
+
+	set name = "Toggle Daemon"
+	set category = "Debug"
+
+	var/datum/daemon/daemon = input("Toggle which daemon?") as null|anything in mc.daemons
+	if(!istype(daemon))
+		return
+
+	daemon.suspend = !daemon.suspend
+	if(daemon.suspend)
+		Dnotify("Disabled [daemon.name] daemon.")
+	else
+		Dnotify("Enabled [daemon.name] daemon.")
+		daemon.Start()
 
 /client/proc/DevPanel()
 	set waitfor = 0
@@ -45,7 +62,7 @@
 	set name = "Set Client FPS"
 	set category = "Debug"
 
-	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
+	fps = min(90, max(10, input("Enter a number between 10 and 90 (going above the world FPS, [world.fps], will result in visual oddities).") as num))
 
 /client/proc/ViewClientVars()
 

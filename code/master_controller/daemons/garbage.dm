@@ -52,7 +52,7 @@ var/datum/daemon/garbage/gc
 			del(trash)
 		garbage[gref] = null
 		garbage -= gref
-		CheckSuspend()
+		CHECK_SUSPEND
 
 /datum/daemon/garbage/Status()
 	return "[garbage.len] queued"

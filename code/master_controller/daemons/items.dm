@@ -7,7 +7,7 @@
 		var/obj/item = thing
 		if(item && !Deleted(item))
 			item.Process()
-		CheckSuspend()
+		CHECK_SUSPEND
 
 /datum/daemon/items/Status()
 	return "[processing_objects.len]"
