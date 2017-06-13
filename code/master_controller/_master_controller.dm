@@ -1,6 +1,4 @@
-/proc/CheckSuspend()
-	if(world.tick_usage >= 100)
-		sleep(world.tick_lag)
+#define CHECK_SUSPEND if(world.tick_usage >= 100) sleep(world.tick_lag)
 
 var/datum/master_controller/mc
 

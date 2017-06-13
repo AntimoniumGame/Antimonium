@@ -8,7 +8,7 @@
 		var/atom/temp = thing
 		if(temp && !Deleted(temp))
 			temp.ProcessTemperature()
-		CheckSuspend()
+		CHECK_SUSPEND
 
 /datum/daemon/temperature/Status()
 	return "[temperature_sensitive_atoms.len]"

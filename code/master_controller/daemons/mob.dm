@@ -7,7 +7,7 @@
 		var/mob/mob = thing
 		if(mob && !Deleted(mob))
 			mob.HandleLifeTick()
-		CheckSuspend()
+		CHECK_SUSPEND
 
 /datum/daemon/mob/Status()
 	return "[living_mob_list.len]"

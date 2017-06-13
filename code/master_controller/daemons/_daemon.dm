@@ -21,7 +21,7 @@
 		if(suspend)
 			break
 		sleep(delay)
-		CheckSuspend()
+		CHECK_SUSPEND
 		DoWork()
 
 /datum/daemon/proc/Status()
