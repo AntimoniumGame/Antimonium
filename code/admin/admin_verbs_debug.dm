@@ -62,7 +62,7 @@
 	set name = "Set Client FPS"
 	set category = "Debug"
 
-	fps = min(90, max(10, input("Enter a number between 10 and 90.") as num))
+	fps = min(90, max(10, input("Enter a number between 10 and 90 (going above the world FPS, [world.fps], will result in visual oddities).") as num))
 
 /client/proc/ViewClientVars()
 

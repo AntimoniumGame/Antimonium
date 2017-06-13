@@ -88,3 +88,12 @@
 	if(invoker.client)
 		invoker.client.ResetKeybinds()
 		invoker.client.SaveData()
+
+/datum/chat_command/client_fps
+	command = "setfps"
+	usage = "/SETFPS"
+	description = "Open the client FPS dialogue."
+
+/datum/chat_command/client_fps/Invoke(var/mob/invoker, var/text)
+	if(invoker.client)
+		invoker.client.SetClientFps()
