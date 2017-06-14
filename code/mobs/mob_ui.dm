@@ -37,5 +37,5 @@
 		client.images.Cut()
 		client.images |= ui_images
 		client.OnResize()
-	RefreshLighting()
+	// Light update here probably
 	UpdateVisionCone()
