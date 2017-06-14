@@ -6,7 +6,7 @@
 			return "him"
 		if(PLURAL)
 			return "them"
-	return "its"
+	return "it"
 
 /atom/proc/Their()
 	switch(gender)

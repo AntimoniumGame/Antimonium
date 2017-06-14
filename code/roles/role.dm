@@ -24,6 +24,7 @@ var/list/all_roles = list()
 	var/datum/job/job
 	var/list/antagonist_roles = list()
 	var/list/objectives = list()
+	var/original_name
 
 /datum/role/New(var/client/_holder)
 	..()
@@ -31,7 +32,22 @@ var/list/all_roles = list()
 	ckey = holder.ckey
 	mob = holder.mob
 	all_roles += src
+	original_name = "[mob]"
 
 /datum/role/Destroy()
 	all_roles -= src
 	. = ..()
+
+/datum/role/proc/GetOriginalName()
+	return original_name
+
+/datum/role/proc/ShowObjectives()
+	if(objectives.len)
+		mob.Notify("You have the following objectives:")
+		var/i = 0
+		for(var/thing in objectives)
+			var/datum/objective/o = thing
+			i++
+			mob.Notify("#[i]. [o.text]")
+	else
+		mob.Notify("You do not currently have any objectives.")

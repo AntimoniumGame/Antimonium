@@ -3,6 +3,7 @@
 
 /datum/game_state/starting/Start()
 
+	// !
 	to_chat(world, "<h3><span class='notice'><b>The game is starting!</b></span></h3>")
 
 	// Get a list of everyone who is readied up.
@@ -44,7 +45,14 @@
 		SwitchGameState(/datum/game_state/waiting)
 		return
 
-	// Assign role-overriding antagonists here, when they exist.
+	// TODO assign role-overriding antagonists here.
+	// For now just prune out anything that won't work post-job-assignment.
+	var/list/assigning_antagonists = shuffle(antagonist_datums.Copy())
+	if(players_to_allocate_roles.len)
+		for(var/thing in assigning_antagonists)
+			var/datum/antagonist/antag = thing
+			if(antag.override_job)
+				assigning_antagonists -= antag
 
 	// If we still have players to give jobs, assign them the low priority roles at random.
 	if(players_to_allocate_roles.len)
@@ -63,16 +71,27 @@
 		for(var/thing in players_to_allocate_roles)
 			var/mob/abstract/new_player/player = thing
 			players_to_spawn[player] = default_latejoin_role
-	players_to_allocate_roles.Cut()
-
-	// Assign role-independant antagonists here, when they exist.
 
 	// Apply job templates and spawn/equip the mobs.
+	var/list/spawned_players = list()
 	for(var/thing in players_to_spawn)
 		var/datum/job/job = players_to_spawn[thing]
 		var/mob/spawned_player = job.Equip(thing)
 		job.Welcome(spawned_player)
 		job.Place(spawned_player)
+		spawned_players += spawned_player
+
+	// Assign role-independant antagonists.
+	for(var/thing in assigning_antagonists)
+		if(!spawned_players.len)
+			break
+		var/datum/antagonist/antag = thing
+		var/max_player_count = max(1,round(spawned_players.len * antag.maximum_spawn_count))
+		if(antag.role_count >= max_player_count)
+			continue
+		var/mob/player = pick(spawned_players)
+		if(antag.AddAntagonist(player.role))
+			spawned_players -= player
 
 	SwitchGameState(/datum/game_state/running)
 
