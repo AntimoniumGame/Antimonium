@@ -8,3 +8,4 @@
 #define SKILL_MINING      128
 #define SKILL_DIGGING     256
 #define SKILL_DEMOLITION  512
+#define SKILL_TAILORING  1024

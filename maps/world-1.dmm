@@ -81,8 +81,8 @@
 "bC" = (/obj/structure/table/bench,/obj/item/mold,/turf/floor/cobble,/area/indoors)
 "bD" = (/obj/structure/table/bench,/obj/item/weapon/axe,/turf/floor/cobble,/area/indoors)
 "bE" = (/obj/structure/table/bench,/obj/item/stack/bricks,/turf/floor/cobble,/area/indoors)
-"bF" = (/obj/structure/cask/barrel,/turf/floor/wood,/area/indoors)
-"bG" = (/obj/structure/cask/barrel,/obj/structure/sconce{dir = 1;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
+"bF" = (/obj/structure/cask/barrel,/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
+"bG" = (/obj/structure/cask/barrel,/obj/structure/sconce{dir = 1;icon_state = "sconce"},/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
 "bH" = (/obj/structure/cask{icon_state = "flat";dir = 1},/obj/structure/sconce{dir = 1;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
 "bI" = (/obj/structure/cask{icon_state = "flat";dir = 1},/turf/floor/wood,/area/indoors)
 "bJ" = (/turf/floor/wood,/area/indoors)
@@ -112,6 +112,14 @@
 "ch" = (/obj/structure/door/west,/turf/floor/wood,/area/indoors)
 "ci" = (/obj/structure/window{icon_state = "map";dir = 8},/turf/floor/cobble,/area/indoors)
 "cj" = (/obj/structure/table,/obj/item/stack/fibers/cotton,/turf/floor/wood,/area/indoors)
+"ck" = (/obj/structure/table/bench,/obj/item/stack/thread/cloth,/obj/item/needle,/turf/floor/wood,/area/indoors)
+"cl" = (/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
+"cm" = (/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
+"cn" = (/obj/structure/table/shelf/north,/turf/floor/cobble,/area/indoors)
+"co" = (/obj/structure/table/shelf/north,/turf/floor/cobble,/area/indoors)
+"cp" = (/obj/structure/table/shelf/north,/turf/floor/tiled,/area/indoors)
+"cq" = (/obj/structure/table/shelf/north,/turf/floor/tiled,/area/indoors)
+"cr" = (/obj/structure/table/shelf/south,/turf/floor/cobble,/area/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -120,25 +128,25 @@ aabYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYaa
 aabYbYbYbYbYbYbYbYbYbYbYbYbYadbYbYbYbYbYbYbYbYbYbYbYbYbYbYaa
 aacacaaecacacacaaecacacacacacacacaaecacacacacaaecacacacaafaa
 agagcbagagahaiagagcbcbagagajajccccajajajakalajajccajcacabYaa
-agamamanaoaoaoaoapaqararagasatatauatatavavavatatatcdcecebYaa
-agamawamaoaoaoaoaoaoaqaragasatatatatatavavavatbbatajaxcebYaa
-agamamamaoaoaoaoaoaoaoayagasazataAatatavaBavatatatajaxcebYaa
-agaCamamaoaoaoaoaobWbWbWagasatatatatatavavavaDaEcjajaxcebYaa
-agaGamamaoaoaHaoaobTbTbTagasatatatatatavavavaIasasajaJaJafaa
-agaKamamaoaoaoaoaobUbUbUagasavavavavavavaLaLaLasaMaMcebYbYaa
-agaNamamaoaOaoaoaobVbVbVagasasaPaQasasasasasasasaMawcebYbYaa
-agaRamaSaTaoaUaoaoaoaoaUagasasavavavavaVavaWavasaMaMcebYbYaa
-agagagagagagagagagaoaoagagasaYatataIavaWavaFaXasasajcecebYaa
-aYaYaYaYaYaYaYaYaYaZbaaYaYaYaYbbataIaDaFavavavavbcajaxcfceaa
-aYbdbebfbgatbhauatatatbibjaYaYatataIavbkavavavavblajaxceceaa
-aYazatatatatatatatatatatbmaYasavavavavavaDaFbnavboajaxceceaa
-aYatatatbbatatatatbbatatbpaYasavavavavavavavavavavcgceceaJaa
-aYatatatatatatatatatatatbraYasavavbsbXbXbXbXbsbsavchcecebYaa
-aYbtatatatatatatatatbqatbuaYasbvavbsavavavavavavavajaxcebYaa
-aYbwbxatatatbybzbAbBbCbDbEaYasavavbsbFbGbFaFaFbHbIajaxcebYaa
-aYaYaYaYaZbaaYaYaYaYaYaYaYaYasaPaQasasasasasasasasajaxcebYaa
-aMbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbKbJbJbJamamaMcecebLaa
-aMbMbJbJbJbJbJbJbJbJbNbJbJbJbJbJbJbJbJbObJbJbJamawaMceceaJaa
+agamamanaoaoaoaoapaqararagajamamanamamckavavamamamcdcecebYaa
+agamawamaoaoaoaoaoaoaqaragajamamamamamavavavamawamajaxcebYaa
+agamamamaoaoaoaoaoaoaoayagajazamaAamamavaBavamamamajaxcebYaa
+agaCamamaoaoaoaoaobWbWbWagajamamamamamavavavaDaEcjajaxcebYaa
+agaGamamaoaoaHaoaobTbTbTagajamamamamamavavavaIajajajaJaJafaa
+agaKamamaoaoaoaoaobUbUbUagajavavavavclcmaLaLaLajaMaMcebYbYaa
+agaNamamaoaOaoaoaobVbVbVagajajakalajajajajajajajaMawcebYbYaa
+agaRcncoaTaoaUcpcqaoaoaUagajajavavavavaVavaWavajaMaMcebYbYaa
+agagagagagagagagagaoaoagagajaMamamaIavaWavaFaXajajajcecebYaa
+aMaMaMaMaMaMaMaMaMaZbaaMaMaMaMawamaIaDaFavavavavbcajaxcfceaa
+aMbdbebfbgambhancramambibjaMaMamamaIavbkavavavavblajaxceceaa
+aMazamamamamamamamamamambmaMajavavavavavaDaFbnavboajaxceceaa
+aMamamamawamamamamawamambpaMajavavavavavavavavavavcgceceaJaa
+aMamamamamamamamamamamambraMajavavbsbXbXbXbXbsbsavchcecebYaa
+aMbtamamamamamamamambqambuaMajbvavbsavavavavavavavajaxcebYaa
+aMbwbxamamambybzbAbBbCbDbEaMajavavbsbFbGbFaFaFbHbIajaxcebYaa
+aMaMaMaMaZbaaMaMaMaMaMaMaMaMajakalajajajajajajajajajaxcebYaa
+aMavavavavavavavavavavavavavavavavavavaVavavavamamaMcecebLaa
+aMbvavavavavavavavavbNavavavavavavavavbOavavavamawaMceceaJaa
 aMajajajccccajajajajajajajakalajajajajccccajccciaMaMcecebPaa
 aaabacababababacbQbQbQacababcececeabacbQbQbQbQbQaccecebPbPaa
 aaababababcecececececececececebYcecececececececececebPbSbPaa

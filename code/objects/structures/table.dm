@@ -1,17 +1,41 @@
 /obj/structure/table
 	name = "table"
 	icon = 'icons/objects/structures/table.dmi'
-	icon_state = "wooden_table"
+	icon_state = "map"
 	weight = 50
 	default_material_path = /datum/material/wood
+	flags = FLAG_SIMULATED | FLAG_FLAT_SURFACE
+
+/obj/structure/table/shelf
+	name = "shelf"
+	icon = 'icons/objects/structures/shelf.dmi'
+	icon_state = "map"
+	density = 0
+	weight = 30
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE
+
+/obj/structure/table/shelf/north
+	dir = NORTH
+
+/obj/structure/table/shelf/south
+	dir = SOUTH
+
+/obj/structure/table/shelf/east
+	dir = EAST
+
+/obj/structure/table/shelf/west
+	dir = WEST
+
+/obj/structure/table/shelf/Initialize()
+	..()
+	AlignWithWall(src)
 
 /obj/structure/table/bench
 	name = "workbench"
 	icon = 'icons/objects/structures/table_multi.dmi'
-	icon_state = "map"
 	draw_shadow_underlay = null
-	var/list/bench_overlays		// the overlays that make it look like a multi-tile bench
+	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE
+	var/list/bench_overlays // the overlays that make it look like a multi-tile bench
 
 /obj/structure/table/bench/UpdateIcon()
 	icon_state = ""
