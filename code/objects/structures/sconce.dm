@@ -57,16 +57,10 @@
 	if(filled)
 		if(filled.IsOnFire())
 			icon_state = "sconce_lit"
-			light_color = filled.light_color
-			light_power = filled.light_power
-			light_range = filled.light_range
-			SetLight()
 		else
 			icon_state = "sconce_filled"
-			KillLight()
 	else
 		icon_state = "sconce"
-		KillLight()
 	..()
 
 /obj/structure/sconce/AttackedBy(var/mob/user, var/obj/item/prop)

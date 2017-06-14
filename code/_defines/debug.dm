@@ -1,0 +1,1 @@
+#define dout(s) world << "<span class='warning'>DEBUG: [s]</span>"

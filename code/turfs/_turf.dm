@@ -66,7 +66,6 @@
 	SetDir(dir)
 	UpdateStrings()
 	UpdateIcon(ignore_neighbors = (!game_state || game_state.ident != GAME_RUNNING))
-	SetOpacity(opacity)
 
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()
@@ -149,7 +148,7 @@
 
 /turf/HandleFireDamage()
 	if(fire_intensity >= 100)
-		KillLight()
+		// Light off
 		new /turf/floor/dirt(src)
 
 /turf/proc/DigEarthworks(var/mob/user, var/slot, var/check_digger = FALSE)

@@ -24,11 +24,12 @@
 		overlays -= fire_overlay
 
 		if(!isnull(fstate))
-			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate)
+			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate, layer = EFFECTS_LAYER)
 		else
 			fire_overlay = null
 
 		overlays += fire_overlay
+		UpdateIcon()
 
 /atom/proc/CanIgnite()
 	return IsFlammable()
@@ -36,14 +37,14 @@
 /atom/proc/HandleFireDamage()
 	if(fire_intensity > 90)
 		// create ashes
-		KillLight()
+		// Light off
 		QDel(src)
 
 /atom/proc/Ignite(var/mob/user)
 	if(CanIgnite() && !IsOnFire())
 		burning_atoms |= src
 		on_fire = TRUE
-		SetFireLight()
+		// Light on
 		UpdateFireOverlay()
 		return TRUE
 	return FALSE
