@@ -24,11 +24,12 @@
 		overlays -= fire_overlay
 
 		if(!isnull(fstate))
-			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate)
+			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate, layer = EFFECTS_LAYER)
 		else
 			fire_overlay = null
 
 		overlays += fire_overlay
+		UpdateIcon()
 
 /atom/proc/CanIgnite()
 	return IsFlammable()

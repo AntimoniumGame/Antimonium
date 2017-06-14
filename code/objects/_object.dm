@@ -33,15 +33,9 @@
 /obj/proc/Process()
 	return
 
-// this should be called last in the supercall sequence as it should update its holder last (if it has one)
 /obj/UpdateIcon()
 	UpdateShadowUnderlay()
 	UpdateFireOverlay()
-
-	var/mob/holder = loc
-	if(istype(holder))
-		holder.UpdateInventory()
-		holder.UpdateIcon()
 
 /obj/IsFlammable()
 	if(!material)

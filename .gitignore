@@ -7,4 +7,5 @@
 *.before
 saves/*
 data/*
+maps/backup/*
 __pycache__
