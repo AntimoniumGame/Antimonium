@@ -6,7 +6,28 @@
 	plural_name =   "threads"
 	stack_name =    "spool"
 	default_material_path = /datum/material/cloth
+	can_craft_with = FALSE
+
 	var/dyed = WHITE
+	var/list/colour_to_icon = list(
+		WHITE =         'icons/objects/items/thread/thread_white.dmi',
+		PALE_BROWN =    'icons/objects/items/thread/thread_yellow.dmi',
+		BRIGHT_YELLOW = 'icons/objects/items/thread/thread_yellow.dmi',
+		BRIGHT_ORANGE = 'icons/objects/items/thread/thread_yellow.dmi',
+		PALE_GREEN =    'icons/objects/items/thread/thread_green.dmi',
+		DARK_GREEN =    'icons/objects/items/thread/thread_green.dmi',
+		BROWN_GREEN =   'icons/objects/items/thread/thread_green.dmi',
+		PALE_BLUE =     'icons/objects/items/thread/thread_blue.dmi',
+		BRIGHT_BLUE =   'icons/objects/items/thread/thread_blue.dmi',
+		DARK_BLUE =     'icons/objects/items/thread/thread_blue.dmi',
+		PALE_GREY =     'icons/objects/items/thread/thread_grey.dmi',
+		DARK_GREY =     'icons/objects/items/thread/thread_grey.dmi',
+		BLACK =         'icons/objects/items/thread/thread_grey.dmi',
+		DARK_RED =      'icons/objects/items/thread/thread_red.dmi',
+		BROWN_ORANGE =  'icons/objects/items/thread/thread_red.dmi',
+		DARK_BROWN =    'icons/objects/items/thread/thread_red.dmi',
+		DARK_PURPLE =   'icons/objects/items/thread/thread_purple.dmi'
+		)
 
 /obj/item/stack/thread/Initialize()
 	. = ..()
@@ -14,20 +35,32 @@
 		dyed = material.colour
 	UpdateIcon()
 
-/obj/item/stack/thread/UpdateIcon()
-	switch(dyed)
-		if(WHITE)
-			icon = 'icons/objects/items/thread/thread_white.dmi'
-		if(PALE_BROWN, BRIGHT_YELLOW, BRIGHT_ORANGE)
-			icon = 'icons/objects/items/thread/thread_yellow.dmi'
-		if(PALE_GREEN, DARK_GREEN, BROWN_GREEN)
-			icon = 'icons/objects/items/thread/thread_green.dmi'
-		if(PALE_BLUE, BRIGHT_BLUE, DARK_BLUE)
-			icon = 'icons/objects/items/thread/thread_blue.dmi'
-		if(PALE_GREY, DARK_GREY, BLACK)
-			icon = 'icons/objects/items/thread/thread_grey.dmi'
-		if(DARK_RED, BROWN_ORANGE, DARK_BROWN)
-			icon = 'icons/objects/items/thread/thread_red.dmi'
-		if(DARK_PURPLE)
-			icon = 'icons/objects/items/thread/thread_purple.dmi'
-	..()
+/obj/item/stack/thread/cloth
+	name = "cloth"
+	contact_size = 5
+	icon = 'icons/objects/items/thread/cloth_grey.dmi'
+	singular_name = "bolt"
+	plural_name =   "bolts"
+	stack_name =    "stack"
+	default_material_path = /datum/material/cloth
+	can_craft_with = TRUE
+
+	colour_to_icon = list(
+			WHITE =         'icons/objects/items/thread/cloth_white.dmi',
+			PALE_BROWN =    'icons/objects/items/thread/cloth_yellow.dmi',
+			BRIGHT_YELLOW = 'icons/objects/items/thread/cloth_yellow.dmi',
+			BRIGHT_ORANGE = 'icons/objects/items/thread/cloth_yellow.dmi',
+			PALE_GREEN =    'icons/objects/items/thread/cloth_green.dmi',
+			DARK_GREEN =    'icons/objects/items/thread/cloth_green.dmi',
+			BROWN_GREEN =   'icons/objects/items/thread/cloth_green.dmi',
+			PALE_BLUE =     'icons/objects/items/thread/cloth_blue.dmi',
+			BRIGHT_BLUE =   'icons/objects/items/thread/cloth_blue.dmi',
+			DARK_BLUE =     'icons/objects/items/thread/cloth_blue.dmi',
+			PALE_GREY =     'icons/objects/items/thread/cloth_grey.dmi',
+			DARK_GREY =     'icons/objects/items/thread/cloth_grey.dmi',
+			BLACK =         'icons/objects/items/thread/cloth_grey.dmi',
+			DARK_RED =      'icons/objects/items/thread/cloth_red.dmi',
+			BROWN_ORANGE =  'icons/objects/items/thread/cloth_red.dmi',
+			DARK_BROWN =    'icons/objects/items/thread/cloth_red.dmi',
+			DARK_PURPLE =   'icons/objects/items/thread/cloth_purple.dmi'
+			)

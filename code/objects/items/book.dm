@@ -25,7 +25,7 @@
 	icon = 'icons/objects/items/book.dmi'
 	book_type = "book"
 	open_message = "open"
-	default_material_path = /datum/material/leather
+	default_material_path = /datum/material/cloth/leather
 
 /obj/item/written/book/UpdateStrings()
 	if(material)

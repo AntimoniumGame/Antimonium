@@ -97,6 +97,7 @@
 #include "code\crafting\crafting_recipes_carpentry.dm"
 #include "code\crafting\crafting_recipes_forging.dm"
 #include "code\crafting\crafting_recipes_masonry.dm"
+#include "code\crafting\crafting_recipes_tailoring.dm"
 #include "code\fire\_fire.dm"
 #include "code\fire\fire_process.dm"
 #include "code\food\_food.dm"

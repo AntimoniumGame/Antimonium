@@ -3,12 +3,12 @@
 	weight_modifier = 0.1
 	sharpness_modifier = 0.1
 	ignition_point = 700
-
-/datum/material/paper
-	general_name = "paper"
-	weight_modifier = 0.1
-	sharpness_modifier = 0.1
-	ignition_point = 400
+	crafting_recipe_paths = list(
+		/datum/crafting_recipe/tailoring,
+		/datum/crafting_recipe/tailoring/gloves,
+		/datum/crafting_recipe/tailoring/shirt,
+		/datum/crafting_recipe/tailoring/pants
+		)
 
 /datum/material/cloth/cotton
 	general_name = "cotton"
@@ -24,6 +24,17 @@
 /datum/material/cloth/felt
 	general_name = "felt"
 	descriptor = "felted"
+
+/datum/material/cloth/leather
+	general_name = "leather"
+	weight_modifier = 0.2
+	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder
+
+/datum/material/paper
+	general_name = "paper"
+	weight_modifier = 0.1
+	sharpness_modifier = 0.1
+	ignition_point = 400
 
 /datum/material/wood
 	general_name = "wood"
@@ -53,6 +64,7 @@
 		/obj/structure/spinning_wheel,
 		/obj/structure/door,
 		/obj/structure/table,
+		/obj/structure/table/shelf,
 		/obj/structure/table/bench,
 		/obj/structure/lectern
 		)
@@ -72,12 +84,6 @@
 	sharpness_modifier = 0.3
 	ignition_point = 460
 	hit_sound = 'sounds/effects/gore1.ogg'
-
-/datum/material/leather
-	general_name = "leather"
-	weight_modifier = 0.2
-	sharpness_modifier = 0.1
-	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder
 
 /datum/material/dirt
 	general_name = "dirt"
