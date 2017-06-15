@@ -5,7 +5,7 @@
 	random_state_prefix = "small"
 
 	var/amount = 1
-	var/splat_count 		// a list of splat objects that have been merged into this one
+	var/list/splat_images = list()
 
 /obj/effect/random/splat/GetWeight()
 	return max(1,amount)
@@ -30,27 +30,36 @@
 	amount = _amount
 	if(_donor)
 		temperature = _donor.temperature
-	..(newloc, material_path)
 
-/obj/effect/random/splat/Initialize()
 	for(var/obj/effect/random/splat/splat in get_turf(loc))
 		if(splat == src || splat.material != material)
 			continue
 		if(!transform && splat.transform)
 			transform = splat.transform
-		splat_count += splat.splat_count + 1
+
+		splat_images |= splat.icon_state
+		splat_images |= splat.splat_images
 		amount += splat.amount
 		QDel(splat)
+
+	..(newloc, material_path)
+
+/obj/effect/random/splat/Initialize()
+
+	// Update appearance flags for greyscale doggovision.
+	if(istype(material, /datum/material/water/blood))
+		appearance_flags |= NO_CLIENT_COLOR
+	else
+		appearance_flags &= ~NO_CLIENT_COLOR
+
 	..()
 
 /obj/effect/random/splat/UpdateIcon()
-	if(random_states)
-		if(splat_count >= random_states)
-			random_state_prefix = null
-		else
-			random_state_prefix = "[random_state_prefix]-"
-		icon_state = "[random_state_prefix][rand(1,random_states)]"
-	// we dont do any other UpdateIcon calls since this is a visual effect that doesn't cast shadows, or catch on fire... yet
+	overlays = splat_images
+	if(random_states && splat_images.len >= random_states)
+		random_state_prefix = null
+		icon_state = "[rand(1,random_states)]"
+	..()
 
 /obj/effect/random/splat/Melt()
 	material_state = STATE_LIQUID

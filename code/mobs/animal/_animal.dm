@@ -1,7 +1,6 @@
 /mob/animal
-	name = "dog"
-	understand_category = "dog"
-	mob_overlay_ident = "dog"
+	name = "animal"
+	understand_category = "animal"
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED | FLAG_THROWN_SPIN
 
 /mob/animal/DoViolentUnarmedInteraction(var/mob/target)

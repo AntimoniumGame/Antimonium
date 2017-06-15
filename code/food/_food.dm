@@ -2,6 +2,7 @@
 	name = "bread"
 	icon = 'icons/objects/items/food/food.dmi'
 	default_material_path = /datum/material/herb/wheat
+	appearance_flags = NO_CLIENT_COLOR
 
 	var/eaten_sound
 	var/bites_left = 3

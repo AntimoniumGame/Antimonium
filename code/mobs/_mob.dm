@@ -6,6 +6,7 @@
 	draw_shadow_underlay = TRUE
 	sight = SEE_SELF|SEE_BLACKNESS
 
+	var/client_color
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
 	var/blood_material = /datum/material/water/blood
@@ -89,3 +90,14 @@
 		// create ashes
 		// Light off
 		QDel(src)
+
+/mob/proc/UpdateClient()
+	if(client_color)
+		client.color = client_color
+	else
+		client.color = null
+
+/mob/Logout()
+	if(radial_menu)
+		QDel(radial_menu)
+	. = ..()

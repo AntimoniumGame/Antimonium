@@ -8,7 +8,8 @@
 		/client/proc/StartViewVars,
 		/client/proc/ToggleVarsRefresh,
 		/client/proc/CloseVarsWindow,
-		/client/proc/ToggleDaemon
+		/client/proc/ToggleDaemon,
+		/client/proc/JoinAsRole
 		)
 
 /client/proc/ToggleDaemon()
@@ -326,3 +327,35 @@
 		if("datum")
 			C.Dnotify("datum editing not implemented yet")
 			return V
+
+
+/client/proc/JoinAsRole()
+
+	set name = "Join As Role"
+	set category = "Debug"
+
+	if(!istype(mob, /mob/abstract/new_player))
+		Dnotify("You must be at the lobby to use this verb.")
+		return
+
+	var/mob/abstract/new_player/player = mob
+	switch(game_state.ident)
+		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
+			Dnotify("<span class='warning'>The game has not started yet!</span>")
+			return
+		if(GAME_OVER)
+			Dnotify("<span class='warning'>The game is over!</span>")
+			return
+
+	var/datum/job/selected_role = input("Select a job.") as null|anything in job_datums
+
+	if(!selected_role || !istype(mob, /mob/abstract/new_player) || (game_state.ident in list(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING,GAME_OVER)))
+		return
+
+	screen -= player.title_image
+	EndLobbyMusic(src)
+
+	var/mob/new_mob = selected_role.Equip(player)
+	selected_role.Welcome(new_mob)
+	selected_role.Place(new_mob)
+	QDel(player)

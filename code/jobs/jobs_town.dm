@@ -27,6 +27,13 @@
 	name = "Hunter"
 	maximum_slots = 3
 
+/datum/job/hound
+	name = "Hound"
+	maximum_slots = 3
+	commander = "your master, the Hunter"
+	welcome_text = "Your skillful nose and tracking abilities are second only to your loyalty."
+	force_mob_type = /mob/animal/dog //bork
+
 /datum/job/apothecary
 	name = "Apothecary"
 	maximum_slots = 3

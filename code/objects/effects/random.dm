@@ -5,7 +5,6 @@
 	var/random_state_prefix
 
 /obj/effect/random/Initialize()
-	..()
 	if(random_states)
 		var/random_state = rand(1,random_states)
 		if(random_state_prefix)

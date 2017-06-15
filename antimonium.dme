@@ -171,6 +171,7 @@
 #include "code\mobs\animal\animal_body.dm"
 #include "code\mobs\animal\animal_icon.dm"
 #include "code\mobs\animal\animal_ui.dm"
+#include "code\mobs\animal\dog\_dog.dm"
 #include "code\mobs\animal\nymph\nymph.dm"
 #include "code\mobs\human\_human.dm"
 #include "code\mobs\human\human_body.dm"
