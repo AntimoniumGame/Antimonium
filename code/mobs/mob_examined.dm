@@ -10,7 +10,7 @@
 			var/list/injuries = list()
 			for(var/limb_id in limbs)
 				var/result_line
-				var/obj/item/limb/limb = limbs[limb_id]
+				var/obj/item/limb/limb = GetLimb(limb_id)
 				if(limb.wounds.len)
 					result_line = "You find "
 					var/i = 1

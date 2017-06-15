@@ -72,7 +72,7 @@
 	var/obj/item/grab/grab = new(null, grabbing, src)
 	grab.ForceMove(get_turf(src))
 	if(CollectItem(grab, grabbing_slot))
-		var/obj/item/limb/limb = limbs[grabbing_with]
+		var/obj/item/limb/limb = GetLimb(grabbing_with)
 		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 75)
 		NotifyNearby("<span class='danger'>\The [grab.owner] grabs \the [grab.grabbed] with [grab.owner.Their()] [limb.grasp_name]!</span>")
 		SetActionCooldown(10)

@@ -3,19 +3,19 @@
 	icon = 'icons/objects/items/food/food.dmi'
 	default_material_path = /datum/material/herb/wheat
 	appearance_flags = NO_CLIENT_COLOR
+	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
 
 	var/eaten_sound
 	var/bites_left = 3
 	var/trash_path
 	var/value_per_bite = 10
-
 	var/nutrition = 5
 
-/obj/item/consumable/Use(var/mob/user)
+/obj/item/consumable/Eaten(var/mob/user)
 
-	if(user.stomach.len > 5) // arbitrary
-		user.Notify("<span class='warning'>You are much too full to fit anything else into your stomach.</span>")
-		return
+	if(user.GetOrganEffectVolume(ORGAN_STOMACH) >= 5) // Arbitrary.
+		user.Notify("<span class='warning'>You cannot fit anything else into your stomach.</span>")
+		return TRUE
 
 	bites_left--
 	new /datum/effect/consumed(user, name, value_per_bite, src)

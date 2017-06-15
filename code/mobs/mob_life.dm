@@ -4,10 +4,15 @@
 	var/blood = 100
 
 /mob/proc/HandleLifeTick()
+
 	// Update wounds, healing, shock, infection, etc.
 	for(var/thing in injured_limbs)
 		var/obj/item/limb/limb = thing
 		limb.Process()
+
+	for(var/thing in organs)
+		var/obj/item/organ/organ = thing
+		organ.Process()
 
 	// Various life processes.
 	HandlePain()
@@ -37,14 +42,25 @@
 	if(dead)
 		return
 
-	if(hunger > 0)
-		hunger--
-		blood = min(100, blood + rand(1,3))
+	if(hunger > 0 && blood < 100)
+		var/obj/item/organ/liver = GetHealthyOrganByKey(ORGAN_LIVER)
+		if(liver)
+			hunger--
+			blood = min(100, blood + rand(1,3))
 
-	if(blood <= 60)
-		Die("blood loss")
+	var/effective_blood = blood
+	if(!GetHealthyOrganByKey(ORGAN_HEART))
+		effective_blood = 50
+
+	if(effective_blood <= 60)
+		var/obj/item/organ/brain = GetHealthyOrganByKey(ORGAN_BRAIN)
+		if(brain)
+			brain.TakeDamage(10)
+		else
+			Die("blood loss")
+
 	else if(prob(10))
-		switch(blood)
+		switch(effective_blood)
 			if(90 to 100)
 				return
 			if(80 to 90)

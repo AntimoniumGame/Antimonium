@@ -33,6 +33,6 @@
 			return inv_slot.holding.GetWornIcon(effective_ident)
 
 /mob/proc/UpdateIconByLimb(var/limb_id)
-	var/obj/item/limb/limb = limbs[limb_id]
+	var/obj/item/limb/limb = GetLimb(limb_id)
 	if(istype(limb))
 		return limb.GetWornIcon(prone ? "world" : "mob")

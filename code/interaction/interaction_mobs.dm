@@ -26,7 +26,7 @@
 			GrabAtom(thing, limb, slot)
 			return TRUE
 		else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
-			var/obj/item/limb/use_limb = limbs[limb]
+			var/obj/item/limb/use_limb = GetLimb(limb)
 			if(!use_limb.IsDextrous())
 				return TRUE
 			var/obj/item/throwing = GetEquipped(slot)

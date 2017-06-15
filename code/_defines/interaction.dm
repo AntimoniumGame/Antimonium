@@ -6,6 +6,7 @@
 #define FLAG_FLAT_SURFACE          32
 #define FLAG_FLAMMABLE             64
 #define FLAG_SEATING              128
+#define FLAG_IS_EDIBLE            256
 
 var/list/__atom_flags = list("[FLAG_SIMULATED]" = "FLAG_SIMULATED", "[FLAG_ETHEREAL]" = "FLAG_ETHEREAL", "[FLAG_THROWN_SPIN]" = "FLAG_THROWN_SPIN", "[FLAG_ANCHORED]" = "FLAG_ANCHORED", "[FLAG_TEMPERATURE_SENSITIVE]" = "FLAG_TEMPERATURE_SENSITIVE", "[FLAG_FLAT_SURFACE]" = "FLAG_FLAT_SURFACE", "[FLAG_SEATING]" = "FLAG_SEATING")
 #define atomflag2name(f)    __atom_flags["[f]"]

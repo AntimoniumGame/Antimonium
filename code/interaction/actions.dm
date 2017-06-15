@@ -25,9 +25,9 @@
 	if(!limbs || !limbs.len)
 		return // Ghosts, new players.
 	var/target_limb
-	if(attacker && limbs[attacker.target_zone.selecting])
+	if(attacker && GetLimb(attacker.target_zone.selecting))
 		target_limb = attacker.target_zone.selecting
 	else
 		target_limb = pick(limbs)
-	var/obj/item/limb/limb = limbs[target_limb]
+	var/obj/item/limb/limb = GetLimb(target_limb)
 	limb.HandleAttacked(attack_weight, attack_sharpness, attack_contact_size, attacked_with)

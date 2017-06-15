@@ -54,7 +54,7 @@
 		inv_overlay = holding.GetInvIcon()
 	if(update_bodyparts && update_bodyparts.len)
 		for(var/thing in update_bodyparts)
-			var/obj/item/limb/limb = owner.limbs[thing]
+			var/obj/item/limb/limb = owner.GetLimb(thing)
 			if(istype(limb))
 				limb.SetNotMoving((holding ? TRUE : FALSE), TRUE)
 

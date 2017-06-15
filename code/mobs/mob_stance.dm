@@ -19,7 +19,7 @@
 		return
 	stance_score = 0
 	for(var/limb_id in stance_limbs)
-		var/obj/item/limb/stance/limb = limbs[limb_id]
+		var/obj/item/limb/stance/limb = GetLimb(limb_id)
 		if(limb && !limb.broken)
 			stance_score += limb.support_value
 	if(stance_score <= stance_fail_threshold)

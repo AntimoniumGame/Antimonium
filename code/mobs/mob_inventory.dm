@@ -61,7 +61,7 @@
 		slot.UpdateStrings()
 		if(slot.update_bodyparts && slot.update_bodyparts.len)
 			for(var/thing in slot.update_bodyparts)
-				var/obj/item/limb/limb = limbs[thing]
+				var/obj/item/limb/limb = GetLimb(thing)
 				if(istype(limb))
 					limb.SetNotMoving(slot.holding ? TRUE : FALSE)
 
