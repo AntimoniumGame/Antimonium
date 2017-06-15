@@ -6,6 +6,7 @@
 	icon = 'icons/images/ui.dmi'
 	var/mob/owner
 	flags = FLAG_ANCHORED | FLAG_ETHEREAL
+	appearance_flags = NO_CLIENT_COLOR
 
 /obj/ui/Destroy()
 	if(owner)

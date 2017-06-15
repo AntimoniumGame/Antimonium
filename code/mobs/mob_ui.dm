@@ -16,10 +16,6 @@
 	ui_images.Cut()
 	. = ..()
 
-/mob/Login()
-	. = ..()
-	RefreshUI()
-
 /mob/proc/CreateUI()
 	hunger_meter = new(src, "hunger", _offset = 1)
 	fatigue_meter = new(src, "sleep", _offset = 2)

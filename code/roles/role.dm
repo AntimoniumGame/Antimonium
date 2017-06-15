@@ -1,15 +1,21 @@
 var/list/all_roles = list()
 
 /mob/Login()
+
 	. = ..()
-	if(!client)
-		return
+
+	MoveLoop()
+	UpdateClient()
+
 	if(role && role.ckey == client.ckey && !client.role)
 		client.role = role
 	else if(client.role)
 		role = client.role
 	else
 		role = new(client)
+	RefreshUI()
+	spawn()
+		DoFadein(src, 10)
 
 /client
 	var/datum/role/role

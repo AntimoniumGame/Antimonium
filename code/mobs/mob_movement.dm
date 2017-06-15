@@ -137,14 +137,3 @@
 			Move(get_step(src, walk_dir))
 			self_move = FALSE
 		WAIT_1T
-
-/mob/Logout()
-	if(radial_menu)
-		QDel(radial_menu)
-	. = ..()
-
-/mob/Login()
-	spawn()
-		DoFadein(src, 10)
-	. = ..()
-	MoveLoop()
