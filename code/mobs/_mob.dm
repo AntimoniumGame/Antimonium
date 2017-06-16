@@ -17,8 +17,8 @@
 /mob/proc/Gib()
 	Splatter(loc, blood_material)
 
-	while(limbs.len > 1)
-		var/obj/item/limb/limb = GetLimb(pick(limbs - BP_CHEST))
+	while(limbs_by_key.len > 1)
+		var/obj/item/limb/limb = GetLimb(pick(limbs_by_key - BP_CHEST))
 		limb.SeverLimb()
 		sleep(-1)
 
@@ -54,6 +54,9 @@
 
 	// Create default UI.
 	CreateUI()
+
+	if(ideal_sight_value)
+		blindness_step_value = round(255/ideal_sight_value)
 
 	..()
 

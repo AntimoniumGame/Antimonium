@@ -1,6 +1,7 @@
 /mob
 	var/list/injured_limbs = list()
 	var/list/limbs = list()
+	var/list/limbs_by_key = list()
 	var/list/organs = list()
 	var/list/organs_by_key = list()
 	var/sitting = FALSE
@@ -36,7 +37,7 @@
 		return pick(organs)
 
 /mob/proc/GetLimb(var/limb_key)
-	return limbs[limb_key]
+	return limbs_by_key[limb_key]
 
 /mob/proc/CanUseLimb(var/slot)
 	var/obj/item/limb/hand = GetLimb(slot)
@@ -58,7 +59,7 @@
 	return TRUE
 
 /mob/proc/CreateLimbs()
-	limbs[BP_CHEST] = new /obj/item/limb(src, "body", 'icons/objects/items/limbs/chest.dmi', BP_CHEST, _root = TRUE, _vital = TRUE, _size = 10)
+	limbs_by_key[BP_CHEST] = new /obj/item/limb(src, "body", 'icons/objects/items/limbs/chest.dmi', BP_CHEST, _root = TRUE, _vital = TRUE, _size = 10)
 
 /mob/proc/CreateOrgans()
 	return

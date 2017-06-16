@@ -6,6 +6,7 @@
 	heat_harm_point =   350
 	weight = 60
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED | FLAG_THROWN_SPIN
+	ideal_sight_value = 4
 
 /mob/human/GetSlotByHandedness(var/handedness)
 	return (handedness == "left" ? SLOT_LEFT_HAND : SLOT_RIGHT_HAND)
