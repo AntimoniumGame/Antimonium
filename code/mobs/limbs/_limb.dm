@@ -6,6 +6,7 @@
 	sharpness = 1
 	attack_verbs = list("bludgeons", "batters", "whacks")
 	default_material_path = /datum/material/meat
+	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
 
 	var/limb_name
 	var/root_limb = FALSE
@@ -47,7 +48,7 @@
 	weight = contact_size // size' for the purposes of bleeding etc.
 
 	if(_parent)
-		parent = owner.limbs[_parent]
+		parent = owner.GetLimb(_parent)
 		parent.children += src
 
 /obj/item/limb/UpdateStrings()

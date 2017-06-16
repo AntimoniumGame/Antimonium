@@ -58,18 +58,20 @@
 	MergeWithLocalStacks()
 
 /obj/item/stack/Use(var/mob/user)
+	. = ..()
+	if(!.)
+		if(GetAmount() <= 1)
+			user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
+			return TRUE
 
-	if(GetAmount() <= 1)
-		user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
-		return
+		var/split_amount = input("How many would you like to remove?") as null|num
+		if(!split_amount || split_amount < 1 || split_amount >= max_amount)
+			return TRUE
 
-	var/split_amount = input("How many would you like to remove?") as null|num
-	if(!split_amount || split_amount < 1 || split_amount >= max_amount)
-		return
-
-	Remove(split_amount)
-	new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
-	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
+		Remove(split_amount)
+		new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
+		user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
+		return TRUE
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)
 	return (istype(stack) && type == stack.type && material == stack.material)

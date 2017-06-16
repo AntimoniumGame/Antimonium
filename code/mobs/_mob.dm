@@ -16,10 +16,12 @@
 
 /mob/proc/Gib()
 	Splatter(loc, blood_material)
+
 	while(limbs.len > 1)
-		var/obj/item/limb/limb = limbs[pick(limbs - BP_CHEST)]
+		var/obj/item/limb/limb = GetLimb(pick(limbs - BP_CHEST))
 		limb.SeverLimb()
 		sleep(-1)
+
 	QDel(src)
 
 /mob/proc/GetSlotByHandedness(var/handedness)
@@ -38,6 +40,7 @@
 
 	// Instantiate body.
 	CreateLimbs()
+	CreateOrgans()
 
 	// Update temperature flags.
 	if(heat_suffer_point != TEMPERATURE_NEVER_HOT || \

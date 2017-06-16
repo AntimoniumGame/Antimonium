@@ -1,7 +1,5 @@
 /mob
-	var/list/stomach = list()
 	var/list/skin = list()
-	var/list/lungs = list()
 	var/list/consumable_effects = list()
 	var/hunger = 100
 
@@ -23,6 +21,14 @@
 
 /mob/proc/HandleConsumableEffects()
 	consumable_effects = list()
-	for(var/thing in (stomach|skin|lungs))
+
+	var/list/effects = skin.Copy()
+	var/list/organs = GetHealthyOrgansByKey(ORGAN_STOMACH) + GetHealthyOrgansByKey(ORGAN_LUNG)
+
+	for(var/thing in organs)
+		var/obj/item/organ/organ = thing
+		effects += organ.effects
+
+	for(var/thing in effects)
 		var/datum/effect/consumed = thing
 		consumed.Tick()

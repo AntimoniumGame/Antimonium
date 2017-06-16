@@ -55,6 +55,10 @@
 	owner.limbs[limb_id] = null
 	owner.limbs -= limb_id
 
+	for(var/obj/item/organ/organ in contents)
+		organ.Remove()
+		organ.ForceMove(src)
+
 	if(severing)
 		ForceMove(severing)
 		for(var/obj/item/limb/child in children)
@@ -77,7 +81,9 @@
 		M.Turn(pick(0,90,180,270))
 		transform = M
 		ThrownAt(get_step(src, pick(all_dirs)))
-		Splatter(loc, owner.blood_material)
+		var/blood_mat = owner.blood_material
+		spawn(1)
+			Splatter(loc, blood_mat)
 
 		owner.UpdateIcon()
 		for(var/obj/item/limb/child in src)
@@ -88,7 +94,7 @@
 
 /obj/item/limb/proc/HandleSeverEffects()
 	if(vital)
-		owner.Die("loss of a vital organ")
+		owner.Die("loss of a vital limb")
 
 /obj/item/limb/proc/HandleBreakEffects()
 	return

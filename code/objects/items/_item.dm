@@ -54,8 +54,11 @@
 		holder.UpdateInventory()
 		holder.UpdateIcon()
 
+/obj/item/proc/Eaten(var/mob/user)
+	return FALSE
+
 /obj/item/proc/Use(var/mob/user)
-	return
+	return ((flags & FLAG_IS_EDIBLE) && Eaten(user))
 
 /obj/item/proc/GetWornIcon(var/inventory_slot)
 	// Hardcoding this for now. I am sure a better system will come along in the future.
@@ -74,7 +77,7 @@
 		if(istype(owner))
 			var/image/I = image(null)
 			for(var/limb in limb_check_list)
-				var/obj/item/limb/bp = owner.limbs[limb]
+				var/obj/item/limb/bp = owner.GetLimb(limb)
 				if(istype(bp))
 					if(bp.not_moving)
 						I.overlays += image(icon, "[limb]_static")
