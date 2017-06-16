@@ -11,7 +11,7 @@
 
 	limb_overlays = list()
 
-	for(var/limb_tag in owner.limbs)
+	for(var/limb_tag in owner.limbs_by_key)
 		var/obj/item/limb/limb = owner.GetLimb(limb_tag)
 		var/limb_icon = limb.broken ? "[limb_tag]-broken" : limb_tag
 		var/image/I = image(icon = src.icon, icon_state = limb_icon)

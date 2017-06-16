@@ -27,7 +27,8 @@
 
 	for(var/thing in organs)
 		var/obj/item/organ/organ = thing
-		effects += organ.effects
+		if(istype(organ))
+			effects += organ.effects
 
 	for(var/thing in effects)
 		var/datum/effect/consumed = thing

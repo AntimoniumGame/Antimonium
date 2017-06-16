@@ -8,7 +8,7 @@
 		clicker.NotifyNearby("\The [clicker] begins checking [src == clicker ? src.Themself() : "\the [src]"] over for injuries.")
 		spawn()
 			var/list/injuries = list()
-			for(var/limb_id in limbs)
+			for(var/limb_id in limbs_by_key)
 				var/result_line
 				var/obj/item/limb/limb = GetLimb(limb_id)
 				if(limb.wounds.len)

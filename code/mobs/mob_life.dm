@@ -3,6 +3,10 @@
 	var/shock = 0
 	var/blood = 100
 
+	var/ideal_sight_value
+	var/blindness_step_value
+	var/vision_quality
+
 /mob/proc/HandleLifeTick()
 
 	// Update wounds, healing, shock, infection, etc.
@@ -15,14 +19,38 @@
 		organ.Process()
 
 	// Various life processes.
+	HandleVision()
 	HandlePain()
 	HandleBleeding()
 	HandleConsumableEffects()
 	HandleHunger()
+	ApplyVision()
 
 	UpdateGrasp()
 	UpdateStance()
 	health.UpdateIcon()
+
+/mob/proc/HandleVision()
+
+	if(!ideal_sight_value)
+		return
+
+	vision_quality = 0 // Arbitrary magic numbers for now.
+	for(var/thing in GetHealthyOrgansByKey(ORGAN_EYE))
+		var/obj/item/organ/eye = thing
+		if(eye.IsBruised())
+			vision_quality += 1
+		else
+			vision_quality += 2
+
+/mob/proc/ApplyVision()
+	var/target_alpha
+	if(!ideal_sight_value || vision_quality >= ideal_sight_value)
+		target_alpha = 0
+	else
+		target_alpha = min(255,max(0,255 - (blindness_step_value * vision_quality)))
+	if(target_alpha != blindness_overlay.alpha)
+		animate(blindness_overlay, alpha = target_alpha, time = 3)
 
 /mob/proc/HandlePain()
 	return

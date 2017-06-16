@@ -4,6 +4,7 @@
 	var/obj/ui/controller/intent/intent
 	var/obj/ui/meter/hunger_meter
 	var/obj/ui/meter/fatigue_meter
+	var/obj/ui/blackout/blindness_overlay
 
 	var/list/ui_screen = list()
 	var/list/ui_images = list()
@@ -17,6 +18,14 @@
 	. = ..()
 
 /mob/proc/CreateUI()
+
+	cooldown_indicator = new(src)
+	cooldown_indicator.alpha = 0
+	cooldown_indicator.mouse_opacity = 0
+	cooldown_indicator.icon = 'icons/images/ui_cooldown.dmi'
+	cooldown_indicator.screen_loc = "4,1"
+	cooldown_indicator.layer += 0.5
+
 	hunger_meter = new(src, "hunger", _offset = 1)
 	fatigue_meter = new(src, "sleep", _offset = 2)
 
@@ -25,6 +34,8 @@
 	target_zone = new(src)
 	health = new(src)
 	new /obj/ui/toggle/inv(src)
+	blindness_overlay = new(src)
+	blindness_overlay.alpha = 0
 
 /mob/proc/RefreshUI()
 	if(client)

@@ -1,5 +1,5 @@
 /obj/effect/blackout
-	name = "Antimonium"
+	name = "darkness"
 	plane = FADE_PLANE
 	screen_loc = "CENTER"
 	icon = 'icons/images/barrier.dmi'

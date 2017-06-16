@@ -1,5 +1,6 @@
 /obj/item/limb
 	var/list/wounds = list()
+	var/list/organs = list()
 	var/broken = FALSE
 
 /obj/item/limb/proc/HandleAttacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
@@ -7,7 +8,7 @@
 	if(!owner)
 		return
 
-	var/wound_depth = (attack_sharpness * attack_weight) / max(1,attack_contact_size)
+	var/wound_depth = max(1,round((attack_sharpness * attack_weight) / max(1,attack_contact_size)))
 	var/wound_severity = (attack_weight * attack_contact_size)
 	var/wound_type = (attack_sharpness > 1) ? WOUND_CUT : WOUND_BRUISE
 
@@ -18,13 +19,15 @@
 	if(wound_type == WOUND_CUT && wound_severity > 5)
 		Splatter(get_turf(owner), owner.blood_material)
 
+	var/datum/wound/wound
+	// First try to expand an existing wound.
 	if(wounds.len)
 		var/list/matching_wounds = list()
 		for(var/datum/wound/old_wound in wounds)
 			if(old_wound.wound_type == wound_type)
 				matching_wounds += old_wound
 		if(matching_wounds.len)
-			var/datum/wound/wound = pick(matching_wounds)
+			wound = pick(matching_wounds)
 			wound.depth += wound_depth
 			wound.severity += wound_severity
 			if(attacked_with)
@@ -32,13 +35,20 @@
 			owner.Notify("<b>A wound on your [name] worsens into [wound.GetDescriptor()]!</b>")
 			SetPain(max(pain, wound.severity))
 			UpdateLimbState()
-			return
 
-	var/datum/wound/wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
-	wounds += wound
-	SetPain(max(pain, wound.severity))
-	owner.Notify("<span class='alert'><b>The blow leaves your [name] with [wound.GetDescriptor()]!</b></span>")
-	UpdateLimbState()
+	// Otherwise, make a new wound.
+	if(!wound)
+		wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
+		wounds += wound
+		SetPain(max(pain, wound.severity))
+		owner.Notify("<span class='alert'><b>The blow leaves your [name] with [wound.GetDescriptor()]!</b></span>")
+		UpdateLimbState()
+
+	// Damage internal organs.
+	if(cumulative_wound_depth >= attack_contact_size && organs.len)
+		var/obj/item/organ/organ = pick(organs)
+		var/damaging = max(1,rand(round(wound_severity * 0.5), round(wound_severity * 0.75)))
+		organ.TakeDamage(damaging)
 
 /obj/item/limb/proc/BreakBone()
 	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>")
@@ -52,10 +62,12 @@
 
 	not_moving = FALSE
 	owner.injured_limbs -= src
-	owner.limbs[limb_id] = null
-	owner.limbs -= limb_id
+	owner.limbs_by_key[limb_id] = null
+	owner.limbs_by_key -= limb_id
+	owner.limbs -= src
 
-	for(var/obj/item/organ/organ in contents)
+	for(var/thing in organs)
+		var/obj/item/organ/organ = thing
 		organ.Remove()
 		organ.ForceMove(src)
 

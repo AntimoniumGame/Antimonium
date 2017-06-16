@@ -43,7 +43,7 @@
 	root_limb = _root
 	grasp_name = _grasp_name ? _grasp_name : name
 	grasp_plural = _grasp_plural
-
+	owner.limbs += src
 	contact_size = _size  // Reusing contact_size as an 'effective limb
 	weight = contact_size // size' for the purposes of bleeding etc.
 
