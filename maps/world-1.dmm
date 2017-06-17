@@ -28,7 +28,7 @@
 "aB" = (/mob/human,/turf/floor/wood,/area/indoors)
 "aC" = (/obj/structure/table/bench,/obj/item/mortar_pestle,/turf/floor/cobble,/area/indoors)
 "aD" = (/obj/structure/chair{icon_state = "wooden_chair";dir = 4},/turf/floor/wood,/area/indoors)
-"aE" = (/obj/structure/spinning_wheel{icon_state = "wheel";dir = 4},/turf/floor/wood,/area/indoors)
+"aE" = (/obj/structure/thread{icon_state = "wheel";dir = 4},/turf/floor/wood,/area/indoors)
 "aF" = (/obj/structure/table,/turf/floor/wood,/area/indoors)
 "aG" = (/obj/structure/table/bench,/obj/item/stack/ginseng/five,/obj/item/stack/nightshade/five,/obj/structure/sconce{dir = 4;icon_state = "sconce"},/turf/floor/cobble,/area/indoors)
 "aH" = (/mob/human,/turf/floor/tiled,/area/indoors)
@@ -120,6 +120,7 @@
 "cp" = (/obj/structure/table/shelf/north,/turf/floor/tiled,/area/indoors)
 "cq" = (/obj/structure/table/shelf/north,/turf/floor/tiled,/area/indoors)
 "cr" = (/obj/structure/table/shelf/south,/turf/floor/cobble,/area/indoors)
+"cs" = (/obj/structure/thread/loom,/turf/floor/wood,/area/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -133,9 +134,9 @@ agamawamaoaoaoaoaoaoaqaragajamamamamamavavavamawamajaxcebYaa
 agamamamaoaoaoaoaoaoaoayagajazamaAamamavaBavamamamajaxcebYaa
 agaCamamaoaoaoaoaobWbWbWagajamamamamamavavavaDaEcjajaxcebYaa
 agaGamamaoaoaHaoaobTbTbTagajamamamamamavavavaIajajajaJaJafaa
-agaKamamaoaoaoaoaobUbUbUagajavavavavclcmaLaLaLajaMaMcebYbYaa
+agaKamamaoaoaoaoaobUbUbUagajavavavavclcsaLaLaLajaMaMcebYbYaa
 agaNamamaoaOaoaoaobVbVbVagajajakalajajajajajajajaMawcebYbYaa
-agaRcncoaTaoaUcpcqaoaoaUagajajavavavavaVavaWavajaMaMcebYbYaa
+agaRcncnaTaoaUcpcpaoaoaUagajajavavavavaVavaWavajaMaMcebYbYaa
 agagagagagagagagagaoaoagagajaMamamaIavaWavaFaXajajajcecebYaa
 aMaMaMaMaMaMaMaMaMaZbaaMaMaMaMawamaIaDaFavavavavbcajaxcfceaa
 aMbdbebfbgambhancramambibjaMaMamamaIavbkavavavavblajaxceceaa
