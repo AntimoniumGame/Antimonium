@@ -82,7 +82,11 @@
 			shock = max(shock, 0)
 
 	if(!dead && shock == 100)
-		Die("traumatic shock")
+		var/obj/item/organ/heart = GetHealthyOrganByKey(ORGAN_HEART)
+		if(istype(heart))
+			if(prob(10))
+				Notify("<span class='danger'>Your [heart.name] thunders painfully in your chest!</span>")
+			heart.TakeDamage(rand(1,3))
 
 /mob/proc/UpdateGrasp()
 	//TODO: move this to limbs

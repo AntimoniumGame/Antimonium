@@ -80,3 +80,4 @@
 					return TRUE
 			user.Notify("<span class='warning'>\The [target]'s [limb.name] bears no treatable wounds.</span>")
 		return TRUE
+	. = ..()
