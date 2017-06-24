@@ -37,9 +37,6 @@ var/list/surgery_steps = list()
 	for(var/thing in surgery_steps)
 		var/datum/surgery/surgery = thing
 		var/surgery_chance = surgery.CanPerformWith(prop)
-
-		to_chat(world, "Surgery debug: [surgery.name] | [surgery_chance] | [surgery.CanPerformBy(user)] | [surgery.CanPerformOn(user, src)]")
-
 		if(surgery_chance > 0 && surgery.CanPerformBy(user) && surgery.CanPerformOn(user, src))
 			surgery.Begin(user, src, prop)
 			if(prob(surgery_chance))

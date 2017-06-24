@@ -71,7 +71,7 @@
 	broken = TRUE
 	HandleBreakEffects()
 
-/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing)
+/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE)
 
 	if(!owner || root_limb)
 		return
@@ -95,7 +95,11 @@
 		for(var/obj/item/limb/child in children)
 			child.SeverLimb(src)
 		if(parent)
-			var/datum/wound/wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
+			var/datum/wound/wound
+			if(amputated)
+				wound = new(parent, WOUND_CUT, 10, 20, "surgical amputation")
+			else
+				wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
 			parent.wounds += wound
 			parent.cumulative_wound_depth += wound.depth
 			parent.cumulative_wound_severity += wound.severity
@@ -103,12 +107,18 @@
 			parent.children -= src
 			parent = null
 
-		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
-		owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>")
 		var/matrix/M = matrix()
 		M.Turn(pick(0,90,180,270))
 		transform = M
-		ThrownAt(get_step(src, pick(all_dirs)))
+
+		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
+		if(amputated)
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] has been cleanly severed!</b></span>")
+			ForceMove(get_turf(owner))
+		else
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>")
+			ThrownAt(get_step(src, pick(all_dirs)))
+
 		var/blood_mat = owner.blood_material
 		spawn(1)
 			Splatter(loc, blood_mat)

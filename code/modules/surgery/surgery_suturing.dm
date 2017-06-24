@@ -5,13 +5,10 @@
 /datum/surgery/suturing/CanPerformOn(var/mob/surgeon, var/mob/patient)
 	var/obj/item/limb/limb = patient.limbs_by_key[surgeon.target_zone.selecting]
 	if(istype(limb))
-		to_chat(world, "checking [limb.name]")
 		for(var/thing in limb.wounds)
 			var/datum/wound/wound = thing
-			to_chat(world, "checking [wound.GetDescriptor()]")
 			if(!wound.Bandaged() && wound.wound_type == WOUND_CUT && wound.severity >= SUTURE_THRESHOLD)
 				return TRUE
-	to_chat(world, "No limb.")
 	return FALSE
 
 /datum/surgery/suturing/CanPerformWith(var/atom/movable/tool)

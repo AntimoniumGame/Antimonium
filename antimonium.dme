@@ -191,6 +191,7 @@
 #include "code\mobs\limbs\wounds\wound_healing.dm"
 #include "code\mobs\organs\_organ.dm"
 #include "code\modules\surgery\_surgery.dm"
+#include "code\modules\surgery\surgery_amputation.dm"
 #include "code\modules\surgery\surgery_suturing.dm"
 #include "code\objects\_object.dm"
 #include "code\objects\object_temperature.dm"
