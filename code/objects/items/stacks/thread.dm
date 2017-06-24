@@ -7,6 +7,7 @@
 	stack_name =    "spool"
 	default_material_path = /datum/material/cloth
 	can_craft_with = FALSE
+	var/is_thread = TRUE
 
 	var/dyed = WHITE
 	var/list/colour_to_icon = list(
@@ -66,7 +67,7 @@
 			)
 
 /obj/item/stack/thread/cloth/Attacking(var/mob/user, var/mob/target)
-	if(user.intent.selecting == INTENT_HELP)
+	if(user.intent.selecting == INTENT_HELP && !is_thread)
 		var/obj/item/limb/limb = target.limbs_by_key[user.target_zone.selecting]
 		if(!istype(limb))
 			user.Notify("<span class='warning'>\The [target] is missing that limb.</span>")
