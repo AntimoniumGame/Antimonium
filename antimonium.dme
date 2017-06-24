@@ -116,6 +116,7 @@
 #include "code\game_state\game_setup.dm"
 #include "code\game_state\game_starting.dm"
 #include "code\game_state\game_waiting.dm"
+#include "code\helpers\action.dm"
 #include "code\helpers\data.dm"
 #include "code\helpers\debug.dm"
 #include "code\helpers\dir.dm"

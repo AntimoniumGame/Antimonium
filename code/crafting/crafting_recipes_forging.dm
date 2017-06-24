@@ -3,14 +3,16 @@
 	required_structure = /obj/structure/anvil
 	required_skills = SKILL_FORGING
 	action_third_person = "forges"
+	action_third_person_pre = "forging"
 
 /datum/crafting_recipe/forging/Craft(var/atom/craft_at, var/obj/item/stack/crafting_with)
 	. = ..()
-	spawn()
-		sleep(6)
-		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
-		sleep(6)
-		PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
+	if(.)
+		spawn()
+			sleep(6)
+			PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
+			sleep(6)
+			PlayLocalSound(craft_at, crafting_with.material.GetConstructionSound(), 100, -1)
 
 /datum/crafting_recipe/forging/axe
 	result_path = /obj/item/component

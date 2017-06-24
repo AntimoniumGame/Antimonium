@@ -33,8 +33,12 @@
 				wound.severity = max(0, wound.severity - rand(5,10))
 				if(wound.severity < 3 && wound.depth < 3 && wound.bleed_amount)
 					wound.bleed_amount = 0
+	var/obj/item/needle/needle = instrument
+	if(istype(needle)) needle.ConsumeThread(1)
 
 /datum/surgery/suturing/Fail(var/mob/surgeon, var/mob/patient, var/atom/movable/instrument)
 	var/obj/item/limb/limb = patient.limbs_by_key[surgeon.target_zone.selecting]
 	if(istype(limb))
 		surgeon.NotifyNearby("<span class = 'danger'>\The [surgeon] fails to suture \the [patient]'s [limb.name]!</span>")
+	var/obj/item/needle/needle = instrument
+	if(istype(needle)) needle.ConsumeThread(1)

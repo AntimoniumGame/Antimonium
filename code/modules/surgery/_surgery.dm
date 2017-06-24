@@ -6,6 +6,7 @@ var/list/surgery_steps = list()
 
 /datum/surgery
 	var/name = "Generic Surgery"
+	var/delay = 30
 	var/list/tools = list()
 
 /datum/surgery/proc/CanPerformBy(var/mob/user)
@@ -38,8 +39,9 @@ var/list/surgery_steps = list()
 		var/datum/surgery/surgery = thing
 		var/surgery_chance = surgery.CanPerformWith(prop)
 		if(surgery_chance > 0 && surgery.CanPerformBy(user) && surgery.CanPerformOn(user, src))
+			user.SetActionCooldown(surgery.delay)
 			surgery.Begin(user, src, prop)
-			if(prob(surgery_chance))
+			if(DoAfterDelay(user, src, surgery.delay, prop) && prob(surgery_chance))
 				surgery.End(user, src, prop)
 			else
 				surgery.Fail(user, src, prop)

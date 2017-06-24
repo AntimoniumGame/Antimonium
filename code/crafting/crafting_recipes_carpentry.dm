@@ -3,6 +3,7 @@
 	required_structure = /obj/structure/table/bench
 	required_skills = SKILL_CARPENTRY
 	action_third_person = "cuts"
+	action_third_person_pre = "cutting"
 	result_number = 3
 
 /datum/crafting_recipe/carpentry/dartboard

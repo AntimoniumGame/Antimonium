@@ -5,9 +5,17 @@
 	attack_verbs = list("pokes","pricks","jabs")
 	associated_skill = SKILL_TAILORING
 
+	var/thread_amount = 5
 	var/obj/item/stack/thread/threaded
 	var/image/thread_overlay
 	var/image/thread_overlay_inv
+
+/obj/item/needle/proc/ConsumeThread()
+	if(threaded)
+		threaded.Remove(1)
+		if(threaded.GetAmount() <= 0)
+			threaded = null // thread handles deleting itself in Remove().
+			UpdateIcon()
 
 /obj/item/needle/GetInvIcon()
 	var/image/I = ..()
@@ -49,13 +57,13 @@
 		if(threaded)
 			user.Notify("<span class='warning'>\The [src] is already threaded.</span>")
 			return TRUE
-		if(thread.GetAmount() < 3)
-			user.Notify("<span class='warning'>You need at least 3 strands to thread this needle.</span>")
+		if(thread.GetAmount() < thread_amount)
+			user.Notify("<span class='warning'>You need at least 5 strands to thread this needle.</span>")
 			return TRUE
-		threaded = new thread.type(src, thread.material.type, 3)
+		threaded = new thread.type(src, thread.material.type, thread_amount)
 		threaded.dyed = thread.dyed
 		user.Notify("You thread \the [src] with some of \the [thread].")
-		thread.Remove(3)
+		thread.Remove(thread_amount)
 		UpdateIcon()
 		return TRUE
 	. = ..()

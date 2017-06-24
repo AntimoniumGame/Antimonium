@@ -3,6 +3,7 @@
 	required_structure = /obj/structure/table/bench
 	required_skills = SKILL_TAILORING
 	action_third_person = "tailors"
+	action_third_person_pre = "tailoring"
 
 /datum/crafting_recipe/tailoring/pants
 	result_path = /obj/item/clothing/pants

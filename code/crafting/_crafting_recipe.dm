@@ -6,6 +6,7 @@
 	var/required_structure
 	var/required_skills = 0
 	var/action_third_person = "crafts"
+	var/action_third_person_pre = "crafting"
 	var/obj/item/example_atom
 
 /datum/crafting_recipe/New()
