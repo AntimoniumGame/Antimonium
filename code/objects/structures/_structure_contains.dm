@@ -14,7 +14,7 @@
 		return ..()
 	if((seat.flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(seat.loc))
 		user.SetDir(seat.dir)
-		user.ToggleSitting()
+		user.ToggleSitting(deliberate = TRUE)
 	else
 		return ..()
 

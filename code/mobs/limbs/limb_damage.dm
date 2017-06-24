@@ -19,8 +19,10 @@
 			if(attacked_with)
 				wound.left_by = attacked_with.name
 			owner.Notify("<span class='danger'><b>A wound on your [name] worsens into [wound.GetDescriptor()]!</b></span>")
-			SetPain(max(pain, wound.severity))
+			SetPain(max(pain, wound.GetPain()))
 			UpdateLimbState()
+			if(wound.bleed_amount)
+				wound.Reopen()
 
 	// Otherwise, make a new wound.
 	if(!wound)
@@ -31,7 +33,7 @@
 			owner.Notify("<span class='danger'><b>The blow leaves your [name] with [wound.GetDescriptor()]!</b></span>")
 		UpdateLimbState()
 
-	if(NeedProcess())
+	if(owner && NeedProcess())
 		owner.injured_limbs |= src
 
 /obj/item/limb/proc/HandleAttacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)

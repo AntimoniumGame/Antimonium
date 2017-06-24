@@ -33,5 +33,7 @@
 
 	if(bleed_amount)
 		return "\a [size_string], [depth_string], bleeding [wound_string]"
+	else if(bandaged)
+		return "\a bandaged, [size_string], [depth_string], [wound_string]"
 	else
 		return "\a [size_string], [depth_string] [wound_string]"

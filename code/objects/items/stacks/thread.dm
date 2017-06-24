@@ -64,3 +64,19 @@
 			DARK_BROWN =    'icons/objects/items/thread/cloth_red.dmi',
 			DARK_PURPLE =   'icons/objects/items/thread/cloth_purple.dmi'
 			)
+
+/obj/item/stack/thread/cloth/Attacking(var/mob/user, var/mob/target)
+	if(user.intent.selecting == INTENT_HELP)
+		var/obj/item/limb/limb = target.limbs_by_key[user.target_zone.selecting]
+		if(!istype(limb))
+			user.Notify("<span class='warning'>\The [target] is missing that limb.</span>")
+		else
+			for(var/thing in limb.wounds)
+				var/datum/wound/wound = thing
+				if(wound.CanBandage())
+					wound.Bandage()
+					user.NotifyNearby("<span class='notice'>\The [user] bandages [wound.GetDescriptor()] on \the [target]'s [limb.name].</span>")
+					Remove(1)
+					return TRUE
+			user.Notify("<span class='warning'>\The [target]'s [limb.name] bears no treatable wounds.</span>")
+		return TRUE
