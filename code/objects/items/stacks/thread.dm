@@ -45,6 +45,7 @@
 	stack_name =    "stack"
 	default_material_path = /datum/material/cloth
 	can_craft_with = TRUE
+	is_thread = FALSE
 
 	colour_to_icon = list(
 			WHITE =         'icons/objects/items/thread/cloth_white.dmi',

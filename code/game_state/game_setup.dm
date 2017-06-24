@@ -11,6 +11,7 @@
 	InitializeChatCommands()
 	InitializeJobs()
 	InitializeAntagonists()
+	InitializeSurgerySteps()
 
 	for(var/thing in atoms_to_initialize)
 		var/atom/atom = thing

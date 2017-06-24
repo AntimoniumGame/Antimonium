@@ -16,13 +16,23 @@
 	return I
 
 /obj/item/needle/UpdateIcon()
+
 	if(thread_overlay)
 		overlays -= thread_overlay
-	..()
+
+	var/thread_icon = 'icons/objects/items/thread/thread_grey.dmi'
 	if(threaded)
-		var/thread_icon = (threaded.dyed ? threaded.colour_to_icon[threaded.dyed] : 'icons/objects/items/thread/thread_grey.dmi')
-		thread_overlay = image(icon = thread_icon, icon_state = "needle_world")
+		if(threaded.dyed)
+			thread_icon = threaded.colour_to_icon[threaded.dyed]
 		thread_overlay_inv = image(icon = thread_icon, icon_state = "needle")
+		thread_overlay = image(icon = thread_icon, icon_state = "needle_world")
+	else
+		thread_overlay_inv = null
+		thread_overlay = null
+
+	. = ..()
+
+	if(threaded)
 		overlays += thread_overlay
 
 /obj/item/needle/Use(var/mob/user)

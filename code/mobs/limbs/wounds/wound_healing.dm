@@ -48,7 +48,7 @@
 	bandaged = TRUE
 
 /datum/wound/proc/CanBandage()
-	return (!Bandaged() && bleed_amount > 0 && wound_type == WOUND_CUT)
+	return (!Bandaged() && bleed_amount > 0 && wound_type == WOUND_CUT && severity <= BANDAGE_THRESHOLD)
 
 /datum/wound/proc/Reopen()
 	bandaged = FALSE
