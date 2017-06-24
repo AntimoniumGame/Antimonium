@@ -1,5 +1,6 @@
 // constants
-#define PI 3.14159265359
+#define PI       3.14159265359
+#define INFINITY 1.#INF
 
 //rounding
 #define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))

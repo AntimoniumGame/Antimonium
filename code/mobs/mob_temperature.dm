@@ -31,3 +31,15 @@
 		else if(body_temperature < cold_suffer_point)
 			Notify("<span class='warning'>You shiver in the cold, teeth chattering.</span>")
 
+/mob/Ignite()
+	var/on_fire = IsOnFire()
+	. = ..()
+	if(!on_fire && IsOnFire())
+		Notify("<span class='danger'>You burst into flames!</span>")
+
+/mob/ProcessFire()
+	. = ..()
+	if(IsOnFire())
+		if(prob(20))
+			Notify("<span class='danger'>You are scorched by the hungry flames!</span>")
+		ResolveBurn(0, 0, max(1,round(fire_intensity*0.25)))

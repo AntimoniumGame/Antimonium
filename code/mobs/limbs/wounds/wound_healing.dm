@@ -1,3 +1,12 @@
+/datum/wound/proc/GetPain()
+	var/pain = (depth * severity)
+	if(wound_type == WOUND_BURN)
+		pain *= 2
+	else if(wound_type == WOUND_BRUISE)
+		pain *= 1.25
+	else if(wound_type == WOUND_CUT && !bleed_amount)
+		pain *= 0.75
+
 /datum/wound/proc/Bleed()
 	if(wound_type == WOUND_CUT && severity > 3 && bleed_amount)
 		owner.RemoveOwnerBlood(max(1,round(severity * 0.1)))

@@ -12,15 +12,15 @@
 		thing.MiddleClickedOn(src)
 
 /mob/human/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
+	if(unconsciousness <= 0 && !TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
 		thing.LeftClickedOn(src, SLOT_LEFT_HAND)
 
 /mob/human/RightClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
+	if(unconsciousness <= 0 && !TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
 		thing.RightClickedOn(src, SLOT_RIGHT_HAND)
 
 /mob/proc/TryGeneralInteraction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
-	if(!dead && CanUseLimb(limb))
+	if(unconsciousness <= 0 && !dead && CanUseLimb(limb))
 		FaceAtom(thing)
 		if(ctrl && thing.IsGrabbable() && thing != src)
 			GrabAtom(thing, limb, slot)

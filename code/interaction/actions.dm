@@ -22,3 +22,9 @@
 		target_limb = pick(limbs_by_key)
 	var/obj/item/limb/limb = GetLimb(target_limb)
 	limb.HandleAttacked(attack_weight, attack_sharpness, attack_contact_size, attacked_with)
+
+/mob/proc/ResolveBurn(var/attack_weight, var/attack_sharpness, var/attack_contact_size)
+	if(!limbs || !limbs.len)
+		return // Ghosts, new players.
+	var/obj/item/limb/limb = pick(limbs)
+	limb.HandleBurned(attack_weight, attack_sharpness, attack_contact_size)

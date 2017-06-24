@@ -156,6 +156,7 @@
 #include "code\mobs\_mob.dm"
 #include "code\mobs\mob_body.dm"
 #include "code\mobs\mob_communication.dm"
+#include "code\mobs\mob_consciousness.dm"
 #include "code\mobs\mob_death.dm"
 #include "code\mobs\mob_examined.dm"
 #include "code\mobs\mob_icon.dm"

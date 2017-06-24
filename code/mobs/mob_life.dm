@@ -10,9 +10,11 @@
 /mob/proc/HandleLifeTick()
 
 	// Update wounds, healing, shock, infection, etc.
+	pain = 0
 	for(var/thing in injured_limbs)
 		var/obj/item/limb/limb = thing
 		limb.Process()
+		pain += limb.pain
 
 	for(var/thing in organs)
 		var/obj/item/organ/organ = thing
@@ -20,15 +22,23 @@
 
 	// Various life processes.
 	HandleVision()
-	HandlePain()
 	HandleBleeding()
 	HandleConsumableEffects()
 	HandleHunger()
-	ApplyVision()
 
+	// Pass out if we're unconscious.
+	if(unconsciousness > 0)
+		unconsciousness--
+		PassOut()
+
+	// Apply updates as calculated above.
+	UpdateVision()
 	UpdateGrasp()
 	UpdateStance()
 	health.UpdateIcon()
+
+	// Pain can kill you, so do this last.
+	HandlePain()
 
 /mob/proc/HandleVision()
 
@@ -36,16 +46,20 @@
 		return
 
 	vision_quality = 0 // Arbitrary magic numbers for now.
-	for(var/thing in GetHealthyOrgansByKey(ORGAN_EYE))
-		var/obj/item/organ/eye = thing
-		if(eye.IsBruised())
-			vision_quality += 1
-		else
-			vision_quality += 2
+	if(unconsciousness <= 0)
+		for(var/thing in GetHealthyOrgansByKey(ORGAN_EYE))
+			var/obj/item/organ/eye = thing
+			if(eye.IsBruised())
+				vision_quality += 1
+			else
+				vision_quality += 2
 
-/mob/proc/ApplyVision()
+/mob/proc/UpdateVision()
 	var/target_alpha
-	if(!ideal_sight_value || vision_quality >= ideal_sight_value)
+
+	if(unconsciousness > 0)
+		target_alpha = 255
+	else if(!ideal_sight_value || vision_quality >= ideal_sight_value)
 		target_alpha = 0
 	else
 		target_alpha = min(255,max(0,255 - (blindness_step_value * vision_quality)))
@@ -53,7 +67,22 @@
 		animate(blindness_overlay, alpha = target_alpha, time = 3)
 
 /mob/proc/HandlePain()
-	return
+	switch(pain)
+		if(100 to INFINITY)
+			if(IsConscious())
+				Notify("<span class='alert'>Agony overcomes you, and you black out.</span>")
+			SetUnconscious(3)
+			shock = min(shock+1, 100)
+		if(90 to 100)
+			if(prob(1))
+				if(IsConscious())
+					Notify("<span class='alert'>Agony overcomes you, and you black out.</span>")
+				SetUnconscious(3)
+		else
+			shock = max(shock, 0)
+
+	if(!dead && shock == 100)
+		Die("traumatic shock")
 
 /mob/proc/UpdateGrasp()
 	//TODO: move this to limbs

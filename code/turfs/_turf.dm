@@ -147,7 +147,7 @@
 	return ((wall_material && wall_material.IsFlammable()) || (floor_material && floor_material.IsFlammable()))
 
 /turf/HandleFireDamage()
-	if(fire_intensity >= 100)
+	if(fire_intensity >= MAX_FIRE_INTENSITY)
 		// Light off
 		new /turf/floor/dirt(src)
 

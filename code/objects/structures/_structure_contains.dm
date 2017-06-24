@@ -118,3 +118,11 @@
 		if(istype(turf))
 			return turf.GetRadialMenuContents(user, menu_type)-src
 	return list()
+
+/obj/structure/HandleFireDamage()
+	. = ..()
+	if(IsOnFire() && fire_intensity && open)
+		for(var/thing in contains)
+			var/obj/item/prop = thing
+			if(!prop.IsOnFire() && prop.IsFlammable() && prop.CanIgnite() && prob(10))
+				prop.Ignite()
