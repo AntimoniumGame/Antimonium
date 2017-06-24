@@ -3,6 +3,7 @@
 	var/shock = 0
 	var/blood = 100
 
+	var/blinded = 0
 	var/ideal_sight_value
 	var/blindness_step_value
 	var/vision_quality
@@ -40,13 +41,20 @@
 	// Pain can kill you, so do this last.
 	HandlePain()
 
+/mob/proc/SetBlinded(var/amount)
+	blinded = max(0, blinded+amount)
+
 /mob/proc/HandleVision()
+
+	if(blinded > 0)
+		blinded--
 
 	if(!ideal_sight_value)
 		return
 
 	vision_quality = 0 // Arbitrary magic numbers for now.
-	if(unconsciousness <= 0)
+
+	if(blinded <= 0 && unconsciousness <= 0)
 		for(var/thing in GetHealthyOrgansByKey(ORGAN_EYE))
 			var/obj/item/organ/eye = thing
 			if(eye.IsBruised())

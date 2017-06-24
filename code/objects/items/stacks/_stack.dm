@@ -17,34 +17,32 @@
 
 /obj/item/stack/proc/MergeWithLocalStacks()
 
-	if(!istype(loc, /turf))
+	if(Deleted(src) || !loc || istype(loc, /mob)) // To avoid stacks held in the hands merging.
 		return
 
 	for(var/obj/item/stack/stack in loc)
-		if(src && stack != src && !Deleted(src) && GetAmount() >= 1)
+		if(src && stack != src && !Deleted(src) && !Deleted(stack) && GetAmount() >= 1)
 			if(!MatchesStackType(stack))
 				continue
 			var/transfer_amount = max_amount - GetAmount()
 			if(transfer_amount <= 0)
 				continue
 			else if(stack.GetAmount() <= transfer_amount)
-				stack.Add(GetAmount())
-				QDel(src)
-			else
-				transfer_amount = stack.max_amount - stack.GetAmount()
-				stack.Add(transfer_amount)
-				Remove(transfer_amount)
+				transfer_amount = stack.GetAmount()
+			Add(transfer_amount)
+			stack.Remove(transfer_amount)
 
 /obj/item/stack/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
-
-	if(GetAmount() <= 1)
-		user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
-		return
-
-	var/split_amount = max(1,round(GetAmount()/2))
-	Remove(split_amount)
-	new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
-	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+	. = ..()
+	if(!.)
+		if(GetAmount() <= 1)
+			user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
+		else
+			var/split_amount = max(1,round(GetAmount()/2))
+			Remove(split_amount)
+			new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
+			user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+		return TRUE
 
 /obj/item/stack/GetWeight()
 	return GetAmount() * weight
@@ -69,8 +67,9 @@
 			return TRUE
 
 		Remove(split_amount)
-		new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
+		var/obj/removed = new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
 		user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
+		user.TryPutInHands(removed)
 		return TRUE
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)

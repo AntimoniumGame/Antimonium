@@ -14,7 +14,7 @@
 "an" = (/obj/structure/sconce,/turf/floor/cobble,/area/indoors)
 "ao" = (/turf/floor/tiled,/area/indoors)
 "ap" = (/obj/structure/sconce,/turf/floor/tiled,/area/indoors)
-"aq" = (/obj/structure/cask/barrel,/turf/floor/tiled,/area/indoors)
+"aq" = (/obj/structure/barrel,/turf/floor/tiled,/area/indoors)
 "ar" = (/obj/structure/crate,/turf/floor/tiled,/area/indoors)
 "as" = (/turf/wall/wood,/area/indoors)
 "at" = (/turf/floor/cobble,/area/indoors)
@@ -37,7 +37,7 @@
 "aK" = (/obj/structure/table/bench,/obj/structure/alembic{icon_state = "map";dir = 4},/turf/floor/cobble,/area/indoors)
 "aL" = (/obj/structure/bench{icon_state = "map";dir = 1},/turf/floor/wood,/area/indoors)
 "aM" = (/turf/wall/cobble,/area/indoors)
-"aN" = (/obj/structure/table/bench,/obj/structure/sconce{dir = 4;icon_state = "sconce"},/turf/floor/cobble,/area/indoors)
+"aN" = (/obj/structure/table/bench,/obj/structure/sconce{dir = 4;icon_state = "sconce"},/obj/item/vessel,/obj/item/vessel,/obj/item/vessel,/obj/item/vessel,/turf/floor/cobble,/area/indoors)
 "aO" = (/obj/item/pipe,/turf/floor/tiled,/area/indoors)
 "aP" = (/obj/structure/door/north,/turf/floor/wood,/area/indoors)
 "aQ" = (/obj/structure/door/south,/turf/floor/wood,/area/indoors)
@@ -62,17 +62,17 @@
 "bj" = (/obj/structure/table,/turf/floor/cobble,/area/indoors)
 "bk" = (/obj/structure/chair{icon_state = "wooden_chair";dir = 1},/turf/floor/wood,/area/indoors)
 "bl" = (/obj/item/dartboard{icon_state = "world";dir = 8},/turf/floor/wood,/area/indoors)
-"bm" = (/obj/structure/sconce{dir = 8;icon_state = "sconce"},/obj/structure/cask/barrel,/obj/item/stack/ingredient/iron,/turf/floor/cobble,/area/indoors)
+"bm" = (/obj/structure/sconce{dir = 8;icon_state = "sconce"},/obj/structure/barrel,/obj/item/stack/reagent/iron,/turf/floor/cobble,/area/indoors)
 "bn" = (/obj/structure/chair{icon_state = "wooden_chair";dir = 8},/turf/floor/wood,/area/indoors)
 "bo" = (/obj/structure/sconce{dir = 8;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
-"bp" = (/obj/structure/cask/barrel,/obj/item/stack/ingredient/gold,/turf/floor/cobble,/area/indoors)
+"bp" = (/obj/structure/barrel,/obj/item/stack/reagent/gold,/turf/floor/cobble,/area/indoors)
 "bq" = (/mob/human,/turf/floor/cobble,/area/indoors)
-"br" = (/obj/structure/cask/barrel,/obj/item/stack/ingredient/copper,/turf/floor/cobble,/area/indoors)
+"br" = (/obj/structure/barrel,/obj/item/stack/reagent/copper,/turf/floor/cobble,/area/indoors)
 "bs" = (/obj/structure/table/bench,/turf/floor/wood,/area/indoors)
 "bt" = (/obj/structure/crate,/turf/floor/cobble,/area/indoors)
 "bu" = (/obj/structure/sconce{dir = 8;icon_state = "sconce"},/turf/floor/cobble,/area/indoors)
 "bv" = (/obj/structure/sconce{dir = 4;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
-"bw" = (/obj/structure/crate,/obj/item/stack/ingredient/lead,/turf/floor/cobble,/area/indoors)
+"bw" = (/obj/structure/crate,/obj/item/stack/reagent/lead,/turf/floor/cobble,/area/indoors)
 "bx" = (/obj/structure/sconce{dir = 1;icon_state = "sconce"},/turf/floor/cobble,/area/indoors)
 "by" = (/obj/structure/table/bench,/obj/item/weapon/hammer,/turf/floor/cobble,/area/indoors)
 "bz" = (/obj/structure/table/bench,/obj/structure/sconce{dir = 1;icon_state = "sconce"},/obj/item/weapon/chisel,/obj/item/level,/turf/floor/cobble,/area/indoors)
@@ -81,10 +81,10 @@
 "bC" = (/obj/structure/table/bench,/obj/item/mold,/turf/floor/cobble,/area/indoors)
 "bD" = (/obj/structure/table/bench,/obj/item/weapon/axe,/turf/floor/cobble,/area/indoors)
 "bE" = (/obj/structure/table/bench,/obj/item/stack/bricks,/turf/floor/cobble,/area/indoors)
-"bF" = (/obj/structure/cask/barrel,/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
-"bG" = (/obj/structure/cask/barrel,/obj/structure/sconce{dir = 1;icon_state = "sconce"},/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
-"bH" = (/obj/structure/cask{icon_state = "flat";dir = 1},/obj/structure/sconce{dir = 1;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
-"bI" = (/obj/structure/cask{icon_state = "flat";dir = 1},/turf/floor/wood,/area/indoors)
+"bF" = (/obj/structure/barrel,/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
+"bG" = (/obj/structure/barrel,/obj/structure/sconce{dir = 1;icon_state = "sconce"},/obj/structure/table/shelf/north,/turf/floor/wood,/area/indoors)
+"bH" = (/obj/structure/cask/filled{tag = "icon-default (NORTH)";icon_state = "";dir = 1},/obj/structure/sconce{dir = 1;icon_state = "sconce"},/turf/floor/wood,/area/indoors)
+"bI" = (/obj/structure/cask/filled{tag = "icon-default (NORTH)";icon_state = "";dir = 1},/turf/floor/wood,/area/indoors)
 "bJ" = (/turf/floor/wood,/area/indoors)
 "bK" = (/obj/structure/sconce,/turf/floor/wood,/area/indoors)
 "bL" = (/obj/item/weapon/shovel,/turf/floor/sand,/area/outdoors)
@@ -97,9 +97,9 @@
 "bS" = (/obj/structure/stairs/down,/turf/floor/dirt,/area/outdoors)
 "bT" = (/obj/item/stack/tiles,/turf/floor/tiled,/area/indoors)
 "bU" = (/obj/item/stack/bricks,/turf/floor/tiled,/area/indoors)
-"bV" = (/obj/item/stack/ingredient/stone,/turf/floor/tiled,/area/indoors)
+"bV" = (/obj/item/stack/reagent/stone,/turf/floor/tiled,/area/indoors)
 "bW" = (/obj/item/stack/logs,/turf/floor/tiled,/area/indoors)
-"bX" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/indoors)
+"bX" = (/obj/structure/table/bench,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/turf/floor/wood,/area/indoors)
 "bY" = (/turf/floor/water,/area/outdoors)
 "bZ" = (/obj/structure/sconce,/turf/floor/water,/area/outdoors)
 "ca" = (/turf/floor/wood,/area/outdoors)
@@ -121,6 +121,8 @@
 "cq" = (/obj/structure/table/shelf/north,/turf/floor/tiled,/area/indoors)
 "cr" = (/obj/structure/table/shelf/south,/turf/floor/cobble,/area/indoors)
 "cs" = (/obj/structure/thread/loom,/turf/floor/wood,/area/indoors)
+"ct" = (/obj/structure/table/bench,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
+"cu" = (/obj/structure/table/bench,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -142,7 +144,7 @@ aMaMaMaMaMaMaMaMaMaZbaaMaMaMaMawamaIaDaFavavavavbcajaxcfceaa
 aMbdbebfbgambhancramambibjaMaMamamaIavbkavavavavblajaxceceaa
 aMazamamamamamamamamamambmaMajavavavavavaDaFbnavboajaxceceaa
 aMamamamawamamamamawamambpaMajavavavavavavavavavavcgceceaJaa
-aMamamamamamamamamamamambraMajavavbsbXbXbXbXbsbsavchcecebYaa
+aMamamamamamamamamamamambraMajavavbsbXbsbsbsctcuavchcecebYaa
 aMbtamamamamamamamambqambuaMajbvavbsavavavavavavavajaxcebYaa
 aMbwbxamamambybzbAbBbCbDbEaMajavavbsbFbGbFaFaFbHbIajaxcebYaa
 aMaMaMaMaZbaaMaMaMaMaMaMaMaMajakalajajajajajajajajajaxcebYaa

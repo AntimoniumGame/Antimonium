@@ -4,7 +4,7 @@
 	icon_state = "map"
 	weight = 50
 	default_material_path = /datum/material/wood
-	flags = FLAG_SIMULATED | FLAG_FLAT_SURFACE
+	flags = FLAG_SIMULATED | FLAG_FLAT_SURFACE | FLAG_ANCHORED
 
 /obj/structure/table/shelf
 	name = "shelf"
@@ -12,7 +12,6 @@
 	icon_state = "map"
 	density = 0
 	weight = 30
-	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE
 
 /obj/structure/table/shelf/north
 	dir = NORTH

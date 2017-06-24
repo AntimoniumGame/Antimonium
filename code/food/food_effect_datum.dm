@@ -5,11 +5,10 @@
 	var/ticks
 	var/organ_key
 
-/datum/effect/New(var/mob/_owner, var/_effect_name, var/_name, var/_ticks)
+/datum/effect/New(var/mob/_owner, var/_name, var/_ticks)
 	..()
 	owner = _owner
 	source_name = _name
-	effect_name = _effect_name
 	ticks = _ticks
 
 	if(organ_key)
@@ -65,3 +64,17 @@
 // Breathed gasses.
 /datum/effect/breathed
 	organ_key = ORGAN_LUNG
+
+// Reagents.
+/datum/effect/consumed_reagent
+	organ_key = ORGAN_STOMACH
+	var/datum/material/material
+
+/datum/effect/consumed_reagent/New(var/mob/_owner, var/_name, var/_ticks, var/datum/material/_donor)
+	..()
+	if(istype(_donor))
+		material = _donor
+
+/datum/effect/consumed_reagent/Tick()
+	material.HandleConsumedEffects(owner)
+	..()

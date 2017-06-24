@@ -1,4 +1,4 @@
-/obj/item/stack/ingredient
+/obj/item/stack/reagent
 	name = "ingredient"
 	icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
 	default_material_path = /datum/material/metal/antimonium
@@ -7,6 +7,12 @@
 	singular_name = "portion"
 	plural_name = "portions"
 	can_craft_with = TRUE
+
+/obj/item/stack/Destroy()
+	var/obj/holder = loc
+	if(istype(holder) && holder.IsReagentContainer())
+		holder.RemoveReagent(src)
+	. = ..()
 
 /obj/item/ForceMove(var/atom/newloc)
 	. = ..()
@@ -18,7 +24,7 @@
 			new /obj/effect/gas(get_turf(src), src)
 			QDel(src)
 
-/obj/item/stack/ingredient/New(var/newloc, var/material_path, var/_amount, var/obj/donor)
+/obj/item/stack/reagent/New(var/newloc, var/material_path, var/_amount, var/obj/donor)
 	if(donor)
 		if(!material_path)
 			material = donor.material
@@ -26,13 +32,13 @@
 		material_state = donor.material_state
 	..(newloc, material_path, _amount)
 
-/obj/item/stack/ingredient/UpdateStrings()
+/obj/item/stack/reagent/UpdateStrings()
 	if(amount == 1)
 		name = "[material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 	else
 		name = "[GetAmount()] [material.GetTerm(material_state, amount)] of [material.GetName(material_state)]"
 
-/obj/item/stack/ingredient/UpdateIcon()
+/obj/item/stack/reagent/UpdateIcon()
 	// Gas and liquid states are invisible when held in a container.
 	if(material)
 		if(material_state == STATE_SOLID)
@@ -46,7 +52,7 @@
 			icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 	..()
 
-/obj/item/stack/ingredient/Melt()
+/obj/item/stack/reagent/Melt()
 
 	var/mob/holder = loc
 	if(istype(holder))
@@ -59,11 +65,11 @@
 		UpdateStrings()
 		UpdateIcon()
 
-/obj/item/stack/ingredient/Solidify()
+/obj/item/stack/reagent/Solidify()
 	UpdateStrings()
 	UpdateIcon()
 
-/obj/item/stack/ingredient/Evaporate()
+/obj/item/stack/reagent/Evaporate()
 
 	var/mob/holder = loc
 	if(istype(holder))
@@ -76,7 +82,7 @@
 		new /obj/effect/gas(get_turf(src), src)
 		QDel(src)
 
-/obj/item/stack/ingredient/Condense()
+/obj/item/stack/reagent/Condense()
 	UpdateStrings()
 	UpdateIcon()
 
@@ -85,27 +91,27 @@
 		if(user)
 			user.NotifyNearby("\The [user] grinds \the [src] into a fine powder.")
 		material_state = STATE_POWDER
-		new /obj/item/stack/ingredient(get_turf(src), material.type, GetAmount(), src)
+		new /obj/item/stack/reagent(get_turf(src), material.type, GetAmount(), src)
 		QDel(src)
 		return TRUE
 	return FALSE
 
-/obj/item/stack/ingredient/gold
+/obj/item/stack/reagent/gold
 	name = "gold"
 	default_material_path = /datum/material/metal/gold
 
-/obj/item/stack/ingredient/lead
+/obj/item/stack/reagent/lead
 	name = "lead"
 	default_material_path = /datum/material/metal/lead
 
-/obj/item/stack/ingredient/iron
+/obj/item/stack/reagent/iron
 	name = "iron"
 	default_material_path = /datum/material/metal/iron
 
-/obj/item/stack/ingredient/copper
+/obj/item/stack/reagent/copper
 	name = "copper"
 	default_material_path = /datum/material/metal/copper
 
-/obj/item/stack/ingredient/stone
+/obj/item/stack/reagent/stone
 	name = "stone"
 	default_material_path = /datum/material/stone

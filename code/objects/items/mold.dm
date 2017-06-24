@@ -7,7 +7,7 @@
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/stone/clay
 	flags = FLAG_SIMULATED
-	var/obj/item/stack/ingredient/contains_material
+	var/obj/item/stack/reagent/contains_material
 	var/cast_path
 	var/material_capacity = 5
 

@@ -21,7 +21,7 @@
 		else
 			for(var/obj/item/stack/mat in contains)
 				if(mat.material_state == STATE_LIQUID && mat.material && mat.GetAmount() >= mold.material_capacity)
-					mold.contains_material = new /obj/item/stack/ingredient(mold, mat.material.type, mold.material_capacity, mat)
+					mold.contains_material = new /obj/item/stack/reagent(mold, mat.material.type, mold.material_capacity, mat)
 					mat.Remove(mold.material_capacity)
 					NotifyNearby("\The [user] fills \the [prop] from \the [src].")
 					return TRUE

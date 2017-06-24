@@ -58,6 +58,18 @@
 	return FALSE
 
 /obj/item/proc/Use(var/mob/user)
+	if(user.intent.selecting == INTENT_HARM && IsReagentContainer())
+		if(!contains_reagents.len)
+			user.Notify("<span class='warning'>\The [src] is empty.</span>")
+		else
+			for(var/thing in contains_reagents)
+				var/obj/prop = thing
+				prop.ForceMove(get_turf(user))
+			contains_reagents.Cut()
+			current_reagent_volume = 0
+			UpdateIcon()
+			user.NotifyNearby("<span class='danger'>\The [user] empties \the [src].</span>")
+		return TRUE
 	return ((flags & FLAG_IS_EDIBLE) && Eaten(user))
 
 /obj/item/proc/GetWornIcon(var/inventory_slot)

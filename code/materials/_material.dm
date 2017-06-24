@@ -158,7 +158,7 @@
 	reagent.Condense()
 
 /datum/material/proc/GetDebris(var/amount)
-	return new /obj/item/stack/ingredient(material_path = type, _amount = amount)
+	return new /obj/item/stack/reagent(material_path = type, _amount = amount)
 
 /datum/material/proc/ConvertToRuin(var/loc)
 	new /turf/floor/dirt(loc)
@@ -169,4 +169,5 @@
 /datum/material/proc/OnTurfAttack(var/turf/target, var/mob/user, var/obj/item/prop)
 	return
 
-
+/datum/material/proc/HandleConsumedEffects(var/mob/consumer)
+	return

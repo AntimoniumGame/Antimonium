@@ -6,6 +6,7 @@
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_iron.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'
 	construction_sound = 'sounds/effects/ding1.ogg'
+	grindable = TRUE
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/forging,
 		/datum/crafting_recipe/forging/axe,

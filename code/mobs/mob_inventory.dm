@@ -68,3 +68,7 @@
 /mob/proc/GetHeatInsulation(var/slot)
 	var/obj/item/covering = GetEquipped(slot)
 	return (istype(covering) ? covering.GetHeatInsulation() : 0)
+
+/mob/proc/TryPutInHands(var/obj/item/thing)
+	if(!CollectItem(thing, GetSlotByHandedness("left")) && !CollectItem(thing, GetSlotByHandedness("right")))
+		thing.ForceMove(get_turf(src))

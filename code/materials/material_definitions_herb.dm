@@ -20,6 +20,34 @@
 	grindable = TRUE
 	powder_icon = 'icons/objects/items/alchemy/powder_purple.dmi'
 
+/datum/material/herb/nightshade/HandleConsumedEffects(var/mob/consumer)
+
+	var/obj/item/organ/brain = consumer.GetOrganByKey(ORGAN_BRAIN)
+	if(brain)
+		brain.TakeDamage(rand(1,3))
+
+	if(prob(15))
+		switch(rand(1,9))
+			if(1, 2, 3)
+				consumer.Notify("<span class='danger'>The world spins dizzily around you!</span>")
+				if(!consumer.prone)
+					consumer.ToggleProne()
+				consumer.SetActionCooldown(15)
+			if(4, 5, 6)
+				if(consumer.blinded <= 0)
+					consumer.Notify("<span class='danger'>Your eyes begin to twitch and spasm!</span>")
+				consumer.SetBlinded(5)
+			if(7, 8)
+				if(consumer.IsConscious())
+					consumer.Notify("<span class='danger'>You black out!</span>")
+				consumer.SetUnconscious(5)
+				if(brain) brain.TakeDamage(rand(2,5))
+			if(9)
+				if(consumer.IsConscious())
+					consumer.Notify("<span class='danger'>You are overcome by a sudden, violent seizure!</span>")
+					consumer.SetUnconscious(10)
+				if(brain) brain.TakeDamage(rand(5,10))
+
 /datum/material/herb/wheat
 	general_name = "wheat"
 	powder_name = "flour"
