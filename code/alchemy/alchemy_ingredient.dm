@@ -16,7 +16,7 @@
 
 /obj/item/ForceMove(var/atom/newloc)
 	. = ..()
-	if(loc && material)
+	if(src && !Deleted(src) && loc && material)
 		if(istype(loc, /turf) && material_state == STATE_LIQUID)
 			new /obj/effect/random/splat(loc, material.type, src, GetAmount())
 			QDel(src)

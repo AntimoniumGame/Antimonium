@@ -1,6 +1,6 @@
 /obj/item/consumable
 	name = "bread"
-	icon = 'icons/objects/items/food/food.dmi'
+	icon = 'icons/objects/items/food/bread.dmi'
 	default_material_path = /datum/material/herb/wheat
 	appearance_flags = NO_CLIENT_COLOR
 	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
@@ -13,12 +13,14 @@
 
 /obj/item/consumable/Eaten(var/mob/user)
 
-	if(user.GetOrganEffectVolume(ORGAN_STOMACH) >= 5) // Arbitrary.
-		user.Notify("<span class='warning'>You cannot fit anything else into your stomach.</span>")
+	var/obj/item/organ/stomach = user.GetHealthyOrganByKey(ORGAN_STOMACH)
+	if(!stomach)
+		user.Notify("<span class='warning'>You are not currently capable of eating.</span>")
 		return TRUE
 
 	bites_left--
-	new /datum/effect/consumed(user, name, value_per_bite, src)
+	user.AddEffect(/datum/effect/consumed, name, value_per_bite)
+
 	if(eaten_sound)
 		PlayLocalSound(user, eaten_sound, 75)
 	if(bites_left >= 1)

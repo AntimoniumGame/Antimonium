@@ -24,13 +24,6 @@
 		if(organs.len)
 			return organs
 
-/mob/proc/GetOrganEffectVolume(var/organ_key)
-	var/volume = 0
-	for(var/thing in GetHealthyOrgansByKey(organ_key))
-		var/obj/item/organ/organ = thing
-		volume += organ.effects.len
-	return volume
-
 /mob/proc/GetHealthyOrganByKey(var/organ_key)
 	var/list/organs = GetHealthyOrgansByKey(organ_key)
 	if(organs && organs.len)

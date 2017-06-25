@@ -1,21 +1,26 @@
 /mob
-	var/list/skin = list()
-	var/list/consumable_effects = list()
-	var/hunger = 100
+	var/list/effects = list()
 
-/mob/proc/AddEffect(var/effect_path, var/duration)
-
-/mob/proc/HandleConsumableEffects()
-	consumable_effects = list()
-
-	var/list/effects = skin.Copy()
-	var/list/organs = GetHealthyOrgansByKey(ORGAN_STOMACH) + GetHealthyOrgansByKey(ORGAN_LUNG)
-
-	for(var/thing in organs)
-		var/obj/item/organ/organ = thing
-		if(istype(organ))
-			effects += organ.effects
-
+/mob/proc/HandleEffects()
 	for(var/thing in effects)
-		var/datum/effect/consumed = thing
-		consumed.Tick()
+		var/datum/effect/effect = effects[thing]
+		if(!effect)
+			effects[thing] = null
+			effects -= thing
+			effects -= null
+		else
+			effect.Tick()
+
+/mob/proc/HasEffect(var/effect_id)
+	return effects[effect_id]
+
+/mob/proc/AddEffect(var/effect_path, var/effect_id, var/duration, var/additional_data)
+	var/datum/effect/effect = effects[effect_id]
+	if(effect)
+		effect.UpdateEffect(duration, additional_data)
+	else
+		effects[effect_id] = new effect_path(src, effect_id, duration, additional_data)
+
+/mob/proc/GetEffectPower(var/effect_id)
+	var/datum/effect/effect = HasEffect(effect_id)
+	return effect ? max(0,effect.GetEffectPower()) : 0

@@ -50,8 +50,9 @@
 
 /obj/item/vessel/Eaten(var/mob/user)
 
-	if(user.GetOrganEffectVolume(ORGAN_STOMACH) >= 5) // Arbitrary.
-		user.Notify("<span class='warning'>You cannot fit anything else into your stomach.</span>")
+	var/obj/item/organ/stomach = user.GetHealthyOrganByKey(ORGAN_STOMACH)
+	if(!stomach)
+		user.Notify("<span class='warning'>You are not currently capable of drinking.</span>")
 		return TRUE
 
 	if(!contains_reagents.len)
@@ -59,9 +60,8 @@
 		return TRUE
 
 	var/obj/item/drinking = pick(contains_reagents)
-	contains_reagents -= drinking
-
-	new /datum/effect/consumed_reagent(user, drinking.material.GetName(), drinking.GetAmount()*50, drinking.material)
+	user.AddEffect(/datum/effect/consumed_reagent, drinking.material.GetName(), drinking.GetAmount()*50, drinking.material)
+	QDel(drinking)
 
 	if(contains_reagents.len)
 		user.NotifyNearby("\The [user] takes a swig from \the [src].")

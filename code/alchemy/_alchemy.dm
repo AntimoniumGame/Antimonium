@@ -40,5 +40,7 @@ Furnace:
 /proc/AddReagent(var/obj/holder, var/supplied_reagent_material = /datum/material/water, var/supplied_amount = 1)
 	if(!holder || !holder.IsReagentContainer() || !holder.HasRoomForReagents(supplied_amount))
 		return FALSE
-	holder.PutReagentInside(new /obj/item/stack/reagent(null, supplied_reagent_material, supplied_amount, holder))
+	holder.contains_reagents += new /obj/item/stack/reagent(holder, supplied_reagent_material, supplied_amount)
+	holder.MergeReagents()
+	holder.UpdateIcon()
 	return TRUE

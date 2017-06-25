@@ -84,10 +84,10 @@
 				return TRUE
 			if(user.DropItem(prop))
 				if(prop && !Deleted(prop))
-					prop.ForceMove(src)
-					contains += prop
-					ThingPutInside(prop)
 					user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+					contains += prop
+					prop.ForceMove(src)
+					ThingPutInside(prop)
 					return TRUE
 
 /obj/structure/proc/ThingPutInside(var/obj/item/prop)

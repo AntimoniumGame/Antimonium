@@ -1,6 +1,6 @@
 /obj
 	var/precise_reagent_transfer
-	var/current_reagent_volume
+	var/current_reagent_volume = 0
 	var/max_reagent_volume
 	var/list/contains_reagents
 
@@ -113,8 +113,10 @@
 		if(!thing || Deleted(thing))
 			continue
 		var/obj/item/stack/reagent/reagent = thing
-		reagent.MergeWithLocalStacks()
+		reagent.MergeWithOtherStacks(contains_reagents)
+
 	UpdateReagentVolume()
+	ProcessReagentReactions(src, contains_reagents)
 
 /obj/proc/UpdateReagentVolume()
 	current_reagent_volume = 0

@@ -9,7 +9,8 @@
 		/client/proc/ToggleVarsRefresh,
 		/client/proc/CloseVarsWindow,
 		/client/proc/ToggleDaemon,
-		/client/proc/JoinAsRole
+		/client/proc/JoinAsRole,
+		/client/proc/TestCircleAlgorithm
 		)
 
 /client/proc/ToggleDaemon()
@@ -359,3 +360,10 @@
 	selected_role.Welcome(new_mob)
 	selected_role.Place(new_mob)
 	QDel(player)
+
+/client/proc/TestCircleAlgorithm()
+
+	set name = "Test Explosions"
+	set category = "Debug"
+
+	DoExplosion(mob)

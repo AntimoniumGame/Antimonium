@@ -6,6 +6,7 @@
 	mc = new()
 
 	InitializeConfig()
+	InitializeReagentReactions()
 	InitializeAdminPermissions()
 	InitializeAdminDatabase()
 	InitializeChatCommands()

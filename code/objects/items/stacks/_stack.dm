@@ -2,7 +2,7 @@
 	sharpness = 0
 	contact_size = 1
 
-	var/amount = 20
+	var/amount
 	var/max_amount = 20
 	var/singular_name = "thing"
 	var/plural_name =   "things"
@@ -13,15 +13,29 @@
 
 /obj/item/stack/ForceMove()
 	. = ..()
-	MergeWithLocalStacks()
+	MergeWithOtherStacks()
 
-/obj/item/stack/proc/MergeWithLocalStacks()
+/obj/item/stack/proc/MergeWithOtherStacks(var/list/merging_with)
 
 	if(Deleted(src) || !loc || istype(loc, /mob)) // To avoid stacks held in the hands merging.
 		return
 
+	if(!merging_with)
+		if(istype(loc, /obj/structure))
+			var/obj/structure/holder = loc
+			if(holder.contains)
+				merging_with = holder.contains
+		else if(istype(loc, /turf))
+			var/turf/holder = loc
+			merging_with = holder.contents
+
+	if(!merging_with || !merging_with.len || !(src in merging_with))
+		return
+
 	for(var/obj/item/stack/stack in loc)
-		if(src && stack != src && !Deleted(src) && !Deleted(stack) && GetAmount() >= 1)
+		if(Deleted(src))
+			break
+		if(src && stack != src && !Deleted(stack) && GetAmount() >= 1)
 			if(!MatchesStackType(stack))
 				continue
 			var/transfer_amount = max_amount - GetAmount()
@@ -49,11 +63,11 @@
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
-		amount = min(max_amount, max(1, _amount))
-	else
+		amount = _amount
+	else if(isnull(amount))
 		amount = max_amount
 	..(newloc, material_path)
-	MergeWithLocalStacks()
+	MergeWithOtherStacks()
 
 /obj/item/stack/Use(var/mob/user)
 	. = ..()

@@ -3,7 +3,6 @@
 	icon = 'icons/mobs/_default.dmi'
 	layer = MOB_LAYER
 	see_invisible = SEE_INVISIBLE_LIVING
-	draw_shadow_underlay = TRUE
 	sight = SEE_SELF|SEE_BLACKNESS
 
 	var/client_color

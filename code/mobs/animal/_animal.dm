@@ -3,6 +3,7 @@
 	understand_category = "animal"
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED | FLAG_THROWN_SPIN
 	ideal_sight_value = 4
+	draw_shadow_underlay = TRUE
 
 /mob/animal/DoViolentUnarmedInteraction(var/mob/target)
 	NotifyNearby("\The [src] mauls \the [target]!")
