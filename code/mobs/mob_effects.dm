@@ -3,21 +3,7 @@
 	var/list/consumable_effects = list()
 	var/hunger = 100
 
-/mob/proc/HandleHunger()
-	if(hunger>0 && prob(1))
-		hunger--
-	hunger_meter.UpdateMeter(hunger)
-
-/*
-	if(prob(5))
-		switch(hunger)
-			if(20 to 30)
-				Notify("<span class='warning'>Your stomach growls.</span>")
-			if(10 to 19)
-				Notify("<span class='danger'>You feel a sharp pang of hunger.</span>")
-			if(0 to 9)
-				Notify("<span class='alert'>You are starving!</span>")
-*/
+/mob/proc/AddEffect(var/effect_path, var/duration)
 
 /mob/proc/HandleConsumableEffects()
 	consumable_effects = list()

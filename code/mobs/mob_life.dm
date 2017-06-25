@@ -1,9 +1,12 @@
 /mob
+
 	var/pain = 0
 	var/shock = 0
 	var/blood = 100
-
 	var/blinded = 0
+	var/confused
+	var/dizzy
+
 	var/ideal_sight_value
 	var/blindness_step_value
 	var/vision_quality
@@ -138,3 +141,19 @@
 				Notify("<span class='danger'>The world lurches sickeningly as dizziness overtakes you.</span>")
 			if(60 to 70)
 				Notify("<span class='alert'>Flickering darkness swims at the edges of vour vision as you struggle to remain conscious.</span>")
+
+/mob/proc/HandleHunger()
+	if(hunger>0 && prob(1))
+		hunger--
+	hunger_meter.UpdateMeter(hunger)
+
+/*
+	if(prob(5))
+		switch(hunger)
+			if(20 to 30)
+				Notify("<span class='warning'>Your stomach growls.</span>")
+			if(10 to 19)
+				Notify("<span class='danger'>You feel a sharp pang of hunger.</span>")
+			if(0 to 9)
+				Notify("<span class='alert'>You are starving!</span>")
+*/
