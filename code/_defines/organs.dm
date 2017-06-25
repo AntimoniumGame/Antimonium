@@ -6,3 +6,6 @@
 #define ORGAN_STOMACH "stomach"
 #define ORGAN_HEART   "heart"
 #define ORGAN_LIVER   "liver"
+
+#define SUTURE_THRESHOLD  10
+#define BANDAGE_THRESHOLD 30

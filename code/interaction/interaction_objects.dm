@@ -40,8 +40,13 @@
 /obj/item/proc/Attacking(var/mob/user, var/mob/target)
 	if(!(flags & FLAG_SIMULATED))
 		return
+
+	if(user.intent.selecting == INTENT_HELP && target.DoSurgery(user, src))
+		return TRUE
+
 	user.DoAttackAnimation(target, src)
 	user.SetActionCooldown(5)
+
 	if(user.intent.selecting == INTENT_HELP)
 		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
 		user.NotifyNearby("<span class='warning'>\The [user] prods \the [target] with \the [src].</span>")

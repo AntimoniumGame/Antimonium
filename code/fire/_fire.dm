@@ -7,7 +7,7 @@
 	if(!IsOnFire())
 		return
 	switch(fire_intensity)
-		if(80 to 100)
+		if(80 to MAX_FIRE_INTENSITY)
 			return "max"
 		if(60 to 80)
 			return "large"
@@ -35,7 +35,7 @@
 	return IsFlammable()
 
 /atom/proc/HandleFireDamage()
-	if(fire_intensity > 90)
+	if(fire_intensity >= MAX_FIRE_INTENSITY)
 		// create ashes
 		// Light off
 		QDel(src)
@@ -69,6 +69,6 @@
 /atom/proc/StokeFire()
 	if(IsOnFire() && temperature < TEMPERATURE_FURNACE)
 		temperature = min(TEMPERATURE_FURNACE, temperature + rand(300,500))
-		fire_intensity = max(100,fire_intensity + rand(10,20))
+		fire_intensity = max(MAX_FIRE_INTENSITY,fire_intensity + rand(10,20))
 		if(prob(10))
 			NotifyNearby("<span class='alert'>The flames of \the [src] flare up higher!</span>")

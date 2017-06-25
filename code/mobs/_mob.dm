@@ -91,11 +91,16 @@
 	ResetPosition()
 
 /mob/HandleFireDamage()
-	if(fire_intensity >= 100)
+	if(fire_intensity >= MAX_FIRE_INTENSITY)
 		Die("the hungry flames")
 		// create ashes
 		// Light off
 		QDel(src)
+	else if(IsOnFire() && fire_intensity)
+		for(var/invslot in inventory_slots)
+			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
+			if(inv_slot.holding && !inv_slot.holding.IsOnFire() && inv_slot.holding.IsFlammable() && inv_slot.holding.CanIgnite() && prob(10))
+				inv_slot.holding.Ignite()
 
 /mob/proc/UpdateClient()
 	if(client_color)

@@ -5,6 +5,7 @@
 	var/obj/ui/meter/hunger_meter
 	var/obj/ui/meter/fatigue_meter
 	var/obj/ui/blackout/blindness_overlay
+	var/obj/ui/toggle/prone/stand
 
 	var/list/ui_screen = list()
 	var/list/ui_images = list()
@@ -28,6 +29,7 @@
 
 	hunger_meter = new(src, "hunger", _offset = 1)
 	fatigue_meter = new(src, "sleep", _offset = 2)
+	stand = new(src)
 
 	vision_cone = new(src)
 	intent = new(src)

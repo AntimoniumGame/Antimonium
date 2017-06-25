@@ -43,7 +43,9 @@
 	var/datum/crafting_recipe/crecipe = thing_input
 	if(!crecipe || !source_atom || !crecipe.CanCraft(get_turf(source_atom), source_atom) || !IsAdjacentTo(owner, source_atom))
 		return FALSE
-	var/obj/item/result = crecipe.Craft(get_turf(source_atom), source_atom)
-	owner.DoAttackAnimation(get_turf(source_atom))
-	owner.NotifyNearby("<span class='notice'>\The [owner] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].</span>")
-	UpdateButtons()
+	owner.NotifyNearby("<span class='notice'>\The [owner] begins [crecipe.action_third_person_pre] \a [crecipe.result_name].</span>")
+	if(DoAfterDelay(owner, source_atom, 12, GetAdditionalMenuData()))
+		var/obj/item/result = crecipe.Craft(get_turf(source_atom), source_atom)
+		owner.DoAttackAnimation(get_turf(source_atom))
+		owner.NotifyNearby("<span class='notice'>\The [owner] [crecipe.action_third_person] \a [crecipe.result_name] out of [result.material.GetName()].</span>")
+		UpdateButtons()

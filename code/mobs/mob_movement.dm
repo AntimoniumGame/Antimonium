@@ -5,7 +5,7 @@
 	var/run_delay = 1
 
 /mob/CanMove()
-	return (!OnActionCooldown() && (dragged || (world.time >= next_move)))
+	return (unconsciousness <= 0 && !OnActionCooldown() && (dragged || (world.time >= next_move)))
 
 /mob/Move()
 

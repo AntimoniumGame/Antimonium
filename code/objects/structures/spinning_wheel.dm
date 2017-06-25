@@ -54,7 +54,7 @@
 		PlayLocalSound(src, 'sounds/effects/creak1.ogg', 100)
 		NotifyNearby("<span class='notice'>\The [user] works at \the [src] for a few moments.</span>")
 
-		spawn(12)
+		if(DoAfterDelay(user, src, 12))
 			for(var/thing in contains)
 				if(!istype(thing, raw_resource_type))
 					continue

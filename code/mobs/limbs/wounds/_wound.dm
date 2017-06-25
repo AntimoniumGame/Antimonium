@@ -5,6 +5,7 @@
 	var/severity = 1
 	var/bleed_amount = 0
 	var/left_by
+	var/bandaged
 
 /datum/wound/New(var/obj/item/limb/_owner, var/_wound_type, var/_wound_depth, var/_wound_severity, var/attacked_with)
 	..()

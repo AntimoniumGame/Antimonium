@@ -16,9 +16,10 @@ var/list/burn_sounds = list('sounds/effects/fire1.ogg','sounds/effects/fire2.ogg
 		if(world.time > next_burn_sound)
 			next_burn_sound = world.time + rand(120,150)
 			PlayLocalSound(src, pick(burn_sounds), 5, frequency = -1)
-		fire_intensity = min(fire_intensity+rand(1,3),100)
-		if(fire_intensity >= 70)
+		fire_intensity = min(fire_intensity+rand(1,3),MAX_FIRE_INTENSITY)
+		if(fire_intensity >= MIN_FIRE_INTENSITY_DAMAGE)
 			HandleFireDamage()
 	else
 		fire_intensity = 0
 	UpdateFireOverlay()
+

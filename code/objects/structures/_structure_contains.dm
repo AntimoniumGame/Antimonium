@@ -14,7 +14,7 @@
 		return ..()
 	if((seat.flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(seat.loc))
 		user.SetDir(seat.dir)
-		user.ToggleSitting()
+		user.ToggleSitting(deliberate = TRUE)
 	else
 		return ..()
 
@@ -118,3 +118,11 @@
 		if(istype(turf))
 			return turf.GetRadialMenuContents(user, menu_type)-src
 	return list()
+
+/obj/structure/HandleFireDamage()
+	. = ..()
+	if(IsOnFire() && fire_intensity && open)
+		for(var/thing in contains)
+			var/obj/item/prop = thing
+			if(!prop.IsOnFire() && prop.IsFlammable() && prop.CanIgnite() && prob(10))
+				prop.Ignite()
