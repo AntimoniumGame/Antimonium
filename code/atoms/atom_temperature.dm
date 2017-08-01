@@ -60,5 +60,5 @@
 
 /atom/proc/RadiateHeat(var/amount, var/distance = 1)
 	. = min(TEMPERATURE_MAX, max(TEMPERATURE_ZERO, amount))
-	for(var/turf/neighbor in Trange(distance, src))
+	for(var/turf/neighbor in Crange(distance, src))
 		neighbor.GainHeat(round(. / max(1,(get_dist(src, neighbor)*2)-1)), GetWeight())

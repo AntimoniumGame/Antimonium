@@ -26,7 +26,6 @@
 	var/vital
 	var/organ_key
 	var/limb_key
-	var/list/effects = list()
 
 /obj/item/organ/Destroy()
 	if(owner)
@@ -145,3 +144,4 @@
 		var/matrix/M = transform
 		M.Scale(-1,1)
 		transform = M
+

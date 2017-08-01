@@ -8,14 +8,14 @@
 	return !dead
 
 /mob/proc/CanStand()
-	if(!IsAlive() || !IsConscious())
+	if(!IsAlive() || HasEffect(EFFECT_UNCONSCIOUS))
 		return FALSE
 	stance_score = 0
 	for(var/limb_id in stance_limbs)
 		var/obj/item/limb/stance/limb = GetLimb(limb_id)
 		if(limb && !limb.broken)
 			stance_score += limb.support_value
-	return (stance_score > stance_fail_threshold)
+	return !(stance_score <= stance_fail_threshold || prob(GetEffectPower(EFFECT_DIZZY)))
 
 /mob/proc/ToggleProne(var/deliberate = FALSE)
 	prone = !prone

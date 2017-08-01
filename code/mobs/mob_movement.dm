@@ -5,9 +5,9 @@
 	var/run_delay = 1
 
 /mob/CanMove()
-	return (unconsciousness <= 0 && !OnActionCooldown() && (dragged || (world.time >= next_move)))
+	return (!HasEffect(EFFECT_UNCONSCIOUS) && !OnActionCooldown() && (dragged || (world.time >= next_move)))
 
-/mob/Move()
+/mob/Move(NewLoc,Dir)
 
 	if(NoDeadMove() && dead && !dragged)
 		return FALSE
@@ -28,6 +28,8 @@
 	if(sitting)
 		ToggleSitting()
 
+	if(prob(GetEffectPower(EFFECT_CONFUSED)))
+		Dir = pick(cardinal_dirs - Dir)
 	var/last_loc = loc
 
 	. = ..()

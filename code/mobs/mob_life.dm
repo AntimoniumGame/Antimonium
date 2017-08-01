@@ -1,4 +1,6 @@
 /mob
+
+	var/hunger = 100
 	var/pain = 0
 	var/shock = 0
 	var/blood = 100
@@ -20,15 +22,16 @@
 		var/obj/item/organ/organ = thing
 		organ.Process()
 
+	// Apply effects for this tick.
+	HandleEffects()
+
 	// Various life processes.
 	HandleVision()
 	HandleBleeding()
-	HandleConsumableEffects()
 	HandleHunger()
 
 	// Pass out if we're unconscious.
-	if(unconsciousness > 0)
-		unconsciousness--
+	if(HasEffect(EFFECT_UNCONSCIOUS))
 		PassOut()
 
 	// Apply updates as calculated above.
@@ -42,11 +45,23 @@
 
 /mob/proc/HandleVision()
 
+	// Apply dizziness.
+	if(client)
+		var/dizziness = round(GetEffectPower(EFFECT_DIZZY)/10)
+		if(dizziness > 0)
+			var/matrix/M = matrix()
+			M.Turn(pick(list(-30,-20,-10,0,10,20,30)))
+			animate(client, transform = M, pixel_x = rand(-dizziness, dizziness), pixel_y = rand(-dizziness, dizziness), easing = SINE_EASING, time = 10)
+		else
+			client.pixel_x = 0
+			client.pixel_y = 0
+
 	if(!ideal_sight_value)
 		return
 
 	vision_quality = 0 // Arbitrary magic numbers for now.
-	if(unconsciousness <= 0)
+
+	if(!HasEffect(EFFECT_BLINDED) && !HasEffect(EFFECT_UNCONSCIOUS))
 		for(var/thing in GetHealthyOrgansByKey(ORGAN_EYE))
 			var/obj/item/organ/eye = thing
 			if(eye.IsBruised())
@@ -56,8 +71,7 @@
 
 /mob/proc/UpdateVision()
 	var/target_alpha
-
-	if(unconsciousness > 0)
+	if(HasEffect(EFFECT_UNCONSCIOUS))
 		target_alpha = 255
 	else if(!ideal_sight_value || vision_quality >= ideal_sight_value)
 		target_alpha = 0
@@ -69,15 +83,15 @@
 /mob/proc/HandlePain()
 	switch(pain)
 		if(100 to INFINITY)
-			if(IsConscious())
+			if(!HasEffect(EFFECT_UNCONSCIOUS))
 				Notify("<span class='alert'>Agony overcomes you, and you black out.</span>")
-			SetUnconscious(3)
+			AddEffect(/datum/effect, EFFECT_UNCONSCIOUS, 3)
 			shock = min(shock+1, 100)
 		if(90 to 100)
 			if(prob(1))
-				if(IsConscious())
+				if(!HasEffect(EFFECT_UNCONSCIOUS))
 					Notify("<span class='alert'>Agony overcomes you, and you black out.</span>")
-				SetUnconscious(3)
+				AddEffect(/datum/effect, EFFECT_UNCONSCIOUS, 3)
 		else
 			shock = max(shock, 0)
 
@@ -130,3 +144,19 @@
 				Notify("<span class='danger'>The world lurches sickeningly as dizziness overtakes you.</span>")
 			if(60 to 70)
 				Notify("<span class='alert'>Flickering darkness swims at the edges of vour vision as you struggle to remain conscious.</span>")
+
+/mob/proc/HandleHunger()
+	if(hunger>0 && prob(1))
+		hunger--
+	hunger_meter.UpdateMeter(hunger)
+
+/*
+	if(prob(5))
+		switch(hunger)
+			if(20 to 30)
+				Notify("<span class='warning'>Your stomach growls.</span>")
+			if(10 to 19)
+				Notify("<span class='danger'>You feel a sharp pang of hunger.</span>")
+			if(0 to 9)
+				Notify("<span class='alert'>You are starving!</span>")
+*/

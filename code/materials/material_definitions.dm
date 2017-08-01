@@ -56,7 +56,7 @@
 /datum/material/wood/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(
 		/obj/structure/cask,
-		/obj/structure/cask/barrel,
+		/obj/structure/barrel,
 		/obj/structure/chair,
 		/obj/structure/bench,
 		/obj/structure/crate,

@@ -2,7 +2,7 @@
 	sharpness = 0
 	contact_size = 1
 
-	var/amount = 20
+	var/amount
 	var/max_amount = 20
 	var/singular_name = "thing"
 	var/plural_name =   "things"
@@ -13,49 +13,61 @@
 
 /obj/item/stack/ForceMove()
 	. = ..()
-	MergeWithLocalStacks()
+	MergeWithOtherStacks()
 
-/obj/item/stack/proc/MergeWithLocalStacks()
+/obj/item/stack/proc/MergeWithOtherStacks(var/list/merging_with)
 
-	if(!istype(loc, /turf))
+	if(Deleted(src) || !loc || istype(loc, /mob)) // To avoid stacks held in the hands merging.
+		return
+
+	if(!merging_with)
+		if(istype(loc, /obj/structure))
+			var/obj/structure/holder = loc
+			if(holder.contains)
+				merging_with = holder.contains
+		else if(istype(loc, /turf))
+			var/turf/holder = loc
+			merging_with = holder.contents
+
+	if(!merging_with || !merging_with.len || !(src in merging_with))
 		return
 
 	for(var/obj/item/stack/stack in loc)
-		if(src && stack != src && !Deleted(src) && GetAmount() >= 1)
+		if(Deleted(src))
+			break
+		if(src && stack != src && !Deleted(stack) && GetAmount() >= 1)
 			if(!MatchesStackType(stack))
 				continue
 			var/transfer_amount = max_amount - GetAmount()
 			if(transfer_amount <= 0)
 				continue
 			else if(stack.GetAmount() <= transfer_amount)
-				stack.Add(GetAmount())
-				QDel(src)
-			else
-				transfer_amount = stack.max_amount - stack.GetAmount()
-				stack.Add(transfer_amount)
-				Remove(transfer_amount)
+				transfer_amount = stack.GetAmount()
+			Add(transfer_amount)
+			stack.Remove(transfer_amount)
 
 /obj/item/stack/DraggedOntoThing(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
-
-	if(GetAmount() <= 1)
-		user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
-		return
-
-	var/split_amount = max(1,round(GetAmount()/2))
-	Remove(split_amount)
-	new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
-	user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+	. = ..()
+	if(!.)
+		if(GetAmount() <= 1)
+			user.Notify("<span class='warning'>There are not enough [plural_name] in the [stack_name] to split it.</span>")
+		else
+			var/split_amount = max(1,round(GetAmount()/2))
+			Remove(split_amount)
+			new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
+			user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+		return TRUE
 
 /obj/item/stack/GetWeight()
 	return GetAmount() * weight
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
-		amount = min(max_amount, max(1, _amount))
-	else
+		amount = _amount
+	else if(isnull(amount))
 		amount = max_amount
 	..(newloc, material_path)
-	MergeWithLocalStacks()
+	MergeWithOtherStacks()
 
 /obj/item/stack/Use(var/mob/user)
 	. = ..()
@@ -69,8 +81,9 @@
 			return TRUE
 
 		Remove(split_amount)
-		new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
+		var/obj/removed = new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
 		user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
+		user.TryPutInHands(removed)
 		return TRUE
 
 /obj/item/stack/proc/MatchesStackType(var/obj/item/stack/stack)

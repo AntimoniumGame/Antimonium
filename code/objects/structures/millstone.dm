@@ -1,7 +1,7 @@
 /obj/structure/millstone
 	name = "millstone"
 	icon = 'icons/objects/structures/millstone.dmi'
-	density = 1
+	density = 0
 	icon_state = "world"
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE
 	layer = TURF_LAYER+0.1

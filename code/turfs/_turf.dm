@@ -102,12 +102,7 @@
 			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
 			PlayLocalSound(src, wall_material.hit_sound, 100)
 			user.SetActionCooldown(6)
-			integrity--
-			var/atom/movable/debris = wall_material.GetDebris(1)
-			if(debris)
-				debris.ForceMove(get_turf(user))
-			if(integrity <= 0)
-				DestroyWall()
+			TakeDamage(1, user)
 			return TRUE
 		else if(floor_material && floor_material.turf_is_diggable && (prop.associated_skill & (floor_material.demolition_skill|SKILL_DEMOLITION)))
 			DigEarthworks(user)
@@ -121,11 +116,13 @@
 			return TRUE
 
 /turf/proc/DestroyWall()
-	wall_material = null
-	density = 0
-	opacity = 0
-	UpdateIcon()
-	UpdateStrings()
+	if(wall_material || density)
+		integrity = 0
+		wall_material = null
+		density = 0
+		opacity = 0
+		UpdateIcon()
+		UpdateStrings()
 
 /turf/ManipulatedBy(var/mob/user, var/obj/item/prop, var/slot)
 	. = ..()
@@ -256,3 +253,18 @@
 			return TRUE
 		if(wall_material && wall_material.OnTurfAttack(src, user, prop))
 			return TRUE
+
+/turf/proc/TakeDamage(var/damage, var/source)
+	if(wall_material)
+		integrity -= damage
+		var/atom/movable/debris = wall_material.GetDebris(1)
+		if(debris)
+			debris.ForceMove(source ? get_turf(source) : src)
+		if(integrity <= 0)
+			DestroyWall()
+	else if(floor_material && floor_material.type != /datum/material/dirt)
+		var/atom/movable/debris = floor_material.GetDebris(1)
+		if(debris)
+			debris.ForceMove(source ? get_turf(source) : src)
+		if(prob(damage))
+			new /turf/floor/dirt(src)
