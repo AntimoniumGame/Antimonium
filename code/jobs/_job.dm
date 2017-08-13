@@ -58,4 +58,8 @@ var/datum/job/default_latejoin_role
 	return equipping
 
 /datum/job/proc/Place(var/mob/placing)
-	placing.ForceMove(locate(3,3,2))
+	var/turf/place_at = GetSpawnPoint(name)
+	if(!istype(place_at))
+		Dnotify("Could not find spawn point for role [name], user [placing.key], placing at default spawn.")
+		place_at = locate(3,3,2)
+	placing.ForceMove(place_at)

@@ -6,6 +6,11 @@ var/list/admins = list()
 		if(player.CheckAdminPermission(permission))
 			player.Anotify(message)
 
+/proc/Dnotify(var/message, var/permission = PERMISSIONS_DEBUG)
+	for(var/client/player in clients)
+		if(player.CheckAdminPermission(permission))
+			player.Dnotify(message)
+
 /proc/InitializeAdminDatabase()
 
 	set name = "Reload Admin Database"

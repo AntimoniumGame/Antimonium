@@ -1,5 +1,5 @@
 /datum/outfit/church
-	outfit_name = "Minister"
+	name = "Minister"
 	/*
 	SLOT_FEET =       leather shoes
 	SLOT_LOWER_BODY = linen trousers
@@ -11,7 +11,7 @@
 	*/
 
 /datum/outfit/archimandrite
-	outfit_name = "Archimandrite"
+	name = "Archimandrite"
 	/*
 	SLOT_FEET =       red leather shoes https://en.wikipedia.org/wiki/Papal_shoes
 	SLOT_LOWER_BODY = linen trousers
@@ -25,7 +25,7 @@
 	*/
 
 /datum/outfit/paladin
-	outfit_name = "Paladin"
+	name = "Paladin"
 	/*
 	SLOT_FEET =       leather boots,
 	SLOT_LOWER_BODY = leather breeches,
@@ -42,7 +42,7 @@
 	*/
 
 /datum/outfit/count
-	outfit_name = "Count"
+	name = "Count"
 	/*
 	SLOT_FEET = fine shoes,
 	SLOT_LOWER_BODY = silk trousers/silk skirt,
@@ -54,7 +54,7 @@
 	*/
 
 /datum/outfit/consort
-	outfit_name = "Consort"
+	name = "Consort"
 	/*
 	SLOT_FEET = fine shoes,
 	SLOT_LOWER_BODY = silk trousers/silk skirt,
@@ -64,7 +64,7 @@
 	SLOT_HAT = coronet
 	*/
 /datum/outfit/fool
-	outfit_name = "Fool"
+	name = "Fool"
 	/*
 	Outfit is black and white.
 
@@ -79,7 +79,7 @@
 	*/
 
 /datum/outfit/guard
-	outfit_name = "Gendarmerie"
+	name = "Gendarmerie"
 	/*
 	SLOT_FEET = tall boots,
 	SLOT_LOWER_BODY = linen trousers,
@@ -90,7 +90,7 @@
 	*/
 
 /datum/outfit/rifleman
-	outfit_name = "Rifleman"
+	name = "Rifleman"
 	/*
 	SLOT_FEET = tall boots,
 	SLOT_LOWER_BODY = linen trousers,
@@ -101,7 +101,7 @@
 	*/
 
 /datum/outfit/captain
-	outfit_name = "Captain of the Guard"
+	name = "Captain of the Guard"
 	/*
 	SLOT_FEET = tall boots,
 	SLOT_LOWER_BODY = linen trousers,
@@ -111,7 +111,7 @@
 	*/
 
 /datum/outfit/town
-	outfit_name = "Bondsman"
+	name = "Bondsman"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
@@ -119,7 +119,7 @@
 	)
 
 /datum/outfit/birdkeeper
-	outfit_name = "Birdkeeper"
+	name = "Birdkeeper"
 
 	/*
 	SLOT_FEET = /obj/item/clothing/boots,
@@ -129,7 +129,7 @@
 	*/
 
 /datum/outfit/sailor
-	outfit_name = "Sailor"
+	name = "Sailor"
 	/*
 	SLOT_FEET = /obj/item/clothing/boots,
 	SLOT_LOWER_BODY = /obj/item/clothing/pants,
@@ -138,7 +138,7 @@
 	*/
 
 /datum/outfit/preacher
-	outfit_name = "Preacher"
+	name = "Preacher"
 	/*
 	SLOT_FEET =       leather shoes
 	SLOT_LOWER_BODY = linen trousers
@@ -147,7 +147,7 @@
 	*/
 
 /datum/outfit/tourist
-	outfit_name = "Tourist"
+	name = "Tourist"
 	/*
 	SLOT_FEET =       leather shoes
 	SLOT_LOWER_BODY = shorts
@@ -157,7 +157,7 @@
 	*/
 
 /datum/outfit/publican
-	outfit_name = "Publican"
+	name = "Publican"
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = pants,
@@ -165,7 +165,7 @@
 	SLOT_HAT = leather cap
 	*/
 /datum/outfit/cook
-	outfit_name = "Cook"
+	name = "Cook"
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = white pants,
@@ -174,7 +174,7 @@
 	*/
 
 /datum/outfit/ironmonger
-	outfit_name = "Ironmonger"
+	name = "Ironmonger"
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = pants,
@@ -184,7 +184,7 @@
 	*/
 
 /datum/outfit/machinist
-	outfit_name = "Machinist"
+	name = "Machinist"
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = pants,
@@ -194,7 +194,7 @@
 	*/
 
 /datum/outfit/doctor
-	outfit_name = "Feldscher"
+	name = "Feldscher"
 
 	/*
 	SLOT_FEET = shoes,
@@ -205,7 +205,7 @@
 	*/
 
 /datum/outfit/hunter
-	outfit_name = "Hunter"
+	name = "Hunter"
 	/*
 	SLOT_FEET = fur shoes,
 	SLOT_LOWER_BODY = leather pants,
@@ -214,7 +214,7 @@
 	*/
 
 /datum/outfit/apothecary
-	outfit_name = "Apothecary"
+	name = "Apothecary"
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = pants,
@@ -224,7 +224,7 @@
 	*/
 
 /datum/outfit/merchant
-	outfit_name = "Merchant"
+	name = "Merchant"
 	/*
 	SLOT_FEET =       silk slippers,
 	SLOT_LOWER_BODY = silk pants,
@@ -236,7 +236,7 @@
 	*/
 
 /datum/outfit/tailor
-	outfit_name = "Tailor"
+	name = "Tailor"
 	/*
 	SLOT_FEET =       leather shoes,
 	SLOT_LOWER_BODY = silk pants,
@@ -245,7 +245,7 @@
 	*/
 
 /datum/outfit/occultist
-	outfit_name = "Occultist"
+	name = "Occultist"
 	/*
 	SLOT_FEET =       sandals,
 	SLOT_LOWER_BODY = pants,

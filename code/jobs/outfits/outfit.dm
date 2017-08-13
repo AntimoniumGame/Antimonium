@@ -19,12 +19,12 @@ var/list/all_outfits = list()
 /proc/InitializeOutfits()
 	for(var/outfit in typesof(/datum/outfit))
 		var/datum/outfit/check_outfit = outfit
-		if(!initial(check_outfit.outfit_name))
+		if(!initial(check_outfit.name))
 			continue
 		all_outfits += GetUniqueDataByPath(outfit)
 
 /datum/outfit
-	var/outfit_name = "Drifter"
+	var/name = "Drifter"
 	var/list/equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
