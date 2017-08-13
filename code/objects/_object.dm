@@ -2,6 +2,7 @@
 	icon = 'icons/objects/object.dmi'
 	layer = ITEM_LAYER
 
+	var/worth = 1
 	var/material_state = STATE_SOLID
 	var/datum/material/material
 	var/default_material_path
@@ -45,3 +46,13 @@
 
 /obj/IsSolid()
 	return (material_state == STATE_SOLID || material_state == STATE_POWDER)
+
+/obj/proc/GetBaseMonetaryWorth()
+	return worth
+
+/obj/proc/GetMonetaryWorth()
+	var/amt = GetBaseMonetaryWorth()
+	var/mod_amt = amt
+	if(material)
+		amt += mod_amt * material.value_modifier
+	return amt

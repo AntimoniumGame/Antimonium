@@ -39,6 +39,7 @@
 	var/hit_sound = 'sounds/effects/chisel1.ogg'         // General purpose impact sound for atoms made from this materiala.
 	var/list/crafting_recipe_paths = list()              // A list of crafting recipe path types valid for this material.
 	var/list/recipes = list()                            // A list of instanced crafting recipes for this material.
+	var/value_modifier = 1                               // Multiplier for worth of items made from this material.
 
 	// Turf vars.
 	var/turf_effect_overlay                              // If specified, will apply this state from the turf_floor_icon as an overlay.
