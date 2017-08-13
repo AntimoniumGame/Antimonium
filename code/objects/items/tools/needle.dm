@@ -38,7 +38,7 @@
 		thread_overlay_inv = null
 		thread_overlay = null
 
-	. = ..()
+	..()
 
 	if(threaded)
 		overlays += thread_overlay

@@ -7,7 +7,6 @@
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED
-	var/fuel = 100
 
 /obj/item/torch/GetFireIconState()
 	return
@@ -43,10 +42,3 @@
 	if(istype(sconce) && sconce.filled == src)
 		sconce.filled = null
 		sconce.UpdateIcon()
-
-/obj/item/torch/HandleFireDamage()
-	/*
-	fuel--
-	if(!fuel)
-		QDel(src)
-	*/

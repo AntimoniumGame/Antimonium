@@ -67,7 +67,7 @@
 /obj/spawnpoint/merchant
 	name = "Merchant"
 
-/obj/spawnpoint/tailer
+/obj/spawnpoint/tailor
 	name = "Tailor"
 
 /obj/spawnpoint/occultist

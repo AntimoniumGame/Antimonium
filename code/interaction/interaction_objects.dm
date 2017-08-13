@@ -17,25 +17,22 @@
 			if(ManipulatedBy(clicker, slot))
 				clicker.SetActionCooldown(3)
 
-/obj/item/HandleClickedOn(var/mob/clicker, var/slot)
+/obj/item/ManipulatedBy(var/mob/user, var/slot)
 
-	if(clicker.OnActionCooldown())
-		return
-
-	if(IsAdjacentTo(src, clicker) && !clicker.GetEquipped(slot))
+	. = ..()
+	if(!. && IsAdjacentTo(src, user) && !user.GetEquipped(slot))
 
 		if(!IsSolid())
-			clicker.Notify("<span class='warning'>You attempt to collect \the [src], but it slips through your grasp.</span>")
-			clicker.SetActionCooldown(3)
+			user.Notify("<span class='warning'>You attempt to collect \the [src], but it slips through your grasp.</span>")
+			user.SetActionCooldown(3)
 			return TRUE
 
-		var/obj/ui/inv/inv_slot = clicker.inventory_slots[slot]
-		if(clicker.CollectItem(src, slot))
+		var/obj/ui/inv/inv_slot = user.inventory_slots[slot]
+		if(user.CollectItem(src, slot))
 			PlayLocalSound(src, collect_sound, 50)
-			NotifyNearby("<span class='notice'>\The [clicker] picks up \the [src] in [clicker.Their()] [inv_slot.unmodified_name].</span>")
-			clicker.SetActionCooldown(3)
+			NotifyNearby("<span class='notice'>\The [user] picks up \the [src] in [user.Their()] [inv_slot.unmodified_name].</span>")
+			user.SetActionCooldown(3)
 			return TRUE
-	. = ..()
 
 /obj/item/proc/Attacking(var/mob/user, var/mob/target)
 	if(!(flags & FLAG_SIMULATED))

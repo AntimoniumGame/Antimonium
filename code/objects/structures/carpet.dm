@@ -69,3 +69,5 @@
 			cell.pixel_y = (ty-1)*32
 			carpet_overlays += cell
 	overlays += carpet_overlays
+
+	UpdateDamageOverlay()

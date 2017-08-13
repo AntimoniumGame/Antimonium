@@ -4,10 +4,10 @@
 	flags = FLAG_TEMPERATURE_SENSITIVE | FLAG_SIMULATED
 	icon_state = "1"
 
-	var/integrity = 0
 	var/datum/material/wall_material
 	var/datum/material/floor_material
 
+	var/debris_counter = 0
 	var/list/wall_overlays		// overlays that makeup a wall turf
 	var/list/floor_overlays		// overlays that makeup a floor turf
 	var/list/ao_overlays		// ambient occlusion overlays (cast on a floor when next to a wall)
@@ -53,7 +53,7 @@
 			icon_state = "1"
 
 	if(wall_material)
-		integrity = wall_material.structural_integrity
+		max_damage = wall_material.structural_integrity
 		density = wall_material.turf_wall_is_dense
 		opacity = !wall_material.turf_wall_is_transparent
 	else
@@ -98,11 +98,17 @@
 	. = ..()
 	if(!. && !user.OnActionCooldown())
 
+		if(floor_material && floor_material.OnTurfAttack(src, user, prop))
+			return TRUE
+
+		if(wall_material && wall_material.OnTurfAttack(src, user, prop))
+			return TRUE
+
 		if(wall_material && (prop.associated_skill & (wall_material.demolition_skill|SKILL_DEMOLITION)))
 			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
 			PlayLocalSound(src, wall_material.hit_sound, 100)
 			user.SetActionCooldown(6)
-			TakeDamage(1, user)
+			TakeDamage(10, user)
 			return TRUE
 		else if(floor_material && floor_material.turf_is_diggable && (prop.associated_skill & (floor_material.demolition_skill|SKILL_DEMOLITION)))
 			DigEarthworks(user)
@@ -117,7 +123,9 @@
 
 /turf/proc/DestroyWall()
 	if(wall_material || density)
-		integrity = 0
+		damage = 0
+		max_damage = max(1,round(max_damage * 0.5))
+		debris_counter = 0
 		wall_material = null
 		density = 0
 		opacity = 0
@@ -142,11 +150,6 @@
 
 /turf/IsFlammable()
 	return ((wall_material && wall_material.IsFlammable()) || (floor_material && floor_material.IsFlammable()))
-
-/turf/HandleFireDamage()
-	if(fire_intensity >= MAX_FIRE_INTENSITY)
-		// Light off
-		new /turf/floor/dirt(src)
 
 /turf/proc/DigEarthworks(var/mob/user, var/slot, var/check_digger = FALSE)
 
@@ -246,25 +249,24 @@
 	if(floor_material) floor_material.OnTurfEntry(src, crosser)
 	if(wall_material)  wall_material.OnTurfEntry(src, crosser)
 
-/turf/AttackedBy(var/mob/user, var/obj/item/prop)
-	. = ..()
-	if(!.)
-		if(floor_material && floor_material.OnTurfAttack(src, user, prop))
-			return TRUE
-		if(wall_material && wall_material.OnTurfAttack(src, user, prop))
-			return TRUE
+/turf/TakeDamage(var/dam, var/source)
 
-/turf/proc/TakeDamage(var/damage, var/source)
-	if(wall_material)
-		integrity -= damage
-		var/atom/movable/debris = wall_material.GetDebris(1)
+	damage += dam
+	debris_counter += dam
+	while(debris_counter >= 10)
+		debris_counter -= 10
+		var/atom/movable/debris
+		if(wall_material)
+			debris = wall_material.GetDebris(1)
+		else if(floor_material)
+			debris = floor_material.GetDebris(1)
 		if(debris)
 			debris.ForceMove(source ? get_turf(source) : src)
-		if(integrity <= 0)
+
+	if(damage > max_damage)
+		if(wall_material)
 			DestroyWall()
-	else if(floor_material && floor_material.type != /datum/material/dirt)
-		var/atom/movable/debris = floor_material.GetDebris(1)
-		if(debris)
-			debris.ForceMove(source ? get_turf(source) : src)
-		if(prob(damage))
+		else if(floor_material && floor_material.type != /datum/material/dirt)
 			new /turf/floor/dirt(src)
+
+	..()

@@ -15,10 +15,10 @@
 	name = "organ"
 	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
 	icon = 'icons/objects/items/organ/organ.dmi'
+	max_damage = 80
 
-	var/damage =               0
+	var/death_threshold = 100
 	var/impairment_threshold = 50
-	var/max_damage =           100
 	var/min_bruised_damage
 	var/min_broken_damage
 	var/mob/owner
@@ -50,14 +50,13 @@
 /obj/item/organ/proc/IsBroken()
 	return (damage >= min_broken_damage)
 
-/obj/item/organ/proc/TakeDamage(var/amt)
-	damage = max(min(damage+amt, max_damage),0)
-	if(damage == max_damage && !dead)
+/obj/item/organ/TakeDamage(var/dam, var/source)
+	. = ..()
+	if(!Deleted(src) && damage >= death_threshold && !dead)
 		Die()
 
 /obj/item/organ/proc/Die()
-	if(dead)
-		return
+	if(dead) return
 	name = "dead [name]"
 	dead = TRUE
 	if(owner && vital)
@@ -71,6 +70,7 @@
 	vital = _vital
 
 	max_damage = _max_damage
+	death_threshold =    round(max_damage * 0.9)
 	min_bruised_damage = round(max_damage * 0.35)
 	min_broken_damage =  round(max_damage * 0.7)
 

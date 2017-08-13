@@ -25,20 +25,18 @@
 
 		if(!isnull(fstate))
 			fire_overlay = image(icon = 'icons/images/fire.dmi', icon_state = fstate, layer = EFFECTS_LAYER)
+			fire_overlay.appearance_flags = RESET_COLOR
+			overlays += fire_overlay
 		else
 			fire_overlay = null
 
-		overlays += fire_overlay
 		UpdateIcon()
 
 /atom/proc/CanIgnite()
 	return IsFlammable()
 
 /atom/proc/HandleFireDamage()
-	if(fire_intensity >= MAX_FIRE_INTENSITY)
-		// create ashes
-		// Light off
-		QDel(src)
+	if(prob(min(100,fire_intensity))) TakeDamage(1)
 
 /atom/proc/Ignite(var/mob/user)
 	if(CanIgnite() && !IsOnFire())

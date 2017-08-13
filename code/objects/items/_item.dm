@@ -1,11 +1,11 @@
 /obj/item
+
 	name = "item"
 	icon_state = "world"
 	icon = 'icons/objects/items/_default.dmi'
 	draw_shadow_underlay = TRUE
 
 	var/quality = 1
-
 	var/slot_flags = 0
 	var/contact_size = 1
 	var/weight = 1
@@ -17,6 +17,15 @@
 	var/hit_sound = 'sounds/effects/punch1.ogg'
 	var/collect_sound = 'sounds/effects/click1.ogg'
 	var/equip_sound = 'sounds/effects/rustle1.ogg'
+
+/obj/item/TakeDamage(var/dam, var/source)
+	damage = max(min(damage+dam, max_damage),0)
+	if(damage == max_damage && !Deleted(src))
+		Destroyed()
+	..()
+
+/obj/item/proc/Destroyed()
+	QDel(src)
 
 /obj/item/Initialize()
 	..()

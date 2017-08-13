@@ -15,7 +15,7 @@
 
 /atom/proc/ManipulatedBy(var/mob/user, var/slot)
 	if(IsOnFire() && user.intent.selecting == INTENT_HELP)
-		fire_intensity = max(0, fire_intensity - rand(5,10))
+		fire_intensity = max(0, fire_intensity - rand(15,30))
 		if(fire_intensity)
 			if(prob(5))
 				user.Ignite()

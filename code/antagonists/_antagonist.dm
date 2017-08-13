@@ -14,12 +14,13 @@ var/list/antagonist_datums = list()
 	var/role_count = 0                 // How many antagonists of this type have been assigned?
 	var/override_job = FALSE           // Is this antagonist role assigned before or after job assignment?
 	var/group_antagonist               // Whether or not this antagonist is displayed as a group role at roundend.
+	var/list/restricted_roles = list() // Roles that cannot be assigned to this antagonist type.
 
 /datum/antagonist/proc/CanAddAntagonist(var/datum/role/adding)
-	return TRUE
+	return !(adding in members) && !(adding.job && (adding.job.type in restricted_roles))
 
 /datum/antagonist/proc/AddAntagonist(var/datum/role/adding)
-	if(!CanAddAntagonist(adding.mob) || (adding in members))
+	if(!CanAddAntagonist(adding.mob))
 		return FALSE
 	members += adding
 	adding.antagonist_roles |= src

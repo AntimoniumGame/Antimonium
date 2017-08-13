@@ -10,7 +10,7 @@
 	var/list/players_to_allocate_roles = list()
 	for(var/thing in new_players)
 		var/mob/abstract/new_player/player = thing
-		if(player.ready)
+		if(player.client && player.key && player.ready)
 			players_to_allocate_roles += player
 
 	// No players? No round.
