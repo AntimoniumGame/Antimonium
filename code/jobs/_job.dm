@@ -18,6 +18,11 @@ var/datum/job/default_latejoin_role
 	high_priority_jobs = shuffle(high_priority_jobs)
 	low_priority_jobs = shuffle(low_priority_jobs)
 
+/datum/job/New()
+	..()
+	if(ispath(outfit))
+		outfit = GetUniqueDataByPath(outfit)
+
 /datum/job
 	var/name = "Drifter"
 	var/name_female
@@ -27,6 +32,7 @@ var/datum/job/default_latejoin_role
 	var/maximum_slots = -1
 	var/filled_slots = 0
 	var/force_mob_type = /mob/human
+	var/datum/outfit/outfit = /datum/outfit/town
 
 /datum/job/proc/GetTitle(var/mob/checking)
 	var/the = (maximum_slots == 1 ? "the" : "a")
@@ -44,6 +50,10 @@ var/datum/job/default_latejoin_role
 		equipping.TransferControlTo(new_mob)
 		QDel(equipping)
 		equipping = new_mob
+
+	if(istype(outfit))
+		outfit.EquipTo(equipping)
+
 	equipping.name = equipping.key
 	return equipping
 

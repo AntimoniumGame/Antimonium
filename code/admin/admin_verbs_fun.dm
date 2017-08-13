@@ -42,13 +42,7 @@
 		Anotify("Only works on humans, sorry.")
 		return
 
-	if(!mob.GetEquipped(SLOT_UPPER_BODY))
-		mob.CollectItemOrDel(new /obj/item/clothing/shirt(), SLOT_UPPER_BODY)
-	if(!mob.GetEquipped(SLOT_LOWER_BODY))
-		mob.CollectItemOrDel(new /obj/item/clothing/pants(), SLOT_LOWER_BODY)
-	if(!mob.GetEquipped(SLOT_FEET))
-		mob.CollectItemOrDel(new /obj/item/clothing/boots(), SLOT_FEET)
-	if(!mob.GetEquipped(SLOT_HANDS))
-		mob.CollectItemOrDel(new /obj/item/clothing/gloves(), SLOT_HANDS)
-
-	Anotify("Mob dressed.")
+	var/datum/outfit/chosen_outfit = input("Which outfit do you wish to use?") as null|anything in all_outfits
+	if(chosen_outfit)
+		chosen_outfit.EquipTo(human)
+		Anotify("Mob dressed.")
