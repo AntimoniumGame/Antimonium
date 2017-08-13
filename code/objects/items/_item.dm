@@ -4,6 +4,8 @@
 	icon = 'icons/objects/items/_default.dmi'
 	draw_shadow_underlay = TRUE
 
+	var/quality = 1
+
 	var/slot_flags = 0
 	var/contact_size = 1
 	var/weight = 1
@@ -124,3 +126,9 @@
 	if((prop.associated_skill & SKILL_ALCHEMY) && Grind(user))
 		return TRUE
 	. = ..()
+
+/obj/item/GetMonetaryWorth()
+	var/amt = GetBaseMonetaryWorth()
+	. = ..()
+	if(quality)
+		. += amt * quality

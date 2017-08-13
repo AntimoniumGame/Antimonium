@@ -37,6 +37,7 @@
 	general_name = "iron"
 	sharpness_modifier = 2
 	weight_modifier = 2
+	value_modifier = 1.1
 
 /datum/material/metal/iron/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
@@ -50,6 +51,7 @@
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
 	melting_point = 1360
 	boiling_point = 2800
+	value_modifier = 1.2
 
 /datum/material/metal/copper/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
@@ -72,6 +74,7 @@
 	colour = BRIGHT_ORANGE
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_gold.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
+	value_modifier = 2
 
 /datum/material/metal/antimonium
 	general_name = "antimonium"
@@ -81,3 +84,4 @@
 	boiling_point = 1800
 	colour = PALE_BLUE
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_silver.dmi'
+	value_modifier = 1.5
