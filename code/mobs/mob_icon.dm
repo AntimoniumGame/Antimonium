@@ -5,10 +5,10 @@
 //only call this for a full icon update
 /mob/UpdateIcon()
 	icon = null
-
 	UpdateMobIcons()
 	UpdateShadowUnderlay()
 	UpdateFireOverlay()
+	..()
 
 /mob/proc/UpdateMobIcons()
 	overlays -= mob_overlays

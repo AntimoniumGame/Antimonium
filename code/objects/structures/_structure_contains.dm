@@ -114,7 +114,7 @@
 
 /obj/structure/HandleFireDamage()
 	. = ..()
-	if(IsOnFire() && fire_intensity && open)
+	if(!Deleted(src) && IsOnFire() && fire_intensity && open)
 		for(var/thing in contains)
 			var/obj/item/prop = thing
 			if(!prop.IsOnFire() && prop.IsFlammable() && prop.CanIgnite() && prob(10))

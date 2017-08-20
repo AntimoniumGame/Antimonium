@@ -4,6 +4,9 @@
 	layer = UNDERLAY_LAYER
 	var/flags = FLAG_SIMULATED | FLAG_THROWN_SPIN
 
+	var/damage = 0
+	var/max_damage = 10
+
 /atom/movable
 	animate_movement = SLIDE_STEPS
 	var/dragged = FALSE
@@ -16,8 +19,16 @@
 
 	var/image/shadow_underlay	// the shadow underlay for this object
 
+/atom/proc/TakeDamage(var/dam, var/source)
+	UpdateDamageOverlay()
+
 /atom/proc/UpdateIcon()
-	return
+	UpdateDamageOverlay()
+
+/atom/proc/UpdateDamageOverlay()
+	//TODO proper indicator of object damage.
+	var/dam_per = 255-round((damage/max_damage)*80)
+	color = rgb(dam_per,dam_per,dam_per)
 
 /atom/proc/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
 	return list()

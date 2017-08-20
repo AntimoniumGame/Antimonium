@@ -37,6 +37,7 @@
 /obj/UpdateIcon()
 	UpdateShadowUnderlay()
 	UpdateFireOverlay()
+	..()
 
 /obj/IsFlammable()
 	if(!material)

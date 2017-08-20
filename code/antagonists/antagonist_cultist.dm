@@ -4,6 +4,11 @@
 	group_antagonist = TRUE
 	welcome_text = "You have seen the true face of God, and serve That Which Waits unflinchingly. This hamlet must be forced to embrace your deity, or die."
 	maximum_spawn_count = 0.3
+	restricted_roles = list(
+		/datum/job/minister,
+		/datum/job/archimandrite,
+		/datum/job/paladin
+	)
 
 /datum/antagonist/assassin/GenerateObjectives(var/datum/role/generating)
 	if(!group_objectives.len)

@@ -6,6 +6,9 @@
 	icon_state = ""
 	color = BLACK
 
+/obj/effect/blackout/UpdateIcon()
+	return
+
 /obj/effect/blackout/New()
 	..()
 	var/matrix/M = matrix()

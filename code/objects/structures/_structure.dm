@@ -8,6 +8,7 @@
 
 	var/weight = 3
 	var/hit_sound = 'sounds/effects/thump1.ogg'
+	max_damage = 50
 
 /obj/structure/SetDir(var/newdir)
 	..(newdir)
@@ -53,3 +54,12 @@
 
 /obj/structure/EndThrow()
 	ResetPosition()
+
+/obj/structure/TakeDamage(var/dam, var/source)
+	damage = max(min(damage+dam, max_damage),0)
+	if(damage == max_damage && !Deleted(src))
+		Destroyed()
+	..()
+
+/obj/structure/proc/Destroyed()
+	QDel(src)

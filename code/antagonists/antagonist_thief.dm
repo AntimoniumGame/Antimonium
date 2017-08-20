@@ -28,6 +28,7 @@
 		if(istype(steal_obj))
 			var/amount = fencing.GetMonetaryWorth()
 			steal_obj.stolen_value += amount
+			fencer.DropItem(fencing)
 			QDel(fencing)
 			return amount
 	return 0
@@ -37,6 +38,10 @@
 	equipping.verbs |= /mob/human/proc/MobFenceObject
 
 /mob/human/proc/MobFenceObject()
+
+	set name = "Fence Object"
+	set desc = "Sell an object."
+	set category = "Debug"
 
 	var/list/can_fence = list()
 	for(var/inv_slot in inventory_slots)
@@ -52,5 +57,4 @@
 			Notify("You fenced \the [fencing_name] for [fenced_for].")
 		else
 			Notify("The [fencing_name] cannot be fenced or is worthless.")
-
 // END DEBUG PLACEHOLDER.

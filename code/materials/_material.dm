@@ -5,7 +5,7 @@
 
 	var/sharpness_modifier = 1      // Props of this material will multiply their default sharpness by this.
 	var/weight_modifier = 1         // Props of this material will multiply their default weight by this.
-	var/structural_integrity = 5    // Walls made of this material will use this value for max HP.
+	var/structural_integrity = 50    // Walls made of this material will use this value for max HP.
 
 	// Descriptive strings for various item states.
 	var/liquid_name

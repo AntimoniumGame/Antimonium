@@ -42,7 +42,7 @@
 	weight_modifier = 0.3
 	sharpness_modifier = 0.3
 	ignition_point = 600
-	structural_integrity = 3
+	structural_integrity = 30
 	hit_sound = 'sounds/effects/thump1.ogg'
 	construction_sound = 'sounds/effects/saw1.ogg'
 	crafting_recipe_paths = list(
@@ -91,13 +91,15 @@
 	weight_modifier = 0.2
 	sharpness_modifier = 0.1
 	hit_sound = 'sounds/effects/dig1.ogg'
-	structural_integrity = 3
+	structural_integrity = 30
 	turf_is_diggable = TRUE
 	turf_edge_layer = 0.4
 	turf_base_states = 4
 	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
 	turf_wall_icon = 'icons/turfs/dirt_wall.dmi'
 	demolition_skill = SKILL_DIGGING
+	solid_icon = 'icons/objects/items/alchemy/solid_dirt_brown.dmi'
+	powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'     // Stack icon used for ground/powdered pinches.
 
 /datum/material/dirt/grass
 	general_name = "grass"
