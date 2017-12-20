@@ -49,6 +49,7 @@ var/datum/daemon/garbage/gc
 			continue
 		var/trash = locate(gref)
 		if(trash && trash:gc_collect_time == timeout)
+			Dnotify("\ref[trash] ([trash]) failed to qdel in time and is being deleted.")
 			del(trash)
 		garbage[gref] = null
 		garbage -= gref
