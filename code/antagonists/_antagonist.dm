@@ -20,7 +20,7 @@ var/list/antagonist_datums = list()
 	return !(adding in members) && !(adding.job && (adding.job.type in restricted_roles))
 
 /datum/antagonist/proc/AddAntagonist(var/datum/role/adding)
-	if(!CanAddAntagonist(adding.mob))
+	if(!CanAddAntagonist(adding))
 		return FALSE
 	members += adding
 	adding.antagonist_roles |= src
