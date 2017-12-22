@@ -85,7 +85,7 @@
 
 	var/obj/item/limb/limb = owner.GetLimb(limb_key)
 	if(!limb)
-		QDel(src)
+		QDel(src, "no parent organ")
 		return
 	ForceMove(limb)
 	limb.organs += src

@@ -28,4 +28,4 @@
 		effect.pixel_y = ydiff*2
 		animate(effect, alpha = 0, pixel_x = xdiff*4, pixel_y = ydiff*4, pixel_z = 0, time = 3)
 		sleep(3)
-		QDel(effect)
+		QDel(effect, "end of attack anim")

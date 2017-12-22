@@ -40,7 +40,7 @@
 		splat_images |= splat.icon_state
 		splat_images |= splat.splat_images
 		amount += splat.amount
-		QDel(splat)
+		QDel(splat, "merged with underlay")
 
 	..(newloc, material_path)
 

@@ -10,7 +10,7 @@ var/datum/daemon/garbage/gc
 /atom/Destroy()
 	if(contents)
 		for(var/thing in contents)
-			QDel(thing)
+			QDel(thing, "atom destroyed")
 	return 1
 
 /atom/movable/Destroy()
@@ -21,7 +21,11 @@ var/datum/daemon/garbage/gc
 	del(src)
 
 // placeholder for later
-/proc/QDel(var/thing)
+/proc/QDel(var/thing, var/reason)
+	if(reason)
+		Dnotify("GC: collected \ref[thing] ([thing]) for '[reason]'.")
+	else
+		Dnotify("GC: collected \ref[thing] ([thing]).")
 	gc.Collect(thing)
 
 /datum/daemon/garbage
@@ -33,26 +37,26 @@ var/datum/daemon/garbage/gc
 /datum/daemon/garbage/New()
 	if(gc)
 		garbage = gc.garbage
-		QDel(gc)
+		QDel(gc, "gc replacement")
 	gc = src
 
 /datum/daemon/garbage/proc/Collect(var/thing)
 	if(!thing || !thing:Destroy())
 		return
-	thing:gc_collect_time = world.time
-	garbage["\ref[thing]"] = world.time
+	del(thing)
+	//thing:gc_collect_time = world.time
+	//garbage |= "\ref[thing]"
 
 /datum/daemon/garbage/DoWork()
-	for(var/gref in garbage)
-		var/timeout = garbage[gref]
-		if(world.time < timeout+garbage_timeout)
+	var/gindex = 1
+	while(garbage.len && gindex < garbage.len)
+		gindex++
+		var/trash = locate(garbage[gindex])
+		if(!trash || trash:gc_collect_time > world.time + garbage_timeout)
 			continue
-		var/trash = locate(gref)
-		if(trash && trash:gc_collect_time == timeout)
-			Dnotify("\ref[trash] ([trash]) failed to qdel in time and is being deleted.")
-			del(trash)
-		garbage[gref] = null
-		garbage -= gref
+		Dnotify("GC: \ref[trash] ([trash]) failed to qdel in time and is being deleted.")
+		garbage -= trash
+		del(trash)
 		CHECK_SUSPEND
 
 /datum/daemon/garbage/Status()

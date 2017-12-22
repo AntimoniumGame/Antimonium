@@ -14,7 +14,7 @@
 
 /mob/proc/CloseScreenWindow()
 	if(active_screen_window)
-		QDel(active_screen_window)
+		QDel(active_screen_window, "window closed")
 		active_screen_window = null
 
 /obj/ui/controller/window_holder
@@ -41,7 +41,7 @@
 
 /obj/ui/controller/window_holder/GetInputFrom(var/obj/ui/component/component)
 	if(owner.client) PlayClientSound(owner.client, null, 'sounds/effects/click1.ogg', 100, -1)
-	QDel(src)
+	QDel(src, "input from component")
 
 /obj/ui/controller/window_holder/UpdateStrings()
 	return
@@ -53,7 +53,7 @@
 		owner.active_screen_window = null
 	if(close)
 		close.controller = null
-		QDel(close)
+		QDel(close, "controller destroyed")
 		close = null
 	. = ..()
 

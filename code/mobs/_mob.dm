@@ -27,7 +27,7 @@
 		limb.SeverLimb()
 		sleep(-1)
 
-	QDel(src)
+	QDel(src, "gibbed")
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
@@ -100,7 +100,7 @@
 		Die("the hungry flames")
 		// create ashes
 		// Light off
-		QDel(src)
+		QDel(src, "burned up")
 	else if(IsOnFire() && fire_intensity)
 		for(var/invslot in inventory_slots)
 			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
@@ -115,5 +115,5 @@
 
 /mob/Logout()
 	if(radial_menu)
-		QDel(radial_menu)
+		QDel(radial_menu, "owner logout")
 	. = ..()

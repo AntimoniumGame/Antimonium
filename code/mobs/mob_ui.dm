@@ -13,7 +13,7 @@
 /mob/Destroy()
 	for(var/thing in ui_screen)
 		var/obj/ui/element = thing
-		QDel(element)
+		QDel(element, "mob destroyed")
 	ui_screen.Cut()
 	ui_images.Cut()
 	. = ..()

@@ -19,7 +19,7 @@
 
 /obj/item/mold/Destroy()
 	if(contains_material)
-		QDel(contains_material)
+		QDel(contains_material, "mold qdel'd")
 		contains_material = null
 	. = ..()
 
@@ -49,7 +49,7 @@
 					if(istype(casting, /obj/item/stack))
 						var/obj/item/stack/stack = casting
 						stack.SetAmt(material_capacity)
-					QDel(contains_material)
+					QDel(contains_material, "material spent")
 					contains_material = null
 				else
 					contains_material.ForceMove(loc)

@@ -11,7 +11,7 @@ var/list/spawnpoints = list()
 		spawning = new
 		spawnpoints[name] = spawning
 	spawning.contents += new /datum/coord(x,y,z)
-	QDel(src)
+	QDel(src, "initialized")
 
 /proc/GetSpawnPoint(var/key)
 	if(istype(spawnpoints[key], /datum/single_list))

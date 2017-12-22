@@ -57,10 +57,12 @@
 		client.screen -= title_image
 		EndLobbyMusic(client)
 
+	var/mob/old_mob = src
 	var/mob/new_mob = default_latejoin_role.Equip(src)
 	default_latejoin_role.Welcome(new_mob)
 	default_latejoin_role.Place(new_mob)
-	QDel(src)
+	if(old_mob != new_mob)
+		QDel(old_mob, "latejoin replacement")
 
 /mob/abstract/new_player/DoSay(var/message)
 	next_speech = world.time + 5

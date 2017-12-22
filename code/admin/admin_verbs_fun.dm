@@ -30,7 +30,7 @@
 	doggo.key = mob.key
 	doggo.UpdateStrings()
 	doggo.Notify("You are now \a [initial(doggo.name)].")
-	QDel(old_mob)
+	QDel(old_mob, "doggo'd")
 
 /client/proc/DressSelf()
 

@@ -21,12 +21,12 @@
 			new /obj/effect/random/splat(get_turf(src), material.type, src, GetAmount())
 		else
 			new /obj/item/stack/reagent(loc, material.type, GetAmount(), src)
-	QDel(src)
+	QDel(src, "melted")
 
 /obj/proc/Solidify()
 	if(loc)
 		new /obj/item/stack/reagent(loc, material.type, GetAmount(), src)
-	QDel(src)
+	QDel(src, "solidified")
 
 /obj/proc/Evaporate()
 	if(loc)
@@ -34,9 +34,9 @@
 			new /obj/item/stack/reagent(loc, material.type, GetAmount(), src)
 		else
 			new /obj/effect/gas(loc, src)
-	QDel(src)
+	QDel(src, "evaporated")
 
 /obj/proc/Condense()
 	if(loc)
 		new /obj/item/stack/reagent(loc, material.type, GetAmount(), src)
-	QDel(src)
+	QDel(src, "condensed")

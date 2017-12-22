@@ -18,4 +18,4 @@
 
 /obj/structure/earthworks/proc/FillIn(var/mob/user)
 	user.NotifyNearby("\The [user] fills in \the [src].")
-	QDel(src)
+	QDel(src, "filled in")

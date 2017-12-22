@@ -3,7 +3,7 @@
 
 /obj/ui/controller/Destroy()
 	for(var/thing in components)
-		QDel(thing)
+		QDel(thing, "controller destroyed")
 	components.Cut()
 	. = ..()
 

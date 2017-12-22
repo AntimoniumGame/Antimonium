@@ -61,7 +61,7 @@
 		return
 
 	invoker.TransferControlTo(new /mob/abstract/new_player())
-	QDel(invoker)
+	QDel(invoker, "respawn complete")
 
 /datum/chat_command/keybind
 	command = "keybind"

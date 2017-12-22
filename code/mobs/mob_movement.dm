@@ -37,7 +37,7 @@
 	if(.)
 
 		if(radial_menu)
-			QDel(radial_menu)
+			QDel(radial_menu, "mob moved")
 
 		if(flags & FLAG_SIMULATED)
 			for(var/thing in smeared_with)

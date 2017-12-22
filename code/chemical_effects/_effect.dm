@@ -20,7 +20,7 @@
 /datum/effect/proc/Tick()
 	ticks--
 	if(ticks<=0)
-		QDel(src)
+		QDel(src, "effect expired")
 
 /datum/effect/proc/UpdateEffect(var/_duration, var/_additional_data)
 	ticks = max(ticks, _duration)

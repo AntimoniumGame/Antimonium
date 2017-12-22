@@ -62,4 +62,4 @@
 	..()
 
 /obj/structure/proc/Destroyed()
-	QDel(src)
+	QDel(src, "destroyed")

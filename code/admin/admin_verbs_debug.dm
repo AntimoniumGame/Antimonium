@@ -359,7 +359,7 @@
 	var/mob/new_mob = selected_role.Equip(player)
 	selected_role.Welcome(new_mob)
 	selected_role.Place(new_mob)
-	QDel(player)
+	QDel(player, "role join complete")
 
 /client/proc/TestCircleAlgorithm()
 

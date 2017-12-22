@@ -25,7 +25,7 @@
 	..()
 
 /obj/item/proc/Destroyed()
-	QDel(src)
+	QDel(src, "destroyed")
 
 /obj/item/Initialize()
 	..()

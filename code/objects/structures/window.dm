@@ -30,7 +30,7 @@
 	var/oldloc = loc
 
 	// Ugly, it's so it updates the correct set of icons.
-	QDel(src)
+	QDel(src, "shattered")
 	loc = oldloc
 	UpdateIcon()
 	NullLoc(src)

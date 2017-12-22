@@ -2,7 +2,7 @@
 	var/obj/ui/radial_menu/radial_menu
 
 /mob/Destroy()
-	QDel(radial_menu)
+	QDel(radial_menu, "mob destroyed")
 	. = ..()
 
 /atom
@@ -55,11 +55,11 @@
 	return
 
 /obj/ui/radial_menu/Destroy()
-	QDel(source_atom_display)
+	QDel(source_atom_display, "radial menu destroyed")
 	source_atom_display = null
 	for(var/thing in buttons)
 		if(!Deleted(thing))
-			QDel(thing)
+			QDel(thing, "radial menu destroyed")
 	buttons.Cut()
 	if(owner && owner.radial_menu == src)
 		owner.radial_menu = null
@@ -71,7 +71,7 @@
 /obj/ui/radial_menu/New(var/mob/_owner, var/list/_source_atom)
 
 	if(!_owner || !_owner.client || !_source_atom)
-		QDel(src)
+		QDel(src, "no owner client")
 		return
 
 	source_atom = _source_atom
@@ -82,7 +82,7 @@
 	close_button = new(_owner, src)
 
 	if(_owner.radial_menu)
-		QDel(_owner.radial_menu)
+		QDel(_owner.radial_menu, "radial menu replacement")
 	_owner.radial_menu = src
 
 	..(_owner)
@@ -130,7 +130,7 @@
 			button.UpdateAppearance()
 			continue
 		buttons -= button
-		QDel(button)
+		QDel(button, "button update")
 
 	for(var/thing in displaying)
 		buttons += new button_type(owner, src, thing)

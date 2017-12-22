@@ -39,12 +39,12 @@
 
 	if(locate(/obj/structure/foundation) in get_turf(source_atom))
 		owner.Notify("<span class='warning'>There is already a foundation in that location.</span>")
-		QDel(src)
+		QDel(src, "foundation already exists")
 		return
 
 	if(locate(/obj/structure) in get_turf(source_atom))
 		owner.Notify("<span class='warning'>There is a structure occupying that location.</span>")
-		QDel(src)
+		QDel(src, "structure already exists")
 		return
 
 	var/obj/item/stack/building_with = source_atom
@@ -59,4 +59,4 @@
 			owner.NotifyNearby("<span class='notice'>\The [owner] lays out a foundation.</span>")
 			new /obj/structure/foundation(get_turf(building_with), building_with.material.type, thing_input, new type(null, building_with.material.type, building_with.material.GetTurfCost()))
 			building_with.Remove(building_with.material.GetTurfCost())
-	QDel(src)
+	QDel(src, "foundation built")
