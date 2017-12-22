@@ -8,7 +8,7 @@ Code
 * Mysterious unnamed Baystation12 and tgstation coders from the past.
 
 Icons
-* Nienhaus.
+* PlayerDeer.
 * RedStryker.
 * WJohnson.
 
