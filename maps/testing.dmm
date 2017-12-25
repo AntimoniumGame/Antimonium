@@ -1,0 +1,135 @@
+"aa" = (/turf/floor/stone,/area/outdoors)
+"ab" = (/turf/wall/stone,/area/outdoors)
+"ac" = (/turf/wall/tiled,/area/outdoors)
+"ad" = (/turf/floor/grass,/area/indoors)
+"ae" = (/obj/structure/table/bench,/obj/structure/table/shelf/east,/obj/item/stack/coins,/turf/floor/tiled,/area/outdoors)
+"af" = (/turf/floor/tiled,/area/outdoors)
+"ag" = (/obj/structure/sconce,/turf/floor/tiled,/area/outdoors)
+"ah" = (/obj/structure/crate/chest,/obj/item/torch,/obj/item/torch,/obj/item/torch,/turf/floor/tiled,/area/outdoors)
+"ai" = (/obj/structure/bed,/turf/floor/tiled,/area/outdoors)
+"aj" = (/obj/structure/window{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/turf/floor/tiled,/area/outdoors)
+"ak" = (/obj/structure/bench{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/grass,/area/indoors)
+"al" = (/turf/floor/roots,/area/indoors)
+"am" = (/obj/structure/table/bench,/obj/structure/table/shelf/east,/obj/item/stack/seed/cotton,/obj/item/stack/seed/ginseng,/obj/item/stack/seed/nightshade,/obj/item/stack/seed/wheat,/turf/floor/tiled,/area/outdoors)
+"an" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/tiled,/area/outdoors)
+"ao" = (/obj/spawnpoint,/turf/floor/grass,/area/indoors)
+"ap" = (/obj/spawnpoint/apothecary,/turf/floor/grass,/area/indoors)
+"aq" = (/obj/spawnpoint/archimandrite,/turf/floor/grass,/area/indoors)
+"ar" = (/obj/spawnpoint/birdkeeper,/turf/floor/grass,/area/indoors)
+"as" = (/obj/spawnpoint/machinist,/turf/floor/roots,/area/indoors)
+"at" = (/obj/structure/table/bench,/obj/item/stack/ginseng/five,/obj/item/stack/nightshade/five,/obj/item/stack/wheat,/turf/floor/tiled,/area/outdoors)
+"au" = (/obj/spawnpoint/ironmonger,/turf/floor/grass,/area/indoors)
+"av" = (/turf/floor/water,/area/indoors)
+"aw" = (/obj/spawnpoint/bondsman,/turf/floor/grass,/area/indoors)
+"ax" = (/obj/spawnpoint/merchant,/turf/floor/roots,/area/indoors)
+"ay" = (/obj/structure/table/bench,/obj/structure/alembic,/turf/floor/tiled,/area/outdoors)
+"az" = (/obj/structure/door/east,/turf/floor/tiled,/area/outdoors)
+"aA" = (/obj/spawnpoint/hunter,/turf/floor/roots,/area/indoors)
+"aB" = (/obj/spawnpoint/captain,/turf/floor/grass,/area/indoors)
+"aC" = (/obj/spawnpoint/minister,/turf/floor/grass,/area/indoors)
+"aD" = (/obj/structure/table/bench,/obj/item/mortar_pestle,/turf/floor/tiled,/area/outdoors)
+"aE" = (/obj/structure/carpet,/turf/floor/tiled,/area/outdoors)
+"aF" = (/obj/structure/door/west,/turf/floor/tiled,/area/outdoors)
+"aG" = (/obj/spawnpoint,/turf/floor/roots,/area/indoors)
+"aH" = (/obj/spawnpoint/hound,/turf/floor/roots,/area/indoors)
+"aI" = (/obj/spawnpoint/consort,/turf/floor/grass,/area/indoors)
+"aJ" = (/obj/spawnpoint/occultist,/turf/floor/roots,/area/indoors)
+"aK" = (/obj/structure/table/bench,/obj/item/level,/turf/floor/tiled,/area/outdoors)
+"aL" = (/obj/spawnpoint/gendarmerie,/turf/floor/roots,/area/indoors)
+"aM" = (/obj/spawnpoint/fool,/turf/floor/roots,/area/indoors)
+"aN" = (/obj/spawnpoint/cook,/turf/floor/grass,/area/indoors)
+"aO" = (/obj/spawnpoint/paladin,/turf/floor/grass,/area/indoors)
+"aP" = (/obj/structure/table/bench,/obj/structure/table/shelf/east,/obj/item/vessel,/obj/item/vessel,/turf/floor/tiled,/area/outdoors)
+"aQ" = (/obj/spawnpoint/tourist,/turf/floor/roots,/area/indoors)
+"aR" = (/obj/spawnpoint/tailor,/turf/floor/roots,/area/indoors)
+"aS" = (/obj/spawnpoint/drifter,/turf/floor/roots,/area/indoors)
+"aT" = (/obj/spawnpoint/doctor,/turf/floor/grass,/area/indoors)
+"aU" = (/obj/spawnpoint/count,/turf/floor/grass,/area/indoors)
+"aV" = (/obj/spawnpoint/preacher,/turf/floor/grass,/area/indoors)
+"aW" = (/obj/structure/table/bench,/obj/structure/table/shelf/east,/turf/floor/tiled,/area/outdoors)
+"aX" = (/obj/structure/still/horizontal,/turf/floor/tiled,/area/outdoors)
+"aY" = (/obj/item/weapon/shovel,/turf/floor/grass,/area/indoors)
+"aZ" = (/obj/spawnpoint/sailor,/turf/floor/roots,/area/indoors)
+"ba" = (/obj/spawnpoint/rifleman,/turf/floor/roots,/area/indoors)
+"bb" = (/obj/spawnpoint/publican,/turf/floor/roots,/area/indoors)
+"bc" = (/obj/structure/door/north,/turf/floor/tiled,/area/outdoors)
+"bd" = (/obj/structure/door/south,/turf/floor/tiled,/area/outdoors)
+"be" = (/turf/wall/cobble,/area/indoors)
+"bf" = (/turf/floor/cobble,/area/indoors)
+"bg" = (/turf/wall/wood,/area/indoors)
+"bh" = (/turf/wall/stone,/area/indoors)
+"bi" = (/turf/floor/dirt,/area/indoors)
+"bj" = (/obj/structure/sconce,/obj/item/dartboard,/obj/item/stack/dart,/turf/floor/wood,/area/indoors)
+"bk" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/turf/floor/wood,/area/indoors)
+"bl" = (/obj/structure/table,/obj/item/consumable,/obj/item/consumable,/obj/item/needle,/obj/item/stack/fibers,/obj/item/stack/fibers/cotton,/obj/item/stack/thread/cloth,/obj/item/stack/thread,/turf/floor/wood,/area/indoors)
+"bm" = (/turf/wall/dirt,/area/indoors)
+"bn" = (/obj/structure/millstone,/obj/structure/gearbox,/turf/floor/cobble,/area/indoors)
+"bo" = (/turf/floor/wood,/area/indoors)
+"bp" = (/obj/structure/thread/loom,/obj/item/plant/cotton,/turf/floor/wood,/area/indoors)
+"bq" = (/turf/wall/dirt,/area/cave)
+"br" = (/turf/floor/dirt,/area/cave)
+"bs" = (/turf/floor/sand,/area/cave)
+"bt" = (/turf/wall/stone,/area/cave)
+"bu" = (/obj/structure/thread,/turf/floor/wood,/area/indoors)
+"bv" = (/obj/structure/brazier,/turf/floor/dirt,/area/cave)
+"bw" = (/obj/item/weapon/shovel,/turf/floor/sand,/area/cave)
+"bx" = (/obj/structure/door/east,/turf/floor/wood,/area/indoors)
+"by" = (/obj/item/weapon/sledgehammer,/turf/floor/dirt,/area/cave)
+"bz" = (/obj/item/weapon/pickaxe,/turf/floor/dirt,/area/cave)
+"bA" = (/obj/structure/anvil,/turf/floor/cobble,/area/indoors)
+"bB" = (/obj/structure/door/west,/turf/floor/wood,/area/indoors)
+"bC" = (/obj/item/weapon/pickaxe,/turf/floor/sand,/area/cave)
+"bD" = (/obj/structure/brazier/forge,/turf/floor/cobble,/area/indoors)
+"bE" = (/obj/structure/crate,/obj/item/stack/bricks,/obj/item/stack/reagent/copper,/obj/item/stack/reagent/stone,/obj/item/stack/tiles,/turf/floor/cobble,/area/indoors)
+"bF" = (/obj/structure/bellows{tag = "icon-world (NORTH)"; icon_state = "world"; dir = 1},/turf/floor/cobble,/area/indoors)
+"bG" = (/obj/structure/barrel,/obj/item/stack/planks,/obj/item/stack/reagent/iron,/turf/floor/wood,/area/indoors)
+"bH" = (/obj/structure/crate,/obj/item/stack/logs,/obj/item/stack/reagent/gold,/obj/item/stack/reagent/lead,/turf/floor/cobble,/area/indoors)
+"bI" = (/obj/structure/brazier,/turf/floor/sand,/area/cave)
+"bJ" = (/obj/structure/table/bench,/obj/item/weapon/axe,/obj/item/weapon/sword,/turf/floor/cobble,/area/indoors)
+"bK" = (/obj/structure/table/bench,/obj/item/weapon/chisel,/obj/item/weapon/construction_hammer,/obj/item/weapon/hammer,/obj/item/weapon/handsaw,/obj/item/weapon/mallet,/turf/floor/cobble,/area/indoors)
+"bL" = (/obj/structure/table/bench,/obj/item/mold,/turf/floor/cobble,/area/indoors)
+"bM" = (/obj/structure/table/bench,/obj/item/pipe,/obj/item/vessel/cup,/obj/item/vessel/cup,/turf/floor/cobble,/area/indoors)
+"bN" = (/obj/structure/cask/filled,/turf/floor/cobble,/area/indoors)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacacacacacacacacacacadadadadadadadadadadabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacaeafagafahagafaiajakadadadalalalaladadabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacamanafafafafafaiajakadaoapaqarasalaladabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacatanafafafafafaiacadaoauavavavawaxaladabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacayafafafafafafafazadaAavavavavavaBaCadabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacaDafafafaEafafafaFadaGaHavavavavavaIaJabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacaKanafafafafafafacadadaGaLaMavavavaNaOabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacaPanafafafafafafajakadadaQaRaSaTaUaVadabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacaWafafafafafaXafajakadaYalalaZbabbavadabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaacacacacbcbdacacacacadadadadalalalalaladabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebebebebfbfbgbgbgbgbhbhbhbhbhbibibhbhbhabaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebfbfbfbfbfbjbkblbgbhbmbmbmbmbibibmbmbmaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebfbnbfbfbfbobobpbgbhbmbqbqbqbrbsbqbqbtaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebfbfbfbfbfbobobubgbhbmbqbqbvbsbsbwbrbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebfbfbfbfbfbobobobxbobibrbsbrbsbybzbsbtaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebAbfbfbobfbobobobBbibibsbsbCbqbqbrbsbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebDbfbobobfbfbfbEbebhbmbtbsbqbrbrbsbsbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebFbfbfbfbfbfbGbHbebhbmbtbrbrbrbsbIbsbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebJbfbKbLbMbNbNbNbebhbmbqbsbrbqbsbqbqbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabebebebebebebebebebebhbhbqbtbtbtbqbqbqbqaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
