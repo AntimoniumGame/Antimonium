@@ -255,6 +255,7 @@
 #include "code\objects\structures\_structure.dm"
 #include "code\objects\structures\_structure_contains.dm"
 #include "code\objects\structures\anvil.dm"
+#include "code\objects\structures\bed.dm"
 #include "code\objects\structures\bellows.dm"
 #include "code\objects\structures\bench.dm"
 #include "code\objects\structures\brazier.dm"

@@ -10,6 +10,9 @@
 	. = ..()
 	if(!. && user == src)
 		var/obj/structure/seat = thing
+		for(var/obj/item/grab/grab in src)
+			if(grab.grabbed == thing)
+				user.DropItem(grab)
 		if(istype(seat) && (seat.flags & FLAG_SEATING) && !user.sitting && !user.prone && user.Move(seat.loc))
 			user.SetDir(seat.dir)
 			user.ToggleSitting(deliberate = TRUE)
