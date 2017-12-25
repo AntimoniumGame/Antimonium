@@ -30,7 +30,7 @@
 		var/obj/ui/inv/inv_slot = user.inventory_slots[slot]
 		if(user.CollectItem(src, slot))
 			PlayLocalSound(src, collect_sound, 50)
-			NotifyNearby("<span class='notice'>\The [user] picks up \the [src] in [user.Their()] [inv_slot.unmodified_name].</span>")
+			NotifyNearby("<span class='notice'>\The [user] picks up \the [src] in [user.Their()] [inv_slot.unmodified_name].</span>", MESSAGE_VISIBLE)
 			user.SetActionCooldown(3)
 			return TRUE
 
@@ -46,9 +46,9 @@
 
 	if(user.intent.selecting == INTENT_HELP)
 		PlayLocalSound(src, 'sounds/effects/punch1.ogg', 20)
-		user.NotifyNearby("<span class='warning'>\The [user] prods \the [target] with \the [src].</span>")
+		user.NotifyNearby("<span class='warning'>\The [user] prods \the [target] with \the [src].</span>", MESSAGE_VISIBLE)
 	else
-		user.NotifyNearby("<span class='danger'>\The [user] [pick(attack_verbs)] \the [target] with \the [src]!</span>")
+		user.NotifyNearby("<span class='danger'>\The [user] [pick(attack_verbs)] \the [target] with \the [src]!</span>", MESSAGE_VISIBLE)
 		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 50)
 		spawn(3)
 			PlayLocalSound(src, hit_sound, 50)

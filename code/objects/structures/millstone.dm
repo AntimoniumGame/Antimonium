@@ -23,7 +23,7 @@
 	current = get_step(current, get_dir(src, get_turf(prop)))
 	prop.ForceMove(current)
 	if(user)
-		user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+		user.NotifyNearby("\The [user] places \the [prop] into \the [src].", MESSAGE_VISIBLE)
 
 /obj/structure/millstone/Initialize()
 	. = ..()

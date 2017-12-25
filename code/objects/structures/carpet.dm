@@ -12,7 +12,7 @@
 	var/list/carpet_overlays
 
 /obj/structure/carpet/ManipulatedBy(var/mob/user)
-	NotifyNearby("\The [user] rotates \the [src].")
+	NotifyNearby("\The [user] rotates \the [src].", MESSAGE_VISIBLE)
 	Rotate()
 
 /obj/structure/carpet/proc/Rotate()

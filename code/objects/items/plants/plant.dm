@@ -46,9 +46,9 @@
 
 /obj/item/plant/proc/Harvested(var/mob/harvester)
 	if(harvester)
-		NotifyNearby("\The [src] has been uprooted by \the [harvester].")
+		NotifyNearby("<span class='notice'>\The [src] has been uprooted by \the [harvester].</span>", MESSAGE_VISIBLE)
 	else
-		NotifyNearby("\The [src] has been uprooted from \the [growing_in].")
+		NotifyNearby("<span class='notice'>\The [src] has been uprooted from \the [growing_in].</span>", MESSAGE_VISIBLE)
 
 	if(seed_type && prob(growth_stage * 25))
 		new seed_type(get_turf(src), _amount = rand(1,growth_stage))

@@ -64,8 +64,8 @@
 	QDel(drinking, "drunk")
 
 	if(contains_reagents.len)
-		user.NotifyNearby("\The [user] takes a swig from \the [src].")
+		user.NotifyNearby("\The [user] takes a swig from \the [src].", MESSAGE_VISIBLE)
 	else
-		user.NotifyNearby("\The [user] drains the dregs of \the [src].")
+		user.NotifyNearby("\The [user] drains the dregs of \the [src].", MESSAGE_VISIBLE)
 	UpdateIcon()
 	return TRUE

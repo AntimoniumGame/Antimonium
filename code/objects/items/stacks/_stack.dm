@@ -55,7 +55,7 @@
 			var/split_amount = max(1,round(GetAmount()/2))
 			Remove(split_amount)
 			new type(get_turf(thing), material ? material.type : default_material_path, split_amount, src)
-			user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>")
+			user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>", MESSAGE_VISIBLE)
 		return TRUE
 
 /obj/item/stack/GetWeight()
@@ -82,7 +82,7 @@
 
 		Remove(split_amount)
 		var/obj/removed = new type(get_turf(user), material ? material.type : default_material_path, split_amount, src)
-		user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>")
+		user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two [stack_name]s.</span>", MESSAGE_VISIBLE)
 		user.TryPutInHands(removed)
 		return TRUE
 
@@ -115,13 +115,13 @@
 			return TRUE
 		else if(other.GetAmount() <= transfer_amount)
 			other.Add(GetAmount())
-			user.NotifyNearby("<span class='notice'>\The [user] merges two [stack_name]s of [plural_name] together.</span>")
+			user.NotifyNearby("<span class='notice'>\The [user] merges two [stack_name]s of [plural_name] together.</span>", MESSAGE_VISIBLE)
 			QDel(src, "stack merger")
 		else
 			transfer_amount = other.max_amount - other.GetAmount()
 			other.Add(transfer_amount)
 			Remove(transfer_amount)
-			user.NotifyNearby("<span class='notice'>\The [user] transfers some [plural_name] between two [stack_name]s.</span>")
+			user.NotifyNearby("<span class='notice'>\The [user] transfers some [plural_name] between two [stack_name]s.</span>", MESSAGE_VISIBLE)
 		return TRUE
 	else
 		. = ..()

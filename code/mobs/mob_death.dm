@@ -10,7 +10,7 @@
 			ToggleProne()
 		living_mob_list -= src
 		dead_mob_list |= src
-		NotifyNearby("<span class='alert'><b>\The [src] has been slain by [cause]!</b></span>")
+		NotifyNearby("<span class='alert'><b>\The [src] has been slain by [cause]!</b></span>", MESSAGE_VISIBLE)
 		if(client)
 			var/mob/abstract/ghost/goast = new(get_turf(src))
 			TransferControlTo(goast)

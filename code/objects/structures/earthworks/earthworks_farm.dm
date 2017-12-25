@@ -21,7 +21,7 @@
 				newplant.pixel_y += (plot_y * 8)-20
 				occupied_spots[plot_key] = newplant
 				seed.Remove(1)
-				user.NotifyNearby("\The [user] plants \a [newplant] in \the [src].")
+				user.NotifyNearby("\The [user] plants \a [newplant] in \the [src].", MESSAGE_VISIBLE)
 				return TRUE
 		user.Notify("There is no more room in this plot.")
 		return TRUE

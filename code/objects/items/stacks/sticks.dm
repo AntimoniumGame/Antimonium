@@ -14,7 +14,7 @@
 	if(istype(cloth) && material && material.general_name == "wood")
 		if(cloth.GetAmount() < 5)
 			user.Notify("<span class='warning'>There is not enough cloth in that bundle to make a torch.</span>")
-		user.NotifyNearby("<span class='notice'>\The [user] fashions a torch from a stick and some cloth.</span>")
+		user.NotifyNearby("<span class='notice'>\The [user] fashions a torch from a stick and some cloth.</span>", MESSAGE_VISIBLE)
 		new /obj/item/torch(get_turf(user), material_path = material.type)
 		cloth.Remove(5)
 		Remove(1)

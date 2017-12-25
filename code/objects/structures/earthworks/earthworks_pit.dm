@@ -11,10 +11,10 @@
 		else
 			if(mover.IsDigger() || prob(5))
 				DigUp()
-				mover.NotifyNearby("\The [mover] claws [mover.Their()] way out of \the [src].")
+				mover.NotifyNearby("\The [mover] claws [mover.Their()] way out of \the [src].", MESSAGE_VISIBLE)
 			else
 				mover.Notify("You claw desperately at the packed earth surrounding you, but make little progress.")
-				NotifyNearby("A muffled scratching sound rises up from \the [src].")
+				NotifyNearby("A muffled scratching sound rises up from \the [src].", MESSAGE_AUDIBLE)
 				. += 15
 
 /obj/structure/earthworks/pit/proc/DigUp(var/mob/user)
@@ -26,7 +26,7 @@
 			atom.ForceMove(get_turf(src))
 			removed += atom
 	if(user && removed.len)
-		user.NotifyNearby("\The [user] digs up \the [src], revealing [removed.len] object\s.")
+		user.NotifyNearby("\The [user] digs up \the [src], revealing [removed.len] object\s.", MESSAGE_VISIBLE)
 
 /obj/structure/earthworks/pit/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(icon_state != "open")
@@ -54,6 +54,6 @@
 				if(istype(atom))
 					atom.ForceMove(src)
 			icon_state = "closed"
-			user.NotifyNearby("\The [user] fills in \the [src], burying [burying.len] object\s inside it.")
+			user.NotifyNearby("\The [user] fills in \the [src], burying [burying.len] object\s inside it.", MESSAGE_VISIBLE)
 			return
 	. = ..()

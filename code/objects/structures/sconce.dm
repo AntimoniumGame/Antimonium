@@ -72,7 +72,7 @@
 				user.Notify("<span class='warning'>There is already \a [filled] in \the [src].</span>")
 			else
 				user.DropItem(prop)
-				user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>")
+				user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>", MESSAGE_VISIBLE)
 				prop.ForceMove(src)
 				filled = prop
 				UpdateIcon()
@@ -82,7 +82,7 @@
 /obj/structure/sconce/ManipulatedBy(var/mob/user, var/slot)
 	if(filled)
 		if(user.CollectItem(filled, slot))
-			user.NotifyNearby("<span class='notice'>\The [user] removes \the [filled] from \the [src].</span>")
+			user.NotifyNearby("<span class='notice'>\The [user] removes \the [filled] from \the [src].</span>", MESSAGE_VISIBLE)
 			filled = null
 			UpdateIcon()
 		else

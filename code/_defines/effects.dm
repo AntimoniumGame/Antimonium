@@ -1,4 +1,5 @@
 #define EFFECT_BLINDED     "ce_blind"
+#define EFFECT_DEAFENED    "ce_deaf"
 #define EFFECT_UNCONSCIOUS "ce_uncon"
 #define EFFECT_DIZZY       "ce_dizzy"
 #define EFFECT_CONFUSED    "ce_confused"

@@ -16,14 +16,14 @@
 	if(density && !(flags & FLAG_FLAT_SURFACE))
 		ThingPlacedOn(null, projectile, precise_placement = FALSE)
 		PlayLocalSound(src, hit_sound, 100)
-		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>")
+		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>", MESSAGE_VISIBLE)
 		return TRUE
 	return FALSE
 
 /mob/ThrownHitBy(var/atom/movable/projectile)
 	if(density)
 		projectile.ForceMove(get_turf(src))
-		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>")
+		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>", MESSAGE_VISIBLE)
 		if(istype(projectile, /obj/item))
 			var/obj/item/weapon = projectile
 			PlayLocalSound(src, weapon.hit_sound, 75)

@@ -77,7 +77,7 @@
 				var/datum/wound/wound = thing
 				if(wound.CanBandage())
 					wound.Bandage()
-					user.NotifyNearby("<span class='notice'>\The [user] bandages [wound.GetDescriptor()] on \the [target]'s [limb.name].</span>")
+					user.NotifyNearby("<span class='notice'>\The [user] bandages [wound.GetDescriptor()] on \the [target]'s [limb.name].</span>", MESSAGE_VISIBLE)
 					Remove(1)
 					return TRUE
 			user.Notify("<span class='warning'>\The [target]'s [limb.name] bears no treatable wounds.</span>")

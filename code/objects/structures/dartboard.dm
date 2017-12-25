@@ -40,10 +40,10 @@
 			if(result >= 10)
 				result = "bullseye!"
 			else
-				NotifyNearby("\The [projectile] misses \the [src] completely!")
+				NotifyNearby("<span class='warning'>\The [projectile] misses \the [src] completely!</span>", MESSAGE_VISIBLE)
 				return FALSE
 
 	projectile.ForceMove(get_turf(src))
 	PlayLocalSound(src, 'sounds/effects/thunk1.ogg', 100)
-	NotifyNearby("<span class='warning'>\The [projectile] strikes \the [src] in the [result]</span>")
+	NotifyNearby("<span class='warning'>\The [projectile] strikes \the [src] in the [result]</span>", MESSAGE_VISIBLE)
 	return TRUE

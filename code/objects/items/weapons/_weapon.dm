@@ -7,5 +7,5 @@
 	secondary_material = GetUniqueDataByPath(secondary_material_path)
 
 /obj/item/weapon/ExaminedBy(var/mob/user)
-	if(..(user))
+	if(..(user) && !user.HasEffect(EFFECT_BLINDED))
 		user.Notify("<span class='notice'>The handle is made of [secondary_material.GetName()].</span>")

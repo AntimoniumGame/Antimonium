@@ -27,7 +27,7 @@
 
 	if(prop.associated_skill & SKILL_MASONRY)
 		if(contains_material)
-			user.Notify("How do you propose to alter a mold while it is full?")
+			user.Notify("<span class='warning'>How do you propose to alter a mold while it is full?</span>")
 		else
 			// Placeholder.
 			cast_path = input("Select an object to shape the mold towards, or cancel to leave it blank.") as null|anything in list(/obj/item/stack/coins)
@@ -41,7 +41,7 @@
 				found_surface = TRUE
 				break
 		if(found_surface)
-			user.NotifyNearby("\The [user] cracks \the [src] open with a sharp strike of \the [prop].")
+			user.NotifyNearby("<span class='notice'>\The [user] cracks \the [src] open with a sharp strike of \the [prop].</span>", MESSAGE_VISIBLE)
 			PlayLocalSound(loc, 'sounds/effects/crack1.ogg', 100)
 			if(contains_material)
 				if(cast_path)
@@ -54,6 +54,6 @@
 				else
 					contains_material.ForceMove(loc)
 		else
-			user.Notify("You must have a flat surface beneath the mold before you can crack it open.")
+			user.Notify("<span class='warning'>You must have a flat surface beneath the mold before you can crack it open.</span>")
 		return TRUE
 	. = ..()

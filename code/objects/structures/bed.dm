@@ -27,6 +27,6 @@
 			victim.ForceMove(get_turf(src))
 			victim.SetDir(turn(dir, 90))
 			user.DropItem(prop)
-			user.NotifyNearby("<span class='notice'>\The [user] tucks \the [victim] into \the [src].</span>")
+			user.NotifyNearby("<span class='notice'>\The [user] tucks \the [victim] into \the [src].</span>", MESSAGE_VISIBLE)
 			return TRUE
 	. = ..()

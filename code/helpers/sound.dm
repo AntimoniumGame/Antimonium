@@ -48,7 +48,7 @@
 
 /mob/proc/ReceiveSound(var/sound, var/volume, var/frequency, var/distance, var/turf/origin)
 
-	if(volume <= 0)
+	if(volume <= 0 || HasEffect(EFFECT_DEAFENED))
 		return
 
 	var/sound/playing = sound

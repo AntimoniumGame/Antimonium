@@ -8,11 +8,14 @@
 
 /obj/item/written/ExaminedBy(var/mob/user)
 	if(..(user))
-		if(written_contents)
-			user.Notify("You [open_message] \the [src]. It reads:")
-			user.Notify(written_contents)
+
+		if(user.HasEffect(EFFECT_BLINDED))
+			user.Notify("<span class='warning'>You are blind and cannot read \the [src].</span>.")
+		else if(written_contents)
+			user.Notify("<span class='notice'>You [open_message] \the [src]. It reads:</span>")
+			user.Notify("<span class='notice'>[written_contents]</span>")
 		else
-			user.Notify("\The [src] is blank.")
+			user.Notify("<span class='notice'>\The [src] is blank.</span>")
 
 /obj/item/written/scroll
 	name = "scroll"

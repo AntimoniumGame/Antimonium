@@ -35,7 +35,7 @@
 	. = ..()
 	if(!. && IsOnFire())
 		Extinguish(user)
-		user.NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
+		user.NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>", MESSAGE_VISIBLE)
 
 /obj/item/torch/Destroy()
 	var/obj/structure/sconce/sconce = loc

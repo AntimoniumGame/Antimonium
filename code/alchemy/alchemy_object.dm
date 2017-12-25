@@ -30,7 +30,7 @@
 
 /obj/proc/PutReagentInside(var/obj/item/prop, var/mob/user)
 	if(user)
-		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>")
+		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] into \the [src].</span>", MESSAGE_VISIBLE)
 		user.DropItem(prop)
 	prop.ForceMove(src)
 	contains_reagents += prop

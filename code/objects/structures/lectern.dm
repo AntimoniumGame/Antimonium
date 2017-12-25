@@ -45,7 +45,7 @@
 		contains -= holding
 		holding.ForceMove(get_turf(src))
 		if(user.CollectItem(holding, slot))
-			user.NotifyNearby("\The [user] removes \the [holding] from \the [src].")
+			user.NotifyNearby("\The [user] removes \the [holding] from \the [src].", MESSAGE_VISIBLE)
 			ThingTakenOut(holding)
 			holding = null
 			UpdateBookOverlay()

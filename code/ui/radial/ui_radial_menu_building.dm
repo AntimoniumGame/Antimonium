@@ -54,9 +54,9 @@
 			owner.Notify("<span class='warning'>You need at least [building_with.material.GetTurfCost()] [building_with.plural_name] to build that.")
 			return
 
-		owner.NotifyNearby("<span class='notice'>\The [owner] begins laying out a foundation...</span>")
+		owner.NotifyNearby("<span class='notice'>\The [owner] begins laying out a foundation...</span>", MESSAGE_VISIBLE)
 		if(DoAfterDelay(owner, building_with, 36, GetAdditionalMenuData()))
-			owner.NotifyNearby("<span class='notice'>\The [owner] lays out a foundation.</span>")
+			owner.NotifyNearby("<span class='notice'>\The [owner] lays out a foundation.</span>", MESSAGE_VISIBLE)
 			new /obj/structure/foundation(get_turf(building_with), building_with.material.type, thing_input, new type(null, building_with.material.type, building_with.material.GetTurfCost()))
 			building_with.Remove(building_with.material.GetTurfCost())
 	QDel(src, "foundation built")

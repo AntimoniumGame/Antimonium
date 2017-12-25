@@ -11,7 +11,7 @@
 		in_use = TRUE
 		flick("blow",src)
 		PlayLocalSound(src, 'sounds/effects/bellows1.ogg', 70, -1)
-		NotifyNearby("<span class='notice'>\The [user] works \the [src]!</span>")
+		NotifyNearby("<span class='notice'>\The [user] works \the [src]!</span>", MESSAGE_VISIBLE)
 		var/turf/neighbor = get_step(get_turf(src), dir)
 		for(var/thing in neighbor.contents)
 			var/atom/atom = thing
