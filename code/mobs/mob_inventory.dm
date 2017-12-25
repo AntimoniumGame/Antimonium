@@ -45,7 +45,7 @@
 
 /mob/proc/CollectItemOrDel(var/obj/item/thing, var/equip_to_slot)
 	if(!CollectItem(thing, equip_to_slot))
-		QDel(thing)
+		QDel(thing, "collection failed")
 		return FALSE
 	return TRUE
 

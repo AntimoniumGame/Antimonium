@@ -13,7 +13,7 @@
 	processing_objects += src
 
 /obj/item/grab/AfterDropped()
-	QDel(src)
+	QDel(src, "grab dropped")
 
 /obj/item/grab/Destroy()
 
@@ -37,7 +37,7 @@
 
 /obj/item/grab/proc/CheckState()
 	if(!owner || loc != owner || !isturf(owner.loc) || !grabbed || !isturf(grabbed.loc) || !IsAdjacentTo(grabbed, owner) || !grabbed.IsSolid())
-		QDel(src)
+		QDel(src, "grab state fail")
 		return FALSE
 	return TRUE
 

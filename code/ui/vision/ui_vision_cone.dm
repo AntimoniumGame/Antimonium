@@ -80,7 +80,7 @@
 	for(var/image/I in client.hidden_atoms)
 		I.override = 0
 		spawn(delay)
-			QDel(I)
+			QDel(I, "hidden atom cleanup")
 		delay += 10
 
 	if(prone)

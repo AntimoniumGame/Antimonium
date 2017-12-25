@@ -10,7 +10,7 @@ var/datum/master_controller/mc
 	. = ..()
 	if(mc)
 		daemons = mc.daemons
-		QDel(mc)
+		QDel(mc, "mc restart")
 		mc = src
 	else
 		Setup()

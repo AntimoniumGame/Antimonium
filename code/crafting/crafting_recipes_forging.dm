@@ -26,6 +26,9 @@
 /datum/crafting_recipe/forging/construction_hammer
 	result_path = /obj/item/component/construction_hammer
 
+/datum/crafting_recipe/forging/sledge_hammer
+	result_path = /obj/item/component/sledgehammer
+
 /datum/crafting_recipe/forging/horseshoe
 	result_path = /obj/item/horseshoe
 
@@ -49,5 +52,4 @@
 
 /datum/crafting_recipe/forging/needle
 	result_path = /obj/item/needle
-
 

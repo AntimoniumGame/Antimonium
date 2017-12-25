@@ -19,10 +19,10 @@
 	if(src && !Deleted(src) && loc && material)
 		if(istype(loc, /turf) && material_state == STATE_LIQUID)
 			new /obj/effect/random/splat(loc, material.type, src, GetAmount())
-			QDel(src)
+			QDel(src, "splatted on turf")
 		else if(!loc.Airtight() && material_state == STATE_GAS)
 			new /obj/effect/gas(get_turf(src), src)
-			QDel(src)
+			QDel(src, "evaporated from container")
 
 /obj/item/stack/reagent/New(var/newloc, var/material_path, var/_amount, var/obj/donor)
 	if(donor)
@@ -60,7 +60,7 @@
 
 	if(istype(loc, /turf))
 		new /obj/effect/random/splat(get_turf(src), material.type, src, amount)
-		QDel(src)
+		QDel(src, "splatted on turf")
 	else
 		UpdateStrings()
 		UpdateIcon()
@@ -80,7 +80,7 @@
 		UpdateIcon()
 	else
 		new /obj/effect/gas(get_turf(src), src)
-		QDel(src)
+		QDel(src, "evaporated")
 
 /obj/item/stack/reagent/Condense()
 	UpdateStrings()
@@ -92,7 +92,7 @@
 			user.NotifyNearby("\The [user] grinds \the [src] into a fine powder.")
 		material_state = STATE_POWDER
 		new /obj/item/stack/reagent(get_turf(src), material.type, GetAmount(), src)
-		QDel(src)
+		QDel(src, "ground up")
 		return TRUE
 	return FALSE
 

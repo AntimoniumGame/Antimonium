@@ -38,7 +38,7 @@
 /obj/ui/radial_menu/prop/structures/ReceiveInput(var/thing_input)
 	if(locate(/obj/structure) in get_turf(source_atom))
 		owner.Notify("<span class='warning'>There is a structure occupying that location.</span>")
-		QDel(src)
+		QDel(src, "structure exists")
 		return
 	var/obj/item/stack/building_with = source_atom
 	if(istype(building_with))
@@ -50,4 +50,4 @@
 			var/atom/thing = new thing_input(get_turf(source_atom), material_path = building_with.material.type)
 			owner.NotifyNearby("<span class='notice'>\The [owner] builds \a [thing].</span>")
 			building_with.Remove(building_with.material.GetStructureCost())
-	QDel(src)
+	QDel(src, "structure built")

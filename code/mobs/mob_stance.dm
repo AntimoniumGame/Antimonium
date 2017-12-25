@@ -20,6 +20,7 @@
 /mob/proc/ToggleProne(var/deliberate = FALSE)
 	prone = !prone
 	density = !prone
+	layer = prone ? ITEM_LAYER : MOB_LAYER
 	if(prone && sitting)
 		ToggleSitting()
 	else

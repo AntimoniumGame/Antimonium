@@ -4,7 +4,7 @@
 /mob/proc/Die(var/cause)
 	if(!dead)
 		if(radial_menu)
-			QDel(radial_menu)
+			QDel(radial_menu, "owner death")
 		dead = TRUE
 		if(!prone)
 			ToggleProne()

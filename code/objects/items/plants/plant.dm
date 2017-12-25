@@ -54,7 +54,7 @@
 		new seed_type(get_turf(src), _amount = rand(1,growth_stage))
 	if(growth_stage >= max_growth_stage && product_type)
 		new product_type(get_turf(src), _amount = rand(min_harvest_amount,max_harvest_amount))
-	QDel(src)
+	QDel(src, "harvested")
 
 /obj/item/plant/RandomizePixelOffset()
 	pixel_x = rand(-1,1)

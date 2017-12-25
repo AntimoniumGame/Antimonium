@@ -15,7 +15,7 @@ var/datum/game_state/game_state
 	return
 
 /datum/game_state/proc/End()
-	QDel(src)
+	QDel(src, "game state ended")
 
 /datum/game_state/proc/OnLogin(var/client/player)
 	return

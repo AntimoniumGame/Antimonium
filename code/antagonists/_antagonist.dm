@@ -46,7 +46,7 @@ var/list/antagonist_datums = list()
 	welcoming.Notify("<span class='notice'>[welcome_text]</span>")
 
 /datum/antagonist/proc/Equip(var/mob/equipping)
-	return
+	return equipping
 
 /datum/antagonist/proc/Farewell(var/mob/farewelling)
 	farewelling.Notify("<span class='alert'>You are <b>no longer</b> \a [role_name]!</span>")

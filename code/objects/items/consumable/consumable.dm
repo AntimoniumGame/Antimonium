@@ -30,7 +30,7 @@
 		ShowFinishMessage(user)
 		if(trash_path)
 			new trash_path(get_turf(user))
-		QDel(src)
+		QDel(src, "eaten")
 	return TRUE
 
 /obj/item/consumable/proc/ShowEatenMessage(var/mob/user)

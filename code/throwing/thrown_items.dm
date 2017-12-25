@@ -34,7 +34,7 @@
 	return grabbed
 
 /atom/movable/grab/HandlePostThrow()
-	QDel(src)
+	QDel(src, "thrown")
 
 /obj/item/grab/HandlePreThrow(var/mob/thrower)
 	if(grabbed.flags & FLAG_ANCHORED)

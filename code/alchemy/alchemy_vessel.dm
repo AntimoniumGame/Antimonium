@@ -61,7 +61,7 @@
 
 	var/obj/item/drinking = pick(contains_reagents)
 	user.AddEffect(/datum/effect/consumed_reagent, drinking.material.GetName(), drinking.GetAmount()*50, drinking.material)
-	QDel(drinking)
+	QDel(drinking, "drunk")
 
 	if(contains_reagents.len)
 		user.NotifyNearby("\The [user] takes a swig from \the [src].")

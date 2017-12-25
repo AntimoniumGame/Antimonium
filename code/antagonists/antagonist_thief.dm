@@ -29,13 +29,14 @@
 			var/amount = fencing.GetMonetaryWorth()
 			steal_obj.stolen_value += amount
 			fencer.DropItem(fencing)
-			QDel(fencing)
+			QDel(fencing, "fenced")
 			return amount
 	return 0
 
 /datum/antagonist/thief/Equip(var/mob/equipping)
-	..()
+	equipping = ..()
 	equipping.verbs |= /mob/human/proc/MobFenceObject
+	return equipping
 
 /mob/human/proc/MobFenceObject()
 

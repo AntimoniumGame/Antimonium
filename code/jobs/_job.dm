@@ -48,12 +48,10 @@ var/datum/job/default_latejoin_role
 	if(equipping.type != force_mob_type)
 		var/mob/new_mob = new force_mob_type()
 		equipping.TransferControlTo(new_mob)
-		QDel(equipping)
+		QDel(equipping, "job equip mob replacement")
 		equipping = new_mob
-
 	if(istype(outfit))
 		outfit.EquipTo(equipping)
-
 	equipping.name = equipping.key
 	return equipping
 

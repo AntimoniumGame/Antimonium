@@ -116,7 +116,7 @@
 		else if(other.GetAmount() <= transfer_amount)
 			other.Add(GetAmount())
 			user.NotifyNearby("<span class='notice'>\The [user] merges two [stack_name]s of [plural_name] together.</span>")
-			QDel(src)
+			QDel(src, "stack merger")
 		else
 			transfer_amount = other.max_amount - other.GetAmount()
 			other.Add(transfer_amount)
@@ -184,7 +184,7 @@
 /obj/item/stack/proc/Remove(var/amt)
 	amount = max(0, amount-amt)
 	if(amount <= 0)
-		QDel(src)
+		QDel(src, "emptied stack")
 	else
 		UpdateIcon()
 		UpdateStrings()

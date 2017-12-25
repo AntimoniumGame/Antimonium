@@ -71,7 +71,7 @@
 			partial_transfer = TRUE
 
 		if(!CanAcceptReagentObject(removed))
-			QDel(removed)
+			QDel(removed, "unacceptable reagent")
 			break
 
 		if(!partial_transfer)

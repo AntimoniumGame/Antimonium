@@ -33,7 +33,7 @@
 	else if(severity > 1)
 		severity = max(1, severity-amount)
 	else
-		QDel(src)
+		QDel(src, "wound regeneration")
 		return
 
 	if(severity < 3 && depth < 3 && bleed_amount)

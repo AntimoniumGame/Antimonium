@@ -44,7 +44,7 @@
 		blackout.mouse_opacity = 0
 		if(fader && fader.client)
 			fader.client.screen -= blackout
-		QDel(blackout)
+		QDel(blackout, "fadein complete")
 
 /proc/DoFadeout(var/mob/fader, var/delay = 10)
 
@@ -66,4 +66,4 @@
 		blackout.mouse_opacity = 0
 		if(fader && fader.client)
 			fader.client.screen -= blackout
-		QDel(blackout)
+		QDel(blackout, "fadeout complete")

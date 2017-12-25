@@ -1,15 +1,15 @@
 /proc/CreateDefaultInternalOrgans(var/mob/owner)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_EYE,     _limb_key = BP_HEAD,  _max_damage = 20)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_EYE,     _limb_key = BP_HEAD,  _max_damage = 20)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_LUNG,    _limb_key = BP_CHEST, _max_damage = 40)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_LUNG,    _limb_key = BP_CHEST, _max_damage = 40)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_KIDNEY,  _limb_key = BP_GROIN, _max_damage = 30)
-	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_KIDNEY,  _limb_key = BP_GROIN, _max_damage = 30)
-	owner.organs += new /obj/item/organ(       owner, _vital = TRUE,       _organ_key = ORGAN_BRAIN,   _limb_key = BP_HEAD,  _max_damage = 200)
-	owner.organs += new /obj/item/organ(       owner, _vital = TRUE,       _organ_key = ORGAN_HEART,   _limb_key = BP_CHEST, _max_damage = 100)
-	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_STOMACH, _limb_key = BP_CHEST, _max_damage = 50)
-	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_SPLEEN,  _limb_key = BP_GROIN, _max_damage = 50)
-	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_LIVER,   _limb_key = BP_GROIN, _max_damage = 50)
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_EYE,     _limb_key = BP_HEAD,  _max_damage = 20,  _icon = 'icons/objects/items/organ/eyeball.dmi')
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_EYE,     _limb_key = BP_HEAD,  _max_damage = 20,  _icon = 'icons/objects/items/organ/eyeball.dmi')
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_LUNG,    _limb_key = BP_CHEST, _max_damage = 40,  _icon = 'icons/objects/items/organ/lung.dmi')
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_LUNG,    _limb_key = BP_CHEST, _max_damage = 40,  _icon = 'icons/objects/items/organ/lung.dmi')
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = TRUE,   _organ_key = ORGAN_KIDNEY,  _limb_key = BP_GROIN, _max_damage = 30,  _icon = 'icons/objects/items/organ/kidney.dmi')
+	owner.organs += new /obj/item/organ/paired(owner, _left_side = FALSE,  _organ_key = ORGAN_KIDNEY,  _limb_key = BP_GROIN, _max_damage = 30,  _icon = 'icons/objects/items/organ/kidney.dmi')
+	owner.organs += new /obj/item/organ(       owner, _vital = TRUE,       _organ_key = ORGAN_BRAIN,   _limb_key = BP_HEAD,  _max_damage = 200, _icon = 'icons/objects/items/organ/brain.dmi')
+	owner.organs += new /obj/item/organ(       owner, _vital = TRUE,       _organ_key = ORGAN_HEART,   _limb_key = BP_CHEST, _max_damage = 100, _icon = 'icons/objects/items/organ/heart.dmi')
+	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_STOMACH, _limb_key = BP_CHEST, _max_damage = 50,  _icon = 'icons/objects/items/organ/stomach.dmi')
+	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_SPLEEN,  _limb_key = BP_GROIN, _max_damage = 50,  _icon = 'icons/objects/items/organ/spleen.dmi')
+	owner.organs += new /obj/item/organ(       owner,                      _organ_key = ORGAN_LIVER,   _limb_key = BP_GROIN, _max_damage = 50,  _icon = 'icons/objects/items/organ/liver.dmi')
 
 /obj/item/organ
 	name = "organ"
@@ -62,12 +62,13 @@
 	if(owner && vital)
 		owner.Die("vital organ failure")
 
-/obj/item/organ/New(var/newloc, var/material_path = /datum/material/meat, var/_left_side = FALSE, var/_organ_key, var/_vital, var/_limb_key, var/_max_damage)
+/obj/item/organ/New(var/newloc, var/material_path = /datum/material/meat, var/_left_side = FALSE, var/_organ_key, var/_vital, var/_limb_key, var/_max_damage, var/_icon = 'icons/objects/items/organ/organ.dmi')
 
 	organ_key = _organ_key
 	limb_key = _limb_key
 	name = organ_key
 	vital = _vital
+	icon = _icon
 
 	max_damage = _max_damage
 	death_threshold =    round(max_damage * 0.9)
@@ -84,7 +85,7 @@
 
 	var/obj/item/limb/limb = owner.GetLimb(limb_key)
 	if(!limb)
-		QDel(src)
+		QDel(src, "no parent organ")
 		return
 	ForceMove(limb)
 	limb.organs += src
@@ -100,9 +101,9 @@
 /obj/item/organ/paired
 	var/left_side
 
-/obj/item/organ/paired/New(var/newloc, var/material_path = /datum/material/meat, var/_left_side = FALSE, var/_organ_key, var/_vital, var/_limb_key, var/_max_damage)
+/obj/item/organ/paired/New(var/newloc, var/material_path = /datum/material/meat, var/_left_side = FALSE, var/_organ_key, var/_vital, var/_limb_key, var/_max_damage, var/_icon = 'icons/objects/items/organ/organ.dmi')
 	left_side = _left_side
-	..(newloc, material_path, _left_side, _organ_key, _vital, _limb_key, _max_damage)
+	..(newloc, material_path, _left_side, _organ_key, _vital, _limb_key, _max_damage, _icon)
 
 /obj/item/organ/paired/UpdateStrings()
 	if(left_side)
@@ -115,6 +116,8 @@
 
 /obj/item/organ/proc/Remove(var/bleed = FALSE)
 
+	RandomizePixelOffset()
+
 	var/matrix/M = matrix()
 	M.Turn(pick(0,90,180,270))
 	transform = M
@@ -123,6 +126,9 @@
 	if(owner)
 		if(bleed)
 			blood_mat = owner.blood_material
+		var/obj/item/limb/limb = owner.GetLimb(limb_key)
+		if(limb)
+			limb.organs -= src
 		owner.organs -= src
 		var/list/organ_list = owner.organs_by_key[organ_key]
 		organ_list -= src
@@ -142,6 +148,7 @@
 	..()
 	if(left_side)
 		var/matrix/M = transform
+		if(!M) M = matrix()
 		M.Scale(-1,1)
 		transform = M
 

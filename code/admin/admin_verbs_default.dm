@@ -38,7 +38,7 @@ var/force_start = FALSE
 
 	var/mob/old_mob = mob
 	mob.TransferControlTo(new /mob/abstract/new_player())
-	QDel(old_mob)
+	QDel(old_mob, "respawning")
 
 /client/proc/Spawn(var/msg as text)
 

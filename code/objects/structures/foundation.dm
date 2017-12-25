@@ -9,7 +9,7 @@
 
 /obj/structure/foundation/Destroy()
 	if(resources)
-		QDel(resources)
+		QDel(resources, "foundation destroyed")
 		resources = null
 	. = ..()
 
@@ -39,13 +39,13 @@
 			resources.ForceMove(get_turf(src))
 			resources = null
 			NotifyNearby("<span class='warning'>\The [user] knocks down \the [src].</span>")
-			QDel(src)
+			QDel(src, "knocked down")
 			return TRUE
 
 	if(prop.associated_skill & SKILL_CONSTRUCTION)
 		var/atom/built = new build_type(get_turf(src), material.type)
 		NotifyNearby("<span class='notice'>\The [user] finishes building \the [built] with \the [prop].</span>")
 		PlayLocalSound(src, material.GetConstructionSound(), 100)
-		QDel(src)
+		QDel(src, "construction completed")
 		return TRUE
 	. = ..()

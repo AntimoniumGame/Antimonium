@@ -14,7 +14,7 @@
 	..(newdir)
 	if((flags & FLAG_SEATING) && loc)
 		for(var/mob/mob in loc.contents)
-			if(mob.sitting)
+			if(mob.sitting || mob.prone)
 				mob.SetDir(dir)
 
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
@@ -62,4 +62,4 @@
 	..()
 
 /obj/structure/proc/Destroyed()
-	QDel(src)
+	QDel(src, "destroyed")

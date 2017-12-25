@@ -19,7 +19,7 @@
 			target = C.mob
 			break
 	if(!target || target == holder.mob)
-		QDel(src)
+		QDel(src, "target is invalid")
 	else
 		text = "A contract has been issued for \the [target], [target.role.job.GetTitle()]. Kill [target.Them()] in whatever manner you wish."
 

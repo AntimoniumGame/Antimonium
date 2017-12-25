@@ -16,12 +16,18 @@
 /mob/proc/Gib()
 	Splatter(loc, blood_material)
 
+	while(organs_by_key.len)
+		var/obj/item/organ/organ = GetOrganByKey(pick(organs_by_key))
+		organ.Remove()
+		organ.ThrownAt(get_step(src, pick(all_dirs)))
+		sleep(-1)
+
 	while(limbs_by_key.len > 1)
 		var/obj/item/limb/limb = GetLimb(pick(limbs_by_key - BP_CHEST))
 		limb.SeverLimb()
 		sleep(-1)
 
-	QDel(src)
+	QDel(src, "gibbed")
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
@@ -94,7 +100,7 @@
 		Die("the hungry flames")
 		// create ashes
 		// Light off
-		QDel(src)
+		QDel(src, "burned up")
 	else if(IsOnFire() && fire_intensity)
 		for(var/invslot in inventory_slots)
 			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
@@ -109,5 +115,5 @@
 
 /mob/Logout()
 	if(radial_menu)
-		QDel(radial_menu)
+		QDel(radial_menu, "owner logout")
 	. = ..()

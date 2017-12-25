@@ -51,6 +51,6 @@
 
 /obj/structure/millstone/Destroy()
 	if(axle)
-		QDel(axle)
+		QDel(axle, "parent destroyed")
 		axle = null
 	. = ..()

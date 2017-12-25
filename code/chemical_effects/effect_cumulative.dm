@@ -6,7 +6,7 @@
 		value++
 		ticks--
 		if(ticks <= 0)
-			QDel(src)
+			QDel(src, "effect expired")
 	else if(value > 0)
 		value--
 

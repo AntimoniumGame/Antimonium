@@ -9,9 +9,9 @@
 /obj/ui/radial_button/close/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)
-		QDel(parent_menu)
+		QDel(parent_menu, "closed")
 
 /obj/ui/radial_button/close/RightClickedOn(var/mob/clicker, var/slot = SLOT_RIGHT_HAND)
 	. = ..()
 	if(.)
-		QDel(parent_menu)
+		QDel(parent_menu, "closed")
