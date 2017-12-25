@@ -29,6 +29,11 @@
 	icon = 'icons/objects/items/components/hammer_mallet.dmi'
 	builds_to = /obj/item/weapon/mallet
 
+/obj/item/component/sledgehammer
+	name = "sledgehammer head"
+	icon = 'icons/objects/items/components/hammer_sledge.dmi'
+	builds_to = /obj/item/weapon/sledgehammer
+
 /obj/item/component/forge_hammer
 	name = "forging hammer head"
 	icon = 'icons/objects/items/components/hammer_forge.dmi'

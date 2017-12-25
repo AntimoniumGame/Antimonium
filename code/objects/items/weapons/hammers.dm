@@ -6,6 +6,14 @@
 	weight = 8
 	contact_size = 5
 
+/obj/item/weapon/sledgehammer
+	name = "sledgehammer"
+	associated_skill = SKILL_DEMOLITION
+	icon = 'icons/objects/items/hammer_sledge.dmi'
+	sharpness = 0
+	weight = 20
+	contact_size = 10
+
 /obj/item/weapon/mallet
 	name = "mallet"
 	icon = 'icons/objects/items/hammer_mallet.dmi'
