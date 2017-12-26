@@ -123,3 +123,4 @@
 		return 0
 	if(message_type == MESSAGE_VISIBLE && HasEffect(EFFECT_BLINDED))
 		return 0
+	return ..(message, message_type)
