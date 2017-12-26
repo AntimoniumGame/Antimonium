@@ -41,5 +41,5 @@
 /obj/ui/inv/hand/MiddleClickedOn(var/mob/clicker)
 	. = ..()
 	if(. && holding)
-		owner.NotifyNearby("<span class = 'notice'>\The [owner] drops \the [holding] from [owner.Their()] [unmodified_name].</span>")
+		owner.NotifyNearby("<span class = 'notice'>\The [owner] drops \the [holding] from [owner.Their()] [unmodified_name].</span>", MESSAGE_VISIBLE)
 		owner.DropItem(holding)

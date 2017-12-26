@@ -32,7 +32,7 @@
 			SetHeld(prop)
 
 			PlayLocalSound(owner, prop.equip_sound, 100)
-			owner.NotifyNearby("\The [owner] begins wearing \the [prop] on [owner.Their()] [unmodified_name].")
+			owner.NotifyNearby("\The [owner] begins wearing \the [prop] on [owner.Their()] [unmodified_name].", MESSAGE_VISIBLE)
 	else
 		if(holding)
 			var/obj/ui/inv/inv_slot = owner.inventory_slots[slot]
@@ -42,6 +42,6 @@
 			ForgetHeld()
 			inv_slot.SetHeld(prop)
 			PlayLocalSound(owner, prop.equip_sound, 100)
-			owner.NotifyNearby("\The [owner] removes \the [prop] from [owner.Their()] [unmodified_name].")
+			owner.NotifyNearby("\The [owner] removes \the [prop] from [owner.Their()] [unmodified_name].", MESSAGE_VISIBLE)
 			prop.AfterRemoved(owner, slot)
 	owner.UpdateIcon()

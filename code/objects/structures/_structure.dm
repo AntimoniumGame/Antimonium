@@ -28,7 +28,7 @@
 /obj/structure/proc/ThingPlacedOn(var/mob/user, var/obj/item/prop, var/precise_placement = TRUE)
 	prop.ForceMove(src.loc)
 	if(user)
-		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] on \the [src].</span>")
+		user.NotifyNearby("<span class='notice'>\The [user] places \the [prop] on \the [src].</span>", MESSAGE_VISIBLE)
 		if(user.client && precise_placement && istype(prop))
 			prop.pixel_x = text2num(user.client.last_click["icon-x"])-16
 			prop.pixel_y = text2num(user.client.last_click["icon-y"])-16

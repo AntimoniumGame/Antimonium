@@ -42,7 +42,7 @@
 	if(prone || sitting)
 		return
 	if(!CanStand())
-		NotifyNearby("<span class='danger'><b>\The [src] collapses!</b></span>")
+		NotifyNearby("<span class='danger'><b>\The [src] collapses!</b></span>", MESSAGE_VISIBLE)
 		ToggleProne()
 
 /mob/proc/HandleStanceMoveDelay()

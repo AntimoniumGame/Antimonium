@@ -69,4 +69,4 @@
 		temperature = min(TEMPERATURE_FURNACE, temperature + rand(300,500))
 		fire_intensity = max(MAX_FIRE_INTENSITY,fire_intensity + rand(10,20))
 		if(prob(10))
-			NotifyNearby("<span class='alert'>The flames of \the [src] flare up higher!</span>")
+			NotifyNearby("<span class='alert'>The flames of \the [src] flare up higher!</span>", MESSAGE_VISIBLE)

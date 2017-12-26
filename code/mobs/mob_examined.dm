@@ -5,7 +5,7 @@
 		clicker.Dnotify("Role#\ref[role] - job: [role.job ? "[role.job.GetTitle(src)] (\ref[role.job])" : "null"], antag: [jointext(role.antagonist_roles, ", ")]")
 
 	if(. && (src == clicker || clicker.intent.selecting == INTENT_HELP))
-		clicker.NotifyNearby("\The [clicker] begins checking [src == clicker ? src.Themself() : "\the [src]"] over for injuries.")
+		clicker.NotifyNearby("\The [clicker] begins checking [src == clicker ? src.Themself() : "\the [src]"] over for injuries.", MESSAGE_VISIBLE)
 		spawn()
 			var/list/injuries = list()
 			for(var/limb_id in limbs_by_key)
@@ -35,7 +35,7 @@
 				for(var/injury in injuries)
 					if(!clicker || !src || Deleted(src) || Deleted(clicker) || !IsAdjacentTo(clicker, src))
 						return
-					clicker.Notify(injury)
+					clicker.Notify(injury, MESSAGE_VISIBLE)
 					sleep(10)
 			else
 				clicker.Notify("You find no obvious injuries.")

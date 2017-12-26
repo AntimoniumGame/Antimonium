@@ -82,7 +82,7 @@
 	if(step_towards(src, get_step(src, push_dir)))
 		if(move_sound)
 			PlayLocalSound(src, move_sound, 50, frequency = -1)
-		NotifyNearby("<span class='warning'>\The [pusher] pushes \the [src].</span>")
+		NotifyNearby("<span class='warning'>\The [pusher] pushes \the [src].</span>", MESSAGE_VISIBLE)
 		return TRUE
 	return FALSE
 
@@ -92,14 +92,14 @@
 		. = ..()
 	else
 		if(intent.selecting == INTENT_HARM)
-			NotifyNearby("<span class='danger'>\The [pusher] tries to move past \the [src], but [They()] block[s()] [pusher.Them()].</span>")
+			NotifyNearby("<span class='danger'>\The [pusher] tries to move past \the [src], but [They()] block[s()] [pusher.Them()].</span>", MESSAGE_VISIBLE)
 			pusher.next_move = world.time + max(1, round(pusher.GetMoveDelay()/2))
 		else
 			glide_size = pusher.glide_size
 			var/pusher_loc = pusher.loc
 			pusher.ForceMove(loc)
 			ForceMove(pusher_loc)
-			NotifyNearby("<span class='notice'>\The [pusher] moves past \the [src].</span>")
+			NotifyNearby("<span class='notice'>\The [pusher] moves past \the [src].</span>", MESSAGE_VISIBLE)
 		return TRUE
 
 /mob/proc/NoDeadMove()

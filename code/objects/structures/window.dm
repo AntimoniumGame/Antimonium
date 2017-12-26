@@ -12,9 +12,9 @@
 
 /obj/structure/window/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(prop.GetWeight() < 3)
-		user.NotifyNearby("<span class='warning'>\The [user] bangs \the [prop] against \the [src].</span>")
+		user.NotifyNearby("<span class='warning'>\The [user] bangs \the [prop] against \the [src].</span>", MESSAGE_VISIBLE)
 	else
-		user.NotifyNearby("<span class='alert'>\The [user] shatters \the [src] with \the [prop]!</span>")
+		user.NotifyNearby("<span class='alert'>\The [user] shatters \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
 		Shatter()
 
 /obj/structure/window/ThrownHitBy(var/atom/movable/projectile)
@@ -24,7 +24,7 @@
 		return FALSE
 
 /obj/structure/window/proc/Shatter()
-	NotifyNearby("<span class='alert'>\The [src] shatters!</span>")
+	NotifyNearby("<span class='alert'>\The [src] shatters!</span>", MESSAGE_VISIBLE)
 	PlayLocalSound(src, 'sounds/effects/shatter1.ogg', 100)
 	new /obj/item/stack/shards(get_turf(src), _amount = rand(5,10))
 	var/oldloc = loc

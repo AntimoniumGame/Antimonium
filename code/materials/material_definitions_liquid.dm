@@ -10,12 +10,12 @@
 
 /datum/material/water/OnTurfEntry(var/turf/crossing, var/atom/movable/crosser)
 	if(crosser.IsOnFire())
-		crossing.NotifyNearby("A cloud of hissing steam rises up as \the [crosser] enters \the [crossing]!")
+		crossing.NotifyNearby("A cloud of hissing steam rises up as \the [crosser] enters \the [crossing]!", MESSAGE_VISIBLE)
 		crosser.Extinguish()
 
 /datum/material/water/OnTurfAttack(var/turf/target, var/mob/user, var/obj/item/prop)
 	if(prop.IsOnFire())
-		target.NotifyNearby("A cloud of hissing steam rises up as \the [user] dips \the [prop] into the water!")
+		target.NotifyNearby("A cloud of hissing steam rises up as \the [user] dips \the [prop] into the water!", MESSAGE_VISIBLE)
 		prop.Extinguish()
 		return TRUE
 	. = ..()

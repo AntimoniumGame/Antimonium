@@ -45,9 +45,9 @@
 		if(building_with.GetAmount() < building_with.material.GetStructureCost())
 			owner.Notify("<span class='warning'>There is not enough in \the [src] to build that.</span>")
 			return
-		owner.NotifyNearby("<span class='notice'>\The [owner] starts building \a [initial(thing_input)].</span>")
+		owner.NotifyNearby("<span class='notice'>\The [owner] starts building \a [initial(thing_input)].</span>", MESSAGE_VISIBLE)
 		if(DoAfterDelay(owner, source_atom, 24, GetAdditionalMenuData()))
 			var/atom/thing = new thing_input(get_turf(source_atom), material_path = building_with.material.type)
-			owner.NotifyNearby("<span class='notice'>\The [owner] builds \a [thing].</span>")
+			owner.NotifyNearby("<span class='notice'>\The [owner] builds \a [thing].</span>", MESSAGE_VISIBLE)
 			building_with.Remove(building_with.material.GetStructureCost())
 	QDel(src, "structure built")

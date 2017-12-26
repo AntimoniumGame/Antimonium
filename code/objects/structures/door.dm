@@ -41,7 +41,7 @@
 		if(thing == src) continue
 		var/atom/atom = thing
 		if(atom.density && (atom.flags & FLAG_SIMULATED))
-			NotifyNearby("<span class='warning'>\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].</span>")
+			NotifyNearby("<span class='warning'>\The [src] [slam ? "bashes into" : "clunks on"] \the [atom] and fails to [density ? "open" : "close"].</span>", MESSAGE_VISIBLE)
 			PlayLocalSound(loc, 'sounds/effects/thump1.ogg', 100)
 			return TRUE
 	var/anim_time = (slam ? 2 : 5)

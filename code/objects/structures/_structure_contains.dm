@@ -28,13 +28,13 @@
 				contains -= removing
 				removing.ForceMove(get_turf(src))
 				if(user.CollectItem(removing, slot))
-					user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [removing].")
+					user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [removing].", MESSAGE_VISIBLE)
 					ThingTakenOut(removing)
 				else
 					contains += removing
 					removing.ForceMove(src)
 			else
-				user.NotifyNearby("\The [user] rummages around in \the [src] but comes up empty handed.")
+				user.NotifyNearby("\The [user] rummages around in \the [src] but comes up empty handed.", MESSAGE_VISIBLE)
 			return TRUE
 
 /obj/structure/Initialize()
@@ -52,10 +52,10 @@
 	if(!can_open)
 		return FALSE
 	if(Burn(user, SLOT_HANDS))
-		user.Notify("\The [src] is far too hot to touch!")
+		user.Notify("<span class='warning'>\The [src] is far too hot to touch!</span>")
 	else
 		open = !open
-		if(user) user.NotifyNearby("\The [user] [open ? "opens" : "closes"] \the [src].")
+		if(user) user.NotifyNearby("<span class='notice'>\The [user] [open ? "opens" : "closes"] \the [src].</span>", MESSAGE_VISIBLE)
 		UpdateIcon()
 	return TRUE
 
@@ -87,7 +87,7 @@
 				return TRUE
 			if(user.DropItem(prop))
 				if(prop && !Deleted(prop))
-					user.NotifyNearby("\The [user] places \the [prop] into \the [src].")
+					user.NotifyNearby("\The [user] places \the [prop] into \the [src].", MESSAGE_VISIBLE)
 					contains += prop
 					prop.ForceMove(src)
 					ThingPutInside(prop)

@@ -32,19 +32,19 @@
 			if(buildings.len)
 				var/select_type = input("Select a building type.") as null|anything in buildings
 				if(select_type)
-					NotifyNearby("<span class='notice'>\The [user] adjusts \the [src] with \the [prop].</span>")
+					NotifyNearby("<span class='notice'>\The [user] adjusts \the [src] with \the [prop].</span>", MESSAGE_VISIBLE)
 					build_type = select_type
 				return TRUE
 		else
 			resources.ForceMove(get_turf(src))
 			resources = null
-			NotifyNearby("<span class='warning'>\The [user] knocks down \the [src].</span>")
+			NotifyNearby("<span class='danger'>\The [user] knocks down \the [src].</span>", MESSAGE_VISIBLE)
 			QDel(src, "knocked down")
 			return TRUE
 
 	if(prop.associated_skill & SKILL_CONSTRUCTION)
 		var/atom/built = new build_type(get_turf(src), material.type)
-		NotifyNearby("<span class='notice'>\The [user] finishes building \the [built] with \the [prop].</span>")
+		NotifyNearby("<span class='notice'>\The [user] finishes building \the [built] with \the [prop].</span>", MESSAGE_VISIBLE)
 		PlayLocalSound(src, material.GetConstructionSound(), 100)
 		QDel(src, "construction completed")
 		return TRUE

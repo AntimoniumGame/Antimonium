@@ -19,10 +19,10 @@
 		if(fire_intensity)
 			if(prob(5))
 				user.Ignite()
-			NotifyNearby("<span class='notice'>\The [user] beats at the flaming [src.name]!</span>")
+			NotifyNearby("<span class='notice'>\The [user] beats at the flaming [src.name]!</span>", MESSAGE_VISIBLE)
 			UpdateFireOverlay()
 		else
-			NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>")
+			NotifyNearby("<span class='notice'>\The [user] extinguishes \the [src].</span>", MESSAGE_VISIBLE)
 			Extinguish()
 		return TRUE
 	return FALSE
@@ -30,11 +30,11 @@
 /atom/proc/AttackedBy(var/mob/user, var/obj/item/prop)
 	if(IsFlammable() && prop.IsFlammable())
 		if(!prop.IsOnFire() && IsOnFire())
-			user.NotifyNearby("<span class='warning'>\The [user] lights \the [prop] in \the [src].</span>")
+			user.NotifyNearby("<span class='warning'>\The [user] lights \the [prop] in \the [src].</span>", MESSAGE_VISIBLE)
 			prop.Ignite(user)
 			return TRUE
 		else if(prop.IsOnFire() && !IsOnFire())
-			user.NotifyNearby("<span class='warning'>\The [user] lights \the [src] with \the [prop].</span>")
+			user.NotifyNearby("<span class='warning'>\The [user] lights \the [src] with \the [prop].</span>", MESSAGE_VISIBLE)
 			Ignite(user)
 			return TRUE
 	return FALSE

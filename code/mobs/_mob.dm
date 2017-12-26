@@ -117,3 +117,10 @@
 	if(radial_menu)
 		QDel(radial_menu, "owner logout")
 	. = ..()
+
+/mob/Notify(var/message, var/message_type)
+	if(message_type == MESSAGE_AUDIBLE && HasEffect(EFFECT_DEAFENED))
+		return 0
+	if(message_type == MESSAGE_VISIBLE && HasEffect(EFFECT_BLINDED))
+		return 0
+	return ..(message, message_type)

@@ -89,7 +89,7 @@
 /obj/item/stack/Grind(var/mob/user)
 	if(material_state == STATE_SOLID && material && material.grindable)
 		if(user)
-			user.NotifyNearby("\The [user] grinds \the [src] into a fine powder.")
+			user.NotifyNearby("\The [user] grinds \the [src] into a fine powder.", MESSAGE_VISIBLE)
 		material_state = STATE_POWDER
 		new /obj/item/stack/reagent(get_turf(src), material.type, GetAmount(), src)
 		QDel(src, "ground up")

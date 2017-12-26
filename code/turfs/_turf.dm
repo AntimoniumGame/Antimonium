@@ -105,7 +105,7 @@
 			return TRUE
 
 		if(wall_material && (prop.associated_skill & (wall_material.demolition_skill|SKILL_DEMOLITION)))
-			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>")
+			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
 			PlayLocalSound(src, wall_material.hit_sound, 100)
 			user.SetActionCooldown(6)
 			TakeDamage(10, user)
@@ -161,10 +161,10 @@
 		return TRUE
 
 	if(user.intent.selecting == INTENT_HELP && (!check_digger || user.IsDigger(TRUE)))
-		user.NotifyNearby("\The [user] carefully tills the soil into a farm.")
+		user.NotifyNearby("\The [user] carefully tills the soil into a farm.", MESSAGE_VISIBLE)
 		new /obj/structure/earthworks/farm(src)
 	else
-		user.NotifyNearby("\The [user] digs a long, deep pit.")
+		user.NotifyNearby("\The [user] digs a long, deep pit.", MESSAGE_VISIBLE)
 		new /obj/structure/earthworks/pit(src)
 
 /turf/UpdateIcon(var/ignore_neighbors)

@@ -62,7 +62,7 @@
 			return TRUE
 		threaded = new thread.type(src, thread.material.type, thread_amount)
 		threaded.dyed = thread.dyed
-		user.Notify("You thread \the [src] with some of \the [thread].")
+		user.Notify("You thread \the [src] with some of \the [thread].", MESSAGE_VISIBLE)
 		thread.Remove(thread_amount)
 		UpdateIcon()
 		return TRUE

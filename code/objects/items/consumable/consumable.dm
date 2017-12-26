@@ -34,7 +34,7 @@
 	return TRUE
 
 /obj/item/consumable/proc/ShowEatenMessage(var/mob/user)
-	user.NotifyNearby("<span class='notice'>\The [user] takes a bite out of \the [src].</span>")
+	user.NotifyNearby("<span class='notice'>\The [user] takes a bite out of \the [src].</span>", MESSAGE_VISIBLE)
 
 /obj/item/consumable/proc/ShowFinishMessage(var/mob/user)
-	user.NotifyNearby("<span class='notice'>\The [user] finishes eating \the [src].</span>")
+	user.NotifyNearby("<span class='notice'>\The [user] finishes eating \the [src].</span>", MESSAGE_VISIBLE)

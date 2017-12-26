@@ -54,11 +54,11 @@
 	else
 		for(var/mob/M in viewers(world.view, get_turf(src)))
 			if(M.CheckCanUnderstand(understand_category))
-				M.Notify(message)
+				M.Notify(message, MESSAGE_AUDIBLE)
 			else
 				if(!scramble_message)
 					scramble_message = "<b>\The [src]</b> [ScrambleSpeech(message)]"
-				M.Notify(scramble_message)
+				M.Notify(scramble_message, MESSAGE_AUDIBLE)
 
 
 /mob/proc/DoEmote(var/message)

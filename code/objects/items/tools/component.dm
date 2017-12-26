@@ -9,7 +9,7 @@
 	if(!. && material && istype(prop, builds_with) && prop.material)
 		var/obj/item/stack/stack = prop
 		var/obj/item/weapon/built = new builds_to(get_turf(src), material_path = material.type, secondary_material_path = stack.material.type)
-		NotifyNearby("<span class='notice'>\The [user] builds \a [built] from \the [src] and \a [stack.singular_name].</span>")
+		NotifyNearby("<span class='notice'>\The [user] builds \a [built] from \the [src] and \a [stack.singular_name].</span>", MESSAGE_VISIBLE)
 		stack.Remove(1)
 		QDel(src, "component construction")
 		return TRUE

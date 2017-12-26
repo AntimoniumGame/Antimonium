@@ -79,7 +79,7 @@
 			contains_reagents.Cut()
 			current_reagent_volume = 0
 			UpdateIcon()
-			user.NotifyNearby("<span class='danger'>\The [user] empties \the [src].</span>")
+			user.NotifyNearby("<span class='danger'>\The [user] empties \the [src].</span>", MESSAGE_VISIBLE)
 		return TRUE
 	return ((flags & FLAG_IS_EDIBLE) && Eaten(user))
 

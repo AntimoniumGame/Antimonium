@@ -4,7 +4,9 @@
 	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
 	max_reagent_volume = 5
 	precise_reagent_transfer = TRUE
+	default_material_path = /datum/material/stone/glass
 
+	var/held_underlay_states = 5
 	var/image/world_overlay
 	var/image/held_overlay
 
@@ -37,9 +39,9 @@
 
 	var/index = 1
 	if(vessel_contents >= max_reagent_volume)
-		index = max_reagent_volume
+		index = held_underlay_states
 	else
-		index = max(1, min(max_reagent_volume, round(max_reagent_volume * (vessel_contents/max_reagent_volume))))
+		index = max(1, min(max_reagent_volume, ceil(held_underlay_states/(vessel_contents/max_reagent_volume))))
 	held_overlay = image(icon = icon, icon_state = "underlay-[index]")
 	world_overlay = image(icon = icon, icon_state = "underlay-world")
 
@@ -64,8 +66,8 @@
 	QDel(drinking, "drunk")
 
 	if(contains_reagents.len)
-		user.NotifyNearby("\The [user] takes a swig from \the [src].")
+		user.NotifyNearby("\The [user] takes a swig from \the [src].", MESSAGE_VISIBLE)
 	else
-		user.NotifyNearby("\The [user] drains the dregs of \the [src].")
+		user.NotifyNearby("\The [user] drains the dregs of \the [src].", MESSAGE_VISIBLE)
 	UpdateIcon()
 	return TRUE

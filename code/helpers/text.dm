@@ -30,7 +30,6 @@
 	var/seconds = round((ticks%600)/10)
 	return "[round(ticks/600)]:[seconds >= 10 ? seconds : "0[seconds]"]"
 
-
 /proc/FormatStringForSpeech(var/speaker, var/message)
 	message = FormatAndCapitalize(SanitizeText(copytext(message,1,120)))
 	var/speak_verb = "says"

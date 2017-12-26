@@ -139,22 +139,22 @@
 	return (melting_point != TEMPERATURE_NEVER_COLD || ignition_point != TEMPERATURE_NEVER_HOT || boiling_point != TEMPERATURE_NEVER_HOT)
 
 /datum/material/proc/OnMelt(var/obj/reagent)
-	reagent.NotifyNearby("\The [reagent] melts!")
+	reagent.NotifyNearby("\The [reagent] melts!", MESSAGE_VISIBLE)
 	reagent.material_state = STATE_LIQUID
 	reagent.Melt()
 
 /datum/material/proc/OnSolidify(var/obj/reagent)
-	reagent.NotifyNearby("\The [reagent] solidifies!")
+	reagent.NotifyNearby("\The [reagent] solidifies!", MESSAGE_VISIBLE)
 	reagent.material_state = STATE_SOLID
 	reagent.Solidify()
 
 /datum/material/proc/OnEvaporate(var/obj/reagent)
-	reagent.NotifyNearby("\The [reagent] evaporates!")
+	reagent.NotifyNearby("\The [reagent] evaporates!", MESSAGE_VISIBLE)
 	reagent.material_state = STATE_GAS
 	reagent.Evaporate()
 
 /datum/material/proc/OnCondense(var/obj/reagent)
-	reagent.NotifyNearby("\The [reagent] condenses!")
+	reagent.NotifyNearby("\The [reagent] condenses!", MESSAGE_VISIBLE)
 	reagent.material_state = STATE_LIQUID
 	reagent.Condense()
 

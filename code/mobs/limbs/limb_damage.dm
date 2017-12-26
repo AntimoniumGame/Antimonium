@@ -67,7 +67,7 @@
 	ExpandWoundOfType(WOUND_BURN, 0, attack_contact_size, attacked_with, silent = TRUE)
 
 /obj/item/limb/proc/BreakBone()
-	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>")
+	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>", MESSAGE_AUDIBLE)
 	broken = TRUE
 	HandleBreakEffects()
 
@@ -113,10 +113,10 @@
 
 		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
 		if(amputated)
-			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] has been cleanly severed!</b></span>")
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] has been cleanly severed!</b></span>", MESSAGE_VISIBLE)
 			ForceMove(get_turf(owner))
 		else
-			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>")
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>", MESSAGE_VISIBLE)
 			ThrownAt(get_step(src, pick(all_dirs)))
 
 		var/blood_mat = owner.blood_material
