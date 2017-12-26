@@ -4,7 +4,9 @@
 	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
 	max_reagent_volume = 5
 	precise_reagent_transfer = TRUE
+	default_material_path = /datum/material/stone/glass
 
+	var/held_underlay_states = 5
 	var/image/world_overlay
 	var/image/held_overlay
 
@@ -39,7 +41,7 @@
 	if(vessel_contents >= max_reagent_volume)
 		index = max_reagent_volume
 	else
-		index = max(1, min(max_reagent_volume, round(max_reagent_volume * (vessel_contents/max_reagent_volume))))
+		index = max(1, min(max_reagent_volume, ceil(held_underlay_states/(vessel_contents/max_reagent_volume))))
 	held_overlay = image(icon = icon, icon_state = "underlay-[index]")
 	world_overlay = image(icon = icon, icon_state = "underlay-world")
 
