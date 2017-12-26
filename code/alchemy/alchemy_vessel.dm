@@ -39,7 +39,7 @@
 
 	var/index = 1
 	if(vessel_contents >= max_reagent_volume)
-		index = max_reagent_volume
+		index = held_underlay_states
 	else
 		index = max(1, min(max_reagent_volume, ceil(held_underlay_states/(vessel_contents/max_reagent_volume))))
 	held_overlay = image(icon = icon, icon_state = "underlay-[index]")
