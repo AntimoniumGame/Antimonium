@@ -84,8 +84,8 @@
 
 	if(transferred_amount > 0)
 		MergeReagents()
-		prop.UpdateIcon()
 		prop.UpdateReagentVolume()
+		prop.UpdateIcon()
 		UpdateIcon()
 
 		if(user)

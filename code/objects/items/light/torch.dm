@@ -42,3 +42,4 @@
 	if(istype(sconce) && sconce.filled == src)
 		sconce.filled = null
 		sconce.UpdateIcon()
+	. = ..()

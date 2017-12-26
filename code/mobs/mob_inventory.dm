@@ -8,7 +8,7 @@
 	thing.AfterDropped(src)
 	for(var/invslot in inventory_slots)
 		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
-		if(inv_slot.holding == thing)
+		if(istype(inv_slot) && inv_slot.holding == thing)
 			inv_slot.ForgetHeld()
 			break
 	UpdateIcon()
