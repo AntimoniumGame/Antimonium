@@ -105,12 +105,13 @@
 			return TRUE
 
 		if(wall_material && (prop.associated_skill & (wall_material.demolition_skill|SKILL_DEMOLITION)))
+			user.DoAttackAnimation(get_turf(src))
 			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
 			PlayLocalSound(src, wall_material.hit_sound, 100)
 			user.SetActionCooldown(6)
 			TakeDamage(10, user)
 			return TRUE
-		else if(floor_material && floor_material.turf_is_diggable && (prop.associated_skill & (floor_material.demolition_skill|SKILL_DEMOLITION)))
+		else if(floor_material && floor_material.turf_is_diggable && (prop.associated_skill & (floor_material.demolition_skill)))
 			DigEarthworks(user)
 			return TRUE
 

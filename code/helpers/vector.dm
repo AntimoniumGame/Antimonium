@@ -106,12 +106,13 @@ Inputs:
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
 			if((owner.loc == target_turf) || T.CheckThrownCollision(owner) || !owner.Move(T))
-				owner.dragged = FALSE
-				owner.transform = null
-				owner.UpdateIcon()
-				owner.UpdateStrings()
-				owner.EndThrow()
-				vector_list -= src
+				if(owner) // Somehow this is being nulled in an edge case.
+					owner.dragged = FALSE
+					owner.transform = null
+					owner.UpdateIcon()
+					owner.UpdateStrings()
+					owner.EndThrow()
+					vector_list -= src
 				return
 			owner.pixel_x = pix_x
 			owner.pixel_y = pix_y
