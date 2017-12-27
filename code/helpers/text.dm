@@ -36,6 +36,7 @@
 	var/ending = copytext(message, length(message))
 	if(ending == "!")
 		speak_verb = "exclaims"
+		message = "<b>[message]</b>"
 	else if(ending == "?")
 		speak_verb = "asks"
 	return "<span class='notice'><b>[speaker]</b> [speak_verb], \"<span class='speech'>[message]</span>\"</span>"
