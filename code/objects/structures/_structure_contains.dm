@@ -41,6 +41,11 @@
 	if(max_contains_count > 0 && max_contains_size_single > 0 && max_contains_size_total > 0)
 		contains = list()
 		can_open = TRUE
+		open = TRUE
+		for(var/obj/item/prop in loc)
+			if((prop.flags & FLAG_SIMULATED) && !(prop.flags & FLAG_ANCHORED) && CanAcceptItem(prop))
+				StoreItem(prop)
+		open = initial(open)
 	. = ..()
 
 /obj/structure/ManipulatedBy(var/mob/user, var/slot)
@@ -75,6 +80,11 @@
 		return FALSE
 	return TRUE
 
+/obj/structure/proc/StoreItem(var/obj/item/prop)
+	contains += prop
+	prop.ForceMove(src)
+	ThingPutInside(prop)
+
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)
@@ -88,9 +98,7 @@
 			if(user.DropItem(prop))
 				if(prop && !Deleted(prop))
 					user.NotifyNearby("\The [user] places \the [prop] into \the [src].", MESSAGE_VISIBLE)
-					contains += prop
-					prop.ForceMove(src)
-					ThingPutInside(prop)
+					StoreItem(prop)
 					return TRUE
 
 /obj/structure/proc/ThingPutInside(var/obj/item/prop)
