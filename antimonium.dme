@@ -14,6 +14,8 @@
 #define FILE_DIR "icons/mobs"
 #define FILE_DIR "icons/objects"
 #define FILE_DIR "icons/objects/clothing"
+#define FILE_DIR "icons/objects/clothing/pants"
+#define FILE_DIR "icons/objects/clothing/shirts"
 #define FILE_DIR "icons/objects/effects"
 #define FILE_DIR "icons/objects/items"
 #define FILE_DIR "icons/objects/items/alchemy"
