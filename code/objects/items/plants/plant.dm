@@ -22,7 +22,6 @@
 		processing_objects += src
 
 /obj/item/plant/Destroy()
-	..()
 	if(growing_in)
 		for(var/pkey in growing_in.occupied_spots)
 			if(growing_in.occupied_spots[pkey] == src)
@@ -31,6 +30,7 @@
 				break
 		growing_in = null
 	processing_objects -= src
+	. = ..()
 
 /obj/item/plant/Move()
 	. = ..()
