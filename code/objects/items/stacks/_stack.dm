@@ -15,6 +15,9 @@
 	. = ..()
 	MergeWithOtherStacks()
 
+/obj/item/stack/GetInHandAppearanceAtom()
+	return image(icon, GetIndividualStackIcon())
+
 /obj/item/stack/proc/MergeWithOtherStacks(var/list/merging_with)
 
 	if(Deleted(src) || !loc || istype(loc, /mob)) // To avoid stacks held in the hands merging.

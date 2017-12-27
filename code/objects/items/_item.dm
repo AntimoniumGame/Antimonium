@@ -83,6 +83,9 @@
 		return TRUE
 	return ((flags & FLAG_IS_EDIBLE) && Eaten(user))
 
+/obj/item/proc/GetInHandAppearanceAtom()
+	return src
+
 /obj/item/proc/GetWornIcon(var/inventory_slot)
 	// Hardcoding this for now. I am sure a better system will come along in the future.
 	var/list/limb_check_list = list()
@@ -97,7 +100,7 @@
 
 	if(inventory_slot == SLOT_LEFT_HAND || inventory_slot == SLOT_RIGHT_HAND || inventory_slot == SLOT_MOUTH)
 		var/image/I = new() //todo cache this
-		I.appearance = src
+		I.appearance = GetInHandAppearanceAtom()
 		I.layer = FLOAT_LAYER
 		var/matrix/M = matrix()
 		M.Scale(1, -1)
