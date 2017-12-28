@@ -8,6 +8,8 @@
 	density = 1
 	pixel_y = -16
 	draw_shadow_underlay = null
+	max_damage = 200
+
 	var/locked = FALSE
 
 /obj/structure/door/SetDir(var/newdir)

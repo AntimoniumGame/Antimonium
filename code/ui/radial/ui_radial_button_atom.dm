@@ -1,4 +1,6 @@
 /obj/ui/radial_button/show_atom
+	icon = 'icons/images/ui.dmi'
+	icon_state = "blank"
 	var/atom/refer_atom
 
 /obj/ui/radial_button/show_atom/GetAtom()
@@ -14,12 +16,21 @@
 	..(_owner, _parent_menu)
 
 /obj/ui/radial_button/show_atom/UpdateAppearance()
+	overlays.Cut()
 	var/obj/item/prop = refer_atom
 	if(istype(prop))
-		appearance = prop.GetInvIcon()
+		var/image/I = new()
+		I.appearance = prop.GetInvIcon()
+		I.plane = plane
+		I.layer = FLOAT_LAYER
+		overlays += I
 		draw_shadow_underlay = TRUE
 	else
-		appearance = refer_atom
+		var/image/I = new()
+		I.appearance = refer_atom
+		I.plane = plane
+		I.layer = FLOAT_LAYER
+		overlays += I
 		var/atom/movable/atom = refer_atom
 		if(!istype(atom) || atom.draw_shadow_underlay)
 			draw_shadow_underlay = TRUE
