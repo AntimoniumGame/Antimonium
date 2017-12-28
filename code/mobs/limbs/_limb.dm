@@ -6,7 +6,7 @@
 	sharpness = 1
 	attack_verbs = list("bludgeons", "batters", "whacks")
 	default_material_path = /datum/material/meat
-	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN
+	flags = FLAG_SIMULATED | FLAG_IS_EDIBLE | FLAG_THROWN_SPIN | FLAG_ANCHORED // FLAG_ANCHORED is because, for some reason, you can pick the fucking limbs up during spawn.
 
 	var/limb_name
 	var/root_limb = FALSE
