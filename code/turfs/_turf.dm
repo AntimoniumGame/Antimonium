@@ -271,3 +271,26 @@
 			new /turf/floor/dirt(src)
 
 	..()
+
+/turf/Enter(var/atom/movable/mover, var/oldloc)
+	// Ghosts get a free pass.
+	if(!(mover.flags & FLAG_SIMULATED))
+		return TRUE
+	// Dense walls cannot be bypassed.
+	if(density)
+		return FALSE
+	// Handle mobs moving from structure to structure (walking across tables for example)
+	var/turf/T = oldloc
+	if(istype(mover, /mob) && mover.density && !density && istype(T))
+		var/blocked = FALSE
+		for(var/obj/structure/structure in contents)
+			if(structure.density)
+				blocked = TRUE
+				break
+		if(blocked)
+			for(var/obj/structure/structure in T)
+				if(structure.density)
+					blocked = FALSE
+					break
+		return !blocked
+	. = ..()

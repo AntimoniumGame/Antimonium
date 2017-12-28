@@ -1,4 +1,6 @@
 /obj/ui/radial_button
+	icon = 'icons/images/ui.dmi'
+	icon_state = "square_base"
 	screen_loc = "CENTER,CENTER"
 	var/obj/ui/radial_menu/parent_menu
 

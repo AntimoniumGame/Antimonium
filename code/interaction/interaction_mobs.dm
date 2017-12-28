@@ -12,11 +12,11 @@
 		thing.MiddleClickedOn(src)
 
 /mob/human/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND))
+	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND) && thing)
 		thing.LeftClickedOn(src, SLOT_LEFT_HAND)
 
 /mob/human/RightClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND))
+	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND) && thing)
 		thing.RightClickedOn(src, SLOT_RIGHT_HAND)
 
 /mob/proc/TryGeneralInteraction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)

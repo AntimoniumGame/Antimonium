@@ -1,4 +1,6 @@
 /obj/ui/radial_button/crafting
+	icon = 'icons/images/ui.dmi'
+	icon_state = "circle_base"
 	var/datum/crafting_recipe/recipe
 
 /obj/ui/radial_button/crafting/New(var/mob/_owner, var/obj/ui/radial_menu/_parent_menu, var/datum/crafting_recipe/_recipe)
@@ -9,12 +11,21 @@
 	return recipe.example_atom
 
 /obj/ui/radial_button/crafting/UpdateAppearance()
+	overlays.Cut()
 	var/obj/item/prop = recipe.example_atom
 	if(istype(prop))
-		appearance = prop.GetInvIcon()
+		var/image/I = new()
+		I.appearance = prop.GetInvIcon()
+		I.plane = plane
+		I.layer = FLOAT_LAYER
+		overlays += I
 		draw_shadow_underlay = TRUE
 	else
-		appearance = recipe.example_atom
+		var/image/I = new()
+		I.appearance = recipe.example_atom
+		I.plane = plane
+		I.layer = FLOAT_LAYER
+		overlays += I
 		var/atom/movable/atom = recipe.example_atom
 		if(!istype(atom) || atom.draw_shadow_underlay)
 			draw_shadow_underlay = TRUE

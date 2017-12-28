@@ -1,6 +1,6 @@
 /obj/ui/radial_button/show_atom
 	icon = 'icons/images/ui.dmi'
-	icon_state = "blank"
+	icon_state = "square_base"
 	var/atom/refer_atom
 
 /obj/ui/radial_button/show_atom/GetAtom()
