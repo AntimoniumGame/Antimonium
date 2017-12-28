@@ -74,7 +74,7 @@
 			var/atom/movable/prop = thing
 			prop.ForceMove(src.loc)
 	if(material)
-		var/atom/movable/debris = material.GetDebris(weight/10)
+		var/atom/movable/debris = material.GetDebris(max(1,round(weight/10)))
 		debris.ForceMove(loc)
 		//PlayLocalSound(src, material.GetConstructionSound(), 100) //Todo destruction sounds.
 	QDel(src, "destroyed")
