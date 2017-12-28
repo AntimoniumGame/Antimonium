@@ -7,6 +7,7 @@
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE | FLAG_SEATING
 	draw_shadow_underlay = null
+	max_damage = 500
 
 /obj/structure/bench/UpdateIcon()
 	OrientToNeighbors()

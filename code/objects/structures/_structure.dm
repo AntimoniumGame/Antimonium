@@ -20,6 +20,13 @@
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)
+		if(user.intent.selecting == INTENT_HARM && (prop.flags & FLAG_SIMULATED) && prop.weight && prop.contact_size)
+			user.DoAttackAnimation(get_turf(src))
+			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
+			PlayLocalSound(src, hit_sound, 100)
+			user.SetActionCooldown(6)
+			TakeDamage(prop.weight * prop.contact_size, user)
+			return TRUE
 		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(prop))
 			if(prop && !Deleted(prop)) //grabs
 				ThingPlacedOn(user, prop)
@@ -62,4 +69,12 @@
 	..()
 
 /obj/structure/proc/Destroyed()
+	if(contains && contains.len)
+		for(var/thing in contains)
+			var/atom/movable/prop = thing
+			prop.ForceMove(src.loc)
+	if(material)
+		var/atom/movable/debris = material.GetDebris(weight/10)
+		debris.ForceMove(loc)
+		//PlayLocalSound(src, material.GetConstructionSound(), 100) //Todo destruction sounds.
 	QDel(src, "destroyed")

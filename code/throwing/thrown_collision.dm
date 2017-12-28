@@ -17,6 +17,9 @@
 		ThingPlacedOn(null, projectile, precise_placement = FALSE)
 		PlayLocalSound(src, hit_sound, 100)
 		NotifyNearby("<span class='danger'><b>\The [src] has been hit by \the [projectile]!</b></span>", MESSAGE_VISIBLE)
+		var/obj/item/prop = projectile
+		if(istype(prop))
+			TakeDamage(prop.weight * prop.contact_size, null)
 		return TRUE
 	return FALSE
 

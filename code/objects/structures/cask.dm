@@ -6,6 +6,7 @@
 	default_material_path = /datum/material/wood
 	density = 1
 	max_reagent_volume = 200
+	max_damage = 300
 
 /obj/structure/cask/filled/Initialize()
 	..()
@@ -26,6 +27,7 @@
 	max_contains_size_single = 50
 	max_contains_size_total =  80
 	icon_state = "closed"
+	max_damage = 500
 
 /obj/structure/barrel/UpdateIcon()
 	icon_state = "[open ? "open" : "closed"]"

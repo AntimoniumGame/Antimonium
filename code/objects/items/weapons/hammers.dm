@@ -11,8 +11,8 @@
 	associated_skill = SKILL_DEMOLITION
 	icon = 'icons/objects/items/hammer_sledge.dmi'
 	sharpness = 0
-	weight = 20
-	contact_size = 10
+	weight = 9
+	contact_size = 6
 
 /obj/item/weapon/mallet
 	name = "mallet"

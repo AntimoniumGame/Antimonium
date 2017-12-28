@@ -13,6 +13,7 @@
 	bound_height = 96
 	weight = 1000
 	default_material_path = /datum/material/stone
+	max_damage = INFINITY // Yep.
 
 	var/obj/effect/axle
 	var/axle_spin_period = 10
