@@ -291,13 +291,14 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_HANDS = /obj/item/clothing/boots,
+		SLOT_HAT = /obj/item/clothing/hat/headdress
 	)
 	/*
 	SLOT_FEET = fur shoes,
 	SLOT_LOWER_BODY = leather pants,
 	SLOT_UPPER_BODY = fur shirt,
-	SLOT_HANDS = leather gloves
 	*/
 
 /datum/outfit/apothecary

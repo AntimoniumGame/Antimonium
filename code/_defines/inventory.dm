@@ -62,6 +62,7 @@
 	SLOT_BACK =       FALSE,
 	BP_HEAD =         TRUE,
 	SLOT_HEAD =       FALSE,
+	SLOT_HAT =        FALSE,
 	SLOT_EYES =       FALSE
 	)
 

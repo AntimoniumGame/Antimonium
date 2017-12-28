@@ -79,6 +79,8 @@
 		var/mob/spawned_player = job.Equip(thing)
 		job.Welcome(spawned_player)
 		job.Place(spawned_player)
+		if(spawned_player.client)
+			EndLobbyMusic(spawned_player.client)
 		spawned_players += spawned_player
 
 	// Assign role-independant antagonists.
