@@ -131,7 +131,6 @@
 			return I
 	return image(icon = icon, icon_state = inventory_slot)
 
-
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
 	return image(icon = icon, icon_state = "prone_[inventory_slot]")
 

@@ -10,6 +10,9 @@
 		/datum/crafting_recipe/tailoring/pants
 		)
 
+/datum/material/cloth/fur
+	general_name = "fur"
+
 /datum/material/cloth/cotton
 	general_name = "cotton"
 	colour = WHITE
