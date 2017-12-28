@@ -7,23 +7,11 @@
 	icon = 'icons/objects/structures/window.dmi'
 	icon_state = "map"
 	draw_shadow_underlay = null
+	max_damage = 10
 
 	var/list/window_overlays		// overlays to join the window to other windows
 
-/obj/structure/window/AttackedBy(var/mob/user, var/obj/item/prop)
-	if(prop.GetWeight() < 3)
-		user.NotifyNearby("<span class='warning'>\The [user] bangs \the [prop] against \the [src].</span>", MESSAGE_VISIBLE)
-	else
-		user.NotifyNearby("<span class='alert'>\The [user] shatters \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
-		Shatter()
-
-/obj/structure/window/ThrownHitBy(var/atom/movable/projectile)
-	. = ..()
-	if(projectile.GetWeight() >= 3)
-		Shatter()
-		return FALSE
-
-/obj/structure/window/proc/Shatter()
+/obj/structure/window/Destroyed()
 	NotifyNearby("<span class='alert'>\The [src] shatters!</span>", MESSAGE_VISIBLE)
 	PlayLocalSound(src, 'sounds/effects/shatter1.ogg', 100)
 	new /obj/item/stack/shards(get_turf(src), _amount = rand(5,10))

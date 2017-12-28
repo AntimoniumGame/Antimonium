@@ -77,6 +77,7 @@
 		return
 
 	not_moving = FALSE
+	flags &= ~FLAG_ANCHORED
 	owner.injured_limbs -= src
 	owner.limbs_by_key[limb_id] = null
 	owner.limbs_by_key -= limb_id
