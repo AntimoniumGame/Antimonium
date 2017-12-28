@@ -77,6 +77,8 @@
 	source_atom = _source_atom
 	source_atom.radial_menus += src
 	source_atom_display = new(_owner)
+	source_atom_display.icon = 'icons/images/ui.dmi'
+	source_atom_display.icon_state = "square_base"
 	UpdateSourceAtomAppearance()
 
 	close_button = new(_owner, src)
@@ -100,14 +102,17 @@
 
 /obj/ui/radial_menu/proc/UpdateSourceAtomAppearance()
 
+	var/image/I = new()
+	source_atom_display.overlays.Cut()
 	source_atom_display.name = source_atom.name
 	if(istype(source_atom, /obj/item))
 		var/obj/item/prop = source_atom
-		source_atom_display.appearance = prop.GetInvIcon()
+		I.appearance = prop.GetInvIcon()
 	else
-		source_atom_display.appearance = source_atom
-	source_atom_display.plane = plane
-	source_atom_display.layer = layer+3
+		I.appearance = source_atom
+	I.plane = plane
+	I.layer = FLOAT_LAYER
+	source_atom_display.overlays += I
 
 	var/atom/movable/object = source_atom
 	if(!istype(object) || isnull(object.draw_shadow_underlay))
