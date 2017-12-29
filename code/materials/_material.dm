@@ -1,3 +1,21 @@
+#define TURF_EDGE_LAYER_OFFSET_VALUE 0.01
+
+// This is a bit easier than trying to maintain numerical vars
+// on the material datums IMO. Position in the list indicates
+// position in layering, lower index means lower in the pile.
+var/list/turf_edge_layers_by_path = list(
+	/datum/material/stone/tiles,
+	/datum/material/stone,
+	/datum/material/stone/cobble,
+	/datum/material/wood,
+	/datum/material/stone/glass/sand,
+	/datum/material/dirt,
+	/datum/material/dirt/grass,
+	/datum/material/dirt/roots
+	)
+
+var/max_turf_edge_layer_value = turf_edge_layers_by_path.len * TURF_EDGE_LAYER_OFFSET_VALUE
+
 /datum/material
 
 	var/general_name = "stuff"      // General purpose string for referring to the material.
@@ -59,6 +77,8 @@
 	if(!powder_name)  powder_name =  "[general_name] dust"
 	if(!liquid_name)  liquid_name =  "molten [general_name]"
 	if(!gas_name)     gas_name =     "[general_name] vapour"
+
+	turf_edge_layer = TURF_EDGE_LAYER_OFFSET_VALUE * turf_edge_layers_by_path.Find(type)
 
 	for(var/recipe in crafting_recipe_paths)
 		recipes += GetUniqueDataByPath(recipe)
@@ -172,3 +192,5 @@
 
 /datum/material/proc/HandleConsumedEffects(var/mob/consumer)
 	return
+
+#undef TURF_EDGE_LAYER_OFFSET_VALUE

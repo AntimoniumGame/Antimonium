@@ -11,13 +11,11 @@
 		/datum/crafting_recipe/masonry/tiles
 		)
 	construction_sound = 'sounds/effects/chisel1.ogg'
-	turf_edge_layer = 0.3
 	turf_floor_icon = 'icons/turfs/stone_floor.dmi'
 	turf_wall_icon = 'icons/turfs/stone_wall.dmi'
 
 /datum/material/stone/cobble
 	general_name = "cobblestone"
-	turf_edge_layer = 0.31
 	turf_floor_icon = 'icons/turfs/cobble_floor.dmi'
 	turf_wall_icon = 'icons/turfs/cobble_wall.dmi'
 
@@ -51,7 +49,6 @@
 /datum/material/stone/glass/sand
 	general_name = "sand"
 	turf_floor_icon = 'icons/turfs/sand_floor.dmi'
-	turf_edge_layer = 0.51
 
 /datum/material/stone/glass/GetBuildableStructures(var/obj/item/stack/building_with)
 	return list(/obj/structure/alembic)
