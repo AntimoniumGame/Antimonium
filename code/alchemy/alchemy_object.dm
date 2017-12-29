@@ -74,13 +74,13 @@
 			QDel(removed, "unacceptable reagent")
 			break
 
+		var/amount_removed = removed.GetAmount()
 		if(!partial_transfer)
 			prop.RemoveReagent(removed)
 		else
-			reagent.Remove(removed.GetAmount())
-
+			reagent.Remove(amount_removed)
+		transferred_amount += amount_removed
 		PutReagentInside(removed)
-		transferred_amount += removed.GetAmount()
 
 	if(transferred_amount > 0)
 		MergeReagents()
@@ -88,12 +88,14 @@
 		prop.UpdateIcon()
 		UpdateIcon()
 
+		prop.UpdateIcon()
+		UpdateIcon()
 		if(user)
 			if(precise_reagent_transfer)
 				user.Notify("<span class = 'notice'>You decant [transferred_amount] unit\s from \the [prop] into \the [src].</span>")
 			else
 				user.Notify("<span class = 'notice'>You decant [prop.current_reagent_volume <= 0 ? "the last of" : "some of"] \the [prop] into \the [src].</span>")
-
+			user.UpdateIcon()
 		return TRUE
 	return FALSE
 

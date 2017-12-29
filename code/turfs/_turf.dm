@@ -284,6 +284,9 @@
 	if(istype(mover, /mob) && mover.density && !density && istype(T))
 		var/blocked = FALSE
 		for(var/thing in contents)
+			var/atom/movable/AM = thing // No need to typecheck this, nothing nonmovable should be in contents.
+			if(AM.density && !AM.CanPassProne())
+				return FALSE
 			if(istype(thing, /mob))
 				var/mob/M = thing
 				if(M.density && (M.flags & FLAG_SIMULATED))
