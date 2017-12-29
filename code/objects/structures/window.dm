@@ -11,6 +11,9 @@
 
 	var/list/window_overlays		// overlays to join the window to other windows
 
+/obj/structure/window/CanPassProne()
+	return FALSE
+
 /obj/structure/window/Destroyed()
 	NotifyNearby("<span class='alert'>\The [src] shatters!</span>", MESSAGE_VISIBLE)
 	PlayLocalSound(src, 'sounds/effects/shatter1.ogg', 100)

@@ -50,6 +50,9 @@
 
 		underlays += shadow_underlay
 
+/atom/movable/proc/CanPassProne()
+	return TRUE
+
 /atom/proc/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	return
 
