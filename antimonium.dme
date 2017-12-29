@@ -7,6 +7,7 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "dump"
 #define FILE_DIR "icons"
 #define FILE_DIR "icons/areas"
 #define FILE_DIR "icons/images"
