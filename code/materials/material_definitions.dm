@@ -10,6 +10,9 @@
 		/datum/crafting_recipe/tailoring/pants
 		)
 
+/datum/material/cloth/felt
+	general_name = "felt"
+
 /datum/material/cloth/fur
 	general_name = "fur"
 

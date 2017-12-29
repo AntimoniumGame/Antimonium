@@ -7,7 +7,7 @@
 	inventory_slots[SLOT_LEFT_RING] =  new /obj/ui/inv/gear(src, "left ring finger",  "2,4", SLOT_LEFT_RING,  SLOT_FLAG_RING)
 	inventory_slots[SLOT_RIGHT_RING] = new /obj/ui/inv/gear(src, "right ring finger", "3,4", SLOT_RIGHT_RING, SLOT_FLAG_RING)
 	inventory_slots[SLOT_HANDS] =      new /obj/ui/inv/gear(src, "hands",      "1,4", SLOT_HANDS,      SLOT_FLAG_HANDS)
-	inventory_slots[SLOT_HEAD] =       new /obj/ui/inv/gear(src, "head",       "1,6", SLOT_HEAD,       SLOT_FLAG_HEAD)
+	inventory_slots[SLOT_FACE] =       new /obj/ui/inv/gear(src, "head",       "1,6", SLOT_FACE,       SLOT_FLAG_FACE)
 	inventory_slots[SLOT_EYES] =       new /obj/ui/inv/gear(src, "eyes",       "2,6", SLOT_EYES,       SLOT_FLAG_EYES)
 	inventory_slots[SLOT_NECK] =       new /obj/ui/inv/gear(src, "neck",       "3,6", SLOT_NECK,       SLOT_FLAG_NECK)
 	inventory_slots[SLOT_HAT] =        new /obj/ui/inv/gear(src, "hat",        "1,7", SLOT_HAT,        SLOT_FLAG_HAT)

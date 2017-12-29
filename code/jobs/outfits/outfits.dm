@@ -95,7 +95,7 @@
 	SLOT_LOWER_BODY = chequered pants,
 	SLOT_UPPER_BODY = fool's motley http://www.shakespeare-navigators.com/king_lear/joker_card.jpg,
 	SLOT_HANDS = white gloves,
-	SLOT_HEAD = fool's makeup https://i.pinimg.com/736x/e5/cb/b7/e5cbb72fbef1533076a0cd236913b708--modern-halloween-halloween-face.jpg,
+	SLOT_FACE = fool's makeup https://i.pinimg.com/736x/e5/cb/b7/e5cbb72fbef1533076a0cd236913b708--modern-halloween-halloween-face.jpg,
 	SLOT_HAT = fool's cap https://thumbs.dreamstime.com/z/fools-cap-bells-jester-cap-april-fools-day-isolated-white-vector-illustration-68082505.jpg
 
 	fool's scepter http://previous.bildindex.de/bilder/MI07907c06a.jpg
@@ -274,16 +274,19 @@
 /datum/outfit/doctor
 	name = "Feldscher"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
-		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt
+		SLOT_FEET = /obj/item/clothing/boots/black,
+		SLOT_HANDS = /obj/item/clothing/gloves/black,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
+		SLOT_FACE = /obj/item/clothing/mask/plague,
+		SLOT_HAT = /obj/item/clothing/hat/tophat
 	)
 	/*
 	SLOT_FEET = shoes,
 	SLOT_LOWER_BODY = pants,
 	SLOT_UPPER_BODY = white shirt and leather apron,
 	SLOT_HANDS = white gloves
-	SLOT_HEAD = plague doctor mask https://i.pinimg.com/736x/c6/a7/c4/c6a7c4860abd817096d15a6220da45fa--plague-mask-plague-doctor-mask.jpg
+	SLOT_FACE = plague doctor mask https://i.pinimg.com/736x/c6/a7/c4/c6a7c4860abd817096d15a6220da45fa--plague-mask-plague-doctor-mask.jpg
 	*/
 
 /datum/outfit/hunter

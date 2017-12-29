@@ -15,11 +15,11 @@
 		DARK_BLUE =     'icons/objects/clothing/pants/pants_blue.dmi',
 		PALE_GREY =     'icons/objects/clothing/pants/pants_grey.dmi',
 		DARK_GREY =     'icons/objects/clothing/pants/pants_grey.dmi',
-		BLACK =         'icons/objects/clothing/pants/pants_grey.dmi',
 		DARK_RED =      'icons/objects/clothing/pants/pants_red.dmi',
 		BROWN_ORANGE =  'icons/objects/clothing/pants/pants_brown.dmi',
 		DARK_BROWN =    'icons/objects/clothing/pants/pants_red.dmi',
-		DARK_PURPLE =   'icons/objects/clothing/pants/pants_purple.dmi'
+		DARK_PURPLE =   'icons/objects/clothing/pants/pants_purple.dmi',
+		BLACK =         'icons/objects/clothing/pants/pants_black.dmi'
 		)
 
 /obj/item/clothing/pants/yellow
@@ -37,6 +37,10 @@
 /obj/item/clothing/pants/grey
 	icon = 'icons/objects/clothing/pants/pants_grey.dmi'
 	dyed = PALE_GREY
+
+/obj/item/clothing/pants/black
+	icon = 'icons/objects/clothing/pants/pants_black.dmi'
+	dyed = BLACK
 
 /obj/item/clothing/pants/brown
 	icon = 'icons/objects/clothing/pants/pants_brown.dmi'
