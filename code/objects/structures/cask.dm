@@ -7,10 +7,24 @@
 	density = 1
 	max_reagent_volume = 200
 	max_damage = 300
+	var/initial_fill_type
 
-/obj/structure/cask/filled/Initialize()
+/obj/structure/cask/Initialize()
 	..()
-	AddReagent(src, /datum/material/water/alcohol, 150)
+	if(initial_fill_type && max_reagent_volume > 20)
+		AddReagent(src, initial_fill_type, max_reagent_volume - 20) // Leave some room for contaminants.
+
+/obj/structure/cask/water
+	name = "cask of water"
+	initial_fill_type = /datum/material/water
+
+/obj/structure/cask/beer
+	name = "cask of beer"
+	initial_fill_type = /datum/material/water/alcohol
+
+/obj/structure/cask/wine
+	name = "cask of wine"
+	initial_fill_type =  /datum/material/water/alcohol/wine
 
 /obj/structure/cask/ManipulatedBy(var/mob/user, var/slot)
 	. = ..()

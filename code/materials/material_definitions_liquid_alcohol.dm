@@ -7,8 +7,12 @@
 	var/drunk_power = 1
 
 /datum/material/water/alcohol/HandleConsumedEffects(var/mob/consumer)
-	consumer.AddEffect(/datum/effect/cumulative, EFFECT_DIZZY, 0)
-	consumer.AddEffect(/datum/effect/cumulative, EFFECT_CONFUSED, -10)
-	consumer.AddEffect(/datum/effect/cumulative, EFFECT_SLURRING, -20)
+	consumer.AddEffect(/datum/effect/cumulative, EFFECT_DIZZY, additional_data = 1 * drunk_power)
+	consumer.AddEffect(/datum/effect/cumulative, EFFECT_CONFUSED, additional_data = -10 * drunk_power)
+	consumer.AddEffect(/datum/effect/cumulative, EFFECT_SLURRING, additional_data = -20 * drunk_power)
 
-/datum/material/water/alcohol/poisoned
+/datum/material/water/alcohol/wine
+	general_name = "wine"
+	liquid_name = "wine"
+	colour = DARK_RED
+	drunk_power = 3
