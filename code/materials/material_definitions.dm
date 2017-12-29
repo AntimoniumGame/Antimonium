@@ -10,6 +10,9 @@
 		/datum/crafting_recipe/tailoring/pants
 		)
 
+/datum/material/cloth/felt
+	general_name = "felt"
+
 /datum/material/cloth/fur
 	general_name = "fur"
 
@@ -52,7 +55,6 @@
 		/datum/crafting_recipe/carpentry,
 		/datum/crafting_recipe/carpentry/dartboard,
 		)
-	turf_edge_layer = 0.55
 	turf_floor_icon = 'icons/turfs/wood_floor.dmi'
 	turf_wall_icon = 'icons/turfs/wood_wall.dmi'
 
@@ -96,7 +98,6 @@
 	hit_sound = 'sounds/effects/dig1.ogg'
 	structural_integrity = 30
 	turf_is_diggable = TRUE
-	turf_edge_layer = 0.5
 	turf_base_states = 4
 	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
 	turf_wall_icon = 'icons/turfs/dirt_wall.dmi'
@@ -106,10 +107,8 @@
 
 /datum/material/dirt/grass
 	general_name = "grass"
-	turf_edge_layer = 0.21
 	turf_floor_icon = 'icons/turfs/grass_floor.dmi'
 
 /datum/material/dirt/roots
 	general_name = "roots"
-	turf_edge_layer = 0.23
 	turf_floor_icon = 'icons/turfs/root_floor.dmi'

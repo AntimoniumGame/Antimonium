@@ -15,11 +15,11 @@
 		DARK_BLUE =     'icons/objects/clothing/shirts/shirt_blue.dmi',
 		PALE_GREY =     'icons/objects/clothing/shirts/shirt_grey.dmi',
 		DARK_GREY =     'icons/objects/clothing/shirts/shirt_grey.dmi',
-		BLACK =         'icons/objects/clothing/shirts/shirt_grey.dmi',
 		DARK_RED =      'icons/objects/clothing/shirts/shirt_red.dmi',
 		BROWN_ORANGE =  'icons/objects/clothing/shirts/shirt_red.dmi',
 		DARK_BROWN =    'icons/objects/clothing/shirts/shirt_brown.dmi',
-		DARK_PURPLE =   'icons/objects/clothing/shirts/shirt_purple.dmi'
+		DARK_PURPLE =   'icons/objects/clothing/shirts/shirt_purple.dmi',
+		BLACK =          'icons/objects/clothing/shirts/shirt_black.dmi'
 		)
 
 /obj/item/clothing/shirt/yellow
@@ -37,6 +37,10 @@
 /obj/item/clothing/shirt/grey
 	icon = 'icons/objects/clothing/shirts/shirt_grey.dmi'
 	dyed = PALE_GREY
+
+/obj/item/clothing/shirt/black
+	icon = 'icons/objects/clothing/shirts/shirt_black.dmi'
+	dyed = BLACK
 
 /obj/item/clothing/shirt/brown
 	icon = 'icons/objects/clothing/shirts/shirt_brown.dmi'

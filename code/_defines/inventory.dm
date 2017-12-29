@@ -6,7 +6,7 @@
 #define SLOT_UPPER_BODY "upper_body"
 #define SLOT_ARMS       "arms"
 #define SLOT_HANDS      "hands"
-#define SLOT_HEAD       "onhead"
+#define SLOT_FACE       "face"
 #define SLOT_EYES       "eyes"
 #define SLOT_NECK       "neck"
 #define SLOT_LEFT_HAND  "left_inhand"
@@ -34,7 +34,7 @@
 #define SLOT_FLAG_UPPER_BODY  32
 #define SLOT_FLAG_ARMS        64
 #define SLOT_FLAG_HANDS       128
-#define SLOT_FLAG_HEAD        256
+#define SLOT_FLAG_FACE        256
 #define SLOT_FLAG_EYES        512
 #define SLOT_FLAG_HAT        1024
 
@@ -61,7 +61,7 @@
 	SLOT_NECK =       FALSE,
 	SLOT_BACK =       FALSE,
 	BP_HEAD =         TRUE,
-	SLOT_HEAD =       FALSE,
+	SLOT_FACE =       FALSE,
 	SLOT_HAT =        FALSE,
 	SLOT_EYES =       FALSE
 	)

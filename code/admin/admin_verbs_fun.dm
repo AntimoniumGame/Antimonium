@@ -55,7 +55,9 @@
 
 	var/list/icons_to_compile = list(
 		/obj/item/clothing/shirt,
-		/obj/item/clothing/pants
+		/obj/item/clothing/pants,
+		/obj/item/clothing/boots,
+		/obj/item/clothing/gloves
 		)
 
 	var/list/template_colours = list(
@@ -73,6 +75,15 @@
 				PALE_BROWN,
 				BRIGHT_ORANGE,
 				BRIGHT_YELLOW
+				)
+			),
+		list(
+			"ident" = "black",
+			"colours" = list(
+				NAVY_BLUE,
+				DARK_BLUE_GREY,
+				DARK_GREY,
+				PALE_GREY
 				)
 			),
 		list(

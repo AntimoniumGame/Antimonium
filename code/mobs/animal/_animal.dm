@@ -25,7 +25,7 @@
 
 /mob/animal/UpdateGrasp()
 	var/obj/item/holding = GetEquipped(SLOT_MOUTH)
-	if(istype(holding) && holding.Burn(src, SLOT_HEAD))
+	if(istype(holding) && holding.Burn(src, SLOT_FACE))
 		Notify("\The [holding] sears your mouth and falls from your grasp!")
 		DropItem(holding)
 
