@@ -283,10 +283,16 @@
 	var/turf/T = oldloc
 	if(istype(mover, /mob) && mover.density && !density && istype(T))
 		var/blocked = FALSE
-		for(var/obj/structure/structure in contents)
-			if(structure.density)
-				blocked = TRUE
-				break
+		for(var/thing in contents)
+			if(istype(thing, /mob))
+				var/mob/M = thing
+				if(M.density && (M.flags & FLAG_SIMULATED))
+					return 0
+			if(istype(thing, /obj/structure))
+				var/obj/structure/structure = thing
+				if(structure.density)
+					blocked = TRUE
+					break
 		if(blocked)
 			for(var/obj/structure/structure in T)
 				if(structure.density)
