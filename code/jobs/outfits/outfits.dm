@@ -31,11 +31,11 @@
 	name = "Paladin"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
-		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
+		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 	/*
 	SLOT_UPPER_BODY = gambeson,
-	SLOT_NECK =       holy symbol,
 
 	plate armour (upper body)
 	plate leggings
@@ -163,11 +163,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/brown
+		SLOT_UPPER_BODY = /obj/item/clothing/robes/brown,
+		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
-	/*
-	SLOT_NECK =       holy symbol
-	*/
 
 /datum/outfit/tourist
 	name = "Tourist"

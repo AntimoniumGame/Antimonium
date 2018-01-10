@@ -7,3 +7,8 @@
 	name = "necklace"
 	icon = 'icons/objects/clothing/jewelry/necklace.dmi'
 	contact_size = 1
+
+/obj/item/clothing/neck/chain/holy
+	name = "holy symbol"
+	icon = 'icons/objects/clothing/jewelry/holy_symbol.dmi'
+	contact_size = 1
