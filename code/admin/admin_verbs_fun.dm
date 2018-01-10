@@ -57,7 +57,8 @@
 		/obj/item/clothing/shirt,
 		/obj/item/clothing/pants,
 		/obj/item/clothing/boots,
-		/obj/item/clothing/gloves
+		/obj/item/clothing/gloves,
+		/obj/item/clothing/robes
 		)
 
 	var/list/template_colours = list(
