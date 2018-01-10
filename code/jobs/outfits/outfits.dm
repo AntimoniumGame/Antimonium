@@ -49,33 +49,30 @@
 /datum/outfit/count
 	name = "Count"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
 		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
-		SLOT_GLOVES = /obj/item/clothing/gloves
+		SLOT_HANDS = /obj/item/clothing/gloves/black,
+		SLOT_HAT = /obj/item/clothing/hat/coronet,
+		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
 	)
 	/*
 	SLOT_LEFT_RING = signet ring,
-	SLOT_NECK = fine necklace,
-	SLOT_HAT = coronet
 	*/
 
 /datum/outfit/consort
 	name = "Consort"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
 		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
-		SLOT_GLOVES = /obj/item/clothing/gloves
+		SLOT_HANDS = /obj/item/clothing/gloves
 	)
-	/*
-	SLOT_NECK = fine necklace,
-	SLOT_HAT = coronet
-	*/
+
 /datum/outfit/fool
 	name = "Fool"
 	equip_to_slot = list(
-		SLOT_GLOVES = /obj/item/clothing/gloves
+		SLOT_HANDS = /obj/item/clothing/gloves
 		)
 
 	/*
@@ -95,7 +92,7 @@
 	equip_to_slot = list(
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_GLOVES = /obj/item/clothing/gloves/grey
+		SLOT_HANDS = /obj/item/clothing/gloves/grey
 	)
 	/*
 	SLOT_FEET = tall boots
@@ -109,7 +106,7 @@
 	equip_to_slot = list(
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_GLOVES = /obj/item/clothing/gloves/grey
+		SLOT_HANDS = /obj/item/clothing/gloves/grey
 	)
 	/*
 	SLOT_FEET = tall boots
@@ -123,7 +120,7 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_GLOVES = /obj/item/clothing/gloves/red
+		SLOT_HANDS = /obj/item/clothing/gloves/red
 	)
 	/*
 	SLOT_UPPER_BODY = breastplate,
@@ -209,7 +206,7 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_GLOVES = /obj/item/clothing/gloves/brown
+		SLOT_HANDS = /obj/item/clothing/gloves/brown
 	)
 	/*
 	SLOT_UPPER_BODY = heavy apron,
@@ -224,7 +221,7 @@
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey
 	)
 	/*
-	SLOT_GLOVES = fingerless leather gloves
+	SLOT_HANDS = fingerless leather gloves
 	SLOT_EYES = loupe http://www.jewelinfo4u.com/images/Gallery/Jewellers_Loupe.jpg
 	*/
 
@@ -264,16 +261,14 @@
 /datum/outfit/merchant
 	name = "Merchant"
 	equip_to_slot = list(
-		SLOT_LOWER_BODY = /obj/item/clothing/pants/red,
+		SLOT_FEET = /obj/item/clothing/boots/red,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/yellow,
 		SLOT_UPPER_BODY = /obj/item/clothing/robes/red,
-		SLOT_GLOVES = /obj/item/clothing/gloves
+		SLOT_HANDS = /obj/item/clothing/gloves/yellow,
+		SLOT_LEFT_RING = /obj/item/clothing/ring,
+		SLOT_RIGHT_RING = /obj/item/clothing/ring,
+		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
 	)
-	/*
-	SLOT_FEET =       silk slippers,
-	SLOT_LEFT_RING =  jewelled ring,
-	SLOT_RIGHT_RING = jewelled ring,
-	SLOT_NECK =       jewelled necklace
-	*/
 
 /datum/outfit/tailor
 	name = "Tailor"
