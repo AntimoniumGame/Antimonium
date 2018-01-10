@@ -3,10 +3,10 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes
+		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_NECK = /obj/item/clothing/neck/chain
 	)
 	/*
-	SLOT_NECK =       minister's chain
 	thurible http://tibetanspirit.wpengine.netdna-cdn.com/wp-content/uploads/2012/10/incense_burner_copper_round_footed_5_tall-180x180.jpg
 	*/
 
@@ -15,12 +15,14 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes
+		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
+		SLOT_NECK = /obj/item/clothing/neck/chain
 		)
+
 	/*
 	SLOT_LEFT_RING =  ring of the archimandrite
 	SLOT_NECK =       minister's chain
-	SLOT_HAT =        pope hat
 	crozier http://www.stnicholascenter.org/media/images/s/shop-crozier3.jpg
 
 	*/
