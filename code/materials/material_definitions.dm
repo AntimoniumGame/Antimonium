@@ -90,6 +90,7 @@
 	sharpness_modifier = 0.3
 	ignition_point = 460
 	hit_sound = 'sounds/effects/gore1.ogg'
+	colour = DARK_RED
 
 /datum/material/dirt
 	general_name = "dirt"
@@ -112,3 +113,13 @@
 /datum/material/dirt/roots
 	general_name = "roots"
 	turf_floor_icon = 'icons/turfs/root_floor.dmi'
+
+/datum/material/bone
+	general_name = "bone"
+	weight_modifier = 0.8
+	sharpness_modifier = 0.8
+	ignition_point = 1275
+	colour = WHITE
+	powder_name = "bonedust"
+	grindable = TRUE
+	solid_icon = 'icons/objects/items/bone.dmi'

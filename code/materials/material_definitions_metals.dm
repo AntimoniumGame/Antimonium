@@ -77,6 +77,16 @@
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
 	value_modifier = 2
 
+/datum/material/metal/silver
+	general_name = "silver"
+	sharpness_modifier = 1.1
+	weight_modifier = 4
+	melting_point = 1235
+	boiling_point = 2435
+	colour = PALE_BLUE
+	solid_icon = 'icons/objects/items/alchemy/solid_metal_silver.dmi'
+	value_modifier = 1.6
+
 /datum/material/metal/antimonium
 	general_name = "antimonium"
 	sharpness_modifier = 1

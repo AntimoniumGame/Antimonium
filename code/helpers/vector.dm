@@ -102,7 +102,7 @@ Inputs:
 		var/pix_y = ((world_y - loc_y) * 32) - 16
 
 		var/turf/T = locate(loc_x, loc_y, owner.z)
-		if(T)
+		if(T && owner)
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
 			if((owner.loc == target_turf) || T.CheckThrownCollision(owner) || !owner.Move(T))

@@ -19,7 +19,7 @@
 		BROWN_ORANGE =  'icons/objects/clothing/shirts/shirt_red.dmi',
 		DARK_BROWN =    'icons/objects/clothing/shirts/shirt_brown.dmi',
 		DARK_PURPLE =   'icons/objects/clothing/shirts/shirt_purple.dmi',
-		BLACK =          'icons/objects/clothing/shirts/shirt_black.dmi'
+		BLACK =         'icons/objects/clothing/shirts/shirt_black.dmi'
 		)
 
 /obj/item/clothing/shirt/yellow

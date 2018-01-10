@@ -115,3 +115,7 @@
 /obj/item/stack/reagent/stone
 	name = "stone"
 	default_material_path = /datum/material/stone
+
+/obj/item/stack/reagent/bone
+	name = "bone"
+	default_material_path = /datum/material/bone
