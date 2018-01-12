@@ -56,6 +56,7 @@
 	var/list/icons_to_compile = list(
 		/obj/item/clothing/shirt,
 		/obj/item/clothing/pants,
+		/obj/item/clothing/shorts,
 		/obj/item/clothing/boots,
 		/obj/item/clothing/gloves,
 		/obj/item/clothing/robes
