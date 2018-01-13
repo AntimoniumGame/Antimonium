@@ -3,7 +3,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_NECK = /obj/item/clothing/neck/chain
 	)
 	/*
@@ -15,35 +16,30 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
-		SLOT_NECK = /obj/item/clothing/neck/chain
+		SLOT_NECK = /obj/item/clothing/neck/chain,
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church
 		)
-
 	/*
-	SLOT_LEFT_RING =  ring of the archimandrite
-	SLOT_NECK =       minister's chain
 	crozier http://www.stnicholascenter.org/media/images/s/shop-crozier3.jpg
-
 	*/
 
 /datum/outfit/paladin
 	name = "Paladin"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/iron,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 	/*
 	SLOT_UPPER_BODY = gambeson,
-
 	plate armour (upper body)
 	plate leggings
 	gauntlets
-	plate boots
 	full helm
 	two-handed sword
-
 	*/
 
 /datum/outfit/count
@@ -51,22 +47,24 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/purple,
+		SLOT_OVER = /obj/item/clothing/over/robes/purple,
 		SLOT_HANDS = /obj/item/clothing/gloves/black,
 		SLOT_HAT = /obj/item/clothing/hat/coronet,
-		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet
 	)
-	/*
-	SLOT_LEFT_RING = signet ring,
-	*/
 
 /datum/outfit/consort
 	name = "Consort"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
-		SLOT_HANDS = /obj/item/clothing/gloves
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/over/robes/purple,
+		SLOT_HANDS = /obj/item/clothing/gloves,
+		SLOT_LEFT_RING = /obj/item/clothing/ring,
+		SLOT_RIGHT_RING = /obj/item/clothing/ring,
+		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
 	)
 
 /datum/outfit/fool
@@ -90,13 +88,13 @@
 /datum/outfit/guard
 	name = "Gendarmerie"
 	equip_to_slot = list(
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_HANDS = /obj/item/clothing/gloves,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
-	SLOT_FEET = tall boots
 	SLOT_UPPER_BODY = chainmail
 	halberd
 	*/
@@ -104,28 +102,25 @@
 /datum/outfit/rifleman
 	name = "Rifleman"
 	equip_to_slot = list(
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey,
-		SLOT_HAT = /obj/item/clothing/hat/leather_cap
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_HANDS = /obj/item/clothing/gloves,
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
+		SLOT_RIGHT_HAND = /obj/item/gun/rifle,
+		SLOT_OVER = /obj/item/clothing/over/leather_armour
 	)
-	/*
-	SLOT_FEET = tall boots
-	SLOT_UPPER_BODY = leather armour,
-	musket/rifle
-	*/
 
 /datum/outfit/captain
 	name = "Captain of the Guard"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/red
-	)
-	/*
-	SLOT_UPPER_BODY = breastplate,
-	SLOT_HAT = feathered cap
-	*/
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_OVER = /obj/item/clothing/over/breastplate,
+		SLOT_HAT = /obj/item/clothing/hat/feathered_helmet,
+		SLOT_HANDS = /obj/item/clothing/gloves
+		)
 
 /datum/outfit/town
 	name = "Bondsman"
@@ -140,11 +135,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/red,
+		SLOT_HANDS = /obj/item/clothing/gloves/falconry,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt
 	)
-	/*
-	SLOT_HANDS = falconer's gloves
-	*/
 
 /datum/outfit/sailor
 	name = "Sailor"
@@ -160,7 +153,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/brown,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/over/robes/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 
@@ -169,56 +163,50 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/shorts,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/tourist
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/tourist,
+		SLOT_LEFT_HAND = /obj/item/lithograph
 		)
-	/*
-	lithograph https://s-media-cache-ak0.pinimg.com/736x/77/34/6a/77346ae453f9238a44050dfb457e8ce0--digital-camera-lens-digital-cameras.jpg
-	*/
 
 /datum/outfit/publican
 	name = "Publican"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
-		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/over/apron,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
-	/*
-	SLOT_UPPER_BODY = apron,
-	*/
+
 /datum/outfit/cook
 	name = "Cook"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/over/apron/blue,
 		SLOT_HAT = /obj/item/clothing/hat/chef
 	)
 
 /datum/outfit/ironmonger
 	name = "Ironmonger"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/brown
+		SLOT_OVER = /obj/item/clothing/over/apron/black,
+		SLOT_HANDS = /obj/item/clothing/gloves/brown,
+		SLOT_EYES = /obj/item/clothing/eyes/goggles
 	)
-	/*
-	SLOT_UPPER_BODY = heavy apron,
-	SLOT_EYES = protective mask
-	*/
 
 /datum/outfit/machinist
 	name = "Machinist"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
+		SLOT_EYES = /obj/item/clothing/eyes/loupe,
+		SLOT_HANDS = /obj/item/clothing/gloves/fingerless/black
 	)
-	/*
-	SLOT_HANDS = fingerless leather gloves
-	SLOT_EYES = loupe http://www.jewelinfo4u.com/images/Gallery/Jewellers_Loupe.jpg
-	*/
 
 /datum/outfit/doctor
 	name = "Feldscher"
@@ -227,6 +215,7 @@
 		SLOT_HANDS = /obj/item/clothing/gloves/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
+		SLOT_OVER = /obj/item/clothing/over/robes/black,
 		SLOT_FACE = /obj/item/clothing/mask/plague,
 		SLOT_HAT = /obj/item/clothing/hat/tophat
 	)
@@ -246,19 +235,19 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/brown
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/over/robes/grey,
+		SLOT_HANDS = /obj/item/clothing/gloves/brown,
+		SLOT_FACE = /obj/item/clothing/mask
 	)
-	/*
-	SLOT_EYES = gas mask
-	*/
 
 /datum/outfit/merchant
 	name = "Merchant"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/yellow,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/red,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/yellow,
+		SLOT_OVER = /obj/item/clothing/over/robes/red,
 		SLOT_HANDS = /obj/item/clothing/gloves/yellow,
 		SLOT_LEFT_RING = /obj/item/clothing/ring,
 		SLOT_RIGHT_RING = /obj/item/clothing/ring,
@@ -270,18 +259,17 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/blue,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue,
+		SLOT_LEFT_RING = /obj/item/clothing/ring/thimble
 	)
-	/*
-	SLOT_LEFT_RING =  thimble
-	*/
 
 /datum/outfit/occultist
 	name = "Occultist"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/occultist,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
+		SLOT_OVER = /obj/item/clothing/over/robes/occultist,
 		SLOT_HAT = /obj/item/clothing/hat/cowl,
 		SLOT_LEFT_HAND = /obj/item/fetish,
 		SLOT_RIGHT_HAND = /obj/item/athame

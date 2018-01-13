@@ -13,6 +13,7 @@
 	var/list/attack_verbs = list("bashes")
 	var/name_prefix
 	var/associated_skill
+	var/occupies_two_hands = FALSE
 
 	var/hit_sound = 'sounds/effects/punch1.ogg'
 	var/collect_sound = 'sounds/effects/click1.ogg'
@@ -89,7 +90,7 @@
 /obj/item/proc/GetWornIcon(var/inventory_slot)
 	// Hardcoding this for now. I am sure a better system will come along in the future.
 	var/list/limb_check_list = list()
-	if(inventory_slot == SLOT_UPPER_BODY)
+	if(inventory_slot == SLOT_UPPER_BODY || inventory_slot == SLOT_OVER)
 		limb_check_list = list(BP_LEFT_ARM, BP_RIGHT_ARM)
 	else if(inventory_slot == SLOT_LOWER_BODY)
 		limb_check_list = list(BP_LEFT_LEG, BP_RIGHT_LEG)

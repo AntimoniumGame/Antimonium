@@ -1,6 +1,8 @@
 /obj/ui/inv/hand
 	name = "left hand"
 	screen_loc = "7,2"
+	var/list/initial_limb_list
+	var/list/twohanding_limb_list
 
 /obj/ui/inv/hand/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
@@ -43,3 +45,15 @@
 	if(. && holding)
 		owner.NotifyNearby("<span class = 'notice'>\The [owner] drops \the [holding] from [owner.Their()] [unmodified_name].</span>", MESSAGE_VISIBLE)
 		owner.DropItem(holding)
+
+/obj/ui/inv/hand/New(var/mob/_owner, var/nname, var/nscreen_loc, var/nslot_id, var/_slot_flags, var/list/_update_bodyparts, var/_associated_limb)
+	. = ..()
+	initial_limb_list = update_bodyparts
+	twohanding_limb_list = list(BP_LEFT_HAND, BP_LEFT_ARM, BP_RIGHT_HAND, BP_RIGHT_ARM)
+
+/obj/ui/inv/hand/UpdateIcon()
+	if(holding && holding.occupies_two_hands)
+		update_bodyparts = twohanding_limb_list
+	else
+		update_bodyparts = initial_limb_list
+	. = ..()

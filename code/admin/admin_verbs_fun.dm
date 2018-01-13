@@ -59,7 +59,9 @@
 		/obj/item/clothing/shorts,
 		/obj/item/clothing/boots,
 		/obj/item/clothing/gloves,
-		/obj/item/clothing/robes
+		/obj/item/clothing/gloves/fingerless,
+		/obj/item/clothing/over/robes,
+		/obj/item/clothing/over/apron
 		)
 
 	var/list/template_colours = list(
@@ -148,6 +150,7 @@
 
 	for(var/upath in icons_to_compile)
 		var/atom/_atom = upath
+		var/dumpname = replacetext(replacetext(initial(_atom.name), " ", "_"),"'", "")
 		var/icon/_icon_static = icon(icon = initial(_atom.icon), moving = FALSE)
 		var/icon/_icon_moving = icon(icon = initial(_atom.icon), moving = TRUE)
 
@@ -168,6 +171,6 @@
 					new_icon.SwapColor(template_colours[i], map_colours[i])
 				compiled_icon.Insert(new_icon, _icon_state, moving = TRUE)
 
-			var/dumpstr = "dump\\[initial(_atom.name)]_[ident].dmi"
-			Dnotify("State recolour complete, dumped to [dumpstr].")
+			var/dumpstr = "dump\\[dumpname]\\[dumpname]_[ident].dmi"
+			Dnotify("State recolour for [dumpname] complete, dumped to [dumpstr].")
 			fcopy(compiled_icon, dumpstr)

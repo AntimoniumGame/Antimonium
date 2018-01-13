@@ -57,6 +57,21 @@
 /datum/material/metal/copper/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
 
+// Copied from copper for now.
+datum/material/metal/brass
+	general_name = "brass"
+	sharpness_modifier = 1.5
+	weight_modifier = 1.2
+	colour = BRIGHT_ORANGE
+	solid_icon = 'icons/objects/items/alchemy/solid_metal_copper.dmi'
+	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
+	melting_point = 1360
+	boiling_point = 2800
+	value_modifier = 1.2
+
+/datum/material/metal/brass/GetBuildableTurfs(var/obj/item/stack/building_with)
+	return list()
+
 /datum/material/metal/lead
 	general_name = "lead"
 	weight_modifier = 8
