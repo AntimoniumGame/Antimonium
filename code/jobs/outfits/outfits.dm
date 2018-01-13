@@ -92,12 +92,12 @@
 	equip_to_slot = list(
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey
+		SLOT_HANDS = /obj/item/clothing/gloves/grey,
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
 	SLOT_FEET = tall boots
 	SLOT_UPPER_BODY = chainmail
-	SLOT_HAT = peaked cap
 	halberd
 	*/
 
@@ -106,12 +106,12 @@
 	equip_to_slot = list(
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey
+		SLOT_HANDS = /obj/item/clothing/gloves/grey,
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
 	SLOT_FEET = tall boots
 	SLOT_UPPER_BODY = leather armour,
-	SLOT_HAT = peaked cap
 	musket/rifle
 	*/
 
@@ -151,12 +151,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/blue,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/sailor,
+		SLOT_HAT = /obj/item/clothing/hat/sailor
 	)
-	/*
-	SLOT_UPPER_BODY = sailor suit https://www.stripes.com/polopoly_fs/1.179309.1338702388!/image/794189611.jpg_gen/derivatives/landscape_804/794189611.jpg
-	SLOT_HAT = sailor's hat
-	*/
 
 /datum/outfit/preacher
 	name = "Preacher"
@@ -169,10 +166,12 @@
 
 /datum/outfit/tourist
 	name = "Tourist"
+	equip_to_slot = list(
+		SLOT_FEET = /obj/item/clothing/boots/sandals,
+		SLOT_LOWER_BODY = /obj/item/clothing/shorts,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/tourist
+		)
 	/*
-	SLOT_FEET =       leather shoes
-	SLOT_LOWER_BODY = shorts
-	SLOT_UPPER_BODY = https://hawaiishirtcompany.com/wp-content/uploads/102c_018_blue.jpg
 	lithograph https://s-media-cache-ak0.pinimg.com/736x/77/34/6a/77346ae453f9238a44050dfb457e8ce0--digital-camera-lens-digital-cameras.jpg
 	*/
 
@@ -182,10 +181,10 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
 	SLOT_UPPER_BODY = apron,
-	SLOT_HAT = leather cap
 	*/
 /datum/outfit/cook
 	name = "Cook"
@@ -193,10 +192,8 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_HAT = /obj/item/clothing/hat/chef
 	)
-	/*
-	SLOT_HAT = white cap
-	*/
 
 /datum/outfit/ironmonger
 	name = "Ironmonger"
