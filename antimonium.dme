@@ -238,6 +238,7 @@
 #include "code\objects\items\clothing\jewelry\neck\_neck.dm"
 #include "code\objects\items\clothing\jewelry\neck\chain.dm"
 #include "code\objects\items\clothing\jewelry\rings\_ring.dm"
+#include "code\objects\items\clothing\jewelry\rings\thimble.dm"
 #include "code\objects\items\clothing\masks\_mask.dm"
 #include "code\objects\items\clothing\masks\plague.dm"
 #include "code\objects\items\clothing\pants\_pants.dm"

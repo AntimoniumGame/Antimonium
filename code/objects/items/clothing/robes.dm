@@ -1,7 +1,7 @@
 /obj/item/clothing/robes
 	name = "robes"
 	icon = 'icons/objects/clothing/robes/robes_white.dmi'
-	slot_flags = SLOT_FLAG_UPPER_BODY
+	slot_flags = SLOT_FLAG_OVER
 	colour_to_icon = list(
 		WHITE =         'icons/objects/clothing/robes/robes_white.dmi',
 		PALE_BROWN =    'icons/objects/clothing/robes/robes_yellow.dmi',
@@ -23,7 +23,7 @@
 		)
 
 /obj/item/clothing/robes/GetWornIcon(var/inventory_slot)
-	if(inventory_slot == SLOT_UPPER_BODY)
+	if(inventory_slot == SLOT_OVER)
 		var/image/I = image(icon, "tail")
 		I.overlays += ..()
 		return I

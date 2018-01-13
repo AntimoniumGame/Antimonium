@@ -3,7 +3,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/robes,
 		SLOT_NECK = /obj/item/clothing/neck/chain
 	)
 	/*
@@ -15,7 +16,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
 		SLOT_NECK = /obj/item/clothing/neck/chain
 		)
@@ -51,7 +53,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/purple,
+		SLOT_OVER = /obj/item/clothing/robes/purple,
 		SLOT_HANDS = /obj/item/clothing/gloves/black,
 		SLOT_HAT = /obj/item/clothing/hat/coronet,
 		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
@@ -65,7 +68,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/purple,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/robes/purple,
 		SLOT_HANDS = /obj/item/clothing/gloves
 	)
 
@@ -160,7 +164,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/brown,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/robes/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 
@@ -246,7 +251,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/grey,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/robes/grey,
 		SLOT_HANDS = /obj/item/clothing/gloves/brown,
 		SLOT_MASK = /obj/item/clothing/mask
 	)
@@ -256,7 +262,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/yellow,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/red,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/yellow,
+		SLOT_OVER = /obj/item/clothing/robes/red,
 		SLOT_HANDS = /obj/item/clothing/gloves/yellow,
 		SLOT_LEFT_RING = /obj/item/clothing/ring,
 		SLOT_RIGHT_RING = /obj/item/clothing/ring,
@@ -277,7 +284,8 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
-		SLOT_UPPER_BODY = /obj/item/clothing/robes/occultist,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
+		SLOT_OVER = /obj/item/clothing/robes/occultist,
 		SLOT_HAT = /obj/item/clothing/hat/cowl,
 		SLOT_LEFT_HAND = /obj/item/fetish,
 		SLOT_RIGHT_HAND = /obj/item/athame
