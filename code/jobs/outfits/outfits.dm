@@ -95,9 +95,10 @@
 /datum/outfit/guard
 	name = "Gendarmerie"
 	equip_to_slot = list(
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_HANDS = /obj/item/clothing/gloves,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
@@ -109,26 +110,28 @@
 /datum/outfit/rifleman
 	name = "Rifleman"
 	equip_to_slot = list(
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/grey,
-		SLOT_HAT = /obj/item/clothing/hat/leather_cap
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_HANDS = /obj/item/clothing/gloves,
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
+		SLOT_RIGHT_HAND = /obj/item/gun/rifle
 	)
 	/*
 	SLOT_FEET = tall boots
 	SLOT_UPPER_BODY = leather armour,
-	musket/rifle
 	*/
 
 /datum/outfit/captain
 	name = "Captain of the Guard"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/red
-	)
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_HANDS = /obj/item/clothing/gloves
+		)
 	/*
-	SLOT_UPPER_BODY = breastplate,
+	SLOT_OVER = breastplate,
 	SLOT_HAT = feathered cap
 	*/
 

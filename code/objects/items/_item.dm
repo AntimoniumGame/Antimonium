@@ -13,6 +13,7 @@
 	var/list/attack_verbs = list("bashes")
 	var/name_prefix
 	var/associated_skill
+	var/occupies_two_hands = FALSE
 
 	var/hit_sound = 'sounds/effects/punch1.ogg'
 	var/collect_sound = 'sounds/effects/click1.ogg'

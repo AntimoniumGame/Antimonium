@@ -8,6 +8,7 @@
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 #define FILE_DIR "dump"
+#define FILE_DIR "dump/apron"
 #define FILE_DIR "dump/boots"
 #define FILE_DIR "dump/gloves"
 #define FILE_DIR "dump/pants"
@@ -38,6 +39,7 @@
 #define FILE_DIR "icons/objects/items"
 #define FILE_DIR "icons/objects/items/alchemy"
 #define FILE_DIR "icons/objects/items/components"
+#define FILE_DIR "icons/objects/items/firearms"
 #define FILE_DIR "icons/objects/items/food"
 #define FILE_DIR "icons/objects/items/limbs"
 #define FILE_DIR "icons/objects/items/limbs/diona"
@@ -266,6 +268,9 @@
 #include "code\objects\items\clutter\pipe.dm"
 #include "code\objects\items\consumable\consumable.dm"
 #include "code\objects\items\consumable\cup.dm"
+#include "code\objects\items\gun\_gun.dm"
+#include "code\objects\items\gun\gun_ammo.dm"
+#include "code\objects\items\gun\gun_subtypes.dm"
 #include "code\objects\items\light\torch.dm"
 #include "code\objects\items\plants\plant.dm"
 #include "code\objects\items\plants\plant_definitions.dm"
