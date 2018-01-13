@@ -236,6 +236,7 @@
 #include "code\objects\items\clothing\eyes\eyes_goggles.dm"
 #include "code\objects\items\clothing\eyes\eyes_loupe.dm"
 #include "code\objects\items\clothing\gloves\_gloves.dm"
+#include "code\objects\items\clothing\gloves\gloves_falconry.dm"
 #include "code\objects\items\clothing\gloves\gloves_fingerless.dm"
 #include "code\objects\items\clothing\hats\_hat.dm"
 #include "code\objects\items\clothing\hats\archimandrite.dm"

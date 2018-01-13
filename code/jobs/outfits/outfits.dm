@@ -144,11 +144,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/red,
+		SLOT_HANDS = /obj/item/clothing/gloves/falconry,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt
 	)
-	/*
-	SLOT_HANDS = falconer's gloves
-	*/
 
 /datum/outfit/sailor
 	name = "Sailor"
