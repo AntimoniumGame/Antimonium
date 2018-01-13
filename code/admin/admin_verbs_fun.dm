@@ -59,7 +59,8 @@
 		/obj/item/clothing/shorts,
 		/obj/item/clothing/boots,
 		/obj/item/clothing/gloves,
-		/obj/item/clothing/robes
+		/obj/item/clothing/over/robes,
+		/obj/item/clothing/over/apron
 		)
 
 	var/list/template_colours = list(
@@ -168,6 +169,6 @@
 					new_icon.SwapColor(template_colours[i], map_colours[i])
 				compiled_icon.Insert(new_icon, _icon_state, moving = TRUE)
 
-			var/dumpstr = "dump\\[initial(_atom.name)]_[ident].dmi"
+			var/dumpstr = "dump\\[initial(_atom.name)]\\[initial(_atom.name)]_[ident].dmi"
 			Dnotify("State recolour complete, dumped to [dumpstr].")
 			fcopy(compiled_icon, dumpstr)

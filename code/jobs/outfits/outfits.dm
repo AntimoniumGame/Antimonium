@@ -4,7 +4,7 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
-		SLOT_OVER = /obj/item/clothing/robes,
+		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_NECK = /obj/item/clothing/neck/chain
 	)
 	/*
@@ -17,7 +17,7 @@
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
-		SLOT_OVER = /obj/item/clothing/robes,
+		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
 		SLOT_NECK = /obj/item/clothing/neck/chain
 		)
@@ -54,14 +54,11 @@
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/purple,
-		SLOT_OVER = /obj/item/clothing/robes/purple,
+		SLOT_OVER = /obj/item/clothing/over/robes/purple,
 		SLOT_HANDS = /obj/item/clothing/gloves/black,
 		SLOT_HAT = /obj/item/clothing/hat/coronet,
-		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet
 	)
-	/*
-	SLOT_LEFT_RING = signet ring,
-	*/
 
 /datum/outfit/consort
 	name = "Consort"
@@ -69,8 +66,11 @@
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/purple,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
-		SLOT_OVER = /obj/item/clothing/robes/purple,
-		SLOT_HANDS = /obj/item/clothing/gloves
+		SLOT_OVER = /obj/item/clothing/over/robes/purple,
+		SLOT_HANDS = /obj/item/clothing/gloves,
+		SLOT_LEFT_RING = /obj/item/clothing/ring,
+		SLOT_RIGHT_RING = /obj/item/clothing/ring,
+		SLOT_NECK = /obj/item/clothing/neck/chain/necklace
 	)
 
 /datum/outfit/fool
@@ -165,7 +165,7 @@
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
-		SLOT_OVER = /obj/item/clothing/robes/brown,
+		SLOT_OVER = /obj/item/clothing/over/robes/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 
@@ -183,35 +183,33 @@
 /datum/outfit/publican
 	name = "Publican"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
-		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
+		SLOT_OVER = /obj/item/clothing/over/apron,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
-	/*
-	SLOT_UPPER_BODY = apron,
-	*/
+
 /datum/outfit/cook
 	name = "Cook"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
+		SLOT_OVER = /obj/item/clothing/over/apron/blue,
 		SLOT_HAT = /obj/item/clothing/hat/chef
 	)
 
 /datum/outfit/ironmonger
 	name = "Ironmonger"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
+		SLOT_OVER = /obj/item/clothing/over/apron/black,
 		SLOT_HANDS = /obj/item/clothing/gloves/brown,
-		SLOT_MASK = /obj/item/clothing/mask
+		SLOT_FACE = /obj/item/clothing/mask
 	)
-	/*
-	SLOT_UPPER_BODY = heavy apron,
-	*/
 
 /datum/outfit/machinist
 	name = "Machinist"
@@ -252,9 +250,9 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
-		SLOT_OVER = /obj/item/clothing/robes/grey,
+		SLOT_OVER = /obj/item/clothing/over/robes/grey,
 		SLOT_HANDS = /obj/item/clothing/gloves/brown,
-		SLOT_MASK = /obj/item/clothing/mask
+		SLOT_FACE = /obj/item/clothing/mask
 	)
 
 /datum/outfit/merchant
@@ -263,7 +261,7 @@
 		SLOT_FEET = /obj/item/clothing/boots/red,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/yellow,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/yellow,
-		SLOT_OVER = /obj/item/clothing/robes/red,
+		SLOT_OVER = /obj/item/clothing/over/robes/red,
 		SLOT_HANDS = /obj/item/clothing/gloves/yellow,
 		SLOT_LEFT_RING = /obj/item/clothing/ring,
 		SLOT_RIGHT_RING = /obj/item/clothing/ring,
@@ -285,7 +283,7 @@
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
-		SLOT_OVER = /obj/item/clothing/robes/occultist,
+		SLOT_OVER = /obj/item/clothing/over/robes/occultist,
 		SLOT_HAT = /obj/item/clothing/hat/cowl,
 		SLOT_LEFT_HAND = /obj/item/fetish,
 		SLOT_RIGHT_HAND = /obj/item/athame

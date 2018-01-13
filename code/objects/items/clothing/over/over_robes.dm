@@ -1,7 +1,6 @@
-/obj/item/clothing/robes
+/obj/item/clothing/over/robes
 	name = "robes"
 	icon = 'icons/objects/clothing/robes/robes_white.dmi'
-	slot_flags = SLOT_FLAG_OVER
 	colour_to_icon = list(
 		WHITE =         'icons/objects/clothing/robes/robes_white.dmi',
 		PALE_BROWN =    'icons/objects/clothing/robes/robes_yellow.dmi',
@@ -22,45 +21,45 @@
 		BLACK =         'icons/objects/clothing/robes/robes_black.dmi'
 		)
 
-/obj/item/clothing/robes/GetWornIcon(var/inventory_slot)
+/obj/item/clothing/over/robes/GetWornIcon(var/inventory_slot)
 	if(inventory_slot == SLOT_OVER)
 		var/image/I = image(icon, "tail")
 		I.overlays += ..()
 		return I
 	return ..()
 
-/obj/item/clothing/robes/yellow
+/obj/item/clothing/over/robes/yellow
 	icon = 'icons/objects/clothing/robes/robes_yellow.dmi'
 	dyed = BRIGHT_YELLOW
 
-/obj/item/clothing/robes/green
+/obj/item/clothing/over/robes/green
 	icon = 'icons/objects/clothing/robes/robes_green.dmi'
 	dyed = DARK_GREEN
 
-/obj/item/clothing/robes/blue
+/obj/item/clothing/over/robes/blue
 	icon = 'icons/objects/clothing/robes/robes_blue.dmi'
 	dyed = BRIGHT_BLUE
 
-/obj/item/clothing/robes/grey
+/obj/item/clothing/over/robes/grey
 	icon = 'icons/objects/clothing/robes/robes_grey.dmi'
 	dyed = PALE_GREY
 
-/obj/item/clothing/robes/black
+/obj/item/clothing/over/robes/black
 	icon = 'icons/objects/clothing/robes/robes_black.dmi'
 	dyed = BLACK
 
-/obj/item/clothing/robes/brown
+/obj/item/clothing/over/robes/brown
 	icon = 'icons/objects/clothing/robes/robes_brown.dmi'
 	dyed = DARK_BROWN
 
-/obj/item/clothing/robes/red
+/obj/item/clothing/over/robes/red
 	icon = 'icons/objects/clothing/robes/robes_red.dmi'
 	dyed = DARK_RED
 
-/obj/item/clothing/robes/purple
+/obj/item/clothing/over/robes/purple
 	icon = 'icons/objects/clothing/robes/robes_purple.dmi'
 	dyed = DARK_PURPLE
 
-/obj/item/clothing/robes/occultist
+/obj/item/clothing/over/robes/occultist
 	icon = 'icons/objects/clothing/robes/robes_occultist.dmi'
 	dyed = BLACK
