@@ -66,9 +66,9 @@
 	SLOT_NECK =       FALSE,
 	SLOT_BACK =       FALSE,
 	BP_HEAD =         TRUE,
+	SLOT_EYES =       FALSE,
 	SLOT_FACE =       FALSE,
-	SLOT_HAT =        FALSE,
-	SLOT_EYES =       FALSE
+	SLOT_HAT =        FALSE
 	)
 
 #define RADIAL_MENU_DEFAULT    "default"

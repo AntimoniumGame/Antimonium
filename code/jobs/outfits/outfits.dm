@@ -208,7 +208,7 @@
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
 		SLOT_OVER = /obj/item/clothing/over/apron/black,
 		SLOT_HANDS = /obj/item/clothing/gloves/brown,
-		SLOT_FACE = /obj/item/clothing/mask
+		SLOT_EYES = /obj/item/clothing/eyes/goggles
 	)
 
 /datum/outfit/machinist
@@ -216,12 +216,10 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
+		SLOT_EYES = /obj/item/clothing/eyes/loupe,
+		SLOT_HANDS = /obj/item/clothing/gloves/fingerless/black
 	)
-	/*
-	SLOT_HANDS = fingerless leather gloves
-	SLOT_EYES = loupe http://www.jewelinfo4u.com/images/Gallery/Jewellers_Loupe.jpg
-	*/
 
 /datum/outfit/doctor
 	name = "Feldscher"
