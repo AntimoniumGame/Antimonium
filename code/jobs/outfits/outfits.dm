@@ -19,7 +19,8 @@
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
 		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
-		SLOT_NECK = /obj/item/clothing/neck/chain
+		SLOT_NECK = /obj/item/clothing/neck/chain,
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church
 		)
 
 	/*
@@ -226,6 +227,7 @@
 		SLOT_HANDS = /obj/item/clothing/gloves/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/black,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/black,
+		SLOT_OVER = /obj/item/clothing/over/robes/black,
 		SLOT_FACE = /obj/item/clothing/mask/plague,
 		SLOT_HAT = /obj/item/clothing/hat/tophat
 	)
