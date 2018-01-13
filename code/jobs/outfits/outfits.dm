@@ -201,11 +201,11 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/brown
+		SLOT_HANDS = /obj/item/clothing/gloves/brown,
+		SLOT_MASK = /obj/item/clothing/mask
 	)
 	/*
 	SLOT_UPPER_BODY = heavy apron,
-	SLOT_EYES = protective mask
 	*/
 
 /datum/outfit/machinist
@@ -247,11 +247,9 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/robes/grey,
-		SLOT_HANDS = /obj/item/clothing/gloves/brown
+		SLOT_HANDS = /obj/item/clothing/gloves/brown,
+		SLOT_MASK = /obj/item/clothing/mask
 	)
-	/*
-	SLOT_EYES = gas mask
-	*/
 
 /datum/outfit/merchant
 	name = "Merchant"
@@ -270,11 +268,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/blue,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue,
+		SLOT_LEFT_RING = /obj/item/clothing/ring/thimble
 	)
-	/*
-	SLOT_LEFT_RING =  thimble
-	*/
 
 /datum/outfit/occultist
 	name = "Occultist"
