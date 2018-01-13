@@ -22,31 +22,24 @@
 		SLOT_NECK = /obj/item/clothing/neck/chain,
 		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church
 		)
-
 	/*
-	SLOT_LEFT_RING =  ring of the archimandrite
-	SLOT_NECK =       minister's chain
 	crozier http://www.stnicholascenter.org/media/images/s/shop-crozier3.jpg
-
 	*/
 
 /datum/outfit/paladin
 	name = "Paladin"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/iron,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy
 	)
 	/*
 	SLOT_UPPER_BODY = gambeson,
-
 	plate armour (upper body)
 	plate leggings
 	gauntlets
-	plate boots
 	full helm
 	two-handed sword
-
 	*/
 
 /datum/outfit/count
@@ -102,7 +95,6 @@
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap
 	)
 	/*
-	SLOT_FEET = tall boots
 	SLOT_UPPER_BODY = chainmail
 	halberd
 	*/
@@ -115,12 +107,9 @@
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
 		SLOT_HANDS = /obj/item/clothing/gloves,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
-		SLOT_RIGHT_HAND = /obj/item/gun/rifle
+		SLOT_RIGHT_HAND = /obj/item/gun/rifle,
+		SLOT_OVER = /obj/item/clothing/over/leather_armour
 	)
-	/*
-	SLOT_FEET = tall boots
-	SLOT_UPPER_BODY = leather armour,
-	*/
 
 /datum/outfit/captain
 	name = "Captain of the Guard"
@@ -128,12 +117,10 @@
 		SLOT_FEET = /obj/item/clothing/boots/black,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
+		SLOT_OVER = /obj/item/clothing/over/breastplate,
+		SLOT_HAT = /obj/item/clothing/hat/feathered_helmet,
 		SLOT_HANDS = /obj/item/clothing/gloves
 		)
-	/*
-	SLOT_OVER = breastplate,
-	SLOT_HAT = feathered cap
-	*/
 
 /datum/outfit/town
 	name = "Bondsman"
@@ -176,11 +163,9 @@
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/sandals,
 		SLOT_LOWER_BODY = /obj/item/clothing/shorts,
-		SLOT_UPPER_BODY = /obj/item/clothing/shirt/tourist
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/tourist,
+		SLOT_LEFT_HAND = /obj/item/lithograph
 		)
-	/*
-	lithograph https://s-media-cache-ak0.pinimg.com/736x/77/34/6a/77346ae453f9238a44050dfb457e8ce0--digital-camera-lens-digital-cameras.jpg
-	*/
 
 /datum/outfit/publican
 	name = "Publican"
