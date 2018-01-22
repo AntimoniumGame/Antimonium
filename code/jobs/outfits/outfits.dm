@@ -27,16 +27,17 @@
 	name = "Paladin"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/iron,
+		SLOT_HANDS = /obj/item/clothing/gloves/iron,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_NECK = /obj/item/clothing/neck/chain/holy
+		SLOT_NECK = /obj/item/clothing/neck/chain/holy,
+		SLOT_LEFT_HAND = /obj/item/weapon/broadsword,
+		SLOT_HAT = /obj/item/clothing/hat/full_helmet
 	)
+
 	/*
 	SLOT_UPPER_BODY = gambeson,
-	plate armour (upper body)
-	plate leggings
-	gauntlets
-	full helm
-	two-handed sword
+	SLOT_OVER = plate armour
+	SLOT_LOWER_BODY = plate leggings
 	*/
 
 /datum/outfit/count
