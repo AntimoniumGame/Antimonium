@@ -4,6 +4,7 @@
 /mob/New()
 	..()
 	armour_by_bodypart = list()
+	appearance_flags |= NO_CLIENT_COLOR
 
 /mob/proc/CheckArmourCoverage(var/bodypart = BP_CHEST, var/coverage_type = WOUND_CUT, var/threshold = 0)
 

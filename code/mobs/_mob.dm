@@ -5,6 +5,8 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 	sight = SEE_SELF|SEE_BLACKNESS
 
+	var/clothing_offset_x = 0
+	var/clothing_offset_y = 0
 	var/client_color
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING

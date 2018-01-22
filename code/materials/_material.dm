@@ -23,7 +23,8 @@ var/max_turf_edge_layer_value = turf_edge_layers_by_path.len * TURF_EDGE_LAYER_O
 
 	var/sharpness_modifier = 1      // Props of this material will multiply their default sharpness by this.
 	var/weight_modifier = 1         // Props of this material will multiply their default weight by this.
-	var/structural_integrity = 50    // Walls made of this material will use this value for max HP.
+	var/structural_integrity = 50   // Walls made of this material will use this value for max HP.
+	var/smell_o_vision              // Whether or not objects of this material have NO_CLIENT_COLOR applied, for dog monochrome vision.
 
 	// Descriptive strings for various item states.
 	var/liquid_name
