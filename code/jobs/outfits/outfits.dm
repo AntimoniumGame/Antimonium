@@ -5,11 +5,9 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
 		SLOT_OVER = /obj/item/clothing/over/robes,
-		SLOT_NECK = /obj/item/clothing/neck/chain
+		SLOT_NECK = /obj/item/clothing/neck/chain,
+		SLOT_LEFT_HAND = /obj/item/thurible
 	)
-	/*
-	thurible http://tibetanspirit.wpengine.netdna-cdn.com/wp-content/uploads/2012/10/incense_burner_copper_round_footed_5_tall-180x180.jpg
-	*/
 
 /datum/outfit/archimandrite
 	name = "Archimandrite"
@@ -87,7 +85,7 @@
 		SLOT_HANDS = /obj/item/clothing/gloves,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
 		SLOT_OVER = /obj/item/clothing/over/chainmail,
-		SLOT_LEFT_HAND = /obj/item/weapon/twohanded/halberd
+		SLOT_LEFT_HAND = /obj/item/weapon/halberd
 	)
 
 /datum/outfit/rifleman

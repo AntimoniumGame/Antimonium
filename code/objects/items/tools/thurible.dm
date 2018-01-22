@@ -1,4 +1,4 @@
-/obj/item/weapon/twohanded/thurible
+/obj/item/thurible
 	name = "thurible"
 	weight = 6
 	sharpness = 0
@@ -6,3 +6,4 @@
 	icon = 'icons/objects/items/thurible.dmi'
 	attack_verbs = list("whacks", "bashes")
 	default_material_path = /datum/material/metal/gold
+	occupies_two_hands = TRUE
