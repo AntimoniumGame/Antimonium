@@ -59,7 +59,7 @@
 /obj/structure/GetWeight()
 	return weight
 
-/obj/structure/EndThrow()
+/obj/structure/EndThrow(var/throw_force)
 	ResetPosition()
 
 /obj/structure/TakeDamage(var/dam, var/source)

@@ -4,7 +4,7 @@
 
 /mob/proc/RightClickOn(var/atom/thing, var/ctrl, var/alt)
 	if(!TryGeneralInteraction(thing, ctrl, alt, SLOT_MOUTH, BP_HEAD))
-		thing.LeftClickedOn(src, SLOT_MOUTH)
+		thing.RightClickedOn(src, SLOT_MOUTH)
 
 /mob/proc/MiddleClickOn(var/atom/thing, var/ctrl, var/alt)
 	if(!dead)
@@ -12,15 +12,15 @@
 		thing.MiddleClickedOn(src)
 
 /mob/human/LeftClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND) && thing)
+	if(!Incapacitated() && !TryGeneralInteraction(thing, ctrl, alt, SLOT_LEFT_HAND, BP_LEFT_HAND) && thing)
 		thing.LeftClickedOn(src, SLOT_LEFT_HAND)
 
 /mob/human/RightClickOn(var/atom/thing, var/ctrl, var/alt)
-	if(!HasEffect(EFFECT_UNCONSCIOUS) && !TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND) && thing)
+	if(!Incapacitated() && !TryGeneralInteraction(thing, ctrl, alt, SLOT_RIGHT_HAND, BP_RIGHT_HAND) && thing)
 		thing.RightClickedOn(src, SLOT_RIGHT_HAND)
 
 /mob/proc/TryGeneralInteraction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
-	if(!HasEffect(EFFECT_UNCONSCIOUS) && !dead && CanUseLimb(limb))
+	if(!Incapacitated() && CanUseLimb(limb))
 		FaceAtom(thing)
 		if(ctrl && thing.IsGrabbable() && thing != src)
 			GrabAtom(thing, limb, slot)
@@ -32,6 +32,11 @@
 			var/obj/item/throwing = GetEquipped(slot)
 			if(throwing && throwing.ThrowAt(src, thing))
 				return TRUE
+		else
+			var/obj/item/firing = GetEquipped(slot)
+			if(istype(firing) && firing.FireAt(src, thing))
+				return TRUE
+
 	return FALSE
 
 /mob/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)

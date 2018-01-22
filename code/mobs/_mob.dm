@@ -92,7 +92,7 @@
 /mob/RandomizePixelOffset()
 	return
 
-/mob/EndThrow()
+/mob/EndThrow(var/throw_force)
 	ResetPosition()
 
 /mob/HandleFireDamage()
