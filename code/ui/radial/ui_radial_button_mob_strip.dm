@@ -40,7 +40,7 @@
 	. = ..()
 	if(.  && refer_atom && !Deleted(refer_atom) && IsAdjacentTo(clicker, refer_atom))
 		clicker.NotifyNearby("<span class='danger'>\The [clicker] is trying to remove \the [refer_atom] from \the [refer_atom.loc]!</span>")
-		if(clicker.do_after(30, refer_atom.loc, list("loc", "dir"), list("loc")))
+		if(clicker.DoAfter(30, refer_atom.loc, list("loc", "dir"), list("loc")))
 			var/mob/M = refer_atom.loc
 			if(istype(M)) M.DropItem(refer_atom)
 	parent_menu.UpdateButtons()

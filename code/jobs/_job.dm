@@ -46,7 +46,7 @@ var/datum/job/default_latejoin_role
 
 /datum/job/proc/Equip(var/mob/equipping)
 	if(equipping.type != force_mob_type)
-		var/mob/new_mob = new force_mob_type()
+		var/mob/new_mob = new force_mob_type(equipping.loc)
 		equipping.TransferControlTo(new_mob)
 		QDel(equipping, "job equip mob replacement")
 		equipping = new_mob

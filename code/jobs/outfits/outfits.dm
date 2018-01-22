@@ -1,3 +1,14 @@
+/mob/verb/debug_outfits()
+	var/last_x = 0
+	var/last_y = 0
+	for(var/datum/job/job in job_datums)
+		var/mob/human/H = new(locate(x+last_x,y+last_y,z))
+		job.Equip(H)
+		last_x++
+		if(last_x > 6)
+			last_x = 0
+			last_y++
+
 /datum/outfit/church
 	name = "Minister"
 	equip_to_slot = list(

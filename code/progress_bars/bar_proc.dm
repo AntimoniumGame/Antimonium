@@ -1,6 +1,6 @@
 var/const/do_after_check_period = 5
 
-/mob/proc/do_after(var/delay = 0, var/atom/target, var/list/check_own_vars = list("loc"), var/list/check_target_vars = list("loc"), var/check_incapacitated = TRUE)
+/mob/proc/DoAfter(var/delay = 0, var/atom/target, var/list/check_own_vars = list("loc"), var/list/check_target_vars = list("loc"), var/check_incapacitated = TRUE)
 
 	if(target && !istype(target))
 		return FALSE
@@ -35,7 +35,6 @@ var/const/do_after_check_period = 5
 			break
 
 		for(var/checkvar in last_own_vars)
-			Dnotify("comparing self [checkvar]: [vars[checkvar]] (\ref[vars[checkvar]]) == [last_own_vars[checkvar]] (\ref[last_own_vars[checkvar]])")
 			if(vars[checkvar] != last_own_vars[checkvar])
 				. = FALSE
 				break
@@ -46,7 +45,6 @@ var/const/do_after_check_period = 5
 		if(initial_target)
 			if(istype(target))
 				for(var/checkvar in last_target_vars)
-					Dnotify("comparing target [checkvar]: [target.vars[checkvar]] (\ref[target.vars[checkvar]]) == [last_target_vars[checkvar]] (\ref[last_target_vars[checkvar]])")
 					if(target.vars[checkvar] != last_target_vars[checkvar])
 						. = FALSE
 						break

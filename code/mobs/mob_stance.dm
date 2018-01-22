@@ -35,6 +35,10 @@
 			else
 				Notify("<span class='notice'>You lie down.</span>")
 
+	if(prone && !sitting)
+		if(GetEquipped(SLOT_LEFT_HAND)) DropSlot(SLOT_LEFT_HAND)
+		if(GetEquipped(SLOT_RIGHT_HAND)) DropSlot(SLOT_RIGHT_HAND)
+
 	if(stand)
 		stand.UpdateIcon()
 
