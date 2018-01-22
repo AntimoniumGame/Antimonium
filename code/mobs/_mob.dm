@@ -137,3 +137,6 @@
 		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
 		if(istype(inv_slot) && inv_slot.holding)
 			. += inv_slot.holding
+
+/mob/proc/Incapacitated()
+	return (dead || HasEffect(EFFECT_UNCONSCIOUS))

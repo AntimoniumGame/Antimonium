@@ -1,18 +1,11 @@
 var/const/do_after_check_period = 5
 
-/mob/verb/test_doafter()
-
-	set name = "Test Do After"
-	set category = "Debug"
-
-	if(do_after(50, loc))
-		to_chat(src, "Hooray!")
-	else
-		to_chat(src, "Boo!")
-
-/mob/proc/do_after(var/delay = 0, var/atom/target, var/list/check_own_vars = list("loc"), var/list/check_target_vars = list("loc"))
+/mob/proc/do_after(var/delay = 0, var/atom/target, var/list/check_own_vars = list("loc"), var/list/check_target_vars = list("loc"), var/check_incapacitated = TRUE)
 
 	if(target && !istype(target))
+		return FALSE
+
+	if(check_incapacitated && Incapacitated())
 		return FALSE
 
 	var/initial_target = target
@@ -36,6 +29,11 @@ var/const/do_after_check_period = 5
 
 	. = TRUE
 	while(delay > 0)
+
+		if(check_incapacitated && Incapacitated())
+			. = FALSE
+			break
+
 		for(var/checkvar in last_own_vars)
 			Dnotify("comparing self [checkvar]: [vars[checkvar]] (\ref[vars[checkvar]]) == [last_own_vars[checkvar]] (\ref[last_own_vars[checkvar]])")
 			if(vars[checkvar] != last_own_vars[checkvar])
