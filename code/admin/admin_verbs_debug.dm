@@ -10,8 +10,26 @@
 		/client/proc/CloseVarsWindow,
 		/client/proc/ToggleDaemon,
 		/client/proc/JoinAsRole,
-		/client/proc/TestCircleAlgorithm
+		/client/proc/TestCircleAlgorithm,
+		/client/proc/MassDebugOutfits
 		)
+
+/client/proc/MassDebugOutfits()
+
+	set name = "Mass Debug Outfits"
+	set desc = "Don't use this on a live server."
+	set category = "Debug"
+
+	var/last_x = 0
+	var/last_y = 0
+	for(var/datum/job/job in job_datums)
+		var/mob/human/H = new(locate(mob.x+last_x,mob.y+last_y,mob.z))
+		job.Equip(H)
+		last_x++
+		if(last_x > 6)
+			last_x = 0
+			last_y++
+
 
 /client/proc/ToggleDaemon()
 
