@@ -1,6 +1,5 @@
 /mob/animal/deer
 	name = "deer"
-	mob_overlay_ident = "deer"
 	icon = 'icons/mobs/deer.dmi'
 
 /mob/animal/deer/New()

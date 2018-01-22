@@ -106,7 +106,7 @@
 
 	if(inventory_slot == SLOT_LEFT_HAND || inventory_slot == SLOT_RIGHT_HAND || inventory_slot == SLOT_MOUTH)
 		var/image/I
-		if(occupies_two_hands || has_variant_inhand_icon)
+		if(inventory_slot != SLOT_MOUTH && (occupies_two_hands || has_variant_inhand_icon))
 			I = image(icon = icon, icon_state = (inventory_slot == SLOT_LEFT_HAND ? "inhand_left" : "inhand_right"))
 		else
 			I = new() //todo cache this
@@ -121,6 +121,11 @@
 			else if(inventory_slot == SLOT_LEFT_HAND)
 				offset_x = 8
 				M.Scale(-1, 1)
+			else if(inventory_slot == SLOT_MOUTH)
+				M.Turn(90)
+				offset_x = -5
+				offset_y = -12
+
 			M.Translate(offset_x, offset_y)
 			I.transform = M
 		return I

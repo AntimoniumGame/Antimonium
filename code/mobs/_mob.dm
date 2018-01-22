@@ -14,7 +14,15 @@
 	Gib()
 
 /mob/proc/Gib()
+
 	Splatter(loc, blood_material)
+
+	for(var/invslot in inventory_slots)
+		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
+		if(inv_slot.holding)
+			var/obj/item/throwing = inv_slot.holding
+			DropItem(throwing)
+			throwing.ThrownAt(get_step(src, pick(all_dirs)))
 
 	while(organs_by_key.len)
 		var/obj/item/organ/organ = GetOrganByKey(pick(organs_by_key))

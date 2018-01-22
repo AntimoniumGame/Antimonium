@@ -25,17 +25,17 @@
 		if(ctrl && thing.IsGrabbable() && thing != src)
 			GrabAtom(thing, limb, slot)
 			return TRUE
-		else if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
-			var/obj/item/limb/use_limb = GetLimb(limb)
-			if(!use_limb.IsDextrous())
-				return TRUE
-			var/obj/item/throwing = GetEquipped(slot)
-			if(throwing && throwing.ThrowAt(src, thing))
-				return TRUE
-		else
-			var/obj/item/firing = GetEquipped(slot)
-			if(istype(firing) && firing.FireAt(src, thing))
-				return TRUE
+
+		var/obj/item/limb/use_limb = GetLimb(limb)
+		if(use_limb.IsDextrous(TRUE))
+			if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
+				var/obj/item/throwing = GetEquipped(slot)
+				if(throwing && throwing.ThrowAt(src, thing))
+					return TRUE
+			else
+				var/obj/item/firing = GetEquipped(slot)
+				if(istype(firing) && firing.FireAt(src, thing))
+					return TRUE
 
 	return FALSE
 
