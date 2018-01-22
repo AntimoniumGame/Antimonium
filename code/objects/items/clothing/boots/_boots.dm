@@ -53,13 +53,3 @@
 /obj/item/clothing/boots/purple
 	icon = 'icons/objects/clothing/boots/boots_purple.dmi'
 	dyed = DARK_PURPLE
-
-/obj/item/clothing/boots/sandals
-	name = "sandals"
-	icon = 'icons/objects/clothing/boots/sandals.dmi'
-	default_material_path = /datum/material/cloth/leather
-
-/obj/item/clothing/boots/iron
-	name = "plate boots"
-	icon = 'icons/objects/clothing/boots/boots_plate.dmi'
-	default_material_path = /datum/material/metal/iron
