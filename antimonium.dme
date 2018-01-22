@@ -312,6 +312,7 @@
 #include "code\objects\items\weapons\_weapon.dm"
 #include "code\objects\items\weapons\axe.dm"
 #include "code\objects\items\weapons\chisel.dm"
+#include "code\objects\items\weapons\halberd.dm"
 #include "code\objects\items\weapons\hammers.dm"
 #include "code\objects\items\weapons\handsaw.dm"
 #include "code\objects\items\weapons\pickaxe.dm"

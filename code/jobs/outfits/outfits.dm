@@ -85,12 +85,10 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
 		SLOT_HANDS = /obj/item/clothing/gloves,
-		SLOT_HAT = /obj/item/clothing/hat/leather_cap
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
+		SLOT_OVER = /obj/item/clothing/over/chainmail,
+		SLOT_LEFT_HAND = /obj/item/weapon/halberd
 	)
-	/*
-	SLOT_UPPER_BODY = chainmail
-	halberd
-	*/
 
 /datum/outfit/rifleman
 	name = "Rifleman"
