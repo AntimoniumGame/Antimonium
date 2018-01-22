@@ -22,10 +22,12 @@ var/datum/daemon/garbage/gc
 
 // placeholder for later
 /proc/QDel(var/thing, var/reason)
+	/*
 	if(reason)
 		Dnotify("GC: collected \ref[thing] ([thing]) for '[reason]'.")
 	else
 		Dnotify("GC: collected \ref[thing] ([thing]).")
+	*/
 	gc.Collect(thing)
 
 /datum/daemon/garbage
