@@ -70,20 +70,13 @@
 /datum/outfit/fool
 	name = "Fool"
 	equip_to_slot = list(
-		SLOT_HANDS = /obj/item/clothing/gloves
+		SLOT_HANDS = /obj/item/clothing/gloves,
+		SLOT_FEET = /obj/item/clothing/boots/jester,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/jester,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/jester,
+		SLOT_HAT = /obj/item/clothing/hat/jester,
+		SLOT_LEFT_HAND = /obj/item/jester_sceptre
 		)
-
-	/*
-	Outfit is black and white.
-
-	SLOT_FEET = bell shoes,
-	SLOT_LOWER_BODY = chequered pants,
-	SLOT_UPPER_BODY = fool's motley http://www.shakespeare-navigators.com/king_lear/joker_card.jpg,
-	SLOT_FACE = fool's makeup https://i.pinimg.com/736x/e5/cb/b7/e5cbb72fbef1533076a0cd236913b708--modern-halloween-halloween-face.jpg,
-	SLOT_HAT = fool's cap https://thumbs.dreamstime.com/z/fools-cap-bells-jester-cap-april-fools-day-isolated-white-vector-illustration-68082505.jpg
-
-	fool's scepter http://previous.bildindex.de/bilder/MI07907c06a.jpg
-	*/
 
 /datum/outfit/guard
 	name = "Gendarmerie"
