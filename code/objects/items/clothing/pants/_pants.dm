@@ -2,6 +2,7 @@
 	name = "pants"
 	icon = 'icons/objects/clothing/pants/pants_white.dmi'
 	slot_flags = SLOT_FLAG_LOWER_BODY
+	body_coverage = list(BP_GROIN, BP_LEFT_LEG, BP_RIGHT_LEG)
 	colour_to_icon = list(
 		WHITE =         'icons/objects/clothing/pants/pants_white.dmi',
 		PALE_BROWN =    'icons/objects/clothing/pants/pants_yellow.dmi',

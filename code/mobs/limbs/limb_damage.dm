@@ -36,14 +36,10 @@
 	if(owner && NeedProcess())
 		owner.injured_limbs |= src
 
-/obj/item/limb/proc/HandleAttacked(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
+/obj/item/limb/proc/HandleAttacked(var/wound_depth, var/wound_severity, var/wound_type, var/attack_contact_size, var/obj/item/attacked_with)
 
 	if(!owner)
 		return
-
-	var/wound_depth = max(1,round((attack_sharpness * attack_weight) / max(1,attack_contact_size)))
-	var/wound_severity = (attack_weight * attack_contact_size)
-	var/wound_type = (attack_sharpness > 1) ? WOUND_CUT : WOUND_BRUISE
 
 	cumulative_wound_depth += wound_depth
 	cumulative_wound_severity += wound_severity
@@ -61,9 +57,6 @@
 
 
 /obj/item/limb/proc/HandleBurned(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
-	// Resolve the physical component first.
-	if(attack_weight || attack_sharpness)
-		HandleAttacked(attack_weight, attack_sharpness, attack_contact_size, attacked_with)
 	ExpandWoundOfType(WOUND_BURN, 0, attack_contact_size, attacked_with, silent = TRUE)
 
 /obj/item/limb/proc/BreakBone()

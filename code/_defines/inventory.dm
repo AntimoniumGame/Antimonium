@@ -29,21 +29,21 @@
 #define BP_HEAD       "head"
 
 // Used for valid equipment slot bitflag; items with these flags can be equipped to the relevant slot.
-#define SLOT_FLAG_RING        1
-#define SLOT_FLAG_NECK        2
-#define SLOT_FLAG_LOWER_BODY  4
-#define SLOT_FLAG_FEET        8
+#define SLOT_FLAG_RING         1
+#define SLOT_FLAG_NECK         2
+#define SLOT_FLAG_LOWER_BODY   4
+#define SLOT_FLAG_FEET         8
 #define SLOT_FLAG_BACK        16
 #define SLOT_FLAG_UPPER_BODY  32
 #define SLOT_FLAG_ARMS        64
-#define SLOT_FLAG_HANDS       128
-#define SLOT_FLAG_FACE        256
-#define SLOT_FLAG_EYES        512
-#define SLOT_FLAG_HAT        1024
-#define SLOT_FLAG_OVER       2048
+#define SLOT_FLAG_HANDS      128
+#define SLOT_FLAG_FACE       256
+#define SLOT_FLAG_EYES       512
+#define SLOT_FLAG_HAT       1024
+#define SLOT_FLAG_OVER      2048
 
 // Assoc value indicates that the slot is a limb layer rather than an equipment layer.
-/var/list/inventory_slots_by_layer = list(
+var/list/inventory_slots_by_layer = list(
 	BP_LEFT_FOOT =    TRUE,
 	BP_RIGHT_FOOT =   TRUE,
 	BP_LEFT_LEG =     TRUE,
@@ -65,6 +65,7 @@
 	SLOT_OVER =       FALSE,
 	SLOT_NECK =       FALSE,
 	SLOT_BACK =       FALSE,
+	SLOT_MOUTH =      FALSE,
 	BP_HEAD =         TRUE,
 	SLOT_EYES =       FALSE,
 	SLOT_FACE =       FALSE,

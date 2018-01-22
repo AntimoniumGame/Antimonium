@@ -190,6 +190,7 @@
 #include "code\materials\material_definitions_metals.dm"
 #include "code\materials\material_definitions_stone.dm"
 #include "code\mobs\_mob.dm"
+#include "code\mobs\mob_armour.dm"
 #include "code\mobs\mob_body.dm"
 #include "code\mobs\mob_communication.dm"
 #include "code\mobs\mob_consciousness.dm"

@@ -2,6 +2,14 @@
 	name = "gear slot"
 	concealable = TRUE
 
+/obj/ui/inv/gear/SetHeld(var/obj/item/thing)
+	owner.AddArmourCoverage(thing)
+	..()
+
+/obj/ui/inv/gear/ForgetHeld()
+	if(holding) owner.RemoveArmourCoverage(holding)
+	..()
+
 /obj/ui/inv/gear/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
 	. = ..()
 	if(.)

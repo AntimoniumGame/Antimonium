@@ -2,6 +2,8 @@
 	name = "shirt"
 	icon = 'icons/objects/clothing/shirts/shirt_white.dmi'
 	slot_flags = SLOT_FLAG_UPPER_BODY
+	body_coverage = list(BP_CHEST, BP_LEFT_ARM, BP_RIGHT_ARM)
+
 	colour_to_icon = list(
 		WHITE =         'icons/objects/clothing/shirts/shirt_white.dmi',
 		PALE_BROWN =    'icons/objects/clothing/shirts/shirt_yellow.dmi',
