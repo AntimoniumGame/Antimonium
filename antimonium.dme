@@ -302,6 +302,7 @@
 #include "code\objects\items\stacks\tiles.dm"
 #include "code\objects\items\tools\athame.dm"
 #include "code\objects\items\tools\component.dm"
+#include "code\objects\items\tools\crozier.dm"
 #include "code\objects\items\tools\fetish.dm"
 #include "code\objects\items\tools\jester.dm"
 #include "code\objects\items\tools\level.dm"

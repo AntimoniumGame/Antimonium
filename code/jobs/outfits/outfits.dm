@@ -18,11 +18,10 @@
 		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
 		SLOT_NECK = /obj/item/clothing/neck/chain,
-		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church,
+		SLOT_LEFT_HAND = /obj/item/crozier
 		)
-	/*
-	crozier http://www.stnicholascenter.org/media/images/s/shop-crozier3.jpg
-	*/
+
 
 /datum/outfit/paladin
 	name = "Paladin"
