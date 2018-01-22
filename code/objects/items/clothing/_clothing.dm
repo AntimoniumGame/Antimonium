@@ -1,10 +1,21 @@
 /obj/item/clothing
 	default_material_path = /datum/material/cloth
 	collect_sound = 'sounds/effects/rustle1.ogg'
+
 	var/dyed = WHITE
 	var/list/colour_to_icon
 	var/list/armour
 	var/list/body_coverage
+	var/list/alternate_icons
+	var/list/mob_can_equip = list(/mob/human)
+
+/obj/item/clothing/GetWornIcon(var/inventory_slot)
+	var/mob/M = loc
+	if(length(alternate_icons) && istype(M) && alternate_icons[M.type])
+		icon = alternate_icons[M.type]
+	else
+		icon = initial(icon)
+	. = ..()
 
 /obj/item/clothing/Destroyed()
 	var/mob/M = loc
