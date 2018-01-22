@@ -8,34 +8,29 @@
 /atom
 	var/list/radial_menus = list() //todo event framework
 
-/atom/Destroy()
-	. = ..()
+/atom/proc/UpdateRadialMenus(var/delay)
+	set waitfor = 0
+	sleep(delay)
 	if(radial_menus.len)
 		for(var/thing in radial_menus)
 			var/obj/ui/radial_menu/menu = thing
 			menu.UpdateButtons()
 
+/atom/Destroy()
+	. = ..()
+	UpdateRadialMenus()
+
+/atom/movable/Move()
+	. = ..()
+	UpdateRadialMenus(1)
+
 /atom/Entered()
 	. = ..()
-
-	if(radial_menus.len)
-		spawn(1)
-			if(!radial_menus.len)
-				return
-			for(var/thing in radial_menus)
-				var/obj/ui/radial_menu/menu = thing
-				menu.UpdateButtons()
+	UpdateRadialMenus(1)
 
 /atom/Exited()
 	. = ..()
-
-	if(radial_menus.len)
-		spawn(1)
-			if(!radial_menus.len)
-				return
-			for(var/thing in radial_menus)
-				var/obj/ui/radial_menu/menu = thing
-				menu.UpdateButtons()
+	UpdateRadialMenus(1)
 
 /obj/ui/radial_menu
 	name = "Radial Menu"
@@ -123,6 +118,10 @@
 	return
 
 /obj/ui/radial_menu/proc/UpdateButtons()
+
+	if(!IsAdjacentTo(owner, source_atom))
+		QDel(src, "adjacency fail")
+		return
 
 	var/list/displaying = source_atom.GetRadialMenuContents(owner, menu_type, GetAdditionalMenuData())
 
