@@ -25,9 +25,11 @@
 	solid_name = "frozen blood"
 	gas_name = "vaporized blood"
 	colour = DARK_RED
+	smell_o_vision = TRUE
 
 /datum/material/water/ichor
 	general_name = "ichor"
 	solid_name = "frozen ichor"
 	gas_name = "vaporized ichor"
 	colour = PALE_GREEN
+	smell_o_vision = TRUE

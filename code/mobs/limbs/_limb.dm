@@ -62,6 +62,6 @@
 				return TRUE
 	return FALSE
 
-/obj/item/limb/proc/IsDextrous()
-	owner.Notify("Your [grasp_name] [grasp_plural ? "aren't" : "isn't"] dextrous enough for that.")
+/obj/item/limb/proc/IsDextrous(var/silent)
+	if(!silent) owner.Notify("Your [grasp_name] [grasp_plural ? "aren't" : "isn't"] dextrous enough for that.")
 	return FALSE

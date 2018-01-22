@@ -104,9 +104,9 @@
 	else if(inventory_slot == SLOT_FEET)
 		limb_check_list = list(BP_LEFT_FOOT, BP_RIGHT_FOOT)
 
+	var/image/I
 	if(inventory_slot == SLOT_LEFT_HAND || inventory_slot == SLOT_RIGHT_HAND || inventory_slot == SLOT_MOUTH)
-		var/image/I
-		if(occupies_two_hands || has_variant_inhand_icon)
+		if(inventory_slot != SLOT_MOUTH && (occupies_two_hands || has_variant_inhand_icon))
 			I = image(icon = icon, icon_state = (inventory_slot == SLOT_LEFT_HAND ? "inhand_left" : "inhand_right"))
 		else
 			I = new() //todo cache this
@@ -121,14 +121,18 @@
 			else if(inventory_slot == SLOT_LEFT_HAND)
 				offset_x = 8
 				M.Scale(-1, 1)
+			else if(inventory_slot == SLOT_MOUTH)
+				M.Turn(90)
+				offset_x = -5
+				offset_y = -6
+
 			M.Translate(offset_x, offset_y)
 			I.transform = M
-		return I
 
-	if(limb_check_list.len)
+	if(!I && limb_check_list.len)
 		var/mob/owner = loc
 		if(istype(owner))
-			var/image/I = image(null)
+			I = image(null)
 			for(var/limb in limb_check_list)
 				var/obj/item/limb/bp = owner.GetLimb(limb)
 				if(istype(bp))
@@ -138,8 +142,17 @@
 						I.overlays += image(icon, "[limb]")
 				else
 					I.overlays += image(icon, "[limb]_missing")
-			return I
-	return image(icon = icon, icon_state = inventory_slot)
+	if(!I)
+		I = image(icon = icon, icon_state = inventory_slot)
+
+	if(inventory_slot != "held")
+		var/mob/holder = loc
+		if(I && istype(holder))
+			if(holder.clothing_offset_x || holder.clothing_offset_y)
+				var/matrix/M = I.transform ? I.transform : matrix()
+				M.Translate(holder.clothing_offset_x, holder.clothing_offset_y)
+				I.transform = M
+	. = I
 
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
 	return image(icon = icon, icon_state = "prone_[inventory_slot]")

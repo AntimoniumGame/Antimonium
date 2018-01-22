@@ -56,19 +56,3 @@
 
 /mob/proc/CreateOrgans()
 	return
-
-/mob/proc/ToggleSitting(var/deliberate = FALSE)
-	sitting = !sitting
-	for(var/limb in list(BP_LEFT_LEG, BP_RIGHT_LEG, BP_LEFT_FOOT, BP_RIGHT_FOOT))
-		var/obj/item/limb/bp = GetLimb(limb)
-		if(istype(bp))
-			bp.SetNotMoving(sitting)
-	UpdateIcon()
-	if(deliberate)
-		if(sitting)
-			Notify("<span class='notice'>You sit down.</span>")
-		else
-			Notify("<span class='notice'>You stand up.</span>")
-	if(stand)
-		stand.toggle_state = (prone || sitting)
-		stand.UpdateIcon()

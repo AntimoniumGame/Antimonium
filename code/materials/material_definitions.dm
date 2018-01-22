@@ -91,6 +91,7 @@
 	ignition_point = 460
 	hit_sound = 'sounds/effects/gore1.ogg'
 	colour = DARK_RED
+	smell_o_vision = TRUE
 
 /datum/material/dirt
 	general_name = "dirt"

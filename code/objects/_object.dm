@@ -57,3 +57,9 @@
 	if(material)
 		amt += mod_amt * material.value_modifier
 	return amt
+
+/obj/Initialize()
+	// Update appearance flags for greyscale doggovision.
+	if(istype(material) && material.smell_o_vision)
+		appearance_flags |= NO_CLIENT_COLOR
+	. = ..()

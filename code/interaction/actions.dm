@@ -20,8 +20,10 @@
 		target_limb = attacker.target_zone.selecting
 	else
 		target_limb = pick(limbs_by_key)
+
 	var/obj/item/limb/limb = GetLimb(target_limb)
-	limb.HandleAttacked(attack_weight, attack_sharpness, attack_contact_size, attacked_with)
+	var/list/armour_modified_values = HandleArmour(limb, attack_weight, attack_sharpness, attack_contact_size)
+	limb.HandleAttacked(armour_modified_values[1], armour_modified_values[2], armour_modified_values[3], attack_contact_size, attacked_with)
 
 /mob/proc/ResolveBurn(var/attack_weight, var/attack_sharpness, var/attack_contact_size)
 	if(!limbs || !limbs.len)

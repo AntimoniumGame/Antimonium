@@ -28,6 +28,11 @@
 	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
 
+	var/obj/item/clothing/clothes = thing
+	if(istype(clothes) && length(clothes.mob_can_equip) && !(type in clothes.mob_can_equip))
+		Notify("<span class='warning'>This is not wearable by \a [initial(name)].</span>")
+		return FALSE
+
 	if(istype(thing.loc, /obj/structure))
 		var/obj/structure/struct = thing.loc
 		if(struct.contains)

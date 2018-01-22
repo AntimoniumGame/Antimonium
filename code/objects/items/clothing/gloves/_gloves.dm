@@ -2,6 +2,7 @@
 	name = "gloves"
 	icon = 'icons/objects/clothing/gloves/gloves_white.dmi'
 	slot_flags = SLOT_FLAG_HANDS
+	body_coverage = list(BP_LEFT_HAND, BP_RIGHT_HAND)
 	default_material_path = /datum/material/cloth/leather
 	colour_to_icon = list(
 		WHITE =         'icons/objects/clothing/gloves/gloves_white.dmi',

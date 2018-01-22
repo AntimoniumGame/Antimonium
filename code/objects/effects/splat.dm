@@ -44,16 +44,6 @@
 
 	..(newloc, material_path)
 
-/obj/effect/random/splat/Initialize()
-
-	// Update appearance flags for greyscale doggovision.
-	if(istype(material, /datum/material/water/blood))
-		appearance_flags |= NO_CLIENT_COLOR
-	else
-		appearance_flags &= ~NO_CLIENT_COLOR
-
-	..()
-
 /obj/effect/random/splat/UpdateIcon()
 	overlays = splat_images
 	if(random_states && splat_images.len >= random_states)

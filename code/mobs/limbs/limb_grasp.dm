@@ -8,5 +8,5 @@
 		owner.NotifyNearby("\The [owner]'s broken [name] cannot hold [owner.Their()] [held.name], and [held.They()] drop to the ground.", MESSAGE_VISIBLE)
 		owner.DropItem(held)
 
-/obj/item/limb/grasp/IsDextrous()
+/obj/item/limb/grasp/IsDextrous(var/silent)
 	return TRUE
