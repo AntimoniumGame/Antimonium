@@ -92,7 +92,7 @@
 /mob/RandomizePixelOffset()
 	return
 
-/mob/EndThrow()
+/mob/EndThrow(var/throw_force)
 	ResetPosition()
 
 /mob/HandleFireDamage()
@@ -124,3 +124,19 @@
 	if(message_type == MESSAGE_VISIBLE && HasEffect(EFFECT_BLINDED))
 		return 0
 	return ..(message, message_type)
+
+/mob/MiddleClickedOn(var/mob/clicker)
+	if(IsAdjacentTo(src, clicker) && src != clicker)
+		new /obj/ui/radial_menu/mob(clicker, src)
+		return TRUE
+	. = ..()
+
+/mob/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
+	. = ..()
+	for(var/invslot in inventory_slots)
+		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
+		if(istype(inv_slot) && inv_slot.holding)
+			. += inv_slot.holding
+
+/mob/proc/Incapacitated()
+	return (dead || HasEffect(EFFECT_UNCONSCIOUS))

@@ -75,3 +75,4 @@
 #define RADIAL_MENU_CRAFTING   "crafting"
 #define RADIAL_MENU_BUILDING   "building"
 #define RADIAL_MENU_STRUCTURES "structures"
+#define RADIAL_MENU_MOB_STRIP  "mob_strip"

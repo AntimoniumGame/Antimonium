@@ -1,3 +1,14 @@
+/mob/verb/debug_outfits()
+	var/last_x = 0
+	var/last_y = 0
+	for(var/datum/job/job in job_datums)
+		var/mob/human/H = new(locate(x+last_x,y+last_y,z))
+		job.Equip(H)
+		last_x++
+		if(last_x > 6)
+			last_x = 0
+			last_y++
+
 /datum/outfit/church
 	name = "Minister"
 	equip_to_slot = list(
@@ -5,11 +16,9 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
 		SLOT_OVER = /obj/item/clothing/over/robes,
-		SLOT_NECK = /obj/item/clothing/neck/chain
+		SLOT_NECK = /obj/item/clothing/neck/chain,
+		SLOT_LEFT_HAND = /obj/item/thurible
 	)
-	/*
-	thurible http://tibetanspirit.wpengine.netdna-cdn.com/wp-content/uploads/2012/10/incense_burner_copper_round_footed_5_tall-180x180.jpg
-	*/
 
 /datum/outfit/archimandrite
 	name = "Archimandrite"
@@ -20,26 +29,26 @@
 		SLOT_OVER = /obj/item/clothing/over/robes,
 		SLOT_HAT = /obj/item/clothing/hat/archimandrite,
 		SLOT_NECK = /obj/item/clothing/neck/chain,
-		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church
+		SLOT_LEFT_RING = /obj/item/clothing/ring/signet/church,
+		SLOT_LEFT_HAND = /obj/item/crozier
 		)
-	/*
-	crozier http://www.stnicholascenter.org/media/images/s/shop-crozier3.jpg
-	*/
+
 
 /datum/outfit/paladin
 	name = "Paladin"
 	equip_to_slot = list(
 		SLOT_FEET = /obj/item/clothing/boots/iron,
+		SLOT_HANDS = /obj/item/clothing/gloves/iron,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
-		SLOT_NECK = /obj/item/clothing/neck/chain/holy
+		SLOT_NECK = /obj/item/clothing/neck/chain/holy,
+		SLOT_LEFT_HAND = /obj/item/weapon/broadsword,
+		SLOT_HAT = /obj/item/clothing/hat/full_helmet
 	)
+
 	/*
 	SLOT_UPPER_BODY = gambeson,
-	plate armour (upper body)
-	plate leggings
-	gauntlets
-	full helm
-	two-handed sword
+	SLOT_OVER = plate armour
+	SLOT_LOWER_BODY = plate leggings
 	*/
 
 /datum/outfit/count
@@ -85,12 +94,10 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/grey,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/red,
 		SLOT_HANDS = /obj/item/clothing/gloves,
-		SLOT_HAT = /obj/item/clothing/hat/leather_cap
+		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
+		SLOT_OVER = /obj/item/clothing/over/chainmail,
+		SLOT_LEFT_HAND = /obj/item/weapon/halberd
 	)
-	/*
-	SLOT_UPPER_BODY = chainmail
-	halberd
-	*/
 
 /datum/outfit/rifleman
 	name = "Rifleman"

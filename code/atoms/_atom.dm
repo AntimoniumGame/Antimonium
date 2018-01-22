@@ -139,5 +139,5 @@
 	pixel_x = rand(8,24)-16
 	pixel_y = rand(8,24)-16
 
-/atom/movable/proc/EndThrow()
+/atom/movable/proc/EndThrow(var/throw_force)
 	return

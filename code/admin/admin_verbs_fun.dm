@@ -73,6 +73,15 @@
 
 	var/list/colour_maps = list(
 		list(
+			"ident" = "steel",
+			"colours" = list(
+				NAVY_BLUE,
+				DARK_PURPLE,
+				PALE_GREY,
+				GREY_BLUE
+			)
+		),
+		list(
 			"ident" = "yellow",
 			"colours" = list(
 				GREEN_BROWN,

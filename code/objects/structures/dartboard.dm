@@ -22,7 +22,7 @@
 		icon_state = "world_flat"
 	..()
 
-/obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile)
+/obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile, var/throw_force = 1)
 
 	var/obj/item/dart = projectile
 	if(!istype(dart) || !dart.sharpness)

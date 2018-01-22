@@ -34,6 +34,9 @@
 			user.SetActionCooldown(3)
 			return TRUE
 
+/obj/item/proc/FireAt(var/mob/user, var/atom/target)
+	return FALSE
+
 /obj/item/proc/Attacking(var/mob/user, var/mob/target)
 	if(!(flags & FLAG_SIMULATED))
 		return

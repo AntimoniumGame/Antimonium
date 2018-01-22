@@ -41,5 +41,11 @@
 /mob/abstract/ExaminedBy(var/mob/clicker)
 	clicker.Notify("That's a spooky ghost!")
 
+/mob/abstract/MiddleClickedOn(var/mob/clicker)
+	ExaminedBy(clicker)
+
 /mob/abstract/UpdateIcon()
 	return
+
+/mob/abstract/Incapacitated()
+	return FALSE

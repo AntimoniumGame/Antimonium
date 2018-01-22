@@ -14,6 +14,7 @@
 	var/name_prefix
 	var/associated_skill
 	var/occupies_two_hands = FALSE
+	var/has_variant_inhand_icon = FALSE
 
 	var/hit_sound = 'sounds/effects/punch1.ogg'
 	var/collect_sound = 'sounds/effects/click1.ogg'
@@ -104,20 +105,24 @@
 		limb_check_list = list(BP_LEFT_FOOT, BP_RIGHT_FOOT)
 
 	if(inventory_slot == SLOT_LEFT_HAND || inventory_slot == SLOT_RIGHT_HAND || inventory_slot == SLOT_MOUTH)
-		var/image/I = new() //todo cache this
-		I.appearance = GetInHandAppearanceAtom()
-		I.layer = FLOAT_LAYER
-		var/matrix/M = matrix()
-		M.Scale(1, -1)
-		var/offset_x = 0
-		var/offset_y = -8
-		if(inventory_slot == SLOT_RIGHT_HAND)
-			offset_x = -8
-		else if(inventory_slot == SLOT_LEFT_HAND)
-			offset_x = 8
-			M.Scale(-1, 1)
-		M.Translate(offset_x, offset_y)
-		I.transform = M
+		var/image/I
+		if(occupies_two_hands || has_variant_inhand_icon)
+			I = image(icon = icon, icon_state = (inventory_slot == SLOT_LEFT_HAND ? "inhand_left" : "inhand_right"))
+		else
+			I = new() //todo cache this
+			I.appearance = GetInHandAppearanceAtom()
+			I.layer = FLOAT_LAYER
+			var/matrix/M = matrix()
+			M.Scale(1, -1)
+			var/offset_x = 0
+			var/offset_y = -8
+			if(inventory_slot == SLOT_RIGHT_HAND)
+				offset_x = -8
+			else if(inventory_slot == SLOT_LEFT_HAND)
+				offset_x = 8
+				M.Scale(-1, 1)
+			M.Translate(offset_x, offset_y)
+			I.transform = M
 		return I
 
 	if(limb_check_list.len)
