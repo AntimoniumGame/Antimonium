@@ -87,7 +87,7 @@
 		SLOT_HANDS = /obj/item/clothing/gloves,
 		SLOT_HAT = /obj/item/clothing/hat/leather_cap,
 		SLOT_OVER = /obj/item/clothing/over/chainmail,
-		SLOT_LEFT_HAND = /obj/item/weapon/halberd
+		SLOT_LEFT_HAND = /obj/item/weapon/twohanded/halberd
 	)
 
 /datum/outfit/rifleman
