@@ -5,7 +5,7 @@
 	var/run_delay = 1
 
 /mob/CanMove()
-	return (!HasEffect(EFFECT_UNCONSCIOUS) && !OnActionCooldown() && (dragged || (world.time >= next_move)))
+	return (dragged || (world.time >= next_move && !Incapacitated() && !OnActionCooldown()))
 
 /mob/Move(NewLoc,Dir)
 
