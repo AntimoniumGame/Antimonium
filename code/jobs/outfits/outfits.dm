@@ -31,14 +31,11 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy,
 		SLOT_LEFT_HAND = /obj/item/weapon/broadsword,
-		SLOT_HAT = /obj/item/clothing/hat/full_helmet
+		SLOT_HAT = /obj/item/clothing/hat/full_helmet,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/gambeson,
+		SLOT_OVER = /obj/item/clothing/over/full_plate,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/plate_leggings
 	)
-
-	/*
-	SLOT_UPPER_BODY = gambeson,
-	SLOT_OVER = plate armour
-	SLOT_LOWER_BODY = plate leggings
-	*/
 
 /datum/outfit/count
 	name = "Count"
