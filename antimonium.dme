@@ -7,15 +7,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "dump"
-#define FILE_DIR "dump/apron"
-#define FILE_DIR "dump/boots"
-#define FILE_DIR "dump/fingerless_gloves"
-#define FILE_DIR "dump/gloves"
-#define FILE_DIR "dump/pants"
-#define FILE_DIR "dump/robes"
-#define FILE_DIR "dump/shirt"
-#define FILE_DIR "dump/shorts"
 #define FILE_DIR "icons"
 #define FILE_DIR "icons/areas"
 #define FILE_DIR "icons/images"

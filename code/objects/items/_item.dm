@@ -89,6 +89,7 @@
 	return src
 
 /obj/item/proc/GetWornIcon(var/inventory_slot)
+
 	// Hardcoding this for now. I am sure a better system will come along in the future.
 	var/list/limb_check_list = list()
 	if(inventory_slot == SLOT_UPPER_BODY || inventory_slot == SLOT_OVER)
@@ -155,7 +156,12 @@
 	. = I
 
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
-	return image(icon = icon, icon_state = "prone_[inventory_slot]")
+	var/image/I = image(icon = icon, icon_state = "[inventory_slot]_prone")
+	if(inventory_slot == SLOT_HAT)
+		var/matrix/M = matrix()
+		M.Translate(0, 16)
+		I.transform = M
+	return I
 
 /obj/item/proc/GetInvIcon()
 	return GetWornIcon("held")
