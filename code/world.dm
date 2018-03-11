@@ -21,3 +21,5 @@
 		sleep(1)
 		del(world)
 	#endif
+
+#define DEBUG 1

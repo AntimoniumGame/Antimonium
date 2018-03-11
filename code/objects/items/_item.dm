@@ -156,6 +156,13 @@
 	. = I
 
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
+
+#ifdef DEBUG
+	if(!("[inventory_slot]_prone" in icon_states(icon)))
+		world.log << "Missing prone icon state '[inventory_slot]_prone' for [type]."
+		return
+#endif
+
 	var/image/I = image(icon = icon, icon_state = "[inventory_slot]_prone")
 	if(inventory_slot == SLOT_HAT)
 		var/matrix/M = matrix()

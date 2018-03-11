@@ -4,10 +4,6 @@
 /image/progress_bar
 	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM
 
-/mob/verb/bartest()
-	var/datum/progress_bar/bar = new(client, src)
-	bar.Start(rand(30,60))
-
 /datum/progress_bar
 	var/client/owner
 	var/image/bar
