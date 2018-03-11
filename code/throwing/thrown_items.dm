@@ -14,6 +14,8 @@
 	if(!thrower.OnActionCooldown() && HandlePreThrow(thrower))
 		thrower.SetActionCooldown(4)
 		var/atom/movable/throwing = GetThrownAtom()
+		if(!istype(throwing))
+			return FALSE
 		thrower.NotifyNearby("<span class='alert'>\The [thrower] hurls \the [throwing]!</span>", MESSAGE_VISIBLE)
 		thrower.SetActionCooldown(5)
 		thrower.DoAttackAnimation(target, throwing)
@@ -31,6 +33,9 @@
 
 // Grabs.
 /obj/item/grab/GetThrownAtom()
+	if(!complex && istype(grabbed, /mob))
+		owner.Notify("<span class='warning'>You need a grip on the head, shoulders or waist to throw \the [grabbed].</span>")
+		return
 	return grabbed
 
 /atom/movable/grab/HandlePostThrow()
