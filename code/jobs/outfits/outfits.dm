@@ -31,14 +31,11 @@
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_NECK = /obj/item/clothing/neck/chain/holy,
 		SLOT_LEFT_HAND = /obj/item/weapon/broadsword,
-		SLOT_HAT = /obj/item/clothing/hat/full_helmet
+		SLOT_HAT = /obj/item/clothing/hat/full_helmet,
+		SLOT_UPPER_BODY = /obj/item/clothing/shirt/gambeson,
+		SLOT_OVER = /obj/item/clothing/over/full_plate,
+		SLOT_LOWER_BODY = /obj/item/clothing/pants/plate_leggings
 	)
-
-	/*
-	SLOT_UPPER_BODY = gambeson,
-	SLOT_OVER = plate armour
-	SLOT_LOWER_BODY = plate leggings
-	*/
 
 /datum/outfit/count
 	name = "Count"
@@ -114,7 +111,7 @@
 /datum/outfit/town
 	name = "Bondsman"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown
 	)
@@ -172,7 +169,7 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
-		SLOT_OVER = /obj/item/clothing/over/apron/blue,
+		SLOT_OVER = /obj/item/clothing/over/apron,
 		SLOT_HAT = /obj/item/clothing/hat/chef
 	)
 
@@ -212,10 +209,10 @@
 /datum/outfit/hunter
 	name = "Hunter"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown,
-		SLOT_HANDS = /obj/item/clothing/boots,
+		SLOT_HANDS = /obj/item/clothing/gloves/brown,
 		SLOT_HAT = /obj/item/clothing/hat/headdress
 	)
 
@@ -246,7 +243,7 @@
 /datum/outfit/tailor
 	name = "Tailor"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/blue,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/blue,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue,
 		SLOT_LEFT_RING = /obj/item/clothing/ring/thimble

@@ -23,3 +23,9 @@
 	armour = list(WOUND_CUT = 3, WOUND_BURN = 0, WOUND_BRUISE = 1)
 	mob_can_equip = list(/mob/human, /mob/animal/dog)
 	alternate_icons = list(/mob/animal/dog = 'icons/objects/clothing/armour/chainmail_dog.dmi')
+
+/obj/item/clothing/over/full_plate
+	name = "full plate"
+	icon = 'icons/objects/clothing/armour/full_plate.dmi'
+	default_material_path = /datum/material/metal/iron
+	armour = list(WOUND_CUT = 5, WOUND_BURN = 1, WOUND_BRUISE = 3)

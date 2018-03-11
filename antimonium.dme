@@ -7,15 +7,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "dump"
-#define FILE_DIR "dump/apron"
-#define FILE_DIR "dump/boots"
-#define FILE_DIR "dump/fingerless_gloves"
-#define FILE_DIR "dump/gloves"
-#define FILE_DIR "dump/pants"
-#define FILE_DIR "dump/robes"
-#define FILE_DIR "dump/shirt"
-#define FILE_DIR "dump/shorts"
 #define FILE_DIR "icons"
 #define FILE_DIR "icons/areas"
 #define FILE_DIR "icons/images"
@@ -274,8 +265,10 @@
 #include "code\objects\items\clothing\over\over_armour.dm"
 #include "code\objects\items\clothing\over\over_robes.dm"
 #include "code\objects\items\clothing\pants\_pants.dm"
+#include "code\objects\items\clothing\pants\pants_iron.dm"
 #include "code\objects\items\clothing\pants\pants_jester.dm"
 #include "code\objects\items\clothing\shirts\_shirt.dm"
+#include "code\objects\items\clothing\shirts\shirt_gambeson.dm"
 #include "code\objects\items\clothing\shirts\shirt_jester.dm"
 #include "code\objects\items\clothing\shirts\shirt_sailor.dm"
 #include "code\objects\items\clothing\shirts\shirt_tourist.dm"

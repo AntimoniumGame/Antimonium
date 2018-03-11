@@ -17,16 +17,28 @@
 /client/proc/MassDebugOutfits()
 
 	set name = "Mass Debug Outfits"
-	set desc = "Don't use this on a live server."
+	set desc = "Don't use this on a live server please."
 	set category = "Debug"
 
 	var/last_x = 0
 	var/last_y = 0
-	for(var/datum/job/job in job_datums)
-		var/mob/human/H = new(locate(mob.x+last_x,mob.y+last_y,mob.z))
-		job.Equip(H)
+
+	var/i = 1
+	var/standing = TRUE
+	while(i <= job_datums.len)
+
+		var/mob/H = new(locate(mob.x+last_x,mob.y+last_y,mob.z))
+		var/datum/job/job = job_datums[i]
+
+		if(istype(H))
+			H = job.Equip(H)
+			if(!standing)
+				H.ToggleProne()
+				i++
+		standing = !standing
+
 		last_x++
-		if(last_x > 6)
+		if(last_x > world.view)
 			last_x = 0
 			last_y++
 
