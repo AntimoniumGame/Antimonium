@@ -88,6 +88,28 @@
 /obj/item/proc/GetInHandAppearanceAtom()
 	return src
 
+/obj/item/proc/GetInhandIcon(var/inventory_slot, var/prone)
+	var/image/I = new() //todo cache this
+	I.appearance = GetInHandAppearanceAtom()
+	I.layer = FLOAT_LAYER
+	var/matrix/M = matrix()
+	M.Scale(1, -1)
+	var/offset_x = 0
+	var/offset_y = -8
+	if(inventory_slot == SLOT_RIGHT_HAND)
+		offset_x = -8
+	else if(inventory_slot == SLOT_LEFT_HAND)
+		offset_x = 8
+		M.Scale(-1, 1)
+	else if(inventory_slot == SLOT_MOUTH)
+		M.Turn(90)
+		offset_x = -5
+		offset_y = -6
+
+	M.Translate(offset_x, offset_y)
+	I.transform = M
+	return I
+
 /obj/item/proc/GetWornIcon(var/inventory_slot)
 
 	// Hardcoding this for now. I am sure a better system will come along in the future.
@@ -110,25 +132,7 @@
 		if(inventory_slot != SLOT_MOUTH && (occupies_two_hands || has_variant_inhand_icon))
 			I = image(icon = icon, icon_state = (inventory_slot == SLOT_LEFT_HAND ? "inhand_left" : "inhand_right"))
 		else
-			I = new() //todo cache this
-			I.appearance = GetInHandAppearanceAtom()
-			I.layer = FLOAT_LAYER
-			var/matrix/M = matrix()
-			M.Scale(1, -1)
-			var/offset_x = 0
-			var/offset_y = -8
-			if(inventory_slot == SLOT_RIGHT_HAND)
-				offset_x = -8
-			else if(inventory_slot == SLOT_LEFT_HAND)
-				offset_x = 8
-				M.Scale(-1, 1)
-			else if(inventory_slot == SLOT_MOUTH)
-				M.Turn(90)
-				offset_x = -5
-				offset_y = -6
-
-			M.Translate(offset_x, offset_y)
-			I.transform = M
+			I = GetInhandIcon(inventory_slot)
 
 	if(!I && limb_check_list.len)
 		var/mob/owner = loc
@@ -157,17 +161,16 @@
 
 /obj/item/proc/GetProneWornIcon(var/inventory_slot)
 
-#ifdef DEBUG
-	if(!("[inventory_slot]_prone" in icon_states(icon)))
-		world.log << "Missing prone icon state '[inventory_slot]_prone' for [type]."
-		return
-#endif
+	var/image/I
+	if(inventory_slot == "left_inhand" || inventory_slot == "right_inhand")
+		I = GetInhandIcon(inventory_slot, TRUE)
+	else
 
-	var/image/I = image(icon = icon, icon_state = "[inventory_slot]_prone")
-	if(inventory_slot == SLOT_HAT)
-		var/matrix/M = matrix()
-		M.Translate(0, 16)
-		I.transform = M
+		I = image(icon = icon, icon_state = "[inventory_slot]_prone")
+		if(inventory_slot == SLOT_HAT)
+			var/matrix/M = matrix()
+			M.Translate(0, 16)
+			I.transform = M
 	return I
 
 /obj/item/proc/GetInvIcon()

@@ -111,7 +111,7 @@
 /datum/outfit/town
 	name = "Bondsman"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/brown,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/brown,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/brown
 	)
@@ -169,7 +169,7 @@
 		SLOT_FEET = /obj/item/clothing/boots,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt,
-		SLOT_OVER = /obj/item/clothing/over/apron/blue,
+		SLOT_OVER = /obj/item/clothing/over/apron,
 		SLOT_HAT = /obj/item/clothing/hat/chef
 	)
 
@@ -243,7 +243,7 @@
 /datum/outfit/tailor
 	name = "Tailor"
 	equip_to_slot = list(
-		SLOT_FEET = /obj/item/clothing/boots,
+		SLOT_FEET = /obj/item/clothing/boots/blue,
 		SLOT_LOWER_BODY = /obj/item/clothing/pants/blue,
 		SLOT_UPPER_BODY = /obj/item/clothing/shirt/blue,
 		SLOT_LEFT_RING = /obj/item/clothing/ring/thimble
