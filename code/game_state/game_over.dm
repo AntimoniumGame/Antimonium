@@ -5,6 +5,9 @@
 	for(var/thing in antagonist_datums)
 		var/datum/antagonist/a = thing
 
+		if(!istype(a) || !istype(a.members, /list) || !a.members.len)
+			continue
+
 		if(a.group_objectives && a.group_antagonist)
 			to_chat(world, "<span class='notice'><b>\The <span class='alert'>[a.role_name_plural]</span> were played by:<br>")
 			for(var/other_thing in a.members)
@@ -16,7 +19,7 @@
 		else
 			for(var/other_thing in a.members)
 				var/datum/role/r = other_thing
-				to_chat(world, "<span class='notice'><b>\A <span class='alert'>[a.role_name]</span> was played by <span class='alert'>[r.ckey]</span> with these objectives:</b></span>")
+				to_chat(world, "<span class='notice'><b>\A <span class='alert'>[a.role_name]</span> (<span class='alert'>[r.ckey]</span>) had these objectives:</b></span>")
 				for(var/line in a.CheckSuccess(r))
 					to_chat(world, "<span class='notice'>[line]</span>")
 		to_chat(world, "<br>")

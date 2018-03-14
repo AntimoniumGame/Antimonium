@@ -21,3 +21,6 @@ wiki_url::https://github.com/AntimoniumGame/Antimonium/wiki
 # hub_name::Antimonium
 # hub_id::Zuhayr.Antimonium
 # hub_pass::ROLLFORSANLOSS
+
+## Uncomment for rounds to end automatically upon the death of all antags.
+# end_on_antag_death::TRUE
