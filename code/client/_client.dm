@@ -55,7 +55,9 @@ var/static/font_name = "Grange-Light" //"Courier New"
 
 	// Display the welcome splash and MOTD.
 	DoClientWelcome(src)
+	world.UpdateStatus()
 
 /client/Del()
 	. = ..()
 	clients -= src
+	world.UpdateStatus()

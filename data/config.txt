@@ -1,17 +1,23 @@
 ##
 # Config options are specified in the format of:
-# config_name config_value
-# ie. wiki_url https://github.com/AntimoniumGame/Antimonium/wiki
+# config_name::config_value
+# ie. wiki_url::https://github.com/AntimoniumGame/Antimonium/wiki
 #
 # Lines beginning with a # are not processed.
 ##
 
-discord_url https://discord.gg/54Q6TfP
-rules_url https://github.com/AntimoniumGame/Antimonium/wiki/Rules
-wiki_url https://github.com/AntimoniumGame/Antimonium/wiki
+discord_url::https://discord.gg/54Q6TfP
+rules_url::https://github.com/AntimoniumGame/Antimonium/wiki/Rules
+wiki_url::https://github.com/AntimoniumGame/Antimonium/wiki
 
 ## Uncomment this to prevent roundstart without a minimum of critical roles being filled.
-# enforce_minimum_job_slots TRUE
+# enforce_minimum_job_slots::TRUE
 
 ## Uncomment this to prevent roundstart with fewer than supplied players readied up.
-# enforce_minimum_player_count 1
+# enforce_minimum_player_count::1
+
+## Uncomment these to list on the hub.
+# hub_status::<b>Antimonium<b> - Isla del Runtime (DEV SERVER)
+# hub_name::Antimonium
+# hub_id::Zuhayr.Antimonium
+# hub_pass::ROLLFORSANLOSS
