@@ -1,12 +1,12 @@
 var/database/admin_db
 var/list/admins = list()
 
-/proc/Anotify(var/message, var/permission = PERMISSIONS_MODERATOR)
+/proc/MassAnotify(var/message, var/permission = PERMISSIONS_MODERATOR)
 	for(var/client/player in clients)
 		if(player.CheckAdminPermission(permission))
 			player.Anotify(message)
 
-/proc/Dnotify(var/message, var/permission = PERMISSIONS_DEBUG)
+/proc/MassDnotify(var/message, var/permission = PERMISSIONS_DEBUG)
 	for(var/client/player in clients)
 		if(player.CheckAdminPermission(permission))
 			player.Dnotify(message)
@@ -19,7 +19,7 @@ var/list/admins = list()
 	// In case this is called at runtime.
 	if(usr)
 		ClearAdmins()
-		Anotify("[usr.key] is reloading admins.")
+		MassAnotify("[usr.key] is reloading admins.")
 
 	// Init/load DB
 	admin_db = new("data/admins.db")
@@ -34,14 +34,14 @@ var/list/admins = list()
 
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		Anotify("SQL error - initialize_admin_database 1 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		MassAnotify("SQL error - initialize_admin_database 1 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 	// Load admins.
 	query = new("SELECT * FROM ranks;")
 
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		Anotify("SQL error - initialize_admin_database 2 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		MassAnotify("SQL error - initialize_admin_database 2 - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 	admins.Cut()
 	while(query.NextRow())
@@ -70,16 +70,16 @@ var/list/admins = list()
 	var/database/query/query = new("INSERT INTO ranks VALUES (?,?,?);", enter_ckey, enter_permissions, enter_title)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		Anotify("SQL error - add_to_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		MassAnotify("SQL error - add_to_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 /proc/UpdateAdminDatabase(var/enter_ckey, var/enter_permissions, var/enter_title)
 	var/database/query/query = new("UPDATE ranks SET permissions = ?, title = ? WHERE ckey == ?;", enter_permissions, enter_title, enter_ckey)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		Anotify("SQL error - update_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		MassAnotify("SQL error - update_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
 
 /proc/RemoveFromAdminDatabase(var/enter_ckey)
 	var/database/query/query = new("DELETE * FROM ranks WHERE ckey == ?;", enter_ckey)
 	query.Execute(admin_db)
 	if(query.Error() || query.ErrorMsg())
-		Anotify("SQL error - remove_from_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)
+		MassAnotify("SQL error - remove_from_admin_database - [query.Error()] - [query.ErrorMsg()]", PERMISSIONS_DEBUG)

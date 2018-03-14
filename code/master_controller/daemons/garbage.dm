@@ -56,7 +56,7 @@ var/datum/daemon/garbage/gc
 		var/trash = locate(garbage[gindex])
 		if(!trash || trash:gc_collect_time > world.time + garbage_timeout)
 			continue
-		Dnotify("GC: \ref[trash] ([trash]) failed to qdel in time and is being deleted.")
+		MassDnotify("GC: \ref[trash] ([trash]) failed to qdel in time and is being deleted.")
 		garbage -= trash
 		del(trash)
 		CHECK_SUSPEND

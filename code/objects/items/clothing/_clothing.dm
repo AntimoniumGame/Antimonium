@@ -26,7 +26,6 @@
 
 /obj/item/clothing/TakeDamage(var/dam, var/source)
 	. = ..()
-	Dnotify("[src] damaged ([dam]) by [source]")
 	UpdateStrings()
 	switch(damage)
 		if(max_damage to (max_damage * 0.75))

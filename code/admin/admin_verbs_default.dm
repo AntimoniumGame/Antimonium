@@ -4,8 +4,26 @@
 		/client/proc/Reboot,
 		/client/proc/StartGame,
 		/client/proc/Respawn,
-		/client/proc/Spawn
+		/client/proc/Spawn,
+		/client/proc/ShowHubStatus,
+		/client/proc/ToggleHubVisibility
 		)
+
+/client/proc/ToggleHubVisibility()
+	set name = "Toggle Hub Visibility"
+	set category = "Admin"
+
+	world.visibility = !world.visibility
+	MassAnotify("[usr.key] [world.visibility ? "enabled" : "disabled"] server hub visibility.")
+
+/client/proc/ShowHubStatus()
+	set name = "Show Hub Status"
+	set category = "Admin"
+
+	to_chat(src, "Server is [world.visibility ? "visible" : "invisible"] to the hub.")
+	to_chat(src, "Hub status is: [world.status]")
+	to_chat(src, "Hub name is: [world.name]")
+	to_chat(src, "Hub ID is: [world.hub]")
 
 var/force_start = FALSE
 /client/proc/StartGame()
@@ -59,7 +77,7 @@ var/force_start = FALSE
 	if(!count || count < 1)
 		return
 
-	Dnotify("Spawned [count]x[use_path] at [spawn_loc.x],[spawn_loc.y] (\the [spawn_loc]).")
+	MassDnotify("[usr.ckey] spawned [count]x[use_path] at [spawn_loc.x],[spawn_loc.y] (\the [spawn_loc]).")
 	while(count>0)
 		new use_path(spawn_loc)
 		count--

@@ -19,6 +19,9 @@
 		var/atom/atom = thing
 		atom.Initialize()
 	atoms_to_initialize.Cut()
+
+	world.UpdateStatus()
+
 	..()
 
 /datum/game_state/setup/Start()

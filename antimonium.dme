@@ -55,6 +55,7 @@
 
 // BEGIN_INCLUDE
 #include "code\world.dm"
+#include "code\world_hub.dm"
 #include "code\interface.dmf"
 #include "code\_defines\admin.dm"
 #include "code\_defines\channels.dm"
