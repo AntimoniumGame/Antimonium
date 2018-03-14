@@ -17,6 +17,7 @@
 		QDel(element, "mob destroyed")
 	ui_screen.Cut()
 	ui_images.Cut()
+	spawn CheckGameCompletion()
 	. = ..()
 
 /mob/proc/CreateUI()

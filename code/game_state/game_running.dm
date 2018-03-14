@@ -1,3 +1,13 @@
+var/tmp/game_is_over
+/proc/CheckGameCompletion()
+	if(config["end_on_antag_death"])
+		for(var/thing in all_roles)
+			var/datum/role/R = thing
+			if(istype(R) && istype(R.mob) && !R.mob.dead)
+				game_is_over = FALSE
+				return
+		game_is_over = TRUE
+
 /datum/game_state/running
 	ident = GAME_RUNNING
 
@@ -15,9 +25,6 @@
 			r.ShowObjectives()
 
 /datum/game_state/running/Tick()
-	if(CheckGameCompletion())
+	if(game_is_over)
 		to_chat(world, "<hr><center><span class='alert'><b><h3>The game is over!</h3></b></span></center><hr>")
 		SwitchGameState(/datum/game_state/over)
-
-/datum/game_state/running/proc/CheckGameCompletion()
-	return FALSE

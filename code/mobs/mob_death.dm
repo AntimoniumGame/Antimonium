@@ -16,5 +16,6 @@
 			TransferControlTo(goast)
 			goast.name = "ghost of [name]"
 			goast.Notify("<b>You have died and are now a spirit.</b>")
+		CheckGameCompletion()
 		return TRUE
 	return FALSE
