@@ -3,7 +3,7 @@ var/tmp/game_is_over
 	if(config["end_on_antag_death"])
 		for(var/thing in all_roles)
 			var/datum/role/R = thing
-			if(istype(R) && istype(R.mob) && !R.mob.dead)
+			if(istype(R) && length(R.antagonist_roles) && istype(R.mob) && !R.mob.dead)
 				game_is_over = FALSE
 				return
 		game_is_over = TRUE
