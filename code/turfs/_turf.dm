@@ -1,3 +1,10 @@
+var/list/corner_cull = list(
+	"[NORTHEAST]" = list("[NORTH]", "[EAST]"),
+	"[NORTHWEST]" = list("[NORTH]", "[WEST]"),
+	"[SOUTHEAST]" = list("[SOUTH]", "[EAST]"),
+	"[SOUTHWEST]" = list("[SOUTH]", "[WEST]")
+)
+
 /turf
 	layer = TURF_LAYER
 	luminosity = 1
@@ -205,14 +212,29 @@
 	if(floor_material)
 
 		if(blend_dirs.len)
+
+			for(var/cull in corner_cull)
+				if(blend_dirs[cull])
+					var/list/culling = corner_cull[cull]
+					var/list/cull_data = blend_dirs[cull]
+					var/check_icon = cull_data[1]
+					for(var/checkdir in culling)
+						if(blend_dirs[checkdir])
+							var/list/data = blend_dirs[checkdir]
+							if(data[1] == check_icon)
+								blend_dirs -= cull
+								break
+
 			for(var/blend_dir in blend_dirs)
 				var/list/blend_data = blend_dirs[blend_dir]
 				var/image/I = image(blend_data[1], "edges", dir = text2num(blend_dir))
-				I.layer = layer + blend_data[2]
+				I.layer = TURF_LAYER + blend_data[2]
 				floor_overlays += I
 
 		if(floor_material.turf_effect_overlay)
-			floor_overlays += image(icon, floor_material.turf_effect_overlay)
+			var/image/I = image(icon, floor_material.turf_effect_overlay)
+			I.layer = TURF_LAYER + floor_material.turf_edge_layer
+			floor_overlays += I
 
 	if(wall_material)
 		for(var/i = 1 to 4)

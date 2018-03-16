@@ -11,8 +11,18 @@
 		/client/proc/ToggleDaemon,
 		/client/proc/JoinAsRole,
 		/client/proc/TestCircleAlgorithm,
-		/client/proc/MassDebugOutfits
+		/client/proc/MassDebugOutfits,
+		/client/proc/MassUpdateTurfIcons
 		)
+
+/client/proc/MassUpdateTurfIcons()
+
+	set name = "Mass Update Turf Icons"
+	set desc = "Force-update all icons for turfs."
+	set category = "Debug"
+
+	for(var/turf/T in world)
+		T.UpdateIcon()
 
 /client/proc/MassDebugOutfits()
 

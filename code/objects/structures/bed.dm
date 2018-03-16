@@ -6,7 +6,7 @@
 	density = FALSE
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_FLAT_SURFACE | FLAG_SEATING
-	layer = TURF_LAYER
+	layer = TURF_LAYER+0.1
 	var/image/sheet
 
 /obj/structure/bed/UpdateIcon()

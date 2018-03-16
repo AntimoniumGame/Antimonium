@@ -1,4 +1,4 @@
-#define TURF_EDGE_LAYER_OFFSET_VALUE 0.01
+#define TURF_EDGE_LAYER_OFFSET_VALUE 0.0001
 
 // This is a bit easier than trying to maintain numerical vars
 // on the material datums IMO. Position in the list indicates
@@ -7,11 +7,14 @@ var/list/turf_edge_layers_by_path = list(
 	/datum/material/stone/tiles,
 	/datum/material/stone,
 	/datum/material/stone/cobble,
+	/datum/material/stone/brick,
 	/datum/material/wood,
 	/datum/material/stone/glass/sand,
 	/datum/material/dirt,
 	/datum/material/dirt/grass,
-	/datum/material/dirt/roots
+	/datum/material/dirt/roots,
+	/datum/material/cloth,
+	/datum/material/cloth/silk
 	)
 
 var/max_turf_edge_layer_value = turf_edge_layers_by_path.len * TURF_EDGE_LAYER_OFFSET_VALUE
