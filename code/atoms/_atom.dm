@@ -19,7 +19,7 @@
 
 	var/image/shadow_underlay	// the shadow underlay for this object
 
-/atom/proc/TakeDamage(var/dam, var/source)
+/atom/proc/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 	UpdateDamageOverlay()
 
 /atom/proc/UpdateIcon()

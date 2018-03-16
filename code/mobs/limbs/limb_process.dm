@@ -4,6 +4,7 @@
 	var/cumulative_wound_depth = 0
 	var/cumulative_wound_severity = 0
 	var/cumulative_wound_pain = 0
+	var/cumulative_burns = 0
 
 /obj/item/limb/Process() // These are processed in human life, they don't need to be on the items list.
 
@@ -21,6 +22,7 @@
 			AdjustPain(-1)
 	else
 
+		cumulative_burns = 0
 		cumulative_wound_depth = 0
 		cumulative_wound_severity = 0
 		cumulative_wound_pain = 0
@@ -30,7 +32,10 @@
 		for(var/thing in wounds)
 
 			var/datum/wound/wound = thing
-			cumulative_wound_severity += wound.severity
+			if(wound.wound_type == WOUND_BURN)
+				cumulative_burns += wound.severity
+			else
+				cumulative_wound_severity += wound.severity
 			cumulative_wound_depth += wound.depth
 			cumulative_wound_pain += round(wound.GetPain()*0.35)
 
@@ -38,7 +43,7 @@
 				bleeding = TRUE
 			wound.AttemptRegeneration(HEAL_PER_TICK)
 
-		if(pain < cumulative_wound_pain)
+		if(pain < max(cumulative_wound_pain, cumulative_burns * 1.5))
 			AdjustPain(rand(wounds.len, wounds.len*2))
 		else if(pain && !broken && !bleeding)
 			AdjustPain(-1)
@@ -51,6 +56,9 @@
 
 /obj/item/limb/proc/UpdateLimbState()
 	if(!owner)
+		return
+	if(cumulative_burns > 50)
+		SeverLimb(WOUND_BURN)
 		return
 	if(cumulative_wound_depth > 30 && cumulative_wound_severity > 50)
 		SeverLimb()

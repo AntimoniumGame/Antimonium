@@ -62,13 +62,13 @@
 /obj/structure/EndThrow(var/throw_force)
 	ResetPosition()
 
-/obj/structure/TakeDamage(var/dam, var/source)
+/obj/structure/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 	damage = max(min(damage+dam, max_damage),0)
 	if(damage == max_damage && !Deleted(src))
-		Destroyed()
+		Destroyed(dtype)
 	..()
 
-/obj/structure/proc/Destroyed()
+/obj/structure/proc/Destroyed(var/dtype = WOUND_BRUISE)
 	if(contains && contains.len)
 		for(var/thing in contains)
 			var/atom/movable/prop = thing

@@ -2,6 +2,12 @@
 	var/list/wounds = list()
 	var/list/organs = list()
 	var/broken = FALSE
+	var/remains_type = /obj/item/stack/reagent/bone
+
+/obj/item/limb/Destroyed(var/dtype = WOUND_BRUISE)
+	if(dtype == WOUND_BURN && remains_type)
+		new remains_type(get_turf(src), _amount = max(1, round(contact_size/10)))
+	. = ..()
 
 /obj/item/limb/proc/ExpandWoundOfType(var/wound_type = WOUND_CUT, var/wound_depth, var/wound_severity, var/obj/item/attacked_with, var/silent = FALSE)
 
@@ -42,10 +48,12 @@
 		return
 
 	cumulative_wound_depth += wound_depth
-	cumulative_wound_severity += wound_severity
-
-	if(wound_type == WOUND_CUT && wound_severity > 5)
-		Splatter(get_turf(owner), owner.blood_material)
+	if(wound_type == WOUND_BURN)
+		cumulative_burns += wound_severity
+	else
+		cumulative_wound_severity += wound_severity
+		if(wound_type == WOUND_CUT && wound_severity > 5)
+			Splatter(get_turf(owner), owner.blood_material)
 
 	ExpandWoundOfType(wound_type, wound_depth, wound_severity, attacked_with)
 
@@ -58,15 +66,21 @@
 
 /obj/item/limb/proc/HandleBurned(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
 	ExpandWoundOfType(WOUND_BURN, 0, attack_contact_size, attacked_with, silent = TRUE)
+	if(cumulative_burns > 50)
+		SeverLimb(WOUND_BURN)
+		return
 
 /obj/item/limb/proc/BreakBone()
 	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>", MESSAGE_AUDIBLE)
 	broken = TRUE
 	HandleBreakEffects()
 
-/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE)
+/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE, var/dtype = WOUND_CUT)
 
-	if(!owner || root_limb)
+	if(!owner)
+		return
+
+	if(root_limb && dtype != WOUND_BURN)
 		return
 
 	not_moving = FALSE
@@ -105,13 +119,18 @@
 		M.Turn(pick(0,90,180,270))
 		transform = M
 
-		PlayLocalSound(src, pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg')), 100)
-		if(amputated)
+		var/play_sound = pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg'))
+		if(dtype == WOUND_BURN)
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] burns away to ash!</b></span>", MESSAGE_VISIBLE)
+			ForceMove(get_turf(owner))
+			Destroyed(WOUND_BURN)
+		else if(amputated)
 			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] has been cleanly severed!</b></span>", MESSAGE_VISIBLE)
 			ForceMove(get_turf(owner))
 		else
 			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>", MESSAGE_VISIBLE)
 			ThrownAt(get_step(src, pick(all_dirs)))
+		PlayLocalSound(src, play_sound, 100)
 
 		var/blood_mat = owner.blood_material
 		spawn(1)
@@ -122,6 +141,9 @@
 			overlays += child.GetWornIcon("world")
 
 	HandleSeverEffects()
+
+	if(root_limb && dtype == WOUND_BURN)
+		QDel(owner)
 	owner = null
 
 /obj/item/limb/proc/HandleSeverEffects()

@@ -106,12 +106,7 @@
 	ResetPosition()
 
 /mob/HandleFireDamage()
-	if(fire_intensity >= MAX_FIRE_INTENSITY)
-		Die("the hungry flames")
-		// create ashes
-		// Light off
-		QDel(src, "burned up")
-	else if(IsOnFire() && fire_intensity)
+	if(IsOnFire() && fire_intensity)
 		for(var/invslot in inventory_slots)
 			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
 			if(inv_slot.holding && !inv_slot.holding.IsOnFire() && inv_slot.holding.IsFlammable() && inv_slot.holding.CanIgnite() && prob(10))

@@ -2,6 +2,7 @@
 	var/list/progress_bars
 
 /image/progress_bar
+	plane = EFFECTS_PLANE
 	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM
 
 /datum/progress_bar

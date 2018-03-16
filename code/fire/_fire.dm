@@ -36,7 +36,7 @@
 	return IsFlammable()
 
 /atom/proc/HandleFireDamage()
-	if(prob(min(100,fire_intensity))) TakeDamage(1)
+	if(prob(min(100,fire_intensity))) TakeDamage(1, dtype = WOUND_BURN)
 
 /atom/proc/Ignite(var/mob/user)
 	if(CanIgnite() && !IsOnFire())

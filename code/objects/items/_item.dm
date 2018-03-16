@@ -20,13 +20,13 @@
 	var/collect_sound = 'sounds/effects/click1.ogg'
 	var/equip_sound = 'sounds/effects/rustle1.ogg'
 
-/obj/item/TakeDamage(var/dam, var/source)
+/obj/item/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 	damage = max(min(damage+dam, max_damage),0)
 	if(damage == max_damage && !Deleted(src))
-		Destroyed()
+		Destroyed(dtype)
 	..()
 
-/obj/item/proc/Destroyed()
+/obj/item/proc/Destroyed(var/dtype = WOUND_BRUISE)
 	QDel(src, "destroyed")
 
 /obj/item/Initialize()
