@@ -11,6 +11,7 @@
 		lit = !lit
 		UpdateIcon()
 		NotifyNearby("<span class='notice'>\The [user] [lit ? "lights" : "extinguishes"] \the [src].</span>")
+		PlayLocalSound(src, !lit ? 'sounds/effects/gasvalve1.ogg' : 'sounds/effects/flare1.ogg', 30)
 
 /obj/structure/gaslamp/UpdateIcon()
 	..()
