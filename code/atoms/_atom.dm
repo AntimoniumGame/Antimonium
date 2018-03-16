@@ -119,7 +119,8 @@
 	if(!isnull(over_object) && IsAdjacentTo(src, over_object) && IsAdjacentTo(usr, over_object) && IsAdjacentTo(usr, src))
 		var/list/arguments = params2list(params)
 		DraggedOntoThing(usr, over_object, arguments["left"], arguments["right"], arguments["middle"])
-		over_object.ThingDraggedOnto(usr, src, arguments["left"], arguments["right"], arguments["middle"])
+		if(src && over_object && usr)
+			over_object.ThingDraggedOnto(usr, src, arguments["left"], arguments["right"], arguments["middle"])
 
 /atom/proc/ThingDraggedOnto(var/mob/user, var/atom/thing, var/left_drag, var/right_drag, var/middle_drag)
 	return
