@@ -11,7 +11,8 @@ var/list/turf_edge_layers_by_path = list(
 	/datum/material/stone/glass/sand,
 	/datum/material/dirt,
 	/datum/material/dirt/grass,
-	/datum/material/dirt/roots
+	/datum/material/dirt/roots,
+	/datum/material/stone/brick
 	)
 
 var/max_turf_edge_layer_value = turf_edge_layers_by_path.len * TURF_EDGE_LAYER_OFFSET_VALUE

@@ -31,6 +31,13 @@
 	name = "cobblestones"
 	icon = 'icons/turfs/cobble_floor.dmi'
 
+/turf/floor/flagstones
+	name = "flagstones"
+	icon = 'icons/turfs/brick_floor.dmi'
+
+/turf/floor/flagstones/New(var/newloc)
+	..(newloc, _floor_material = /datum/material/stone/brick, _wall_material = null)
+
 /turf/floor/cobble/New(var/newloc)
 	..(newloc, _floor_material = /datum/material/stone/cobble, _wall_material = null)
 

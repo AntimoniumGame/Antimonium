@@ -333,6 +333,7 @@
 #include "code\objects\structures\door.dm"
 #include "code\objects\structures\forge_fire.dm"
 #include "code\objects\structures\foundation.dm"
+#include "code\objects\structures\gaslamp.dm"
 #include "code\objects\structures\horseshoe.dm"
 #include "code\objects\structures\lectern.dm"
 #include "code\objects\structures\millstone.dm"
