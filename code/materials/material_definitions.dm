@@ -129,3 +129,10 @@
 	powder_name = "bonedust"
 	grindable = TRUE
 	solid_icon = 'icons/objects/items/bone.dmi'
+
+datum/material/ashes
+	general_name = "ash"
+	colour = BLACK
+	powder_name = "ash"
+	solid_icon = 'icons/objects/items/alchemy/solid_stone_grey.dmi'
+	powder_icon = 'icons/objects/items/alchemy/powder_grey.dmi'

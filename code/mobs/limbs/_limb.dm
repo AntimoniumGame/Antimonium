@@ -47,6 +47,10 @@
 	contact_size = _size  // Reusing contact_size as an 'effective limb
 	weight = contact_size // size' for the purposes of bleeding etc.
 
+	if(_limb_id == BP_HEAD)
+		remains_type = owner.skull_type
+		remains_multi = FALSE
+
 	if(_parent)
 		parent = owner.GetLimb(_parent)
 		parent.children += src

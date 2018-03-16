@@ -3,13 +3,21 @@
 	verbs = list(
 		/client/proc/ChangeMob,
 		/client/proc/Gibself,
+		/client/proc/Decayself,
 		/client/proc/DressSelf,
 		/client/proc/ProduceColouredStates
 		)
 
+/client/proc/Decayself()
+
+	set name = "Decay Self"
+	set category = "Fun"
+
+	mob.Decay()
+
 /client/proc/Gibself()
 
-	set name = "Gibself"
+	set name = "Gib Self"
 	set category = "Fun"
 
 	mob.Gib()

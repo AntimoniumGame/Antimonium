@@ -3,10 +3,17 @@
 	var/list/organs = list()
 	var/broken = FALSE
 	var/remains_type = /obj/item/stack/reagent/bone
+	var/remains_multi = TRUE
 
 /obj/item/limb/Destroyed(var/dtype = WOUND_BRUISE)
 	if(dtype == WOUND_BURN && remains_type)
-		new remains_type(get_turf(src), _amount = max(1, round(contact_size/10)))
+		var/droploc = get_turf(owner ? owner : src)
+		world.log << "BURN DROP [droploc]"
+		new /obj/item/stack/reagent/ashes(droploc, _amount = max(1, contact_size))
+		if(remains_multi)
+			new remains_type(get_turf(droploc), _amount = max(1, round(contact_size/5)))
+		else
+			new remains_type(get_turf(droploc))
 	. = ..()
 
 /obj/item/limb/proc/ExpandWoundOfType(var/wound_type = WOUND_CUT, var/wound_depth, var/wound_severity, var/obj/item/attacked_with, var/silent = FALSE)

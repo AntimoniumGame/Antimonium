@@ -58,7 +58,7 @@
 	if(!owner)
 		return
 	if(cumulative_burns > 50)
-		SeverLimb(WOUND_BURN)
+		SeverLimb(dtype = WOUND_BURN)
 		return
 	if(cumulative_wound_depth > 30 && cumulative_wound_severity > 50)
 		SeverLimb()

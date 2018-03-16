@@ -16,7 +16,8 @@
 	for(var/thing in injured_limbs)
 		var/obj/item/limb/limb = thing
 		limb.Process()
-		pain += limb.pain
+		if(!isnull(limb))
+			pain += limb.pain
 
 	for(var/thing in organs)
 		var/obj/item/organ/organ = thing

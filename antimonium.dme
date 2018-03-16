@@ -274,6 +274,7 @@
 #include "code\objects\items\clothing\shorts\_shorts.dm"
 #include "code\objects\items\clutter\horseshoe.dm"
 #include "code\objects\items\clutter\pipe.dm"
+#include "code\objects\items\clutter\skull.dm"
 #include "code\objects\items\consumable\consumable.dm"
 #include "code\objects\items\consumable\cup.dm"
 #include "code\objects\items\gun\_gun.dm"
