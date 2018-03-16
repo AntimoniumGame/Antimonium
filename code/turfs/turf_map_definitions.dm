@@ -27,19 +27,40 @@
 /turf/floor/wood/New(var/newloc)
 	..(newloc, _floor_material = /datum/material/wood, _wall_material = null)
 
+/turf/floor/brick
+	name = "flagstones"
+	icon = 'icons/turfs/brick_floor.dmi'
+
+/turf/floor/brick/New(var/newloc)
+	..(newloc, _floor_material = /datum/material/stone/brick, _wall_material = null)
+
+/turf/wall/brick
+	name = "brick wall"
+	icon = 'icons/turfs/brick_wall.dmi'
+
+/turf/wall/brick/New(var/newloc)
+	..(newloc, _floor_material = /datum/material/stone/brick, _wall_material = /datum/material/stone/brick)
+
 /turf/floor/cobble
 	name = "cobblestones"
 	icon = 'icons/turfs/cobble_floor.dmi'
 
-/turf/floor/flagstones
-	name = "flagstones"
-	icon = 'icons/turfs/brick_floor.dmi'
-
-/turf/floor/flagstones/New(var/newloc)
-	..(newloc, _floor_material = /datum/material/stone/brick, _wall_material = null)
-
 /turf/floor/cobble/New(var/newloc)
 	..(newloc, _floor_material = /datum/material/stone/cobble, _wall_material = null)
+
+/turf/floor/carpet
+	name = "carpet"
+	icon = 'icons/turfs/plain_carpet_floor.dmi'
+
+/turf/floor/carpet/New(var/newloc)
+	..(newloc, _floor_material = /datum/material/cloth, _wall_material = null)
+
+/turf/floor/fancy_carpet
+	name = "carpet"
+	icon = 'icons/turfs/fancy_carpet_floor.dmi'
+
+/turf/floor/fancy_carpet/New(var/newloc)
+	..(newloc, _floor_material = /datum/material/cloth/silk, _wall_material = null)
 
 /turf/floor/stone
 	name = "stone floor"

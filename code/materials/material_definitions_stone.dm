@@ -17,7 +17,7 @@
 /datum/material/stone/brick
 	general_name = "flagstone"
 	turf_floor_icon = 'icons/turfs/brick_floor.dmi'
-	turf_wall_icon = 'icons/turfs/cobble_wall.dmi' //todo
+	turf_wall_icon = 'icons/turfs/brick_wall.dmi' //todo
 
 /datum/material/stone/cobble
 	general_name = "cobblestone"
@@ -38,7 +38,7 @@
 
 /datum/material/stone/GetBuildableTurfs(var/obj/item/stack/building_with)
 	if(building_with.singular_name == "brick")
-		return list(/turf/floor/flagstones)
+		return list(/turf/wall/brick, /turf/floor/brick)
 	else if(building_with.singular_name == "tile")
 		return list(/turf/wall/tiled, /turf/floor/tiled)
 	else

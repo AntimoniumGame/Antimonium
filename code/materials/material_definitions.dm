@@ -9,6 +9,7 @@
 		/datum/crafting_recipe/tailoring/shirt,
 		/datum/crafting_recipe/tailoring/pants
 		)
+	turf_floor_icon = 'icons/turfs/plain_carpet_floor.dmi'
 
 /datum/material/cloth/felt
 	general_name = "felt"
@@ -30,6 +31,10 @@
 /datum/material/cloth/felt
 	general_name = "felt"
 	descriptor = "felted"
+
+/datum/material/cloth/silk
+	general_name = "silk"
+	turf_floor_icon = 'icons/turfs/fancy_carpet_floor.dmi'
 
 /datum/material/cloth/leather
 	general_name = "leather"

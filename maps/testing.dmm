@@ -13,7 +13,7 @@
 "am" = (/turf/floor/sand,/area/outdoors)
 "an" = (/turf/floor/water,/area/outdoors)
 "ao" = (/turf/wall/tiled,/area/indoors)
-"ap" = (/turf/wall/cobble,/area/indoors)
+"ap" = (/turf/wall/brick,/area/indoors)
 "aq" = (/obj/structure/barrel,/obj/item/torch,/obj/item/torch,/turf/floor/wood,/area/indoors)
 "ar" = (/obj/structure/bed,/turf/floor/wood,/area/indoors)
 "as" = (/obj/structure/crate/chest,/obj/item/torch,/turf/floor/wood,/area/indoors)
@@ -22,114 +22,119 @@
 "av" = (/obj/spawnpoint/count,/turf/floor/wood,/area/indoors)
 "aw" = (/turf/floor/wood,/area/indoors)
 "ax" = (/obj/structure/barrel,/turf/floor/wood,/area/indoors)
-"ay" = (/obj/structure/door/south,/turf/floor/wood,/area/indoors)
-"az" = (/obj/structure/table,/obj/item/stack/coins,/obj/structure/carpet,/turf/floor/wood,/area/indoors)
-"aA" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/wood,/area/indoors)
-"aB" = (/turf/floor/tiled,/area/indoors)
-"aC" = (/obj/spawnpoint/minister,/turf/floor/tiled,/area/indoors)
-"aD" = (/obj/item/weapon/sword,/obj/item/weapon/sword,/obj/structure/table,/turf/floor/cobble,/area/indoors)
-"aE" = (/obj/structure/bench,/turf/floor/cobble,/area/indoors)
-"aF" = (/obj/item/weapon/axe,/obj/item/weapon/axe,/obj/structure/table,/turf/floor/cobble,/area/indoors)
-"aG" = (/obj/structure/door/north,/turf/floor/wood,/area/indoors)
-"aH" = (/obj/structure/barrel,/turf/floor/cobble,/area/indoors)
-"aI" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/floor/cobble,/area/indoors)
-"aJ" = (/obj/structure/table,/turf/floor/cobble,/area/indoors)
-"aK" = (/obj/structure/bed,/turf/floor/cobble,/area/indoors)
-"aL" = (/obj/structure/crate/chest,/turf/floor/cobble,/area/indoors)
-"aM" = (/obj/structure/window,/turf/floor/tiled,/area/indoors)
-"aN" = (/obj/structure/lectern/south,/obj/spawnpoint/archimandrite,/turf/floor/tiled,/area/indoors)
-"aO" = (/turf/floor/cobble,/area/indoors)
-"aP" = (/obj/spawnpoint/captain,/turf/floor/cobble,/area/indoors)
-"aQ" = (/obj/structure/carpet,/turf/floor/cobble,/area/indoors)
-"aR" = (/obj/spawnpoint/rifleman,/turf/floor/cobble,/area/indoors)
-"aS" = (/obj/structure/door/east,/turf/floor/cobble,/area/indoors)
-"aT" = (/obj/spawnpoint/fool,/turf/floor/cobble,/area/indoors)
-"aU" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/obj/spawnpoint/preacher,/turf/floor/tiled,/area/indoors)
-"aV" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/obj/spawnpoint/paladin,/turf/floor/tiled,/area/indoors)
-"aW" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/turf/floor/tiled,/area/indoors)
-"aX" = (/obj/structure/carpet/mid,/obj/spawnpoint/gendarmerie,/turf/floor/cobble,/area/indoors)
-"aY" = (/obj/spawnpoint/gendarmerie,/turf/floor/cobble,/area/indoors)
-"aZ" = (/obj/spawnpoint/apothecary,/turf/floor/cobble,/area/indoors)
-"ba" = (/turf/floor/cobble,/area/outdoors)
-"bb" = (/obj/structure/brazier,/turf/floor/cobble,/area/indoors)
-"bc" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/obj/spawnpoint/birdkeeper,/turf/floor/cobble,/area/indoors)
-"bd" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)"; icon_state = "felted_chair"; dir = 8},/turf/floor/cobble,/area/indoors)
-"be" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/turf/floor/cobble,/area/indoors)
-"bf" = (/obj/structure/table/bench,/obj/structure/alembic,/turf/floor/cobble,/area/indoors)
-"bg" = (/obj/structure/table/bench,/obj/item/mortar_pestle,/obj/item/stack/nightshade/five,/obj/item/stack/ginseng/five,/turf/floor/cobble,/area/indoors)
-"bh" = (/obj/structure/table/bench,/obj/item/stack/seed/ginseng,/obj/item/stack/seed/nightshade,/obj/item/weapon/shovel,/turf/floor/cobble,/area/indoors)
-"bi" = (/turf/floor/water,/area/indoors)
-"bj" = (/obj/structure/carpet/mid,/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/turf/floor/tiled,/area/indoors)
-"bk" = (/obj/structure/door/north,/turf/floor/cobble,/area/indoors)
-"bl" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/cobble,/area/indoors)
-"bm" = (/turf/floor/dirt,/area/outdoors)
-"bn" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/tiled,/area/indoors)
-"bo" = (/obj/structure/door/south,/turf/floor/tiled,/area/indoors)
-"bp" = (/obj/spawnpoint/sailor,/turf/floor/sand,/area/outdoors)
-"bq" = (/obj/spawnpoint/drifter,/turf/floor/dirt,/area/outdoors)
-"br" = (/turf/wall/wood,/area/indoors)
-"bs" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/wood,/area/indoors)
-"bt" = (/obj/structure/crate,/turf/floor/cobble,/area/indoors)
-"bu" = (/obj/structure/crate,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/turf/floor/cobble,/area/indoors)
-"bv" = (/obj/structure/still/horizontal,/turf/floor/cobble,/area/indoors)
-"bw" = (/turf/floor/wood,/area/outdoors)
-"bx" = (/obj/structure/crate/chest,/obj/item/torch,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
-"by" = (/obj/structure/window,/turf/floor/wood,/area/indoors)
-"bz" = (/obj/structure/barrel,/obj/item/vessel/bottle,/obj/item/vessel/bottle,/turf/floor/cobble,/area/indoors)
-"bA" = (/obj/structure/door/west,/turf/floor/cobble,/area/indoors)
-"bB" = (/obj/structure/door/east,/turf/floor/wood,/area/indoors)
-"bC" = (/obj/structure/chair,/turf/floor/wood,/area/indoors)
-"bD" = (/obj/structure/bench{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/wood,/area/indoors)
-"bE" = (/obj/spawnpoint/bondsman,/turf/floor/wood,/area/indoors)
-"bF" = (/obj/structure/table,/obj/item/consumable,/turf/floor/wood,/area/indoors)
-"bG" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/floor/wood,/area/indoors)
-"bH" = (/obj/structure/table,/turf/floor/wood,/area/indoors)
-"bI" = (/obj/structure/crate,/obj/item/stack/tiles,/turf/floor/wood,/area/indoors)
-"bJ" = (/obj/structure/barrel,/obj/item/stack/wheat,/turf/floor/wood,/area/indoors)
-"bK" = (/obj/structure/barrel,/obj/item/stack/seed/wheat,/obj/item/stack/seed/cotton,/obj/item/stack/logs,/turf/floor/cobble,/area/indoors)
-"bL" = (/obj/structure/table,/obj/structure/carpet,/turf/floor/wood,/area/indoors)
-"bM" = (/obj/structure/carpet/mid,/turf/floor/wood,/area/indoors)
-"bN" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)"; icon_state = "wooden_chair"; dir = 1},/turf/floor/wood,/area/indoors)
-"bO" = (/obj/structure/table/bench,/obj/item/level,/obj/item/needle,/obj/item/weapon/construction_hammer,/obj/item/weapon/handsaw,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
-"bP" = (/obj/structure/barrel,/obj/item/stack/reagent/stone,/turf/floor/wood,/area/indoors)
-"bQ" = (/obj/structure/cask/beer,/turf/floor/wood,/area/indoors)
-"bR" = (/obj/structure/cask/wine,/turf/floor/wood,/area/indoors)
-"bS" = (/obj/structure/cask/water,/turf/floor/wood,/area/indoors)
-"bT" = (/obj/structure/millstone,/obj/structure/gearbox,/turf/floor/cobble,/area/indoors)
-"bU" = (/obj/spawnpoint/publican,/turf/floor/wood,/area/indoors)
-"bV" = (/obj/spawnpoint/cook,/turf/floor/wood,/area/indoors)
-"bW" = (/obj/structure/table/bench,/obj/item/vessel/bottle,/turf/floor/wood,/area/indoors)
-"bX" = (/obj/spawnpoint/tailor,/turf/floor/wood,/area/indoors)
-"bY" = (/obj/structure/table/bench,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
-"bZ" = (/obj/structure/table/bench,/turf/floor/wood,/area/indoors)
-"ca" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/indoors)
-"cb" = (/obj/structure/table/bench,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
-"cc" = (/obj/structure/thread,/obj/item/stack/thread,/turf/floor/wood,/area/indoors)
-"cd" = (/obj/structure/thread/loom,/obj/item/stack/thread/cloth,/turf/floor/wood,/area/indoors)
-"ce" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)"; icon_state = "wooden_chair"; dir = 1},/obj/spawnpoint/tourist,/turf/floor/wood,/area/indoors)
-"cf" = (/obj/item/stack/dart,/obj/item/dartboard{tag = "icon-world (EAST)"; icon_state = "world"; dir = 4},/turf/floor/wood,/area/indoors)
-"cg" = (/obj/structure/bellows{tag = "icon-world (EAST)"; icon_state = "world"; dir = 4},/turf/floor/cobble,/area/indoors)
-"ch" = (/obj/structure/brazier/forge,/turf/floor/cobble,/area/indoors)
-"ci" = (/obj/structure/anvil,/obj/item/weapon/hammer,/turf/floor/cobble,/area/indoors)
-"cj" = (/obj/structure/crucible,/turf/floor/cobble,/area/indoors)
-"ck" = (/obj/structure/stake,/turf/floor/dirt,/area/outdoors)
-"cl" = (/obj/item/horseshoe,/obj/item/horseshoe,/obj/item/horseshoe,/turf/floor/dirt,/area/outdoors)
-"cm" = (/obj/spawnpoint/machinist,/turf/floor/cobble,/area/indoors)
-"cn" = (/obj/spawnpoint/ironmonger,/turf/floor/cobble,/area/indoors)
-"co" = (/obj/item/stack/reagent/copper,/obj/item/stack/reagent/gold,/obj/item/stack/reagent/iron,/obj/item/stack/reagent/lead,/obj/structure/barrel,/turf/floor/cobble,/area/indoors)
-"cp" = (/obj/structure/table/bench,/obj/item/stack/logs,/obj/item/weapon/handsaw,/turf/floor/cobble,/area/indoors)
-"cq" = (/obj/structure/table/bench,/obj/item/level,/obj/item/weapon/chisel,/obj/item/weapon/construction_hammer,/turf/floor/cobble,/area/indoors)
-"cr" = (/obj/structure/carpet,/turf/floor/wood,/area/indoors)
-"cs" = (/obj/spawnpoint/hound,/turf/floor/wood,/area/indoors)
-"ct" = (/obj/spawnpoint/hunter,/turf/floor/wood,/area/indoors)
-"cu" = (/obj/spawnpoint/bondsman,/turf/floor/dirt,/area/outdoors)
-"cv" = (/obj/structure/crate/chest{tag = "icon-closed (WEST)"; icon_state = "closed"; dir = 8},/obj/item/torch,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
-"cw" = (/obj/structure/earthworks/farm,/turf/floor/dirt,/area/outdoors)
-"cx" = (/obj/structure/window,/turf/floor/cobble,/area/indoors)
-"cy" = (/obj/spawnpoint/merchant,/turf/floor/wood,/area/indoors)
-"cz" = (/obj/spawnpoint/doctor,/turf/floor/wood,/area/indoors)
-"cA" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/cobble,/area/indoors)
-"cB" = (/obj/structure/crate/chest{tag = "icon-closed (WEST)"; icon_state = "closed"; dir = 8},/obj/item/torch,/turf/floor/wood,/area/indoors)
+"ay" = (/turf/floor/fancy_carpet,/area/indoors)
+"az" = (/obj/structure/door/south,/turf/floor/brick,/area/indoors)
+"aA" = (/obj/structure/table,/obj/item/stack/coins,/turf/floor/wood,/area/indoors)
+"aB" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/wood,/area/indoors)
+"aC" = (/turf/floor/tiled,/area/indoors)
+"aD" = (/obj/spawnpoint/minister,/turf/floor/tiled,/area/indoors)
+"aE" = (/obj/item/weapon/sword,/obj/item/weapon/sword,/obj/structure/table,/turf/floor/brick,/area/indoors)
+"aF" = (/obj/structure/bench,/turf/floor/brick,/area/indoors)
+"aG" = (/obj/item/weapon/axe,/obj/item/weapon/axe,/obj/structure/table,/turf/floor/brick,/area/indoors)
+"aH" = (/obj/structure/door/north,/turf/floor/wood,/area/indoors)
+"aI" = (/obj/structure/barrel,/turf/floor/brick,/area/indoors)
+"aJ" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/floor/brick,/area/indoors)
+"aK" = (/obj/structure/table,/turf/floor/brick,/area/indoors)
+"aL" = (/obj/structure/bed,/turf/floor/brick,/area/indoors)
+"aM" = (/obj/structure/crate/chest,/turf/floor/brick,/area/indoors)
+"aN" = (/obj/structure/window,/turf/floor/tiled,/area/indoors)
+"aO" = (/obj/structure/lectern/south,/obj/spawnpoint/archimandrite,/turf/floor/tiled,/area/indoors)
+"aP" = (/turf/floor/brick,/area/indoors)
+"aQ" = (/obj/spawnpoint/captain,/turf/floor/brick,/area/indoors)
+"aR" = (/obj/spawnpoint/rifleman,/turf/floor/brick,/area/indoors)
+"aS" = (/obj/spawnpoint/rifleman,/turf/floor/fancy_carpet,/area/indoors)
+"aT" = (/obj/structure/door/east,/turf/floor/brick,/area/indoors)
+"aU" = (/turf/floor/carpet,/area/indoors)
+"aV" = (/obj/spawnpoint/fool,/turf/floor/carpet,/area/indoors)
+"aW" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/obj/spawnpoint/preacher,/turf/floor/tiled,/area/indoors)
+"aX" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/obj/spawnpoint/paladin,/turf/floor/carpet,/area/indoors)
+"aY" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/turf/floor/tiled,/area/indoors)
+"aZ" = (/obj/spawnpoint/gendarmerie,/turf/floor/brick,/area/indoors)
+"ba" = (/obj/spawnpoint/gendarmerie,/turf/floor/fancy_carpet,/area/indoors)
+"bb" = (/obj/spawnpoint/apothecary,/turf/floor/brick,/area/indoors)
+"bc" = (/turf/floor/cobble,/area/outdoors)
+"bd" = (/obj/structure/brazier,/turf/floor/brick,/area/indoors)
+"be" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/obj/spawnpoint/birdkeeper,/turf/floor/brick,/area/indoors)
+"bf" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (WEST)"; icon_state = "felted_chair"; dir = 8},/turf/floor/brick,/area/indoors)
+"bg" = (/obj/structure/chair/comfy{tag = "icon-felted_chair (EAST)"; icon_state = "felted_chair"; dir = 4},/turf/floor/brick,/area/indoors)
+"bh" = (/obj/structure/table/bench,/obj/structure/alembic,/turf/floor/brick,/area/indoors)
+"bi" = (/obj/structure/table/bench,/obj/item/mortar_pestle,/obj/item/stack/nightshade/five,/obj/item/stack/ginseng/five,/turf/floor/brick,/area/indoors)
+"bj" = (/obj/structure/table/bench,/obj/item/stack/seed/ginseng,/obj/item/stack/seed/nightshade,/obj/item/weapon/shovel,/turf/floor/brick,/area/indoors)
+"bk" = (/obj/structure/bench{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/turf/floor/carpet,/area/indoors)
+"bl" = (/obj/structure/door/north,/turf/floor/brick,/area/indoors)
+"bm" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/brick,/area/indoors)
+"bn" = (/obj/structure/gaslamp,/turf/floor/cobble,/area/outdoors)
+"bo" = (/turf/floor/dirt,/area/outdoors)
+"bp" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/tiled,/area/indoors)
+"bq" = (/obj/spawnpoint/sailor,/turf/floor/sand,/area/outdoors)
+"br" = (/obj/spawnpoint/drifter,/turf/floor/cobble,/area/outdoors)
+"bs" = (/obj/spawnpoint/drifter,/turf/floor/dirt,/area/outdoors)
+"bt" = (/turf/wall/wood,/area/indoors)
+"bu" = (/obj/structure/window{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/wood,/area/indoors)
+"bv" = (/obj/structure/crate,/turf/floor/brick,/area/indoors)
+"bw" = (/obj/structure/crate,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/obj/item/consumable,/turf/floor/brick,/area/indoors)
+"bx" = (/obj/structure/still/horizontal,/turf/floor/brick,/area/indoors)
+"by" = (/turf/floor/wood,/area/outdoors)
+"bz" = (/obj/structure/crate/chest,/obj/item/torch,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
+"bA" = (/obj/structure/window,/turf/floor/wood,/area/indoors)
+"bB" = (/obj/structure/barrel,/obj/item/vessel/bottle,/obj/item/vessel/bottle,/turf/floor/brick,/area/indoors)
+"bC" = (/obj/structure/door/west,/turf/floor/brick,/area/indoors)
+"bD" = (/obj/structure/door/east,/turf/floor/wood,/area/indoors)
+"bE" = (/obj/structure/chair,/turf/floor/wood,/area/indoors)
+"bF" = (/obj/structure/bench{tag = "icon-map (EAST)"; icon_state = "map"; dir = 4},/turf/floor/wood,/area/indoors)
+"bG" = (/turf/wall/cobble,/area/indoors)
+"bH" = (/obj/spawnpoint/bondsman,/turf/floor/wood,/area/indoors)
+"bI" = (/obj/structure/table,/obj/item/consumable,/turf/floor/wood,/area/indoors)
+"bJ" = (/obj/structure/chair{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/floor/wood,/area/indoors)
+"bK" = (/obj/structure/table,/turf/floor/carpet,/area/indoors)
+"bL" = (/obj/structure/crate,/obj/item/stack/tiles,/turf/floor/wood,/area/indoors)
+"bM" = (/obj/structure/barrel,/obj/item/stack/wheat,/turf/floor/wood,/area/indoors)
+"bN" = (/obj/structure/barrel,/obj/item/stack/seed/wheat,/obj/item/stack/seed/cotton,/obj/item/stack/logs,/turf/floor/cobble,/area/indoors)
+"bO" = (/turf/floor/cobble,/area/indoors)
+"bP" = (/obj/structure/table,/turf/floor/wood,/area/indoors)
+"bQ" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)"; icon_state = "wooden_chair"; dir = 1},/turf/floor/wood,/area/indoors)
+"bR" = (/obj/structure/table/bench,/obj/item/level,/obj/item/needle,/obj/item/weapon/construction_hammer,/obj/item/weapon/handsaw,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
+"bS" = (/obj/structure/barrel,/obj/item/stack/reagent/stone,/turf/floor/wood,/area/indoors)
+"bT" = (/obj/structure/cask/beer,/turf/floor/wood,/area/indoors)
+"bU" = (/obj/structure/cask/wine,/turf/floor/wood,/area/indoors)
+"bV" = (/obj/structure/cask/water,/turf/floor/wood,/area/indoors)
+"bW" = (/obj/structure/millstone,/obj/structure/gearbox,/turf/floor/cobble,/area/indoors)
+"bX" = (/obj/spawnpoint/publican,/turf/floor/wood,/area/indoors)
+"bY" = (/obj/spawnpoint/cook,/turf/floor/wood,/area/indoors)
+"bZ" = (/obj/structure/table/bench,/obj/item/vessel/bottle,/turf/floor/wood,/area/indoors)
+"ca" = (/obj/spawnpoint/tailor,/turf/floor/wood,/area/indoors)
+"cb" = (/obj/structure/table/bench,/obj/item/vessel/cup,/obj/item/vessel/cup,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
+"cc" = (/obj/structure/table/bench,/turf/floor/wood,/area/indoors)
+"cd" = (/obj/structure/table/bench,/obj/item/consumable,/turf/floor/wood,/area/indoors)
+"ce" = (/obj/structure/table/bench,/obj/item/vessel/cup,/turf/floor/wood,/area/indoors)
+"cf" = (/obj/structure/thread,/obj/item/stack/thread,/turf/floor/wood,/area/indoors)
+"cg" = (/obj/structure/thread/loom,/obj/item/stack/thread/cloth,/turf/floor/wood,/area/indoors)
+"ch" = (/obj/structure/chair{tag = "icon-wooden_chair (NORTH)"; icon_state = "wooden_chair"; dir = 1},/obj/spawnpoint/tourist,/turf/floor/wood,/area/indoors)
+"ci" = (/obj/spawnpoint/bondsman,/turf/floor/carpet,/area/indoors)
+"cj" = (/obj/item/stack/dart,/obj/item/dartboard{tag = "icon-world (EAST)"; icon_state = "world"; dir = 4},/turf/floor/wood,/area/indoors)
+"ck" = (/obj/structure/door/south,/turf/floor/wood,/area/indoors)
+"cl" = (/turf/floor/brick,/area/outdoors)
+"cm" = (/obj/structure/bellows{tag = "icon-world (EAST)"; icon_state = "world"; dir = 4},/turf/floor/brick,/area/indoors)
+"cn" = (/obj/structure/brazier/forge,/turf/floor/brick,/area/indoors)
+"co" = (/obj/structure/anvil,/obj/item/weapon/hammer,/turf/floor/brick,/area/indoors)
+"cp" = (/obj/structure/crucible,/turf/floor/brick,/area/indoors)
+"cq" = (/obj/structure/stake,/turf/floor/dirt,/area/outdoors)
+"cr" = (/obj/item/horseshoe,/obj/item/horseshoe,/obj/item/horseshoe,/turf/floor/dirt,/area/outdoors)
+"cs" = (/obj/spawnpoint/machinist,/turf/floor/brick,/area/indoors)
+"ct" = (/obj/spawnpoint/ironmonger,/turf/floor/brick,/area/indoors)
+"cu" = (/obj/item/stack/reagent/copper,/obj/item/stack/reagent/gold,/obj/item/stack/reagent/iron,/obj/item/stack/reagent/lead,/obj/structure/barrel,/turf/floor/brick,/area/indoors)
+"cv" = (/obj/structure/table/bench,/obj/item/stack/logs,/obj/item/weapon/handsaw,/turf/floor/brick,/area/indoors)
+"cw" = (/obj/structure/table/bench,/obj/item/level,/obj/item/weapon/chisel,/obj/item/weapon/construction_hammer,/turf/floor/brick,/area/indoors)
+"cx" = (/obj/spawnpoint/hound,/turf/floor/carpet,/area/indoors)
+"cy" = (/obj/spawnpoint/hunter,/turf/floor/wood,/area/indoors)
+"cz" = (/obj/spawnpoint/bondsman,/turf/floor/dirt,/area/outdoors)
+"cA" = (/obj/structure/crate/chest{tag = "icon-closed (WEST)"; icon_state = "closed"; dir = 8},/obj/item/torch,/obj/item/weapon/shovel,/turf/floor/wood,/area/indoors)
+"cB" = (/obj/structure/earthworks/farm,/turf/floor/dirt,/area/outdoors)
+"cC" = (/obj/structure/window,/turf/floor/brick,/area/indoors)
+"cD" = (/obj/spawnpoint/merchant,/turf/floor/wood,/area/indoors)
+"cE" = (/obj/spawnpoint/doctor,/turf/floor/wood,/area/indoors)
+"cF" = (/obj/structure/chair{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/floor/brick,/area/indoors)
+"cG" = (/obj/structure/crate/chest{tag = "icon-closed (WEST)"; icon_state = "closed"; dir = 8},/obj/item/torch,/turf/floor/wood,/area/indoors)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababaaaaaaaaaaaaaaaaaaaaaaaa
@@ -179,40 +184,40 @@ ajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajaj
 ajakakakakakakakakakakakalalamamamamanananananananananananananananananananananaj
 ajakaoaoaoaoaoaoaoakakakakalalalamapapapapapapapapapapapapapanananananananananaj
 ajakaoaqarasarasaoakakalalalalatalapasarauapasaravapasarawapanananananananananaj
-ajakaoaxawawawawaoakakakalalalalalapawawawapawawawapawawawapanananananananananaj
-ajakaoaoaoaoayaoaoakakapapapapapapapazaAawapazaAawapazaAawapapapapapapapanananaj
-ajakaoaBaCaCaCaBaoakakapaDaEaEaEaFapapapaGapapapaGapapapaGapaHaIaJaKaLapanananaj
-ajakaMaBaBaNaBaBaMakakapaOaOaPaOaOapaOaOaOaOaOaOaOaOaOaOaOapaQaOaOaOaOapanananaj
-ajakaMaBaBaBaBaBaMakakapaOaRaRaRaOaSaOaOaOaOaOaTaOaOaOaOaOaSaOaOaOaOaOapanananaj
-ajakaoaBaUaVaWaBaoakakapaOaXaYaYaOapaOaOaOaOaOaOaOaOaOaOaOapaOaZaOaOaOapanananaj
-ajakaMaBaBaBaBaBaMbabaapaOaOaOaOaOapbbaObcaJbdaObeaJbdaObbapbfbgbhbibbapamamanaj
-ajakaMaBbjaWaWaBaMbabaapapapbkapapapapblblapapblblapapblblapapapapblblapamamanaj
-ajbaaoaBaBaBaBaBaobababababababababababababababababababababmbmbmakamamamamamanaj
-ajbaaobnaoboaobnaobabmbmbmakakakakbmbmbmbmbmakakakakakbmbmbmbmbmbmbmamambpamanaj
-ajbabababababababababmbqbmbmbmbmbmbqbmbmbmbmbmbqbmakakbmbmbqakakalalalalambpanaj
-ajbabababababababababmbmbmbmbmbmbmbmakakakakbmbmbmbmbmbmbmbmakakakakalalalamanaj
-ajakakakakakbmbmbmbmbmbmakakakakakakakakakakakakakbmbmbmbmbmakanananakalalbpamaj
-ajakakakakakbmbmakapapapapapapbrbrbrbrbsbsbsbrbrakakakbmbmakakananakakakalamamaj
-ajakbrbrbrbrbrbmbmapbtbubvaOapasarbrawawawawawbrakakbmbwbwakakakakakakakakalamaj
-ajakbrbxarawbybmbmapbzaOaOaObAawawbBawawbCawbDbyakakbmbwbrbrbrbrbrapapapapakakaj
-ajakbrbEawawbrbmbmapbzaOaOaOapbFaAbrawbGbHaAbDbyakakbmbwbybIbJbKaOaOaOaOapakakaj
-ajakbrbLaAawbBbmbmapapbkapapapbrbrbrawbMbNawbDbyakakbmbwbybObPaOaOaOaOaOapakakaj
-ajakbrbrbrbrbrbmbmbyaxawbQbQbRbSawawawawawawawbrakbmbmbwbrawawaOaObTaOaOapakakaj
-ajakakakakakakakbmbyawawawbUawawbVbWawawbCawbDbyakbmbmbwbBawbXaOaOaOaOaOapakakaj
-ajakbrbrbrbrbrbmbmbybYbZcabZcbcbbZbZawbGbHaAbDbyakbmbmbwbrcccdaOaOaOaOaOapakakaj
-ajakbrbxarawbybmbmbyawceawceawceawceawbMbNawbDbybmbmbmbmbrbrbrbrbrapapapapakakaj
-ajakbrbEawawbrbmbmbrcfawawawawawawawawawawawawbrbmbmbmakakakakakakakakakakakakaj
-ajakbrbHaAawbBbmbmbrbraGaybrbsbsbsbrbrbsbsbsbrbrbwbmbmakbwbwakakakakakakakakakaj
-ajakbrbrbrbrbrbmbmbmbwbwbwbwbwbwbwbwbwbwbwbwbwbwbwbmbmbmbwapapapapapapapapakakaj
-ajakakakakakbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbwapaOcgchaOcicjapakakaj
-ajakakakakakbmakakbrbsbraGbrakbmbmbmbmbmbmbmbmbmckclbmbmbwaSaOaOaOcmaOaOapakakaj
-ajakakakakbmbmakakbrbHaAawbrakakakakbmbmbmbmakakbmbmbmbmbwbAaOaOcncocpcqapakakaj
-ajakakbrbsbraGbrakbrcrcsctbrakakakbraGbrbsbrakakcubmcubmbwapaOaOapapapapapakakaj
-ajakakbrbHaAawbrakbrawarcvbrakakakbrawbGbHbrakbmcwcwcwbmbmcxaOaOaSawbGbHapakakaj
-ajakakbrcyawawbrakbrbrbrbrbrakakakbrawawczbrakcucwcwcubmbmcxcAaOapawawawapakakaj
-ajakakbrawarcvbramamamamamakakakakbrawarcvbrakbmcwcwcwbmbmcxaOaOapawarcBapakakaj
-ajakakbrbrbrbrbramananananamakakakbrbrbrbrbrakcucwcucwbmbmapapapapapapapapakakaj
-ajakakakakakakakakamananananamakakakakakakakakakcwcwcwbmbmbmakakakakakakakakakaj
-ajakakakakakakakakakamamamamamakakakakakakakakakakakakakbmbmbmbmbmakakakakakakaj
+ajakaoaxawawawawaoakakakalalalalalapawayawapawayawapawayawapanananananananananaj
+ajakaoaoaoaoazaoaoakakapapapapapapapaAaBawapaAaBawapaAaBawapapapapapapapanananaj
+ajakaoaCaDaDaDaCaoakakapaEaFaFaFaGapapapaHapapapaHapapapaHapaIaJaKaLaMapanananaj
+ajakaNaCaCaOaCaCaNakakapaPaPaQaPaPapaPaPaPaPaPaPaPaPaPaPaPapaPaPaPaPaPapanananaj
+ajakaNaCaCaCaCaCaNakakapaPaRaSaRaPaTaPaPaUaUaUaVaUaUaUaUaPaTaPaPaPaPaPapanananaj
+ajakaoaCaWaXaYaCaoakakapaPaZbaaZaPapaPaPaPaPaPaPaPaPaPaPaPapaPbbaPaPaPapanananaj
+ajakaNaCaCaUaCaCaNbcbcapaPaPaPaPaPapbdaPbeaKbfaPbgaKbfaPbdapbhbibjaPbdapamamanaj
+ajakaNaCaYbkaYaCaNbcbcapapapblapapapapbmbmapapbmbmapapbmbmapapapapbmbmapamamanaj
+ajbcaoaCaCaCaCaCaobcbcbcbcbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcboboboakamamamamamanaj
+ajbcaobpaoazaobpaobcbobobobcbcbcakboboboboboakakakakakboboboboboboboamambqamanaj
+ajbcbcbcbnbcbcbcbcbcbcbrbcbcbcbcbcbrbcbcbcbcbcbrbcbcbnbobobsakakalalalalambqanaj
+ajbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcboboboakakakakalalalamanaj
+ajakakakakakboboboboboboakakakakakakakakakakakakakbcbcboboboakanananakalalbqamaj
+ajakakakakakboboakapapapapapapbtbtbtbtbubububtbtakbcbcboboakakananakakakalamamaj
+ajakbtbtbtbtbtboboapbvbwbxaPapasarbtawawawawawbtakbcbcbybyakakakakakakakakalamaj
+ajakbtbzarawbAboboapbBaPaPaPbCawawbDawawbEawbFbAakbcbcbybtbtbtbtbtbGbGbGbGakakaj
+ajakbtbHawawbtboboapbBaPaPaPapbIaBbtawbJbKaBbFbAakbcbcbybAbLbMbNbObObObObGakakaj
+ajakbtbPaBawbDboboapapblapapapbtbtbtawawbQawbFbAakbcbcbybAbRbSbObObObObObGakakaj
+ajakbtbtbtbtbtbobobAaxawbTbTbUbVawawawawawawawbtakbcbcbybtawawbObObWbObObGakakaj
+ajakakakakakakakbobAawawawbXawawbYbZawawbEawbFbAakbcbcbybDawcabObObObObObGakakaj
+ajakbtbtbtbtbtbobobAcbcccdcccececcccawbJbKaBbFbAakbcbcbybtcfcgbObObObObObGakakaj
+ajakbtbzarawbAbobobAawchawchawchawchawawbQawbFbAbobcbcbobtbtbtbtbtbGbGbGbGakakaj
+ajakbtciawawbtbobobtcjawawawawawawawawawawawawbtbobcbcakakakakakakakakakakakakaj
+ajakbtbPaBawbDbobobtbtaHckbtbubububtbtbubububtbtbybcbcakbybyakakakakakakakakakaj
+ajakbtbtbtbtbtbobobobybcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbnapapapapapapapapakakaj
+ajakakakakakbobobobobobcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcclapaPcmcnaPcocpapakakaj
+ajakakakakakboakakbtbubtaHbtakbobobobobobobobobocqcrbobcclaTaPaPaPcsaPaPapakakaj
+ajakakakakboboakakbtbPaBawbtakakakakboboboboakakbobobobcclbCaPaPctcucvcwapakakaj
+ajakakbtbubtaHbtakbtawcxcybtakakakbtaHbtbubtakakczboczbcclapaPaPapapapapapakakaj
+ajakakbtbPaBawbtakbtawarcAbtakakakbtawbJbPbtakbocBcBcBbobocCaPaPaTawbJbPapakakaj
+ajakakbtcDaUawbtakbtbtbtbtbtakakakbtawaUcEbtakczcBcBczbobocCcFaPapawawawapakakaj
+ajakakbtawarcAbtamamamamamakakakakbtawarcAbtakbocBcBcBbobocCaPaPapawarcGapakakaj
+ajakakbtbtbtbtbtamananananamakakakbtbtbtbtbtakczcBczcBboboapapapapapapapapakakaj
+ajakakakakakakakakamananananamakakakakakakakakakcBcBcBboboboakakakakakakakakakaj
+ajakakakakakakakakakamamamamamakakakakakakakakakakakakakboboboboboakakakakakakaj
 ajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajaj
 "}
