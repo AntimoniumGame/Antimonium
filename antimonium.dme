@@ -91,6 +91,7 @@
 #include "code\admin\admin_verbs_default.dm"
 #include "code\admin\admin_verbs_fun.dm"
 #include "code\admin\admin_verbs_secure.dm"
+#include "code\admin\admin_verbs_utility.dm"
 #include "code\alchemy\_alchemy.dm"
 #include "code\alchemy\alchemy_alembic.dm"
 #include "code\alchemy\alchemy_ingredient.dm"

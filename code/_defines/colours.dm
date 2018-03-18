@@ -1,4 +1,6 @@
 // Hex values derived from palette.dmi aka. Dawnbringer's 32 colour palette.
+#define PALE_PINK      "#EEC39A"
+#define DARK_PINK      "#D9A066"
 #define PALE_BROWN     "#8F563B"
 #define PALE_GREEN     "#99E550"
 #define PALE_BLUE      "#CBDBFC"
