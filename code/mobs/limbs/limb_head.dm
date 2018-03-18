@@ -1,7 +1,7 @@
 /obj/item/limb/head
 	var/datum/hairstyle/hair
-	var/hair_colour = BLACK
-	var/eye_colour = "#FF0000"
+	var/hair_colour
+	var/eye_colour
 	var/image/hair_image_mob
 	var/image/hair_image_world
 	var/image/eye_image_mob

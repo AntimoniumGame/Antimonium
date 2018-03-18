@@ -1,5 +1,5 @@
 /proc/InitializeHairstyles()
-	for(var/htype in typesof(/datum/hairstyle)-/datum/hairstyle)
+	for(var/htype in typesof(/datum/hairstyle))
 		var/datum/hairstyle/hairstyle = GetUniqueDataByPath(htype)
 		_glob.hair_styles[hairstyle.name] = hairstyle
 

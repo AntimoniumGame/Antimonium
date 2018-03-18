@@ -125,6 +125,7 @@ var/datum/globals/_glob = new
 	max_turf_edge_layer_value = turf_edge_layers_by_path.len * turf_edge_layer_offset
 
 	spawn
+
 		// Init global lists.
 		InitializeConfig()
 		InitializeReagentReactions()
@@ -136,3 +137,16 @@ var/datum/globals/_glob = new
 		InitializeSurgerySteps()
 		InitializeOutfits()
 		InitializeHairstyles()
+
+		// Start the game stuff!
+		var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)
+		lobby_music = new lmusic()
+		SwitchGameState(/datum/game_state/setup)
+
+	#ifdef TRAVIS_TEST
+	world.log << "TRAVIS_TEST defined, this is a testing run and will terminate in ten seconds."
+	spawn(100)
+		world.log << "Terminating run!"
+		sleep(1)
+		del(world)
+	#endif
