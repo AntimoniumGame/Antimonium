@@ -37,7 +37,9 @@ var/datum/globals/_glob = new
 		)
 	var/list/hair_styles = list(
 		"Bald" = 'icons/mobs/hair/_bald.dmi',
-		"Tonsure" = 'icons/mobs/hair/tonsure.dmi'
+		"Tonsure" = 'icons/mobs/hair/tonsure.dmi',
+		"Short Hair" = 'icons/mobs/hair/short.dmi',
+		"Long Hair" = 'icons/mobs/hair/long.dmi'
 	)
 
 	var/list/eye_colours = list(
