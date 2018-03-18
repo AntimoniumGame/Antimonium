@@ -1,6 +1,6 @@
 /obj/item/limb
 	name = "limb"
-	icon = 'icons/objects/items/limbs/_default.dmi'
+	icon = 'icons/mobs/limbs/_default.dmi'
 	contact_size = 5
 	weight = 10
 	sharpness = 1
