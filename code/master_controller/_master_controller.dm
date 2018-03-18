@@ -5,10 +5,10 @@
 /datum/master_controller/New()
 
 	. = ..()
-	if(glob.mc)
-		daemons = glob.mc.daemons
-		QDel(glob.mc, "mc restart")
-		glob.mc = src
+	if(_glob.mc)
+		daemons = _glob.mc.daemons
+		QDel(_glob.mc, "mc restart")
+		_glob.mc = src
 	else
 		Setup()
 

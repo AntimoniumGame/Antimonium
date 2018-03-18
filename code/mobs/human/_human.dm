@@ -11,3 +11,11 @@
 
 /mob/human/GetSlotByHandedness(var/handedness)
 	return (handedness == "left" ? SLOT_LEFT_HAND : SLOT_RIGHT_HAND)
+
+/mob/human/Initialize()
+	. = ..()
+	var/obj/item/limb/head/head = GetLimb(BP_HEAD)
+	if(istype(head))
+		head.SetHairStyle(pick(_glob.hair_styles))
+		head.SetHairColour(pick(_glob.hair_colours))
+		head.SetEyeColour(pick(_glob.eye_colours))

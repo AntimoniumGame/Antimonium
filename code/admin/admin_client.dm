@@ -3,15 +3,15 @@
 
 /client/proc/AdminSetup()
 	set waitfor = 0
-	if(glob.admins)
-		SetAdminPermissions(glob.admins[ckey])
+	if(_glob.admins)
+		SetAdminPermissions(_glob.admins[ckey])
 	DevPanel()
 
 /client/proc/SetAdminPermissions(var/datum/admin_rank/_rank, var/silent = FALSE)
 
 	// Clear out everything, be thorough.
 	if(admin_permissions)
-		for(var/datum/admin_permissions/perm in glob.admin_permission_datums)
+		for(var/datum/admin_permissions/perm in _glob.admin_permission_datums)
 			perm.RemoveFromClient(src, silent)
 
 	var/last_rank = admin_permissions ? admin_permissions.title : null
@@ -20,12 +20,12 @@
 		Anotify("You are now listed as <b>[admin_permissions ? admin_permissions.title : "a player"]</b>.")
 
 	if(admin_permissions)
-		for(var/datum/admin_permissions/perm in glob.admin_permission_datums)
+		for(var/datum/admin_permissions/perm in _glob.admin_permission_datums)
 			if(admin_permissions.permissions & perm.associated_permission)
 				perm.AddToClient(src, silent)
 	else
-		glob.admins[ckey] = null
-		glob.admins -= ckey
+		_glob.admins[ckey] = null
+		_glob.admins -= ckey
 
 /client/proc/CheckAdminPermission(var/perm)
 	return (admin_permissions && (admin_permissions.permissions & perm))

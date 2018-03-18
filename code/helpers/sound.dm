@@ -6,7 +6,7 @@
 	if(isnull(frequency))
 		frequency = rand(32000, 55000)
 
-	for(var/thing in glob.clients)
+	for(var/thing in _glob.clients)
 		var/client/player = thing
 		if(!player.mob)
 			continue
@@ -35,7 +35,7 @@
 	if(isnull(frequency))
 		frequency = rand(32000, 55000)
 
-	for(var/thing in glob.clients)
+	for(var/thing in _glob.clients)
 		var/client/player = thing
 		if(!istype(player) || !player.mob)
 			continue

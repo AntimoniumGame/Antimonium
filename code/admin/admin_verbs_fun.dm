@@ -50,7 +50,7 @@
 		Anotify("Only works on humans, sorry.")
 		return
 
-	var/datum/outfit/chosen_outfit = input("Which outfit do you wish to use?") as null|anything in glob.all_outfits
+	var/datum/outfit/chosen_outfit = input("Which outfit do you wish to use?") as null|anything in _glob.all_outfits
 	if(chosen_outfit)
 		chosen_outfit.EquipTo(human)
 		Anotify("Mob dressed.")

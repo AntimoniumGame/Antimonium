@@ -65,7 +65,7 @@
 /turf/Initialize()
 	SetDir(dir)
 	UpdateStrings()
-	UpdateIcon(ignore_neighbors = (!glob.game_state || glob.game_state.ident != GAME_RUNNING))
+	UpdateIcon(ignore_neighbors = (!_glob.game_state || _glob.game_state.ident != GAME_RUNNING))
 
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()

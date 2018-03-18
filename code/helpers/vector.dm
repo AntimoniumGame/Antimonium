@@ -22,7 +22,7 @@ Inputs:
 	yo = pixel_y offset of the target location (optional)
 */
 /vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16, spin = TRUE, var/throw_force = 1)
-	glob.vector_list += src
+	_glob.vector_list += src
 	owner = source
 	initial_pixel_y = source.pixel_y
 	initial_pixel_y = source.pixel_y
@@ -112,13 +112,13 @@ Inputs:
 					owner.UpdateIcon()
 					owner.UpdateStrings()
 					owner.EndThrow(supplied_throw_force)
-					glob.vector_list -= src
+					_glob.vector_list -= src
 				return
 			owner.pixel_x = pix_x
 			owner.pixel_y = pix_y
 		else
-			glob.vector_list -= src
+			_glob.vector_list -= src
 			return
 
 		WAIT_NT(move_delay)
-	glob.vector_list -= src
+	_glob.vector_list -= src

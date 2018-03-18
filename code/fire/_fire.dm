@@ -40,7 +40,7 @@
 
 /atom/proc/Ignite(var/mob/user)
 	if(CanIgnite() && !IsOnFire())
-		glob.burning_atoms |= src
+		_glob.burning_atoms |= src
 		on_fire = TRUE
 		// Light on
 		UpdateFireOverlay()
@@ -50,7 +50,7 @@
 /atom/proc/Extinguish(var/mob/user)
 	if(IsOnFire())
 		fire_intensity = 0
-		glob.burning_atoms -= src
+		_glob.burning_atoms -= src
 		on_fire = FALSE
 		ResetLights()
 		UpdateFireOverlay()

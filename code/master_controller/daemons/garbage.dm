@@ -28,7 +28,7 @@
 	else
 		Dnotify("GC: collected \ref[thing] ([thing]).")
 	*/
-	glob.gc.Collect(thing)
+	_glob.gc.Collect(thing)
 
 /datum/daemon/garbage
 	name = "garbage collector"
@@ -37,10 +37,10 @@
 	var/list/garbage = list()
 
 /datum/daemon/garbage/New()
-	if(glob.gc)
-		garbage = glob.gc.garbage
-		QDel(glob.gc, "gc replacement")
-	glob.gc = src
+	if(_glob.gc)
+		garbage = _glob.gc.garbage
+		QDel(_glob.gc, "gc replacement")
+	_glob.gc = src
 
 /datum/daemon/garbage/proc/Collect(var/thing)
 	if(!thing || !thing:Destroy())

@@ -16,11 +16,11 @@
 /obj/structure/brazier/Initialize()
 	..()
 	Ignite()
-	glob.processing_objects += src
+	_glob.processing_objects += src
 	next_burn_sound = rand(10,20)
 
 /obj/structure/brazier/Destroy()
-	glob.processing_objects -= src
+	_glob.processing_objects -= src
 	. = ..()
 
 /obj/structure/brazier/ProcessTemperature()

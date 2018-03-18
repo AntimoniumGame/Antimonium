@@ -2,7 +2,7 @@
 	ident = GAME_OVER
 
 /datum/game_state/over/Start()
-	for(var/thing in glob.antagonist_datums)
+	for(var/thing in _glob.antagonist_datums)
 		var/datum/antagonist/a = thing
 
 		if(!istype(a) || !istype(a.members, /list) || !a.members.len)

@@ -20,7 +20,7 @@
 		var/datum/outfit/check_outfit = outfit
 		if(!initial(check_outfit.name))
 			continue
-		glob.all_outfits += GetUniqueDataByPath(outfit)
+		_glob.all_outfits += GetUniqueDataByPath(outfit)
 
 /datum/outfit
 	var/name = "Drifter"

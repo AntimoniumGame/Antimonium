@@ -19,7 +19,7 @@
 	..()
 	growing_in = _growing_in
 	if(growing_in)
-		glob.processing_objects += src
+		_glob.processing_objects += src
 
 /obj/item/plant/Destroy()
 	if(growing_in)
@@ -29,7 +29,7 @@
 				growing_in.occupied_spots -= pkey
 				break
 		growing_in = null
-	glob.processing_objects -= src
+	_glob.processing_objects -= src
 	. = ..()
 
 /obj/item/plant/Move()

@@ -1,4 +1,4 @@
-var/datum/globals/glob = new
+var/datum/globals/_glob = new
 
 /datum/globals
 
@@ -28,6 +28,54 @@ var/datum/globals/glob = new
 	// Reagent vars
 	var/list/all_reagent_reactions = list()
 	var/list/reagent_reactions_by_ident = list()
+
+	// Human icon vars.
+	var/list/human_hair_types = list()
+	var/list/human_bodytypes = list(
+		new /datum/human_bodytype/pale,
+		new /datum/human_bodytype/dark
+		)
+	var/list/hair_colours = list(
+		PALE_BROWN,
+		LIGHT_GREY,
+		PALE_RED,
+		DARK_BROWN,
+		DARK_GREY,
+		DARK_RED,
+		DARK_BLUE_GREY,
+		BRIGHT_ORANGE,
+		GREEN_BROWN,
+		BROWN_GREEN,
+		BROWN_ORANGE,
+		WHITE,
+		BLACK,
+		GREY_BLUE
+	)
+	var/list/hair_styles = list()
+	var/list/eye_colours = list(
+		PALE_BROWN,
+		PALE_GREEN,
+		PALE_BLUE,
+		PALE_GREY,
+		LIGHT_GREY,
+		BLUE,
+		LIGHT_BLUE,
+		DARK_BROWN,
+		DARK_GREY,
+		DARK_BLUE,
+		DARK_GREEN,
+		INDIGO,
+		DARK_PURPLE,
+		DARK_BLUE_GREY,
+		BRIGHT_BLUE,
+		GREEN_BROWN,
+		BROWN_GREEN,
+		BROWN_ORANGE,
+		BLACK,
+		BLUE_GREEN,
+		GREY_BLUE,
+		NAVY_BLUE
+	)
 
 	// Admin vars.
 	var/list/config = list()
@@ -68,12 +116,23 @@ var/datum/globals/glob = new
 	var/list/burn_sounds = list('sounds/effects/fire1.ogg','sounds/effects/fire2.ogg','sounds/effects/fire3.ogg')
 	var/list/all_chat_commands = list()
 	var/list/antagonist_datums = list()
-	var/list/human_bodytypes = list(
-		new /datum/human_bodytype/pale,
-		new /datum/human_bodytype/dark
-		)
 
 /datum/globals/New()
+
+	..()
+
 	// Init nonconstants.
 	max_turf_edge_layer_value = turf_edge_layers_by_path.len * turf_edge_layer_offset
-	..()
+
+	spawn
+		// Init global lists.
+		InitializeConfig()
+		InitializeReagentReactions()
+		InitializeAdminPermissions()
+		InitializeAdminDatabase()
+		InitializeChatCommands()
+		InitializeJobs()
+		InitializeAntagonists()
+		InitializeSurgerySteps()
+		InitializeOutfits()
+		InitializeHairstyles()

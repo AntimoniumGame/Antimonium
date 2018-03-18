@@ -28,10 +28,10 @@
 /client/proc/StartGame()
 	set name = "Force Start Game"
 	set category = "Admin"
-	if(glob.game_state && glob.game_state.ident != GAME_LOBBY_WAITING)
+	if(_glob.game_state && _glob.game_state.ident != GAME_LOBBY_WAITING)
 		Anotify("Game is already starting or started.")
 		return
-	var/datum/game_state/waiting/gstate = glob.game_state
+	var/datum/game_state/waiting/gstate = _glob.game_state
 	if(!istype(gstate) || gstate.force_start)
 		Anotify("Game is already starting or started.")
 		return

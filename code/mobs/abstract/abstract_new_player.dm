@@ -9,8 +9,8 @@
 /mob/abstract/new_player/Login()
 	..()
 	NullLoc()
-	if(glob.lobby_music)
-		glob.lobby_music.Play(src)
+	if(_glob.lobby_music)
+		_glob.lobby_music.Play(src)
 	name = key
 
 /mob/abstract/new_player/CreateUI()
@@ -26,13 +26,13 @@
 
 /mob/abstract/new_player/Initialize()
 	..()
-	glob.new_players += src
+	_glob.new_players += src
 	spawn(0)
 		NullLoc()
 
 /mob/abstract/new_player/Destroy()
 	title_image = null
-	glob.new_players -= src
+	_glob.new_players -= src
 	. = ..()
 
 /mob/abstract/new_player/proc/LatejoinGame()
@@ -40,7 +40,7 @@
 	if(joining)
 		return
 
-	switch(glob.game_state.ident)
+	switch(_glob.game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
 			to_chat(src, "<span class='warning'>The game has not started yet!</span>")
 			return
@@ -58,23 +58,23 @@
 		EndLobbyMusic(client)
 
 	var/mob/old_mob = src
-	var/mob/new_mob = glob.default_latejoin_role.Equip(src)
-	glob.default_latejoin_role.Welcome(new_mob)
-	glob.default_latejoin_role.Place(new_mob)
+	var/mob/new_mob = _glob.default_latejoin_role.Equip(src)
+	_glob.default_latejoin_role.Welcome(new_mob)
+	_glob.default_latejoin_role.Place(new_mob)
 	if(old_mob != new_mob)
 		QDel(old_mob, "latejoin replacement")
 
 /mob/abstract/new_player/DoSay(var/message)
 	next_speech = world.time + 5
 	message = "<b>LOBBY:</b> [FormatStringForSpeech(key, message)]"
-	for(var/mob/abstract/new_player/listener in glob.mob_list)
+	for(var/mob/abstract/new_player/listener in _glob.mob_list)
 		if(listener.client)
 			to_chat(listener, message)
 
 /mob/abstract/new_player/DoEmote(var/message)
 	next_speech = world.time + 5
 	message = FormatAndCapitalize("<b>LOBBY:</b> <b>\The [src]</b> [SanitizeText(message)]")
-	for(var/mob/abstract/new_player/listener in glob.mob_list)
+	for(var/mob/abstract/new_player/listener in _glob.mob_list)
 		if(listener.client)
 			to_chat(listener, message)
 

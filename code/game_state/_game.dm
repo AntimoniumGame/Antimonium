@@ -21,7 +21,7 @@
 /proc/SwitchGameState(var/new_state)
 	set background = 1
 	set waitfor = 0
-	if(glob.game_state)
-		glob.game_state.End()
-	glob.game_state = new new_state()
-	glob.game_state.Init()
+	if(_glob.game_state)
+		_glob.game_state.End()
+	_glob.game_state = new new_state()
+	_glob.game_state.Init()

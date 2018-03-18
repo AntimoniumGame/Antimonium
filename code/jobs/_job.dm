@@ -1,17 +1,17 @@
 /proc/InitializeJobs()
 	for(var/jtype in typesof(/datum/job)-/datum/job)
 		var/datum/job/job = new jtype()
-		glob.job_datums += job
+		_glob.job_datums += job
 		if(job.minimum_slots > 0)
-			glob.high_priority_jobs += job
+			_glob.high_priority_jobs += job
 		else
-			glob.low_priority_jobs += job
+			_glob.low_priority_jobs += job
 
-	glob.default_latejoin_role = new /datum/job
+	_glob.default_latejoin_role = new /datum/job
 
 	// Bit of extra randomness, why not.
-	glob.high_priority_jobs = shuffle(glob.high_priority_jobs)
-	glob.low_priority_jobs = shuffle(glob.low_priority_jobs)
+	_glob.high_priority_jobs = shuffle(_glob.high_priority_jobs)
+	_glob.low_priority_jobs = shuffle(_glob.low_priority_jobs)
 
 /datum/job/New()
 	..()

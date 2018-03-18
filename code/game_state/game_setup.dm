@@ -3,22 +3,12 @@
 
 /datum/game_state/setup/Init()
 
-	glob.mc = new()
+	_glob.mc = new()
 
-	InitializeConfig()
-	InitializeReagentReactions()
-	InitializeAdminPermissions()
-	InitializeAdminDatabase()
-	InitializeChatCommands()
-	InitializeJobs()
-	InitializeAntagonists()
-	InitializeSurgerySteps()
-	InitializeOutfits()
-
-	for(var/thing in glob.atoms_to_initialize)
+	for(var/thing in _glob.atoms_to_initialize)
 		var/atom/atom = thing
 		atom.Initialize()
-	glob.atoms_to_initialize.Cut()
+	_glob.atoms_to_initialize.Cut()
 
 	world.UpdateStatus()
 

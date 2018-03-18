@@ -7,14 +7,14 @@
 
 //TODO make this a daemon
 /proc/ProcessReagentReactions(var/atom/holder, var/list/reagents)
-	for(var/thing in glob.all_reagent_reactions)
+	for(var/thing in _glob.all_reagent_reactions)
 		var/datum/reagent_reaction/reaction = thing
 		if(reaction.CanReact(holder, reagents))
 			reaction.DoReaction(holder, reagents)
 			return
 
 /proc/AddReagentReaction(var/ident, var/min_temp = TEMPERATURE_ZERO, var/max_temp = TEMPERATURE_MAX, var/list/consumed = list(), var/list/catalysts = list(), var/list/products = list())
-	if(glob.reagent_reactions_by_ident[ident])
+	if(_glob.reagent_reactions_by_ident[ident])
 		return
 	var/datum/reagent_reaction/reaction = new()
 	reaction.name = ident
@@ -23,8 +23,8 @@
 	reaction.consumed_reagents =   consumed
 	reaction.catalyzing_reagents = catalysts
 	reaction.produced_reagents =   products
-	glob.reagent_reactions_by_ident[ident] = reaction
-	glob.all_reagent_reactions += reaction
+	_glob.reagent_reactions_by_ident[ident] = reaction
+	_glob.all_reagent_reactions += reaction
 
 /datum/reagent_reaction
 	var/name

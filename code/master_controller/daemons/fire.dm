@@ -5,15 +5,15 @@
 
 /datum/daemon/fire/DoWork()
 
-	for(var/thing in glob.burning_atoms)
+	for(var/thing in _glob.burning_atoms)
 		var/atom/atom = thing
 		if(atom && !Deleted(atom))
 			atom.ProcessFire()
 		CHECK_SUSPEND
 
-	for(var/thing in glob.ignite_atoms)
+	for(var/thing in _glob.ignite_atoms)
 		var/atom/burning = thing
-		glob.ignite_atoms -= thing
+		_glob.ignite_atoms -= thing
 
 		if(burning.IsFlammable() && !burning.IsOnFire())
 			burning.Ignite()
@@ -26,4 +26,4 @@
 		CHECK_SUSPEND
 
 /datum/daemon/fire/Status()
-	return "[glob.burning_atoms.len]"
+	return "[_glob.burning_atoms.len]"

@@ -1,6 +1,6 @@
 /proc/InitializeSurgerySteps()
 	for(var/stype in typesof(/datum/surgery)-/datum/surgery)
-		glob.surgery_steps += GetUniqueDataByPath(stype)
+		_glob.surgery_steps += GetUniqueDataByPath(stype)
 
 /datum/surgery
 	var/name = "Generic Surgery"
@@ -33,7 +33,7 @@
 		return FALSE
 
 	//TODO faster surgery step lookup
-	for(var/thing in glob.surgery_steps)
+	for(var/thing in _glob.surgery_steps)
 		var/datum/surgery/surgery = thing
 		var/surgery_chance = surgery.CanPerformWith(prop)
 		if(surgery_chance > 0 && surgery.CanPerformBy(user) && surgery.CanPerformOn(user, src))

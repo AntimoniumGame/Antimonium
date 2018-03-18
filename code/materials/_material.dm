@@ -61,7 +61,7 @@
 	if(!liquid_name)  liquid_name =  "molten [general_name]"
 	if(!gas_name)     gas_name =     "[general_name] vapour"
 
-	turf_edge_layer = glob.turf_edge_layer_offset * glob.turf_edge_layers_by_path.Find(type)
+	turf_edge_layer = _glob.turf_edge_layer_offset * _glob.turf_edge_layers_by_path.Find(type)
 
 	for(var/recipe in crafting_recipe_paths)
 		recipes += GetUniqueDataByPath(recipe)

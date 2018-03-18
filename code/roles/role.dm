@@ -35,11 +35,11 @@
 	holder = _holder
 	ckey = holder.ckey
 	mob = holder.mob
-	glob.all_roles += src
+	_glob.all_roles += src
 	original_name = "[mob]"
 
 /datum/role/Destroy()
-	glob.all_roles -= src
+	_glob.all_roles -= src
 	. = ..()
 
 /datum/role/proc/GetOriginalName()
