@@ -119,3 +119,8 @@
 /obj/item/stack/reagent/bone
 	name = "bone"
 	default_material_path = /datum/material/bone
+
+/obj/item/stack/reagent/ashes
+	name = "ashes"
+	material_state = STATE_POWDER
+	default_material_path = /datum/material/bone

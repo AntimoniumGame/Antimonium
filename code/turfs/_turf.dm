@@ -272,7 +272,7 @@ var/list/corner_cull = list(
 	if(floor_material) floor_material.OnTurfEntry(src, crosser)
 	if(wall_material)  wall_material.OnTurfEntry(src, crosser)
 
-/turf/TakeDamage(var/dam, var/source)
+/turf/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 
 	damage += dam
 	debris_counter += dam

@@ -179,7 +179,7 @@
 	UpdateIcon()
 	UpdateStrings()
 
-/obj/item/stack/proc/SetAmt(var/amt)
+/obj/item/stack/proc/SetAmount(var/amt)
 	amount = max(1, min(max_amount, amt))
 	UpdateIcon()
 	UpdateStrings()

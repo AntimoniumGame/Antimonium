@@ -17,25 +17,26 @@
 		icon = initial(icon)
 	. = ..()
 
-/obj/item/clothing/Destroyed()
+/obj/item/clothing/Destroyed(var/dtype = WOUND_BRUISE)
 	var/mob/M = loc
 	if(istype(M))
 		M.Notify("<span class='danger'>Your [src.name] falls apart!</span>")
 		M.DropItem(src)
 	..()
 
-/obj/item/clothing/TakeDamage(var/dam, var/source)
+/obj/item/clothing/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 	. = ..()
-	UpdateStrings()
-	switch(damage)
-		if(max_damage to (max_damage * 0.75))
-			name = "mangled [name]"
-		if((max_damage * 0.51) to (max_damage * 0.74))
-			name = "battered [name]"
-		if((max_damage * 0.26) to (max_damage * 0.5))
-			name = "ragged [name]"
-		if((max_damage * 0.05) to (max_damage * 0.25))
-			name = "worn [name]"
+	if(!Deleted(src))
+		UpdateStrings()
+		switch(damage)
+			if(max_damage to (max_damage * 0.75))
+				name = "mangled [name]"
+			if((max_damage * 0.51) to (max_damage * 0.74))
+				name = "battered [name]"
+			if((max_damage * 0.26) to (max_damage * 0.5))
+				name = "ragged [name]"
+			if((max_damage * 0.05) to (max_damage * 0.25))
+				name = "worn [name]"
 
 /obj/item/clothing/New()
 	..()

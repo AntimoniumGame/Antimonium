@@ -14,7 +14,7 @@
 /obj/structure/window/CanPassProne()
 	return FALSE
 
-/obj/structure/window/Destroyed()
+/obj/structure/window/Destroyed(var/dtype = WOUND_BRUISE)
 	NotifyNearby("<span class='alert'>\The [src] shatters!</span>", MESSAGE_VISIBLE)
 	PlayLocalSound(src, 'sounds/effects/shatter1.ogg', 100)
 	new /obj/item/stack/shards(get_turf(src), _amount = rand(5,10))

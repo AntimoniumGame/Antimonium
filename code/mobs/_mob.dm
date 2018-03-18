@@ -11,9 +11,26 @@
 	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
 	var/blood_material = /datum/material/water/blood
+	var/skull_type = /obj/item/skull
 
 /mob/Grind()
 	Gib()
+
+/mob/proc/Decay()
+
+	for(var/invslot in inventory_slots)
+		var/obj/ui/inv/inv_slot = inventory_slots[invslot]
+		if(inv_slot.holding)
+			var/obj/item/throwing = inv_slot.holding
+			DropItem(throwing)
+
+	while(limbs_by_key.len > 1)
+		var/obj/item/limb/limb = GetLimb(pick(limbs_by_key - BP_CHEST))
+		limb.SeverLimb(dtype = WOUND_BURN)
+		sleep(-1)
+
+	if(!Deleted(src))
+		QDel(src, "turned to dust")
 
 /mob/proc/Gib()
 
@@ -106,12 +123,7 @@
 	ResetPosition()
 
 /mob/HandleFireDamage()
-	if(fire_intensity >= MAX_FIRE_INTENSITY)
-		Die("the hungry flames")
-		// create ashes
-		// Light off
-		QDel(src, "burned up")
-	else if(IsOnFire() && fire_intensity)
+	if(IsOnFire() && fire_intensity)
 		for(var/invslot in inventory_slots)
 			var/obj/ui/inv/inv_slot = inventory_slots[invslot]
 			if(inv_slot.holding && !inv_slot.holding.IsOnFire() && inv_slot.holding.IsFlammable() && inv_slot.holding.CanIgnite() && prob(10))

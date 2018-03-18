@@ -48,7 +48,7 @@
 					var/obj/item/casting = new cast_path(loc, material_path = contains_material.material.type)
 					if(istype(casting, /obj/item/stack))
 						var/obj/item/stack/stack = casting
-						stack.SetAmt(material_capacity)
+						stack.SetAmount(material_capacity)
 					QDel(contains_material, "material spent")
 					contains_material = null
 				else

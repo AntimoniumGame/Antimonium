@@ -52,7 +52,7 @@
 /obj/item/organ/proc/IsBroken()
 	return (damage >= min_broken_damage)
 
-/obj/item/organ/TakeDamage(var/dam, var/source)
+/obj/item/organ/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
 	. = ..()
 	if(!Deleted(src) && damage >= death_threshold && !dead)
 		Die()

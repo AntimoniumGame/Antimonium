@@ -1,6 +1,6 @@
 /obj/item/limb
 	name = "limb"
-	icon = 'icons/objects/items/limbs/_default.dmi'
+	icon = 'icons/mobs/limbs/_default.dmi'
 	contact_size = 5
 	weight = 10
 	sharpness = 1
@@ -46,6 +46,10 @@
 	owner.limbs += src
 	contact_size = _size  // Reusing contact_size as an 'effective limb
 	weight = contact_size // size' for the purposes of bleeding etc.
+
+	if(_limb_id == BP_HEAD)
+		remains_type = owner.skull_type
+		remains_multi = FALSE
 
 	if(_parent)
 		parent = owner.GetLimb(_parent)
