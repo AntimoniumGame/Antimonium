@@ -106,10 +106,29 @@ var/list/clothing_colour_maps = list(
 			choice = input("Which path(s) do you wish to compile icons for?") as null|anything in icon_choices
 
 	if(icons_to_compile && icons_to_compile.len)
-		CompileColouredIcons(icons_to_compile)
+		CompileColouredIcons(icons_to_compile, clothing_colour_maps)
 
 var/list/skin_colour_maps = list(
 	"template" = list(
+		DARK_BROWN,
+		PALE_BROWN,
+		BRIGHT_ORANGE,
+		DARK_PINK,
+		PALE_PINK
+	),
+	"pallid" = list(
+		INDIGO,
+		DARK_BLUE,
+		GREY_BLUE,
+		PALE_BLUE,
+		WHITE
+	),
+	"dark" = list(
+		NAVY_BLUE,
+		DARK_PURPLE,
+		DARK_BROWN,
+		PALE_BROWN,
+		BROWN_ORANGE
 	)
 )
 
@@ -118,7 +137,54 @@ var/list/skin_colour_maps = list(
 	set name = "Produce Skin Tones"
 	set category = "Utility"
 
-/client/proc/CompileColouredIcons(var/list/icons_to_compile)
+	CompileColouredIcons(list(
+		"[BP_CHEST]" =      list(
+			icon(icon = 'icons/mobs/limbs/human/chest.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/chest.dmi',      moving = TRUE)
+		),
+		"[BP_GROIN]" =      list(
+			icon(icon = 'icons/mobs/limbs/human/groin.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/groin.dmi',      moving = TRUE)
+		),
+		"[BP_LEFT_ARM]" =   list(
+			icon(icon = 'icons/mobs/limbs/human/left_arm.dmi',   moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/left_arm.dmi',   moving = TRUE)
+		),
+		"[BP_RIGHT_ARM]" =  list(
+			icon(icon = 'icons/mobs/limbs/human/right_arm.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/right_arm.dmi',  moving = TRUE)
+		),
+		"[BP_HEAD]" =       list(
+			icon(icon = 'icons/mobs/limbs/human/head.dmi',       moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/head.dmi',       moving = TRUE)
+		),
+		"[BP_LEFT_HAND]" =  list(
+			icon(icon = 'icons/mobs/limbs/human/left_hand.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/left_hand.dmi',  moving = TRUE)
+		),
+		"[BP_RIGHT_HAND]" = list(
+			icon(icon = 'icons/mobs/limbs/human/right_hand.dmi', moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/right_hand.dmi', moving = TRUE)
+		),
+		"[BP_LEFT_LEG]" =   list(
+			icon(icon = 'icons/mobs/limbs/human/left_leg.dmi',   moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/left_leg.dmi',   moving = TRUE)
+		),
+		"[BP_RIGHT_LEG]" =  list(
+			icon(icon = 'icons/mobs/limbs/human/right_leg.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/right_leg.dmi',  moving = TRUE)
+		),
+		"[BP_LEFT_FOOT]" =  list(
+			icon(icon = 'icons/mobs/limbs/human/left_foot.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/left_foot.dmi',  moving = TRUE)
+		),
+		"[BP_RIGHT_FOOT]" = list(
+			icon(icon = 'icons/mobs/limbs/human/right_foot.dmi', moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/right_foot.dmi', moving = TRUE)
+		)
+	), skin_colour_maps)
+
+/client/proc/CompileColouredIcons(var/list/icons_to_compile, var/list/colour_maps)
 
 	Dnotify("Compiling icon recolours.")
 
@@ -128,10 +194,10 @@ var/list/skin_colour_maps = list(
 		var/icon/_icon_static = icon_data[1]
 		var/icon/_icon_moving = icon_data[2]
 
-		for(var/ident in clothing_colour_maps)
+		for(var/ident in colour_maps)
 			if(ident == "template") continue
-			var/list/template_colours = clothing_colour_maps["template"]
-			var/list/map_colours = clothing_colour_maps[ident]
+			var/list/template_colours = colour_maps["template"]
+			var/list/map_colours = colour_maps[ident]
 			var/icon/compiled_icon = icon()
 
 			for(var/_icon_state in icon_states(_icon_static))
