@@ -11,8 +11,8 @@
 /datum/human_bodytype/dark
 	name = "Dark"
 	icons_by_limb = list(
-		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/dark/chest.dmi'),
-		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/dark/groin.dmi'),
+		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/dark/chest_f.dmi', MALE = 'icons/mobs/limbs/human/dark/chest_m.dmi'),
+		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/dark/groin_f.dmi', MALE = 'icons/mobs/limbs/human/dark/groin_m.dmi'),
 		BP_LEFT_ARM =   list("default" = 'icons/mobs/limbs/human/dark/left_arm.dmi'),
 		BP_RIGHT_ARM =  list("default" = 'icons/mobs/limbs/human/dark/right_arm.dmi'),
 		BP_HEAD =       list("default" = 'icons/mobs/limbs/human/dark/head.dmi'),
@@ -27,8 +27,8 @@
 /datum/human_bodytype/pallid
 	name = "Pallid"
 	icons_by_limb = list(
-		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/pallid/chest.dmi'),
-		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/pallid/groin.dmi'),
+		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/pallid/chest_f.dmi', MALE = 'icons/mobs/limbs/human/pallid/chest_m.dmi'),
+		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/pallid/groin_f.dmi', MALE = 'icons/mobs/limbs/human/pallid/groin_m.dmi'),
 		BP_LEFT_ARM =   list("default" = 'icons/mobs/limbs/human/pallid/left_arm.dmi'),
 		BP_RIGHT_ARM =  list("default" = 'icons/mobs/limbs/human/pallid/right_arm.dmi'),
 		BP_HEAD =       list("default" = 'icons/mobs/limbs/human/pallid/head.dmi'),
@@ -43,8 +43,8 @@
 /datum/human_bodytype/pale
 	name = "Pale"
 	icons_by_limb = list(
-		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/pale/chest.dmi'),
-		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/pale/groin.dmi'),
+		BP_CHEST =      list("default" = 'icons/mobs/limbs/human/pale/chest_f.dmi', MALE = 'icons/mobs/limbs/human/pale/chest_m.dmi'),
+		BP_GROIN =      list("default" = 'icons/mobs/limbs/human/pale/groin_f.dmi', MALE = 'icons/mobs/limbs/human/pale/groin_m.dmi'),
 		BP_LEFT_ARM =   list("default" = 'icons/mobs/limbs/human/pale/left_arm.dmi'),
 		BP_RIGHT_ARM =  list("default" = 'icons/mobs/limbs/human/pale/right_arm.dmi'),
 		BP_HEAD =       list("default" = 'icons/mobs/limbs/human/pale/head.dmi'),

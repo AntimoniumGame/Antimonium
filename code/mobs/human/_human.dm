@@ -12,6 +12,10 @@
 /mob/human/GetSlotByHandedness(var/handedness)
 	return (handedness == "left" ? SLOT_LEFT_HAND : SLOT_RIGHT_HAND)
 
+/mob/human/New()
+	gender = pick(MALE, FEMALE)
+	..()
+
 /mob/human/Initialize()
 	. = ..()
 	var/obj/item/limb/head/head = GetLimb(BP_HEAD)
