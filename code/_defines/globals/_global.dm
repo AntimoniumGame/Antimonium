@@ -35,23 +35,11 @@ var/datum/globals/_glob = new
 		new /datum/human_bodytype/pale,
 		new /datum/human_bodytype/dark
 		)
-	var/list/hair_colours = list(
-		PALE_BROWN,
-		LIGHT_GREY,
-		PALE_RED,
-		DARK_BROWN,
-		DARK_GREY,
-		DARK_RED,
-		DARK_BLUE_GREY,
-		BRIGHT_ORANGE,
-		GREEN_BROWN,
-		BROWN_GREEN,
-		BROWN_ORANGE,
-		WHITE,
-		BLACK,
-		GREY_BLUE
+	var/list/hair_styles = list(
+		"Bald" = 'icons/mobs/hair/_bald.dmi',
+		"Tonsure" = 'icons/mobs/hair/tonsure.dmi'
 	)
-	var/list/hair_styles = list()
+
 	var/list/eye_colours = list(
 		PALE_BROWN,
 		PALE_GREEN,
@@ -136,7 +124,6 @@ var/datum/globals/_glob = new
 		InitializeAntagonists()
 		InitializeSurgerySteps()
 		InitializeOutfits()
-		InitializeHairstyles()
 
 		// Start the game stuff!
 		var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)

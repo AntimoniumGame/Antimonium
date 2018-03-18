@@ -220,7 +220,6 @@
 #include "code\mobs\limbs\limb_damage.dm"
 #include "code\mobs\limbs\limb_grasp.dm"
 #include "code\mobs\limbs\limb_head.dm"
-#include "code\mobs\limbs\limb_head_hair.dm"
 #include "code\mobs\limbs\limb_pain.dm"
 #include "code\mobs\limbs\limb_process.dm"
 #include "code\mobs\limbs\limb_stance.dm"
