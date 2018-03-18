@@ -1,8 +1,0 @@
-var/list/mob_list = list()
-var/list/living_mob_list = list()
-var/list/dead_mob_list = list()
-var/list/processing_objects = list()
-var/list/clients = list()
-var/list/new_players = list()
-var/list/temperature_sensitive_atoms = list()
-var/list/atoms_to_initialize = list()

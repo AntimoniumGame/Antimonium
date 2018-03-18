@@ -1,7 +1,7 @@
 /atom/New()
 	..()
 	if(flags & FLAG_TEMPERATURE_SENSITIVE)
-		temperature_sensitive_atoms += src
+		glob.temperature_sensitive_atoms += src
 
 /atom
 	var/temperature = TEMPERATURE_ROOM
@@ -37,7 +37,7 @@
 	set background = 1
 
 	if(!(flags & FLAG_TEMPERATURE_SENSITIVE))
-		temperature_sensitive_atoms -= src
+		glob.temperature_sensitive_atoms -= src
 		return
 
 	EqualizeTemperature()

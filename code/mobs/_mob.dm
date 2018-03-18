@@ -64,11 +64,11 @@
 
 /mob/Initialize()
 
-	mob_list += src
+	glob.mob_list += src
 	if(dead)
-		dead_mob_list += src
+		glob.dead_mob_list += src
 	else
-		living_mob_list += src
+		glob.living_mob_list += src
 
 	// Instantiate body.
 	CreateLimbs()
@@ -93,9 +93,9 @@
 	..()
 
 /mob/Destroy()
-	dead_mob_list -= src
-	living_mob_list -= src
-	mob_list -= src
+	glob.dead_mob_list -= src
+	glob.living_mob_list -= src
+	glob.mob_list -= src
 	. = ..()
 
 /mob/UpdateStrings()

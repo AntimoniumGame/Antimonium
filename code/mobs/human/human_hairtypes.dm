@@ -1,0 +1,1 @@
+var/list/human_hair_types

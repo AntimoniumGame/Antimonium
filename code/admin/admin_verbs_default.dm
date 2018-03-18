@@ -25,14 +25,13 @@
 	to_chat(src, "Hub name is: [world.name]")
 	to_chat(src, "Hub ID is: [world.hub]")
 
-var/force_start = FALSE
 /client/proc/StartGame()
 	set name = "Force Start Game"
 	set category = "Admin"
-	if(game_state && game_state.ident != GAME_LOBBY_WAITING)
+	if(glob.game_state && glob.game_state.ident != GAME_LOBBY_WAITING)
 		Anotify("Game is already starting or started.")
 		return
-	var/datum/game_state/waiting/gstate = game_state
+	var/datum/game_state/waiting/gstate = glob.game_state
 	if(!istype(gstate) || gstate.force_start)
 		Anotify("Game is already starting or started.")
 		return

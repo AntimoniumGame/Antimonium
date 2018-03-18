@@ -12,7 +12,7 @@
 	SwitchGameState(/datum/game_state/setup)
 
 	var/lmusic = pick(typesof(/datum/lobby_music)-/datum/lobby_music)
-	lobby_music = new lmusic()
+	glob.lobby_music = new lmusic()
 
 	#ifdef TRAVIS_TEST
 	world.log << "TRAVIS_TEST defined, this is a testing run and will terminate in ten seconds."

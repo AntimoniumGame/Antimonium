@@ -8,7 +8,7 @@ var/static/font_name = "Grange-Light" //"Courier New"
 /client/New()
 	..()
 
-	clients += src
+	glob.clients += src
 
 	// Apply main window styling.
 	winset(src, "chatoutput", {"style=\"
@@ -40,7 +40,7 @@ var/static/font_name = "Grange-Light" //"Courier New"
 	interface = new(src)
 
 	// Retrieve our extant role (for relogging) or make a blank one.
-	for(var/thing in all_roles)
+	for(var/thing in glob.all_roles)
 		var/datum/role/crole = thing
 		if(crole.ckey == ckey)
 			role = crole
@@ -59,5 +59,5 @@ var/static/font_name = "Grange-Light" //"Courier New"
 
 /client/Del()
 	. = ..()
-	clients -= src
+	glob.clients -= src
 	world.UpdateStatus()

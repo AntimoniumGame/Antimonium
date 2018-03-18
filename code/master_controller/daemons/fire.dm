@@ -1,6 +1,3 @@
-var/list/burning_atoms = list()
-var/list/ignite_atoms = list()
-
 /datum/daemon/fire
 	name = "fire"
 	delay = 10
@@ -8,15 +5,15 @@ var/list/ignite_atoms = list()
 
 /datum/daemon/fire/DoWork()
 
-	for(var/thing in burning_atoms)
+	for(var/thing in glob.burning_atoms)
 		var/atom/atom = thing
 		if(atom && !Deleted(atom))
 			atom.ProcessFire()
 		CHECK_SUSPEND
 
-	for(var/thing in ignite_atoms)
+	for(var/thing in glob.ignite_atoms)
 		var/atom/burning = thing
-		ignite_atoms -= thing
+		glob.ignite_atoms -= thing
 
 		if(burning.IsFlammable() && !burning.IsOnFire())
 			burning.Ignite()
@@ -29,4 +26,4 @@ var/list/ignite_atoms = list()
 		CHECK_SUSPEND
 
 /datum/daemon/fire/Status()
-	return "[burning_atoms.len]"
+	return "[glob.burning_atoms.len]"

@@ -15,14 +15,12 @@
 	SLOT_RIGHT_HAND
 */
 
-var/list/all_outfits = list()
-
 /proc/InitializeOutfits()
 	for(var/outfit in typesof(/datum/outfit))
 		var/datum/outfit/check_outfit = outfit
 		if(!initial(check_outfit.name))
 			continue
-		all_outfits += GetUniqueDataByPath(outfit)
+		glob.all_outfits += GetUniqueDataByPath(outfit)
 
 /datum/outfit
 	var/name = "Drifter"

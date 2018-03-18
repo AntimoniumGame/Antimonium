@@ -1,6 +1,3 @@
-var/list/all_reagent_reactions = list()
-var/list/reagent_reactions_by_ident = list()
-
 /proc/InitializeReagentReactions()
 	/*
 	AddReagentReaction("test", min_temp = TEMPERATURE_FREEZING, max_temp = TEMPERATURE_BOILING, \
@@ -10,14 +7,14 @@ var/list/reagent_reactions_by_ident = list()
 
 //TODO make this a daemon
 /proc/ProcessReagentReactions(var/atom/holder, var/list/reagents)
-	for(var/thing in all_reagent_reactions)
+	for(var/thing in glob.all_reagent_reactions)
 		var/datum/reagent_reaction/reaction = thing
 		if(reaction.CanReact(holder, reagents))
 			reaction.DoReaction(holder, reagents)
 			return
 
 /proc/AddReagentReaction(var/ident, var/min_temp = TEMPERATURE_ZERO, var/max_temp = TEMPERATURE_MAX, var/list/consumed = list(), var/list/catalysts = list(), var/list/products = list())
-	if(reagent_reactions_by_ident[ident])
+	if(glob.reagent_reactions_by_ident[ident])
 		return
 	var/datum/reagent_reaction/reaction = new()
 	reaction.name = ident
@@ -26,8 +23,8 @@ var/list/reagent_reactions_by_ident = list()
 	reaction.consumed_reagents =   consumed
 	reaction.catalyzing_reagents = catalysts
 	reaction.produced_reagents =   products
-	reagent_reactions_by_ident[ident] = reaction
-	all_reagent_reactions += reaction
+	glob.reagent_reactions_by_ident[ident] = reaction
+	glob.all_reagent_reactions += reaction
 
 /datum/reagent_reaction
 	var/name

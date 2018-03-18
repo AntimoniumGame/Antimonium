@@ -4,11 +4,11 @@
 	initial_offset = 5
 
 /datum/daemon/temperature/DoWork()
-	for(var/thing in temperature_sensitive_atoms)
+	for(var/thing in glob.temperature_sensitive_atoms)
 		var/atom/temp = thing
 		if(temp && !Deleted(temp))
 			temp.ProcessTemperature()
 		CHECK_SUSPEND
 
 /datum/daemon/temperature/Status()
-	return "[temperature_sensitive_atoms.len]"
+	return "[glob.temperature_sensitive_atoms.len]"

@@ -11,14 +11,14 @@
 	if(force_start || world.time > (time_initialized + roundstart_delay))
 		SwitchGameState(/datum/game_state/starting)
 	else
-		for(var/thing in new_players)
+		for(var/thing in glob.new_players)
 			var/mob/abstract/new_player/player = thing
 			player.join.game_start_time = time_initialized + roundstart_delay
 			player.join.UpdateIcon()
 
 /datum/game_state/waiting/End()
 	spawn()
-		for(var/thing in new_players)
+		for(var/thing in glob.new_players)
 			var/mob/abstract/new_player/player = thing
 			player.join.UpdateIcon()
 

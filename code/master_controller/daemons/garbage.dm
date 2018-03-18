@@ -1,5 +1,5 @@
-var/datum/daemon/garbage/gc
-/datum/var/gc_collect_time = 0
+/datum
+	var/gc_collect_time = 0
 
 /proc/Deleted(var/atom/A)
 	return (!istype(A) || (A.gc_collect_time != 0 && !isnull(A.gc_collect_time)))
@@ -28,7 +28,7 @@ var/datum/daemon/garbage/gc
 	else
 		Dnotify("GC: collected \ref[thing] ([thing]).")
 	*/
-	gc.Collect(thing)
+	glob.gc.Collect(thing)
 
 /datum/daemon/garbage
 	name = "garbage collector"
@@ -37,10 +37,10 @@ var/datum/daemon/garbage/gc
 	var/list/garbage = list()
 
 /datum/daemon/garbage/New()
-	if(gc)
-		garbage = gc.garbage
-		QDel(gc, "gc replacement")
-	gc = src
+	if(glob.gc)
+		garbage = glob.gc.garbage
+		QDel(glob.gc, "gc replacement")
+	glob.gc = src
 
 /datum/daemon/garbage/proc/Collect(var/thing)
 	if(!thing || !thing:Destroy())

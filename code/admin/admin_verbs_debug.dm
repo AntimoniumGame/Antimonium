@@ -35,10 +35,10 @@
 
 	var/i = 1
 	var/standing = TRUE
-	while(i <= job_datums.len)
+	while(i <= glob.job_datums.len)
 
 		var/mob/H = new(locate(mob.x+last_x,mob.y+last_y,mob.z))
-		var/datum/job/job = job_datums[i]
+		var/datum/job/job = glob.job_datums[i]
 
 		if(istype(H))
 			H = job.Equip(H)
@@ -58,7 +58,7 @@
 	set name = "Toggle Daemon"
 	set category = "Debug"
 
-	var/datum/daemon/daemon = input("Toggle which daemon?") as null|anything in mc.daemons
+	var/datum/daemon/daemon = input("Toggle which daemon?") as null|anything in glob.mc.daemons
 	if(!istype(daemon))
 		return
 
@@ -81,11 +81,11 @@
 	set name = "Master Controller Status"
 	set category = "Debug"
 
-	if(!mc)
+	if(!glob.mc)
 		Dnotify("Master controller doesn't exist.")
 		return
-	Dnotify("Daemons: [mc.daemons.len]")
-	for(var/datum/daemon/daemon in mc.daemons)
+	Dnotify("Daemons: [glob.mc.daemons.len]")
+	for(var/datum/daemon/daemon in glob.mc.daemons)
 		Dnotify("[daemon.name]: [daemon.Status()]")
 
 /client/proc/ForceSwitchGameState()
@@ -95,7 +95,7 @@
 
 	var/choice = input("Select a new state.") as null|anything in typesof(/datum/game_state)-/datum/game_state
 	if(!choice) return
-	to_chat(src, "Previous state path: [game_state ? game_state.type : "null"]")
+	to_chat(src, "Previous state path: [glob.game_state ? glob.game_state.type : "null"]")
 	SwitchGameState(choice)
 	to_chat(src, "Forced state change complete.")
 
@@ -380,7 +380,7 @@
 		return
 
 	var/mob/abstract/new_player/player = mob
-	switch(game_state.ident)
+	switch(glob.game_state.ident)
 		if(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING)
 			Dnotify("<span class='warning'>The game has not started yet!</span>")
 			return
@@ -388,9 +388,9 @@
 			Dnotify("<span class='warning'>The game is over!</span>")
 			return
 
-	var/datum/job/selected_role = input("Select a job.") as null|anything in job_datums
+	var/datum/job/selected_role = input("Select a job.") as null|anything in glob.job_datums
 
-	if(!selected_role || !istype(mob, /mob/abstract/new_player) || (game_state.ident in list(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING,GAME_OVER)))
+	if(!selected_role || !istype(mob, /mob/abstract/new_player) || (glob.game_state.ident in list(GAME_SETTING_UP, GAME_STARTING, GAME_LOBBY_WAITING,GAME_OVER)))
 		return
 
 	screen -= player.title_image

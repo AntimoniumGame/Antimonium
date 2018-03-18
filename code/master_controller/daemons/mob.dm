@@ -3,11 +3,11 @@
 	delay = 10
 
 /datum/daemon/mob/DoWork()
-	for(var/thing in living_mob_list)
+	for(var/thing in glob.living_mob_list)
 		var/mob/mob = thing
 		if(mob && !Deleted(mob))
 			mob.HandleLifeTick()
 		CHECK_SUSPEND
 
 /datum/daemon/mob/Status()
-	return "[living_mob_list.len]"
+	return "[glob.living_mob_list.len]"

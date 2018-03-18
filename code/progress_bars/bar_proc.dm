@@ -1,5 +1,3 @@
-var/const/do_after_check_period = 5
-
 /mob/proc/DoAfter(var/delay = 0, var/atom/target, var/list/check_own_vars = list("loc"), var/list/check_target_vars = list("loc"), var/check_incapacitated = TRUE)
 
 	if(target && !istype(target))
@@ -54,8 +52,8 @@ var/const/do_after_check_period = 5
 		if(!.)
 			break
 
-		delay -= do_after_check_period
-		sleep(do_after_check_period)
+		delay -= 5
+		sleep(5)
 
 	if(bar)
 		QDel(bar)

@@ -3,7 +3,7 @@
 
 /datum/game_state/setup/Init()
 
-	mc = new()
+	glob.mc = new()
 
 	InitializeConfig()
 	InitializeReagentReactions()
@@ -15,10 +15,10 @@
 	InitializeSurgerySteps()
 	InitializeOutfits()
 
-	for(var/thing in atoms_to_initialize)
+	for(var/thing in glob.atoms_to_initialize)
 		var/atom/atom = thing
 		atom.Initialize()
-	atoms_to_initialize.Cut()
+	glob.atoms_to_initialize.Cut()
 
 	world.UpdateStatus()
 

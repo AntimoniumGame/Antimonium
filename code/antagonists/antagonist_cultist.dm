@@ -24,7 +24,7 @@
 	var/cultist_count = 0
 	var/villager_count = 0
 
-	for(var/thing in clients)
+	for(var/thing in glob.clients)
 		var/client/C = thing
 		if(istype(C.mob, /mob/human) && !C.mob.dead && !isnull(C.role.job))
 			if(antagonist in C.role.antagonist_roles)

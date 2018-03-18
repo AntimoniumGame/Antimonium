@@ -1,17 +1,14 @@
 #define CHECK_SUSPEND if(world.tick_usage >= 100) sleep(world.tick_lag)
-
-var/datum/master_controller/mc
-
 /datum/master_controller
 	var/list/daemons = list()
 
 /datum/master_controller/New()
 
 	. = ..()
-	if(mc)
-		daemons = mc.daemons
-		QDel(mc, "mc restart")
-		mc = src
+	if(glob.mc)
+		daemons = glob.mc.daemons
+		QDel(glob.mc, "mc restart")
+		glob.mc = src
 	else
 		Setup()
 

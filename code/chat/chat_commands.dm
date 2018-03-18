@@ -1,9 +1,7 @@
-var/list/all_chat_commands = list()
-
 /proc/InitializeChatCommands()
 	for(var/ccommand in (typesof(/datum/chat_command)-/datum/chat_command))
 		var/datum/chat_command/c = new ccommand()
-		all_chat_commands[c.command] = c
+		glob.all_chat_commands[c.command] = c
 
 /datum/chat_command
 	var/command

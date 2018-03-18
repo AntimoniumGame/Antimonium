@@ -17,18 +17,18 @@
 		return
 
 	var/client/modifying
-	for(var/client/player in clients)
+	for(var/client/player in glob.clients)
 		if(player.ckey == enter_ckey)
 			modifying = player
 			break
 
 	var/existing_admin = FALSE
-	if(admins[enter_ckey])
+	if(glob.admins[enter_ckey])
 		existing_admin = TRUE
 		if(modifying)
 			modifying.SetAdminPermissions()
-		admins[enter_ckey] = null
-		admins -= enter_ckey
+		glob.admins[enter_ckey] = null
+		glob.admins -= enter_ckey
 
 	var/enter_perm = input("Enter a numerical combined permission flag.") as num|null
 	if(isnull(enter_perm))
@@ -38,10 +38,10 @@
 	if(!enter_title)
 		return
 
-	admins[enter_ckey] = new /datum/admin_rank(enter_ckey, enter_perm, enter_title)
+	glob.admins[enter_ckey] = new /datum/admin_rank(enter_ckey, enter_perm, enter_title)
 	Anotify("Updated rank for [enter_ckey] to [enter_perm] - [enter_title].")
 	if(modifying)
-		modifying.SetAdminPermissions(admins[enter_ckey])
+		modifying.SetAdminPermissions(glob.admins[enter_ckey])
 
 	if(existing_admin)
 		UpdateAdminDatabase(enter_ckey, enter_perm, enter_title)
@@ -57,10 +57,10 @@
 	if(!enter_ckey)
 		return
 
-	if(admins[enter_ckey])
-		admins[enter_ckey] = null
-		admins -= enter_ckey
-	for(var/client/player in clients)
+	if(glob.admins[enter_ckey])
+		glob.admins[enter_ckey] = null
+		glob.admins -= enter_ckey
+	for(var/client/player in glob.clients)
 		if(player.ckey == enter_ckey)
 			player.SetAdminPermissions()
 			break

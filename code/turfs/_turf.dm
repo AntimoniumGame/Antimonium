@@ -1,10 +1,3 @@
-var/list/corner_cull = list(
-	"[NORTHEAST]" = list("[NORTH]", "[EAST]"),
-	"[NORTHWEST]" = list("[NORTH]", "[WEST]"),
-	"[SOUTHEAST]" = list("[SOUTH]", "[EAST]"),
-	"[SOUTHWEST]" = list("[SOUTH]", "[WEST]")
-)
-
 /turf
 	layer = TURF_LAYER
 	luminosity = 1
@@ -72,7 +65,7 @@ var/list/corner_cull = list(
 /turf/Initialize()
 	SetDir(dir)
 	UpdateStrings()
-	UpdateIcon(ignore_neighbors = (!game_state || game_state.ident != GAME_RUNNING))
+	UpdateIcon(ignore_neighbors = (!glob.game_state || glob.game_state.ident != GAME_RUNNING))
 
 /turf/proc/GetSimulatedAtoms()
 	var/list/valid_targets = list()

@@ -1,8 +1,3 @@
-var/list/human_bodytypes = list(
-	new /datum/human_bodytype/pale,
-	new /datum/human_bodytype/dark
-	)
-
 /datum/human_bodytype
 	var/name
 	var/list/icons_by_limb = list()

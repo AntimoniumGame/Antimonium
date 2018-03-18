@@ -11,7 +11,7 @@
 	screen_loc = "[round(view_x/2)]+2,[round(view_y/2)-4]"
 
 /obj/ui/join_game/UpdateIcon()
-	if(!game_state || game_state.ident != GAME_RUNNING)
+	if(!glob.game_state || glob.game_state.ident != GAME_RUNNING)
 		var/mob/abstract/new_player/player = owner
 		if(player.ready)
 			icon_state = "ready_off"
@@ -40,7 +40,7 @@
 		if(player.client)
 			PlayClientSound(player.client, null, 'sounds/effects/click1.ogg', 100, -1)
 
-		if(!game_state || game_state.ident != GAME_RUNNING)
+		if(!glob.game_state || glob.game_state.ident != GAME_RUNNING)
 			player.ready = !player.ready
 			UpdateIcon()
 		else

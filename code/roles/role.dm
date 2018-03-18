@@ -1,5 +1,3 @@
-var/list/all_roles = list()
-
 /mob/Login()
 
 	. = ..()
@@ -37,11 +35,11 @@ var/list/all_roles = list()
 	holder = _holder
 	ckey = holder.ckey
 	mob = holder.mob
-	all_roles += src
+	glob.all_roles += src
 	original_name = "[mob]"
 
 /datum/role/Destroy()
-	all_roles -= src
+	glob.all_roles -= src
 	. = ..()
 
 /datum/role/proc/GetOriginalName()

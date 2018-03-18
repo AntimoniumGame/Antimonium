@@ -13,7 +13,7 @@
 	var/mob/target
 
 /datum/objective/assassinate/SetObjective()
-	for(var/thing in shuffle(clients.Copy()))
+	for(var/thing in shuffle(glob.clients.Copy()))
 		var/client/C = thing
 		if(istype(C.mob, /mob/human) && !isnull(C.role.job))
 			target = C.mob

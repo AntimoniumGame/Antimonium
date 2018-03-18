@@ -11,7 +11,7 @@
 	owner.active_grabs += src
 	grabbed = _grabbed
 	name = "grip on \the [grabbed]"
-	processing_objects += src
+	glob.processing_objects += src
 
 /obj/item/grab/AfterDropped()
 	QDel(src, "grab dropped")
@@ -30,7 +30,7 @@
 
 	grabbed = null
 	owner = null
-	processing_objects -= src
+	glob.processing_objects -= src
 	. = ..()
 
 /obj/item/grab/Process()

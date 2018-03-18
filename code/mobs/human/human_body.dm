@@ -6,7 +6,7 @@
 	. = ..()
 
 /mob/human/CreateLimbs()
-	if(!bodytype) bodytype = pick(human_bodytypes)
+	if(!bodytype) bodytype = pick(glob.human_bodytypes)
 	// Order is important; make sure limbs with parents are created AFTER their parent.
 	limbs_by_key[BP_CHEST] =      new /obj/item/limb(src,       "upper body",  bodytype.GetIcon(BP_CHEST, gender),      BP_CHEST ,     _root = TRUE, _vital = TRUE, _size = 10)
 	limbs_by_key[BP_GROIN] =      new /obj/item/limb(src,       "lower body",  bodytype.GetIcon(BP_GROIN, gender),      BP_GROIN,      BP_CHEST,     _vital = TRUE, _size = 10)

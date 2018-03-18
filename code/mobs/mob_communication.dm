@@ -31,8 +31,8 @@
 		var/list/words = splittext(message," ")
 		var/prefix = lowertext(copytext(words[1],2))
 		words.Cut(1,2)
-		if(prefix && all_chat_commands[prefix])
-			var/datum/chat_command/command = all_chat_commands[prefix]
+		if(prefix && glob.all_chat_commands[prefix])
+			var/datum/chat_command/command = glob.all_chat_commands[prefix]
 			if(command.CanInvoke(src))
 				command.Invoke(src, jointext(words, " "))
 				return
@@ -41,7 +41,7 @@
 /mob/proc/DoOocMessage(var/message)
 	message = FormatStringForSpeech(key, message)
 	next_speech = world.time + 5
-	for(var/client/player in clients)
+	for(var/client/player in glob.clients)
 		player.Notify("<b>OOC:</b> [message]")
 
 /mob/proc/DoSay(var/message)
@@ -71,12 +71,12 @@
 
 /mob/proc/NotifyDead(var/message)
 	var/list/notified = list()
-	for(var/thing in dead_mob_list)
+	for(var/thing in glob.dead_mob_list)
 		var/mob/deadite = thing
 		if(deadite.client)
 			notified += deadite.client
 			deadite.Notify("DEAD: [message]")
-	for(var/thing in (clients-notified))
+	for(var/thing in (glob.clients-notified))
 		var/client/player = thing
 		if(player.CheckAdminPermission(PERMISSIONS_MODERATOR))
 			player.Notify("DEAD: [message]")
