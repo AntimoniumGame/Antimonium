@@ -91,26 +91,42 @@ var/list/clothing_colour_maps = list(
 	var/choice = input("Which path(s) do you wish to compile icons for?") as null|anything in icon_choices
 	while(choice)
 		if(choice == "All")
-			icons_to_compile |= icon_choices
-			icons_to_compile -= "All"
-			icons_to_compile -= "Done"
+			icon_choices -= "All"
+			icon_choices -= "Done"
+			for(var/nchoice in icon_choices)
+				var/atom/_atom = nchoice
+				icons_to_compile[replacetext(replacetext(initial(_atom.name), " ", "_"),"'", "")] = list(icon(icon = initial(_atom.icon), moving = FALSE), icon(icon = initial(_atom.icon), moving = TRUE))
 			break
 		else if(choice == "Done")
 			break
 		else
-			icons_to_compile |= choice
+			icon_choices -= choice
+			var/atom/_atom = choice
+			icons_to_compile[replacetext(replacetext(initial(_atom.name), " ", "_"),"'", "")] = list(icon(icon = initial(_atom.icon), moving = FALSE), icon(icon = initial(_atom.icon), moving = TRUE))
 			choice = input("Which path(s) do you wish to compile icons for?") as null|anything in icon_choices
 
-	if(!icons_to_compile || !icons_to_compile.len)
-		return
+	if(icons_to_compile && icons_to_compile.len)
+		CompileColouredIcons(icons_to_compile)
+
+var/list/skin_colour_maps = list(
+	"template" = list(
+	)
+)
+
+/client/proc/ProduceSkinTones()
+
+	set name = "Produce Skin Tones"
+	set category = "Utility"
+
+/client/proc/CompileColouredIcons(var/list/icons_to_compile)
 
 	Dnotify("Compiling icon recolours.")
 
-	for(var/upath in icons_to_compile)
-		var/atom/_atom = upath
-		var/dumpname = replacetext(replacetext(initial(_atom.name), " ", "_"),"'", "")
-		var/icon/_icon_static = icon(icon = initial(_atom.icon), moving = FALSE)
-		var/icon/_icon_moving = icon(icon = initial(_atom.icon), moving = TRUE)
+	for(var/dumpname in icons_to_compile)
+
+		var/list/icon_data = icons_to_compile[dumpname]
+		var/icon/_icon_static = icon_data[1]
+		var/icon/_icon_moving = icon_data[2]
 
 		for(var/ident in clothing_colour_maps)
 			if(ident == "template") continue
@@ -133,10 +149,3 @@ var/list/clothing_colour_maps = list(
 			var/dumpstr = "dump\\[dumpname]\\[dumpname]_[ident].dmi"
 			Dnotify("State recolour for [dumpname] complete, dumped to [dumpstr].")
 			fcopy(compiled_icon, dumpstr)
-
-
-/client/proc/ProduceSkinTones()
-
-	set name = "Produce Skin Tones"
-	set category = "Utility"
-
