@@ -106,7 +106,7 @@ var/list/clothing_colour_maps = list(
 			choice = input("Which path(s) do you wish to compile icons for?") as null|anything in icon_choices
 
 	if(icons_to_compile && icons_to_compile.len)
-		CompileColouredIcons(icons_to_compile, clothing_colour_maps)
+		CompileColouredIcons("dump\\clothing", icons_to_compile, clothing_colour_maps)
 
 var/list/skin_colour_maps = list(
 	"template" = list(
@@ -137,54 +137,54 @@ var/list/skin_colour_maps = list(
 	set name = "Produce Skin Tones"
 	set category = "Utility"
 
-	CompileColouredIcons(list(
+	CompileColouredIcons("dump\\bodytypes", list(
 		"[BP_CHEST]" =      list(
-			icon(icon = 'icons/mobs/limbs/human/chest.dmi',      moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/chest.dmi',      moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/chest.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/chest.dmi',      moving = TRUE)
 		),
 		"[BP_GROIN]" =      list(
-			icon(icon = 'icons/mobs/limbs/human/groin.dmi',      moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/groin.dmi',      moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/groin.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/groin.dmi',      moving = TRUE)
 		),
 		"[BP_LEFT_ARM]" =   list(
-			icon(icon = 'icons/mobs/limbs/human/left_arm.dmi',   moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/left_arm.dmi',   moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/left_arm.dmi',   moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/left_arm.dmi',   moving = TRUE)
 		),
 		"[BP_RIGHT_ARM]" =  list(
-			icon(icon = 'icons/mobs/limbs/human/right_arm.dmi',  moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/right_arm.dmi',  moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/right_arm.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/right_arm.dmi',  moving = TRUE)
 		),
 		"[BP_HEAD]" =       list(
-			icon(icon = 'icons/mobs/limbs/human/head.dmi',       moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/head.dmi',       moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/head.dmi',       moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/head.dmi',       moving = TRUE)
 		),
 		"[BP_LEFT_HAND]" =  list(
-			icon(icon = 'icons/mobs/limbs/human/left_hand.dmi',  moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/left_hand.dmi',  moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/left_hand.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/left_hand.dmi',  moving = TRUE)
 		),
 		"[BP_RIGHT_HAND]" = list(
-			icon(icon = 'icons/mobs/limbs/human/right_hand.dmi', moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/right_hand.dmi', moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/right_hand.dmi', moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/right_hand.dmi', moving = TRUE)
 		),
 		"[BP_LEFT_LEG]" =   list(
-			icon(icon = 'icons/mobs/limbs/human/left_leg.dmi',   moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/left_leg.dmi',   moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/left_leg.dmi',   moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/left_leg.dmi',   moving = TRUE)
 		),
 		"[BP_RIGHT_LEG]" =  list(
-			icon(icon = 'icons/mobs/limbs/human/right_leg.dmi',  moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/right_leg.dmi',  moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/right_leg.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/right_leg.dmi',  moving = TRUE)
 		),
 		"[BP_LEFT_FOOT]" =  list(
-			icon(icon = 'icons/mobs/limbs/human/left_foot.dmi',  moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/left_foot.dmi',  moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/left_foot.dmi',  moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/left_foot.dmi',  moving = TRUE)
 		),
 		"[BP_RIGHT_FOOT]" = list(
-			icon(icon = 'icons/mobs/limbs/human/right_foot.dmi', moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/right_foot.dmi', moving = TRUE)
+			icon(icon = 'icons/mobs/limbs/human/pale/right_foot.dmi', moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/right_foot.dmi', moving = TRUE)
 		)
-	), skin_colour_maps)
+	), skin_colour_maps, dump_by_ident = TRUE)
 
-/client/proc/CompileColouredIcons(var/list/icons_to_compile, var/list/colour_maps)
+/client/proc/CompileColouredIcons(var/dumppath = "dump", var/list/icons_to_compile, var/list/colour_maps, var/dump_by_ident = FALSE)
 
 	Dnotify("Compiling icon recolours.")
 
@@ -212,6 +212,10 @@ var/list/skin_colour_maps = list(
 					new_icon.SwapColor(template_colours[i], map_colours[i])
 				compiled_icon.Insert(new_icon, _icon_state, moving = TRUE)
 
-			var/dumpstr = "dump\\[dumpname]\\[dumpname]_[ident].dmi"
+			var/dumpstr
+			if(dump_by_ident)
+				dumpstr = "[dumppath]\\[ident]\\[dumpname].dmi"
+			else
+				dumpstr = "[dumppath]\\[dumpname]\\[dumpname]_[ident].dmi"
 			Dnotify("State recolour for [dumpname] complete, dumped to [dumpstr].")
 			fcopy(compiled_icon, dumpstr)
