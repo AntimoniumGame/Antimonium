@@ -12,8 +12,17 @@
 		/client/proc/JoinAsRole,
 		/client/proc/TestCircleAlgorithm,
 		/client/proc/MassDebugOutfits,
-		/client/proc/MassUpdateTurfIcons
+		/client/proc/MassUpdateTurfIcons,
+		/client/proc/ViewGlobalVars
 		)
+
+/client/proc/ViewGlobalVars()
+	set name = "View Global Variables"
+	set category = "Debug"
+
+	if(CheckAdminPermission(PERMISSIONS_DEBUG))
+		if(!interface) interface = new /interface/viewvars(src)
+		ViewVars(glob)
 
 /client/proc/MassUpdateTurfIcons()
 
