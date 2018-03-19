@@ -138,13 +138,21 @@ var/list/skin_colour_maps = list(
 	set category = "Utility"
 
 	CompileColouredIcons("dump\\bodytypes", list(
-		"[BP_CHEST]" =      list(
-			icon(icon = 'icons/mobs/limbs/human/pale/chest.dmi',      moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/pale/chest.dmi',      moving = TRUE)
+		"[BP_CHEST]_m" =      list(
+			icon(icon = 'icons/mobs/limbs/human/pale/chest_m.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/chest_m.dmi',      moving = TRUE)
 		),
-		"[BP_GROIN]" =      list(
-			icon(icon = 'icons/mobs/limbs/human/pale/groin.dmi',      moving = FALSE),
-			icon(icon = 'icons/mobs/limbs/human/pale/groin.dmi',      moving = TRUE)
+		"[BP_CHEST]_f" =      list(
+			icon(icon = 'icons/mobs/limbs/human/pale/chest_f.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/chest_f.dmi',      moving = TRUE)
+		),
+		"[BP_GROIN]_m" =      list(
+			icon(icon = 'icons/mobs/limbs/human/pale/groin_m.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/groin_m.dmi',      moving = TRUE)
+		),
+		"[BP_GROIN]_f" =      list(
+			icon(icon = 'icons/mobs/limbs/human/pale/groin_f.dmi',      moving = FALSE),
+			icon(icon = 'icons/mobs/limbs/human/pale/groin_f.dmi',      moving = TRUE)
 		),
 		"[BP_LEFT_ARM]" =   list(
 			icon(icon = 'icons/mobs/limbs/human/pale/left_arm.dmi',   moving = FALSE),

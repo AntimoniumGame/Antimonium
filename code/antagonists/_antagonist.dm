@@ -1,8 +1,6 @@
-var/list/antagonist_datums = list()
-
 /proc/InitializeAntagonists()
 	for(var/atype in typesof(/datum/antagonist)-/datum/antagonist)
-		antagonist_datums += new atype()
+		_glob.antagonist_datums += new atype()
 
 /datum/antagonist
 	var/role_name                      // Name of role.

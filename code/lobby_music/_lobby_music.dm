@@ -1,5 +1,3 @@
-var/datum/lobby_music/lobby_music
-
 /client
 	var/sound/playing_lobby_music
 

@@ -47,7 +47,6 @@
 		var/matrix/M = matrix()
 		M.Scale(1.1)
 		shadow_underlay.transform = M
-
 		underlays += shadow_underlay
 
 /atom/movable/proc/CanPassProne()
@@ -71,8 +70,8 @@
 
 /atom/New()
 	..()
-	if(!game_state || game_state.ident == GAME_SETTING_UP)
-		atoms_to_initialize += src
+	if(!_glob.game_state || _glob.game_state.ident == GAME_SETTING_UP)
+		_glob.atoms_to_initialize += src
 	else
 		Initialize()
 

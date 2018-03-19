@@ -1,12 +1,10 @@
-var/mob/abstract/viewer/fake_viewer
-
 /proc/GetFakeView(var/radius, var/turf/center)
 	center = get_turf(center)
 	if(!istype(center)) return list()
-	if(!fake_viewer) fake_viewer = new()
-	fake_viewer.loc = center
-	var/list/in_view = view(radius, fake_viewer)
-	fake_viewer.NullLoc()
+	if(!_glob.fake_viewer) _glob.fake_viewer = new()
+	_glob.fake_viewer.loc = center
+	var/list/in_view = view(radius, _glob.fake_viewer)
+	_glob.fake_viewer.NullLoc()
 	return in_view
 
 /mob/abstract/viewer

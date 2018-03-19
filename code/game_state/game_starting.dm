@@ -8,13 +8,13 @@
 
 	// Get a list of everyone who is readied up.
 	var/list/players_to_allocate_roles = list()
-	for(var/thing in new_players)
+	for(var/thing in _glob.new_players)
 		var/mob/abstract/new_player/player = thing
 		if(player.client && player.key && player.ready)
 			players_to_allocate_roles += player
 
 	// No players? No round.
-	if(!isnull(config["enforce_minimum_player_count"]) && players_to_allocate_roles.len < config["enforce_minimum_player_count"])
+	if(!isnull(_glob.config["enforce_minimum_player_count"]) && players_to_allocate_roles.len < _glob.config["enforce_minimum_player_count"])
 		to_chat(world, "<h3><b>Could not start round - no readied players!</b></h3>")
 		SwitchGameState(/datum/game_state/waiting)
 		return
@@ -23,9 +23,9 @@
 	// populated all mandatory job slots.
 	players_to_allocate_roles = shuffle(players_to_allocate_roles)
 	var/list/players_to_spawn = list()
-	var/list/remaining_jobs = low_priority_jobs.Copy()
+	var/list/remaining_jobs = _glob.low_priority_jobs.Copy()
 
-	for(var/thing in high_priority_jobs)
+	for(var/thing in _glob.high_priority_jobs)
 		var/datum/job/job = thing
 		while(job.filled_slots < job.minimum_slots && players_to_allocate_roles.len)
 			var/mob/abstract/new_player/player = pick(players_to_allocate_roles)
@@ -34,20 +34,20 @@
 			job.filled_slots++
 		if(!players_to_allocate_roles.len)
 			break
-		high_priority_jobs -= job
+		_glob.high_priority_jobs -= job
 		// If there's still room in this job, we can populate it with overflow players later.
 		if(job.filled_slots < job.maximum_slots)
 			remaining_jobs += job
 
 	// If we can't staff the mandatory jobs, fail out.
-	if(config["enforce_minimum_job_slots"] && high_priority_jobs.len)
+	if(_glob.config["enforce_minimum_job_slots"] && _glob.high_priority_jobs.len)
 		to_chat(world, "<h3><b>Could not start round - not enough players to populate mandatory roles!</b></h3>")
 		SwitchGameState(/datum/game_state/waiting)
 		return
 
 	// TODO assign role-overriding antagonists here.
 	// For now just prune out anything that won't work post-job-assignment.
-	var/list/assigning_antagonists = shuffle(antagonist_datums.Copy())
+	var/list/assigning_antagonists = shuffle(_glob.antagonist_datums.Copy())
 	if(players_to_allocate_roles.len)
 		for(var/thing in assigning_antagonists)
 			var/datum/antagonist/antag = thing
@@ -70,7 +70,7 @@
 	if(players_to_allocate_roles.len)
 		for(var/thing in players_to_allocate_roles)
 			var/mob/abstract/new_player/player = thing
-			players_to_spawn[player] = default_latejoin_role
+			players_to_spawn[player] = _glob.default_latejoin_role
 
 	// Apply job templates and spawn/equip the mobs.
 	var/list/spawned_players = list()

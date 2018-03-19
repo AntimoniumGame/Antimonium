@@ -52,7 +52,7 @@
 	return TRUE
 
 /mob/proc/CreateLimbs()
-	limbs_by_key[BP_CHEST] = new /obj/item/limb(src, "body", 'icons/mobs/limbs/human/pale/chest.dmi', BP_CHEST, _root = TRUE, _vital = TRUE, _size = 10)
+	limbs_by_key[BP_CHEST] = new /obj/item/limb(src, "body", 'icons/mobs/limbs/human/pale/chest_m.dmi', BP_CHEST, _root = TRUE, _vital = TRUE, _size = 10)
 
 /mob/proc/CreateOrgans()
 	return

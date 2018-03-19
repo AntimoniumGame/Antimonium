@@ -6,7 +6,7 @@
 	if(isnull(frequency))
 		frequency = rand(32000, 55000)
 
-	for(var/thing in clients)
+	for(var/thing in _glob.clients)
 		var/client/player = thing
 		if(!player.mob)
 			continue
@@ -35,7 +35,7 @@
 	if(isnull(frequency))
 		frequency = rand(32000, 55000)
 
-	for(var/thing in clients)
+	for(var/thing in _glob.clients)
 		var/client/player = thing
 		if(!istype(player) || !player.mob)
 			continue
@@ -82,7 +82,9 @@
 			playing.y = 1 // No idea why y for sound == z for the map.
 	src << playing
 
-var/mob/human/next_footstep = 0
+/mob/human
+	var/next_footstep = 0
+
 /mob/human/Move()
 	. = ..()
 	if(. && world.time > next_footstep)

@@ -3,9 +3,8 @@
 	delay = 5
 
 /datum/daemon/game/DoWork()
-	if(game_state)
-		game_state.Tick()
+	if(_glob.game_state) _glob.game_state.Tick()
 	CHECK_SUSPEND
 
 /datum/daemon/game/Status()
-	return "[game_state.ident] started [game_state.time_initialized]"
+	return "[_glob.game_state.ident] started [_glob.game_state.time_initialized]"

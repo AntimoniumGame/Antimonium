@@ -6,7 +6,7 @@
 /datum/objective/New(var/datum/role/_holder, var/datum/antagonist/_antagonist)
 	holder = _holder
 	antagonist = _antagonist
-	if(game_state && game_state.ident != GAME_STARTING)
+	if(_glob.game_state && _glob.game_state.ident != GAME_STARTING)
 		SetObjective()
 
 /datum/objective/Destroy()
