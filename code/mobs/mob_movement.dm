@@ -87,20 +87,20 @@
 	return FALSE
 
 /mob/PushedBy(var/mob/pusher, var/mob/push_dir)
-
-	if(pusher.intent.selecting == INTENT_HARM)
-		. = ..()
-	else
-		if(intent.selecting == INTENT_HARM)
-			NotifyNearby("<span class='danger'>\The [pusher] tries to move past \the [src], but [They()] block[s()] [pusher.Them()].</span>", MESSAGE_VISIBLE)
-			pusher.next_move = world.time + max(1, round(pusher.GetMoveDelay()/2))
+	if(pusher.loc && loc)
+		if(pusher.intent.selecting == INTENT_HARM)
+			. = ..()
 		else
-			glide_size = pusher.glide_size
-			var/pusher_loc = pusher.loc
-			pusher.ForceMove(loc)
-			ForceMove(pusher_loc)
-			NotifyNearby("<span class='notice'>\The [pusher] moves past \the [src].</span>", MESSAGE_VISIBLE)
-		return TRUE
+			if(intent.selecting == INTENT_HARM)
+				NotifyNearby("<span class='danger'>\The [pusher] tries to move past \the [src], but [They()] block[s()] [pusher.Them()].</span>", MESSAGE_VISIBLE)
+				pusher.next_move = world.time + max(1, round(pusher.GetMoveDelay()/2))
+			else
+				glide_size = pusher.glide_size
+				var/pusher_loc = pusher.loc
+				pusher.ForceMove(loc)
+				ForceMove(pusher_loc)
+				NotifyNearby("<span class='notice'>\The [pusher] moves past \the [src].</span>", MESSAGE_VISIBLE)
+			return TRUE
 
 /mob/proc/NoDeadMove()
 	return TRUE
