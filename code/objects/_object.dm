@@ -7,6 +7,11 @@
 	var/datum/material/material
 	var/default_material_path
 
+/obj/UpdateValues()
+	..()
+	if(material)
+		mass *= material.GetMass()
+
 /obj/New(var/newloc, var/material_path)
 
 	if(!material)
@@ -25,11 +30,7 @@
 		else if(material_state != STATE_POWDER)
 			material_state = STATE_SOLID
 
-	UpdateValues()
 	..(newloc)
-
-/obj/proc/UpdateValues()
-	return
 
 /obj/proc/Process()
 	return

@@ -55,8 +55,7 @@
 		PlayLocalSound(src, 'sounds/effects/whoosh1.ogg', 50)
 		spawn(3)
 			PlayLocalSound(src, hit_sound, 50)
-		if(weight || sharpness)
-			target.ResolvePhysicalAttack(user, weight, sharpness, contact_size, src)
+		target.HandleImpact(user, src, 1)
 	return TRUE
 
 /obj/item/proc/AttackingSelf(var/mob/user)

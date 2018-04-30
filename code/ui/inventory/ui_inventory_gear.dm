@@ -3,11 +3,11 @@
 	concealable = TRUE
 
 /obj/ui/inv/gear/SetHeld(var/obj/item/thing)
-	owner.AddArmourCoverage(thing)
+	owner.AddCoverage(thing)
 	..()
 
 /obj/ui/inv/gear/ForgetHeld()
-	if(holding) owner.RemoveArmourCoverage(holding)
+	if(holding) owner.RemoveCoverage(holding)
 	..()
 
 /obj/ui/inv/gear/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)

@@ -3,7 +3,6 @@
 	icon = 'icons/objects/structures/chair.dmi'
 	density = 0
 	icon_state = "wooden_chair"
-	weight = 10
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_SEATING
 

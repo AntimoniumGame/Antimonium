@@ -9,14 +9,14 @@
 	if(dtype == WOUND_BURN && remains_type)
 		var/droploc = get_turf(owner ? owner : src)
 		world.log << "BURN DROP [droploc]"
-		new /obj/item/stack/reagent/ashes(droploc, _amount = max(1, contact_size))
+		new /obj/item/stack/reagent/ashes(droploc, _amount = max(1, mass))
 		if(remains_multi)
-			new remains_type(get_turf(droploc), _amount = max(1, round(contact_size/5)))
+			new remains_type(get_turf(droploc), _amount = max(1, round(mass/5)))
 		else
 			new remains_type(get_turf(droploc))
 	. = ..()
 
-/obj/item/limb/proc/ExpandWoundOfType(var/wound_type = WOUND_CUT, var/wound_depth, var/wound_severity, var/obj/item/attacked_with, var/silent = FALSE)
+/obj/item/limb/proc/ExpandWoundOfType(var/wound_type = WOUND_CUT, var/wound_depth, var/wound_size, var/obj/item/attacked_with, var/silent = FALSE)
 
 	// First try to expand an existing wound.
 	var/datum/wound/wound
@@ -28,7 +28,7 @@
 		if(matching_wounds.len)
 			wound = pick(matching_wounds)
 			wound.depth += wound_depth
-			wound.severity += wound_severity
+			wound.size += wound_size
 			if(attacked_with)
 				wound.left_by = attacked_with.name
 			owner.Notify("<span class='danger'><b>A wound on your [name] worsens into [wound.GetDescriptor()]!</b></span>")
@@ -39,55 +39,43 @@
 
 	// Otherwise, make a new wound.
 	if(!wound)
-		wound = new(src, wound_type, wound_depth, wound_severity, attacked_with ? attacked_with.name : "unknown")
+		wound = new(src, wound_type, wound_depth, wound_size, attacked_with ? attacked_with.name : "unknown")
 		wounds += wound
-		SetPain(max(pain, wound.severity))
+		SetPain(max(pain, max(wound_depth, wound_size)))
 		if(!silent)
 			owner.Notify("<span class='danger'><b>The blow leaves your [name] with [wound.GetDescriptor()]!</b></span>")
 		UpdateLimbState()
 
-	if(owner && NeedProcess())
+	if(src && !Deleted(src) && owner && NeedProcess())
 		owner.injured_limbs |= src
 
-/obj/item/limb/proc/HandleAttacked(var/wound_depth, var/wound_severity, var/wound_type, var/attack_contact_size, var/obj/item/attacked_with)
+/obj/item/limb/proc/HandleAttacked(var/mob/attacker, var/obj/item/hitby, var/penetration, var/wound_type)
 
-	if(!owner)
-		return
+	if(!owner) return
 
-	cumulative_wound_depth += wound_depth
-	if(wound_type == WOUND_BURN)
-		cumulative_burns += wound_severity
-	else
-		cumulative_wound_severity += wound_severity
-		if(wound_type == WOUND_CUT && wound_severity > 5)
-			Splatter(get_turf(owner), owner.blood_material)
+	var/attack_contact_size = (hitby.GetContactArea()/10) * penetration
+	if(wound_type == WOUND_CUT)
+		Splatter(get_turf(owner), owner.blood_material)
+		cumulative_wound_depth += penetration
+		cumulative_wound_size += attack_contact_size
+	cumulative_overall_damage += attack_contact_size
 
-	ExpandWoundOfType(wound_type, wound_depth, wound_severity, attacked_with)
+	ExpandWoundOfType(wound_type, penetration, attack_contact_size, hitby)
 
 	// Damage internal organs.
-	if(cumulative_wound_depth >= attack_contact_size && organs.len)
+	if(organs.len && (cumulative_wound_size >= attack_contact_size || cumulative_overall_damage >= GetContactArea()))
 		var/obj/item/organ/organ = pick(organs)
-		var/damaging = max(1,rand(round(wound_severity * 0.5), round(wound_severity * 0.75)))
+		var/damaging = max(1,rand(round(penetration * 0.5), round(penetration * 0.75)))
 		organ.TakeDamage(damaging)
-
-
-/obj/item/limb/proc/HandleBurned(var/attack_weight, var/attack_sharpness, var/attack_contact_size, var/obj/item/attacked_with)
-	ExpandWoundOfType(WOUND_BURN, 0, attack_contact_size, attacked_with, silent = TRUE)
-	if(cumulative_burns > 50)
-		SeverLimb(WOUND_BURN)
-		return
 
 /obj/item/limb/proc/BreakBone()
 	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>", MESSAGE_AUDIBLE)
 	broken = TRUE
 	HandleBreakEffects()
 
-/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE, var/dtype = WOUND_CUT)
+/obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE, var/msg = "flies off in an arc", var/destroy_limb = FALSE, var/damage_type = WOUND_CUT)
 
-	if(!owner)
-		return
-
-	if(root_limb && dtype != WOUND_BURN)
+	if(!owner || (root_limb && damage_type != WOUND_BURN))
 		return
 
 	not_moving = FALSE
@@ -117,7 +105,7 @@
 				wound = new(parent, WOUND_CUT, 20, 40, "traumatic amputation")
 			parent.wounds += wound
 			parent.cumulative_wound_depth += wound.depth
-			parent.cumulative_wound_severity += wound.severity
+			parent.cumulative_wound_size += wound.size
 			owner.injured_limbs |= parent
 			parent.children -= src
 			parent = null
@@ -126,8 +114,7 @@
 		M.Turn(pick(0,90,180,270))
 		transform = M
 
-		var/play_sound = pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg'))
-		if(dtype == WOUND_BURN)
+		if(damage_type == WOUND_BURN)
 			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] burns away to ash!</b></span>", MESSAGE_VISIBLE)
 			ForceMove(get_turf(owner))
 			Destroyed(WOUND_BURN)
@@ -135,13 +122,19 @@
 			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] has been cleanly severed!</b></span>", MESSAGE_VISIBLE)
 			ForceMove(get_turf(owner))
 		else
-			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] flies off in an arc!</b></span>", MESSAGE_VISIBLE)
-			ThrownAt(get_step(src, pick(all_dirs)))
+			owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] [msg]!</b></span>", MESSAGE_VISIBLE)
+			if(!destroy_limb)
+				ThrownAt(get_step(src, pick(all_dirs)))
+
+		var/play_sound = pick(list('sounds/effects/gore1.ogg','sounds/effects/gore2.ogg','sounds/effects/gore3.ogg'))
 		PlayLocalSound(src, play_sound, 100)
 
-		var/blood_mat = owner.blood_material
-		spawn(1)
-			Splatter(loc, blood_mat)
+		if(damage_type != WOUND_BURN)
+			var/blood_mat = owner.blood_material
+			Splatter(owner.loc, blood_mat)
+			if(!destroy_limb)
+				spawn(1) 
+					Splatter(loc, blood_mat)
 
 		owner.UpdateIcon()
 		for(var/obj/item/limb/child in src)
@@ -149,7 +142,7 @@
 
 	HandleSeverEffects()
 
-	if(root_limb && dtype == WOUND_BURN)
+	if(root_limb && damage_type == WOUND_BURN)
 		QDel(owner)
 	owner = null
 

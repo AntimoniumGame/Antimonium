@@ -75,9 +75,10 @@
 		return TRUE
 
 /mob/proc/DoViolentUnarmedInteraction(var/mob/target)
-	NotifyNearby("\The [src] punches \the [target]!", MESSAGE_VISIBLE)
+	if(!unarmed_attack) return
+	NotifyNearby("\The [src] [pick(unarmed_attack.attack_verbs)] \the [target] with [Their()] [unarmed_attack.name]!", MESSAGE_VISIBLE)
 	PlayLocalSound(src, 'sounds/effects/punch1.ogg', 50)
-	target.ResolvePhysicalAttack(src, 5, 0, 5, null)
+	target.HandleImpact(src, unarmed_attack, unarmed_attack.attack_force)
 
 /mob/proc/DoPassiveUnarmedInteraction(var/mob/target)
 	NotifyNearby("\The [src] pokes \the [target].", MESSAGE_VISIBLE)

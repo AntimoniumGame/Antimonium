@@ -7,6 +7,29 @@
 	var/damage = 0
 	var/max_damage = 10
 
+	var/mass =    1  // kg, calculated in UpdateValues()
+	var/surface_area // cm^2, calculated in UpdateValues()
+
+	var/length =  1  // cm
+	var/width =   1  // cm
+	var/height =  1  // cm
+	var/volume =  1  // cm^3, calculated in UpdateValues()
+
+/atom/proc/UpdateValues()
+
+	if(length < 1 || width < 1 || height < 1)
+		MassDnotify("Malformed atom [src] has invalid dimensions, correcting.")
+		length = max(1, length)
+		width = max(1, width)
+		height = max(1, height)
+
+	volume = length * width * height
+	mass = volume * 0.01 // For objects with no associated material, assume 1kg/dm^3
+	surface_area = 2*((width*length)+(height*length)+(height*width))
+
+/atom/proc/GetContactArea()
+	return (width * height)
+
 /atom/movable
 	animate_movement = SLIDE_STEPS
 	var/dragged = FALSE
@@ -47,6 +70,7 @@
 		var/matrix/M = matrix()
 		M.Scale(1.1)
 		shadow_underlay.transform = M
+
 		underlays += shadow_underlay
 
 /atom/movable/proc/CanPassProne()
@@ -77,6 +101,7 @@
 
 /atom/proc/Initialize()
 	SetDir(dir)
+	UpdateValues()
 	UpdateStrings()
 	UpdateIcon()
 
@@ -93,8 +118,8 @@
 /atom/proc/IsSolid()
 	return TRUE
 
-/atom/proc/GetWeight()
-	return 1
+/atom/proc/GetMass()
+	return mass
 
 /atom/proc/GetAmount()
 	return 1
@@ -139,5 +164,5 @@
 	pixel_x = rand(8,24)-16
 	pixel_y = rand(8,24)-16
 
-/atom/movable/proc/EndThrow(var/throw_force)
+/atom/movable/proc/EndThrow(var/meters_per_second)
 	return

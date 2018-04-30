@@ -200,6 +200,7 @@
 #include "code\mobs\mob_stance.dm"
 #include "code\mobs\mob_temperature.dm"
 #include "code\mobs\mob_ui.dm"
+#include "code\mobs\mob_unarmed_attack.dm"
 #include "code\mobs\abstract\_abstract.dm"
 #include "code\mobs\abstract\abstract_ghost.dm"
 #include "code\mobs\abstract\abstract_new_player.dm"

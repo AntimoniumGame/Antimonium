@@ -3,7 +3,6 @@
 	icon = 'icons/objects/structures/spinning_wheel.dmi'
 	icon_state = "wheel"
 	density = 1
-	weight = 5
 	default_material_path = /datum/material/wood
 
 	max_contains_count = 1

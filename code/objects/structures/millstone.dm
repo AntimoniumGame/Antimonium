@@ -11,7 +11,6 @@
 	bound_y = -32
 	bound_width = 96
 	bound_height = 96
-	weight = 1000
 	default_material_path = /datum/material/stone
 	max_damage = INFINITY // Yep.
 

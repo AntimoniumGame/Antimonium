@@ -11,7 +11,7 @@
 	var/list/ui_images = list()
 
 /mob/Destroy()
-	armour_by_bodypart.Cut()
+	coverage_by_bodypart.Cut()
 	for(var/thing in ui_screen)
 		var/obj/ui/element = thing
 		QDel(element, "mob destroyed")

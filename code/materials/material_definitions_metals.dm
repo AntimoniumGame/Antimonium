@@ -1,5 +1,7 @@
 /datum/material/metal
 	general_name = "metal"
+	mass = 8
+	tensile_strength = 200
 	melting_point = 1800
 	boiling_point = 3200
 	colour = PALE_GREY
@@ -36,17 +38,15 @@
 
 /datum/material/metal/iron
 	general_name = "iron"
-	sharpness_modifier = 2
-	weight_modifier = 2
 	value_modifier = 1.1
+	tensile_strength = 275
 
 /datum/material/metal/iron/GetBuildableTurfs(var/obj/item/stack/building_with)
 	return list()
 
 /datum/material/metal/copper
 	general_name = "copper"
-	sharpness_modifier = 1.5
-	weight_modifier = 1.2
+	mass = 9
 	colour = BRIGHT_ORANGE
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_copper.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
@@ -60,8 +60,7 @@
 // Copied from copper for now.
 datum/material/metal/brass
 	general_name = "brass"
-	sharpness_modifier = 1.5
-	weight_modifier = 1.2
+	mass = 8.7
 	colour = BRIGHT_ORANGE
 	solid_icon = 'icons/objects/items/alchemy/solid_metal_copper.dmi'
 	powder_icon = 'icons/objects/items/alchemy/powder_orange.dmi'
@@ -74,8 +73,8 @@ datum/material/metal/brass
 
 /datum/material/metal/lead
 	general_name = "lead"
-	weight_modifier = 8
-	sharpness_modifier = 0.4
+	tensile_strength = 18
+	mass = 11.3
 	melting_point = 600
 	boiling_point = 2000
 	colour = DARK_GREY
@@ -83,8 +82,8 @@ datum/material/metal/brass
 
 /datum/material/metal/gold
 	general_name = "gold"
-	weight_modifier = 7
-	sharpness_modifier = 0.1
+	tensile_strength = 130
+	mass = 19.3
 	melting_point = 1300
 	boiling_point = 3000
 	colour = BRIGHT_ORANGE
@@ -94,8 +93,7 @@ datum/material/metal/brass
 
 /datum/material/metal/silver
 	general_name = "silver"
-	sharpness_modifier = 1.1
-	weight_modifier = 4
+	mass = 10.5
 	melting_point = 1235
 	boiling_point = 2435
 	colour = PALE_BLUE
@@ -104,8 +102,7 @@ datum/material/metal/brass
 
 /datum/material/metal/antimonium
 	general_name = "antimonium"
-	sharpness_modifier = 1
-	weight_modifier = 4
+	mass = 6.6
 	melting_point = 900
 	boiling_point = 1800
 	colour = PALE_BLUE

@@ -1,7 +1,6 @@
 /obj/item/stack/tiles
 	name = "tiles"
-	contact_size = 3
-	sharpness = 1
+	edged = TRUE
 	default_material_path = /datum/material/stone
 	icon = 'icons/objects/items/stone_tile.dmi'
 	singular_name = "tile"

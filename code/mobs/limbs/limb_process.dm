@@ -1,10 +1,11 @@
 #define HEAL_PER_TICK 4
 
 /obj/item/limb
-	var/cumulative_wound_depth = 0
-	var/cumulative_wound_severity = 0
-	var/cumulative_wound_pain = 0
-	var/cumulative_burns = 0
+	var/cumulative_wound_depth =     0
+	var/cumulative_wound_size =      0
+	var/cumulative_wound_pain =      0
+	var/cumulative_overall_damage =  0
+	var/cumulative_burns =           0
 
 /obj/item/limb/Process() // These are processed in human life, they don't need to be on the items list.
 
@@ -24,8 +25,9 @@
 
 		cumulative_burns = 0
 		cumulative_wound_depth = 0
-		cumulative_wound_severity = 0
+		cumulative_wound_size = 0
 		cumulative_wound_pain = 0
+		cumulative_overall_damage = 0
 
 		var/bleeding = FALSE
 
@@ -33,11 +35,12 @@
 
 			var/datum/wound/wound = thing
 			if(wound.wound_type == WOUND_BURN)
-				cumulative_burns += wound.severity
+				cumulative_burns += wound.size
 			else
-				cumulative_wound_severity += wound.severity
+				cumulative_wound_size += wound.size
 			cumulative_wound_depth += wound.depth
 			cumulative_wound_pain += round(wound.GetPain()*0.35)
+			cumulative_overall_damage += max(wound.size, wound.depth)
 
 			if(wound.Bleed())
 				bleeding = TRUE
@@ -58,12 +61,15 @@
 	if(!owner)
 		return
 	if(cumulative_burns > 50)
-		SeverLimb(dtype = WOUND_BURN)
+		SeverLimb(damage_type = WOUND_BURN)
 		return
-	if(cumulative_wound_depth > 30 && cumulative_wound_severity > 50)
+	if(cumulative_wound_depth > 30 && cumulative_wound_size > 50)
 		SeverLimb()
 		return
-	if(cumulative_wound_severity > 50 && !broken)
+
+	if(cumulative_overall_damage > 200)
+		SeverLimb(msg = "explodes in gore", destroy_limb = TRUE, damage_type = WOUND_BRUISE)
+	else if(cumulative_overall_damage > 50 && !broken)
 		BreakBone()
 
 /obj/item/limb/proc/RemoveOwnerBlood(var/amount)

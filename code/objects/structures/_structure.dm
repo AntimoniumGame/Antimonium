@@ -6,7 +6,10 @@
 	move_sound = 'sounds/effects/scrape1.ogg'
 	draw_shadow_underlay = TRUE
 
-	var/weight = 3
+	length  = 8
+	width = 8
+	height = 8
+
 	var/hit_sound = 'sounds/effects/thump1.ogg'
 	max_damage = 50
 
@@ -20,12 +23,12 @@
 /obj/structure/AttackedBy(var/mob/user, var/obj/item/prop)
 	. = ..()
 	if(!.)
-		if(user.intent.selecting == INTENT_HARM && (prop.flags & FLAG_SIMULATED) && prop.weight && prop.contact_size)
+		if(user.intent.selecting == INTENT_HARM && (prop.flags & FLAG_SIMULATED))
 			user.DoAttackAnimation(get_turf(src))
 			NotifyNearby("<span class='danger'>\The [user] strikes \the [src] with \the [prop]!</span>", MESSAGE_VISIBLE)
 			PlayLocalSound(src, hit_sound, 100)
 			user.SetActionCooldown(6)
-			TakeDamage(prop.weight * prop.contact_size, user)
+			TakeDamage(prop.mass, user)
 			return TRUE
 		if((flags & FLAG_FLAT_SURFACE) && user.intent.selecting == INTENT_HELP && user.DropItem(prop))
 			if(prop && !Deleted(prop)) //grabs
@@ -48,18 +51,13 @@
 	else
 		name = initial(name)
 
-/obj/structure/UpdateValues()
-	weight = initial(weight)
-	if(material)
-		weight *= material.weight_modifier
-
 /obj/structure/PullCost()
-	return GetWeight()
+	return GetMass()
 
-/obj/structure/GetWeight()
-	return weight
+/obj/structure/GetMass()
+	return mass
 
-/obj/structure/EndThrow(var/throw_force)
+/obj/structure/EndThrow(var/meters_per_second)
 	ResetPosition()
 
 /obj/structure/TakeDamage(var/dam, var/source, var/dtype = WOUND_BRUISE)
@@ -74,7 +72,7 @@
 			var/atom/movable/prop = thing
 			prop.ForceMove(src.loc)
 	if(material)
-		var/atom/movable/debris = material.GetDebris(max(1,round(weight/10)))
+		var/atom/movable/debris = material.GetDebris(max(1,round(volume/10)))
 		debris.ForceMove(loc)
 		//PlayLocalSound(src, material.GetConstructionSound(), 100) //Todo destruction sounds.
 	QDel(src, "destroyed")

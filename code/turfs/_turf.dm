@@ -53,7 +53,7 @@
 			icon_state = "1"
 
 	if(wall_material)
-		max_damage = wall_material.structural_integrity
+		max_damage = wall_material.GetTensileStrength()
 		density = wall_material.turf_wall_is_dense
 		opacity = !wall_material.turf_wall_is_transparent
 	else
@@ -140,7 +140,7 @@
 			DigEarthworks(user, slot, check_digger = TRUE)
 			return TRUE
 
-/turf/GetWeight()
+/turf/GetMass()
 	return 10
 
 /turf/proc/GetFootstepSound(var/mob/walker)

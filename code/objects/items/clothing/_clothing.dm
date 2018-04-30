@@ -4,10 +4,10 @@
 
 	var/dyed = WHITE
 	var/list/colour_to_icon
-	var/list/armour
 	var/list/body_coverage
 	var/list/alternate_icons
 	var/list/mob_can_equip = list(/mob/human)
+	var/thickness = 1
 
 /obj/item/clothing/GetWornIcon(var/inventory_slot)
 	var/mob/M = loc
@@ -41,7 +41,6 @@
 /obj/item/clothing/New()
 	..()
 	if(!istype(body_coverage, /list)) body_coverage = list()
-	if(!istype(armour, /list)) armour = list()
 
 /obj/item/clothing/proc/SetDyed(var/_dyed = WHITE)
 	dyed = _dyed
@@ -49,3 +48,6 @@
 		icon = colour_to_icon[dyed]
 	else
 		icon = initial(icon)
+
+/obj/item/clothing/proc/GetThickness()
+	return thickness

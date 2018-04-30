@@ -4,12 +4,10 @@
 	attack_verbs = list("sticks")
 	hit_sound = 'sounds/effects/thunk1.ogg'
 	draw_shadow_underlay = null
-
 	singular_name = "dart"
 	plural_name =   "darts"
-	weight = 1
-	sharpness = 1
-	contact_size = 1
+	volume = 1
+	edged = TRUE
 	default_material_path = /datum/material/metal/iron
 	amount = 5
 	max_amount = 5

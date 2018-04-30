@@ -1,7 +1,5 @@
 /obj/item/stack/sticks
 	name = "sticks"
-	contact_size = 1
-	weight = 1
 	default_material_path = /datum/material/wood
 	icon = 'icons/objects/items/sticks.dmi'
 	singular_name = "stick"

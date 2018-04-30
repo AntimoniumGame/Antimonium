@@ -1,8 +1,6 @@
 /obj/item/stack/shards
 	name = "shards"
-	contact_size = 1
-	weight = 1
-	sharpness = 5
+	edged = TRUE
 	default_material_path = /datum/material/stone/glass
 	icon = 'icons/objects/items/shard.dmi'
 	singular_name = "shard"

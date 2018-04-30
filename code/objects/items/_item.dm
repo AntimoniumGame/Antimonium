@@ -5,11 +5,9 @@
 	icon = 'icons/objects/items/_default.dmi'
 	draw_shadow_underlay = TRUE
 
+	var/edged = FALSE
 	var/quality = 1
 	var/slot_flags = 0
-	var/contact_size = 1
-	var/weight = 1
-	var/sharpness = 1
 	var/list/attack_verbs = list("bashes")
 	var/name_prefix
 	var/associated_skill
@@ -36,16 +34,6 @@
 
 /obj/item/proc/GetHeatInsulation()
 	return (material ? material.thermal_insulation : 0)
-
-/obj/item/GetWeight()
-	return weight
-
-/obj/item/UpdateValues()
-	sharpness = initial(sharpness)
-	weight =    initial(weight)
-	if(material)
-		sharpness *= material.GetSharpnessMod()
-		weight    *= material.GetWeightMod()
 
 /obj/item/UpdateStrings()
 	if(material)
@@ -187,7 +175,7 @@
 	. = ..()
 
 /obj/item/GetAmount()
-	return initial(weight)
+	return initial(volume)
 
 /obj/item/AttackedBy(var/mob/user, var/obj/item/prop)
 	if((prop.associated_skill & SKILL_ALCHEMY) && Grind(user))

@@ -2,7 +2,6 @@
 	name = "crucible"
 	icon = 'icons/objects/structures/crucible.dmi'
 	density = 1
-	weight = 1
 	default_material_path = /datum/material/stone/clay
 
 	max_contains_count = 10

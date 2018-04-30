@@ -1,9 +1,6 @@
 /obj/item/mold
 	name = "mold"
 	icon = 'icons/objects/items/mold.dmi'
-	sharpness = 0
-	weight = 5
-	contact_size = 5
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/stone/clay
 	flags = FLAG_SIMULATED

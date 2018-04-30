@@ -1,7 +1,6 @@
 /datum/material/cloth
 	general_name = "cloth"
-	weight_modifier = 0.1
-	sharpness_modifier = 0.1
+	mass = 0.0131
 	ignition_point = 700
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/tailoring,
@@ -38,22 +37,20 @@
 
 /datum/material/cloth/leather
 	general_name = "leather"
-	weight_modifier = 0.2
+	mass = 0.86
 	thermal_insulation = TEMPERATURE_BURNING + 10 // placeholder
 
 /datum/material/paper
 	general_name = "paper"
-	weight_modifier = 0.1
-	sharpness_modifier = 0.1
+	mass = 0.012
 	ignition_point = 400
 
 /datum/material/wood
 	general_name = "wood"
 	descriptor = "wooden"
-	weight_modifier = 0.3
-	sharpness_modifier = 0.3
+	mass = 0.0038
 	ignition_point = 600
-	structural_integrity = 30
+	tensile_strength = 30
 	hit_sound = 'sounds/effects/thump1.ogg'
 	construction_sound = 'sounds/effects/saw1.ogg'
 	crafting_recipe_paths = list(
@@ -91,19 +88,16 @@
 /datum/material/meat
 	general_name = "meat"
 	descriptor = "raw"
-	weight_modifier = 0.3
-	sharpness_modifier = 0.3
 	ignition_point = 460
 	hit_sound = 'sounds/effects/gore1.ogg'
 	colour = DARK_RED
 	smell_o_vision = TRUE
+	tensile_strength = 20
 
 /datum/material/dirt
 	general_name = "dirt"
-	weight_modifier = 0.2
-	sharpness_modifier = 0.1
 	hit_sound = 'sounds/effects/dig1.ogg'
-	structural_integrity = 30
+	tensile_strength = 15
 	turf_is_diggable = TRUE
 	turf_base_states = 4
 	turf_floor_icon = 'icons/turfs/dirt_floor.dmi'
@@ -122,13 +116,12 @@
 
 /datum/material/bone
 	general_name = "bone"
-	weight_modifier = 0.8
-	sharpness_modifier = 0.8
 	ignition_point = 1275
 	colour = WHITE
 	powder_name = "bonedust"
 	grindable = TRUE
 	solid_icon = 'icons/objects/items/bone.dmi'
+	tensile_strength = 104
 
 datum/material/ashes
 	general_name = "ash"

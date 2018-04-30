@@ -1,7 +1,7 @@
 /obj/item/needle
 	name = "needle"
 	icon = 'icons/objects/items/needle.dmi'
-	sharpness = 3
+	edged = TRUE
 	attack_verbs = list("pokes","pricks","jabs")
 	associated_skill = SKILL_TAILORING
 
@@ -10,10 +10,13 @@
 	var/image/thread_overlay
 	var/image/thread_overlay_inv
 
+/obj/item/needle/GetContactArea()
+	return 0.1 //poke
+
 /obj/item/needle/proc/ConsumeThread()
 	if(threaded)
 		threaded.Remove(1)
-		if(threaded.GetAmount() <= 0)
+		if(!threaded || threaded.GetAmount() <= 0)
 			threaded = null // thread handles deleting itself in Remove().
 			UpdateIcon()
 
