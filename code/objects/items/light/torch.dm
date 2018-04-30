@@ -1,9 +1,6 @@
 /obj/item/torch
 	name = "torch"
 	icon = 'icons/objects/items/torch.dmi'
-	sharpness = 0
-	weight = 3
-	contact_size = 2
 	attack_verbs = list("bludgeons", "strikes", "smashes")
 	default_material_path = /datum/material/wood
 	flags = FLAG_FLAMMABLE | FLAG_SIMULATED

@@ -3,9 +3,8 @@
 	melting_point = 1600
 	boiling_point = TEMPERATURE_NEVER_HOT
 	colour = PALE_GREY
-	weight_modifier = 1
-	sharpness_modifier = 1.5
-	structural_integrity = 60
+	mass = 2.7
+	tensile_strength = 15
 	crafting_recipe_paths = list(
 		/datum/crafting_recipe/masonry,
 		/datum/crafting_recipe/masonry/tiles
@@ -47,7 +46,6 @@
 /datum/material/stone/glass
 	general_name = "glass"
 	melting_point = 1400
-	sharpness_modifier = 5
 	crafting_recipe_paths = list()
 	turf_wall_is_transparent = 1
 
@@ -66,7 +64,7 @@
 	descriptor = "ceramic"
 	colour = DARK_RED
 	melting_point = 2200
-	weight_modifier = 2
+	mass = 1.4
 	crafting_recipe_paths = list()
 
 /datum/material/stone/clay/GetBuildableTurfs(var/obj/item/stack/building_with)

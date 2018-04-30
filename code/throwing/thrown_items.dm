@@ -26,7 +26,7 @@
 				target = new_target
 		else
 			target = get_turf(target)
-		throwing.ThrownAt(target, thrower)
+		throwing.ThrownAt(target, thrower, 35)
 		HandlePostThrow()
 		return TRUE
 	return FALSE

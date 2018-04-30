@@ -1,6 +1,5 @@
 /obj/item/stack/thread
 	name = "thread"
-	contact_size = 5
 	icon = 'icons/objects/items/thread/thread_grey.dmi'
 	singular_name = "thread"
 	plural_name =   "threads"
@@ -38,7 +37,6 @@
 
 /obj/item/stack/thread/cloth
 	name = "cloth"
-	contact_size = 5
 	icon = 'icons/objects/items/thread/cloth_grey.dmi'
 	singular_name = "bolt"
 	plural_name =   "bolts"

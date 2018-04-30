@@ -4,15 +4,15 @@
 	var/depth_string
 	var/wound_string
 
-	if(severity > 50)
+	if(size > 50)
 		size_string = bleed_amount ? "gaping" : "horrendous"
-	else if(severity > 30)
+	else if(size > 30)
 		size_string = "enormous"
-	else if(severity > 20)
+	else if(size > 20)
 		size_string = "large"
-	else if(severity > 10)
+	else if(size > 10)
 		size_string = "small"
-	else if(severity > 5)
+	else if(size > 5)
 		size_string = "noticeable"
 	else
 		size_string = "tiny"

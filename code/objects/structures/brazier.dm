@@ -2,7 +2,6 @@
 	name = "brazier"
 	icon = 'icons/objects/structures/brazier.dmi'
 	hit_sound = 'sounds/effects/ding1.ogg'
-	weight = 5
 	flags = FLAG_SIMULATED | FLAG_FLAMMABLE
 	max_damage = 500
 

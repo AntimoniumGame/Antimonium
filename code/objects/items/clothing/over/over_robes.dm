@@ -20,6 +20,7 @@
 		DARK_PURPLE =   'icons/objects/clothing/robes/robes_purple.dmi',
 		BLACK =         'icons/objects/clothing/robes/robes_black.dmi'
 		)
+	thickness = 1
 
 /obj/item/clothing/over/robes/GetWornIcon(var/inventory_slot)
 	if(inventory_slot == SLOT_OVER)

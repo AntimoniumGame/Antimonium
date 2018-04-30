@@ -10,7 +10,7 @@
 	var/initial_pixel_y   // initial owner pixel_y offset
 	var/turf/target_turf  // destination
 	var/spin_counter = -1 // spinning iterator
-	var/supplied_throw_force = 1
+	var/supplied_meters_per_second = 1
 
 /*
 Inputs:
@@ -21,12 +21,12 @@ Inputs:
 	xo = pixel_x offset of the target location (optional)
 	yo = pixel_y offset of the target location (optional)
 */
-/vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16, spin = TRUE, var/throw_force = 1)
+/vector/New(atom/movable/source, start, end, speed = 20, xo = 16, yo = 16, spin = TRUE, var/meters_per_second = 1)
 	_glob.vector_list += src
 	owner = source
 	initial_pixel_y = source.pixel_y
 	initial_pixel_y = source.pixel_y
-	supplied_throw_force = throw_force
+	supplied_meters_per_second = meters_per_second
 
 	if(!start) start = get_turf(source)
 	var/turf/src_turf = get_turf(start)
@@ -105,13 +105,13 @@ Inputs:
 		if(T && owner)
 			owner.appearance_flags = LONG_GLIDE
 			owner.glide_size = 32
-			if((owner.loc == target_turf) || T.CheckThrownCollision(owner, supplied_throw_force) || !owner.Move(T))
+			if((owner.loc == target_turf) || T.CheckThrownCollision(owner, supplied_meters_per_second) || !owner.Move(T))
 				if(owner) // Somehow this is being nulled in an edge case.
 					owner.dragged = FALSE
 					owner.transform = null
 					owner.UpdateIcon()
 					owner.UpdateStrings()
-					owner.EndThrow(supplied_throw_force)
+					owner.EndThrow(supplied_meters_per_second)
 					_glob.vector_list -= src
 				return
 			owner.pixel_x = pix_x

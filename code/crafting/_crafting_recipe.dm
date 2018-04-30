@@ -14,7 +14,10 @@
 	var/obj/item/thing = result_path
 	result_name = initial(thing.name)
 	if(isnull(material_cost))
-		material_cost = round((initial(thing.weight) * result_number) * 1.5)
+		material_cost = result_number
+		// Sadly volume is not a constant so we can't grab it with initial()
+		material_cost *= (initial(thing.height)*initial(thing.width))+(initial(thing.height)*initial(thing.length))+(initial(thing.length)*initial(thing.width))
+		material_cost *= 1.5
 	example_atom = new()
 	example_atom.icon = initial(thing.icon)
 

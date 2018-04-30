@@ -7,7 +7,7 @@
 	if(istype(limb))
 		for(var/thing in limb.wounds)
 			var/datum/wound/wound = thing
-			if(!wound.Bandaged() && wound.wound_type == WOUND_CUT && wound.severity >= SUTURE_THRESHOLD)
+			if(!wound.Bandaged() && wound.wound_type == WOUND_CUT && wound.size >= SUTURE_THRESHOLD)
 				return TRUE
 	return FALSE
 
@@ -29,9 +29,9 @@
 		surgeon.NotifyNearby("<span class = 'notice'>\The [surgeon] finishes placing some sutures in \the [patient]'s [limb.name].</span>", MESSAGE_VISIBLE)
 		for(var/thing in limb.wounds)
 			var/datum/wound/wound = thing
-			if(!wound.Bandaged() && wound.wound_type == WOUND_CUT && wound.severity >= SUTURE_THRESHOLD)
-				wound.severity = max(0, wound.severity - rand(5,10))
-				if(wound.severity < 3 && wound.depth < 3 && wound.bleed_amount)
+			if(!wound.Bandaged() && wound.wound_type == WOUND_CUT && wound.size >= SUTURE_THRESHOLD)
+				wound.size = max(0, wound.size - rand(5,10))
+				if(wound.size < 3 && wound.depth < 3 && wound.bleed_amount)
 					wound.bleed_amount = 0
 	var/obj/item/needle/needle = instrument
 	if(istype(needle)) needle.ConsumeThread(1)

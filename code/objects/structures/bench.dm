@@ -3,7 +3,6 @@
 	icon = 'icons/objects/structures/bench.dmi'
 	density = 0
 	icon_state = "map"
-	weight = 10
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_ANCHORED | FLAG_FLAT_SURFACE | FLAG_SEATING
 	draw_shadow_underlay = null

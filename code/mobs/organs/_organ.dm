@@ -29,17 +29,16 @@
 
 /obj/item/organ/Destroy()
 	if(owner)
-		if(istype(owner.organs, /list))
-			owner.organs -= src
+		owner.organs -= src
 		var/list/organ_list = owner.organs_by_key[organ_key]
-		if(istype(organ_list, /list))
+		if(length(organ_list))
 			organ_list -= src
-			if(!organ_list.len)
-				owner.organs_by_key[organ_key] = null
-				owner.organs_by_key -= organ_key
+		if(!length(organ_list))
+			owner.organs_by_key[organ_key] = null
+			owner.organs_by_key -= organ_key
 		owner = null
 	var/obj/item/limb/limb = loc
-	if(istype(limb) && istype(limb.organs, /list))
+	if(istype(limb))
 		limb.organs -= src
 	. = ..()
 

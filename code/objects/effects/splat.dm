@@ -7,7 +7,7 @@
 	var/amount = 1
 	var/list/splat_images = list()
 
-/obj/effect/random/splat/GetWeight()
+/obj/effect/random/splat/GetMass()
 	return max(1,amount)
 
 /obj/effect/random/splat/Uncrossed(var/mob/crosser)
@@ -19,7 +19,8 @@
 /obj/effect/random/splat/Melt()
 	return
 
-/obj/effect/random/splat/UpdateValues()
+/obj/effect/random/splat/Initialize()
+	. = ..()
 	color = material.colour
 
 /obj/effect/random/splat/UpdateStrings()

@@ -1,12 +1,11 @@
 /datum/material
 
-	var/general_name = "stuff"      // General purpose string for referring to the material.
-	var/descriptor                  // Used by materials with a different adjective to their name (wood/wooden wall vs iron/iron wall)
+	var/general_name = "stuff" // General purpose string for referring to the material.
+	var/descriptor             // Used by materials with a different adjective to their name (wood/wooden wall vs iron/iron wall)
 
-	var/sharpness_modifier = 1      // Props of this material will multiply their default sharpness by this.
-	var/weight_modifier = 1         // Props of this material will multiply their default weight by this.
-	var/structural_integrity = 50   // Walls made of this material will use this value for max HP.
-	var/smell_o_vision              // Whether or not objects of this material have NO_CLIENT_COLOR applied, for dog monochrome vision.
+	var/mass = 1               // kg per dm^3.
+	var/tensile_strength = 1   // MPa
+	var/smell_o_vision         // Whether or not objects of this material have NO_CLIENT_COLOR applied, for dog monochrome vision.
 
 	// Descriptive strings for various item states.
 	var/liquid_name
@@ -85,6 +84,9 @@
 			valid_recipes += crecipe
 	return valid_recipes
 
+/datum/material/proc/GetTensileStrength()
+	return tensile_strength
+
 /datum/material/proc/GetConstructionSound()
 	return construction_sound
 
@@ -132,11 +134,8 @@
 				return amount == 1 ? gas_portion_name : gas_portion_name_plural
 	return amount == 1 ? "piece" : "pieces"
 
-/datum/material/proc/GetSharpnessMod()
-	return sharpness_modifier
-
-/datum/material/proc/GetWeightMod()
-	return weight_modifier
+/datum/material/proc/GetMass()
+	return mass
 
 /datum/material/proc/IsTemperatureSensitive()
 	return (melting_point != TEMPERATURE_NEVER_COLD || ignition_point != TEMPERATURE_NEVER_HOT || boiling_point != TEMPERATURE_NEVER_HOT)

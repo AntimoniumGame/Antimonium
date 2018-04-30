@@ -1,14 +1,10 @@
 /obj/item/stack
-	sharpness = 0
-	contact_size = 1
-
 	var/amount
 	var/max_amount = 20
 	var/singular_name = "thing"
 	var/plural_name =   "things"
 	var/stack_name =    "stack"
 	var/can_craft_with = FALSE
-
 	var/list/stack_overlays		// a list of all the image overlays for this stack
 
 /obj/item/stack/ForceMove()
@@ -61,8 +57,8 @@
 			user.NotifyNearby("<span class='notice'>\The [user] splits the [plural_name] into two roughly equal [stack_name]s.</span>", MESSAGE_VISIBLE)
 		return TRUE
 
-/obj/item/stack/GetWeight()
-	return GetAmount() * weight
+/obj/item/stack/GetMass()
+	return GetAmount() * mass
 
 /obj/item/stack/New(var/newloc, var/material_path, var/_amount)
 	if(_amount && _amount > 0)
@@ -165,6 +161,9 @@
 
 /obj/item/stack/GetAmount()
 	return amount
+
+/obj/item/stack/GetVolume()
+	return volume * amount
 
 /obj/item/stack/GetInvIcon()
 	var/image/I = GetWornIcon("held")

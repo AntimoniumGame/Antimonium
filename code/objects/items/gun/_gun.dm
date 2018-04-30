@@ -2,7 +2,7 @@
 	has_variant_inhand_icon = TRUE
 	var/obj/item/shot/loaded
 	var/loading
-	var/fire_force = 20
+	var/fire_force = 75 // m/s
 	var/load_time = 25
 
 /obj/item/gun/New()
@@ -26,7 +26,7 @@
 		PlayLocalSound(user, 'sounds/effects/click2.ogg', 50)
 		return TRUE
 
-	user.NotifyNearby("<span>\The [user] fires \the [src] at \the [target]!</span>")
+	user.NotifyNearby("<span class='danger'>\The [user] fires \the [src]!</span>")
 	PlayLocalSound(user, 'sounds/effects/gunfired.ogg', 100)
 	firing.ForceMove(get_turf(src))
 	firing.ThrownAt(target, user, fire_force)

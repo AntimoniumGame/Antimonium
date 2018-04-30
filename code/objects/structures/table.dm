@@ -2,7 +2,6 @@
 	name = "table"
 	icon = 'icons/objects/structures/table.dmi'
 	icon_state = "map"
-	weight = 50
 	default_material_path = /datum/material/wood
 	flags = FLAG_SIMULATED | FLAG_FLAT_SURFACE | FLAG_ANCHORED
 	max_damage = 500
@@ -12,7 +11,6 @@
 	icon = 'icons/objects/structures/shelf.dmi'
 	icon_state = "map"
 	density = 0
-	weight = 30
 	max_damage = 200
 
 /obj/structure/table/shelf/north

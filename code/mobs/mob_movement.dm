@@ -75,6 +75,9 @@
 /atom/proc/PushedBy(var/mob/pusher, var/mob/push_dir)
 	return FALSE
 
+/atom/proc/GetVolume()
+	return volume
+
 /atom/movable/PushedBy(var/mob/pusher, var/mob/push_dir)
 	if(flags & FLAG_ANCHORED)
 		return FALSE

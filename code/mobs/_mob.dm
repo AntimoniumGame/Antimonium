@@ -5,10 +5,14 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 	sight = SEE_SELF|SEE_BLACKNESS
 
+	length = 2
+	width =  5
+	height = 15
+
+	var/obj/item/unarmed_attack/unarmed_attack
 	var/clothing_offset_x = 0
 	var/clothing_offset_y = 0
 	var/client_color
-	var/weight = 50
 	var/burn_point = TEMPERATURE_BURNING
 	var/blood_material = /datum/material/water/blood
 	var/skull_type = /obj/item/skull
@@ -26,7 +30,7 @@
 
 	while(limbs_by_key.len > 1)
 		var/obj/item/limb/limb = GetLimb(pick(limbs_by_key - BP_CHEST))
-		limb.SeverLimb(dtype = WOUND_BURN)
+		limb.SeverLimb(damage_type = WOUND_BURN)
 		sleep(-1)
 
 	if(!Deleted(src))
@@ -58,9 +62,6 @@
 
 /mob/proc/GetSlotByHandedness(var/handedness)
 	return null
-
-/mob/GetWeight()
-	return weight
 
 /mob/Initialize()
 
@@ -119,7 +120,7 @@
 /mob/RandomizePixelOffset()
 	return
 
-/mob/EndThrow(var/throw_force)
+/mob/EndThrow(var/meters_per_second)
 	ResetPosition()
 
 /mob/HandleFireDamage()

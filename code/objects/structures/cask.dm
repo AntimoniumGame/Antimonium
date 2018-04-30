@@ -2,7 +2,6 @@
 	name = "cask"
 	icon = 'icons/objects/structures/cask.dmi'
 	icon_state = "flat"
-	weight = 30
 	default_material_path = /datum/material/wood
 	density = 1
 	max_reagent_volume = 200

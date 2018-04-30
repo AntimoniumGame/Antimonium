@@ -4,8 +4,6 @@
 	density = 0
 	layer = TURF_LAYER+0.2
 	flags = FLAG_SIMULATED | FLAG_ANCHORED
-	contact_size = 5
-	weight = 3
 
 /obj/item/dartboard/Initialize()
 	AlignWithWall(src)
@@ -22,13 +20,13 @@
 		icon_state = "world_flat"
 	..()
 
-/obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile, var/throw_force = 1)
+/obj/item/dartboard/ThrownHitBy(var/atom/movable/projectile, var/meters_per_second = 1)
 
 	var/obj/item/dart = projectile
-	if(!istype(dart) || !dart.sharpness)
+	if(!istype(dart) || !dart.edged)
 		return FALSE
 
-	var/result = rand(10) + dart.contact_size
+	var/result = rand(10)
 	switch(result)
 		if(1)
 			result = "wooden frame..."
