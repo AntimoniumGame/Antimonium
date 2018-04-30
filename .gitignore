@@ -8,4 +8,5 @@
 saves/*
 data/*
 maps/backup/*
+.vscode/*
 __pycache__
