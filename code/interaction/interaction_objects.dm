@@ -71,6 +71,8 @@
 	if(Burn(user, SLOT_HANDS))
 		user.Notify("<span class='warning'>\The [src] is far too hot to handle!</span>")
 		return FALSE
+	if(!user.CanEquipToSlot(slot))
+		return FALSE
 	return TRUE
 
 /obj/item/proc/AfterPickedUp(var/mob/grabber)

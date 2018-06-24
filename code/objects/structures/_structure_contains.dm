@@ -31,7 +31,7 @@
 					user.NotifyNearby("\The [user] rummages around in \the [src] and pulls out \a [removing].", MESSAGE_VISIBLE)
 					ThingTakenOut(removing)
 				else
-					contains += removing
+					contains[removing] = TRUE
 					removing.ForceMove(src)
 			else
 				user.NotifyNearby("\The [user] rummages around in \the [src] but comes up empty handed.", MESSAGE_VISIBLE)
@@ -81,7 +81,7 @@
 	return TRUE
 
 /obj/structure/proc/StoreItem(var/obj/item/prop)
-	contains += prop
+	contains[prop] = TRUE
 	prop.ForceMove(src)
 	ThingPutInside(prop)
 
@@ -117,7 +117,7 @@
 /obj/structure/GetRadialMenuContents(var/mob/user, var/menu_type, var/args)
 	if(menu_type == RADIAL_MENU_DEFAULT)
 		if(contains && open)
-			return contains
+			return contains.Copy()
 		var/turf/turf = get_turf(src)
 		if(istype(turf))
 			return turf.GetRadialMenuContents(user, menu_type)-src

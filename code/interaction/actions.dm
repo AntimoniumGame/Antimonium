@@ -31,23 +31,14 @@
 
 	if(CheckCoverage(limb.limb_id))
 		for(var/thing in coverage_by_bodypart[limb.limb_id])
-
 			var/obj/item/clothing/clothes = thing
 			var/penetration = force/max(1,(clothes.material.GetTensileStrength() * (hitby.GetContactArea() * 0.01)))
-
 			var/required_depth = clothes.GetThickness()
-			if(penetration > required_depth)
-				var/last_force = force
-				force -= force * (required_depth/penetration)
-				NotifyNearby("Hit from [hitby] penetrated [required_depth]cm [clothes.material.general_name] (max [penetration]cm) with force [last_force], [force] remaining")
-			else
-				NotifyNearby("Hit from [hitby] was stopped by [required_depth]cm [clothes.material.general_name]")
-				force = 0
+			force = (penetration > required_depth) ? (force - (force * (required_depth/penetration))) : 0
 
-	if(force)
+	if(force > 0)
 		var/penetration = force/(limb.material.GetTensileStrength() * (hitby.GetContactArea() * 0.01))
 		var/wound_type = (hitby.edged && penetration) ? WOUND_CUT : WOUND_BRUISE
-		NotifyNearby("Wound is [penetration]cm deep ([wound_type]), general severity is [(hitby.GetContactArea()/10) * penetration].")
 		limb.HandleAttacked(attacker, hitby, penetration, wound_type)
 
 /mob/proc/ResolveBurn(var/severity)

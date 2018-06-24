@@ -5,7 +5,7 @@
 		ThrownHitBy(thrown, meters_per_second)
 	for(var/thing in (contents - thrown))
 		var/atom/movable/obstacle = thing
-		if(obstacle.ThrownHitBy(thrown, meters_per_second))
+		if(istype(obstacle) && obstacle.ThrownHitBy(thrown, meters_per_second))
 			return TRUE
 	return FALSE
 
