@@ -19,15 +19,19 @@
 	if(istype(O))
 		DropItem(O)
 
+/mob/proc/CanEquipToSlot(var/equip_to_slot)
+	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
+	if(!equipping)
+		return FALSE
+	if(equipping.holding)
+		return FALSE
+	return TRUE
+
 /mob/proc/CollectItem(var/obj/item/thing, var/equip_to_slot)
 	if(!equip_to_slot)
 		return FALSE
-	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot]
-	if(!equipping || equipping.holding)
-		return FALSE
 	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
-
 	var/obj/item/clothing/clothes = thing
 	if(istype(clothes) && length(clothes.mob_can_equip) && !(type in clothes.mob_can_equip))
 		Notify("<span class='warning'>This is not wearable by \a [initial(name)].</span>")
@@ -44,6 +48,7 @@
 
 	thing.ForceMove(src)
 	thing.AfterPickedUp(src)
+	var/obj/ui/inv/equipping = inventory_slots[equip_to_slot] // checked in BeforePickedUp()
 	equipping.SetHeld(thing)
 	UpdateIcon()
 	return TRUE

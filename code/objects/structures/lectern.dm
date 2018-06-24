@@ -51,19 +51,19 @@
 			UpdateBookOverlay()
 			return TRUE
 		else
-			contains += holding
+			contains[holding] = TRUE
 			holding.ForceMove(src)
 
 /obj/structure/lectern/UpdateIcon()
 	..()
 	UpdateBookOverlay()
 
-/obj/structure/lectern/New()
-	..()
+/obj/structure/lectern/Initialize()
+	. = ..()
 	if(prob(60))
 		var/filled = pick(typesof(/obj/item/written))
 		holding = new filled(src)
-		contains += holding
+		contains[holding] = TRUE
 		UpdateBookOverlay()
 
 /obj/structure/lectern/ToggleOpen()
