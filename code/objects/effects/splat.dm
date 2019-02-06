@@ -3,6 +3,7 @@
 	icon = 'icons/objects/effects/splat.dmi'
 	random_states = 3
 	random_state_prefix = "small"
+	appearance_flags = NO_CLIENT_COLOR
 
 	var/amount = 1
 	var/list/splat_images = list()
@@ -37,7 +38,6 @@
 			continue
 		if(!transform && splat.transform)
 			transform = splat.transform
-
 		splat_images |= splat.icon_state
 		splat_images |= splat.splat_images
 		amount += splat.amount

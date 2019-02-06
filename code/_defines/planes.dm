@@ -1,13 +1,14 @@
 //Planes above the world, i.e. UI, screen effects
 // starting from the top down (100) for future potential multi-z plane layering (trust me on this one)
-#define MENU_PLANE              100              	// plane for full screen menus
-#define FADE_PLANE              MENU_PLANE - 1   	// used for blanking out the ui while leaving the top menu intact
-#define UI_PLANE                FADE_PLANE - 1   	// ui objects
-#define TITLE_PLANE             UI_PLANE - 1     	// used for the title screen
-#define VISION_PLANE            TITLE_PLANE - 1  	// vision impairing effects
-#define ABSTRACT_PLANE          VISION_PLANE - 1 	// abstract - for dumping other stuff
-#define EFFECTS_PLANE			ABSTRACT_PLANE - 1 	// for effects that are self lit
+#define MENU_PLANE              100                // plane for full screen menus
+#define FADE_PLANE              MENU_PLANE - 1     // used for blanking out the ui while leaving the top menu intact
+#define UI_PLANE                FADE_PLANE - 1     // ui objects
+#define TITLE_PLANE             UI_PLANE - 1       // used for the title screen
+#define VISION_PLANE            TITLE_PLANE - 1    // vision impairing effects
+#define ABSTRACT_PLANE          VISION_PLANE - 1   // abstract - for dumping other stuff
+#define EFFECTS_PLANE           ABSTRACT_PLANE - 1 // for effects that are self lit
 
+#define OVERHEAD_PLANE          MASTER_PLANE + 1   // For roofs and tree canopies.
 #define MASTER_PLANE            1
 
 //Planes below the world, i.e. lighting

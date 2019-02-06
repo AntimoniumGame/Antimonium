@@ -355,6 +355,7 @@
 #include "code\objects\structures\earthworks\earthworks.dm"
 #include "code\objects\structures\earthworks\earthworks_farm.dm"
 #include "code\objects\structures\earthworks\earthworks_pit.dm"
+#include "code\objects\structures\flora\tree.dm"
 #include "code\objects\structures\machines\gearbox.dm"
 #include "code\progress_bars\_bar.dm"
 #include "code\progress_bars\bar_proc.dm"

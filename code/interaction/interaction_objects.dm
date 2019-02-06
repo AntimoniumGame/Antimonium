@@ -6,7 +6,7 @@
 
 /obj/proc/HandleClickedOn(var/mob/clicker, var/slot)
 
-	if(clicker.OnActionCooldown())
+	if(!clicker.CanUseInvSlot(slot) || clicker.OnActionCooldown())
 		return
 
 	if(IsAdjacentTo(src, clicker))

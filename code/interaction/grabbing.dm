@@ -50,9 +50,6 @@
 	if(!IsAdjacentTo(src, grabbing) || OnActionCooldown())
 		return
 
-	if(!CanUseLimb(grabbing_with))
-		return
-
 	if(GetEquipped(grabbing_slot))
 		Notify("<span class='warning'>You are already holding something there!</span>")
 		return
