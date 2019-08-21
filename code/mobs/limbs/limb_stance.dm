@@ -10,4 +10,5 @@
 	owner.UpdateStance()
 
 /obj/item/limb/stance/HandleBreakEffects()
+	..()
 	owner.UpdateStance()

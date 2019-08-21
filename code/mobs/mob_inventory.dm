@@ -28,10 +28,13 @@
 	return TRUE
 
 /mob/proc/CollectItem(var/obj/item/thing, var/equip_to_slot)
+
 	if(!equip_to_slot)
 		return FALSE
+
 	if(!thing.BeforePickedUp(src, equip_to_slot))
 		return FALSE
+
 	var/obj/item/clothing/clothes = thing
 	if(istype(clothes) && length(clothes.mob_can_equip) && !(type in clothes.mob_can_equip))
 		Notify("<span class='warning'>This is not wearable by \a [initial(name)].</span>")

@@ -22,7 +22,7 @@
 
 /obj/ui/inv/gear/proc/TryEquipmentInteraction(var/slot)
 
-	if(owner.OnActionCooldown())
+	if(owner.OnActionCooldown() || !owner.CanUseInvSlot(slot))
 		return
 
 	var/obj/item/prop = owner.GetEquipped(slot)

@@ -20,23 +20,28 @@
 		thing.RightClickedOn(src, SLOT_RIGHT_HAND)
 
 /mob/proc/TryGeneralInteraction(var/atom/thing, var/ctrl, var/alt, var/slot, var/limb)
-	if(!Incapacitated() && CanUseLimb(limb))
+	if(!Incapacitated())
 		FaceAtom(thing)
-		if(ctrl && thing.IsGrabbable() && thing != src)
-			GrabAtom(thing, limb, slot)
-			return TRUE
+	else
+		return FALSE
 
-		var/obj/item/limb/use_limb = GetLimb(limb)
-		if(use_limb.IsDextrous(TRUE))
-			if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
-				var/obj/item/throwing = GetEquipped(slot)
-				if(throwing && throwing.ThrowAt(src, thing))
-					return TRUE
-			else
-				var/obj/item/firing = GetEquipped(slot)
-				if(istype(firing) && firing.FireAt(src, thing))
-					return TRUE
+	if(!(CanUseLimb(limb) && CanUseInvSlot(slot)))
+		return FALSE
 
+	if(ctrl && thing.IsGrabbable() && thing != src)
+		GrabAtom(thing, limb, slot)
+		return TRUE
+
+	var/obj/item/limb/use_limb = GetLimb(limb)
+	if(use_limb.IsDextrous(TRUE))
+		if(alt && (istype(thing, /turf) || istype(thing.loc, /turf)))
+			var/obj/item/throwing = GetEquipped(slot)
+			if(throwing && throwing.ThrowAt(src, thing))
+				return TRUE
+		else
+			var/obj/item/firing = GetEquipped(slot)
+			if(istype(firing) && firing.FireAt(src, thing))
+				return TRUE
 	return FALSE
 
 /mob/LeftClickedOn(var/mob/clicker, var/slot = SLOT_LEFT_HAND)
@@ -46,10 +51,8 @@
 	HandleInteraction(clicker, slot)
 
 /mob/proc/HandleInteraction(var/mob/person, var/slot_id)
-
 	if(person.OnActionCooldown() || !IsAdjacentTo(src, person))
 		return
-
 	var/obj/item/prop = person.GetEquipped(slot_id)
 	if(prop)
 		if(AttackedBy(person, prop))

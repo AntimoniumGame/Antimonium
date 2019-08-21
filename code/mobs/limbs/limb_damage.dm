@@ -8,7 +8,6 @@
 /obj/item/limb/Destroyed(var/dtype = WOUND_BRUISE)
 	if(dtype == WOUND_BURN && remains_type)
 		var/droploc = get_turf(owner ? owner : src)
-		world.log << "BURN DROP [droploc]"
 		new /obj/item/stack/reagent/ashes(droploc, _amount = max(1, mass))
 		if(remains_multi)
 			new remains_type(get_turf(droploc), _amount = max(1, round(mass/5)))
@@ -71,6 +70,7 @@
 /obj/item/limb/proc/BreakBone()
 	owner.NotifyNearby("<span class='alert'><b>\The [owner]'s [name] makes a horrible cracking sound!</b></span>", MESSAGE_AUDIBLE)
 	broken = TRUE
+	AdjustPain(25)
 	HandleBreakEffects()
 
 /obj/item/limb/proc/SeverLimb(var/obj/item/limb/severing, var/amputated = FALSE, var/msg = "flies off in an arc", var/destroy_limb = FALSE, var/damage_type = WOUND_CUT)
@@ -133,7 +133,7 @@
 			var/blood_mat = owner.blood_material
 			Splatter(owner.loc, blood_mat)
 			if(!destroy_limb)
-				spawn(1) 
+				spawn(1)
 					Splatter(loc, blood_mat)
 
 		owner.UpdateIcon()
