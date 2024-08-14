@@ -28,15 +28,14 @@
 	. = ..()
 	if(!Deleted(src))
 		UpdateStrings()
-		switch(damage)
-			if(max_damage to (max_damage * 0.75))
-				name = "mangled [name]"
-			if((max_damage * 0.51) to (max_damage * 0.74))
-				name = "battered [name]"
-			if((max_damage * 0.26) to (max_damage * 0.5))
-				name = "ragged [name]"
-			if((max_damage * 0.05) to (max_damage * 0.25))
-				name = "worn [name]"
+		if(damage >= max_damage && damage <= (max_damage * 0.75))
+			name = "mangled [name]"
+		else if(damage >= (max_damage * 0.51) && damage <= (max_damage * 0.74))
+			name = "battered [name]"
+		else if(damage >= (max_damage * 0.26) && damage <= (max_damage * 0.5))
+			name = "ragged [name]"
+		else if(damage >= (max_damage * 0.05) && damage <= (max_damage * 0.25))
+			name = "worn [name]"
 
 /obj/item/clothing/New()
 	..()
